@@ -1,0 +1,35 @@
+uuid: 6c177a6c-8e7f-48d6-b354-a50f95b7d7d7
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.paragraph.video.field_heading
+    - field.field.paragraph.video.field_video
+    - paragraphs.paragraphs_type.video
+  module:
+    - media_library
+_core:
+  default_config_hash: tXH_p8ZpCjFvrv7YJWqC1JQhbmW9qh7NAoZmEPLqLQ4
+id: paragraph.video.default
+targetEntityType: paragraph
+bundle: video
+mode: default
+content:
+  field_heading:
+    type: string_textfield
+    weight: 0
+    region: content
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+  field_video:
+    type: media_library_widget
+    weight: 1
+    region: content
+    settings:
+      media_types: {  }
+    third_party_settings: {  }
+hidden:
+  created: true
+  status: true

@@ -1,0 +1,18 @@
+uuid: 75210599-cdd4-4ace-8aa9-a07ca52e2dc4
+langcode: en
+status: true
+dependencies:
+  module:
+    - paragraphs_ee
+third_party_settings:
+  paragraphs_ee:
+    paragraphs_categories:
+      content: content
+_core:
+  default_config_hash: AfT6eRkM_i2-_ROVXA0SbX4Q24kJDehUHK1DRREVjtw
+id: separator
+label: Separator
+icon_uuid: null
+icon_default: null
+description: 'Used to divide sections, with or without a line'
+behavior_plugins: {  }

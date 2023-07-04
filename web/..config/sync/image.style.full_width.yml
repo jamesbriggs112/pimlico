@@ -1,0 +1,47 @@
+uuid: c74e15c5-443c-41be-ba26-2871d9a9ba51
+langcode: en
+status: true
+dependencies:
+  config:
+    - crop.type.free_crop
+  module:
+    - crop
+    - image_effects
+_core:
+  default_config_hash: 9i1-RuF2VyUk7k2NeKb1HAHb793_g5XaXVgvxue6sIw
+name: full_width
+label: 'Full width'
+effects:
+  fbc1d8a4-9188-40cf-bba3-165f2a7f4e1c:
+    uuid: fbc1d8a4-9188-40cf-bba3-165f2a7f4e1c
+    id: crop_crop
+    weight: -9
+    data:
+      crop_type: free_crop
+      automatic_crop_provider: null
+  d2783474-6091-4b9c-a3d8-699b041865c2:
+    uuid: ''
+    id: image_scale
+    weight: -8
+    data:
+      width: 1920
+      height: null
+      upscale: true
+  b1cb9f29-7e0e-4d09-8b97-1b69b06c4c79:
+    uuid: b1cb9f29-7e0e-4d09-8b97-1b69b06c4c79
+    id: image_effects_set_canvas
+    weight: -10
+    data:
+      canvas_size: relative
+      canvas_color: '#C128AAFF'
+      exact:
+        width: ''
+        height: ''
+        placement: center-center
+        x_offset: 0
+        y_offset: 0
+      relative:
+        left: 0
+        right: 0
+        top: 0
+        bottom: 0

@@ -1,0 +1,17 @@
+uuid: 5778dd74-2f68-466c-a867-e8d720cdfa46
+langcode: en
+status: true
+dependencies:
+  module:
+    - paragraphs_ee
+third_party_settings:
+  paragraphs_ee:
+    paragraphs_categories: {  }
+_core:
+  default_config_hash: W5pDEyWvyrlTBmj70QQZ-yfsyGRhDEPIb1OU1Unta30
+id: jump_menu_anchor
+label: 'Jump menu anchor'
+icon_uuid: null
+icon_default: null
+description: ''
+behavior_plugins: {  }

@@ -1,0 +1,18 @@
+uuid: b5d61334-f14f-45de-be8e-158bf9e2e9f1
+langcode: en
+status: true
+dependencies:
+  module:
+    - paragraphs_ee
+third_party_settings:
+  paragraphs_ee:
+    paragraphs_categories:
+      containers: containers
+_core:
+  default_config_hash: 8qbgZ8Vecopi22H6qMP1UCAzNvU-ma_zui9SBuQ8oiY
+id: timeline
+label: Timeline
+icon_uuid: null
+icon_default: null
+description: ''
+behavior_plugins: {  }

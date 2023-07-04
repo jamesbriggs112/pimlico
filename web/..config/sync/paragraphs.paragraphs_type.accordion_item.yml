@@ -1,0 +1,18 @@
+uuid: ea9b3004-f4fd-49a9-8126-913d7e290642
+langcode: en
+status: true
+dependencies:
+  module:
+    - paragraphs_ee
+third_party_settings:
+  paragraphs_ee:
+    paragraphs_categories:
+      content: content
+_core:
+  default_config_hash: IJSUrdermrgoBIKvtYqjE0YkoeymGnoddO5G4d3wV4U
+id: accordion_item
+label: 'Accordion item'
+icon_uuid: null
+icon_default: null
+description: ''
+behavior_plugins: {  }

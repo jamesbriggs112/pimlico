@@ -1,0 +1,37 @@
+uuid: d08a562c-2a16-4a2e-94e7-3290c766fb7e
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.paragraph.featured_item_banner.field_featured_teasers
+    - field.field.paragraph.featured_item_banner.field_image
+    - paragraphs.paragraphs_type.featured_item_banner
+  module:
+    - media_library
+_core:
+  default_config_hash: nmBC-nz7vOmhPeE9I-vahkLFWAccdq7Tl8lTbJC4r14
+id: paragraph.featured_item_banner.default
+targetEntityType: paragraph
+bundle: featured_item_banner
+mode: default
+content:
+  field_featured_teasers:
+    type: entity_reference_autocomplete
+    weight: 1
+    region: content
+    settings:
+      match_operator: CONTAINS
+      match_limit: 10
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+  field_image:
+    type: media_library_widget
+    weight: 0
+    region: content
+    settings:
+      media_types: {  }
+    third_party_settings: {  }
+hidden:
+  created: true
+  status: true

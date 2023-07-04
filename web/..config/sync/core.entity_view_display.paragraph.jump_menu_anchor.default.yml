@@ -1,0 +1,23 @@
+uuid: afc69ec2-bb48-49d4-94e0-a9ca0bd38331
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.paragraph.jump_menu_anchor.field_heading
+    - paragraphs.paragraphs_type.jump_menu_anchor
+_core:
+  default_config_hash: wYISAHYmVlQqmZYvVfqzuA51_AIASkNj9AWJlMgtCHY
+id: paragraph.jump_menu_anchor.default
+targetEntityType: paragraph
+bundle: jump_menu_anchor
+mode: default
+content:
+  field_heading:
+    type: string
+    label: above
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    weight: 0
+    region: content
+hidden: {  }

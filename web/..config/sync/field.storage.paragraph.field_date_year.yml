@@ -1,0 +1,23 @@
+uuid: 61c6f129-cf19-44c8-9320-25caa7573f16
+langcode: en
+status: true
+dependencies:
+  module:
+    - paragraphs
+_core:
+  default_config_hash: I3E3hLq4Gr0EmeqD9waz9wAT5gsHkHCzF9h8cdM5Se4
+id: paragraph.field_date_year
+field_name: field_date_year
+entity_type: paragraph
+type: string
+settings:
+  max_length: 255
+  case_sensitive: false
+  is_ascii: false
+module: core
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

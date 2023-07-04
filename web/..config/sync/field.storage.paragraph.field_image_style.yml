@@ -1,0 +1,33 @@
+uuid: f1b7fdcb-00a7-42b5-81ac-b147715ff3bd
+langcode: en
+status: true
+dependencies:
+  module:
+    - options
+    - paragraphs
+id: paragraph.field_image_style
+field_name: field_image_style
+entity_type: paragraph
+type: list_string
+settings:
+  allowed_values:
+    -
+      value: full
+      label: Natural
+    -
+      value: square
+      label: Square
+    -
+      value: '9_16'
+      label: '9:16'
+    -
+      value: '16_9'
+      label: '16:9'
+  allowed_values_function: ''
+module: options
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

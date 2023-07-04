@@ -1,0 +1,10 @@
+uuid: 30063852-6f0a-4a83-985b-a46d2c168f1b
+langcode: en
+status: true
+dependencies: {  }
+_core:
+  default_config_hash: RlwVlm36-R-GIF5XHc7NfGhvfbGJ2fXW0oZidqKt80Y
+id: legal
+label: Legal
+description: ''
+locked: false

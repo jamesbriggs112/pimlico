@@ -1,0 +1,25 @@
+uuid: ab88e657-af49-47ba-9b41-5f45894cd322
+langcode: en
+status: true
+dependencies:
+  config:
+    - system.menu.footer-information
+  module:
+    - system
+  theme:
+    - foundry
+id: footerinformation
+theme: foundry
+region: footer
+weight: -4
+provider: null
+plugin: 'system_menu_block:footer-information'
+settings:
+  id: 'system_menu_block:footer-information'
+  label: Information
+  label_display: visible
+  provider: system
+  level: 1
+  depth: 0
+  expand_all_items: false
+visibility: {  }

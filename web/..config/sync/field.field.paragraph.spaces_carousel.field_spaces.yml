@@ -1,0 +1,29 @@
+uuid: 2929863d-8ed9-4824-a866-8e053cbd8d65
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_spaces
+    - node.type.space
+    - paragraphs.paragraphs_type.spaces_carousel
+id: paragraph.spaces_carousel.field_spaces
+field_name: field_spaces
+entity_type: paragraph
+bundle: spaces_carousel
+label: Spaces
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:node'
+  handler_settings:
+    target_bundles:
+      space: space
+    sort:
+      field: _none
+      direction: ASC
+    auto_create: false
+    auto_create_bundle: ''
+field_type: entity_reference

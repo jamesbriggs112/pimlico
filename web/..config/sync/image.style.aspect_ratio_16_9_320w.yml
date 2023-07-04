@@ -1,0 +1,30 @@
+uuid: 61899ae7-ce3d-4b5a-b73a-7cd9152498bf
+langcode: en
+status: true
+dependencies:
+  module:
+    - focal_point
+name: aspect_ratio_16_9_320w
+label: aspect_ratio_16_9_320w
+effects:
+  5551db0a-dd23-4f32-8d52-cdc43a7378ad:
+    uuid: 5551db0a-dd23-4f32-8d52-cdc43a7378ad
+    id: focal_point_crop_ratio
+    weight: 0
+    data:
+      crop_type: null
+      aspect_ratio: '16:9'
+  cd9fb920-9140-4b3f-95d0-c751d04a2b8e:
+    uuid: cd9fb920-9140-4b3f-95d0-c751d04a2b8e
+    id: image_scale
+    weight: 1
+    data:
+      width: 320
+      height: null
+      upscale: false
+  84b51d09-d005-4f53-83db-f0a6f46efb59:
+    uuid: 84b51d09-d005-4f53-83db-f0a6f46efb59
+    id: image_convert
+    weight: 2
+    data:
+      extension: webp

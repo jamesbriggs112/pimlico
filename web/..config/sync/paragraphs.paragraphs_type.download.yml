@@ -1,0 +1,16 @@
+uuid: 6b2f6511-f340-48fa-b181-4bf79518dbfe
+langcode: en
+status: true
+dependencies:
+  module:
+    - paragraphs_ee
+third_party_settings:
+  paragraphs_ee:
+    paragraphs_categories:
+      content: content
+id: download
+label: Download
+icon_uuid: null
+icon_default: null
+description: ''
+behavior_plugins: {  }

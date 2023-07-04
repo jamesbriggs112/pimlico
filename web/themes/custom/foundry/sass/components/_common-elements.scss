@@ -1,0 +1,429 @@
+@use '~sass-rem' as *;
+@use '~sass-mq/mq' as *;
+
+.paragraph {
+  box-sizing: border-box;
+
+  h2.field--name-field-heading {
+    font-size: rem(45px);
+
+    @include mq($from: tablet) {
+      font-size: rem(70px);
+    }
+  }
+
+  > h2.field--name-field-heading {
+    @include mq($from: tablet) {
+      max-width: 50%;
+    }
+  }
+
+  &.paragraph--type--high-impact-text {
+    border-top: 1px solid $grey;
+    border-bottom: 1px solid $grey;
+    padding: 1em;
+    margin-top: 1em;
+    margin-bottom: 1em;
+
+    font-size: 1.3em;
+    width: 100%;
+
+    .field--name-field-text {
+      max-width: 32em;
+      margin: 0 auto;
+      line-height: 1.4em;
+      color: $grey;
+    }
+  }
+
+  &.paragraph--type--carousel {
+    .paragraph--type--carousel-item {
+      display: flex;
+      align-items: center;
+      position: relative;
+
+      .inner-content {
+        box-sizing: border-box;
+        padding: 1em;
+        max-width: 20em;
+        margin-left: 1em;
+        font-size: 1.3em;
+
+        h2 {
+          font-size: 2em;
+          font-weight: 300;
+        }
+
+        .field--name-field-link {
+          a,
+          a:visited {
+            @include button;
+          }
+        }
+      }
+
+      img {
+        line-height: 0;
+      }
+    }
+  }
+}
+
+.paragraph--type--section-wrapper {
+  color: var(--text-color);
+
+  &:not(:first-child) {
+    margin-top: calc(-1 * var(--section-padding));
+  }
+
+  &::before {
+    content: '';
+    background-color: var(--background-color);
+    padding-top: var(--section-padding);
+    display: block;
+    clip-path: polygon(0 0, 0% 100%, calc(100% + 3px) 100%);
+    margin-bottom: -3px;
+  }
+
+  &:not(:last-child) {
+    &::after {
+      content: '';
+      background-color: var(--background-color);
+      padding-bottom: var(--section-padding);
+      display: block;
+    }
+  }
+
+  .section-content-wrapper {
+    background-color: var(--background-color);
+  }
+
+  .section-content-mover {
+    padding-bottom: 4rem;
+
+    @include mq($from: tablet) {
+      transform: translateY(-120px);
+    }
+
+    > .paragraph--type--text-wysiwyg- {
+      @include mq($from: tablet) {
+        max-width: 50%;
+      }
+
+      h2 {
+        font-size: rem(45px);
+
+        @include mq($from: tablet) {
+          font-size: rem(70px);
+        }
+      }
+
+      &:first-of-type {
+        font-size: rem(28px);
+      }
+    }
+
+    > * {
+      overflow: hidden;
+    }
+  }
+
+  .section-content {
+    max-width: var(--page-width);
+    margin: 0 auto;
+    padding: 0 var(--page-gutter);
+    background-color: var(--background-color);
+  }
+}
+
+.paragraph--type--two-column-area {
+  @include siteWidth;
+
+  &__content {
+    display: flex;
+    flex-direction: column;
+
+    @include mq($from: tablet) {
+      flex-direction: row;
+    }
+  }
+
+  &__left {
+    margin-bottom: rem(30px);
+
+    @include mq($from: tablet) {
+      margin-bottom: 0;
+    }
+  }
+
+  &__left,
+  &__right {
+    @include mq($from: tablet) {
+      width: calc(50% - #{rem(25px)});
+    }
+
+    &:first-child {
+      @include mq($from: tablet) {
+        margin-right: rem(50px);
+      }
+    }
+
+    .paragraph:not(:last-child) {
+      margin-bottom: rem(30px);
+    }
+  }
+}
+
+.paragraph--type--featured-link {
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: 1fr auto;
+  gap: 0px 0px;
+  color: white;
+
+  h2 {
+    font-size: rem(30px) !important;
+    margin-bottom: rem(30px);
+  }
+
+  &__image {
+    grid-area: 1 / 1 / 3 / 2;
+    position: relative;
+
+    &::before {
+      content: '';
+      background: linear-gradient(rgba(59, 57, 52, 0) 0%, #3b3934 100%);
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+    }
+  }
+
+  &__content {
+    grid-area: 2 / 1 / 3 / 2;
+    position: relative;
+    padding: 0 rem(20px) rem(35px);
+
+    position: absolute;
+    bottom: 0;
+    max-width: 100%;
+    word-break: break-word;
+
+    a {
+      @include button;
+    }
+  }
+}
+
+.paragraph--type--image-grid {
+  &__content {
+    display: flex;
+    flex-wrap: wrap;
+    margin: calc(-1 * var(--grid-vertical-spacing) / 2)
+      calc(-1 * var(--grid-horizontal-spacing) / 2) 0;
+
+    img {
+      aspect-ratio: 1;
+      padding: rem(40px);
+      margin: calc(var(--grid-vertical-spacing) / 2)
+        calc(var(--grid-horizontal-spacing) / 2);
+      border: 1px solid var(--color-dark-grey);
+      max-width: 100%;
+      width: calc(100% - var(--grid-horizontal-spacing));
+
+      @include mq($from: tablet) {
+        width: calc(50% - var(--grid-horizontal-spacing));
+        max-width: calc(50% - var(--grid-horizontal-spacing));
+      }
+
+      @include mq($from: desktop) {
+        width: calc(25% - var(--grid-horizontal-spacing));
+        max-width: calc(25% - var(--grid-horizontal-spacing));
+      }
+    }
+  }
+}
+
+.paragraph--type--quote {
+  &::after,
+  &::before {
+    content: '';
+    display: block;
+    border-bottom: 1px solid var(--color-dark-grey);
+  }
+
+  q {
+    &::before {
+      content: none;
+    }
+  }
+
+  &__quote {
+    display: flex;
+    margin: 0 auto;
+    justify-content: center;
+    padding: var(--vertical-spacing) 0;
+    flex-direction: column;
+
+    @include mq($from: tablet) {
+      flex-direction: row;
+    }
+
+    &::before {
+      content: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 74.4 45.2'%3E%3Cpath d='M24 45.2C24 27.4 28.6 13.4 38.2 0H21.8C10.4 8 0 24 0 45.2Zm36.4 0c0-17.8 4.4-31.8 14-45.2H58C46.8 8 36.2 24 36.2 45.2Z' data-name='Path 322'/%3E%3C/svg%3E");
+      width: rem(75px);
+      margin-bottom: var(--vertical-spacing);
+
+      @include mq($from: tablet) {
+        margin-right: rem(80px);
+        margin-bottom: 0;
+      }
+    }
+  }
+
+  &__content {
+    width: 100%;
+    max-width: rem(600px);
+
+    .field--name-field-name,
+    .field--name-field-position-company {
+      font-size: rem(22px);
+    }
+
+    .field--name-field-name {
+      font-weight: $fontSemiBold;
+    }
+  }
+}
+
+.paragraph--type--banner-image-carousel {
+  padding: 0;
+  position: relative;
+  position: relative;
+  margin-left: calc(var(--page-gutter) * -1);
+  margin-right: calc(var(--page-gutter) * -1);
+
+  &::after {
+    content: '';
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    display: block;
+    background: white;
+    z-index: 2;
+    clip-path: polygon(0 60%, 0% 100%, 100% 100%);
+  }
+
+  .carousel-inner {
+    clip-path: polygon(0 0, 100% 40%, 100% 100%, 0 60%);
+
+    img {
+      display: block;
+    }
+  }
+}
+
+.paragraph--type--text-wysiwyg- {
+  &__content {
+    > *:last-child {
+      margin-bottom: 0;
+    }
+  }
+}
+
+.paragraph--type--cta {
+  &__content {
+    a {
+      @include button(white, var(--color-dark-grey));
+    }
+  }
+}
+
+.paragraph--type--teaser {
+  img {
+    display: block;
+  }
+
+  &__content {
+    padding: rem(60px) rem(30px) rem(30px);
+    background-color: var(--background-color);
+    color: var(--text-color);
+
+    > *:last-child {
+      margin-bottom: 0;
+    }
+
+    a {
+      color: var(--text-color);
+      text-decoration: underline;
+      font-weight: $fontMedium;
+    }
+  }
+
+  &::after {
+    content: '';
+    background-color: var(--background-color);
+    padding-top: var(--section-padding);
+    display: block;
+    margin-top: -1px;
+  }
+
+  &:nth-child(even) {
+    display: none;
+  }
+
+  .node--type-article & {
+    &__content {
+      color: black;
+      background-color: white;
+
+      a {
+        color: black;
+      }
+    }
+
+    &::after {
+      background-color: white;
+    }
+  }
+}
+
+.paragraph--type--content-carousel,
+.paragraph--type--spaces-carousel {
+  > h2.field--name-field-heading {
+    margin-bottom: rem(50px);
+
+    @include mq($from: tablet) {
+      margin-bottom: rem(80px);
+    }
+  }
+
+  swiper-slide {
+    &:nth-child(even) {
+      .paragraph--type--teaser {
+        &::after {
+          clip-path: polygon(100% 0, -2px 0, 100% 100%);
+
+          .node--type-article & {
+            clip-path: polygon(100% 0, -2px 0, 100% 100%);
+          }
+        }
+      }
+    }
+    &:nth-child(odd) {
+      .paragraph--type--teaser {
+        &::after {
+          clip-path: polygon(0 0, 0 100%, calc(100% + 2px) 0);
+
+          .node--type-article & {
+            clip-path: polygon(0 0, 0 100%, calc(100% + 2px) 0);
+          }
+        }
+      }
+    }
+  }
+}

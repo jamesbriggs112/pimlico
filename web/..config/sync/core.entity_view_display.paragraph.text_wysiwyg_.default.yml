@@ -1,0 +1,52 @@
+uuid: 8cd4df0e-ba10-4e36-a1bd-a26baa37df87
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.paragraph.text_wysiwyg_.field_heading
+    - field.field.paragraph.text_wysiwyg_.field_text
+    - paragraphs.paragraphs_type.text_wysiwyg_
+  module:
+    - fences
+    - text
+_core:
+  default_config_hash: bFDI8UJ0Y97j3Bk3bSiP46lGp1f4CN-D5gSHTVtJ3us
+id: paragraph.text_wysiwyg_.default
+targetEntityType: paragraph
+bundle: text_wysiwyg_
+mode: default
+content:
+  field_heading:
+    type: string
+    label: hidden
+    settings:
+      link_to_entity: false
+    third_party_settings:
+      fences:
+        fences_field_tag: none
+        fences_field_classes: ''
+        fences_field_items_wrapper_tag: none
+        fences_field_items_wrapper_classes: ''
+        fences_field_item_tag: none
+        fences_field_item_classes: ''
+        fences_label_tag: div
+        fences_label_classes: ''
+    weight: 0
+    region: content
+  field_text:
+    type: text_default
+    label: hidden
+    settings: {  }
+    third_party_settings:
+      fences:
+        fences_field_tag: none
+        fences_field_classes: ''
+        fences_field_items_wrapper_tag: none
+        fences_field_items_wrapper_classes: ''
+        fences_field_item_tag: none
+        fences_field_item_classes: ''
+        fences_label_tag: div
+        fences_label_classes: ''
+    weight: 1
+    region: content
+hidden: {  }

@@ -1,0 +1,22 @@
+uuid: 21560db0-7fa0-46f7-8347-03dd901c09ee
+langcode: en
+status: false
+dependencies:
+  module:
+    - system
+  theme:
+    - foundry
+_core:
+  default_config_hash: VhBzWb7lMRtIOg9G7VSw_0uopi-7zXeHq4vXqqV1HFE
+id: foundry_breadcrumbs
+theme: foundry
+region: breadcrumb
+weight: 0
+provider: null
+plugin: system_breadcrumb_block
+settings:
+  id: system_breadcrumb_block
+  label: Breadcrumbs
+  label_display: '0'
+  provider: system
+visibility: {  }

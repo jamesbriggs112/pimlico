@@ -1,0 +1,23 @@
+uuid: 96707e1c-8bc6-47f6-8ed1-aadeb01f4abf
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_text
+    - paragraphs.paragraphs_type.standard_banner
+  module:
+    - text
+_core:
+  default_config_hash: Wr97rGRt2hF59wFf8NPBpKse3y8u_Ap_w3iv6kkBwFM
+id: paragraph.standard_banner.field_text
+field_name: field_text
+entity_type: paragraph
+bundle: standard_banner
+label: 'Inset text'
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: text_long

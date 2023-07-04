@@ -1,0 +1,21 @@
+uuid: 1d9bdff4-e4a9-42bb-a7df-44deeab5477b
+langcode: en
+status: true
+dependencies: {  }
+name: width_1400w
+label: width_1400w
+effects:
+  9e97214c-112c-476a-8ebe-13886ce58e6b:
+    uuid: 9e97214c-112c-476a-8ebe-13886ce58e6b
+    id: image_scale
+    weight: 0
+    data:
+      width: 1400
+      height: null
+      upscale: false
+  c722d855-f121-4d72-9d0c-a6eee1f9ff46:
+    uuid: c722d855-f121-4d72-9d0c-a6eee1f9ff46
+    id: image_convert
+    weight: 1
+    data:
+      extension: webp

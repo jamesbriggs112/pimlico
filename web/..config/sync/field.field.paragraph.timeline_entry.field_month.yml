@@ -1,0 +1,21 @@
+uuid: d8c4a104-5e84-45a2-98e6-c6e642758498
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_month
+    - paragraphs.paragraphs_type.timeline_entry
+_core:
+  default_config_hash: 2852mlUTjDjp2mGdsld1plHqSShiGIu13R4bYEHDxFI
+id: paragraph.timeline_entry.field_month
+field_name: field_month
+entity_type: paragraph
+bundle: timeline_entry
+label: Month
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

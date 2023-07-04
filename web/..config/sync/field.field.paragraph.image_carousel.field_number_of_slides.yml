@@ -1,0 +1,23 @@
+uuid: f876d53a-2a3f-40be-ac2e-7aaa1044d0ad
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_number_of_slides
+    - paragraphs.paragraphs_type.image_carousel
+  module:
+    - options
+id: paragraph.image_carousel.field_number_of_slides
+field_name: field_number_of_slides
+entity_type: paragraph
+bundle: image_carousel
+label: 'Number of slides'
+description: 'Number of slides to show in desktop view'
+required: true
+translatable: false
+default_value:
+  -
+    value: 3
+default_value_callback: ''
+settings: {  }
+field_type: list_integer

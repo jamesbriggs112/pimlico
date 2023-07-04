@@ -1,0 +1,51 @@
+uuid: e727f118-1723-406a-9a0f-fe88d74d4802
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.paragraph.spaces_carousel.field_heading
+    - field.field.paragraph.spaces_carousel.field_spaces
+    - paragraphs.paragraphs_type.spaces_carousel
+  module:
+    - fences
+id: paragraph.spaces_carousel.default
+targetEntityType: paragraph
+bundle: spaces_carousel
+mode: default
+content:
+  field_heading:
+    type: string
+    label: hidden
+    settings:
+      link_to_entity: false
+    third_party_settings:
+      fences:
+        fences_field_tag: none
+        fences_field_classes: ''
+        fences_field_items_wrapper_tag: none
+        fences_field_items_wrapper_classes: ''
+        fences_field_item_tag: none
+        fences_field_item_classes: ''
+        fences_label_tag: div
+        fences_label_classes: ''
+    weight: 0
+    region: content
+  field_spaces:
+    type: entity_reference_entity_view
+    label: hidden
+    settings:
+      view_mode: teaser
+      link: false
+    third_party_settings:
+      fences:
+        fences_field_tag: none
+        fences_field_classes: ''
+        fences_field_items_wrapper_tag: none
+        fences_field_items_wrapper_classes: ''
+        fences_field_item_tag: none
+        fences_field_item_classes: ''
+        fences_label_tag: div
+        fences_label_classes: ''
+    weight: 1
+    region: content
+hidden: {  }

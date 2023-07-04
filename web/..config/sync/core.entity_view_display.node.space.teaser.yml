@@ -1,0 +1,49 @@
+uuid: 5024a9d3-2e56-44ca-ae77-4b9d6c279646
+langcode: en
+status: true
+dependencies:
+  config:
+    - core.entity_view_mode.node.teaser
+    - field.field.node.space.body
+    - field.field.node.space.field_header_sections
+    - field.field.node.space.field_more_spaces
+    - field.field.node.space.field_sections
+    - field.field.node.space.field_space_type
+    - field.field.node.space.field_summary
+    - field.field.node.space.field_teaser
+    - node.type.space
+  module:
+    - entity_reference_revisions
+    - fences
+    - user
+id: node.space.teaser
+targetEntityType: node
+bundle: space
+mode: teaser
+content:
+  field_teaser:
+    type: entity_reference_revisions_entity_view
+    label: hidden
+    settings:
+      view_mode: default
+      link: ''
+    third_party_settings:
+      fences:
+        fences_field_tag: none
+        fences_field_classes: ''
+        fences_field_items_wrapper_tag: none
+        fences_field_items_wrapper_classes: ''
+        fences_field_item_tag: none
+        fences_field_item_classes: ''
+        fences_label_tag: div
+        fences_label_classes: ''
+    weight: 0
+    region: content
+hidden:
+  body: true
+  field_header_sections: true
+  field_more_spaces: true
+  field_sections: true
+  field_space_type: true
+  field_summary: true
+  links: true

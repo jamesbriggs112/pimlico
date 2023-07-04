@@ -1,0 +1,22 @@
+uuid: fcc86e1c-0d49-44ac-b1f0-023d86fc184b
+langcode: en
+status: true
+dependencies:
+  config:
+    - node.type.space
+id: node.space.promote
+field_name: promote
+entity_type: node
+bundle: space
+label: 'Promoted to front page'
+description: ''
+required: false
+translatable: true
+default_value:
+  -
+    value: 0
+default_value_callback: ''
+settings:
+  on_label: 'On'
+  off_label: 'Off'
+field_type: boolean

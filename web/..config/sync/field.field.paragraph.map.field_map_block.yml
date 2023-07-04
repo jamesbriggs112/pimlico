@@ -1,0 +1,30 @@
+uuid: 31d4cd1e-e62d-4f89-b877-921a038a42eb
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_map_block
+    - paragraphs.paragraphs_type.map
+  module:
+    - block_field
+_core:
+  default_config_hash: RrgqJcFGSf-3FCK6P3OFNZIZ6RT8i3xwviwNDFewdY0
+id: paragraph.map.field_map_block
+field_name: field_map_block
+entity_type: paragraph
+bundle: map
+label: 'Map block'
+description: ''
+required: false
+translatable: false
+default_value:
+  -
+    plugin_id: location_view
+    settings: {  }
+default_value_callback: ''
+settings:
+  selection: blocks
+  selection_settings:
+    plugin_ids:
+      location_view: location_view
+field_type: block_field

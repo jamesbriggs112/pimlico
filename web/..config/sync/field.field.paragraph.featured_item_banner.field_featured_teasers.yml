@@ -1,0 +1,31 @@
+uuid: c9c74a92-36d5-4a9f-a0a4-2f62e6f916e1
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_featured_teasers
+    - node.type.article
+    - paragraphs.paragraphs_type.featured_item_banner
+_core:
+  default_config_hash: MUJitMTcQiL2rp340tunhBcfoaglsy2D8E1Wn8ny7Zc
+id: paragraph.featured_item_banner.field_featured_teasers
+field_name: field_featured_teasers
+entity_type: paragraph
+bundle: featured_item_banner
+label: 'Featured teasers'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:node'
+  handler_settings:
+    target_bundles:
+      article: article
+    sort:
+      field: _none
+      direction: ASC
+    auto_create: false
+    auto_create_bundle: ''
+field_type: entity_reference

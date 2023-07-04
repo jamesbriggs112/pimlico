@@ -1,0 +1,36 @@
+uuid: 433e340c-ba11-4112-a375-b4c096f887fa
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.paragraph.embedded_view_advanced_.field_heading
+    - field.field.paragraph.embedded_view_advanced_.field_view
+    - paragraphs.paragraphs_type.embedded_view_advanced_
+  module:
+    - viewfield
+_core:
+  default_config_hash: lsw6ZYaPdfA-U6jkoAwU41RYnwI29-zGwojfyT1GuwE
+id: paragraph.embedded_view_advanced_.default
+targetEntityType: paragraph
+bundle: embedded_view_advanced_
+mode: default
+content:
+  field_heading:
+    type: string
+    label: hidden
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    weight: 0
+    region: content
+  field_view:
+    type: viewfield_default
+    label: hidden
+    settings:
+      view_title: hidden
+      always_build_output: true
+      empty_view_title: hidden
+    third_party_settings: {  }
+    weight: 1
+    region: content
+hidden: {  }

@@ -1,0 +1,19 @@
+uuid: 5d2336b3-9241-4dac-be11-74a11ef379e8
+langcode: en
+status: true
+dependencies:
+  module:
+    - paragraphs_ee
+third_party_settings:
+  paragraphs_ee:
+    paragraphs_categories:
+      banners: banners
+      containers: containers
+_core:
+  default_config_hash: 8fIparLQxQsCL4M3Zf_G4NbIHcfXk92Om6tb_dx-7wQ
+id: home_page_banner
+label: 'Home page banner'
+icon_uuid: null
+icon_default: null
+description: ''
+behavior_plugins: {  }

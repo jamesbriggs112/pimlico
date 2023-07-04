@@ -1,0 +1,87 @@
+uuid: c5009ad5-c221-4730-be80-cffb0143d208
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.paragraph.home_page_banner.field_carousel
+    - field.field.paragraph.home_page_banner.field_pullout_copy
+    - field.field.paragraph.home_page_banner.field_search_text
+    - paragraphs.paragraphs_type.home_page_banner
+  module:
+    - entity_reference_revisions
+    - field_group
+    - text
+third_party_settings:
+  field_group:
+    group_banner_bottom_wrapper:
+      children:
+        - group_banner_bottom_inner
+      label: 'Banner bottom wrapper'
+      parent_name: ''
+      region: content
+      weight: 1
+      format_type: html_element
+      format_settings:
+        classes: banner-bottom-wrapper
+        show_empty_fields: false
+        id: ''
+        element: div
+        show_label: false
+        label_element: h3
+        label_element_classes: ''
+        attributes: ''
+        effect: none
+        speed: fast
+    group_banner_bottom_inner:
+      children:
+        - field_search_text
+        - field_pullout_copy
+      label: 'Banner bottom inner'
+      parent_name: group_banner_bottom_wrapper
+      region: content
+      weight: 5
+      format_type: html_element
+      format_settings:
+        classes: banner-bottom-inner
+        show_empty_fields: false
+        id: ''
+        element: div
+        show_label: false
+        label_element: h3
+        label_element_classes: ''
+        attributes: ''
+        effect: none
+        speed: fast
+_core:
+  default_config_hash: ev9e4hOxhvpZUdW9HEXgGHA30bYJ9NJtD6B0f4kHyx4
+id: paragraph.home_page_banner.default
+targetEntityType: paragraph
+bundle: home_page_banner
+mode: default
+content:
+  field_carousel:
+    type: entity_reference_revisions_entity_view
+    label: hidden
+    settings:
+      view_mode: default
+      link: ''
+    third_party_settings: {  }
+    weight: 0
+    region: content
+  field_pullout_copy:
+    type: entity_reference_revisions_entity_view
+    label: hidden
+    settings:
+      view_mode: default
+      link: ''
+    third_party_settings: {  }
+    weight: 4
+    region: content
+  field_search_text:
+    type: text_default
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+    weight: 3
+    region: content
+hidden: {  }

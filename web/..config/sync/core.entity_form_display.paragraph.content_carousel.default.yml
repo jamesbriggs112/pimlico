@@ -1,0 +1,43 @@
+uuid: b6dd64c6-6ad0-42d9-902a-32e40aabc2a5
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.paragraph.content_carousel.field_heading
+    - field.field.paragraph.content_carousel.field_news_events
+    - paragraphs.paragraphs_type.content_carousel
+  module:
+    - autocomplete_deluxe
+id: paragraph.content_carousel.default
+targetEntityType: paragraph
+bundle: content_carousel
+mode: default
+content:
+  field_heading:
+    type: string_textfield
+    weight: 0
+    region: content
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+  field_news_events:
+    type: autocomplete_deluxe
+    weight: 1
+    region: content
+    settings:
+      match_operator: CONTAINS
+      autocomplete_route_name: autocomplete_deluxe.autocomplete
+      size: 60
+      selection_handler: default
+      limit: 10
+      min_length: 0
+      delimiter: ''
+      not_found_message_allow: false
+      not_found_message: 'The term ''@term'' will be added'
+      new_terms: false
+      no_empty_message: 'No terms could be found. Please type in order to add a new term.'
+    third_party_settings: {  }
+hidden:
+  created: true
+  status: true

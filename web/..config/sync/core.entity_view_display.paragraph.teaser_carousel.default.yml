@@ -1,0 +1,49 @@
+uuid: 47086592-105f-4589-a28c-ad353b39536b
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.paragraph.teaser_carousel.field_heading
+    - field.field.paragraph.teaser_carousel.field_items
+    - field.field.paragraph.teaser_carousel.field_link
+    - paragraphs.paragraphs_type.teaser_carousel
+  module:
+    - entity_reference_revisions
+    - link
+_core:
+  default_config_hash: vcnt3_SBieWfO_qR-k5TnFcQKzFo-oNjyhDiUB7I1Xg
+id: paragraph.teaser_carousel.default
+targetEntityType: paragraph
+bundle: teaser_carousel
+mode: default
+content:
+  field_heading:
+    type: string
+    label: hidden
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    weight: 0
+    region: content
+  field_items:
+    type: entity_reference_revisions_entity_view
+    label: hidden
+    settings:
+      view_mode: default
+      link: ''
+    third_party_settings: {  }
+    weight: 1
+    region: content
+  field_link:
+    type: link
+    label: hidden
+    settings:
+      trim_length: 80
+      url_only: false
+      url_plain: false
+      rel: ''
+      target: ''
+    third_party_settings: {  }
+    weight: 2
+    region: content
+hidden: {  }

@@ -1,0 +1,43 @@
+uuid: a4e730b5-884b-4ce7-b833-bac9843eb4c1
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.paragraph.spaces_carousel.field_heading
+    - field.field.paragraph.spaces_carousel.field_spaces
+    - paragraphs.paragraphs_type.spaces_carousel
+  module:
+    - autocomplete_deluxe
+id: paragraph.spaces_carousel.default
+targetEntityType: paragraph
+bundle: spaces_carousel
+mode: default
+content:
+  field_heading:
+    type: string_textfield
+    weight: 0
+    region: content
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+  field_spaces:
+    type: autocomplete_deluxe
+    weight: 1
+    region: content
+    settings:
+      match_operator: CONTAINS
+      autocomplete_route_name: autocomplete_deluxe.autocomplete
+      size: 60
+      selection_handler: default
+      limit: 10
+      min_length: 0
+      delimiter: ''
+      not_found_message_allow: false
+      not_found_message: 'The term ''@term'' will be added'
+      new_terms: false
+      no_empty_message: 'No terms could be found. Please type in order to add a new term.'
+    third_party_settings: {  }
+hidden:
+  created: true
+  status: true

@@ -1,0 +1,23 @@
+uuid: c8b611a1-1eeb-4eea-bebf-76d09e9c2f71
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_text
+    - paragraphs.paragraphs_type.testimonial
+  module:
+    - text
+_core:
+  default_config_hash: 2HpvbdfwmRIkCqjEd1LQLVTquMJpMp9tHnF3XTgOd60
+id: paragraph.testimonial.field_text
+field_name: field_text
+entity_type: paragraph
+bundle: testimonial
+label: Text
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: text_long

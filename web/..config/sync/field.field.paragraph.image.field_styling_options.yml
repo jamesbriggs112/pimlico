@@ -1,0 +1,31 @@
+uuid: b07f3d5b-6791-4a45-b41d-7859581f83ac
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_styling_options
+    - paragraphs.paragraphs_type.image
+    - taxonomy.vocabulary.image_paragraph_styles
+_core:
+  default_config_hash: Phei3Cm1z3kqYEQ9FBthjb6ISrztbsnuqwauq8DuZLE
+id: paragraph.image.field_styling_options
+field_name: field_styling_options
+entity_type: paragraph
+bundle: image
+label: 'Styling options'
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:taxonomy_term'
+  handler_settings:
+    target_bundles:
+      image_paragraph_styles: image_paragraph_styles
+    sort:
+      field: name
+      direction: asc
+    auto_create: false
+    auto_create_bundle: ''
+field_type: entity_reference

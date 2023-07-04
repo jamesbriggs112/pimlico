@@ -1,0 +1,59 @@
+uuid: b9a7c3b9-e941-4e73-8868-9cac0e13e6e8
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.paragraph.timeline_year.field_timeline_entries
+    - field.field.paragraph.timeline_year.field_year
+    - paragraphs.paragraphs_type.timeline_year
+  module:
+    - paragraphs
+    - paragraphs_ee
+    - paragraphs_features
+_core:
+  default_config_hash: sT1et44ttXMWQQH6-YGQq7JUxcIlK5NJEXPLxYmO0qA
+id: paragraph.timeline_year.default
+targetEntityType: paragraph
+bundle: timeline_year
+mode: default
+content:
+  field_timeline_entries:
+    type: paragraphs
+    weight: 1
+    region: content
+    settings:
+      title: Entry
+      title_plural: Entries
+      edit_mode: closed
+      closed_mode: summary
+      autocollapse: none
+      closed_mode_threshold: 0
+      add_mode: dropdown
+      form_display_mode: default
+      default_paragraph_type: timeline_entry
+      features:
+        add_above: '0'
+        collapse_edit_all: collapse_edit_all
+        duplicate: duplicate
+    third_party_settings:
+      paragraphs_features:
+        add_in_between: false
+        delete_confirmation: false
+        split_text: false
+        show_drag_and_drop: true
+      paragraphs_ee:
+        paragraphs_ee:
+          dialog_off_canvas: false
+          dialog_style: tiles
+          easy_access_count: 2
+  field_year:
+    type: string_textfield
+    weight: 0
+    region: content
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+hidden:
+  created: true
+  status: true

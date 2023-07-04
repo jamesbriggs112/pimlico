@@ -1,0 +1,22 @@
+uuid: fec40d24-7224-4fbb-8869-04595e19b6bf
+langcode: en
+status: true
+dependencies:
+  module:
+    - help
+  theme:
+    - foundry
+_core:
+  default_config_hash: VfPFqqxfkomud5CO8DUijw85QIl9GIxh_nIxLOYESxg
+id: foundry_help
+theme: foundry
+region: content
+weight: 1
+provider: null
+plugin: help_block
+settings:
+  id: help_block
+  label: Help
+  label_display: '0'
+  provider: help
+visibility: {  }

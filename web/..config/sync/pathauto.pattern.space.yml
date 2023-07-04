@@ -1,0 +1,22 @@
+uuid: 546ba17d-779a-49bd-93b5-db56107e1666
+langcode: en
+status: true
+dependencies:
+  module:
+    - node
+id: space
+label: Space
+type: 'canonical_entities:node'
+pattern: 'space/[node:title]'
+selection_criteria:
+  04cde5a5-5ea3-46df-b4cf-7209a6092b2c:
+    id: 'entity_bundle:node'
+    negate: false
+    uuid: 04cde5a5-5ea3-46df-b4cf-7209a6092b2c
+    context_mapping:
+      node: node
+    bundles:
+      space: space
+selection_logic: and
+weight: -5
+relationships: {  }

@@ -1,0 +1,21 @@
+uuid: e9e7c359-eecf-4dcc-adbb-358dc7078486
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_heading
+    - paragraphs.paragraphs_type.teaser
+_core:
+  default_config_hash: NKcs8MxUhFbyaUJQQeAqwEB4umdSBxWXgRZ21M-8Czg
+id: paragraph.teaser.field_heading
+field_name: field_heading
+entity_type: paragraph
+bundle: teaser
+label: 'Override title'
+description: 'Use this to override the content title on card display'
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

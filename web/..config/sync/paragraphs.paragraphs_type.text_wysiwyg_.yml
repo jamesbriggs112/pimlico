@@ -1,0 +1,18 @@
+uuid: 9850e4bd-1e74-4077-935a-8fd8bb866c9a
+langcode: en
+status: true
+dependencies:
+  module:
+    - paragraphs_ee
+third_party_settings:
+  paragraphs_ee:
+    paragraphs_categories:
+      content: content
+_core:
+  default_config_hash: tfIdDUxJcNtCR4e2W07eV3Lq3m0gQrccmdtlxN2vH0s
+id: text_wysiwyg_
+label: 'Text (WYSIWYG)'
+icon_uuid: null
+icon_default: null
+description: ''
+behavior_plugins: {  }

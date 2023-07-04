@@ -1,0 +1,30 @@
+uuid: 991993f4-be66-4008-bcc6-500869d14d2a
+langcode: en
+status: true
+dependencies:
+  module:
+    - focal_point
+name: aspect_ratio_1_1_1920w
+label: aspect_ratio_1_1_1920w
+effects:
+  54ba1c7e-8583-4340-9a16-22abf64eea46:
+    uuid: 54ba1c7e-8583-4340-9a16-22abf64eea46
+    id: focal_point_crop_ratio
+    weight: 0
+    data:
+      crop_type: null
+      aspect_ratio: '1:1'
+  0f6eaff3-273f-45c4-9929-0311b80edf52:
+    uuid: 0f6eaff3-273f-45c4-9929-0311b80edf52
+    id: image_scale
+    weight: 1
+    data:
+      width: 1920
+      height: null
+      upscale: false
+  0655e789-9e90-4c44-a08b-414ad18f8637:
+    uuid: 0655e789-9e90-4c44-a08b-414ad18f8637
+    id: image_convert
+    weight: 2
+    data:
+      extension: webp

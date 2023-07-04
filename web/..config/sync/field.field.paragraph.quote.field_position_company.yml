@@ -1,0 +1,19 @@
+uuid: 634720a0-5794-4660-8491-cecf177865f6
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_position_company
+    - paragraphs.paragraphs_type.quote
+id: paragraph.quote.field_position_company
+field_name: field_position_company
+entity_type: paragraph
+bundle: quote
+label: 'Position / Company'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

@@ -1,0 +1,21 @@
+uuid: fd3a9984-f157-452f-b20e-c28702461ccf
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_date_year
+    - paragraphs.paragraphs_type.document
+_core:
+  default_config_hash: HdlRwoc5G5w5hOrlDbE8NpKs8lsDp0yibGHquNdraoU
+id: paragraph.document.field_date_year
+field_name: field_date_year
+entity_type: paragraph
+bundle: document
+label: 'Date / year'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

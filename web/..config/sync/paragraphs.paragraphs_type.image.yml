@@ -1,0 +1,18 @@
+uuid: 97019443-be51-4f55-a91e-78e30c73b8e2
+langcode: en
+status: true
+dependencies:
+  module:
+    - paragraphs_ee
+third_party_settings:
+  paragraphs_ee:
+    paragraphs_categories:
+      content: content
+_core:
+  default_config_hash: NVDjozyIr1ssNI_p91EOrwtm7m-GPdKbP6SRM0UWVpk
+id: image
+label: Image
+icon_uuid: null
+icon_default: null
+description: ''
+behavior_plugins: {  }

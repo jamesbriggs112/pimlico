@@ -1,0 +1,21 @@
+uuid: 230f8691-231a-401a-9471-dbdac4e0eee8
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_heading
+    - paragraphs.paragraphs_type.text_wysiwyg_
+_core:
+  default_config_hash: zSZJsvh5Fvdyl5r9imhAy3J3eUGpkBbza9n0Z_XFbE8
+id: paragraph.text_wysiwyg_.field_heading
+field_name: field_heading
+entity_type: paragraph
+bundle: text_wysiwyg_
+label: Heading
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

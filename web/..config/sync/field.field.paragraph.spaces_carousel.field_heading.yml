@@ -1,0 +1,21 @@
+uuid: 62f5affa-055e-4bc8-a36f-7535ca143646
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_heading
+    - paragraphs.paragraphs_type.spaces_carousel
+id: paragraph.spaces_carousel.field_heading
+field_name: field_heading
+entity_type: paragraph
+bundle: spaces_carousel
+label: Heading
+description: ''
+required: true
+translatable: true
+default_value:
+  -
+    value: 'More spaces'
+default_value_callback: ''
+settings: {  }
+field_type: string

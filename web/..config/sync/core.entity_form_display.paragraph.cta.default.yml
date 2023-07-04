@@ -1,0 +1,27 @@
+uuid: 0ae7e4aa-9334-46c8-bba4-074a17819f6a
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.paragraph.cta.field_link
+    - paragraphs.paragraphs_type.cta
+  module:
+    - link
+_core:
+  default_config_hash: VpWJ4h58vLvAPoqYVvLZvniezR3M4wRZdiYhoGLGdqc
+id: paragraph.cta.default
+targetEntityType: paragraph
+bundle: cta
+mode: default
+content:
+  field_link:
+    type: link_default
+    weight: 0
+    region: content
+    settings:
+      placeholder_url: ''
+      placeholder_title: 'This text will not be displayed - the ''text'' value below will be instead'
+    third_party_settings: {  }
+hidden:
+  created: true
+  status: true

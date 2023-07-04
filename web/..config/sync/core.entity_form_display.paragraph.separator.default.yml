@@ -1,0 +1,23 @@
+uuid: a2d9eb45-54dc-4385-9bc9-daafe92f5502
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.paragraph.separator.field_styling_options
+    - paragraphs.paragraphs_type.separator
+_core:
+  default_config_hash: xbP6-8tQ5Dc2N_wmZnR6I2epPX0ND6a9_nLTU33-Ll4
+id: paragraph.separator.default
+targetEntityType: paragraph
+bundle: separator
+mode: default
+content:
+  field_styling_options:
+    type: options_buttons
+    weight: 0
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+hidden:
+  created: true
+  status: true

@@ -1,0 +1,24 @@
+uuid: 41aa63e2-c3dd-4553-ac11-8f693936ead8
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.paragraph.image_grid.field_images
+    - paragraphs.paragraphs_type.image_grid
+  module:
+    - media_library
+id: paragraph.image_grid.default
+targetEntityType: paragraph
+bundle: image_grid
+mode: default
+content:
+  field_images:
+    type: media_library_widget
+    weight: 0
+    region: content
+    settings:
+      media_types: {  }
+    third_party_settings: {  }
+hidden:
+  created: true
+  status: true

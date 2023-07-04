@@ -1,0 +1,22 @@
+uuid: fac79129-6725-41a8-8a18-14b4b302d801
+langcode: en
+status: true
+dependencies:
+  module:
+    - node
+    - paragraphs
+_core:
+  default_config_hash: xXOd3JZSOeifFKl8AY-sqCRoNlFVb_cUT7YZ9h9ivBo
+id: paragraph.field_capabilities
+field_name: field_capabilities
+entity_type: paragraph
+type: entity_reference
+settings:
+  target_type: node
+module: core
+locked: false
+cardinality: -1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

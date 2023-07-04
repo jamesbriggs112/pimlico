@@ -1,0 +1,163 @@
+uuid: 2ad540bf-ba40-4eb3-a8c1-74b6ac6654f3
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_more_spaces
+    - node.type.space
+    - paragraphs.paragraphs_type.spaces_carousel
+  module:
+    - entity_reference_revisions
+id: node.space.field_more_spaces
+field_name: field_more_spaces
+entity_type: node
+bundle: space
+label: 'More Spaces'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:paragraph'
+  handler_settings:
+    target_bundles:
+      spaces_carousel: spaces_carousel
+    negate: 0
+    target_bundles_drag_drop:
+      accordion:
+        weight: 47
+        enabled: false
+      accordion_item:
+        weight: 48
+        enabled: false
+      banner_image_carousel:
+        weight: 49
+        enabled: false
+      carousel:
+        weight: 50
+        enabled: false
+      carousel_item:
+        weight: 51
+        enabled: false
+      chart:
+        weight: 52
+        enabled: false
+      cta:
+        weight: 53
+        enabled: false
+      document:
+        weight: 54
+        enabled: false
+      document_list:
+        weight: 55
+        enabled: false
+      download:
+        weight: 56
+        enabled: false
+      embedded_view_advanced_:
+        weight: 57
+        enabled: false
+      featured_item_banner:
+        weight: 58
+        enabled: false
+      featured_link:
+        weight: 59
+        enabled: false
+      featured_links_carousel:
+        weight: 60
+        enabled: false
+      grid:
+        weight: 61
+        enabled: false
+      highlighted_text:
+        weight: 62
+        enabled: false
+      home_page_banner:
+        weight: 63
+        enabled: false
+      image:
+        weight: 64
+        enabled: false
+      image_carousel:
+        weight: 65
+        enabled: false
+      image_grid:
+        weight: 66
+        enabled: false
+      jump_menu_anchor:
+        weight: 67
+        enabled: false
+      key_facts:
+        weight: 68
+        enabled: false
+      large_button:
+        weight: 69
+        enabled: false
+      map:
+        weight: 70
+        enabled: false
+      map_image:
+        weight: 71
+        enabled: false
+      nav:
+        weight: 72
+        enabled: false
+      nav_block:
+        weight: 73
+        enabled: false
+      page_banner:
+        weight: 74
+        enabled: false
+      quote:
+        weight: 75
+        enabled: false
+      section_wrapper:
+        weight: 76
+        enabled: false
+      separator:
+        weight: 77
+        enabled: false
+      spaces_carousel:
+        weight: 46
+        enabled: true
+      standard_banner:
+        weight: 78
+        enabled: false
+      teaser:
+        weight: 79
+        enabled: false
+      teaser_carousel:
+        weight: 80
+        enabled: false
+      testimonial:
+        weight: 81
+        enabled: false
+      text_pair:
+        weight: 82
+        enabled: false
+      text_wysiwyg_:
+        weight: 83
+        enabled: false
+      tiled_link:
+        weight: 84
+        enabled: false
+      tiled_links:
+        weight: 85
+        enabled: false
+      timeline:
+        weight: 86
+        enabled: false
+      timeline_entry:
+        weight: 87
+        enabled: false
+      timeline_year:
+        weight: 88
+        enabled: false
+      two_column_area:
+        weight: 89
+        enabled: false
+      video:
+        weight: 90
+        enabled: false
+field_type: entity_reference_revisions

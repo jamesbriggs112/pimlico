@@ -1,0 +1,12 @@
+uuid: 21a74f8a-efd3-49a9-a240-8021a3ba03e0
+langcode: en
+status: true
+dependencies:
+  module:
+    - paragraphs
+_core:
+  default_config_hash: HieZYEJB5nVdL1A381OikOOwJQ2nzPBcLoDVvhzbUlQ
+id: paragraph.article_attachment
+label: 'Article attachment'
+targetEntityType: paragraph
+cache: true

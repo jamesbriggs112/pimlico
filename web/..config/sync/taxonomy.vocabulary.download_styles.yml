@@ -1,0 +1,10 @@
+uuid: b656bc86-6212-4cd4-97a8-ea65bc1e1908
+langcode: en
+status: true
+dependencies: {  }
+_core:
+  default_config_hash: MeLGSvFwnqgIvNMmEiaH8fW0Ui37JibweXZNMlb8gbM
+name: 'Download styles'
+vid: download_styles
+description: ''
+weight: 0

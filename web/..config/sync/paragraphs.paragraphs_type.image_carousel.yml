@@ -1,0 +1,16 @@
+uuid: a9a98f3f-f48e-4286-bebe-68f4ff0aef43
+langcode: en
+status: true
+dependencies:
+  module:
+    - paragraphs_ee
+third_party_settings:
+  paragraphs_ee:
+    paragraphs_categories:
+      content: content
+id: image_carousel
+label: 'Image Carousel'
+icon_uuid: null
+icon_default: null
+description: ''
+behavior_plugins: {  }

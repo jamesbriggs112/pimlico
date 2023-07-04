@@ -1,0 +1,18 @@
+uuid: 06df1a61-e2d2-4720-bedf-bd12c83f5d94
+langcode: en
+status: true
+dependencies:
+  module:
+    - paragraphs_ee
+third_party_settings:
+  paragraphs_ee:
+    paragraphs_categories:
+      containers: containers
+_core:
+  default_config_hash: 1CLbHKH3CODFAj7Lu216y8SBlf9a9612G0XGE_L7MOg
+id: tiled_links
+label: 'Tiled links'
+icon_uuid: null
+icon_default: null
+description: ''
+behavior_plugins: {  }

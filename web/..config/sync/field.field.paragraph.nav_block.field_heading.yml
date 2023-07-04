@@ -1,0 +1,21 @@
+uuid: 47ef6391-c6ef-4e5a-aaf7-bd03a13d6619
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_heading
+    - paragraphs.paragraphs_type.nav_block
+_core:
+  default_config_hash: 2Vr9HnzlQCMH_qNMxXtv0WqGpiXIujVvQ6XfHWP2Z1U
+id: paragraph.nav_block.field_heading
+field_name: field_heading
+entity_type: paragraph
+bundle: nav_block
+label: Heading
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

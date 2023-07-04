@@ -1,0 +1,25 @@
+uuid: 2216c96c-0ed1-41b1-96e5-6fab3adef110
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_show_territory_picker
+    - paragraphs.paragraphs_type.standard_banner
+_core:
+  default_config_hash: lIazEa7D0lbSXPs7kFtuLk1Rkzb8oHliPXP3ealXh7o
+id: paragraph.standard_banner.field_show_territory_picker
+field_name: field_show_territory_picker
+entity_type: paragraph
+bundle: standard_banner
+label: 'Show territory picker'
+description: ''
+required: false
+translatable: false
+default_value:
+  -
+    value: 0
+default_value_callback: ''
+settings:
+  on_label: 'Yes'
+  off_label: 'No'
+field_type: boolean

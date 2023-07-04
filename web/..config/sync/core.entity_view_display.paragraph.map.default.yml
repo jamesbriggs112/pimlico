@@ -1,0 +1,33 @@
+uuid: 5a1cfe3a-2222-4c58-b329-da7b90861b4a
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.paragraph.map.field_heading
+    - field.field.paragraph.map.field_map_block
+    - paragraphs.paragraphs_type.map
+  module:
+    - block_field
+_core:
+  default_config_hash: E_5q0DgBIo6Qk-eXJSFB89g8-Pt_TxSynDSJ7U1K9k0
+id: paragraph.map.default
+targetEntityType: paragraph
+bundle: map
+mode: default
+content:
+  field_heading:
+    type: string
+    label: hidden
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    weight: 0
+    region: content
+  field_map_block:
+    type: block_field
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+    weight: 1
+    region: content
+hidden: {  }

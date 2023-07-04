@@ -1,0 +1,31 @@
+uuid: 7296d6ae-7c6e-4c76-832f-ecb91fb07c9a
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_background
+    - media.type.image
+    - paragraphs.paragraphs_type.tiled_link
+_core:
+  default_config_hash: APSVRFjPW165BNoj_HX29yxlM4NPG-T9BIUQ5Gb2QuY
+id: paragraph.tiled_link.field_background
+field_name: field_background
+entity_type: paragraph
+bundle: tiled_link
+label: Background
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:media'
+  handler_settings:
+    target_bundles:
+      image: image
+    sort:
+      field: _none
+      direction: ASC
+    auto_create: false
+    auto_create_bundle: ''
+field_type: entity_reference

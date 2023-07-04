@@ -1,0 +1,38 @@
+uuid: ae6184b5-e90d-4dbc-8ef1-bed162a7ef29
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.paragraph.image_carousel.field_image_style
+    - field.field.paragraph.image_carousel.field_images
+    - field.field.paragraph.image_carousel.field_number_of_slides
+    - paragraphs.paragraphs_type.image_carousel
+  module:
+    - media_library
+id: paragraph.image_carousel.default
+targetEntityType: paragraph
+bundle: image_carousel
+mode: default
+content:
+  field_image_style:
+    type: options_select
+    weight: 1
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+  field_images:
+    type: media_library_widget
+    weight: 0
+    region: content
+    settings:
+      media_types: {  }
+    third_party_settings: {  }
+  field_number_of_slides:
+    type: options_select
+    weight: 2
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+hidden:
+  created: true
+  status: true

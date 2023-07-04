@@ -1,0 +1,19 @@
+uuid: 932fc817-3806-4e6c-b20e-9afb50fd725a
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_name
+    - paragraphs.paragraphs_type.download
+id: paragraph.download.field_name
+field_name: field_name
+entity_type: paragraph
+bundle: download
+label: 'Button Name'
+description: ''
+required: true
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

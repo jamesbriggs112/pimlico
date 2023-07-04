@@ -1,0 +1,35 @@
+uuid: cc55b275-23cd-478f-acaa-43e316f3f68a
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.paragraph.timeline_year.field_timeline_entries
+    - field.field.paragraph.timeline_year.field_year
+    - paragraphs.paragraphs_type.timeline_year
+  module:
+    - entity_reference_revisions
+_core:
+  default_config_hash: DFeksA2zNpu2h0P8KNEEOEj5Tgw9XvUHsFBhUGEn5s0
+id: paragraph.timeline_year.default
+targetEntityType: paragraph
+bundle: timeline_year
+mode: default
+content:
+  field_timeline_entries:
+    type: entity_reference_revisions_entity_view
+    label: hidden
+    settings:
+      view_mode: default
+      link: ''
+    third_party_settings: {  }
+    weight: 1
+    region: content
+  field_year:
+    type: string
+    label: hidden
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    weight: 0
+    region: content
+hidden: {  }

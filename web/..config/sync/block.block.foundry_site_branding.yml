@@ -1,0 +1,25 @@
+uuid: 97fadf2d-cb9d-49d3-abf1-8558d276465d
+langcode: en
+status: true
+dependencies:
+  module:
+    - system
+  theme:
+    - foundry
+_core:
+  default_config_hash: n_nlgjggHVfQt2H__zvLOKB2YtjPDbQ5tHijF9LE1aM
+id: foundry_site_branding
+theme: foundry
+region: header
+weight: -4
+provider: null
+plugin: system_branding_block
+settings:
+  id: system_branding_block
+  label: 'Site branding'
+  label_display: '0'
+  provider: system
+  use_site_logo: true
+  use_site_name: true
+  use_site_slogan: false
+visibility: {  }

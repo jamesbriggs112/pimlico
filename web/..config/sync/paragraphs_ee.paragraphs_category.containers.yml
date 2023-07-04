@@ -1,0 +1,10 @@
+uuid: 95d0421c-8800-46ae-a262-7f44669d17bf
+langcode: en
+status: true
+dependencies: {  }
+_core:
+  default_config_hash: a70jxmlwa9H-7dcDurluMzfVDfTddCqKVFyZ0geOJeY
+id: containers
+label: Containers
+description: ''
+weight: -10

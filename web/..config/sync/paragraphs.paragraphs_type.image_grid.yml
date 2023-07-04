@@ -1,0 +1,16 @@
+uuid: 7c059fa8-244e-4726-b02f-0530d77cf42c
+langcode: en
+status: true
+dependencies:
+  module:
+    - paragraphs_ee
+third_party_settings:
+  paragraphs_ee:
+    paragraphs_categories:
+      content: content
+id: image_grid
+label: 'Image Grid'
+icon_uuid: null
+icon_default: null
+description: ''
+behavior_plugins: {  }

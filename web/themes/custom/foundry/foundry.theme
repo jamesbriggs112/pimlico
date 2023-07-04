@@ -1,0 +1,102 @@
+<?php
+
+use Drupal\Component\Utility\Html;
+use Drupal\taxonomy\Entity\Term;
+
+/** Preprocess functions for the Marmelo base theme **/
+
+function foundry_preprocess_html(&$variables)
+{
+    // ADD e.g. FONTS IN HERE
+    // example: drupal_add_css('https://fonts.googleapis.com/css?family=Montserrat:300,400,500', array('type' => 'external'));
+    if ($node = \Drupal::routeMatch()->getParameter('node')) {
+        if ($node->hasField('field_theme')) {
+            $theme = $node->get('field_theme')->value;
+            $variables['attributes']['class'][] = 'theme-' . $theme;
+        }
+
+        if ($node->hasField('field_space_type')) {
+            $space =  Term::load($node->get('field_space_type')->target_id);
+            $variables['attributes']['class'][] = 'space-' . Html::getClass($space->getName());
+        }
+    }
+}
+
+function foundry_preprocess_page(&$variables)
+{
+}
+
+
+function foundry_preprocess_node(&$variables)
+{
+
+    // modifications to content pages
+
+}
+
+function foundry_preprocess_field(&$vars, $hook)
+{
+
+    // modifications to individual fields
+
+}
+
+
+function foundry_preprocess_paragraph(&$vars)
+{
+    // Add classes based on existence of term/list fields
+    // $fields is an array of field_name => css class prefix
+    /*$fields = [
+        "field_overlay_colour" => "overlay-colour",
+        "field_background_colour" => "background-colour",
+        "field_text_colour" => "text-colour"
+    ];
+
+    $para = $vars['paragraph'];
+
+    foreach($fields as $field_name => $style_name) {
+        if($para->hasField($field_name)) {
+            switch($para->get($field_name)->getFieldDefinition()->getType()) {
+
+                case "list_string":
+                    $class_value = $para->{$field_name}->value;
+                    break;
+
+                case 'entity_reference':
+                    $class_value = $para->{$field_name}->entity->name->value;
+                    break;
+
+            }
+
+            if(isset($class_value) && !empty($class_value)) {
+                $vars['attributes']['class'][] = $style_name."-"._normalise_for_css($class_value);
+            }
+
+        }
+    }*/
+
+    // add anchor to all "section heading" types
+    /*if($para->getType() == "section_header") {
+        $vars['anchor'] = _normalise_for_css($para->field_heading->value);
+    }*/
+}
+
+
+function foundry_form_search_block_form_alter(&$form, &$form_state)
+{
+
+    /**
+     * Replace 'search' text in search form with little magnifying glass icon
+     *
+     * $form['keys']['#attributes']['placeholder'][] = t('Search');
+     * $form['actions']['submit']['#value'] = html_entity_decode('&#xf002;');
+     * $form['actions']['submit']['#attributes']['class'][] = 'search-button';
+     */
+}
+
+
+function _normalise_for_css($string)
+{
+
+    return strtolower(str_replace(' ', '-', $string));
+}

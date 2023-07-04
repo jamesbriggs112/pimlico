@@ -1,0 +1,18 @@
+uuid: be65c711-c4b5-41a3-91b9-7a00efaf10d5
+langcode: en
+status: true
+dependencies:
+  module:
+    - paragraphs_ee
+third_party_settings:
+  paragraphs_ee:
+    paragraphs_categories:
+      containers: containers
+_core:
+  default_config_hash: v1XaJhUAKKFqnuYwacsPkCeqiGuAWLM3mRkTABwqdVU
+id: nav_block
+label: 'NAV block'
+icon_uuid: null
+icon_default: null
+description: ''
+behavior_plugins: {  }

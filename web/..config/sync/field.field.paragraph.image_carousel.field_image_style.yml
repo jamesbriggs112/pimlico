@@ -1,0 +1,21 @@
+uuid: b7a5a842-bfe8-4039-9df4-cb9dc85affef
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_image_style
+    - paragraphs.paragraphs_type.image_carousel
+  module:
+    - options
+id: paragraph.image_carousel.field_image_style
+field_name: field_image_style
+entity_type: paragraph
+bundle: image_carousel
+label: 'Image Style'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: list_string

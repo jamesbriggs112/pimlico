@@ -1,0 +1,19 @@
+uuid: 9dc6dc86-e839-45a5-a2d2-5e3cd21d23c6
+langcode: en
+status: true
+dependencies:
+  module:
+    - paragraphs_ee
+third_party_settings:
+  paragraphs_ee:
+    paragraphs_categories:
+      banners: banners
+      containers: containers
+_core:
+  default_config_hash: vX0FW2vDZjpHvYOXwIU2ZQWchsK2RpTQYa-N4re-mek
+id: featured_item_banner
+label: 'Featured item banner'
+icon_uuid: null
+icon_default: null
+description: ''
+behavior_plugins: {  }

@@ -1,0 +1,99 @@
+uuid: 20f5d016-5b71-4ccc-b49d-8846d886d19f
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_years
+    - paragraphs.paragraphs_type.timeline
+    - paragraphs.paragraphs_type.timeline_year
+  module:
+    - entity_reference_revisions
+_core:
+  default_config_hash: tOuFHpnl2rlZk_E_E81vY06zbyat7Lo9Kx7o3-CU_g4
+id: paragraph.timeline.field_years
+field_name: field_years
+entity_type: paragraph
+bundle: timeline
+label: Years
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:paragraph'
+  handler_settings:
+    target_bundles:
+      timeline_year: timeline_year
+    negate: 0
+    target_bundles_drag_drop:
+      biographies:
+        weight: 24
+        enabled: false
+      carousel:
+        weight: 25
+        enabled: false
+      carousel_item:
+        weight: 26
+        enabled: false
+      chart:
+        weight: 27
+        enabled: false
+      document:
+        weight: 28
+        enabled: false
+      document_list:
+        weight: 29
+        enabled: false
+      embedded_view_advanced_:
+        weight: 30
+        enabled: false
+      grid:
+        weight: 31
+        enabled: false
+      highlighted_text:
+        weight: 32
+        enabled: false
+      home_page_banner:
+        weight: 33
+        enabled: false
+      image:
+        weight: 34
+        enabled: false
+      jump_menu_anchor:
+        weight: 35
+        enabled: false
+      key_facts:
+        weight: 36
+        enabled: false
+      large_button:
+        weight: 37
+        enabled: false
+      standard_banner:
+        weight: 38
+        enabled: false
+      teaser:
+        weight: 39
+        enabled: false
+      testimonial:
+        weight: 40
+        enabled: false
+      text_pair:
+        weight: 41
+        enabled: false
+      text_wysiwyg_:
+        weight: 42
+        enabled: false
+      timeline:
+        weight: 43
+        enabled: false
+      timeline_entry:
+        weight: 44
+        enabled: false
+      timeline_year:
+        weight: 45
+        enabled: true
+      video:
+        weight: 46
+        enabled: false
+field_type: entity_reference_revisions

@@ -1,0 +1,16 @@
+uuid: 87c57485-9849-40cd-b226-7fa9b36920ec
+langcode: en
+status: true
+dependencies:
+  module:
+    - paragraphs_ee
+third_party_settings:
+  paragraphs_ee:
+    paragraphs_categories:
+      content: content
+id: full_width_image_with_text
+label: 'Full Width Images with Text'
+icon_uuid: null
+icon_default: null
+description: ''
+behavior_plugins: {  }

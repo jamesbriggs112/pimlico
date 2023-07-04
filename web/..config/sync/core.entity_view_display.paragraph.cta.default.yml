@@ -1,0 +1,39 @@
+uuid: 6acd8270-b390-46b2-a8a5-1aab9fd29687
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.paragraph.cta.field_link
+    - paragraphs.paragraphs_type.cta
+  module:
+    - fences
+    - link
+_core:
+  default_config_hash: 0P5TD7-tP-vEoNJcPMcQM75VS3RHJ9kxKV3Ic0042sU
+id: paragraph.cta.default
+targetEntityType: paragraph
+bundle: cta
+mode: default
+content:
+  field_link:
+    type: link
+    label: hidden
+    settings:
+      trim_length: 80
+      url_only: false
+      url_plain: false
+      rel: '0'
+      target: '0'
+    third_party_settings:
+      fences:
+        fences_field_tag: none
+        fences_field_classes: ''
+        fences_field_items_wrapper_tag: none
+        fences_field_items_wrapper_classes: ''
+        fences_field_item_tag: none
+        fences_field_item_classes: ''
+        fences_label_tag: div
+        fences_label_classes: ''
+    weight: 0
+    region: content
+hidden: {  }

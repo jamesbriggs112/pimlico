@@ -1,0 +1,36 @@
+uuid: 1e06f40a-322e-4bec-87fd-9b601f8eddb2
+langcode: en
+status: true
+dependencies:
+  module:
+    - options
+    - paragraphs
+id: paragraph.field_theme
+field_name: field_theme
+entity_type: paragraph
+type: list_string
+settings:
+  allowed_values:
+    -
+      value: foundry
+      label: Foundry
+    -
+      value: spaces
+      label: Spaces
+    -
+      value: work
+      label: Work
+    -
+      value: community
+      label: Community
+    -
+      value: none
+      label: None
+  allowed_values_function: ''
+module: options
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

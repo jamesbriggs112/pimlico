@@ -1,0 +1,10 @@
+uuid: 3316a4da-0ab3-4518-bcb4-dd2c973b5769
+langcode: en
+status: true
+dependencies: {  }
+_core:
+  default_config_hash: 7yrlW5z9zdg2eBucB2GPqXKSMQfH9lSRSO4DbWF7AFc
+id: footer
+label: 'Footer - The Foundry'
+description: 'Site information links'
+locked: true

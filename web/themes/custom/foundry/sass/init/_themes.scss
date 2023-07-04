@@ -1,0 +1,43 @@
+.theme {
+  &-foundry {
+    --text-color: white;
+    --background-color: var(--color-foundry);
+  }
+
+  &-spaces {
+    --text-color: black;
+    --background-color: var(--color-spaces);
+  }
+
+  &-work {
+    --text-color: white;
+    --background-color: var(--color-work);
+  }
+
+  &-community {
+    --text-color: white;
+    --background-color: var(--color-community);
+  }
+
+  &-none {
+    --text-color: black;
+    --background-color: var(--color-none);
+  }
+}
+
+.space {
+  &-conference {
+    --text-color: black;
+    --background-color: var(--color-blue);
+  }
+
+  &-meeting-room {
+    --text-color: white;
+    --background-color: var(--color-red);
+  }
+
+  &-work {
+    --text-color: white;
+    --background-color: var(--color-purple);
+  }
+}

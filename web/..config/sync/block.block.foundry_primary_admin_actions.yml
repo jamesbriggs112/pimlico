@@ -1,0 +1,20 @@
+uuid: ab8b998f-ca1c-4624-a20c-dc2d3edbdee6
+langcode: en
+status: true
+dependencies:
+  theme:
+    - foundry
+_core:
+  default_config_hash: Q9_2whdOj1YIomfvsIfopROW4FT_X5pY0DjdOiOaQ5U
+id: foundry_primary_admin_actions
+theme: foundry
+region: content
+weight: -2
+provider: null
+plugin: local_actions_block
+settings:
+  id: local_actions_block
+  label: 'Primary admin actions'
+  label_display: '0'
+  provider: core
+visibility: {  }

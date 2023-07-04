@@ -1,0 +1,16 @@
+uuid: ca4003a7-bc18-412a-9327-fd34f63e1426
+langcode: en
+status: true
+dependencies:
+  module:
+    - paragraphs_ee
+third_party_settings:
+  paragraphs_ee:
+    paragraphs_categories:
+      banners: banners
+id: page_banner
+label: 'Page banner'
+icon_uuid: null
+icon_default: null
+description: ''
+behavior_plugins: {  }

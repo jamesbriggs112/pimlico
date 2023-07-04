@@ -1,0 +1,23 @@
+uuid: 939812bf-3c97-41cd-8d2f-6d61c1de9053
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_pull_quote
+    - node.type.article
+  module:
+    - text
+_core:
+  default_config_hash: ML6FkBaybdA_Gwj4yJv3A3-FBe8ZNB7CTQficIK1TeM
+id: node.article.field_pull_quote
+field_name: field_pull_quote
+entity_type: node
+bundle: article
+label: 'Pull quote'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: text_long

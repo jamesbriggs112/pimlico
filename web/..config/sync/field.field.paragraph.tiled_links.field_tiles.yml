@@ -1,0 +1,108 @@
+uuid: e0b0cc4d-6e09-43c1-bd4a-0a1acc8fe7d5
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_tiles
+    - paragraphs.paragraphs_type.tiled_link
+    - paragraphs.paragraphs_type.tiled_links
+  module:
+    - entity_reference_revisions
+_core:
+  default_config_hash: q8_UnRzbdP0iGNg84Uqh8yk36niXLefxcdwEdKaAL6k
+id: paragraph.tiled_links.field_tiles
+field_name: field_tiles
+entity_type: paragraph
+bundle: tiled_links
+label: Tiles
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:paragraph'
+  handler_settings:
+    target_bundles:
+      tiled_link: tiled_link
+    negate: 0
+    target_bundles_drag_drop:
+      biographies:
+        weight: 27
+        enabled: false
+      carousel:
+        weight: 28
+        enabled: false
+      carousel_item:
+        weight: 29
+        enabled: false
+      chart:
+        weight: 30
+        enabled: false
+      document:
+        weight: 31
+        enabled: false
+      document_list:
+        weight: 32
+        enabled: false
+      embedded_view_advanced_:
+        weight: 33
+        enabled: false
+      grid:
+        weight: 34
+        enabled: false
+      highlighted_text:
+        weight: 35
+        enabled: false
+      home_page_banner:
+        weight: 36
+        enabled: false
+      image:
+        weight: 37
+        enabled: false
+      jump_menu_anchor:
+        weight: 38
+        enabled: false
+      key_facts:
+        weight: 39
+        enabled: false
+      large_button:
+        weight: 40
+        enabled: false
+      map:
+        weight: 41
+        enabled: false
+      standard_banner:
+        weight: 42
+        enabled: false
+      teaser:
+        weight: 43
+        enabled: false
+      testimonial:
+        weight: 44
+        enabled: false
+      text_pair:
+        weight: 45
+        enabled: false
+      text_wysiwyg_:
+        weight: 46
+        enabled: false
+      tiled_link:
+        weight: 47
+        enabled: true
+      tiled_links:
+        weight: 48
+        enabled: false
+      timeline:
+        weight: 49
+        enabled: false
+      timeline_entry:
+        weight: 50
+        enabled: false
+      timeline_year:
+        weight: 51
+        enabled: false
+      video:
+        weight: 52
+        enabled: false
+field_type: entity_reference_revisions

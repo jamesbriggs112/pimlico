@@ -1,0 +1,21 @@
+uuid: 58aef938-1266-49e2-af82-d3f6d50fd23f
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_address
+    - paragraphs.paragraphs_type.map_image
+_core:
+  default_config_hash: fgjpKF2pHSpvN670ffosk_eO2zt7T4aWX7WUp1oduA4
+id: paragraph.map_image.field_address
+field_name: field_address
+entity_type: paragraph
+bundle: map_image
+label: Address
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

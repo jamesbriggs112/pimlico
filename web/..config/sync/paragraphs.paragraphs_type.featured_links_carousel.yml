@@ -1,0 +1,16 @@
+uuid: d1f41b23-5a42-4f19-bfd3-ceb232d507dc
+langcode: en
+status: true
+dependencies:
+  module:
+    - paragraphs_ee
+third_party_settings:
+  paragraphs_ee:
+    paragraphs_categories:
+      content: content
+id: featured_links_carousel
+label: 'Featured Links Carousel'
+icon_uuid: null
+icon_default: null
+description: ''
+behavior_plugins: {  }

@@ -1,0 +1,10 @@
+uuid: b719acf6-d872-46cd-b4fd-24577c050634
+langcode: en
+status: true
+dependencies:
+  module:
+    - media
+id: media.clean
+label: Clean
+targetEntityType: media
+cache: true

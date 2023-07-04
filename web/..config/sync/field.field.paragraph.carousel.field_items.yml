@@ -1,0 +1,66 @@
+uuid: 5fab93f4-39d2-4d12-bc00-8bcab55c5c4c
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_items
+    - paragraphs.paragraphs_type.carousel
+    - paragraphs.paragraphs_type.carousel_item
+  module:
+    - entity_reference_revisions
+_core:
+  default_config_hash: ZyU1FIpJg2jF5kf8VJMamSNbWWYdat7Dmu-y7q42dX0
+id: paragraph.carousel.field_items
+field_name: field_items
+entity_type: paragraph
+bundle: carousel
+label: Items
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:paragraph'
+  handler_settings:
+    target_bundles:
+      carousel_item: carousel_item
+    negate: 0
+    target_bundles_drag_drop:
+      carousel:
+        weight: 13
+        enabled: false
+      carousel_item:
+        weight: 14
+        enabled: true
+      chart:
+        weight: 15
+        enabled: false
+      embedded_view_advanced_:
+        weight: 16
+        enabled: false
+      grid:
+        weight: 17
+        enabled: false
+      home_page_banner:
+        weight: 18
+        enabled: false
+      image:
+        weight: 19
+        enabled: false
+      large_button:
+        weight: 20
+        enabled: false
+      teaser:
+        weight: 21
+        enabled: false
+      testimonial:
+        weight: 22
+        enabled: false
+      text_wysiwyg_:
+        weight: 23
+        enabled: false
+      video:
+        weight: 24
+        enabled: false
+field_type: entity_reference_revisions

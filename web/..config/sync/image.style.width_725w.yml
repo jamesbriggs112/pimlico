@@ -1,0 +1,21 @@
+uuid: 3b591484-b47a-4689-a16c-78307b0c0fb7
+langcode: en
+status: true
+dependencies: {  }
+name: width_725w
+label: width_725w
+effects:
+  f7dc0442-8761-4aba-a011-61abed209e5b:
+    uuid: f7dc0442-8761-4aba-a011-61abed209e5b
+    id: image_scale
+    weight: 0
+    data:
+      width: 725
+      height: null
+      upscale: false
+  705cc2dd-bb44-4d84-ba87-a803b1073117:
+    uuid: 705cc2dd-bb44-4d84-ba87-a803b1073117
+    id: image_convert
+    weight: 1
+    data:
+      extension: webp

@@ -1,0 +1,23 @@
+uuid: 0d98607b-f8b5-4aaf-ae79-58017e3bec59
+langcode: en
+status: true
+dependencies:
+  module:
+    - media
+_core:
+  default_config_hash: 6aYGGI7kwFKPqZzL0Uu-F_m26uLYcL_U55QtcPes7bE
+id: documents
+label: Documents
+type: 'canonical_entities:media'
+pattern: 'docs/[media:name]'
+selection_criteria:
+  6c1e7cba-086d-4cd2-ab69-a23d45a15ea2:
+    id: 'entity_bundle:media'
+    negate: false
+    context_mapping:
+      media: media
+    bundles:
+      document: document
+selection_logic: and
+weight: -5
+relationships: {  }

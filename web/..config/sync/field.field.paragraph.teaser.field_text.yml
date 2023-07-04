@@ -1,0 +1,23 @@
+uuid: 3ab04aa2-f091-4dfe-a1a7-90d01686f545
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_text
+    - paragraphs.paragraphs_type.teaser
+  module:
+    - text
+_core:
+  default_config_hash: 0wbJTic7KkOIW-3_xtieye1Xpeao4UBCquRyW9rW58I
+id: paragraph.teaser.field_text
+field_name: field_text
+entity_type: paragraph
+bundle: teaser
+label: Summary
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: text_long

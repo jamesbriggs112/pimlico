@@ -1,0 +1,16 @@
+uuid: afa3f0a2-95a6-485b-9192-ec2b344e13ae
+langcode: en
+status: true
+dependencies:
+  module:
+    - paragraphs_ee
+third_party_settings:
+  paragraphs_ee:
+    paragraphs_categories:
+      banners: banners
+id: banner_image_carousel
+label: 'Banner Image Carousel'
+icon_uuid: null
+icon_default: null
+description: ''
+behavior_plugins: {  }

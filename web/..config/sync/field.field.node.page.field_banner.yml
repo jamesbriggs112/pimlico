@@ -1,0 +1,141 @@
+uuid: 67c0d641-f8ba-40eb-8b0d-2566a4f22a73
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_banner
+    - node.type.page
+    - paragraphs.paragraphs_type.page_banner
+  module:
+    - entity_reference_revisions
+_core:
+  default_config_hash: 0yjf-hAeX-KNYWZbxU0LJ7jChkVjD3ohddmpMNdu4L4
+id: node.page.field_banner
+field_name: field_banner
+entity_type: node
+bundle: page
+label: Banner
+description: ''
+required: true
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:paragraph'
+  handler_settings:
+    target_bundles:
+      page_banner: page_banner
+    negate: 0
+    target_bundles_drag_drop:
+      accordion:
+        weight: 40
+        enabled: false
+      accordion_item:
+        weight: 41
+        enabled: false
+      carousel:
+        weight: 13
+        enabled: false
+      carousel_item:
+        weight: 14
+        enabled: false
+      chart:
+        weight: 15
+        enabled: false
+      cta:
+        weight: 47
+        enabled: false
+      document:
+        weight: 48
+        enabled: false
+      document_list:
+        weight: 49
+        enabled: false
+      embedded_view_advanced_:
+        weight: 16
+        enabled: false
+      featured_item_banner:
+        weight: 51
+        enabled: false
+      grid:
+        weight: 17
+        enabled: false
+      highlighted_text:
+        weight: 54
+        enabled: false
+      home_page_banner:
+        weight: 18
+        enabled: false
+      image:
+        weight: 19
+        enabled: false
+      jump_menu_anchor:
+        weight: 57
+        enabled: false
+      key_facts:
+        weight: 58
+        enabled: false
+      large_button:
+        weight: 20
+        enabled: false
+      map:
+        weight: 60
+        enabled: false
+      map_image:
+        weight: 61
+        enabled: false
+      nav:
+        weight: 62
+        enabled: false
+      nav_block:
+        weight: 63
+        enabled: false
+      page_banner:
+        weight: 38
+        enabled: true
+      section_wrapper:
+        weight: 60
+        enabled: false
+      separator:
+        weight: 65
+        enabled: false
+      standard_banner:
+        weight: 22
+        enabled: false
+      teaser:
+        weight: 21
+        enabled: false
+      teaser_carousel:
+        weight: 68
+        enabled: false
+      testimonial:
+        weight: 22
+        enabled: false
+      text_pair:
+        weight: 70
+        enabled: false
+      text_wysiwyg_:
+        weight: 23
+        enabled: false
+      tiled_link:
+        weight: 72
+        enabled: false
+      tiled_links:
+        weight: 73
+        enabled: false
+      timeline:
+        weight: 74
+        enabled: false
+      timeline_entry:
+        weight: 75
+        enabled: false
+      timeline_year:
+        weight: 76
+        enabled: false
+      two_column_area:
+        weight: 77
+        enabled: false
+      video:
+        weight: 24
+        enabled: false
+field_type: entity_reference_revisions

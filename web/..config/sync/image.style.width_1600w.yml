@@ -1,0 +1,21 @@
+uuid: 62b11366-9a04-40be-8695-6c58bf4b0d16
+langcode: en
+status: true
+dependencies: {  }
+name: width_1600w
+label: width_1600w
+effects:
+  abbfa9b4-b90b-4991-bfbf-f5047aec9e72:
+    uuid: abbfa9b4-b90b-4991-bfbf-f5047aec9e72
+    id: image_scale
+    weight: 0
+    data:
+      width: 1600
+      height: null
+      upscale: false
+  aa0b79c1-7e75-4e05-b2bc-556f95cb6fc9:
+    uuid: aa0b79c1-7e75-4e05-b2bc-556f95cb6fc9
+    id: image_convert
+    weight: 1
+    data:
+      extension: webp

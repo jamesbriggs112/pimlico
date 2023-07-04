@@ -1,0 +1,36 @@
+uuid: 0559af50-ec9c-425e-84a7-2a851da49d67
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.paragraph.text_wysiwyg_.field_heading
+    - field.field.paragraph.text_wysiwyg_.field_text
+    - paragraphs.paragraphs_type.text_wysiwyg_
+  module:
+    - text
+_core:
+  default_config_hash: qmXfHyPJK4CPxP2pGuWdlKAL5j4XRs_6LQ2z4CpZaKs
+id: paragraph.text_wysiwyg_.default
+targetEntityType: paragraph
+bundle: text_wysiwyg_
+mode: default
+content:
+  field_heading:
+    type: string_textfield
+    weight: 0
+    region: content
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+  field_text:
+    type: text_textarea
+    weight: 1
+    region: content
+    settings:
+      rows: 5
+      placeholder: ''
+    third_party_settings: {  }
+hidden:
+  created: true
+  status: true

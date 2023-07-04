@@ -1,0 +1,12 @@
+uuid: 68b312b1-9ce9-43b7-b8f4-293d68673025
+langcode: en
+status: true
+dependencies:
+  module:
+    - media
+_core:
+  default_config_hash: P5xf3ir-8ed9O5sBvrArFGnhXD7vlcQC8qlGOZGS5DU
+id: media.article_attachment
+label: 'Article attachment'
+targetEntityType: media
+cache: true

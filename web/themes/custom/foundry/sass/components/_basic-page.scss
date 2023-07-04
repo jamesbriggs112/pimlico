@@ -1,0 +1,100 @@
+@use '~sass-rem' as *;
+@use '~sass-mq/mq' as *;
+
+main {
+  margin: 0px auto;
+  margin-top: -#{rem(160px)};
+
+  article.node--view-mode-full {
+    .node {
+      &__banner {
+        position: relative;
+        color: var(--text-color);
+
+        .paragraph--type--page-banner {
+          img {
+            width: 100%;
+            height: auto;
+          }
+
+          + .node__banner-wrapper {
+            .node__banner-content {
+              padding-top: 0;
+            }
+          }
+        }
+
+        &-wrapper {
+          margin-top: calc(-1 * var(--section-padding));
+          width: 100%;
+
+          &::before {
+            content: '';
+            background-color: var(--background-color);
+            padding-top: var(--section-padding);
+            display: block;
+            clip-path: polygon(0 0, 0% 100%, calc(100% + 2px) 100%);
+            margin-bottom: -2px;
+          }
+        }
+
+        &-content {
+          @include siteWidth;
+          background-color: var(--background-color);
+          padding-top: rem(80px);
+          padding-bottom: var(--vertical-spacing);
+
+          &.space {
+            &::after {
+              content: "";
+              width: 100%;
+              height: calc(var(--vertical-spacing) + 10px);
+              background-color: white;
+              display: block;
+              margin-left: calc(var(--page-gutter) * -1);
+              margin-right: calc(var(--page-gutter) * -1);
+              position: absolute;
+              bottom: -9px;
+            }
+          }
+        }
+
+        &-intro {
+          @include mq($from: tablet) {
+            max-width: 50%;
+            transform: translateY(-20%);
+          }
+        }
+      }
+
+      &__content {
+        padding-bottom: var(--vertical-spacing);
+
+        > .field--name-body {
+          font-size: 1.2em;
+          margin-top: 2em;
+          margin-bottom: 2em;
+        }
+
+        > .paragraph:not(.paragraph--type--section-wrapper) {
+          @include siteWidth;
+          margin-bottom: var(--component-spacing);
+        }
+
+        .section-content-mover {
+          > .paragraph {
+            margin-bottom: var(--component-spacing);
+          }
+        }
+
+        > .paragraph--type--text-wysiwyg- {
+          > .paragraph--type--text-wysiwyg-__content {
+            @include mq($from: tablet) {
+              width: calc(50% - #{rem(25px)});
+            }
+          }
+        }
+      }
+    }
+  }
+}

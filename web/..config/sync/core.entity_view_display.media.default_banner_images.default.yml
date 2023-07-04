@@ -1,0 +1,37 @@
+uuid: b73e4fa3-f17e-42a3-ad1e-6413fc55873a
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.media.default_banner_images.field_media_image
+    - image.style.full_width
+    - media.type.default_banner_images
+  module:
+    - svg_image
+_core:
+  default_config_hash: xvX2HbJ7xN9j7A8jHncpsYRN290TIR0qVA2QxoJXMIo
+id: media.default_banner_images.default
+targetEntityType: media
+bundle: default_banner_images
+mode: default
+content:
+  field_media_image:
+    type: image
+    label: visually_hidden
+    settings:
+      image_link: ''
+      image_style: full_width
+      svg_attributes:
+        width: null
+        height: null
+      svg_render_as_image: true
+      image_loading:
+        attribute: lazy
+    third_party_settings: {  }
+    weight: 0
+    region: content
+hidden:
+  created: true
+  name: true
+  thumbnail: true
+  uid: true

@@ -1,0 +1,33 @@
+uuid: d119de9d-6f74-4923-8b45-99cd8526f0b7
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.paragraph.banner_image_carousel.field_images
+    - paragraphs.paragraphs_type.banner_image_carousel
+  module:
+    - fences
+id: paragraph.banner_image_carousel.default
+targetEntityType: paragraph
+bundle: banner_image_carousel
+mode: default
+content:
+  field_images:
+    type: entity_reference_entity_view
+    label: hidden
+    settings:
+      view_mode: '16_9'
+      link: false
+    third_party_settings:
+      fences:
+        fences_field_tag: none
+        fences_field_classes: ''
+        fences_field_items_wrapper_tag: none
+        fences_field_items_wrapper_classes: ''
+        fences_field_item_tag: none
+        fences_field_item_classes: ''
+        fences_label_tag: div
+        fences_label_classes: ''
+    weight: 0
+    region: content
+hidden: {  }
