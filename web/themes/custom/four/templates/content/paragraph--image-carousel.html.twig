@@ -46,7 +46,7 @@
     not paragraph.isPublished() ? 'paragraph--unpublished'
   ]
 %}
-{{ attach_library('foundry/paragraph-image-carousel') }}
+{{ attach_library('four/paragraph-image-carousel') }}
 {% set slidesPerView = content.field_number_of_slides['#items'][0].value %}
 {% block paragraph %}
 	<div {{ attributes.addClass(classes) }} data-slides-per-view="{{slidesPerView}}">
