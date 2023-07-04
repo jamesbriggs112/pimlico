@@ -11,7 +11,7 @@ This repository should only be used as an upstream source for projects.
 ### Using this repository as a project base
 
 - `composer install`
-- Install the `four-base-db.sql` found in the root, and update the settings accordingly at the bottom of `web/sites/default/settings.local.php`
+- Install the `jp_drupal_skeleton.sql`, and update the settings accordingly at the bottom of `web/sites/default/settings.local.php` found here: https://www.dropbox.com/s/6mkd6vvehx2bhvo/jp_drupal_skeleton.sql?dl=0
 - Point MAMP Document root to the `web` directory
 - `cd web/themes/custom/four`
 - `yarn`
