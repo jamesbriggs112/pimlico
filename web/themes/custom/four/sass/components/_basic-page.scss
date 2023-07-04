@@ -27,15 +27,6 @@ main {
         &-wrapper {
           margin-top: calc(-1 * var(--section-padding));
           width: 100%;
-
-          &::before {
-            content: '';
-            background-color: var(--background-color);
-            padding-top: var(--section-padding);
-            display: block;
-            clip-path: polygon(0 0, 0% 100%, calc(100% + 2px) 100%);
-            margin-bottom: -2px;
-          }
         }
 
         &-content {
