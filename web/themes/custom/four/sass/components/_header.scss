@@ -178,6 +178,9 @@ body {
         @include mq($from: desktop) {
           flex-direction: row;
           width: auto;
+          overflow: auto;
+          height: auto;
+          padding: 0;
         }
 
         li {
