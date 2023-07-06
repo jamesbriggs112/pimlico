@@ -72,19 +72,6 @@
 .paragraph--type--section-wrapper {
   color: var(--text-color);
 
-  &:not(:first-child) {
-    margin-top: calc(-1 * var(--section-padding));
-  }
-
-  &:not(:last-child) {
-    &::after {
-      content: '';
-      background-color: var(--background-color);
-      padding-bottom: var(--section-padding);
-      display: block;
-    }
-  }
-
   .section-content-wrapper {
     background-color: var(--background-color);
   }
