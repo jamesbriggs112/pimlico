@@ -15,6 +15,7 @@ This repository should only be used as an upstream source for projects.
 - Import `jp_drupal_skeleton.sql`, found here: https://www.dropbox.com/s/6mkd6vvehx2bhvo/jp_drupal_skeleton.sql?dl=0
 - Copy `example.settings.local.php` into `web/sites/default/settings.local.php` and update database connection info toward the bottom of the file
 - Copy `example.settings.php` into `web/sites/default/settings.php` and update database connection info toward the bottom of the file
+- Copy `example.development.services.yml` into web/sites/default/development.services.yml` for your local development debugging etc. to be enabled
 - Point Document root to the `web` directory
 - `cd web/themes/custom/four`
 - `yarn`
