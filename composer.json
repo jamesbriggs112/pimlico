@@ -62,7 +62,7 @@
         "drupal/viewfield": "^3.0@beta",
         "drupal/views_show_more": "^1.0",
         "drupal/webform": "^6.1",
-        "drush/drush": "^11.5",
+        "drush/drush": "^11.6",
         "marmelo/banner_paragraph": "^1.0",
         "marmelo/marmelo_base_config": "^1.0",
         "marmelo/media_entity_download_extended": "^2.0.0"

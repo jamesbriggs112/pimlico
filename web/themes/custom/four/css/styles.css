@@ -441,13 +441,10 @@ button.hamburger:focus {
   --color-red: #df2b4a;
   --color-blue: #129bdb;
   --color-purple: #491738;
-  --color-foundry: var(--color-dark-grey);
-  --color-spaces: var(--color-blue);
-  --color-work: var(--color-purple);
-  --color-community: var(--color-red);
-  --color-none: white;
-  --text-color: white;
-  --background-color: var(--color-foundry);
+  --color-black: #000000;
+  --color-white: #FFFFFF;
+  --text-color: var(--color-black);
+  --background-color: var(--color-white);
   --swiper-theme-color: black;
 }
 @media (min-width: 48em) {
@@ -455,40 +452,6 @@ button.hamburger:focus {
     --page-gutter: 3.125rem;
     --component-spacing: 7.5rem;
   }
-}
-
-.theme-foundry {
-  --text-color: white;
-  --background-color: var(--color-foundry);
-}
-.theme-spaces {
-  --text-color: black;
-  --background-color: var(--color-spaces);
-}
-.theme-work {
-  --text-color: white;
-  --background-color: var(--color-work);
-}
-.theme-community {
-  --text-color: white;
-  --background-color: var(--color-community);
-}
-.theme-none {
-  --text-color: black;
-  --background-color: var(--color-none);
-}
-
-.space-conference {
-  --text-color: black;
-  --background-color: var(--color-blue);
-}
-.space-meeting-room {
-  --text-color: white;
-  --background-color: var(--color-red);
-}
-.space-work {
-  --text-color: white;
-  --background-color: var(--color-purple);
 }
 
 /* DEFINE COLOURS HERE */
@@ -902,6 +865,9 @@ body header nav.navigation ul.menu {
   body header nav.navigation ul.menu {
     flex-direction: row;
     width: auto;
+    overflow: auto;
+    height: auto;
+    padding: 0;
   }
 }
 body header nav.navigation ul.menu li {
@@ -1279,15 +1245,6 @@ article.node--view-mode-full.node--type-space > .node__content {
 
 .paragraph--type--section-wrapper {
   color: var(--text-color);
-}
-.paragraph--type--section-wrapper:not(:first-child) {
-  margin-top: calc(-1 * var(--section-padding));
-}
-.paragraph--type--section-wrapper:not(:last-child)::after {
-  content: "";
-  background-color: var(--background-color);
-  padding-bottom: var(--section-padding);
-  display: block;
 }
 .paragraph--type--section-wrapper .section-content-wrapper {
   background-color: var(--background-color);

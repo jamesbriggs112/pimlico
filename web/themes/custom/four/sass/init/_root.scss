@@ -16,15 +16,11 @@
   --color-red: #df2b4a;
   --color-blue: #129bdb;
   --color-purple: #491738;
+  --color-black: #000000;
+  --color-white: #FFFFFF;
 
-  --color-foundry: var(--color-dark-grey);
-  --color-spaces: var(--color-blue);
-  --color-work: var(--color-purple);
-  --color-community: var(--color-red);
-  --color-none: white;
-
-  --text-color: white;
-  --background-color: var(--color-foundry);
+  --text-color: var(--color-black);
+  --background-color: var(--color-white);
 
   --swiper-theme-color: black;
 
