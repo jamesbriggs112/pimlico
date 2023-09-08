@@ -1,9 +1,9 @@
-@use '~sass-rem' as *;
+@use '~sass-rem' as to;
 @use '~sass-mq/mq' as *;
 
 main {
   margin: 0px auto;
-  margin-top: -#{rem(160px)};
+  margin-top: -#{to.rem(160px)};
 
   article.node--view-mode-full {
     .node {
@@ -32,7 +32,7 @@ main {
         &-content {
           @include siteWidth;
           background-color: var(--background-color);
-          padding-top: rem(80px);
+          padding-top: to.rem(80px);
           padding-bottom: var(--vertical-spacing);
 
           &.space {
@@ -81,7 +81,7 @@ main {
         > .paragraph--type--text-wysiwyg- {
           > .paragraph--type--text-wysiwyg-__content {
             @include mq($from: tablet) {
-              width: calc(50% - #{rem(25px)});
+              width: calc(50% - #{to.rem(25px)});
             }
           }
         }

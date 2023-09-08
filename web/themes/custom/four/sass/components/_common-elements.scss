@@ -1,14 +1,14 @@
-@use '~sass-rem' as *;
+@use '~sass-rem' as to;
 @use '~sass-mq/mq' as *;
 
 .paragraph {
   box-sizing: border-box;
 
   h2.field--name-field-heading {
-    font-size: rem(45px);
+    font-size: to.rem(45px);
 
     @include mq($from: tablet) {
-      font-size: rem(70px);
+      font-size: to.rem(70px);
     }
   }
 
@@ -89,15 +89,15 @@
       }
 
       h2 {
-        font-size: rem(45px);
+        font-size: to.rem(45px);
 
         @include mq($from: tablet) {
-          font-size: rem(70px);
+          font-size: to.rem(70px);
         }
       }
 
       &:first-of-type {
-        font-size: rem(28px);
+        font-size: to.rem(28px);
       }
     }
 
@@ -127,7 +127,7 @@
   }
 
   &__left {
-    margin-bottom: rem(30px);
+    margin-bottom: to.rem(30px);
 
     @include mq($from: tablet) {
       margin-bottom: 0;
@@ -137,17 +137,17 @@
   &__left,
   &__right {
     @include mq($from: tablet) {
-      width: calc(50% - #{rem(25px)});
+      width: calc(50% - #{to.rem(25px)});
     }
 
     &:first-child {
       @include mq($from: tablet) {
-        margin-right: rem(50px);
+        margin-right: to.rem(50px);
       }
     }
 
     .paragraph:not(:last-child) {
-      margin-bottom: rem(30px);
+      margin-bottom: to.rem(30px);
     }
   }
 }
@@ -160,8 +160,8 @@
   color: white;
 
   h2 {
-    font-size: rem(30px) !important;
-    margin-bottom: rem(30px);
+    font-size: to.rem(30px) !important;
+    margin-bottom: to.rem(30px);
   }
 
   &__image {
@@ -182,7 +182,7 @@
   &__content {
     grid-area: 2 / 1 / 3 / 2;
     position: relative;
-    padding: 0 rem(20px) rem(35px);
+    padding: 0 to.rem(20px) to.rem(35px);
 
     position: absolute;
     bottom: 0;
@@ -204,7 +204,7 @@
 
     img {
       aspect-ratio: 1;
-      padding: rem(40px);
+      padding: to.rem(40px);
       margin: calc(var(--grid-vertical-spacing) / 2)
         calc(var(--grid-horizontal-spacing) / 2);
       border: 1px solid var(--color-dark-grey);
@@ -251,11 +251,11 @@
 
     &::before {
       content: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 74.4 45.2'%3E%3Cpath d='M24 45.2C24 27.4 28.6 13.4 38.2 0H21.8C10.4 8 0 24 0 45.2Zm36.4 0c0-17.8 4.4-31.8 14-45.2H58C46.8 8 36.2 24 36.2 45.2Z' data-name='Path 322'/%3E%3C/svg%3E");
-      width: rem(75px);
+      width: to.rem(75px);
       margin-bottom: var(--vertical-spacing);
 
       @include mq($from: tablet) {
-        margin-right: rem(80px);
+        margin-right: to.rem(80px);
         margin-bottom: 0;
       }
     }
@@ -263,11 +263,11 @@
 
   &__content {
     width: 100%;
-    max-width: rem(600px);
+    max-width: to.rem(600px);
 
     .field--name-field-name,
     .field--name-field-position-company {
-      font-size: rem(22px);
+      font-size: to.rem(22px);
     }
 
     .field--name-field-name {
@@ -327,7 +327,7 @@
   }
 
   &__content {
-    padding: rem(60px) rem(30px) rem(30px);
+    padding: to.rem(60px) to.rem(30px) to.rem(30px);
     background-color: var(--background-color);
     color: var(--text-color);
 
@@ -365,10 +365,10 @@
 .paragraph--type--content-carousel,
 .paragraph--type--spaces-carousel {
   > h2.field--name-field-heading {
-    margin-bottom: rem(50px);
+    margin-bottom: to.rem(50px);
 
     @include mq($from: tablet) {
-      margin-bottom: rem(80px);
+      margin-bottom: to.rem(80px);
     }
   }
 }

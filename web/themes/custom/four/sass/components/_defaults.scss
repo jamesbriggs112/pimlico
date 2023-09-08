@@ -1,4 +1,4 @@
-@use '~sass-rem' as *;
+@use '~sass-rem' as to;
 @use '~sass-mq/mq' as *;
 
 a,
@@ -28,7 +28,7 @@ a:visited {
 }
 
 p {
-  font-size: rem(28px);
+  font-size: to.rem(28px);
   line-height: 1.15;
   margin-top: 0
 }
@@ -45,11 +45,11 @@ q {
   display: flex;
   text-transform: uppercase;
   font-weight: $fontSemiBold;
-  font-size: rem(24px);
+  font-size: to.rem(24px);
 
   &::before {
-    font-size: rem(180px);
+    font-size: to.rem(180px);
     line-height: 0.7;
-    margin-right: rem(80px);
+    margin-right: to.rem(80px);
   }
 }

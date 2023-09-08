@@ -1,9 +1,9 @@
-@use '~sass-rem' as *;
+@use '~sass-rem' as to;
 @use '~sass-mq/mq' as *;
 
 .paragraph--type--accordion-item {
   color: white;
-  margin-bottom: rem(5px);
+  margin-bottom: to.rem(5px);
 
   > button {
     cursor: pointer;
@@ -13,7 +13,7 @@
     font-weight: 500;
     background-color: var(--color-dark-grey);
     margin: 0;
-    padding: rem(30px);
+    padding: to.rem(30px);
     display: flex;
     align-items: center;
     width: 100%;
@@ -44,7 +44,7 @@
     transition: max-height 0.2s ease-out;
 
     > div {
-      padding: rem(30px);
+      padding: to.rem(30px);
     }
   }
 
@@ -54,14 +54,14 @@
     padding-right: 0;
 
     p {
-      font-size: rem(18px);
+      font-size: to.rem(18px);
     }
   }
 }
 
 .paragraph.paragraph--type--accordion-item {
   button.field--name-field-heading {
-    font-size: rem(32px);
+    font-size: to.rem(32px);
     max-width: none;
   }
 }

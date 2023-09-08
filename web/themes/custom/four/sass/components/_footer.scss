@@ -1,4 +1,4 @@
-@use '~sass-rem' as *;
+@use '~sass-rem' as to;
 @use '~sass-mq/mq' as *;
 
 .layout-container {
@@ -11,7 +11,7 @@
   box-sizing: border-box;
   clear: both;
   background-color: black;
-  padding: rem(100px) 0;
+  padding: to.rem(100px) 0;
 
   &__inside {
     display: flex;
@@ -19,7 +19,7 @@
     margin: 0 auto;
     padding: 0 var(--page-gutter);
     flex-direction: column;
-    
+
     @include mq($from: desktop) {
         flex-direction: row;
     }
@@ -28,20 +28,20 @@
   h2 {
     text-align: left;
     color: white;
-    font-size: rem(24px);
+    font-size: to.rem(24px);
     font-weight: 500;
-    margin: 0 0 rem(20px) 0;
+    margin: 0 0 to.rem(20px) 0;
   }
 
   nav {
     display: flex;
     flex-direction: column;
     width: 100%;
-    margin: 0 0 rem(50px) 0;
+    margin: 0 0 to.rem(50px) 0;
 
     @include mq($from: desktop) {
         width: 25%;
-        margin: 0 rem(30px) 0 0;
+        margin: 0 to.rem(30px) 0 0;
     }
 
     &:last-of-type {
@@ -61,8 +61,8 @@
       color: white;
       list-style: none;
       display: inline-block;
-      line-height: rem(38px);
-      font-size: rem(18px);
+      line-height: to.rem(38px);
+      font-size: to.rem(18px);
       margin: 0;
 
       a,
@@ -85,7 +85,7 @@
 
         li {
           list-style-type: none;
-          margin-right: rem(10px);
+          margin-right: to.rem(10px);
 
           &:last-of-type {
             margin-right: 0;

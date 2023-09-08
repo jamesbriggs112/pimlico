@@ -1151,23 +1151,6 @@ main article.node--view-mode-full .node__content .section-content-mover > .parag
   }
 }
 
-.page-node-type-space main {
-  margin-top: 0;
-}
-
-article.node--view-mode-full.node--type-space > .node__banner-wrapper {
-  margin-top: 0;
-}
-article.node--view-mode-full.node--type-space > .node__banner-wrapper::before {
-  display: none;
-}
-article.node--view-mode-full.node--type-space > .node__banner-intro {
-  transform: none;
-}
-article.node--view-mode-full.node--type-space > .node__content {
-  background-color: white;
-}
-
 .paragraph {
   box-sizing: border-box;
 }

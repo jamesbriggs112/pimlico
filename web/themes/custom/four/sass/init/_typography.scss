@@ -1,4 +1,4 @@
-@use '~sass-rem' as *;
+@use '~sass-rem' as to;
 @use '~sass-mq/mq' as *;
 
 // regular typography across site
@@ -23,19 +23,19 @@ html {
 
 
     h1 {
-        font-size: rem(60px);
+        font-size: to.rem(60px);
 
         @include mq($from: tablet) {
-            font-size: rem(90px);
+            font-size: to.rem(90px);
         }
     }
 
     h2 {
-        font-size: rem(32px);
+        font-size: to.rem(32px);
     }
 }
 
 
 body {
-    font-size: rem(18px);
+    font-size: to.rem(18px);
 }

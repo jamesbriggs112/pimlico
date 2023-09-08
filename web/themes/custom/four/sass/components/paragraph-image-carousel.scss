@@ -1,4 +1,4 @@
-@use '~sass-rem' as *;
+@use '~sass-rem' as to;
 @use '~sass-mq/mq' as *;
 @use '../init/mixins' as *;
 
@@ -7,8 +7,8 @@
 .swiper-button-next,
 .swiper-button-prev {
   background-color: var(--color-dark-grey);
-  width: rem(60px);
-  height: rem(60px);
+  width: to.rem(60px);
+  height: to.rem(60px);
   background-position: center;
   background-size: 10px 20px;
   background-repeat: no-repeat;
@@ -47,11 +47,11 @@
   }
 
   ::part(button-next) {
-    right: -#{rem(30px)};
+    right: -#{to.rem(30px)};
   }
 
   ::part(button-prev) {
-    left: -#{rem(30px)};
+    left: -#{to.rem(30px)};
   }
 }
 
