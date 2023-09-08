@@ -29,5 +29,71 @@ If you're going to use the Gulp workflow then you need to:
 
 ### Who do I talk to? ###
 
-* This is Luke's code so talk to him
 * If you create anything useful (e.g. bits of javascript, sass mixins) then please do submit a pull request
+
+## Styling
+
+### Breakpoints
+
+https://github.com/sass-mq/sass-mq
+
+Set your breakpoints in `sass/init/_mq-settings.scss`
+
+##### Usage
+
+```
+@use '~sass-mq/mq' as *;
+
+.root {
+  @include mq($from: tablet) {
+    // Breakpoint styles
+  }
+}
+```
+
+### sass-rem
+
+Where possible you should be using rem rather than px which can be easily using the sass-rem mixin
+
+https://github.com/pierreburel/sass-rem
+
+##### Usage
+
+```
+@use '~sass-rem' as to;
+
+.root {
+  font-size: to.rem(18px);
+}
+```
+
+### CSS Variables
+
+Where possible use css variables, some base variable have been include already here `sass/init/_root.scss`
+
+There are exceptions to this for example if you have a mixin that requires a varible, these should be set in `styles/base/_variables.scss` and these can then be passed to a css variable if needed.
+
+For example the min and max page width are set here
+
+```
+$default-min-bp: 320px;
+$default-max-bp: 1245px;
+```
+
+### Mixins
+
+Mixins can be found in `sass/init/_mixins.scss` and includes the following helpers
+
+#### fluid
+
+The fluid allows to scale fonts and other pixel based values such as margins and padding based of the screen width
+
+##### Usage
+
+```
+@use '../init/mixins' as *;
+
+.root {
+  font-size: fluid(18px, 60px);
+}
+```

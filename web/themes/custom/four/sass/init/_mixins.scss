@@ -1,4 +1,35 @@
 @use '~sass-rem' as to;
+@use 'sass:math';
+@use './layout-vars' as *;
+
+@function roundNumber($number, $decimals: 0) {
+  $n: 1;
+  @if $decimals > 0 {
+    @for $i from 1 through $decimals {
+      $n: $n * 10;
+    }
+  }
+  @return math.div(math.round($number * $n), $n);
+}
+
+@function fluid(
+  $min-size,
+  $max-size,
+  $min-breakpoint: $default-min-bp,
+  $max-breakpoint: $default-max-bp,
+  $unit: vw
+) {
+  $slope: math.div($max-size - $min-size, $max-breakpoint - $min-breakpoint);
+  $slope-to-unit: roundNumber($slope * 100, 2);
+  $intercept-rem: roundNumber(to.rem($min-size - $slope * $min-breakpoint), 2);
+  $min-size-rem: roundNumber(to.rem($min-size), 2);
+  $max-size-rem: roundNumber(to.rem($max-size), 2);
+  @return clamp(
+    #{$min-size-rem},
+    #{$slope-to-unit}#{$unit} + #{$intercept-rem},
+    #{$max-size-rem}
+  );
+}
 
 @mixin siteWidth {
   max-width: var(--page-width);
