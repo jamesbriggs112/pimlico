@@ -73,6 +73,7 @@ module:
   tour: 0
   twig_tweak: 0
   update: 0
+  upgrade_status: 0
   user: 0
   viewfield: 0
   views_show_more: 0
@@ -91,5 +92,6 @@ theme:
   gin: 0
   stable: 0
   classy: 0
-  foundry: 0
+  bartik: 0
+  four: 0
 profile: standard

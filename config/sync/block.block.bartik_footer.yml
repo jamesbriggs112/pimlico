@@ -1,4 +1,4 @@
-uuid: 8b474215-25a5-4208-8523-16c967196192
+uuid: f7b5781f-46f4-4982-9850-c7ea38bc5e22
 langcode: en
 status: true
 dependencies:
@@ -7,17 +7,19 @@ dependencies:
   module:
     - system
   theme:
-    - foundry
-id: footer_menu
-theme: foundry
-region: footer
-weight: -6
+    - bartik
+_core:
+  default_config_hash: pnCK21YFjH7iB4XDeokSq3N3XSr6qX8BsqMs9nmip6E
+id: bartik_footer
+theme: bartik
+region: footer_fifth
+weight: 0
 provider: null
 plugin: 'system_menu_block:footer'
 settings:
   id: 'system_menu_block:footer'
-  label: 'The Foundry'
-  label_display: visible
+  label: 'Footer menu'
+  label_display: '0'
   provider: system
   level: 1
   depth: 0

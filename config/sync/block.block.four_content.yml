@@ -1,17 +1,17 @@
-uuid: 4c8beb11-4b7f-46f4-a6b1-ff4342779c30
+uuid: 45b0aaf0-87d4-47b4-a5d9-3a27982481be
 langcode: en
 status: true
 dependencies:
   module:
     - system
   theme:
-    - foundry
+    - four
 _core:
-  default_config_hash: erQSEZF2XUjNmgTl0uNRBzmg18ZGXwUcw2FhApoeuHk
-id: foundry_content
-theme: foundry
+  default_config_hash: kigu8pTxXt1qGR2NJ5HHdC4G2G1wsDrIjLPKBT5wUBc
+id: four_content
+theme: four
 region: content
-weight: -3
+weight: 0
 provider: null
 plugin: system_main_block
 settings:

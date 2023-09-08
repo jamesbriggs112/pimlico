@@ -1,0 +1,22 @@
+uuid: 9da6de03-27b4-4fab-9586-c8bc5060b974
+langcode: en
+status: true
+dependencies:
+  module:
+    - help
+  theme:
+    - four
+_core:
+  default_config_hash: '-laWx8WA-ikiIEH3NJQ0hVbjqk3iEuBms91LB0B4IQU'
+id: four_help
+theme: four
+region: content
+weight: -30
+provider: null
+plugin: help_block
+settings:
+  id: help_block
+  label: Help
+  label_display: '0'
+  provider: help
+visibility: {  }

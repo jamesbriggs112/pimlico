@@ -7,9 +7,9 @@ dependencies:
   module:
     - system
   theme:
-    - foundry
+    - four
 id: footerwhatson
-theme: foundry
+theme: four
 region: footer
 weight: -5
 provider: null

@@ -4,18 +4,18 @@
 This repository should only be used as an upstream source for projects.
 
 ### Prerequisites
-- Node v16
-- Yarn
-- PHP 8.1
+- Node v18
+- Yarn 3
+- PHP 8.2
 - Composer 2
 
-### Using this repository as a project base
+### How do I get set up? ###
 
-- `composer install`
-- Import `jp_drupal_skeleton.sql`, found here: https://www.dropbox.com/s/6mkd6vvehx2bhvo/jp_drupal_skeleton.sql?dl=0
-- Copy `example.settings.local.php` into `web/sites/default/settings.local.php` and update database connection info toward the bottom of the file
-- Copy `example.settings.php` into `web/sites/default/settings.php` and update database connection info toward the bottom of the file
-- Copy `example.development.services.yml` into web/sites/default/development.services.yml` for your local development debugging etc. to be enabled
+* Install Drush https://github.com/drush-ops/drush-launcher#installation---phar
+* `composer install` from your Drupal root folder
+* Copy `web/sites/example.settings.local.php` to `web/sites/default/settings.local.php` and configure database
+* Reset the admin password by running `drush uli --uri http://LOCAL_HOSTNAME`
+* Make sure the files from the backup are copied into the `/web/sites/default/files` folder
 - Point Document root to the `web` directory
 - `cd web/themes/custom/four`
 - `yarn`

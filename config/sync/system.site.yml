@@ -1,8 +1,8 @@
 _core:
   default_config_hash: VDJxTZtQR21qB4lvOq8zszJZLvLKrSPQpdn2E3T71Ww
 langcode: en
-uuid: e0a003d3-8243-49f2-b78d-b0d8d3324128
-name: 'The Foundry'
+uuid: f410b56b-0f28-4114-98c9-be44bc4d37c8
+name: 'Four Drupal Skeleton'
 mail: dev@joipolloi.com
 slogan: ''
 page:

@@ -58,6 +58,7 @@
         "drupal/svg_image": "^3.0",
         "drupal/twig_tweak": "^3.2",
         "drupal/twigsuggest": "^1.0@RC",
+        "drupal/upgrade_status": "^4.0",
         "drupal/viewfield": "^3.0@beta",
         "drupal/views_show_more": "^1.0",
         "drupal/webform": "^6.1",
@@ -96,7 +97,12 @@
                 "web-root": "web/"
             },
             "file-mapping": {
-                "[web-root]/sites/development.services.yml": false
+                "[web-root]/sites/example.settings.local.php": "scaffold/example.settings.local.php",
+                "[web-root]/sites/development.services.yml": {
+                    "mode": "replace",
+                    "path": "scaffold/development.services.yml",
+                    "overwrite": true
+                }
             }
         },
         "installer-paths": {

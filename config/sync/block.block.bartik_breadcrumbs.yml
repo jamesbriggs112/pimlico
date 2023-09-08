@@ -1,15 +1,15 @@
-uuid: 21560db0-7fa0-46f7-8347-03dd901c09ee
+uuid: 615f3c4c-d8a3-4efd-8e3d-0207625f591b
 langcode: en
-status: false
+status: true
 dependencies:
   module:
     - system
   theme:
-    - foundry
+    - bartik
 _core:
-  default_config_hash: VhBzWb7lMRtIOg9G7VSw_0uopi-7zXeHq4vXqqV1HFE
-id: foundry_breadcrumbs
-theme: foundry
+  default_config_hash: y0bXRvKYQQKkf_RVxA3aOPGpIfKKsDOzzrWYCgjxJ9Y
+id: bartik_breadcrumbs
+theme: bartik
 region: breadcrumb
 weight: 0
 provider: null

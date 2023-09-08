@@ -831,6 +831,8 @@ if (isset($_SERVER['RDS_DB_NAME'])) {
   );
 }
 
+$settings['config_sync_directory'] = '../config/sync';
+
 /**
  * Load local development override configuration, if available.
  *
@@ -849,4 +851,4 @@ if (file_exists($app_root . '/' . $site_path . '/settings.local.php')) {
   include $app_root . '/' . $site_path . '/settings.local.php';
 }
 
-$settings['config_sync_directory'] = '..config/sync';
+
