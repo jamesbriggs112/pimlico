@@ -10,7 +10,6 @@ dependencies:
     - field.field.node.page.field_meta_tags
     - field.field.node.page.field_sections
     - field.field.node.page.field_summary
-    - field.field.node.page.field_theme
     - node.type.page
   module:
     - entity_reference_revisions
@@ -103,4 +102,3 @@ hidden:
   body: true
   field_include_a_jump_menu: true
   field_meta_tags: true
-  field_theme: true

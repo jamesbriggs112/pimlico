@@ -16,7 +16,7 @@ provider: null
 plugin: 'system_menu_block:footer'
 settings:
   id: 'system_menu_block:footer'
-  label: 'Four'
+  label: Four
   label_display: visible
   provider: system
   level: 1

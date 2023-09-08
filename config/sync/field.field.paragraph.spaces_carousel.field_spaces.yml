@@ -4,7 +4,6 @@ status: true
 dependencies:
   config:
     - field.storage.paragraph.field_spaces
-    - node.type.space
     - paragraphs.paragraphs_type.spaces_carousel
 id: paragraph.spaces_carousel.field_spaces
 field_name: field_spaces
@@ -19,8 +18,7 @@ default_value_callback: ''
 settings:
   handler: 'default:node'
   handler_settings:
-    target_bundles:
-      space: space
+    target_bundles: {  }
     sort:
       field: _none
       direction: ASC

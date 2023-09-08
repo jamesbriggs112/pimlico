@@ -4,8 +4,8 @@ status: true
 dependencies: {  }
 _core:
   default_config_hash: Qf0tSZahnI_gd0XKTJ-jnT9w544ctV07R85BBTKfzrc
-id: free_crop
 label: 'Free crop'
+id: free_crop
 description: ''
 aspect_ratio: ''
 soft_limit_width: null

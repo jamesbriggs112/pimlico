@@ -48,7 +48,6 @@ content:
       paragraphs_features:
         add_in_between: false
         delete_confirmation: false
-        split_text: false
         show_drag_and_drop: true
       paragraphs_ee:
         paragraphs_ee:
@@ -77,7 +76,6 @@ content:
       paragraphs_features:
         add_in_between: false
         delete_confirmation: false
-        split_text: false
         show_drag_and_drop: true
       paragraphs_ee:
         paragraphs_ee:
