@@ -1,8 +1,0 @@
-uuid: e8031861-6604-43e3-ba6a-0ece8824e261
-langcode: en
-status: true
-dependencies: {  }
-id: footer-information
-label: 'Footer - Information'
-description: ''
-locked: false

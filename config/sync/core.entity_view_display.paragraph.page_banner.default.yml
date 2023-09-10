@@ -5,6 +5,8 @@ dependencies:
   config:
     - field.field.paragraph.page_banner.field_image
     - paragraphs.paragraphs_type.page_banner
+  module:
+    - fences
 id: paragraph.page_banner.default
 targetEntityType: paragraph
 bundle: page_banner
@@ -16,7 +18,16 @@ content:
     settings:
       view_mode: '16_9'
       link: false
-    third_party_settings: {  }
+    third_party_settings:
+      fences:
+        fences_field_tag: none
+        fences_field_classes: ''
+        fences_field_items_wrapper_tag: none
+        fences_field_items_wrapper_classes: ''
+        fences_field_item_tag: none
+        fences_field_item_classes: ''
+        fences_label_tag: div
+        fences_label_classes: ''
     weight: 0
     region: content
 hidden: {  }

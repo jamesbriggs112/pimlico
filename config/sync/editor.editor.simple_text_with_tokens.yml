@@ -1,0 +1,20 @@
+uuid: 70f42f9b-75bb-491c-b0b0-5acb750dfc29
+langcode: en
+status: true
+dependencies:
+  config:
+    - filter.format.simple_text_with_tokens
+  module:
+    - ckeditor5
+format: simple_text_with_tokens
+editor: ckeditor5
+settings:
+  toolbar:
+    items:
+      - bold
+      - italic
+      - link
+  plugins:
+    linkit_extension:
+      linkit_enabled: false
+image_upload: {  }

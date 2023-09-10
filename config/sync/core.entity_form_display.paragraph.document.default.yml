@@ -11,6 +11,7 @@ dependencies:
     - paragraphs.paragraphs_type.document
   module:
     - media_library
+    - media_library_edit
     - text
 _core:
   default_config_hash: J5KNhkAWItAmg9lmKKGEEpjXbkZlTSEPfFKKQ_5V7ds
@@ -49,14 +50,18 @@ content:
     region: content
     settings:
       media_types: {  }
-    third_party_settings: {  }
+    third_party_settings:
+      media_library_edit:
+        show_edit: '1'
   field_upload:
     type: media_library_widget
     weight: 3
     region: content
     settings:
       media_types: {  }
-    third_party_settings: {  }
+    third_party_settings:
+      media_library_edit:
+        show_edit: '1'
 hidden:
   created: true
   status: true

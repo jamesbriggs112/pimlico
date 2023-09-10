@@ -1,0 +1,22 @@
+uuid: de7418d0-cb85-4349-974c-c3995c4b5d65
+langcode: en
+status: true
+dependencies:
+  module:
+    - system
+  theme:
+    - four_starterkit
+_core:
+  default_config_hash: y0bXRvKYQQKkf_RVxA3aOPGpIfKKsDOzzrWYCgjxJ9Y
+id: four_starterkit_breadcrumbs
+theme: four_starterkit
+region: breadcrumb
+weight: 0
+provider: null
+plugin: system_breadcrumb_block
+settings:
+  id: system_breadcrumb_block
+  label: Breadcrumbs
+  label_display: '0'
+  provider: system
+visibility: {  }

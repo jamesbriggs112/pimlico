@@ -20,7 +20,6 @@ dependencies:
     - paragraphs.paragraphs_type.jump_menu_anchor
     - paragraphs.paragraphs_type.large_button
     - paragraphs.paragraphs_type.map
-    - paragraphs.paragraphs_type.section_wrapper
     - paragraphs.paragraphs_type.separator
     - paragraphs.paragraphs_type.teaser_carousel
     - paragraphs.paragraphs_type.testimonial
@@ -66,7 +65,6 @@ settings:
       separator: separator
       content_carousel: content_carousel
       teaser_carousel: teaser_carousel
-      section_wrapper: section_wrapper
       full_width_image_with_text: full_width_image_with_text
       iframe_embed: iframe_embed
       image_grid: image_grid
@@ -171,7 +169,7 @@ settings:
         enabled: false
       section_wrapper:
         weight: 60
-        enabled: true
+        enabled: false
       separator:
         weight: 52
         enabled: true

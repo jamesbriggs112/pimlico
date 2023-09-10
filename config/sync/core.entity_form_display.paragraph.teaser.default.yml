@@ -9,6 +9,7 @@ dependencies:
     - paragraphs.paragraphs_type.teaser
   module:
     - media_library
+    - media_library_edit
     - text
 _core:
   default_config_hash: Z8EDYtnwVfL34nxJTf1CTaU9dF1cSQfy08DYfXA0XxM
@@ -31,7 +32,9 @@ content:
     region: content
     settings:
       media_types: {  }
-    third_party_settings: {  }
+    third_party_settings:
+      media_library_edit:
+        show_edit: '1'
   field_text:
     type: text_textarea
     weight: 2

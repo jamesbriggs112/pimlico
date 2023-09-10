@@ -8,6 +8,7 @@ dependencies:
     - paragraphs.paragraphs_type.featured_item_banner
   module:
     - media_library
+    - media_library_edit
 _core:
   default_config_hash: nmBC-nz7vOmhPeE9I-vahkLFWAccdq7Tl8lTbJC4r14
 id: paragraph.featured_item_banner.default
@@ -31,7 +32,9 @@ content:
     region: content
     settings:
       media_types: {  }
-    third_party_settings: {  }
+    third_party_settings:
+      media_library_edit:
+        show_edit: '1'
 hidden:
   created: true
   status: true

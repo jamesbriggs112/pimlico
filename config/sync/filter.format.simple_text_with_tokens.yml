@@ -1,0 +1,32 @@
+uuid: 99cd3933-c925-45c3-960a-060140b042c3
+langcode: en
+status: true
+dependencies:
+  module:
+    - token_filter
+name: 'Simple Text with Tokens'
+format: simple_text_with_tokens
+weight: 0
+filters:
+  filter_html:
+    id: filter_html
+    provider: filter
+    status: true
+    weight: -10
+    settings:
+      allowed_html: '<br> <p> <strong> <em> <a href>'
+      filter_html_help: true
+      filter_html_nofollow: false
+  token_filter:
+    id: token_filter
+    provider: token_filter
+    status: true
+    weight: 0
+    settings:
+      replace_empty: '1'
+  filter_autop:
+    id: filter_autop
+    provider: filter
+    status: true
+    weight: 0
+    settings: {  }

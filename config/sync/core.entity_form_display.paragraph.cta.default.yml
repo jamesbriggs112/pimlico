@@ -20,7 +20,7 @@ content:
     region: content
     settings:
       placeholder_url: ''
-      placeholder_title: 'This text will not be displayed - the ''text'' value below will be instead'
+      placeholder_title: "This text will not be displayed - the 'text' value below will be instead"
     third_party_settings: {  }
 hidden:
   created: true

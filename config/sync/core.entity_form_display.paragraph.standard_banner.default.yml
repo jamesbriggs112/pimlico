@@ -11,6 +11,7 @@ dependencies:
   module:
     - field_group
     - media_library
+    - media_library_edit
     - text
 third_party_settings:
   field_group:
@@ -42,14 +43,18 @@ content:
     region: content
     settings:
       media_types: {  }
-    third_party_settings: {  }
+    third_party_settings:
+      media_library_edit:
+        show_edit: '1'
   field_image:
     type: media_library_widget
     weight: 0
     region: content
     settings:
       media_types: {  }
-    third_party_settings: {  }
+    third_party_settings:
+      media_library_edit:
+        show_edit: '1'
   field_show_territory_picker:
     type: boolean_checkbox
     weight: 1

@@ -1,0 +1,29 @@
+uuid: c477bdd5-0e87-4a0b-8b9d-a6a28f72dc64
+langcode: en
+status: false
+dependencies:
+  module:
+    - node
+  theme:
+    - four_starterkit
+_core:
+  default_config_hash: ItFhhiUOoeR7oIq73ZaCV7PAYrOwXZ-9fazMzF5DJXM
+id: four_starterkit_page_title
+theme: four_starterkit
+region: content
+weight: 0
+provider: null
+plugin: page_title_block
+settings:
+  id: page_title_block
+  label: 'Page title'
+  label_display: '0'
+  provider: core
+visibility:
+  'entity_bundle:node':
+    id: 'entity_bundle:node'
+    negate: false
+    context_mapping:
+      node: '@node.node_route_context:node'
+    bundles:
+      page: page
