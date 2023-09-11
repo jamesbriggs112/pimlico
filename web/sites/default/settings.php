@@ -815,6 +815,8 @@ $settings['migrate_node_migrate_type_classic'] = FALSE;
 # $settings['migrate_file_public_path'] = '';
 # $settings['migrate_file_private_path'] = '';
 
+$_SERVER['HTTPS'] = 'on';
+
 if (isset($_SERVER['RDS_DB_NAME'])) {
   $databases['default']['default'] = array(
     'database' => $_SERVER['RDS_DB_NAME'],
@@ -829,6 +831,11 @@ if (isset($_SERVER['RDS_DB_NAME'])) {
       'isolation_level' => 'SET SESSION TRANSACTION ISOLATION LEVEL READ COMMITTED',
     ],
   );
+}
+
+if (isset($_SERVER['ENVIRONMENT'])) {
+  $env = $_SERVER['ENVIRONMENT'];
+  require $app_root . '/../config/' . $env . '/' . $env . '.config.php';
 }
 
 $settings['config_sync_directory'] = '../config/sync';
@@ -850,5 +857,3 @@ $settings['config_sync_directory'] = '../config/sync';
 if (file_exists($app_root . '/' . $site_path . '/settings.local.php')) {
   include $app_root . '/' . $site_path . '/settings.local.php';
 }
-
-
