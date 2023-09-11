@@ -23,7 +23,7 @@ parameters:
     #
     # Not recommended in production environments
     # @default false
-    debug: false
+    debug: true
     # Twig auto-reload:
     #
     # Automatically recompile Twig templates whenever the source code changes.
@@ -43,15 +43,24 @@ parameters:
     #
     # Not recommended in production environments
     # @default true
-    cache: true
+    cache: false
   cors.config:
     enabled: true
     # Specify allowed headers, like 'x-allowed-header'.
-    allowedHeaders: ['x-csrf-token','authorization','content-type','accept','origin','x-requested-with', 'access-control-allow-origin']
+    allowedHeaders:
+      [
+        "x-csrf-token",
+        "authorization",
+        "content-type",
+        "accept",
+        "origin",
+        "x-requested-with",
+        "access-control-allow-origin",
+      ]
     # Specify allowed request methods, specify ['*'] to allow all possible ones.
-    allowedMethods: ['*']
+    allowedMethods: ["*"]
     # Configure requests allowed from specific origins.
-    allowedOrigins: ['*']
+    allowedOrigins: ["*"]
     # Sets the Access-Control-Expose-Headers header.
     exposedHeaders: false
     # Sets the Access-Control-Max-Age header.
