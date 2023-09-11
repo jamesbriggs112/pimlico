@@ -1,0 +1,49 @@
+@use '~sass-mq/mq' as *;
+@use '~sass-rem' as to;
+@use './layout-vars' as *;
+
+:root {
+  // Layout
+  --page-width: #{to.rem($default-max-bp)};
+  --page-gutter: #{to.rem(30px)};
+  --page-gutter-left: calc(var(--page-gutter) + env(safe-area-inset-left));
+  --page-gutter-right: calc(var(--page-gutter) + env(safe-area-inset-right));
+  --vertical-spacing: #{to.rem(40px)};
+  --component-spacing: #{to.rem(50px)};
+  --grid-vertical-spacing: #{to.rem(30px)};
+  --grid-horizontal-spacing: #{to.rem(30px)};
+
+  // Colors
+  --color-dark-grey: #3b3934;
+  --color-mid-grey: #707070;
+  --color-red: #df2b4a;
+  --color-blue: #129bdb;
+  --color-purple: #491738;
+  --color-black: #000000;
+  --color-white: #ffffff;
+  --color-primary: var(var(--color-purple));
+  --text-color: var(--color-black);
+  --background-color: var(--color-white);
+  --swiper-theme-color: black;
+
+  // Fonts
+  --font-family: 'Advocate Sans', 'Adjusted Arial Fallback';
+  --body-text: var(--font-family);
+  --header-text: var(--font-family);
+  --font-weight-light: 300;
+  --font-weight-regular: normal;
+  --font-weight-medium: 500;
+  --font-weight-semi-bold: 600;
+
+  // Components
+  --header-bg-color: var(--color-black);
+  --header-text-color: var(--color-white);
+  --header-height: #{to.rem(100px)};
+  --footer-bg-color: var(--color-black);
+  --footer-text-color: var(--color-white);
+
+  @include mq($from: tablet) {
+    --page-gutter: #{to.rem(50px)};
+    --component-spacing: #{to.rem(120px)};
+  }
+}

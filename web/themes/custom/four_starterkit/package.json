@@ -1,0 +1,33 @@
+{
+  "name": "four_starterkit",
+  "version": "10.0.0",
+  "description": "Four Starterkit theme",
+  "main": " ",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "watch": "npx mix watch",
+    "build": "npx mix --production"
+  },
+  "repository": {
+    "type": "git",
+    "url": "]"
+  },
+  "author": "Luke Alexander",
+  "license": "ISC",
+  "devDependencies": {
+    "browser-sync": "^2.29.3",
+    "browser-sync-webpack-plugin": "^2.3.0",
+    "eslint": "^8.49.0",
+    "laravel-mix": "^6.0.49",
+    "prettier": "^3.0.3",
+    "resolve-url-loader": "^5.0.0",
+    "sass": "^1.66.1",
+    "sass-loader": "^12.1.0"
+  },
+  "dependencies": {
+    "body-scroll-lock": "^4.0.0-beta.0",
+    "sass-mq": "^6.0.0",
+    "sass-rem": "^3.0.0",
+    "swiper": "^9.3.2"
+  }
+}

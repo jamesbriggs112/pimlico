@@ -1,0 +1,29 @@
+/**
+ * @file
+ * Styles for breadcrumbs.
+ */
+
+.breadcrumb {
+  padding-bottom: 0.5em;
+
+  ol {
+    margin: 0;
+    padding: 0;
+  }
+
+  li {
+    display: inline;
+    margin: 0;
+    padding: 0;
+    list-style-type: none;
+
+    &::before:not(:last-child) {
+      content: ' \BB ';
+    }
+  }
+}
+
+[dir='rtl'] .breadcrumb ol {
+  /* This is required to win over specificity of [dir="rtl"] ol */
+  margin-right: 0;
+}

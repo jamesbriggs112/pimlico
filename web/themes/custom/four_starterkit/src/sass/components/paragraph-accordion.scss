@@ -1,0 +1,67 @@
+@use '~sass-rem' as to;
+@use '~sass-mq/mq' as *;
+
+.paragraph--type--accordion-item {
+  color: white;
+  margin-bottom: to.rem(5px);
+
+  > button {
+    cursor: pointer;
+    text-transform: uppercase;
+    line-height: 1;
+    margin-bottom: 1rem;
+    font-weight: 500;
+    background-color: var(--color-dark-grey);
+    margin: 0;
+    padding: to.rem(30px);
+    display: flex;
+    align-items: center;
+    width: 100%;
+    border: 0;
+    gap: 10px;
+    text-align: left;
+
+    &:after {
+      content: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30.872 30.872'%3E%3Cg data-name='Group 3994' fill='%23fff'%3E%3Cpath data-name='Line 147' d='M30.872 16.936H0v-3h30.872Z'/%3E%3Cpath data-name='Line 148' d='M13.936 30.872V0h3v30.872Z'/%3E%3C/g%3E%3C/svg%3E");
+
+      margin: 0 0 0 auto;
+      width: 30px;
+      padding: 0;
+      line-height: 0;
+    }
+
+    &.active {
+      &:after {
+        content: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30.872 3'%3E%3Cpath data-name='Line 146' d='M30.872 3H0V0h30.872Z' fill='%23fff'/%3E%3C/svg%3E");
+      }
+    }
+  }
+
+  > div {
+    background-color: var(--color-mid-grey);
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.2s ease-out;
+
+    > div {
+      padding: to.rem(30px);
+    }
+  }
+
+  .paragraph {
+    max-width: none;
+    padding-left: 0;
+    padding-right: 0;
+
+    p {
+      font-size: to.rem(18px);
+    }
+  }
+}
+
+.paragraph.paragraph--type--accordion-item {
+  button.field--name-field-heading {
+    font-size: to.rem(32px);
+    max-width: none;
+  }
+}

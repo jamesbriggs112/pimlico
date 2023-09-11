@@ -1,0 +1,23 @@
+/* DRUPAL SPECIFIC OVERRIDES */
+
+.field-collection-view {
+    padding: 0px;
+    margin: 0px;
+    border-bottom: 0px;
+}
+
+.field-collection-container {
+    border-bottom: 0px;
+    
+}
+
+button.hamburger:focus {
+    outline: 0;
+}
+
+// remove clearfix - this was once useful but is now useless
+.clearfix {
+    &:after { 
+        content: none;
+    }
+}

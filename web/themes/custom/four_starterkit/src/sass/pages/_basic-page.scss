@@ -1,0 +1,79 @@
+@use '~sass-rem' as to;
+@use '~sass-mq/mq' as *;
+
+.page-node-type-page {
+  .node.node--view-mode-full {
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: auto var(--component-spacing) auto;
+    grid-template-areas:
+      'header'
+      '.'
+      'content';
+    justify-content: center;
+
+    .banner {
+      grid-area: header;
+      display: grid;
+      grid-template-columns:
+        minmax(var(--page-gutter-left), auto) minmax(0, var(--page-width))
+        minmax(var(--page-gutter-right), auto);
+      grid-template-rows: 1fr;
+      color: var(--text-color);
+
+      .paragraph--type--page-banner {
+        grid-area: 1 / 1 / 2 / 4;
+
+        img {
+          width: 100%;
+          height: auto;
+        }
+      }
+
+      &__intro {
+        grid-area: 1 / 2 / 2 / 3;
+        align-self: center;
+        justify-self: center;
+      }
+    }
+
+    &__content {
+      grid-area: content;
+      display: grid;
+      grid-template-columns:
+        minmax(var(--page-gutter-left), auto) minmax(0, var(--page-width))
+        minmax(var(--page-gutter-right), auto);
+      grid-auto-rows: auto;
+      grid-template-areas: '. sections .';
+      padding-bottom: var(--vertical-spacing);
+
+      .paragraph {
+        grid-area: sections;
+      }
+
+      > .field--name-body {
+        font-size: 1.2em;
+        margin-top: 2em;
+        margin-bottom: 2em;
+      }
+
+      > .paragraph {
+        margin-bottom: var(--component-spacing);
+      }
+
+      .section-content-mover {
+        > .paragraph {
+          margin-bottom: var(--component-spacing);
+        }
+      }
+
+      > .paragraph--type--text-wysiwyg- {
+        > .paragraph--type--text-wysiwyg-__content {
+          @include mq($from: tablet) {
+            width: calc(50% - #{to.rem(25px)});
+          }
+        }
+      }
+    }
+  }
+}

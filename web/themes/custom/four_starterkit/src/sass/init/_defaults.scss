@@ -1,0 +1,65 @@
+@use '~sass-rem' as to;
+@use '~sass-mq/mq' as *;
+
+a,
+a:visited {
+  text-decoration: none;
+
+  /* turn off link highlighting in certain scenarios */
+  h1 &,
+  h2 &,
+  h3 & {
+    color: black;
+  }
+
+  li.node-readmore &,
+  body.front .field-name-field-link &,
+  .views-field-view-node & {
+    color: black;
+  }
+
+  .views-field-title & {
+    color: black;
+  }
+
+  .meganav & {
+    color: black;
+  }
+}
+
+p {
+  font-size: to.rem(28px);
+  line-height: 1.15;
+  margin-top: 0;
+}
+
+.btn {
+  @include button;
+
+  &__dark {
+    @include button(white, var(--color-dark-grey));
+  }
+}
+
+q {
+  display: flex;
+  text-transform: uppercase;
+  font-weight: var(--font-weight-semi-bold);
+  font-size: to.rem(24px);
+
+  &::before {
+    font-size: to.rem(180px);
+    line-height: 0.7;
+    margin-right: to.rem(80px);
+  }
+}
+
+.visually-hidden {
+  clip: rect(0 0 0 0);
+  clip-path: inset(50%);
+  height: 1px;
+  overflow: hidden;
+  position: absolute;
+  white-space: nowrap;
+  width: 1px;
+}

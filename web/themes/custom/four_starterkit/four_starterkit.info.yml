@@ -1,0 +1,31 @@
+name: Four Starterkit
+type: theme
+"base theme": stable9
+description: "Four Starterkit Theme."
+starterkit: true
+version: VERSION
+regions:
+  header: Header
+  nav: Navigation
+  banner: Banner area
+  breadcrumb: Breadcrumb
+  content: Main content area
+  bottom: Page bottom
+  footer: Footer
+libraries:
+  - four_starterkit/base
+  - four_starterkit/messages
+  - core/normalize
+libraries-extend:
+  user/drupal.user:
+    - four_starterkit/user
+  core/drupal.dropbutton:
+    - four_starterkit/dropbutton
+  core/drupal.dialog:
+    - four_starterkit/dialog
+  file/drupal.file:
+    - four_starterkit/file
+  core/drupal.progress:
+    - four_starterkit/progress
+core_version_requirement: ^10
+generator: "starterkit_theme:10.1.3"

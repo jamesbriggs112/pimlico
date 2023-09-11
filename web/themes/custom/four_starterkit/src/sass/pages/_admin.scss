@@ -1,0 +1,50 @@
+body.not-logged-in.path-user {
+  main {
+    display: flex;
+    align-items: center;
+    text-align: center;
+    justify-content: center;
+  }
+}
+
+.block-core.block-local-tasks-block {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  z-index: 20;
+
+  ul.tabs.primary {
+    margin: 0px;
+    display: inline-flex;
+
+    li {
+      margin: 0;
+
+      a {
+        background-color: var(--gin-bg-layer);
+        color: var(--gin-color-primary);
+        font-weight: var(--gin-font-weight-semibold);
+
+        &:hover,
+        &.is-active {
+          color: var(--gin-bg-layer);
+          background-color: var(--gin-color-primary);
+        }
+      }
+
+      &:first-child {
+        a {
+          border-top-left-radius: 5px;
+          border-bottom-left-radius: 5px;
+        }
+      }
+
+      &:last-child {
+        a {
+          border-top-right-radius: 5px;
+          border-bottom-right-radius: 5px;
+        }
+      }
+    }
+  }
+}
