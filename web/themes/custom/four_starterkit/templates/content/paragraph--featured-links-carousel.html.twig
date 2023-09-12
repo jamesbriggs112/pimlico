@@ -51,10 +51,12 @@
 	<div {{ attributes.addClass(classes) }}>
 		{% block content %}
 			<swiper-container init="false">
-				{% for key, item in content.field_items if key|first != '#' %}
-					<swiper-slide>
-						{{item}}
-					</swiper-slide>
+				{% for key, item in content.field_items  %}
+					{% if key|first != '#' %}
+						<swiper-slide>
+							{{item}}
+						</swiper-slide>
+					{% endif %}
 				{% endfor %}
 			</swiper-container>
 		{% endblock %}

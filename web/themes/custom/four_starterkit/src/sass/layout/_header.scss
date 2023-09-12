@@ -3,6 +3,8 @@
 
 body {
   &.mobile-nav-open {
+    overflow: hidden;
+
     header nav.navigation {
       transform: translate(0);
     }
