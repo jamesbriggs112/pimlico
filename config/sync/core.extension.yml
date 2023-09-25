@@ -41,6 +41,7 @@ module:
   image_effects: 0
   image_styles_builder: 0
   image_widget_crop: 0
+  imagemagick: 0
   jquery_ui: 0
   jquery_ui_draggable: 0
   link: 0
@@ -69,6 +70,7 @@ module:
   search: 0
   shortcut: 0
   simple_gmap: 0
+  sophron: 0
   structure_sync: 0
   svg_image: 0
   system: 0

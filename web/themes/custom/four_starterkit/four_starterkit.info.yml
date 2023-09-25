@@ -6,11 +6,9 @@ starterkit: true
 version: VERSION
 regions:
   header: Header
-  nav: Navigation
   banner: Banner area
   breadcrumb: Breadcrumb
   content: Main content area
-  bottom: Page bottom
   footer: Footer
 libraries:
   - four_starterkit/base

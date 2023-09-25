@@ -1,0 +1,31 @@
+.paragraph--type--teaser img {
+  display: block;
+}
+.paragraph--type--teaser__content {
+  padding: 3.75rem 1.875rem 1.875rem;
+  background-color: var(--background-color);
+  color: var(--text-color);
+}
+.paragraph--type--teaser__content > *:last-child {
+  margin-bottom: 0;
+}
+.paragraph--type--teaser__content a {
+  color: var(--text-color);
+  text-decoration: underline;
+  font-weight: var(--font-weight-medium);
+}
+.paragraph--type--teaser:nth-child(even) {
+  display: none;
+}
+.node--type-article .paragraph--type--teaser__content {
+  color: black;
+  background-color: white;
+}
+.node--type-article .paragraph--type--teaser__content a {
+  color: black;
+}
+.node--type-article .paragraph--type--teaser::after {
+  background-color: white;
+}
+
+/*# sourceMappingURL=paragraph-teaser.css.map*/

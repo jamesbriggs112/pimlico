@@ -10,8 +10,8 @@
   --page-gutter-right: calc(var(--page-gutter) + env(safe-area-inset-right));
   --vertical-spacing: #{to.rem(40px)};
   --component-spacing: #{to.rem(50px)};
-  --grid-vertical-spacing: #{to.rem(30px)};
-  --grid-horizontal-spacing: #{to.rem(30px)};
+  --row-gap: #{to.rem(30px)};
+  --column-gap: #{to.rem(30px)};
 
   // Colors
   --color-dark-grey: #3b3934;

@@ -44,20 +44,10 @@
         minmax(var(--page-gutter-left), auto) minmax(0, var(--page-width))
         minmax(var(--page-gutter-right), auto);
       grid-auto-rows: auto;
-      grid-template-areas: '. sections .';
       padding-bottom: var(--vertical-spacing);
 
-      .paragraph {
-        grid-area: sections;
-      }
-
-      > .field--name-body {
-        font-size: 1.2em;
-        margin-top: 2em;
-        margin-bottom: 2em;
-      }
-
       > .paragraph {
+        grid-column: 2;
         margin-bottom: var(--component-spacing);
       }
 
