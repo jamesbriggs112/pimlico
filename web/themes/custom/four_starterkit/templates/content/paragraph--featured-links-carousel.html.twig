@@ -46,15 +46,18 @@
     not paragraph.isPublished() ? 'paragraph--unpublished'
   ]
 %}
-{{ attach_library('four/paragraph-image-carousel') }}
+{{ attach_library('four_starterkit/paragraph-image-carousel') }}
+
 {% block paragraph %}
 	<div {{ attributes.addClass(classes) }}>
 		{% block content %}
 			<swiper-container init="false">
-				{% for key, item in content.field_items if key|first != '#' %}
-					<swiper-slide>
-						{{item}}
-					</swiper-slide>
+				{% for key, item in content.field_items  %}
+					{% if key|first != '#' %}
+						<swiper-slide>
+							{{item}}
+						</swiper-slide>
+					{% endif %}
 				{% endfor %}
 			</swiper-container>
 		{% endblock %}

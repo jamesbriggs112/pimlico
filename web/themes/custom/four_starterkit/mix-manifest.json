@@ -16,6 +16,9 @@
     "/css/components/tabledrag.css": "/css/components/tabledrag.css",
     "/css/components/search-results.css": "/css/components/search-results.css",
     "/css/components/progress.css": "/css/components/progress.css",
+    "/css/components/paragraph-two-column-area.css": "/css/components/paragraph-two-column-area.css",
+    "/css/components/paragraph-teaser.css": "/css/components/paragraph-teaser.css",
+    "/css/components/paragraph-quote.css": "/css/components/paragraph-quote.css",
     "/css/components/paragraph-image-carousel.css": "/css/components/paragraph-image-carousel.css",
     "/css/components/paragraph-iframe-embed.css": "/css/components/paragraph-iframe-embed.css",
     "/css/components/paragraph-accordion.css": "/css/components/paragraph-accordion.css",
@@ -37,5 +40,6 @@
     "/css/components/exposed-filters.css": "/css/components/exposed-filters.css",
     "/css/components/dropbutton.css": "/css/components/dropbutton.css",
     "/css/components/dialog.css": "/css/components/dialog.css",
-    "/css/components/details.css": "/css/components/details.css"
+    "/css/components/details.css": "/css/components/details.css",
+    "/css/components/paragraph-featured-link.css": "/css/components/paragraph-featured-link.css"
 }

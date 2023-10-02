@@ -1,0 +1,44 @@
+.paragraph--type--quote::after, .paragraph--type--quote::before {
+  content: "";
+  display: block;
+  border-bottom: 1px solid var(--color-dark-grey);
+}
+.paragraph--type--quote q::before {
+  content: none;
+}
+.paragraph--type--quote__quote {
+  display: flex;
+  margin: 0 auto;
+  justify-content: center;
+  padding: var(--vertical-spacing) 0;
+  flex-direction: column;
+}
+@media (min-width: 46.25em) {
+  .paragraph--type--quote__quote {
+    flex-direction: row;
+  }
+}
+.paragraph--type--quote__quote::before {
+  content: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 74.4 45.2'%3E%3Cpath d='M24 45.2C24 27.4 28.6 13.4 38.2 0H21.8C10.4 8 0 24 0 45.2Zm36.4 0c0-17.8 4.4-31.8 14-45.2H58C46.8 8 36.2 24 36.2 45.2Z' data-name='Path 322'/%3E%3C/svg%3E");
+  width: 4.6875rem;
+  margin-bottom: var(--vertical-spacing);
+}
+@media (min-width: 46.25em) {
+  .paragraph--type--quote__quote::before {
+    margin-right: 5rem;
+    margin-bottom: 0;
+  }
+}
+.paragraph--type--quote__content {
+  width: 100%;
+  max-width: 37.5rem;
+}
+.paragraph--type--quote__content .field--name-field-name,
+.paragraph--type--quote__content .field--name-field-position-company {
+  font-size: 1.375rem;
+}
+.paragraph--type--quote__content .field--name-field-name {
+  font-weight: var(--font-weight-semi-bold);
+}
+
+/*# sourceMappingURL=paragraph-quote.css.map*/

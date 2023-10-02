@@ -1,0 +1,43 @@
+@use '~sass-rem' as to;
+@use '~sass-mq/mq' as *;
+
+.paragraph--type--teaser {
+  img {
+    display: block;
+  }
+
+  &__content {
+    padding: to.rem(60px) to.rem(30px) to.rem(30px);
+    background-color: var(--background-color);
+    color: var(--text-color);
+
+    > *:last-child {
+      margin-bottom: 0;
+    }
+
+    a {
+      color: var(--text-color);
+      text-decoration: underline;
+      font-weight: var(--font-weight-medium);
+    }
+  }
+
+  &:nth-child(even) {
+    display: none;
+  }
+
+  .node--type-article & {
+    &__content {
+      color: black;
+      background-color: white;
+
+      a {
+        color: black;
+      }
+    }
+
+    &::after {
+      background-color: white;
+    }
+  }
+}

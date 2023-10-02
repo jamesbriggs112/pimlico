@@ -1,0 +1,21 @@
+.paragraph--type--two-column-area__content {
+  display: flex;
+  flex-direction: column;
+  gap: var(--row-gap) 0;
+}
+@media (min-width: 46.25em) {
+  .paragraph--type--two-column-area__content {
+    flex-direction: row;
+    gap: 0 var(--column-gap);
+  }
+}
+@media (min-width: 46.25em) {
+  .paragraph--type--two-column-area__left, .paragraph--type--two-column-area__right {
+    width: 50%;
+  }
+}
+.paragraph--type--two-column-area__left .paragraph:not(:last-child), .paragraph--type--two-column-area__right .paragraph:not(:last-child) {
+  margin-bottom: var(--row-gap);
+}
+
+/*# sourceMappingURL=paragraph-two-column-area.css.map*/

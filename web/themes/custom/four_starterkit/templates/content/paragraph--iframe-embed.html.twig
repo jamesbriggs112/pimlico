@@ -46,7 +46,8 @@ view_mode ? 'paragraph--view-mode--' ~ view_mode|clean_class,
 not paragraph.isPublished() ? 'paragraph--unpublished'
 ]
 %}
-{{ attach_library('four/paragraph-iframe-embed') }}
+{{ attach_library('four_starterkit/paragraph-iframe-embed') }}
+
 {% block paragraph %}
 	<div {{ attributes.addClass(classes) }}>
 		{% block content %}

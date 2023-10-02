@@ -110,7 +110,7 @@ user:
         weight: -10
 
 paragraph-accordion:
-  version: 1.0
+  version: VERSION
   css:
     component:
       css/components/paragraph-accordion.css:
@@ -118,8 +118,15 @@ paragraph-accordion:
   js:
     js/components/paragraph-accordion.js: {}
 
+paragraph-featured-link:
+  version: VERSION
+  css:
+    component:
+      css/components/paragraph-featured-link.css:
+        weight: -10
+
 paragraph-image-carousel:
-  version: 1.0
+  version: VERSION
   css:
     component:
       css/components/paragraph-image-carousel.css:
@@ -128,8 +135,29 @@ paragraph-image-carousel:
     js/components/paragraph-image-carousel.js: {}
 
 paragraph-iframe-embed:
-  version: 1.0
+  version: VERSION
   css:
     component:
       css/components/paragraph-iframe-embed.css:
+        weight: -10
+
+paragraph-quote:
+  version: VERSION
+  css:
+    component:
+      css/components/paragraph-quote.css:
+        weight: -10
+
+paragraph-teaser:
+  version: VERSION
+  css:
+    component:
+      css/components/paragraph-teaser.css:
+        weight: -10
+
+paragraph-two-column-area:
+  version: VERSION
+  css:
+    component:
+      css/components/paragraph-two-column-area.css:
         weight: -10

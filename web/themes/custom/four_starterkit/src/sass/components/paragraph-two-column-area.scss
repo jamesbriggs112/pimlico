@@ -1,0 +1,26 @@
+@use '~sass-rem' as to;
+@use '~sass-mq/mq' as *;
+
+.paragraph--type--two-column-area {
+  &__content {
+    display: flex;
+    flex-direction: column;
+    gap: var(--row-gap) 0;
+
+    @include mq($from: tablet) {
+      flex-direction: row;
+      gap: 0 var(--column-gap);
+    }
+  }
+
+  &__left,
+  &__right {
+    @include mq($from: tablet) {
+      width: 50%;
+    }
+
+    .paragraph:not(:last-child) {
+      margin-bottom: var(--row-gap);
+    }
+  }
+}
