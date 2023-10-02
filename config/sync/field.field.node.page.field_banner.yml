@@ -16,7 +16,7 @@ entity_type: node
 bundle: page
 label: Banner
 description: ''
-required: true
+required: false
 translatable: false
 default_value: {  }
 default_value_callback: ''
@@ -33,6 +33,9 @@ settings:
       accordion_item:
         weight: 41
         enabled: false
+      banner_image_carousel:
+        weight: 49
+        enabled: false
       carousel:
         weight: 13
         enabled: false
@@ -41,6 +44,9 @@ settings:
         enabled: false
       chart:
         weight: 15
+        enabled: false
+      content_carousel:
+        weight: 53
         enabled: false
       cta:
         weight: 47
@@ -51,11 +57,23 @@ settings:
       document_list:
         weight: 49
         enabled: false
+      download:
+        weight: 57
+        enabled: false
       embedded_view_advanced_:
         weight: 16
         enabled: false
       featured_item_banner:
         weight: 51
+        enabled: false
+      featured_link:
+        weight: 60
+        enabled: false
+      featured_links_carousel:
+        weight: 61
+        enabled: false
+      full_width_image_with_text:
+        weight: 62
         enabled: false
       grid:
         weight: 17
@@ -66,8 +84,17 @@ settings:
       home_page_banner:
         weight: 18
         enabled: false
+      iframe_embed:
+        weight: 66
+        enabled: false
       image:
         weight: 19
+        enabled: false
+      image_carousel:
+        weight: 68
+        enabled: false
+      image_grid:
+        weight: 69
         enabled: false
       jump_menu_anchor:
         weight: 57
@@ -93,8 +120,8 @@ settings:
       page_banner:
         weight: 38
         enabled: true
-      section_wrapper:
-        weight: 60
+      quote:
+        weight: 78
         enabled: false
       separator:
         weight: 65

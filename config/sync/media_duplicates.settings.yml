@@ -1,2 +1,3 @@
 restrict_duplicates: 1
 restrict_new_media_only: 0
+compare_within_bundle_only: false

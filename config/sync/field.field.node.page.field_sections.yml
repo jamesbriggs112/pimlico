@@ -9,23 +9,20 @@ dependencies:
     - paragraphs.paragraphs_type.carousel
     - paragraphs.paragraphs_type.content_carousel
     - paragraphs.paragraphs_type.cta
-    - paragraphs.paragraphs_type.document_list
     - paragraphs.paragraphs_type.embedded_view_advanced_
     - paragraphs.paragraphs_type.full_width_image_with_text
     - paragraphs.paragraphs_type.grid
-    - paragraphs.paragraphs_type.highlighted_text
     - paragraphs.paragraphs_type.iframe_embed
     - paragraphs.paragraphs_type.image
     - paragraphs.paragraphs_type.image_grid
     - paragraphs.paragraphs_type.jump_menu_anchor
     - paragraphs.paragraphs_type.large_button
     - paragraphs.paragraphs_type.map
+    - paragraphs.paragraphs_type.quote
     - paragraphs.paragraphs_type.separator
     - paragraphs.paragraphs_type.teaser_carousel
     - paragraphs.paragraphs_type.testimonial
     - paragraphs.paragraphs_type.text_wysiwyg_
-    - paragraphs.paragraphs_type.tiled_links
-    - paragraphs.paragraphs_type.timeline
     - paragraphs.paragraphs_type.two_column_area
     - paragraphs.paragraphs_type.video
   module:
@@ -55,13 +52,9 @@ settings:
       text_wysiwyg_: text_wysiwyg_
       video: video
       jump_menu_anchor: jump_menu_anchor
-      document_list: document_list
-      highlighted_text: highlighted_text
       accordion: accordion
       map: map
       cta: cta
-      timeline: timeline
-      tiled_links: tiled_links
       separator: separator
       content_carousel: content_carousel
       teaser_carousel: teaser_carousel
@@ -69,6 +62,7 @@ settings:
       iframe_embed: iframe_embed
       image_grid: image_grid
       two_column_area: two_column_area
+      quote: quote
     negate: 0
     target_bundles_drag_drop:
       accordion:
@@ -100,7 +94,7 @@ settings:
         enabled: false
       document_list:
         weight: 26
-        enabled: true
+        enabled: false
       download:
         weight: 55
         enabled: false
@@ -124,7 +118,7 @@ settings:
         enabled: true
       highlighted_text:
         weight: 29
-        enabled: true
+        enabled: false
       home_page_banner:
         weight: 18
         enabled: false
@@ -166,16 +160,10 @@ settings:
         enabled: false
       quote:
         weight: 74
-        enabled: false
-      section_wrapper:
-        weight: 60
-        enabled: false
+        enabled: true
       separator:
         weight: 52
         enabled: true
-      spaces_carousel:
-        weight: 77
-        enabled: false
       standard_banner:
         weight: 24
         enabled: false
@@ -199,10 +187,10 @@ settings:
         enabled: false
       tiled_links:
         weight: 48
-        enabled: true
+        enabled: false
       timeline:
         weight: 43
-        enabled: true
+        enabled: false
       timeline_entry:
         weight: 44
         enabled: false

@@ -9,6 +9,7 @@ dependencies:
     - media.type.image
     - responsive_image.styles.natural
   module:
+    - fences
     - responsive_image
 _core:
   default_config_hash: cHMCAIpr1vt20m36Gs_s_iMaukwfFpfDJNVcreLi52s
@@ -24,8 +25,17 @@ content:
       responsive_image_style: natural
       image_link: ''
       image_loading:
-        attribute: eager
-    third_party_settings: {  }
+        attribute: lazy
+    third_party_settings:
+      fences:
+        fences_field_tag: none
+        fences_field_classes: ''
+        fences_field_items_wrapper_tag: none
+        fences_field_items_wrapper_classes: ''
+        fences_field_item_tag: none
+        fences_field_item_classes: ''
+        fences_label_tag: div
+        fences_label_classes: ''
     weight: 1
     region: content
 hidden:

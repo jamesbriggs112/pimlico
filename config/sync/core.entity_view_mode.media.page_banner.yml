@@ -1,0 +1,10 @@
+uuid: 193342d1-5829-4dbf-aa85-b7aeeecc6f1b
+langcode: en
+status: true
+dependencies:
+  module:
+    - media
+id: media.page_banner
+label: 'Page Banner'
+targetEntityType: media
+cache: true
