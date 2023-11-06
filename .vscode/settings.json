@@ -23,7 +23,8 @@
         "*.tpl.php": "php",
         "*.test": "php",
         "*.php": "php",
-        "*.info": "ini"
+        "*.info": "ini",
+        "*.html": "twig"
     },
     "files.trimTrailingWhitespace": true,
     "files.restoreUndoStack": false,
