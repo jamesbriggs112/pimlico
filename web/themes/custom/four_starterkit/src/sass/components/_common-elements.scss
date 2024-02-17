@@ -1,5 +1,6 @@
-@use '~sass-rem' as to;
-@use '~sass-mq/mq' as *;
+@use 'sass-rem' as to;
+@use 'sass-mq/mq' as *;
+@use '../init/mixins' as *;
 
 .paragraph {
   box-sizing: border-box;

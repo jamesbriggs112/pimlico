@@ -9,6 +9,6 @@ $breakpoints: (
   desktopAd: 810px,
 );
 
-@use '~sass-mq/mq' with (
+@use 'sass-mq/mq' with (
   $breakpoints: $breakpoints
 );

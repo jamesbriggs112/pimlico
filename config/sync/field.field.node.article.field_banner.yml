@@ -15,13 +15,13 @@ field_name: field_banner
 entity_type: node
 bundle: article
 label: Banner
-description: ''
+description: ""
 required: false
 translatable: true
-default_value: {  }
-default_value_callback: ''
+default_value: {}
+default_value_callback: ""
 settings:
-  handler: 'default:paragraph'
+  handler: "default:paragraph"
   handler_settings:
     target_bundles:
       standard_banner: standard_banner
@@ -32,9 +32,6 @@ settings:
         enabled: false
       accordion_item:
         weight: 35
-        enabled: false
-      biographies:
-        weight: 36
         enabled: false
       capability_list:
         weight: 37

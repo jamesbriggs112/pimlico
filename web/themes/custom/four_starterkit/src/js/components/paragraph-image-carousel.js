@@ -1,5 +1,5 @@
 import { register } from 'swiper/element/bundle';
-import { Navigation } from 'swiper';
+import { Navigation } from 'swiper/modules';
 // register Swiper custom elements
 register();
 

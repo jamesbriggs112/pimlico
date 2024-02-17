@@ -25,17 +25,16 @@ field_name: field_sections
 entity_type: node
 bundle: article
 label: Sections
-description: ''
+description: ""
 required: false
 translatable: true
-default_value: {  }
-default_value_callback: ''
+default_value: {}
+default_value_callback: ""
 settings:
-  handler: 'default:paragraph'
+  handler: "default:paragraph"
   handler_settings:
     target_bundles:
       accordion: accordion
-      biographies: biographies
       chart: chart
       cta: cta
       document_list: document_list

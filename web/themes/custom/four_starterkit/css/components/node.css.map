@@ -1,1 +1,0 @@
-{"version":3,"file":"css/components/node.css","mappings":"AAAA;;;EAAA;AAKA;EACE;AAAF,C","sources":["webpack://four_starterkit/./src/sass/components/node.scss"],"sourcesContent":["/**\n * @file\n * Visual styles for nodes.\n */\n\n.node--unpublished {\n  background-color: #fff4f4;\n}\n"],"names":[],"sourceRoot":""}

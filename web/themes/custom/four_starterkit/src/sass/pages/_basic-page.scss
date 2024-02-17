@@ -1,5 +1,5 @@
-@use '~sass-rem' as to;
-@use '~sass-mq/mq' as *;
+@use 'sass-rem' as to;
+@use 'sass-mq/mq' as *;
 
 .page-node-type-page {
   .node.node--view-mode-full {
