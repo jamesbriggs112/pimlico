@@ -8,5 +8,6 @@ _core:
   default_config_hash: HieZYEJB5nVdL1A381OikOOwJQ2nzPBcLoDVvhzbUlQ
 id: paragraph.article_attachment
 label: 'Article attachment'
+description: ''
 targetEntityType: paragraph
 cache: true

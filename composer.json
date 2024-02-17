@@ -70,7 +70,7 @@
         "drupal/viewfield": "^3.0@beta",
         "drupal/views_show_more": "^2.0",
         "drupal/webform": "^6.2@beta",
-        "drush/drush": "^12.2",
+        "drush/drush": "^12.4",
         "marmelo/banner_paragraph": "^1.0",
         "marmelo/marmelo_base_config": "^1.0",
         "marmelo/media_entity_download_extended": "^2.0.0",
@@ -101,12 +101,6 @@
             },
             "drupal/focal_point": {
                 "add crop by aspect ratio": "https://www.drupal.org/files/issues/2021-02-23/3186353-a8e65e97.patch"
-            },
-            "drupal/pathauto": {
-                "php 8.2 fixes": "https://www.drupal.org/files/issues/2023-08-28/php8-2-notice-pathauto-3328670-27.patch"
-            },
-            "drupal/fences": {
-                "php 8.2 fixes": "https://git.drupalcode.org/project/fences/-/merge_requests/26.diff"
             }
         },
         "drupal-scaffold": {

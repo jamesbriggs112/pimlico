@@ -8,5 +8,6 @@ _core:
   default_config_hash: Bk9ZyRdHKWhR0sHSyONEYxOSmVEP75GaW_bUDqlQPdA
 id: node.carousel_item
 label: 'Carousel item'
+description: ''
 targetEntityType: node
 cache: true

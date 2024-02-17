@@ -8,6 +8,12 @@ name: 'Simple Text with Tokens'
 format: simple_text_with_tokens
 weight: 0
 filters:
+  filter_autop:
+    id: filter_autop
+    provider: filter
+    status: true
+    weight: 0
+    settings: {  }
   filter_html:
     id: filter_html
     provider: filter
@@ -24,9 +30,3 @@ filters:
     weight: 0
     settings:
       replace_empty: '1'
-  filter_autop:
-    id: filter_autop
-    provider: filter
-    status: true
-    weight: 0
-    settings: {  }

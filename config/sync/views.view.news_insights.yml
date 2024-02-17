@@ -196,16 +196,16 @@ display:
             items_per_page_options_all_label: '- All -'
             offset: false
             offset_label: Offset
-          result_display_method: append
           show_more_text: 'Show more'
           show_more_empty_text: ''
-          initial: '10'
+          result_display_method: append
+          initial: 10
           effects:
             type: scroll_fade
             speed_type: slow
-            speed_value: ''
-            scroll_offset: '50'
             speed: slow
+            speed_value: null
+            scroll_offset: 50
           advance:
             content_selector: ''
             pager_selector: ''
@@ -313,7 +313,6 @@ display:
           title: ''
           default_argument_type: node
           default_argument_options: {  }
-          default_argument_skip_url: false
           summary_options:
             base_path: ''
             count: true

@@ -8,5 +8,6 @@ _core:
   default_config_hash: 0Ci-zLVpbNBqylI3VQomCu9tb0nFmuJMoBjMSDjgTUE
 id: node.collapsible
 label: Collapsible
+description: ''
 targetEntityType: node
 cache: true

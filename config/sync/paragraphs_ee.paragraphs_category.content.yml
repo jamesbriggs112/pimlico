@@ -6,5 +6,7 @@ _core:
   default_config_hash: kC4CfF3pRrNISp-hSOJmOxhZzIaPWvkKm0COXEMH2hg
 id: content
 label: Content
-description: ''
+description:
+  value: ''
+  format: restricted_html
 weight: -10

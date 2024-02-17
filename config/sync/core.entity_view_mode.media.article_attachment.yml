@@ -8,5 +8,6 @@ _core:
   default_config_hash: P5xf3ir-8ed9O5sBvrArFGnhXD7vlcQC8qlGOZGS5DU
 id: media.article_attachment
 label: 'Article attachment'
+description: ''
 targetEntityType: media
 cache: true
