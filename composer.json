@@ -69,6 +69,7 @@
         "drupal/twig_tweak": "^3.2",
         "drupal/viewfield": "^3.0@beta",
         "drupal/views_show_more": "^2.0",
+        "drupal/vite": "^1.1",
         "drupal/webform": "^6.2@beta",
         "drush/drush": "^12.4",
         "marmelo/banner_paragraph": "^1.0",
