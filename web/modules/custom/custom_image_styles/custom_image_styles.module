@@ -3,7 +3,7 @@
 /**
  * Implements hook_theme_registry_alter().
  */
-function next_image_styles_theme_registry_alter(&$theme_registry)
+function custom_image_styles_theme_registry_alter(&$theme_registry)
 {
   // Tell the theme system to look in templates in our module.
   $theme_registry['focal_point_preview_page']['theme paths'] = array(0 => \Drupal::service('extension.list.module')->getPath('next_image_styles') . '/templates');
