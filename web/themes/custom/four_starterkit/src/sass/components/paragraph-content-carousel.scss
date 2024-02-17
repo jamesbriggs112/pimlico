@@ -1,0 +1,12 @@
+.paragraph--type--content-carousel {
+  overflow: hidden;
+
+  h2,
+  .swiper-container {
+    grid-column: 2;
+  }
+
+  .swiper {
+    overflow: visible;
+  }
+}

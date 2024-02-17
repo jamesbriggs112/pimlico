@@ -138,15 +138,13 @@ paragraph-featured-link:
       src/sass/components/paragraph-featured-link.scss:
         weight: -10
 
-paragraph-image-carousel:
+paragraph-content-carousel:
   version: VERSION
   vite: true
   css:
     component:
-      src/sass/components/paragraph-image-carousel.scss:
+      src/sass/components/paragraph-content-carousel.scss:
         weight: -10
-  js:
-    js/components/paragraph-image-carousel.js: {}
 
 paragraph-iframe-embed:
   version: VERSION
@@ -179,3 +177,16 @@ paragraph-two-column-area:
     component:
       src/sass/components/paragraph-two-column-area.scss:
         weight: -10
+
+swiper:
+  version: VERSION
+  vite: true
+  css:
+    component:
+      src/sass/components/swiper.scss:
+        weight: -10
+  js:
+    src/js/components/swiper.js: {}
+  dependencies:
+    - core/once
+    - core/drupal

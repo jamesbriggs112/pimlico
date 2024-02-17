@@ -43,27 +43,52 @@
     'paragraph',
     'paragraph--type--' ~ paragraph.bundle|clean_class,
     view_mode ? 'paragraph--view-mode--' ~ view_mode|clean_class,
-    not paragraph.isPublished() ? 'paragraph--unpublished'
+    not paragraph.isPublished() ? 'paragraph--unpublished',
+    'fullwidth'
   ]
 %}
-{{ attach_library('four_starterkit/paragraph-image-carousel') }}
+{{ attach_library('four_starterkit/paragraph-content-carousel') }}
 
-<script>
-	var slidesPerView = 3;
-</script>
+{% set swiper = {
+  spaceBetween: 30,
+	breakpoints: {
+    320: {
+      slidesPerView: 1.3,
+			 scrollbar: {
+					dragSize: 80,
+       },
+    },
+    768: {
+      slidesPerView: 2.3,
+			scrollbar: {
+					dragSize: 130,
+      },
+    },
+		980: {
+      slidesPerView: 4,
+			scrollbar: {
+					dragSize: 180,
+      },
+    }
+  }
+} %}
+
+
+{% set vars =  {
+  swiper,
+  showNav: true
+}%}
+
+
 {% block paragraph %}
-	<div {{ attributes.addClass(classes) }} data-change-nav-offset="true">
+	<section {{ attributes.addClass(classes) }}>
 		{% block content %}
 			{{ content.field_heading }}
-			<swiper-container init="false">
-				{% for key, item in content.field_news_events  %}
-					{% if key|first != '#' %}
-						<swiper-slide>
-							{{item}}
-						</swiper-slide>
-					{% endif %}
-				{% endfor %}
-			</swiper-container>
+			{% embed '@four_starterkit/includes/swiper.html.twig' with vars %}
+				{% block slides %}
+					{{ content.field_content }}
+				{% endblock %}
+			{% endembed %}
 		{% endblock %}
-	</div>
+	</section>
 {% endblock paragraph %}

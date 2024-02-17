@@ -42,8 +42,15 @@
   --footer-bg-color: var(--color-black);
   --footer-text-color: var(--color-white);
 
+  // Swiper
+  --swiper-navigation-color: var(--color-white);
+  --swiper-navigation-background: var(--color-black);
+  --swiper-navigation-size: #{to.rem(24px)};
+  --swiper-navigation-radius: 50%;
+  --swiper-navigation-sides-offset: calc(-1 * var(--swiper-navigation-size));
+
   @include mq($from: tablet) {
     --page-gutter: #{to.rem(50px)};
-    --component-spacing: #{to.rem(120px)};
+    --component-spacing: #{to.rem(80px)};
   }
 }

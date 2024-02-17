@@ -3,8 +3,8 @@ langcode: en
 status: true
 dependencies:
   config:
+    - field.field.paragraph.content_carousel.field_content
     - field.field.paragraph.content_carousel.field_heading
-    - field.field.paragraph.content_carousel.field_news_events
     - paragraphs.paragraphs_type.content_carousel
   module:
     - fences
@@ -13,15 +13,7 @@ targetEntityType: paragraph
 bundle: content_carousel
 mode: default
 content:
-  field_heading:
-    type: string
-    label: hidden
-    settings:
-      link_to_entity: false
-    third_party_settings: {  }
-    weight: 0
-    region: content
-  field_news_events:
+  field_content:
     type: entity_reference_entity_view
     label: hidden
     settings:
@@ -29,14 +21,22 @@ content:
       link: false
     third_party_settings:
       fences:
-        fences_field_tag: div
+        fences_field_tag: none
         fences_field_classes: ''
         fences_field_items_wrapper_tag: none
         fences_field_items_wrapper_classes: ''
-        fences_field_item_tag: div
+        fences_field_item_tag: none
         fences_field_item_classes: ''
         fences_label_tag: div
         fences_label_classes: ''
     weight: 1
+    region: content
+  field_heading:
+    type: string
+    label: hidden
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    weight: 0
     region: content
 hidden: {  }

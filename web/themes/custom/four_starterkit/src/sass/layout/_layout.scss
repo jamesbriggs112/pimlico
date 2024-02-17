@@ -25,10 +25,6 @@ canvas {
       'main'
       'footer';
 
-    .block-system-breadcrumb-block {
-      padding: 0 var(--page-gutter-right) 0 var(--page-gutter-left);
-    }
-
     > header {
       grid-area: header;
       width: 100%;

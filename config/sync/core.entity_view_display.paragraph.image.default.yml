@@ -5,10 +5,11 @@ dependencies:
   config:
     - field.field.paragraph.image.field_heading
     - field.field.paragraph.image.field_image
-    - field.field.paragraph.image.field_styling_options
+    - field.field.paragraph.image.field_image_style
     - paragraphs.paragraphs_type.image
   module:
     - fences
+    - options
 _core:
   default_config_hash: Fga1qk-FD_h-56ny7TfyHTWy72ZNu85FF0CfZqUM6BI
 id: paragraph.image.default
@@ -28,11 +29,11 @@ content:
     type: entity_reference_entity_view
     label: hidden
     settings:
-      view_mode: full
+      view_mode: '16_9'
       link: false
     third_party_settings:
       fences:
-        fences_field_tag: div
+        fences_field_tag: none
         fences_field_classes: ''
         fences_field_items_wrapper_tag: none
         fences_field_items_wrapper_classes: ''
@@ -42,5 +43,11 @@ content:
         fences_label_classes: ''
     weight: 1
     region: content
-hidden:
-  field_styling_options: true
+  field_image_style:
+    type: list_default
+    label: above
+    settings: {  }
+    third_party_settings: {  }
+    weight: 2
+    region: content
+hidden: {  }

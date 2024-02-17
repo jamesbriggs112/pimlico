@@ -31,20 +31,6 @@
   );
 }
 
-@mixin siteWidth {
-  max-width: var(--page-width);
-  margin: 0 auto;
-  padding-left: var(--page-gutter);
-  padding-right: var(--page-gutter);
-}
-
-@mixin breakContainer {
-  margin-left: calc(50% - 50vw);
-  margin-right: calc(50% - 50vw);
-  padding-left: var(--page-gutter);
-  padding-right: var(--page-gutter);
-}
-
 @mixin bar-after($stretch: true) {
   &:after {
     content: '-';
@@ -167,4 +153,12 @@
 @mixin section-header() {
   font-size: 1.5rem;
   font-weight: bold;
+}
+
+@mixin contentWithGutters() {
+  display: grid;
+  grid-template-columns:
+    minmax(var(--page-gutter-left), auto) minmax(0, var(--page-width))
+    minmax(var(--page-gutter-right), auto);
+  grid-auto-rows: auto;
 }

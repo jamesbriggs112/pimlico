@@ -6,11 +6,13 @@ dependencies:
     - field.field.node.article.body
     - field.field.node.article.field_banner
     - field.field.node.article.field_sections
+    - field.field.node.article.field_seo_description
     - field.field.node.article.field_tags
     - field.field.node.article.field_teaser
     - node.type.article
   module:
     - entity_reference_revisions
+    - fences
     - user
 _core:
   default_config_hash: 7fb0j9HnIXfP9ndewzgPPzzeX_SV532wuYpkscrCMCk
@@ -19,22 +21,49 @@ targetEntityType: node
 bundle: article
 mode: default
 content:
-  field_sections:
+  field_banner:
     type: entity_reference_revisions_entity_view
-    label: above
+    label: hidden
     settings:
       view_mode: default
       link: ''
-    third_party_settings: {  }
-    weight: 2
+    third_party_settings:
+      fences:
+        fences_field_tag: none
+        fences_field_classes: ''
+        fences_field_items_wrapper_tag: none
+        fences_field_items_wrapper_classes: ''
+        fences_field_item_tag: none
+        fences_field_item_classes: ''
+        fences_label_tag: div
+        fences_label_classes: ''
+    weight: 0
+    region: content
+  field_sections:
+    type: entity_reference_revisions_entity_view
+    label: hidden
+    settings:
+      view_mode: default
+      link: ''
+    third_party_settings:
+      fences:
+        fences_field_tag: none
+        fences_field_classes: ''
+        fences_field_items_wrapper_tag: none
+        fences_field_items_wrapper_classes: ''
+        fences_field_item_tag: none
+        fences_field_item_classes: ''
+        fences_label_tag: div
+        fences_label_classes: ''
+    weight: 1
     region: content
   links:
     settings: {  }
     third_party_settings: {  }
-    weight: 1
+    weight: 2
     region: content
 hidden:
   body: true
-  field_banner: true
+  field_seo_description: true
   field_tags: true
   field_teaser: true

@@ -39,29 +39,19 @@
 
     &__content {
       grid-area: content;
-      display: grid;
-      grid-template-columns:
-        minmax(var(--page-gutter-left), auto) minmax(0, var(--page-width))
-        minmax(var(--page-gutter-right), auto);
-      grid-auto-rows: auto;
+      @include contentWithGutters;
       padding-bottom: var(--vertical-spacing);
+
+      .block-system-breadcrumb-block {
+        grid-column: 2;
+      }
 
       > .paragraph {
         grid-column: 2;
-        margin-bottom: var(--component-spacing);
-      }
 
-      .section-content-mover {
-        > .paragraph {
-          margin-bottom: var(--component-spacing);
-        }
-      }
-
-      > .paragraph--type--text-wysiwyg- {
-        > .paragraph--type--text-wysiwyg-__content {
-          @include mq($from: tablet) {
-            width: calc(50% - #{to.rem(25px)});
-          }
+        &.fullwidth {
+          grid-column: span 3;
+          @include contentWithGutters;
         }
       }
     }
