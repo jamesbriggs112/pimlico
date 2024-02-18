@@ -8,6 +8,7 @@ dependencies:
     - paragraphs.paragraphs_type.accordion
     - paragraphs.paragraphs_type.carousel
     - paragraphs.paragraphs_type.content_carousel
+    - paragraphs.paragraphs_type.content_grid
     - paragraphs.paragraphs_type.cta
     - paragraphs.paragraphs_type.full_width_image_with_text
     - paragraphs.paragraphs_type.iframe_embed
@@ -48,6 +49,7 @@ settings:
       accordion: accordion
       map: map
       cta: cta
+      content_grid: content_grid
       separator: separator
       content_carousel: content_carousel
       full_width_image_with_text: full_width_image_with_text
@@ -63,9 +65,6 @@ settings:
       accordion_item:
         weight: 34
         enabled: false
-      banner_image_carousel:
-        weight: 48
-        enabled: false
       carousel:
         weight: 11
         enabled: true
@@ -77,6 +76,9 @@ settings:
         enabled: false
       content_carousel:
         weight: 55
+        enabled: true
+      content_grid:
+        weight: 41
         enabled: true
       cta:
         weight: 40
@@ -90,26 +92,11 @@ settings:
       download:
         weight: 55
         enabled: false
-      embedded_view_advanced_:
-        weight: 14
-        enabled: false
-      featured_item_banner:
-        weight: 47
-        enabled: false
-      featured_link:
-        weight: 58
-        enabled: false
-      featured_links_carousel:
-        weight: 59
-        enabled: false
       full_width_image_with_text:
         weight: 62
         enabled: true
       grid:
         weight: 15
-        enabled: false
-      highlighted_text:
-        weight: 29
         enabled: false
       home_page_banner:
         weight: 18
@@ -120,21 +107,12 @@ settings:
       image:
         weight: 16
         enabled: true
-      image_carousel:
-        weight: 64
-        enabled: false
       image_grid:
         weight: 65
         enabled: true
       jump_menu_anchor:
         weight: 22
         enabled: true
-      key_facts:
-        weight: 33
-        enabled: false
-      large_button:
-        weight: 17
-        enabled: false
       map:
         weight: 39
         enabled: true
@@ -162,24 +140,12 @@ settings:
       teaser:
         weight: 21
         enabled: false
-      teaser_carousel:
-        weight: 55
-        enabled: false
       testimonial:
         weight: 18
         enabled: true
-      text_pair:
-        weight: 38
-        enabled: false
       text_wysiwyg_:
         weight: 19
         enabled: true
-      tiled_link:
-        weight: 47
-        enabled: false
-      tiled_links:
-        weight: 48
-        enabled: false
       timeline:
         weight: 43
         enabled: false

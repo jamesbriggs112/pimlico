@@ -102,6 +102,9 @@
             },
             "drupal/focal_point": {
                 "add crop by aspect ratio": "https://www.drupal.org/files/issues/2021-02-23/3186353-a8e65e97.patch"
+            },
+            "drupal/viewfield": {
+                "fix viewfield php error": "https://www.drupal.org/files/issues/2023-08-21/3381787.patch"
             }
         },
         "drupal-scaffold": {

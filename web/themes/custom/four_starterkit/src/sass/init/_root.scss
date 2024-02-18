@@ -12,6 +12,8 @@
   --component-spacing: #{to.rem(50px)};
   --row-gap: #{to.rem(30px)};
   --column-gap: #{to.rem(30px)};
+  --grid-column-count: 4;
+  --grid-item--min-width: #{to.rem(200px)};
 
   // Colors
   --color-dark-grey: #3b3934;

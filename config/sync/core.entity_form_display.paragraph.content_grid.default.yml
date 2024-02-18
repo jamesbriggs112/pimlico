@@ -1,0 +1,32 @@
+uuid: 23e6f384-53e6-45ce-9ba8-3b6f6dca02df
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.paragraph.content_grid.field_heading
+    - field.field.paragraph.content_grid.field_view
+    - paragraphs.paragraphs_type.content_grid
+  module:
+    - viewfield
+id: paragraph.content_grid.default
+targetEntityType: paragraph
+bundle: content_grid
+mode: default
+content:
+  field_heading:
+    type: string_textfield
+    weight: 0
+    region: content
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+  field_view:
+    type: viewfield_select
+    weight: 0
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+hidden:
+  created: true
+  status: true

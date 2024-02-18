@@ -160,6 +160,14 @@ paragraph-content-carousel:
       src/sass/components/paragraph-content-carousel.scss:
         weight: -10
 
+paragraph-content-grid:
+  version: VERSION
+  vite: true
+  css:
+    component:
+      src/sass/components/paragraph-content-grid.scss:
+        weight: -10
+
 paragraph-iframe-embed:
   version: VERSION
   vite: true
