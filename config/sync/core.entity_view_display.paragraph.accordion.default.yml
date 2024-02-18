@@ -8,6 +8,7 @@ dependencies:
     - paragraphs.paragraphs_type.accordion
   module:
     - entity_reference_revisions
+    - fences
 _core:
   default_config_hash: X9sd6C-7MDfAAsv9MjBl5kLgp301pkljSSVvvaT7-8w
 id: paragraph.accordion.default
@@ -20,7 +21,16 @@ content:
     label: hidden
     settings:
       link_to_entity: false
-    third_party_settings: {  }
+    third_party_settings:
+      fences:
+        fences_field_tag: h2
+        fences_field_classes: ''
+        fences_field_items_wrapper_tag: none
+        fences_field_items_wrapper_classes: ''
+        fences_field_item_tag: none
+        fences_field_item_classes: ''
+        fences_label_tag: div
+        fences_label_classes: ''
     weight: 0
     region: content
   field_items:

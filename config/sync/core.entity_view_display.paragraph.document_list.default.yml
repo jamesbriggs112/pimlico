@@ -9,6 +9,7 @@ dependencies:
     - paragraphs.paragraphs_type.document_list
   module:
     - entity_reference_revisions
+    - fences
 _core:
   default_config_hash: IiJgr0HNAV5E7ET0o018iPSUjW_QBAT4d07EyjxhDNU
 id: paragraph.document_list.default
@@ -30,7 +31,16 @@ content:
     label: hidden
     settings:
       link_to_entity: false
-    third_party_settings: {  }
+    third_party_settings:
+      fences:
+        fences_field_tag: h2
+        fences_field_classes: ''
+        fences_field_items_wrapper_tag: none
+        fences_field_items_wrapper_classes: ''
+        fences_field_item_tag: none
+        fences_field_item_classes: ''
+        fences_label_tag: div
+        fences_label_classes: ''
     weight: 0
     region: content
 hidden:
