@@ -20,6 +20,7 @@ export default defineConfig({
     rollupOptions: {
       input: [
         'src/sass/styles.scss',
+        'src/sass/hamburgers/hamburgers.scss',
         'src/js/site.js',
         '!src/sass/components/_*.scss',
         'src/sass/components/*.scss',
