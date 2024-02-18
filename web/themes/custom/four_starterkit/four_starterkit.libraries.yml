@@ -3,7 +3,7 @@ base:
   vite: true
   css:
     theme:
-      css/vendor/hamburger.css: {}
+      src/sass/hamburgers/hamburgers.scss: {}
       src/sass/styles.scss: {}
     component:
       src/sass/components/action-links.scss:
@@ -98,6 +98,20 @@ node:
   css:
     component:
       src/sass/components/node.scss:
+        weight: -10
+node-teaser:
+  version: VERSION
+  vite: true
+  css:
+    component:
+      src/sass/components/node-teaser.scss:
+        weight: -10
+page-banner:
+  version: VERSION
+  vite: true
+  css:
+    component:
+      src/sass/components/page-banner.scss:
         weight: -10
 progress:
   version: VERSION

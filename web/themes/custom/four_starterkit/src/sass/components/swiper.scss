@@ -5,16 +5,6 @@
   position: relative;
 }
 
-.swiper {
-  &:not(:has(.swiper-scrollbar-lock)) {
-    padding-bottom: 40px;
-  }
-
-  &:not(:has(.swiper-scrollbar-horizontal)) {
-    padding-bottom: 0px;
-  }
-}
-
 .swiper-button-prev,
 .swiper-button-next {
   background-color: var(--swiper-navigation-background);
@@ -24,10 +14,4 @@
   top: var(--swiper-navigation-top-offset);
   transform: translateY(-50%);
   margin-top: 0;
-}
-
-.swiper-slide {
-  img {
-    display: block;
-  }
 }

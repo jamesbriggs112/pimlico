@@ -1,9 +1,22 @@
 .paragraph--type--teaser {
-  img {
-    display: block;
+  .image {
+    overflow: hidden;
+
+    img {
+      object-fit: cover;
+      transition: transform 0.3s ease;
+    }
   }
 
-  &__content {
+  &:hover {
+    .image {
+      img {
+        transform: scale(1.05);
+      }
+    }
+  }
+
+  .content {
     margin-top: to.rem(15px);
     background-color: var(--background-color);
     color: var(--text-color);
@@ -16,25 +29,6 @@
       color: var(--text-color);
       text-decoration: underline;
       font-weight: var(--font-weight-medium);
-    }
-  }
-
-  &:nth-child(even) {
-    display: none;
-  }
-
-  .node--type-article & {
-    &__content {
-      color: black;
-      background-color: white;
-
-      a {
-        color: black;
-      }
-    }
-
-    &::after {
-      background-color: white;
     }
   }
 }
