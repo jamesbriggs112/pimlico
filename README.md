@@ -27,7 +27,7 @@ export PATH=./vendor/bin:$PATH
 - `php web/core/scripts/drupal generate-theme --starterkit four_starterkit my_new_theme --path themes/custom`
 - `cd web/themes/custom/my_new_theme`
 - `yarn`
-- Before running `yarn watch` you will need to navigate to /admin/appearance and `Install and set as default` on the theme you have created
+- Before running `yarn dev` you will need to navigate to /admin/appearance and `Install and set as default` on the theme you have created
 - `yarn watch` to build a dev version, start up a dev server and watch files
 
 ### Development settings
