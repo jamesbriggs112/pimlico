@@ -26,7 +26,6 @@ export PATH=./vendor/bin:$PATH
 - Run `drush si --existing-config && drush ib`
 - `php web/core/scripts/drupal generate-theme --starterkit four_starterkit my_new_theme --path themes/custom`
 - `cd web/themes/custom/my_new_theme`
-- `cp .env.sample .env` and edit `SITE_DOMAIN` to match to dev domain
 - `yarn`
 - Before running `yarn watch` you will need to navigate to /admin/appearance and `Install and set as default` on the theme you have created
 - `yarn watch` to build a dev version, start up a dev server and watch files
