@@ -1,5 +1,5 @@
-@use '~sass-rem' as to;
-@use '~sass-mq/mq' as *;
+@use 'sass-rem' as to;
+@use 'sass-mq/mq' as *;
 
 body {
   &.mobile-nav-open {
@@ -78,17 +78,14 @@ body {
     grid-template-areas: '. logo . nav .';
     align-items: center;
 
-    .block-system-branding-block {
-      grid-area: logo;
-    }
-
     .site-logo {
       position: relative;
       z-index: 15;
+      grid-area: logo;
 
       img {
         height: to.rem(80px);
-        width: auto;
+        width: to.rem(130px);
 
         transition: 0.2s ease-in-out;
 

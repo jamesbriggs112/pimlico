@@ -1,0 +1,17 @@
+@import 'swiper/scss';
+@import 'swiper/scss/navigation';
+
+.swiper-container {
+  position: relative;
+}
+
+.swiper-button-prev,
+.swiper-button-next {
+  background-color: var(--swiper-navigation-background);
+  width: calc(var(--swiper-navigation-size) * 2);
+  height: calc(var(--swiper-navigation-size) * 2);
+  border-radius: var(--swiper-navigation-radius);
+  top: var(--swiper-navigation-top-offset);
+  transform: translateY(-50%);
+  margin-top: 0;
+}

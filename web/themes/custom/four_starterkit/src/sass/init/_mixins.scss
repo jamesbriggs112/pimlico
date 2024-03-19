@@ -1,4 +1,4 @@
-@use '~sass-rem' as to;
+@use 'sass-rem' as to;
 @use 'sass:math';
 @use './layout-vars' as *;
 
@@ -29,20 +29,6 @@
     #{$slope-to-unit}#{$unit} + #{$intercept-rem},
     #{$max-size-rem}
   );
-}
-
-@mixin siteWidth {
-  max-width: var(--page-width);
-  margin: 0 auto;
-  padding-left: var(--page-gutter);
-  padding-right: var(--page-gutter);
-}
-
-@mixin breakContainer {
-  margin-left: calc(50% - 50vw);
-  margin-right: calc(50% - 50vw);
-  padding-left: var(--page-gutter);
-  padding-right: var(--page-gutter);
 }
 
 @mixin bar-after($stretch: true) {
@@ -167,4 +153,27 @@
 @mixin section-header() {
   font-size: 1.5rem;
   font-weight: bold;
+}
+
+@mixin contentWithGutters() {
+  display: grid;
+  grid-template-columns:
+    minmax(var(--page-gutter-left), auto) minmax(0, var(--page-width))
+    minmax(var(--page-gutter-right), auto);
+  grid-auto-rows: auto;
+}
+
+@mixin contentGrid() {
+  --gap-count: calc(var(--grid-column-count) - 1);
+  --total-gap-width: calc(var(--gap-count) * var(--column-gap));
+  --grid-item--max-width: calc(
+    (100% - var(--total-gap-width)) / var(--grid-column-count)
+  );
+
+  display: grid;
+  grid-template-columns: repeat(
+    auto-fill,
+    minmax(max(var(--grid-item--min-width), var(--grid-item--max-width)), 1fr)
+  );
+  grid-gap: var(--row-gap) var(--column-gap);
 }

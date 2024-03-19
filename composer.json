@@ -63,6 +63,7 @@
         "drupal/pathauto": "^1.11",
         "drupal/quick_node_clone": "^1.16",
         "drupal/simple_gmap": "3.0.x-dev@dev",
+        "drupal/smtp": "^1.2",
         "drupal/structure_sync": "^2.0",
         "drupal/svg_image": "^3.0",
         "drupal/token_filter": "^2.0",
@@ -102,6 +103,9 @@
             },
             "drupal/focal_point": {
                 "add crop by aspect ratio": "https://www.drupal.org/files/issues/2021-02-23/3186353-a8e65e97.patch"
+            },
+            "drupal/viewfield": {
+                "fix viewfield php error": "https://www.drupal.org/files/issues/2023-08-21/3381787.patch"
             }
         },
         "drupal-scaffold": {

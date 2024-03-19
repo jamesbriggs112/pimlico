@@ -2,6 +2,7 @@ body,
 html {
   margin: 0px;
   padding: 0px;
+  height: 100%;
 }
 
 canvas {
@@ -12,8 +13,10 @@ canvas {
 
 .dialog-off-canvas-main-canvas {
   background-color: white;
+  height: 100%;
 
   .layout-container {
+    min-height: 100%;
     box-sizing: border-box;
     background-color: var(--background-color);
     z-index: 1;
@@ -24,10 +27,6 @@ canvas {
       'header'
       'main'
       'footer';
-
-    .block-system-breadcrumb-block {
-      padding: 0 var(--page-gutter-right) 0 var(--page-gutter-left);
-    }
 
     > header {
       grid-area: header;

@@ -1,7 +1,0 @@
-name: Next Image Styles
-type: module
-description: Provides additional functionality for the site.
-package: Custom
-core_version_requirement: ^9 || ^10
-dependencies:
-  - image_styles_builder:image_styles_builder

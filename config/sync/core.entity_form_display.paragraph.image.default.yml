@@ -5,7 +5,7 @@ dependencies:
   config:
     - field.field.paragraph.image.field_heading
     - field.field.paragraph.image.field_image
-    - field.field.paragraph.image.field_styling_options
+    - field.field.paragraph.image.field_image_style
     - paragraphs.paragraphs_type.image
   module:
     - media_library
@@ -34,9 +34,9 @@ content:
     third_party_settings:
       media_library_edit:
         show_edit: '1'
-  field_styling_options:
-    type: options_buttons
-    weight: 2
+  field_image_style:
+    type: options_select
+    weight: 1
     region: content
     settings: {  }
     third_party_settings: {  }

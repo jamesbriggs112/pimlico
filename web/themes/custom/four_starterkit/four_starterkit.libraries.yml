@@ -1,163 +1,214 @@
 base:
   version: VERSION
+  vite: true
   css:
     theme:
-      css/vendor/hamburger.css: {}
-      css/styles.css: {}
+      src/sass/hamburgers/hamburgers.scss: {}
+      src/sass/styles.scss: {}
     component:
-      css/components/action-links.css:
+      src/sass/components/action-links.scss:
         weight: -10
-      css/components/breadcrumb.css:
+      src/sass/components/breadcrumb.scss:
         weight: -10
-      css/components/button.css:
+      src/sass/components/button.scss:
         weight: -10
-      css/components/container-inline.css:
+      src/sass/components/container-inline.scss:
         weight: -10
-      css/components/details.css:
+      src/sass/components/details.scss:
         weight: -10
-      css/components/exposed-filters.css:
+      src/sass/components/exposed-filters.scss:
         weight: -10
-      css/components/field.css:
+      src/sass/components/field.scss:
         weight: -10
-      css/components/form.css:
+      src/sass/components/form.scss:
         weight: -10
-      css/components/icons.css:
+      src/sass/components/icons.scss:
         weight: -10
-      css/components/inline-form.css:
+      src/sass/components/inline-form.scss:
         weight: -10
-      css/components/item-list.css:
+      src/sass/components/item-list.scss:
         weight: -10
-      css/components/link.css:
+      src/sass/components/link.scss:
         weight: -10
-      css/components/links.css:
+      src/sass/components/links.scss:
         weight: -10
-      css/components/menu.css:
+      src/sass/components/menu.scss:
         weight: -10
-      css/components/more-link.css:
+      src/sass/components/more-link.scss:
         weight: -10
-      css/components/pager.css:
+      src/sass/components/pager.scss:
         weight: -10
-      css/components/tabledrag.css:
+      src/sass/components/tabledrag.scss:
         weight: -10
-      css/components/tableselect.css:
+      src/sass/components/tableselect.scss:
         weight: -10
-      css/components/tablesort.css:
+      src/sass/components/tablesort.scss:
         weight: -10
-      css/components/tabs.css:
+      src/sass/components/tabs.scss:
         weight: -10
-      css/components/textarea.css:
+      src/sass/components/textarea.scss:
         weight: -10
-      css/components/ui-dialog.css:
+      src/sass/components/ui-dialog.scss:
         weight: -10
   js:
-    js/site.js: {}
+    src/js/site.js: {}
 dialog:
   version: VERSION
+  vite: true
   css:
     component:
-      css/components/dialog.css:
+      src/sass/components/dialog.scss:
         weight: -10
 dropbutton:
   version: VERSION
+  vite: true
   css:
     component:
-      css/components/dropbutton.css:
+      src/sass/components/dropbutton.scss:
         weight: -10
 file:
   version: VERSION
+  vite: true
   css:
     component:
-      css/components/file.css:
+      src/sass/components/file.scss:
         weight: -10
 image-widget:
   version: VERSION
+  vite: true
   css:
     component:
-      css/components/image-widget.css: {}
+      src/sass/components/image-widget.scss: {}
 indented:
   version: VERSION
+  vite: true
   css:
     component:
-      css/components/indented.css: {}
+      src/sass/components/indented.scss: {}
 messages:
   version: VERSION
+  vite: true
   css:
     component:
-      css/components/messages.css:
+      src/sass/components/messages.scss:
         weight: -10
 node:
   version: VERSION
+  vite: true
   css:
     component:
-      css/components/node.css:
+      src/sass/components/node.scss:
+        weight: -10
+node-teaser:
+  version: VERSION
+  vite: true
+  css:
+    component:
+      src/sass/components/node-teaser.scss:
+        weight: -10
+page-banner:
+  version: VERSION
+  vite: true
+  css:
+    component:
+      src/sass/components/page-banner.scss:
         weight: -10
 progress:
   version: VERSION
+  vite: true
   css:
     component:
-      css/components/progress.css:
+      src/sass/components/progress.scss:
         weight: -10
 search-results:
   version: VERSION
+  vite: true
   css:
     component:
-      css/components/search-results.css: {}
+      src/sass/components/search-results.scss: {}
 user:
   version: VERSION
+  vite: true
   css:
     component:
-      css/components/user.css:
+      src/sass/components/user.scss:
         weight: -10
 
 paragraph-accordion:
   version: VERSION
+  vite: true
   css:
     component:
-      css/components/paragraph-accordion.css:
+      src/sass/components/paragraph-accordion.scss:
         weight: -10
   js:
     js/components/paragraph-accordion.js: {}
 
 paragraph-featured-link:
   version: VERSION
+  vite: true
   css:
     component:
-      css/components/paragraph-featured-link.css:
+      src/sass/components/paragraph-featured-link.scss:
         weight: -10
 
-paragraph-image-carousel:
+paragraph-content-carousel:
   version: VERSION
+  vite: true
   css:
     component:
-      css/components/paragraph-image-carousel.css:
+      src/sass/components/paragraph-content-carousel.scss:
         weight: -10
-  js:
-    js/components/paragraph-image-carousel.js: {}
+
+paragraph-content-grid:
+  version: VERSION
+  vite: true
+  css:
+    component:
+      src/sass/components/paragraph-content-grid.scss:
+        weight: -10
 
 paragraph-iframe-embed:
   version: VERSION
+  vite: true
   css:
     component:
-      css/components/paragraph-iframe-embed.css:
+      src/sass/components/paragraph-iframe-embed.scss:
         weight: -10
 
 paragraph-quote:
   version: VERSION
+  vite: true
   css:
     component:
-      css/components/paragraph-quote.css:
+      src/sass/components/paragraph-quote.scss:
         weight: -10
 
 paragraph-teaser:
   version: VERSION
+  vite: true
   css:
     component:
-      css/components/paragraph-teaser.css:
+      src/sass/components/paragraph-teaser.scss:
         weight: -10
 
 paragraph-two-column-area:
   version: VERSION
+  vite: true
   css:
     component:
-      css/components/paragraph-two-column-area.css:
+      src/sass/components/paragraph-two-column-area.scss:
         weight: -10
+
+swiper:
+  version: VERSION
+  vite: true
+  css:
+    component:
+      src/sass/components/swiper.scss:
+        weight: -10
+  js:
+    src/js/components/swiper.js: {}
+  dependencies:
+    - core/once
+    - core/drupal

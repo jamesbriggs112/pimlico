@@ -12,17 +12,17 @@ type: list_string
 settings:
   allowed_values:
     -
-      value: full
-      label: Natural
-    -
-      value: square
-      label: Square
+      value: '16_9'
+      label: '16:9'
     -
       value: '9_16'
       label: '9:16'
     -
-      value: '16_9'
-      label: '16:9'
+      value: square
+      label: Square
+    -
+      value: full
+      label: Natural
   allowed_values_function: ''
 module: options
 locked: false

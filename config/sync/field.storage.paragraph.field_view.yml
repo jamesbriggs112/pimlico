@@ -1,4 +1,4 @@
-uuid: ea912744-d16d-411b-830b-aee0b9e42e0c
+uuid: a4f2baa8-c850-4fa9-826d-689a53aae452
 langcode: en
 status: true
 dependencies:
@@ -6,14 +6,13 @@ dependencies:
     - paragraphs
     - viewfield
     - views
-_core:
-  default_config_hash: Do2ooETbqePybmcmzjC3QSnHFFivI2_939hELdwOWY4
 id: paragraph.field_view
 field_name: field_view
 entity_type: paragraph
 type: viewfield
 settings:
   target_type: view
+  handler: 'default:view'
 module: viewfield
 locked: false
 cardinality: 1

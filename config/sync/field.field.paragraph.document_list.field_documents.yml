@@ -27,9 +27,6 @@ settings:
       document: document
     negate: 0
     target_bundles_drag_drop:
-      biographies:
-        weight: 21
-        enabled: false
       biography:
         weight: 22
         enabled: false

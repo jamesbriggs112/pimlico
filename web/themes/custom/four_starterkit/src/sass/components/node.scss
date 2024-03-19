@@ -3,6 +3,42 @@
  * Visual styles for nodes.
  */
 
-.node--unpublished {
-  background-color: #fff4f4;
+.node {
+  &--unpublished {
+    background-color: #fff4f4;
+  }
+}
+
+.node--view-mode-full {
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: auto var(--component-spacing) auto;
+  grid-template-areas:
+    'header'
+    '.'
+    'content';
+  justify-content: center;
+
+  > .banner {
+    grid-area: header;
+  }
+
+  &__content {
+    grid-area: content;
+    @include contentWithGutters;
+    padding-bottom: var(--vertical-spacing);
+
+    .block-system-breadcrumb-block {
+      grid-column: 2;
+    }
+
+    > .paragraph {
+      grid-column: 2;
+
+      &.fullwidth {
+        grid-column: span 3;
+        @include contentWithGutters;
+      }
+    }
+  }
 }

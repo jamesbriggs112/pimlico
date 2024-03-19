@@ -1,0 +1,9 @@
+{{ attach_library('four_starterkit/swiper') }}
+<div class="swiper-container" data-swiper-config='{{swiper|json_encode|raw}}'>
+	<div class="swiper">
+		<div class="swiper-wrapper"> {% block slides %}{% endblock %}
+			</div>
+		</div>
+		<div class="swiper-button-prev"></div>
+		<div class="swiper-button-next"></div>
+	</div>

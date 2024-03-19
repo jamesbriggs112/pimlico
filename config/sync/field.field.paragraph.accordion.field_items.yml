@@ -33,9 +33,6 @@ settings:
       accordion_item:
         weight: 34
         enabled: true
-      biographies:
-        weight: 35
-        enabled: false
       capability_list:
         weight: 36
         enabled: false

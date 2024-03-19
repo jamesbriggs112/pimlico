@@ -77,50 +77,30 @@
     view_mode ? 'node--view-mode-' ~ view_mode|clean_class,
   ]
 %}
+
+{% set content_classes = [
+	'node__content',
+	'node--type-' ~ node.bundle|clean_class ~ '__content',
+view_mode ? 'node--view-mode-' ~ view_mode|clean_class ~ '__content',
+] %}
+
 {{ attach_library('four_starterkit/node') }}
 <article{{attributes.addClass(classes)}}>
-	<header class="banner">
-		{{ content.field_banner }}
-		<div class="banner__intro">
-			<h1 class="banner__title">
-				{{ label }}
-			</h1>
-			{{ content.field_summary }}
-		</div>
-
-	</header>
-	{{ title_prefix }}
-	{% if label and not page %}
-		<h2{{title_attributes}}>
-			<a href="{{ url }}" rel="bookmark">
-				{{ label }}
-			</a>
-		</h2>
+	{% if content.field_banner %}
+		{% embed '@four_starterkit/includes/page-banner.html.twig' %}
+			{% block media %}
+				{{ content.field_banner }}
+			{% endblock %}
+			{% block content %}
+				<h1>
+					{{ label }}
+				</h1>
+				{{ content.field_summary }}
+			{% endblock %}
+		{% endembed %}
 	{% endif %}
-	{{ title_suffix }}
-	<div{{content_attributes.addClass('node','node--view-mode-'~view_mode|clean_class~'__content')}}>
+	<div{{content_attributes.addClass(content_classes)}}>
 		{{ drupal_block('system_breadcrumb_block') }}
-		{{ content|without('field_banner', 'field_summary')}}
+		{{ content|without('field_banner')}}
 	</div>
-	{% if display_submitted %}
-		{%
-		set metaClasses = [
-			'node',
-			view_mode ? 'node--view-mode-' ~ view_mode|clean_class~'__meta',
-		]
-		%}
-		<footer class="{{metaClasses}}">
-			{{ author_picture }}
-			<div{{author_attributes.addClass('node__submitted')}}>
-				{% trans %}
-				Submitted by
-				{{ author_name }}
-				on
-				{{ date }}
-				{% endtrans %}
-				{{ metadata }}
-			</div>
-		</footer>
-	{% endif %}
-
 </article>

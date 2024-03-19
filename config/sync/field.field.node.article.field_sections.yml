@@ -9,10 +9,8 @@ dependencies:
     - paragraphs.paragraphs_type.chart
     - paragraphs.paragraphs_type.cta
     - paragraphs.paragraphs_type.document_list
-    - paragraphs.paragraphs_type.highlighted_text
     - paragraphs.paragraphs_type.image
     - paragraphs.paragraphs_type.separator
-    - paragraphs.paragraphs_type.teaser_carousel
     - paragraphs.paragraphs_type.text_wysiwyg_
     - paragraphs.paragraphs_type.timeline
     - paragraphs.paragraphs_type.video
@@ -35,14 +33,11 @@ settings:
   handler_settings:
     target_bundles:
       accordion: accordion
-      biographies: biographies
       chart: chart
       cta: cta
       document_list: document_list
-      highlighted_text: highlighted_text
       image: image
       separator: separator
-      teaser_carousel: teaser_carousel
       text_wysiwyg_: text_wysiwyg_
       timeline: timeline
       video: video
