@@ -831,6 +831,16 @@ if (isset($_SERVER['RDS_DB_NAME'])) {
       'isolation_level' => 'SET SESSION TRANSACTION ISOLATION LEVEL READ COMMITTED',
     ],
   );
+
+  $settings['aws.distributionid'] = $_SERVER['CLOUDFRONT_DISTRIBUTIONID'];
+  $settings['aws.region'] = $_SERVER['CLOUDFRONT_REGION'];
+  $settings['s3fs.access_key'] = $_SERVER['AWS_ACCESS_KEY'];
+  $settings['s3fs.secret_key'] = $_SERVER['AWS_SECRET_KEY'];
+}
+
+if (isset($_SERVER['SMTP_USERNAME']) && isset($_SERVER['SMTP_PASSWORD'])) {
+  $config['smtp.settings']['smtp_username'] = $_SERVER['SMTP_USERNAME'];
+  $config['smtp.settings']['smtp_password'] = $_SERVER['SMTP_PASSWORD'];
 }
 
 if (isset($_SERVER['ENVIRONMENT'])) {

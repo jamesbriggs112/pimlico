@@ -1,5 +1,9 @@
 <?php
 
+/**
+ * @file
+ */
+
 use Drupal\Component\Utility\Html;
 use Drupal\taxonomy\Entity\Term;
 
@@ -11,131 +15,134 @@ use Drupal\taxonomy\Entity\Term;
 /**
  * Implements hook_preprocess_image_widget().
  */
-function four_starterkit_preprocess_image_widget(array &$variables)
-{
-    $data = &$variables['data'];
+function four_starterkit_preprocess_image_widget(array &$variables) {
+  $data = &$variables['data'];
 
-    // This prevents image widget templates from rendering preview container HTML
-    // to users that do not have permission to access these previews.
-    // @todo revisit in https://drupal.org/node/953034
-    // @todo revisit in https://drupal.org/node/3114318
-    if (isset($data['preview']['#access']) && $data['preview']['#access'] === FALSE) {
-        unset($data['preview']);
+  // This prevents image widget templates from rendering preview container HTML
+  // to users that do not have permission to access these previews.
+  // @todo revisit in https://drupal.org/node/953034
+  // @todo revisit in https://drupal.org/node/3114318
+  if (isset($data['preview']['#access']) && $data['preview']['#access'] === FALSE) {
+    unset($data['preview']);
+  }
+}
+
+/**
+ * Preprocess functions for the Marmelo base theme .**/
+function four_starterkit_preprocess_html(&$variables) {
+  // ADD e.g. FONTS IN HERE
+  // example: drupal_add_css('https://fonts.googleapis.com/css?family=Montserrat:300,400,500', array('type' => 'external'));.
+  if ($node = \Drupal::routeMatch()->getParameter('node')) {
+    if ($node->hasField('field_theme')) {
+      $theme = $node->get('field_theme')->value;
+      $variables['attributes']['class'][] = 'theme-' . $theme;
     }
-}
 
-/** Preprocess functions for the Marmelo base theme **/
-
-function four_starterkit_preprocess_html(&$variables)
-{
-    // ADD e.g. FONTS IN HERE
-    // example: drupal_add_css('https://fonts.googleapis.com/css?family=Montserrat:300,400,500', array('type' => 'external'));
-    if ($node = \Drupal::routeMatch()->getParameter('node')) {
-        if ($node->hasField('field_theme')) {
-            $theme = $node->get('field_theme')->value;
-            $variables['attributes']['class'][] = 'theme-' . $theme;
-        }
-
-        if ($node->hasField('field_space_type')) {
-            $space =  Term::load($node->get('field_space_type')->target_id);
-            $variables['attributes']['class'][] = 'space-' . Html::getClass($space->getName());
-        }
+    if ($node->hasField('field_space_type')) {
+      $space = Term::load($node->get('field_space_type')->target_id);
+      $variables['attributes']['class'][] = 'space-' . Html::getClass($space->getName());
     }
+  }
 }
 
-function four_starterkit_preprocess_page(&$variables)
-{
+/**
+ *
+ */
+function four_starterkit_preprocess_page(&$variables) {
 }
 
+/**
+ *
+ */
+function four_starterkit_preprocess_node(&$variables) {
 
-function four_starterkit_preprocess_node(&$variables)
-{
-
-    // modifications to content pages
-
+  // Modifications to content pages.
 }
 
-function four_starterkit_preprocess_field(&$vars, $hook)
-{
+/**
+ * Implements hook_preprocess_field().
+ */
+function four_starterkit_preprocess_field(&$vars, $hook) {
 
-    // modifications to individual fields
-
+  // Modifications to individual fields.
 }
 
+/**
+ * Implements hook_preprocess_paragraph().
+ */
+function four_starterkit_preprocess_paragraph(&$vars) {
+  // Add classes based on existence of term/list fields
+  // $fields is an array of field_name => css class prefix.
+  /*$fields = [
+  "field_overlay_colour" => "overlay-colour",
+  "field_background_colour" => "background-colour",
+  "field_text_colour" => "text-colour"
+  ];
 
-function four_starterkit_preprocess_paragraph(&$vars)
-{
-    // Add classes based on existence of term/list fields
-    // $fields is an array of field_name => css class prefix
-    /*$fields = [
-        "field_overlay_colour" => "overlay-colour",
-        "field_background_colour" => "background-colour",
-        "field_text_colour" => "text-colour"
-    ];
+  $para = $vars['paragraph'];
 
-    $para = $vars['paragraph'];
+  foreach($fields as $field_name => $style_name) {
+  if($para->hasField($field_name)) {
+  switch($para->get($field_name)->getFieldDefinition()->getType()) {
 
-    foreach($fields as $field_name => $style_name) {
-        if($para->hasField($field_name)) {
-            switch($para->get($field_name)->getFieldDefinition()->getType()) {
+  case "list_string":
+  $class_value = $para->{$field_name}->value;
+  break;
 
-                case "list_string":
-                    $class_value = $para->{$field_name}->value;
-                    break;
+  case 'entity_reference':
+  $class_value = $para->{$field_name}->entity->name->value;
+  break;
 
-                case 'entity_reference':
-                    $class_value = $para->{$field_name}->entity->name->value;
-                    break;
+  }
 
-            }
+  if(isset($class_value) && !empty($class_value)) {
+  $vars['attributes']['class'][] = $style_name."-"._normalise_for_css($class_value);
+  }
 
-            if(isset($class_value) && !empty($class_value)) {
-                $vars['attributes']['class'][] = $style_name."-"._normalise_for_css($class_value);
-            }
+  }
+  }*/
 
-        }
-    }*/
-
-    // add anchor to all "section heading" types
-    /*if($para->getType() == "section_header") {
-        $vars['anchor'] = _normalise_for_css($para->field_heading->value);
-    }*/
+  // Add anchor to all "section heading" types.
+  /*if($para->getType() == "section_header") {
+  $vars['anchor'] = _normalise_for_css($para->field_heading->value);
+  }*/
 }
 
+/**
+ *
+ */
+function four_starterkit_form_search_block_form_alter(&$form, &$form_state) {
 
-function four_starterkit_form_search_block_form_alter(&$form, &$form_state)
-{
-
-    /**
-     * Replace 'search' text in search form with little magnifying glass icon
-     *
-     * $form['keys']['#attributes']['placeholder'][] = t('Search');
-     * $form['actions']['submit']['#value'] = html_entity_decode('&#xf002;');
-     * $form['actions']['submit']['#attributes']['class'][] = 'search-button';
-     */
+  /**
+   * Replace 'search' text in search form with little magnifying glass icon
+   *
+   * $form['keys']['#attributes']['placeholder'][] = t('Search');
+   * $form['actions']['submit']['#value'] = html_entity_decode('&#xf002;');
+   * $form['actions']['submit']['#attributes']['class'][] = 'search-button';
+   */
 }
 
+/**
+ *
+ */
+function _normalise_for_css($string) {
 
-function _normalise_for_css($string)
-{
-
-    return strtolower(str_replace(' ', '-', $string));
+  return strtolower(str_replace(' ', '-', $string));
 }
 
 /**
  * Implements hook_theme_suggestions_container_alter().
  */
-function four_starterkit_theme_suggestions_container_alter(array &$suggestions, array $variables)
-{
-    $element = $variables['element'];
+function four_starterkit_theme_suggestions_container_alter(array &$suggestions, array $variables) {
+  $element = $variables['element'];
 
-    if (isset($element['#type']) && $element['#type'] == 'view') {
-        $suggestions[] = 'container__view';
-        $suggestions[] = 'container__view__' . $element['#name'];
-        $suggestions[] = 'container__view__' . $element['#name'] . '__' . $element['#display_id'];
-    }
+  if (isset($element['#type']) && $element['#type'] == 'view') {
+    $suggestions[] = 'container__view';
+    $suggestions[] = 'container__view__' . $element['#name'];
+    $suggestions[] = 'container__view__' . $element['#name'] . '__' . $element['#display_id'];
+  }
 
-    if (isset($element['#type']) && $element['#type'] == 'container' && isset($element['children']['#type'])) {
-        $suggestions[] = 'container__' . $element['children']['#type'];
-    }
+  if (isset($element['#type']) && $element['#type'] == 'container' && isset($element['children']['#type'])) {
+    $suggestions[] = 'container__' . $element['children']['#type'];
+  }
 }

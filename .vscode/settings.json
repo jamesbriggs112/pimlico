@@ -39,12 +39,26 @@
         "typescript",
         "typescriptreact"
     ],
+    "eslint.workingDirectories": [
+        "./web"
+    ],
     "editor.defaultFormatter": "esbenp.prettier-vscode",
     "editor.codeActionsOnSave": {
         "source.fixAll.eslint": "explicit"
     },
+    "php-docblocker.gap": true,
+    "php-docblocker.useShortNames": true,
+    "phpsab.snifferEnable": true,
+    "phpsab.standard": "Drupal,DrupalPractice",
+    "phpsab.snifferArguments": [
+        "--extensions=inc,theme,install,module,profile,php,phtml"
+    ],
+    "phpsab.fixerEnable": true,
+    "phpsab.fixerArguments": [
+        "--extensions=inc,theme,install,module,profile,php,phtml"
+    ],
     "[php]": {
-        "editor.defaultFormatter": "bmewburn.vscode-intelephense-client",
+        "editor.defaultFormatter": "valeryanm.vscode-phpsab"
     },
     "[twig]": {
         "editor.defaultFormatter": "mblode.twig-language-2"
@@ -52,4 +66,10 @@
     "emmet.includeLanguages": {
         "twig": "html"
     },
+    /* PHP Intelephense (bmewburn.vscode-intelephense-client) */
+    "intelephense.environment.includePaths": [
+        "web/core/",
+        "web/core/includes",
+        "vendor/"
+    ],
 }

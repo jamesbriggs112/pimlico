@@ -8,6 +8,7 @@
 		"esbenp.prettier-vscode",
 		"mblode.twig-language-2",
 		"redhat.vscode-yaml",
+		"valeryanm.vscode-phpsab",
 		"vunguyentuan.vscode-css-variables",
 		"xdebug.php-debug"
 	],
