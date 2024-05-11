@@ -1,0 +1,30 @@
+uuid: 6dfa471a-428a-4b16-9042-a7c1cacb8354
+langcode: en
+status: true
+dependencies:
+  module:
+    - focal_point
+    - image_style_quality
+name: p05_040000_640x1138
+label: 'NIS Portrait 9:16 - size 40 (640x1138)'
+effects:
+  8858475e-e16b-41c8-89a6-b92dd7dabef0:
+    uuid: 8858475e-e16b-41c8-89a6-b92dd7dabef0
+    id: focal_point_scale_and_crop
+    weight: 0
+    data:
+      width: 640
+      height: 1138
+      crop_type: focal_point
+  46f2e7ba-dcac-4fac-93a9-24b8b3eae674:
+    uuid: 46f2e7ba-dcac-4fac-93a9-24b8b3eae674
+    id: image_style_quality
+    weight: 1
+    data:
+      quality: 85
+  ce133e77-9268-4de5-8e6e-aa0bdfcbcaa2:
+    uuid: ce133e77-9268-4de5-8e6e-aa0bdfcbcaa2
+    id: image_convert
+    weight: 2
+    data:
+      extension: webp

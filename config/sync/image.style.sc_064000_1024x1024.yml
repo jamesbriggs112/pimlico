@@ -1,0 +1,29 @@
+uuid: 5e29de3a-eb45-410e-9752-7af6e8630798
+langcode: en
+status: true
+dependencies:
+  module:
+    - image_style_quality
+name: sc_064000_1024x1024
+label: 'NIS Scaled Max - size 64 (1024x1024)'
+effects:
+  80b32ffa-83ae-4aac-bcb8-4b8271eed14f:
+    uuid: 80b32ffa-83ae-4aac-bcb8-4b8271eed14f
+    id: image_scale
+    weight: 0
+    data:
+      width: 1024
+      height: 1024
+      upscale: true
+  47ade308-2f02-44cc-a01f-9774039b77aa:
+    uuid: 47ade308-2f02-44cc-a01f-9774039b77aa
+    id: image_style_quality
+    weight: 1
+    data:
+      quality: 85
+  0f91e48c-a7f3-4ff0-bc22-6b7603841242:
+    uuid: 0f91e48c-a7f3-4ff0-bc22-6b7603841242
+    id: image_convert
+    weight: 2
+    data:
+      extension: webp

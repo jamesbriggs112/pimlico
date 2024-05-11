@@ -1,0 +1,44 @@
+uuid: a026051b-9c51-4cd3-98d3-5d854f702a4f
+langcode: en
+status: true
+dependencies:
+  config:
+    - core.entity_view_mode.media.16_9_grid
+    - field.field.media.image.field_media_image
+    - media.type.image
+    - responsive_image.styles.aspect_ratio_16_9_grid
+  module:
+    - fences
+    - responsive_image
+_core:
+  default_config_hash: 73xaTNkI5J6sfFcBmNYeuk070X3mQS_iwwWaPYyfG2M
+id: media.image.16_9_grid
+targetEntityType: media
+bundle: image
+mode: 16_9_grid
+content:
+  field_media_image:
+    type: responsive_image
+    label: hidden
+    settings:
+      responsive_image_style: aspect_ratio_16_9_grid
+      image_link: ''
+      image_loading:
+        attribute: lazy
+    third_party_settings:
+      fences:
+        fences_field_tag: none
+        fences_field_classes: ''
+        fences_field_items_wrapper_tag: none
+        fences_field_items_wrapper_classes: ''
+        fences_field_item_tag: none
+        fences_field_item_classes: ''
+        fences_label_tag: div
+        fences_label_classes: ''
+    weight: 1
+    region: content
+hidden:
+  created: true
+  name: true
+  thumbnail: true
+  uid: true

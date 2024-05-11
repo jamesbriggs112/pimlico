@@ -1,0 +1,11 @@
+uuid: fa121486-0d0f-4bb3-816e-448caaf9207d
+langcode: en
+status: true
+dependencies:
+  module:
+    - media
+id: media.16_9_grid
+label: '16:9 Grid'
+description: ''
+targetEntityType: media
+cache: true

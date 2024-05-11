@@ -1,0 +1,30 @@
+uuid: 910e6aa8-b41c-44bc-bd35-4c2623400924
+langcode: en
+status: true
+dependencies:
+  module:
+    - focal_point
+    - image_style_quality
+name: sq_064000_1024x1024
+label: 'NIS Square 1:1 - size 64 (1024x1024)'
+effects:
+  6ba27383-8e1f-49ce-8176-dbaa2c463a98:
+    uuid: 6ba27383-8e1f-49ce-8176-dbaa2c463a98
+    id: focal_point_scale_and_crop
+    weight: 0
+    data:
+      width: 1024
+      height: 1024
+      crop_type: focal_point
+  c0b27f91-e9a4-4186-bea4-c054cf30daa0:
+    uuid: c0b27f91-e9a4-4186-bea4-c054cf30daa0
+    id: image_style_quality
+    weight: 1
+    data:
+      quality: 85
+  4636d56e-9dd2-4e61-b965-f6b14ca71fbb:
+    uuid: 4636d56e-9dd2-4e61-b965-f6b14ca71fbb
+    id: image_convert
+    weight: 2
+    data:
+      extension: webp

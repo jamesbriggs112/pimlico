@@ -1,0 +1,30 @@
+uuid: 4a268c39-77da-4349-b80e-0e1a050521cf
+langcode: en
+status: true
+dependencies:
+  module:
+    - focal_point
+    - image_style_quality
+name: l08_040000_640x360
+label: 'NIS Landscape 16:9 - size 40 (640x360)'
+effects:
+  bcf1af00-5132-429a-bff3-d3b6235bbe18:
+    uuid: bcf1af00-5132-429a-bff3-d3b6235bbe18
+    id: focal_point_scale_and_crop
+    weight: 0
+    data:
+      width: 640
+      height: 360
+      crop_type: focal_point
+  9bf7cc64-6738-4294-8dc2-32824b4b8083:
+    uuid: 9bf7cc64-6738-4294-8dc2-32824b4b8083
+    id: image_style_quality
+    weight: 1
+    data:
+      quality: 85
+  b7e65ccc-e9f6-4c5a-92d7-f6552bc63885:
+    uuid: b7e65ccc-e9f6-4c5a-92d7-f6552bc63885
+    id: image_convert
+    weight: 2
+    data:
+      extension: webp

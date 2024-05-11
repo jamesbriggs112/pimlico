@@ -1,0 +1,30 @@
+uuid: f22a8f8f-9b2a-4b07-bf76-72dec0a7b246
+langcode: en
+status: true
+dependencies:
+  module:
+    - focal_point
+    - image_style_quality
+name: p05_184000_2944x5234
+label: 'NIS Portrait 9:16 - size 184 (2944x5234)'
+effects:
+  12660d21-f106-4d37-9a10-6c55ef51620c:
+    uuid: 12660d21-f106-4d37-9a10-6c55ef51620c
+    id: focal_point_scale_and_crop
+    weight: 0
+    data:
+      width: 2944
+      height: 5234
+      crop_type: focal_point
+  bb2b28ec-6412-426d-b8b0-b569ae210d3f:
+    uuid: bb2b28ec-6412-426d-b8b0-b569ae210d3f
+    id: image_style_quality
+    weight: 1
+    data:
+      quality: 35
+  cbfba9f4-627b-4044-866e-be4114186de0:
+    uuid: cbfba9f4-627b-4044-866e-be4114186de0
+    id: image_convert
+    weight: 2
+    data:
+      extension: webp

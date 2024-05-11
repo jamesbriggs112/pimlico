@@ -3,14 +3,23 @@ langcode: en
 status: true
 dependencies:
   config:
-    - image.style.aspect_ratio_9_16_1021w
-    - image.style.aspect_ratio_9_16_1228w
-    - image.style.aspect_ratio_9_16_1400w
-    - image.style.aspect_ratio_9_16_1600w
-    - image.style.aspect_ratio_9_16_1920w
-    - image.style.aspect_ratio_9_16_320w
-    - image.style.aspect_ratio_9_16_450w
-    - image.style.aspect_ratio_9_16_725w
+    - image.style.p05_008000_128x228
+    - image.style.p05_016000_256x455
+    - image.style.p05_024000_384x683
+    - image.style.p05_032000_512x910
+    - image.style.p05_040000_640x1138
+    - image.style.p05_048000_768x1365
+    - image.style.p05_056000_896x1593
+    - image.style.p05_064000_1024x1820
+    - image.style.p05_072000_1152x2048
+    - image.style.p05_088000_1408x2503
+    - image.style.p05_104000_1664x2958
+    - image.style.p05_120000_1920x3413
+    - image.style.p05_136000_2176x3868
+    - image.style.p05_160000_2560x4551
+    - image.style.p05_184000_2944x5234
+    - image.style.p05_208000_3328x5916
+    - image.style.p05_240000_3840x6827
 id: aspect_ratio_9_16
 label: 'Aspect Ratio 9:16'
 image_style_mappings:
@@ -19,15 +28,24 @@ image_style_mappings:
     image_mapping:
       sizes: 100vw
       sizes_image_styles:
-        - aspect_ratio_9_16_1021w
-        - aspect_ratio_9_16_1228w
-        - aspect_ratio_9_16_1400w
-        - aspect_ratio_9_16_1600w
-        - aspect_ratio_9_16_1920w
-        - aspect_ratio_9_16_320w
-        - aspect_ratio_9_16_450w
-        - aspect_ratio_9_16_725w
+        - p05_008000_128x228
+        - p05_016000_256x455
+        - p05_024000_384x683
+        - p05_032000_512x910
+        - p05_040000_640x1138
+        - p05_048000_768x1365
+        - p05_056000_896x1593
+        - p05_064000_1024x1820
+        - p05_072000_1152x2048
+        - p05_088000_1408x2503
+        - p05_104000_1664x2958
+        - p05_120000_1920x3413
+        - p05_136000_2176x3868
+        - p05_160000_2560x4551
+        - p05_184000_2944x5234
+        - p05_208000_3328x5916
+        - p05_240000_3840x6827
     breakpoint_id: responsive_image.viewport_sizing
     multiplier: 1x
 breakpoint_group: responsive_image
-fallback_image_style: aspect_ratio_9_16_1021w
+fallback_image_style: p05_048000_768x1365

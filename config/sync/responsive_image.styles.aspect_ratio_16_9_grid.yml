@@ -1,0 +1,45 @@
+uuid: 65cf7f81-d942-424c-82a6-172a82e74c5f
+langcode: en
+status: true
+dependencies:
+  config:
+    - image.style.l08_016000_256x144
+    - image.style.l08_024000_384x216
+    - image.style.l08_032000_512x288
+    - image.style.l08_040000_640x360
+    - image.style.l08_048000_768x432
+    - image.style.l08_056000_896x504
+    - image.style.l08_064000_1024x576
+    - image.style.l08_072000_1152x648
+    - image.style.l08_088000_1408x792
+    - image.style.l08_104000_1664x936
+    - image.style.l08_120000_1920x1080
+    - image.style.l08_136000_2176x1224
+    - image.style.l08_160000_2560x1440
+    - image.style.l08_184000_2944x1656
+id: aspect_ratio_16_9_grid
+label: 'Aspect Ratio 16:9 Grid'
+image_style_mappings:
+  -
+    image_mapping_type: sizes
+    image_mapping:
+      sizes: '(min-width: 1024px) 25vw, (min-width: 768px) 33.33vw, 100vw'
+      sizes_image_styles:
+        - l08_016000_256x144
+        - l08_024000_384x216
+        - l08_032000_512x288
+        - l08_040000_640x360
+        - l08_048000_768x432
+        - l08_056000_896x504
+        - l08_064000_1024x576
+        - l08_072000_1152x648
+        - l08_088000_1408x792
+        - l08_104000_1664x936
+        - l08_120000_1920x1080
+        - l08_136000_2176x1224
+        - l08_160000_2560x1440
+        - l08_184000_2944x1656
+    breakpoint_id: responsive_image.viewport_sizing
+    multiplier: 1x
+breakpoint_group: responsive_image
+fallback_image_style: l08_048000_768x432

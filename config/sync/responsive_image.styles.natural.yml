@@ -3,14 +3,23 @@ langcode: en
 status: true
 dependencies:
   config:
-    - image.style.width_1021w
-    - image.style.width_1228w
-    - image.style.width_1400w
-    - image.style.width_1600w
-    - image.style.width_1920w
-    - image.style.width_320w
-    - image.style.width_450w
-    - image.style.width_725w
+    - image.style.sc_008000_128x128
+    - image.style.sc_016000_256x256
+    - image.style.sc_024000_384x384
+    - image.style.sc_032000_512x512
+    - image.style.sc_040000_640x640
+    - image.style.sc_048000_768x768
+    - image.style.sc_056000_896x896
+    - image.style.sc_064000_1024x1024
+    - image.style.sc_072000_1152x1152
+    - image.style.sc_088000_1408x1408
+    - image.style.sc_104000_1664x1664
+    - image.style.sc_120000_1920x1920
+    - image.style.sc_136000_2176x2176
+    - image.style.sc_160000_2560x2560
+    - image.style.sc_184000_2944x2944
+    - image.style.sc_208000_3328x3328
+    - image.style.sc_240000_3840x3840
 id: natural
 label: Natural
 image_style_mappings:
@@ -19,15 +28,24 @@ image_style_mappings:
     image_mapping:
       sizes: 100vw
       sizes_image_styles:
-        - width_1021w
-        - width_1228w
-        - width_1400w
-        - width_1600w
-        - width_1920w
-        - width_320w
-        - width_450w
-        - width_725w
+        - sc_008000_128x128
+        - sc_016000_256x256
+        - sc_024000_384x384
+        - sc_032000_512x512
+        - sc_040000_640x640
+        - sc_048000_768x768
+        - sc_056000_896x896
+        - sc_064000_1024x1024
+        - sc_072000_1152x1152
+        - sc_088000_1408x1408
+        - sc_104000_1664x1664
+        - sc_120000_1920x1920
+        - sc_136000_2176x2176
+        - sc_160000_2560x2560
+        - sc_184000_2944x2944
+        - sc_208000_3328x3328
+        - sc_240000_3840x3840
     breakpoint_id: responsive_image.viewport_sizing
     multiplier: 1x
 breakpoint_group: responsive_image
-fallback_image_style: width_1021w
+fallback_image_style: sc_048000_768x768

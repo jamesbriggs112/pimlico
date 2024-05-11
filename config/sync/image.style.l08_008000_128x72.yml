@@ -1,0 +1,30 @@
+uuid: 9ee94fad-6f9e-4317-b191-6c7aef690a3c
+langcode: en
+status: true
+dependencies:
+  module:
+    - focal_point
+    - image_style_quality
+name: l08_008000_128x72
+label: 'NIS Landscape 16:9 - size 8 (128x72)'
+effects:
+  8854aa13-1b9e-4c14-a46c-aac3c4e24316:
+    uuid: 8854aa13-1b9e-4c14-a46c-aac3c4e24316
+    id: focal_point_scale_and_crop
+    weight: 0
+    data:
+      width: 128
+      height: 72
+      crop_type: focal_point
+  34191676-9330-4d38-b27d-13d2d4806bb6:
+    uuid: 34191676-9330-4d38-b27d-13d2d4806bb6
+    id: image_style_quality
+    weight: 1
+    data:
+      quality: 85
+  4ee290e3-fb0a-40b6-84b0-db8b647afe21:
+    uuid: 4ee290e3-fb0a-40b6-84b0-db8b647afe21
+    id: image_convert
+    weight: 2
+    data:
+      extension: webp

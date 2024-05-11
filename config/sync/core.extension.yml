@@ -42,12 +42,10 @@ module:
   honeypot: 0
   image: 0
   image_effects: 0
-  image_styles_builder: 0
-  image_widget_crop: 0
+  image_style_quality: 0
   imagemagick: 0
   link: 0
   linkit: 0
-  marmelo_base_config: 0
   media: 0
   media_duplicates: 0
   media_entity_download: 0

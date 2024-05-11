@@ -3,14 +3,23 @@ langcode: en
 status: true
 dependencies:
   config:
-    - image.style.aspect_ratio_1_1_1021w
-    - image.style.aspect_ratio_1_1_1228w
-    - image.style.aspect_ratio_1_1_1400w
-    - image.style.aspect_ratio_1_1_1600w
-    - image.style.aspect_ratio_1_1_1920w
-    - image.style.aspect_ratio_1_1_320w
-    - image.style.aspect_ratio_1_1_450w
-    - image.style.aspect_ratio_1_1_725w
+    - image.style.sq_008000_128x128
+    - image.style.sq_016000_256x256
+    - image.style.sq_024000_384x384
+    - image.style.sq_032000_512x512
+    - image.style.sq_040000_640x640
+    - image.style.sq_048000_768x768
+    - image.style.sq_056000_896x896
+    - image.style.sq_064000_1024x1024
+    - image.style.sq_072000_1152x1152
+    - image.style.sq_088000_1408x1408
+    - image.style.sq_104000_1664x1664
+    - image.style.sq_120000_1920x1920
+    - image.style.sq_136000_2176x2176
+    - image.style.sq_160000_2560x2560
+    - image.style.sq_184000_2944x2944
+    - image.style.sq_208000_3328x3328
+    - image.style.sq_240000_3840x3840
 id: aspect_ratio_1_1
 label: 'Aspect Ratio 1:1'
 image_style_mappings:
@@ -19,15 +28,24 @@ image_style_mappings:
     image_mapping:
       sizes: 100vw
       sizes_image_styles:
-        - aspect_ratio_1_1_1021w
-        - aspect_ratio_1_1_1228w
-        - aspect_ratio_1_1_1400w
-        - aspect_ratio_1_1_1600w
-        - aspect_ratio_1_1_1920w
-        - aspect_ratio_1_1_320w
-        - aspect_ratio_1_1_450w
-        - aspect_ratio_1_1_725w
+        - sq_008000_128x128
+        - sq_016000_256x256
+        - sq_024000_384x384
+        - sq_032000_512x512
+        - sq_040000_640x640
+        - sq_048000_768x768
+        - sq_056000_896x896
+        - sq_064000_1024x1024
+        - sq_072000_1152x1152
+        - sq_088000_1408x1408
+        - sq_104000_1664x1664
+        - sq_120000_1920x1920
+        - sq_136000_2176x2176
+        - sq_160000_2560x2560
+        - sq_184000_2944x2944
+        - sq_208000_3328x3328
+        - sq_240000_3840x3840
     breakpoint_id: responsive_image.viewport_sizing
     multiplier: 1x
 breakpoint_group: responsive_image
-fallback_image_style: aspect_ratio_1_1_1021w
+fallback_image_style: sq_048000_768x768

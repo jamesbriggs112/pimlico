@@ -28,6 +28,10 @@
         {
             "type": "vcs",
             "url": "https://bitbucket.org/rckt/gin_custom"
+        },
+        {
+            "type": "path",
+            "url": "/Users/marcus.williams/Projects/normalized_image_styles"
         }
     ],
     "require": {
@@ -53,7 +57,6 @@
         "drupal/google_tag": "^2.0",
         "drupal/honeypot": "^2.1",
         "drupal/image_effects": "^3.4",
-        "drupal/image_styles_builder": "^1.1",
         "drupal/image_widget_crop": "^2.4",
         "drupal/imagemagick": "^3.4",
         "drupal/linked_field": "^1.5",
@@ -70,6 +73,7 @@
         "drupal/smtp": "^1.2",
         "drupal/structure_sync": "^2.0",
         "drupal/svg_image": "^3.0",
+        "drupal/taxonomy_access_fix": "^4.0",
         "drupal/token_filter": "^2.0",
         "drupal/twig_tweak": "^3.3",
         "drupal/viewfield": "^3.0@beta",
@@ -77,6 +81,7 @@
         "drupal/vite": "^1.1",
         "drupal/webform": "^6.2@beta",
         "drush/drush": "^12.4",
+        "four/normalized_image_styles": "dev-main",
         "marmelo/banner_paragraph": "^1.0",
         "marmelo/marmelo_base_config": "^1.0",
         "marmelo/media_entity_download_extended": "^2.0.0",
@@ -104,9 +109,6 @@
         "patches": {
             "drupal/crop": {
                 "fix webp": "https://www.drupal.org/files/issues/2022-08-16/crop-3293782-04-append-hash-for-webp-image-style-urls.patch"
-            },
-            "drupal/focal_point": {
-                "add crop by aspect ratio": "https://www.drupal.org/files/issues/2021-02-23/3186353-a8e65e97.patch"
             },
             "drupal/viewfield": {
                 "fix viewfield php error": "https://www.drupal.org/files/issues/2023-08-21/3381787.patch"

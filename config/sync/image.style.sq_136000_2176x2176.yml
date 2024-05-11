@@ -1,0 +1,30 @@
+uuid: 9d8a6c4a-0fdc-4981-b1c9-491b2e1080c8
+langcode: en
+status: true
+dependencies:
+  module:
+    - focal_point
+    - image_style_quality
+name: sq_136000_2176x2176
+label: 'NIS Square 1:1 - size 136 (2176x2176)'
+effects:
+  1e625b1d-7dd4-4d20-8c14-7e24ccf7dc01:
+    uuid: 1e625b1d-7dd4-4d20-8c14-7e24ccf7dc01
+    id: focal_point_scale_and_crop
+    weight: 0
+    data:
+      width: 2176
+      height: 2176
+      crop_type: focal_point
+  c8cd887c-d7c4-4e47-8b95-126d2f05ede8:
+    uuid: c8cd887c-d7c4-4e47-8b95-126d2f05ede8
+    id: image_style_quality
+    weight: 1
+    data:
+      quality: 45
+  7de13d17-2cb6-4976-bcf4-a5e2c5a68bc3:
+    uuid: 7de13d17-2cb6-4976-bcf4-a5e2c5a68bc3
+    id: image_convert
+    weight: 2
+    data:
+      extension: webp

@@ -1,0 +1,29 @@
+uuid: b4c98d29-20a4-4f98-bd1e-53dcb80d5457
+langcode: en
+status: true
+dependencies:
+  module:
+    - image_style_quality
+name: sc_040000_640x640
+label: 'NIS Scaled Max - size 40 (640x640)'
+effects:
+  21a252a1-d4ba-47e4-8eaf-2d9be80329ef:
+    uuid: 21a252a1-d4ba-47e4-8eaf-2d9be80329ef
+    id: image_scale
+    weight: 0
+    data:
+      width: 640
+      height: 640
+      upscale: true
+  6dec9ab8-671e-4687-89ec-0e846c36ecd5:
+    uuid: 6dec9ab8-671e-4687-89ec-0e846c36ecd5
+    id: image_style_quality
+    weight: 1
+    data:
+      quality: 85
+  b87a13fa-3e53-4807-801c-19b57adee1db:
+    uuid: b87a13fa-3e53-4807-801c-19b57adee1db
+    id: image_convert
+    weight: 2
+    data:
+      extension: webp
