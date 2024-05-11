@@ -49,42 +49,11 @@
 %}
 {{ attach_library('four_starterkit/paragraph-content-carousel') }}
 
-{% set swiper = {
-  spaceBetween: 30,
-	breakpoints: {
-    320: {
-      slidesPerView: 1.3,
-			 scrollbar: {
-					dragSize: 80,
-       },
-    },
-    768: {
-      slidesPerView: 2.3,
-			scrollbar: {
-					dragSize: 130,
-      },
-    },
-		980: {
-      slidesPerView: 4,
-			scrollbar: {
-					dragSize: 180,
-      },
-    }
-  }
-} %}
-
-
-{% set vars =  {
-  swiper,
-  showNav: true
-}%}
-
-
 {% block paragraph %}
 	<section {{ attributes.addClass(classes) }}>
 		{% block content %}
 			{{ content.field_heading }}
-			{% embed '@four_starterkit/includes/swiper.html.twig' with vars %}
+			{% embed '@four_starterkit/includes/embla.html.twig' %}
 				{% block slides %}
 					{{ content.field_content }}
 				{% endblock %}

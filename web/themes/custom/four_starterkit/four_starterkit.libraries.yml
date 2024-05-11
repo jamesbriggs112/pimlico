@@ -200,15 +200,15 @@ paragraph-two-column-area:
       src/sass/components/paragraph-two-column-area.scss:
         weight: -10
 
-swiper:
+embla:
   version: VERSION
   vite: true
   css:
     component:
-      src/sass/components/swiper.scss:
+      src/sass/components/embla.scss:
         weight: -10
   js:
-    src/js/components/swiper.js: {}
+    src/js/components/embla.js: {}
   dependencies:
     - core/once
     - core/drupal

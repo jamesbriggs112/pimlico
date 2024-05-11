@@ -44,12 +44,12 @@
   --footer-bg-color: var(--color-black);
   --footer-text-color: var(--color-white);
 
-  // Swiper
-  --swiper-navigation-color: var(--color-white);
-  --swiper-navigation-background: var(--color-black);
-  --swiper-navigation-size: #{to.rem(24px)};
-  --swiper-navigation-radius: 50%;
-  --swiper-navigation-sides-offset: calc(-1 * var(--swiper-navigation-size));
+  // Embla
+  --embla-navigation-color: var(--color-white);
+  --embla-navigation-background: var(--color-black);
+  --embla-navigation-size: #{to.rem(24px)};
+  --embla-navigation-radius: 50%;
+  --embla-navigation-sides-offset: calc(-1 * var(--embla-navigation-size));
 
   @include mq($from: tablet) {
     --page-gutter: #{to.rem(50px)};
