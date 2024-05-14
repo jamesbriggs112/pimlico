@@ -26,8 +26,8 @@
             "url": "https://bitbucket.org/marmelo/banner-paragraph.git"
         },
         {
-            "type": "path",
-            "url": "/Users/marcus.williams/Projects/normalized_image_styles"
+            "type": "vcs",
+            "url": "https://bitbucket.org/rckt/normalized_image_styles.git"
         }
     ],
     "require": {
@@ -76,7 +76,7 @@
         "drupal/vite": "^1.1",
         "drupal/webform": "^6.2@beta",
         "drush/drush": "^12.4",
-        "four/normalized_image_styles": "dev-main",
+        "four/normalized_image_styles": "^1.0",
         "marmelo/banner_paragraph": "^1.0",
         "marmelo/marmelo_base_config": "^1.0",
         "marmelo/media_entity_download_extended": "^2.0.0",

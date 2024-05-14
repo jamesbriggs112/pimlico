@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "742ad7398ec992abdff30a8778b6c5af",
+    "content-hash": "a28e6bf4ae88a16f7d9d0cc8f47d08ee",
     "packages": [
         {
             "name": "algolia/places",
@@ -5411,11 +5411,17 @@
         },
         {
             "name": "four/normalized_image_styles",
-            "version": "dev-main",
-            "dist": {
-                "type": "path",
-                "url": "/Users/marcus.williams/Projects/normalized_image_styles",
+            "version": "v1.0.0",
+            "source": {
+                "type": "git",
+                "url": "https://bitbucket.org/rckt/normalized_image_styles.git",
                 "reference": "c8898b0a0c5d7cab2367293e0e70a9b6b39fdd27"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://bitbucket.org/rckt/normalized_image_styles/get/c8898b0a0c5d7cab2367293e0e70a9b6b39fdd27.zip",
+                "reference": "c8898b0a0c5d7cab2367293e0e70a9b6b39fdd27",
+                "shasum": ""
             },
             "require": {
                 "drupal/focal_point": "^2.0",
@@ -5428,9 +5434,11 @@
             "license": [
                 "GPL-2.0-or-later"
             ],
-            "transport-options": {
-                "relative": false
-            }
+            "homepage": "https://bitbucket.org/rckt/normalized_image_styles",
+            "support": {
+                "source": "https://bitbucket.org/rckt/normalized_image_styles/src/c8898b0a0c5d7cab2367293e0e70a9b6b39fdd27/?at=v1.0.0"
+            },
+            "time": "2024-05-11T09:08:40+00:00"
         },
         {
             "name": "grasmash/expander",
@@ -10836,8 +10844,7 @@
         "drupal/gin": 5,
         "drupal/simple_gmap": 20,
         "drupal/viewfield": 10,
-        "drupal/webform": 10,
-        "four/normalized_image_styles": 20
+        "drupal/webform": 10
     },
     "prefer-stable": true,
     "prefer-lowest": false,
