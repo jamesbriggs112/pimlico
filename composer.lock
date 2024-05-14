@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "04ea92ba0af1c3b7b05d916058a611c0",
+    "content-hash": "8d3d0ec9091b51daa7994ba294f5cd6a",
     "packages": [
         {
             "name": "algolia/places",
@@ -7556,28 +7556,6 @@
                 "source": "https://github.com/ralouphie/getallheaders/tree/develop"
             },
             "time": "2019-03-08T08:55:37+00:00"
-        },
-        {
-            "name": "rckt/gin_custom",
-            "version": "v1.3.3",
-            "source": {
-                "type": "git",
-                "url": "https://bitbucket.org/rckt/gin_custom.git",
-                "reference": "c12472d12334db628a51a855d2007314f8b3bf1d"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://bitbucket.org/rckt/gin_custom/get/c12472d12334db628a51a855d2007314f8b3bf1d.zip",
-                "reference": "c12472d12334db628a51a855d2007314f8b3bf1d",
-                "shasum": ""
-            },
-            "type": "drupal-module",
-            "description": "Gin custom theme overwrite",
-            "homepage": "https://bitbucket.org/rckt/gin_custom",
-            "support": {
-                "source": "https://bitbucket.org/rckt/gin_custom/src/c12472d12334db628a51a855d2007314f8b3bf1d/?at=v1.3.3"
-            },
-            "time": "2023-09-07T15:34:36+00:00"
         },
         {
             "name": "sebastian/diff",

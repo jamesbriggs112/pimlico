@@ -26,10 +26,6 @@
             "url": "https://bitbucket.org/marmelo/banner-paragraph.git"
         },
         {
-            "type": "vcs",
-            "url": "https://bitbucket.org/rckt/gin_custom"
-        },
-        {
             "type": "path",
             "url": "/Users/marcus.williams/Projects/normalized_image_styles"
         }
@@ -85,7 +81,6 @@
         "marmelo/banner_paragraph": "^1.0",
         "marmelo/marmelo_base_config": "^1.0",
         "marmelo/media_entity_download_extended": "^2.0.0",
-        "rckt/gin_custom": "^1.3",
         "wikimedia/composer-merge-plugin": "^2.1"
     },
     "conflict": {

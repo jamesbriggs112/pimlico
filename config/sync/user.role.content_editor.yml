@@ -9,9 +9,8 @@ dependencies:
   module:
     - contextual
     - file
-    - help
+    - media
     - node
-    - path
     - system
     - taxonomy
     - toolbar
@@ -27,14 +26,14 @@ permissions:
   - 'access content overview'
   - 'access contextual links'
   - 'access files overview'
-  - 'access help pages'
+  - 'access media overview'
   - 'access toolbar'
   - 'access tour'
-  - 'administer url aliases'
   - 'create article content'
+  - 'create media'
   - 'create page content'
   - 'create terms in tags'
-  - 'create url aliases'
+  - 'delete any media'
   - 'delete article revisions'
   - 'delete own article content'
   - 'delete own files'
@@ -44,6 +43,7 @@ permissions:
   - 'edit own page content'
   - 'edit terms in tags'
   - 'revert all revisions'
+  - 'update any media'
   - 'view all revisions'
   - 'view own unpublished content'
   - 'view the administration theme'
