@@ -4,8 +4,9 @@
     grid-template-columns:
       minmax(var(--page-gutter-left), auto) minmax(0, var(--page-width))
       minmax(var(--page-gutter-right), auto);
-    grid-template-rows: 1fr;
+    grid-template-rows: calc(100dvh - var(--header-height));
     color: var(--text-color);
+    overflow: hidden;
 
     &__media {
       grid-area: 1 / 1 / 2 / 4;
@@ -20,6 +21,7 @@
         width: 100%;
         height: 100%;
         object-fit: cover;
+        object-position: bottom;
       }
 
       &::after {
@@ -31,6 +33,12 @@
           rgba(0, 0, 0, 0.5) 100%
         );
       }
+    }
+
+    .gin--horizontal-toolbar & {
+      grid-template-rows: calc(
+        100dvh - var(--header-height) - var(--gin-toolbar-height)
+      );
     }
 
     .paragraph--type--page-banner {
