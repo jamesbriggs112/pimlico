@@ -100,17 +100,13 @@
 }
 
 .paragraph--type--text-wysiwyg- {
-  &__content {
-    > *:last-child {
-      margin-bottom: 0;
-    }
+  > *:last-child {
+    margin-bottom: 0;
   }
 }
 
 .paragraph--type--cta {
-  &__content {
-    a {
-      @include button(white, var(--color-dark-grey));
-    }
+  a {
+    @include button(white, var(--color-dark-grey));
   }
 }

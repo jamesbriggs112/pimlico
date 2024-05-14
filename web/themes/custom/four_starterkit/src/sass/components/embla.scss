@@ -2,7 +2,7 @@
   position: relative;
 
   &__container {
-    --slide-count: 3;
+    --slide-count: 1.3;
     --gap-count: calc(var(--slide-count) - 1);
     --total-gap-width: calc(var(--gap-count) * var(--column-gap));
     --grid-item--max-width: calc(
@@ -14,6 +14,14 @@
       (100% - var(--total-gap-width)) / var(--slide-count)
     );
     grid-gap: var(--row-gap) var(--column-gap);
+
+    @include mq($from: tablet) {
+      --slide-count: 2;
+    }
+
+    @include mq($from: desktop) {
+      --slide-count: 3;
+    }
   }
 
   &__prev,
