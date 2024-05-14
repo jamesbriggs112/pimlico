@@ -53,7 +53,6 @@
         "drupal/google_tag": "^2.0",
         "drupal/honeypot": "^2.1",
         "drupal/image_effects": "^3.4",
-        "drupal/image_widget_crop": "^2.4",
         "drupal/imagemagick": "^3.4",
         "drupal/linked_field": "^1.5",
         "drupal/linkit": "^6.1",
