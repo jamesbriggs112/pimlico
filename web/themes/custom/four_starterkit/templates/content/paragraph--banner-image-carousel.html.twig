@@ -52,15 +52,15 @@
 	<div {{ attributes.addClass(classes) }}>
 		<div class="carousel-inner" data-slides-per-view="1">
 			{% block content %}
-				<swiper-container init="false">
-					{% for image in content.field_images['#items'] %}
-						{% set media = image.entity %}
-						{% set mediaId = media.id() %}
-						<swiper-slide>
+				{% embed '@four_starterkit/includes/embla.html.twig' %}
+					{% block slides %}
+						{% for image in content.field_images['#items'] %}
+							{% set media = image.entity %}
+							{% set mediaId = media.id() %}
 							{{ drupal_field('field_media_image', 'media', mediaId, '16_9') }}
-						</swiper-slide>
-					{% endfor %}
-				</swiper-container>
+						{% endfor %}
+					{% endblock %}
+				{% endembed %}
 			{% endblock %}
 		</div>
 	</div>

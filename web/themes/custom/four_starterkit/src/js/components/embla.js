@@ -18,7 +18,7 @@ import EmblaCarousel from 'embla-carousel';
         nextButtonNode.addEventListener('click', embla.scrollNext, false);
 
         const setNavTopOffset = () => {
-          // find the tallest image in swiperElement and set css var to its height on the parent swiper container
+          // find the tallest image in swiperElement and set css var to its height on the parent embla container
           const images = viewportNode.querySelectorAll('img');
           let maxHeight = 0;
           images.forEach((img) => {
