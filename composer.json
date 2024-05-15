@@ -78,7 +78,6 @@
         "drush/drush": "^12.4",
         "four/normalized_image_styles": "^1.0",
         "marmelo/banner_paragraph": "^1.0",
-        "marmelo/marmelo_base_config": "^1.0",
         "marmelo/media_entity_download_extended": "^2.0.0",
         "wikimedia/composer-merge-plugin": "^2.1"
     },

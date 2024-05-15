@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "a28e6bf4ae88a16f7d9d0cc8f47d08ee",
+    "content-hash": "e652e08aed0ac7dc6afcf57c80af60cb",
     "packages": [
         {
             "name": "algolia/places",
@@ -6162,34 +6162,6 @@
                 "source": "https://bitbucket.org/marmelo/banner-paragraph/src/6ee3dfa4caa623174a3f8378313ec0cb13bf0e89/?at=v1.0.2"
             },
             "time": "2022-11-04T12:44:35+00:00"
-        },
-        {
-            "name": "marmelo/marmelo_base_config",
-            "version": "v1.0.1",
-            "source": {
-                "type": "git",
-                "url": "https://bitbucket.org/marmelo/marmelo-base-config.git",
-                "reference": "f5c1ae1a5915c799e4981917f7ac13599feb7955"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://bitbucket.org/marmelo/marmelo-base-config/get/f5c1ae1a5915c799e4981917f7ac13599feb7955.zip",
-                "reference": "f5c1ae1a5915c799e4981917f7ac13599feb7955",
-                "shasum": ""
-            },
-            "type": "drupal-module",
-            "authors": [
-                {
-                    "name": "Luke Alexander",
-                    "role": "Maintainer"
-                }
-            ],
-            "description": "Basic paragraph and image setup for Four Comms Drupal projects",
-            "homepage": "https://bitbucket.org/marmelo/marmelo-base-config",
-            "support": {
-                "source": "https://bitbucket.org/marmelo/marmelo-base-config/src/f5c1ae1a5915c799e4981917f7ac13599feb7955/?at=v1.0.1"
-            },
-            "time": "2023-05-18T08:00:11+00:00"
         },
         {
             "name": "marmelo/media_entity_download_extended",
