@@ -8,6 +8,7 @@ dependencies:
     - field.field.media.document.field_thumbnail
     - media.type.document
   module:
+    - fences
     - media_entity_download_extended
 _core:
   default_config_hash: rhjvcFQBeLKd5wsGeRmFCo03bpvMoLAserePFUB3Z1o
@@ -18,7 +19,7 @@ mode: thumbnail
 content:
   field_media_document:
     type: media_entity_download_extended_named_download_link
-    label: visually_hidden
+    label: hidden
     settings:
       trim_length: '80'
       disposition: attachment
@@ -27,7 +28,16 @@ content:
       url_plain: false
       rel: 0
       target: 0
-    third_party_settings: {  }
+    third_party_settings:
+      fences:
+        fences_field_tag: none
+        fences_field_classes: ''
+        fences_field_items_wrapper_tag: none
+        fences_field_items_wrapper_classes: ''
+        fences_field_item_tag: none
+        fences_field_item_classes: ''
+        fences_label_tag: div
+        fences_label_classes: ''
     weight: 0
     region: content
 hidden:

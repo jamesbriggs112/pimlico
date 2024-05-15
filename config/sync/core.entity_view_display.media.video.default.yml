@@ -6,6 +6,7 @@ dependencies:
     - field.field.media.video.field_media_video_file
     - media.type.video
   module:
+    - fences
     - file
 _core:
   default_config_hash: SxvbuGh-6cQMxl9bBV27-hGI46u7ZvwlMm5ObaJMNnw
@@ -16,7 +17,7 @@ mode: default
 content:
   field_media_video_file:
     type: file_video
-    label: visually_hidden
+    label: hidden
     settings:
       controls: true
       autoplay: false
@@ -25,7 +26,16 @@ content:
       muted: false
       width: 640
       height: 480
-    third_party_settings: {  }
+    third_party_settings:
+      fences:
+        fences_field_tag: none
+        fences_field_classes: ''
+        fences_field_items_wrapper_tag: none
+        fences_field_items_wrapper_classes: ''
+        fences_field_item_tag: none
+        fences_field_item_classes: ''
+        fences_label_tag: div
+        fences_label_classes: ''
     weight: 0
     region: content
 hidden:

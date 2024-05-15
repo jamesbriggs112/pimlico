@@ -7,6 +7,7 @@ dependencies:
     - image.style.large
     - media.type.icon
   module:
+    - fences
     - svg_image
 _core:
   default_config_hash: fE3N_tx9o0BhKY4eF-Xfdjf-J0dDkg9pnGKnXj7QcuQ
@@ -17,7 +18,7 @@ mode: default
 content:
   field_media_image:
     type: image
-    label: visually_hidden
+    label: hidden
     settings:
       image_link: ''
       image_style: large
@@ -27,7 +28,16 @@ content:
         width: 480
         height: 480
       svg_render_as_image: false
-    third_party_settings: {  }
+    third_party_settings:
+      fences:
+        fences_field_tag: none
+        fences_field_classes: ''
+        fences_field_items_wrapper_tag: none
+        fences_field_items_wrapper_classes: ''
+        fences_field_item_tag: none
+        fences_field_item_classes: ''
+        fences_label_tag: div
+        fences_label_classes: ''
     weight: 0
     region: content
 hidden:

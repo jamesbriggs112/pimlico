@@ -7,6 +7,7 @@ dependencies:
     - field.field.media.document.field_thumbnail
     - media.type.document
   module:
+    - fences
     - file
 _core:
   default_config_hash: XxUyhaTuM0OUUZpr8G6jdrFBEh5eag7auWxBKhm6cvY
@@ -17,9 +18,19 @@ mode: default
 content:
   field_media_document:
     type: file_default
-    label: visually_hidden
-    settings: {  }
-    third_party_settings: {  }
+    label: hidden
+    settings:
+      use_description_as_link_text: true
+    third_party_settings:
+      fences:
+        fences_field_tag: none
+        fences_field_classes: ''
+        fences_field_items_wrapper_tag: none
+        fences_field_items_wrapper_classes: ''
+        fences_field_item_tag: none
+        fences_field_item_classes: ''
+        fences_label_tag: div
+        fences_label_classes: ''
     weight: 1
     region: content
 hidden:
