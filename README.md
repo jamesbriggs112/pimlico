@@ -164,6 +164,7 @@ CLOUDFRONT_REGION
 AWS_ACCESS_KEY
 AWS_SECRET_KEY
 HASH_SALT
+CRON_URL
 
 ### Import/Export config and content?
 
