@@ -17,4 +17,5 @@ settings:
   plugins:
     linkit_extension:
       linkit_enabled: false
-image_upload: {  }
+image_upload:
+  status: false

@@ -6,5 +6,6 @@ _core:
   default_config_hash: VP00Bh_FdZeDj9qKb0a-saKn98nOyAdZFY5eDxv4p8U
 name: 'News category'
 vid: news_category
-description: ''
+description: null
 weight: 0
+new_revision: false

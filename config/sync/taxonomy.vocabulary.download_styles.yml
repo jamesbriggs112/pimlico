@@ -6,5 +6,6 @@ _core:
   default_config_hash: MeLGSvFwnqgIvNMmEiaH8fW0Ui37JibweXZNMlb8gbM
 name: 'Download styles'
 vid: download_styles
-description: ''
+description: null
 weight: 0
+new_revision: false

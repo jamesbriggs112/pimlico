@@ -26,7 +26,7 @@ image_style_mappings:
   -
     image_mapping_type: sizes
     image_mapping:
-      sizes: 100vw
+      sizes: 'calc(100vw - var(--page-gutter-total))'
       sizes_image_styles:
         - sq_008000_128x128
         - sq_016000_256x256

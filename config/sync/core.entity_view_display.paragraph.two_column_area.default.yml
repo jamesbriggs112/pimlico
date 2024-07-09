@@ -10,6 +10,28 @@ dependencies:
   module:
     - entity_reference_revisions
     - fences
+    - field_group
+third_party_settings:
+  field_group:
+    group_left:
+      children:
+        - field_left
+      label: Left
+      parent_name: ''
+      region: content
+      weight: 1
+      format_type: html_element
+      format_settings:
+        classes: ''
+        show_empty_fields: false
+        id: ''
+        element: div
+        show_label: false
+        label_element: h3
+        label_element_classes: ''
+        attributes: ''
+        effect: none
+        speed: fast
 _core:
   default_config_hash: M9limD8gU566sqUXMmf9OcPOkeBj01wNX0ChpcSW_2U
 id: paragraph.two_column_area.default
@@ -50,7 +72,7 @@ content:
         fences_field_item_classes: ''
         fences_label_tag: div
         fences_label_classes: ''
-    weight: 1
+    weight: 2
     region: content
   field_right:
     type: entity_reference_revisions_entity_view
@@ -68,6 +90,6 @@ content:
         fences_field_item_classes: ''
         fences_label_tag: div
         fences_label_classes: ''
-    weight: 2
+    weight: 3
     region: content
 hidden: {  }

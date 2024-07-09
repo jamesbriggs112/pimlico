@@ -6,5 +6,6 @@ _core:
   default_config_hash: zkzWF0rhDE85NGdCjvQlgIFtffh0aYm8IhYW8hDRBpY
 name: 'Image styles'
 vid: image_paragraph_styles
-description: ''
+description: null
 weight: 0
+new_revision: false
