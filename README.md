@@ -20,7 +20,8 @@ export PATH=./vendor/bin:$PATH
 
 ### Initial installation from skeleton
 
-- Do not follow these steps unless this is the very initial setup from the four-drupal-skeleton
+#### Do not follow these steps unless this is the very initial setup from the four-drupal-skeleton. Instead, skip straight to "Initial site set up"
+
 - `composer install` from your Drupal root folder
 - Copy `web/sites/example.settings.local.php` to `web/sites/default/settings.local.php` and configure `$database` object at the bottom of the file. Set this up with the information you want to use, and then create the database locally using Sequel Ace, or preferred database management software.
 - Run `drush si --existing-config && drush ib` and follow the steps, typically accepting all the default answers provided
