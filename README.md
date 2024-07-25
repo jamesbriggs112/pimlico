@@ -40,6 +40,11 @@ In install.core.inc line 1000:
 
 ### Initial site set up
 
+- If you did NOT run through "Initial installation from skeleton":
+
+  - `composer install` from your Drupal root folder
+  - Copy `web/sites/example.settings.local.php` to `web/sites/default/settings.local.php` and configure `$database` object at the bottom of the file. You should be able to source a copy of a database for this site to set up locally and point at.
+
 - Set the site up in Laravel, and point the Document root to the `web` directory
 - `cd web/themes/custom/my_new_theme`
 - `nvm use`
