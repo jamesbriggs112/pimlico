@@ -24,7 +24,7 @@ export PATH=./vendor/bin:$PATH
 
 - `composer install` from your Drupal root folder
 - Copy `web/sites/example.settings.local.php` to `web/sites/default/settings.local.php` and configure `$database` object at the bottom of the file. Set this up with the information you want to use, and then create the database locally using Sequel Ace, or preferred database management software.
-- Run `drush si --existing-config && drush ib` and follow the steps, typically accepting all the default answers provided
+- Run `drush si --existing-config && drush ib` and follow the steps, typically accepting all the default answers provided. This will import the local config and set up your database.
 - If you are hitting an error that looks like the following:
 
 ```
