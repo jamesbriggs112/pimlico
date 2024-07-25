@@ -18,17 +18,33 @@ Drush 12 no longer works with drush-launcher so add the following to your .zshrc
 export PATH=./vendor/bin:$PATH
 ```
 
-### How do I get set up?
+### Initial installation from skeleton
 
+- Do not follow these steps unless this is the very initial setup from the four-drupal-skeleton
 - `composer install` from your Drupal root folder
-- Copy `web/sites/example.settings.local.php` to `web/sites/default/settings.local.php` and configure database
-- Point Document root to the `web` directory
-- Run `drush si --existing-config && drush ib`
-- `php web/core/scripts/drupal generate-theme --starterkit four_starterkit my_new_theme --path themes/custom`
+- Copy `web/sites/example.settings.local.php` to `web/sites/default/settings.local.php` and configure `$database` object at the bottom of the file. Set this up with the information you want to use, and then create the database locally using Sequel Ace, or preferred database management software.
+- Run `drush si --existing-config && drush ib` and follow the steps, typically accepting all the default answers provided
+- If you are hitting an error that looks like the following:
+
+```
+In install.core.inc line 1000:
+
+  Resolve all issues below to continue the installation... Access denied for user...
+```
+
+- The simplest solution for this is to create a database user with the username/password drupal/drupal and grant them full permissions to your local database.
+- Save the username and password provided in the terminal by the installation process to 1Password
+
+- Run `php web/core/scripts/drupal generate-theme --starterkit four_starterkit my_new_theme --path themes/custom`, replacing my_new_theme with the your desired theme name
+
+### Initial site set up
+
+- Set the site up in Laravel, and point the Document root to the `web` directory
 - `cd web/themes/custom/my_new_theme`
+- `nvm use`
 - `yarn`
-- Before running `yarn dev` you will need to navigate to /admin/appearance and `Install and set as default` on the theme you have created
-- `yarn watch` to build a dev version, start up a dev server and watch files
+- `yarn dev` to build a dev version, start up a dev server and watch files
+- Navigate to /admin/appearance and `Install and set as default` on the theme you have created
 
 ### Development settings
 
