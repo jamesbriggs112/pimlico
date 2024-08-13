@@ -5,7 +5,7 @@
  * Aws-secrets.php.
  */
 
-require 'vendor/autoload.php';
+require __DIR__ . '/../../autoload.php';
 
 use Aws\Exception\AwsException;
 use Aws\SecretsManager\SecretsManagerClient;

@@ -818,7 +818,7 @@ $settings['migrate_node_migrate_type_classic'] = FALSE;
 $_SERVER['HTTPS'] = 'on';
 
 if (isset($_SERVER['AWS_SECRETS_NAME'])) {
-  require 'aws-secrets.php';
+  require $app_root . '/' . $site_path . '/aws-secrets.php';
   $secret = get_secret($_SERVER['AWS_SECRETS_NAME'], $_SERVER['AWS_REGION']);
 
   if ($secret) {
