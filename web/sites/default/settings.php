@@ -817,11 +817,25 @@ $settings['migrate_node_migrate_type_classic'] = FALSE;
 
 $_SERVER['HTTPS'] = 'on';
 
+if (isset($_SERVER['AWS_SECRETS_NAME'])) {
+  require $app_root . '/' . $site_path . '/aws-secrets.php';
+  $secret = get_secret($_SERVER['AWS_SECRETS_NAME'], $_SERVER['AWS_REGION']);
+
+  if ($secret) {
+    $username = $secret['username'];
+    $password = $secret['password'];
+  } else {
+      // Handle error
+      $username = '';
+      $password = '';
+  }
+}
+
 if (isset($_SERVER['RDS_DB_NAME'])) {
   $databases['default']['default'] = array(
     'database' => $_SERVER['RDS_DB_NAME'],
-    'username' => $_SERVER['RDS_USERNAME'],
-    'password' => $_SERVER['RDS_PASSWORD'],
+    'username' => $username ?? $_SERVER['RDS_USERNAME'],
+    'password' => $password ?? $_SERVER['RDS_PASSWORD'],
     'prefix' => '',
     'host' => $_SERVER['RDS_HOSTNAME'],
     'port' => $_SERVER['RDS_PORT'],
