@@ -7,7 +7,7 @@ This repository should only be used as an upstream source for projects.
 ### Prerequisites
 
 - Node v18
-- Yarn 3
+- Yarn 4
 - PHP 8.2
 - Composer 2
 - ImageMagick: `brew install imagemagick`
@@ -23,6 +23,7 @@ export PATH=./vendor/bin:$PATH
 #### Do not follow these steps unless this is the very initial setup from the four-drupal-skeleton. Instead, skip straight to "Initial site set up"
 
 - `composer install` from your Drupal root folder
+- `yarn install`
 - Copy `web/sites/example.settings.local.php` to `web/sites/default/settings.local.php` and configure `$database` object at the bottom of the file. Set this up with the information you intend to use, and then create the database locally using Sequel Ace, or preferred database management software.
 - Run `drush si --existing-config && drush ib` and follow the steps, typically accepting all the default answers provided. This will import the local config and set up your database.
 - If you are hitting an error that looks like the following:
