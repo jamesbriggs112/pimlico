@@ -119,7 +119,8 @@
           "mode": "replace",
           "path": "scaffold/development.services.yml",
           "overwrite": true
-        }
+        },
+        "[web-root]/.htaccess": "scaffold/.htaccess"
       }
     },
     "installer-paths": {
