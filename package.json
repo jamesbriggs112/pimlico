@@ -1,0 +1,10 @@
+{
+  "name": "four-drupal-skeleton",
+  "packageManager": "yarn@4.4.1",
+  "scripts": {
+    "postinstall": "husky"
+  },
+  "devDependencies": {
+    "husky": "^9.1.5"
+  }
+}
