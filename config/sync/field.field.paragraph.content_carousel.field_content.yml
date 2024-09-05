@@ -6,6 +6,12 @@ dependencies:
     - field.storage.paragraph.field_content
     - node.type.article
     - paragraphs.paragraphs_type.content_carousel
+  module:
+    - entity_reference_purger
+third_party_settings:
+  entity_reference_purger:
+    remove_orphaned: true
+    use_queue: true
 id: paragraph.content_carousel.field_content
 field_name: field_content
 entity_type: paragraph
