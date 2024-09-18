@@ -142,7 +142,7 @@ paragraph-accordion:
       src/sass/components/paragraph-accordion.scss:
         weight: -10
   js:
-    js/components/paragraph-accordion.js: {}
+    src/js/components/paragraph-accordion.js: {}
 
 paragraph-featured-link:
   version: VERSION
