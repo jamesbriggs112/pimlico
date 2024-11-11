@@ -1,5 +1,6 @@
 @use 'sass-rem' as to;
 @use 'sass-mq/mq' as *;
+@use './mixins' as *;
 
 a,
 a:visited {
@@ -28,7 +29,7 @@ a:visited {
 }
 
 p {
-  font-size: to.rem(28px);
+  font-size: to.rem(18px);
   line-height: 1.15;
   margin-top: 0;
 }

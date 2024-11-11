@@ -2,7 +2,7 @@ import { defineConfig } from 'vite';
 import multiInput from 'rollup-plugin-multi-input';
 
 export default defineConfig({
-  plugins: [multiInput.default()],
+  plugins: [multiInput()],
   css: {
     preprocessorOptions: {
       scss: {

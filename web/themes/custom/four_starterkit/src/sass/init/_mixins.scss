@@ -31,66 +31,6 @@
   );
 }
 
-@mixin bar-after($stretch: true) {
-  &:after {
-    content: '-';
-    display: block;
-    line-height: 0.5em;
-
-    @if $stretch ==true {
-      transform: scaleX(3);
-    }
-
-    font-weight: bold;
-  }
-}
-
-@mixin fix-bottom-row() {
-  &:nth-child(5n):last-child {
-    margin-right: 35%;
-  }
-}
-
-@mixin bar-before($color) {
-  &:before {
-    height: 100%;
-    position: absolute;
-    left: 0px;
-    width: 100%;
-    z-index: -1;
-    background-color: $color;
-    content: '';
-    top: 0px;
-    transform: scaleX(4);
-    transform-origin: 50% 50%;
-  }
-}
-
-@mixin three-col-flex() {
-  flex-basis: 30%;
-
-  @include fix-bottom-row();
-}
-
-@mixin two-col-flex() {
-  flex-basis: 48%;
-}
-
-@mixin full-bar($color) {
-  &:before {
-    height: 100%;
-    position: absolute;
-    left: 0px;
-    width: 100%;
-    z-index: -1;
-    background-color: $color;
-    content: '';
-    top: 0px;
-    transform: scaleX(4);
-    transform-origin: 50% 50%;
-  }
-}
-
 %visually-hidden {
   margin: -1px;
   padding: 0;
@@ -100,30 +40,6 @@
   clip: rect(0 0 0 0);
   clip: rect(0, 0, 0, 0);
   position: absolute;
-}
-
-@mixin shard($color) {
-  position: relative;
-  overflow: hidden;
-  padding-top: 2em;
-
-  > * {
-    position: relative;
-    z-index: 11;
-  }
-
-  &:before {
-    content: '';
-    background-color: rgba($color, 0.9);
-    position: absolute;
-    left: 0px;
-    top: 2em;
-    width: 100%;
-    height: 100%;
-    transform: skewY(-2deg);
-    padding-bottom: 3em;
-    z-index: 10;
-  }
 }
 
 @mixin button($color: var(--color-dark-grey), $background: white) {
@@ -150,17 +66,25 @@
   }
 }
 
-@mixin section-header() {
-  font-size: 1.5rem;
-  font-weight: bold;
-}
-
 @mixin contentWithGutters() {
+  --full-start: minmax(var(--page-gutter-left), 1fr);
+  --full-end: minmax(var(--page-gutter-right), 1fr);
+  --content: min(
+    var(--max-text-width),
+    100% - var(--page-gutter-left) - var(--page-gutter-right)
+  );
+  --max-width: calc(
+    (var(--page-width) - var(--page-gutter-total) - var(--content)) / 2
+  );
+  --popout: minmax(0, var(--max-width));
+
   display: grid;
   grid-template-columns:
-    minmax(var(--page-gutter-left), auto) minmax(0, var(--page-width))
-    minmax(var(--page-gutter-right), auto);
-  grid-auto-rows: auto;
+    [full-start] var(--full-start)
+    [popout-start] var(--popout)
+    [content-start] var(--content) [content-end]
+    var(--popout) [popout-end]
+    var(--full-end) [full-end];
 }
 
 @mixin contentGrid() {

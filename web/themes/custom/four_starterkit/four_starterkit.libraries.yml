@@ -1,6 +1,5 @@
 base:
   version: VERSION
-  vite: true
   css:
     theme:
       src/sass/hamburgers/hamburgers.scss: {}
@@ -54,155 +53,125 @@ base:
     src/js/site.js: {}
 dialog:
   version: VERSION
-  vite: true
   css:
     component:
       src/sass/components/dialog.scss:
         weight: -10
 dropbutton:
   version: VERSION
-  vite: true
   css:
     component:
       src/sass/components/dropbutton.scss:
         weight: -10
 file:
   version: VERSION
-  vite: true
   css:
     component:
       src/sass/components/file.scss:
         weight: -10
 image-widget:
   version: VERSION
-  vite: true
   css:
     component:
       src/sass/components/image-widget.scss: {}
 indented:
   version: VERSION
-  vite: true
   css:
     component:
       src/sass/components/indented.scss: {}
 messages:
   version: VERSION
-  vite: true
   css:
     component:
       src/sass/components/messages.scss:
         weight: -10
 node:
   version: VERSION
-  vite: true
   css:
     component:
       src/sass/components/node.scss:
         weight: -10
 node-teaser:
   version: VERSION
-  vite: true
   css:
     component:
       src/sass/components/node-teaser.scss:
         weight: -10
 page-banner:
   version: VERSION
-  vite: true
   css:
     component:
       src/sass/components/page-banner.scss:
         weight: -10
 progress:
   version: VERSION
-  vite: true
   css:
     component:
       src/sass/components/progress.scss:
         weight: -10
 search-results:
   version: VERSION
-  vite: true
   css:
     component:
       src/sass/components/search-results.scss: {}
 user:
   version: VERSION
-  vite: true
   css:
     component:
       src/sass/components/user.scss:
         weight: -10
-
 paragraph-accordion:
   version: VERSION
-  vite: true
   css:
     component:
       src/sass/components/paragraph-accordion.scss:
         weight: -10
   js:
     src/js/components/paragraph-accordion.js: {}
-
 paragraph-featured-link:
   version: VERSION
-  vite: true
   css:
     component:
       src/sass/components/paragraph-featured-link.scss:
         weight: -10
-
 paragraph-content-carousel:
   version: VERSION
-  vite: true
   css:
     component:
       src/sass/components/paragraph-content-carousel.scss:
         weight: -10
-
 paragraph-content-grid:
   version: VERSION
-  vite: true
   css:
     component:
       src/sass/components/paragraph-content-grid.scss:
         weight: -10
-
 paragraph-iframe-embed:
   version: VERSION
-  vite: true
   css:
     component:
       src/sass/components/paragraph-iframe-embed.scss:
         weight: -10
-
 paragraph-quote:
   version: VERSION
-  vite: true
   css:
     component:
       src/sass/components/paragraph-quote.scss:
         weight: -10
-
 paragraph-teaser:
   version: VERSION
-  vite: true
   css:
     component:
       src/sass/components/paragraph-teaser.scss:
         weight: -10
-
 paragraph-two-column-area:
   version: VERSION
-  vite: true
   css:
     component:
       src/sass/components/paragraph-two-column-area.scss:
         weight: -10
-
 embla:
   version: VERSION
-  vite: true
   css:
     component:
       src/sass/components/embla.scss:

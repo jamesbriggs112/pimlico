@@ -14,7 +14,6 @@ dependencies:
     - paragraphs.paragraphs_type.iframe_embed
     - paragraphs.paragraphs_type.image
     - paragraphs.paragraphs_type.image_grid
-    - paragraphs.paragraphs_type.jump_menu_anchor
     - paragraphs.paragraphs_type.map
     - paragraphs.paragraphs_type.quote
     - paragraphs.paragraphs_type.separator
@@ -45,7 +44,6 @@ settings:
       testimonial: testimonial
       text_wysiwyg_: text_wysiwyg_
       video: video
-      jump_menu_anchor: jump_menu_anchor
       accordion: accordion
       map: map
       cta: cta
@@ -70,9 +68,6 @@ settings:
         enabled: true
       carousel_item:
         weight: 12
-        enabled: false
-      chart:
-        weight: 13
         enabled: false
       content_carousel:
         weight: 55
@@ -112,18 +107,12 @@ settings:
         enabled: true
       jump_menu_anchor:
         weight: 22
-        enabled: true
+        enabled: false
       map:
         weight: 39
         enabled: true
       map_image:
         weight: 56
-        enabled: false
-      nav:
-        weight: 57
-        enabled: false
-      nav_block:
-        weight: 58
         enabled: false
       page_banner:
         weight: 59
@@ -146,15 +135,6 @@ settings:
       text_wysiwyg_:
         weight: 19
         enabled: true
-      timeline:
-        weight: 43
-        enabled: false
-      timeline_entry:
-        weight: 44
-        enabled: false
-      timeline_year:
-        weight: 45
-        enabled: false
       two_column_area:
         weight: 67
         enabled: true

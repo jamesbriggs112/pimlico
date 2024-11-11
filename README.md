@@ -6,9 +6,9 @@ This repository should only be used as an upstream source for projects.
 
 ### Prerequisites
 
-- Node v18
+- Node v20
 - Yarn 4
-- PHP 8.2
+- PHP 8.3
 - Composer 2
 - ImageMagick: `brew install imagemagick`
 
@@ -51,6 +51,7 @@ In install.core.inc line 1000:
 - `nvm use`
 - `yarn`
 - `yarn dev` to build a dev version, start up a dev server and watch files
+- You can also enable theme scripts to be run from the project root by adding your theme to the packages in package.json along with the appripriate build and dev scripts
 - Navigate to /admin/appearance and `Install and set as default` on the theme you have created
 
 ### Development settings
@@ -168,26 +169,49 @@ The fluid allows to scale fonts and other pixel based values such as margins and
 }
 ```
 
+#### contentWithGutters
+
+This mixin should be used on any content that displays paragraphs. This provide 3 possible areas where content can be displayed:
+
+- content - this is used for display content in the center which is restricted to a maximum character width for accessiblity. This can be controlled by setting the `--max-text-width` value in the `:root`
+- popout - allows for displaying content that need to be wider but only to a max width difined by `--page-width`
+- full - This is for content that need to be displayed full width with no page gutter. Content within this will have the same rules applied as above.
+
+By default paragraphs will be placed in the popout area, and for the content area a `.narrow` class and for full area use the `.fullwidth` class.
+
+Alternatively you can use grid-column i.e
+
+```
+.paragraph--my-paragraph {
+  grid-column: content;
+}
+.paragraph--my-paragraph {
+  grid-column: popout;
+}
+.paragraph--my-paragraph {
+  grid-column: full;
+}
+```
+
+#### contentGrid
+
+This implements a grid system that doesn't require any breakpoints and allow you to define the max number of columns and the minimum width of the items with the grid i.e
+
+```
+.grid {
+  --grid-column-count: 3;
+  --grid-item--min-width: #{to.rem(200px)};
+  @include contentGrid;
+}
+```
+
 ---
 
 # Deployment
 
-#### Environment Variables
+In most cases use the AWS stack https://bitbucket.org/rckt/four-aws-cdk-drupal-stack
 
-ENVIRONMENT
-RDS_DB_NAME
-RDS_USERNAME
-RDS_PASSWORD
-RDS_HOSTNAME
-RDS_PORT
-MOUNT_DIR
-FILE_SYSTEM_ID
-CLOUDFRONT_DISTRIBUTIONID
-CLOUDFRONT_REGION
-AWS_ACCESS_KEY
-AWS_SECRET_KEY
-HASH_SALT
-CRON_URL
+This will set up everything correctly to work with this skeleton. The only thing that will need configuring is the bitbucket pipeline.
 
 ### Import/Export config and content?
 

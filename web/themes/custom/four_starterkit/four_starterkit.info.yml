@@ -4,6 +4,9 @@ type: theme
 description: "Four Starterkit Theme."
 starterkit: true
 version: VERSION
+vite:
+  enableInAllLibraries: true
+  enableInAllComponents: true
 regions:
   header: Header
   banner: Banner area

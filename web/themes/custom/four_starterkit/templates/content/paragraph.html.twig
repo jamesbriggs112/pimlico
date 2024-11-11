@@ -48,12 +48,8 @@
 %}
 {% block paragraph %}
 	<section {{ attributes.addClass(classes) }}>
-		{% if anchor %}
-			<a name="{{ anchor }}">
-			{% endif %}
-			{% block content %}
-				{{ content }}
-
-			{% endblock %}
-		</section>
-	{% endblock paragraph %}
+		{% block content %}
+			{{ content }}
+		{% endblock %}
+	</section>
+{% endblock paragraph %}

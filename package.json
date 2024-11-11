@@ -1,10 +1,21 @@
 {
   "name": "four-drupal-skeleton",
-  "packageManager": "yarn@4.4.1",
+  "packageManager": "yarn@4.5.1",
   "scripts": {
-    "postinstall": "husky"
+    "postinstall": "husky",
+    "build:four_starterkit": "yarn workspace four_starterkit build",
+    "dev:four_starterkit": "yarn workspace four_starterkit dev"
   },
   "devDependencies": {
     "husky": "^9.1.5"
+  },
+  "workspaces": {
+    "packages": [
+      "web/themes/custom/four_starterkit"
+    ],
+    "nohoist": [
+      "**/vite",
+      "**/vite/**"
+    ]
   }
 }

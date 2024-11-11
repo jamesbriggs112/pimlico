@@ -725,6 +725,11 @@ $settings['container_yamls'][] = $app_root . '/' . $site_path . '/services.yml';
  * @see https://www.drupal.org/docs/installing-drupal/trusted-host-settings
  */
 
+ $settings['trusted_host_patterns'] = [
+  '^.+\.preflight\.site$',
+  '^10\.0\.\d{1,3}\.\d{1,3}$', // Allow all 10.0.x.x IP addresses
+];
+
 /**
  * The default list of directories that will be ignored by Drupal's file API.
  *

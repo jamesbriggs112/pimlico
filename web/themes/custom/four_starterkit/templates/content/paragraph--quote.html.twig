@@ -45,20 +45,14 @@
     'paragraph',
     'paragraph--type--' ~ paragraph.bundle|clean_class,
     view_mode ? 'paragraph--view-mode--' ~ view_mode|clean_class,
-    not paragraph.isPublished() ? 'paragraph--unpublished'
+    not paragraph.isPublished() ? 'paragraph--unpublished',
+		'narrow',
   ]
 %}
 {% block paragraph %}
 	<div {{ attributes.addClass(classes) }}>
-		{% if anchor %}
-			<a name="{{ anchor }}">
-			{% endif %}
-			{% block content %}
-				<div class="{{'paragraph--type--' ~ paragraph.bundle|clean_class ~ '__quote'}}">
-					<div class="{{'paragraph--type--' ~ paragraph.bundle|clean_class ~ '__content'}}">
-						{{ content }}
-					</div>
-				</div>
-			{% endblock %}
-		</div>
-	{% endblock paragraph %}
+		{% block content %}
+			{{ content }}
+		{% endblock %}
+	</div>
+{% endblock paragraph %}

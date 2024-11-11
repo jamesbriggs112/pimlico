@@ -9,7 +9,6 @@ dependencies:
     - file
     - filter
     - media
-    - search
     - shortcut
     - system
 _core:
@@ -22,7 +21,6 @@ permissions:
   - 'access content'
   - 'access shortcuts'
   - 'delete own files'
-  - 'search content'
   - 'use text format basic_html'
   - 'use text format webform_default'
   - 'view media'

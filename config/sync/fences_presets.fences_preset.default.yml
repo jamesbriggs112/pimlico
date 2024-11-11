@@ -1,0 +1,17 @@
+uuid: a0e91c7b-e02a-4d00-9a0c-d6992da1f95b
+langcode: en
+status: true
+dependencies: {  }
+_core:
+  default_config_hash: Tguo7wjsKJvq0MEXtCtn93OtQtUBtmGwBaF6dErAEws
+id: default
+label: Default
+description: 'The default fences field values.'
+field_tag: div
+field_classes: ''
+field_items_wrapper_tag: none
+field_items_wrapper_classes: ''
+field_item_tag: div
+field_item_classes: ''
+label_tag: div
+label_classes: ''

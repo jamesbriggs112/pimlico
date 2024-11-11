@@ -6,9 +6,11 @@
   // Layout
   --page-width: #{to.rem($default-max-bp)};
   --page-gutter: #{to.rem(30px)};
-  --page-gutter-total: calc(var(var(--page-gutter) * 2));
   --page-gutter-left: calc(var(--page-gutter) + env(safe-area-inset-left));
   --page-gutter-right: calc(var(--page-gutter) + env(safe-area-inset-right));
+  --page-gutter-total: calc(
+    var(--page-gutter) + env(safe-area-inset-left) + env(safe-area-inset-right)
+  );
   --vertical-spacing: #{to.rem(40px)};
   --component-spacing: #{to.rem(50px)};
   --row-gap: #{to.rem(30px)};
@@ -29,7 +31,7 @@
   --background-color: var(--color-white);
   --embla-theme-color: black;
 
-  // Fonts
+  // Typography
   --font-family: 'Advocate Sans', 'Adjusted Arial Fallback';
   --body-text: var(--font-family);
   --header-text: var(--font-family);
@@ -37,6 +39,7 @@
   --font-weight-regular: normal;
   --font-weight-medium: 500;
   --font-weight-semi-bold: 600;
+  --max-text-width: 75ch;
 
   // Components
   --header-bg-color: var(--color-black);

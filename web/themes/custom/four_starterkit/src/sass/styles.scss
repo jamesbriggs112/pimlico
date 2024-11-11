@@ -1,23 +1,23 @@
-@import 'normalize/normalize';
-@import 'normalize/drupal';
+@use 'normalize/normalize';
+@use 'normalize/drupal';
 
-@import 'init/fonts';
-@import 'init/root';
-@import 'init/mixins';
-@import 'init/layout-vars';
-@import 'init/typography';
-@import 'init/defaults';
+@use 'init/fonts';
+@use 'init/root';
+@use 'init/mixins';
+@use 'init/layout-vars';
+@use 'init/typography';
+@use 'init/defaults';
 
 // Layout
-@import 'layout/layout';
-@import 'layout/header';
-@import 'layout/footer';
+@use 'layout/layout';
+@use 'layout/header';
+@use 'layout/footer';
 
 // Pages
-@import 'pages/admin';
+@use 'pages/admin';
 
 // Components
-@import 'components/common-elements';
+@use 'components/common-elements';
 
 // site building blocks
-@import 'components/webforms';
+@use 'components/webforms';

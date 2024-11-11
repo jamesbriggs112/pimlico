@@ -6,10 +6,11 @@ dependencies:
     - core.entity_view_mode.node.teaser
     - field.field.node.page.body
     - field.field.node.page.field_banner
-    - field.field.node.page.field_include_a_jump_menu
-    - field.field.node.page.field_meta_tags
     - field.field.node.page.field_sections
     - field.field.node.page.field_seo_description
+    - field.field.node.page.field_seo_image
+    - field.field.node.page.field_seo_social_media_title
+    - field.field.node.page.field_seo_title
     - node.type.page
   module:
     - text
@@ -34,7 +35,9 @@ content:
     region: content
 hidden:
   field_banner: true
-  field_include_a_jump_menu: true
-  field_meta_tags: true
   field_sections: true
   field_seo_description: true
+  field_seo_image: true
+  field_seo_social_media_title: true
+  field_seo_title: true
+  search_api_excerpt: true

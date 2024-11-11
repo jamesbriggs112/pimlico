@@ -9,7 +9,31 @@ dependencies:
     - paragraphs.paragraphs_type.quote
   module:
     - fences
+    - field_group
     - text
+third_party_settings:
+  field_group:
+    group_cite:
+      children:
+        - field_name
+        - field_position_company
+      label: Cite
+      parent_name: ''
+      region: content
+      weight: 1
+      format_type: html_element
+      format_settings:
+        classes: ''
+        show_empty_fields: false
+        id: ''
+        label_as_html: false
+        element: cite
+        show_label: false
+        label_element: h3
+        label_element_classes: ''
+        attributes: ''
+        effect: none
+        speed: fast
 id: paragraph.quote.default
 targetEntityType: paragraph
 bundle: quote
@@ -30,7 +54,7 @@ content:
         fences_field_item_classes: ''
         fences_label_tag: div
         fences_label_classes: ''
-    weight: 1
+    weight: 2
     region: content
   field_position_company:
     type: string
@@ -47,7 +71,7 @@ content:
         fences_field_item_classes: ''
         fences_label_tag: div
         fences_label_classes: ''
-    weight: 2
+    weight: 3
     region: content
   field_text:
     type: text_default
@@ -55,7 +79,7 @@ content:
     settings: {  }
     third_party_settings:
       fences:
-        fences_field_tag: q
+        fences_field_tag: blockquote
         fences_field_classes: ''
         fences_field_items_wrapper_tag: none
         fences_field_items_wrapper_classes: ''
@@ -65,4 +89,5 @@ content:
         fences_label_classes: ''
     weight: 0
     region: content
-hidden: {  }
+hidden:
+  search_api_excerpt: true

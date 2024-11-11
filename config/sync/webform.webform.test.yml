@@ -13,23 +13,26 @@ title: Test
 description: ''
 categories: {  }
 elements: |-
-  animal:
-    '#type': select
-    '#title': Animal
-    '#options':
-      dogs: Dogs
-      cats: Cats
-  dog_options:
-    '#type': select
-    '#title': 'Dog Options'
-    '#options':
-      brown: brown
-      pink: pink
-      bold: bold
-    '#states':
-      visible:
-        ':input[name="animal"]':
-          value: dogs
+  questions:
+    '#type': webform_wizard_page
+    '#title': Questions
+    animal:
+      '#type': select
+      '#title': Animal
+      '#options':
+        dogs: Dogs
+        cats: Cats
+    dog_options:
+      '#type': select
+      '#title': 'Dog Options'
+      '#options':
+        brown: brown
+        pink: pink
+        bold: bold
+      '#states':
+        visible:
+          ':input[name="animal"]':
+            value: dogs
 css: ''
 javascript: ''
 settings:

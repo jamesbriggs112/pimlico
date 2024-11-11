@@ -23,7 +23,7 @@ definitions:
           - echo "Building package"
           - zip -r application.zip web composer.json composer.lock .ebextensions .platform scaffold config --exclude='web/themes/custom/four_starterkit/node_modules/*'
           - export BITBUCKET_COMMIT_SHORT=$(echo $BITBUCKET_COMMIT | cut -c1-7)
-          - pipe: atlassian/aws-elasticbeanstalk-deploy:1.4.0
+          - pipe: atlassian/aws-elasticbeanstalk-deploy:1.4.1
             variables:
               AWS_ACCESS_KEY_ID: $AWS_ACCESS_KEY_ID
               AWS_SECRET_ACCESS_KEY: $AWS_SECRET_ACCESS_KEY
@@ -37,7 +37,7 @@ definitions:
         name: "Deploy"
         script:
           - export BITBUCKET_COMMIT_SHORT=$(echo $BITBUCKET_COMMIT | cut -c1-7)
-          - pipe: atlassian/aws-elasticbeanstalk-deploy:1.4.0
+          - pipe: atlassian/aws-elasticbeanstalk-deploy:1.4.1
             variables:
               AWS_ACCESS_KEY_ID: $AWS_ACCESS_KEY_ID
               AWS_SECRET_ACCESS_KEY: $AWS_SECRET_ACCESS_KEY
@@ -48,9 +48,9 @@ definitions:
               ENVIRONMENT_NAME: $ENVIRONMENT_NAME
               WAIT: "true"
     - step: &invalidate
-        name: "Invalidate Mayfair Cache"
+        name: "Invalidate Cache"
         script:
-          - pipe: atlassian/aws-cloudfront-invalidate:0.6.0
+          - pipe: atlassian/aws-cloudfront-invalidate:0.10.1
             variables:
               AWS_ACCESS_KEY_ID: $AWS_ACCESS_KEY_ID
               AWS_SECRET_ACCESS_KEY: $AWS_SECRET_ACCESS_KEY

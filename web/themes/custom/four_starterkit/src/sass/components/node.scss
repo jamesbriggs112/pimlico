@@ -23,21 +23,25 @@
     grid-area: header;
   }
 
-  &__content {
+  &__content,
+  .fullwidth {
     grid-area: content;
     @include contentWithGutters;
     padding-bottom: var(--vertical-spacing);
 
     .block-system-breadcrumb-block {
-      grid-column: 2;
+      grid-column: content;
     }
 
-    > .paragraph {
-      grid-column: 2;
+    > * {
+      grid-column: popout;
+
+      &.narrow {
+        grid-column: content;
+      }
 
       &.fullwidth {
-        grid-column: span 3;
-        @include contentWithGutters;
+        grid-column: full;
       }
     }
   }
