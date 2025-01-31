@@ -57,6 +57,7 @@
     "drupal/paragraphs_ee": "^10.0",
     "drupal/pathauto": "^1.11",
     "drupal/quick_node_clone": "^1.16",
+    "drupal/robotstxt": "^1.6",
     "drupal/search_api": "^1.35",
     "drupal/simple_gmap": "3.0.x-dev@dev",
     "drupal/smtp": "^1.2",
@@ -112,7 +113,8 @@
           "path": "scaffold/development.services.yml",
           "overwrite": true
         },
-        "[web-root]/.htaccess": "scaffold/.htaccess"
+        "[web-root]/.htaccess": "scaffold/.htaccess",
+        "[web-root]/robots.txt": false
       }
     },
     "installer-paths": {

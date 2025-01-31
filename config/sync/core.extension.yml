@@ -70,6 +70,7 @@ module:
   phpass: 0
   quick_node_clone: 0
   responsive_image: 0
+  robotstxt: 0
   search_api: 0
   search_api_db: 0
   shortcut: 0
