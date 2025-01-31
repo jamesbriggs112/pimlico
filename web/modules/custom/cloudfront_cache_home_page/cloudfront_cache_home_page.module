@@ -1,0 +1,20 @@
+<?php
+
+/**
+ * @file
+ * When home page is updated, invalidate the cache for the '/' path.
+ */
+
+use Drupal\Core\Entity\EntityInterface;
+
+/**
+ * Implements hook_entity_update().
+ */
+function cloudfront_cache_home_page_entity_update(EntityInterface $entity) {
+  if ($entity->getEntityTypeId() === 'node') {
+    // Check if the updated node is the front page.
+    if ('/node/' . $entity->id() == \Drupal::config('system.site')->get('page.front')) {
+      cloudfront_cache_path_invalidate_url(['/']);
+    }
+  }
+}

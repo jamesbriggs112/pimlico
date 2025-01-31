@@ -6,7 +6,6 @@ dependencies:
     - search_api.server.database_search
   module:
     - node
-    - search_api
 id: content
 name: Content
 description: ''

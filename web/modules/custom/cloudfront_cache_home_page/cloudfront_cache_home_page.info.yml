@@ -1,0 +1,7 @@
+name: 'Cloudfront Cache Home Page'
+type: module
+description: 'Adds clearing &#039;/&#039; when homepage updated'
+package: Custom
+core_version_requirement: ^10 || ^11
+dependencies:
+  - cloudfront_cache_path_invalidate:cloudfront_cache_path_invalidate
