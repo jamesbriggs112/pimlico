@@ -3,6 +3,9 @@ import multiInput from 'rollup-plugin-multi-input';
 
 export default defineConfig({
   plugins: [multiInput()],
+  server: {
+    cors: true,
+  },
   css: {
     preprocessorOptions: {
       scss: {
