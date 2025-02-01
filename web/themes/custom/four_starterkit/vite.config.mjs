@@ -1,5 +1,11 @@
 import { defineConfig } from 'vite';
 import multiInput from 'rollup-plugin-multi-input';
+import { dirname, join } from 'path';
+import { fileURLToPath } from 'url';
+
+const currentDir = dirname(fileURLToPath(import.meta.url));
+
+console.log(`@use "${join(currentDir, './src/mixins.scss')}" as *`);
 
 export default defineConfig({
   plugins: [multiInput()],
@@ -9,11 +15,12 @@ export default defineConfig({
   css: {
     preprocessorOptions: {
       scss: {
+        api: 'modern-compiler',
         additionalData: `
         @use 'sass-rem' as to;
-        @use 'src/sass/init/mq-settings';
+        @use '${join(currentDir, './src/sass/init/mq-settings')}';
         @use 'sass-mq/mq' as *;
-        @use 'src/sass/init/mixins' as *;
+        @use '${join(currentDir, './src/sass/init/mixins')}' as *;
         `,
       },
     },
