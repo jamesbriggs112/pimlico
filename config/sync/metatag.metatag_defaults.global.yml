@@ -8,5 +8,8 @@ id: global
 label: Global
 tags:
   canonical_url: '[current-page:url]'
+  og_site_name: '[site:name]'
+  og_url: '[current-page:url:absolute]'
   title: '[current-page:title] | [site:name]'
+  twitter_cards_type: summary
   viewport: 'width=device-width, initial-scale=1.0, viewport-fit=cover'

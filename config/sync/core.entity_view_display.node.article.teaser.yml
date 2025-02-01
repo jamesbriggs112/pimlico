@@ -8,6 +8,9 @@ dependencies:
     - field.field.node.article.field_banner
     - field.field.node.article.field_sections
     - field.field.node.article.field_seo_description
+    - field.field.node.article.field_seo_image
+    - field.field.node.article.field_seo_social_media_title
+    - field.field.node.article.field_seo_title
     - field.field.node.article.field_tags
     - field.field.node.article.field_teaser
     - node.type.article
@@ -45,5 +48,9 @@ hidden:
   field_banner: true
   field_sections: true
   field_seo_description: true
+  field_seo_image: true
+  field_seo_social_media_title: true
+  field_seo_title: true
   field_tags: true
   links: true
+  search_api_excerpt: true
