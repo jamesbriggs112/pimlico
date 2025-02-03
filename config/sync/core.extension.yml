@@ -11,6 +11,7 @@ module:
   block_field: 0
   breakpoint: 0
   ckeditor5: 0
+  cloudfront_cache_home_page: 0
   cloudfront_cache_path_invalidate: 0
   config: 0
   contextual: 0
@@ -23,6 +24,7 @@ module:
   editor: 0
   entity_reference_purger: 0
   entity_reference_revisions: 0
+  entity_type_clone: 0
   entityqueue: 0
   fences: 0
   fences_presets: 0
@@ -69,6 +71,14 @@ module:
   phpass: 0
   quick_node_clone: 0
   responsive_image: 0
+  robotstxt: 0
+  schema_article: 0
+  schema_image_object: 0
+  schema_metatag: 0
+  schema_organization: 0
+  schema_video_object: 0
+  schema_web_page: 0
+  schema_web_site: 0
   search_api: 0
   search_api_db: 0
   shortcut: 0
@@ -82,6 +92,7 @@ module:
   text: 0
   token: 0
   token_filter: 0
+  token_or: 0
   toolbar: 0
   twig_tweak: 0
   update: 0

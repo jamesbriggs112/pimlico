@@ -1,0 +1,17 @@
+uuid: 60f211ce-dfa7-42ed-84c3-7f18d1243fbb
+langcode: en
+status: true
+dependencies:
+  module:
+    - focal_point
+name: social_media
+label: 'Social Media'
+effects:
+  8870c530-f96b-421e-a337-24bdf081392f:
+    uuid: 8870c530-f96b-421e-a337-24bdf081392f
+    id: focal_point_scale_and_crop
+    weight: 1
+    data:
+      width: 1200
+      height: 630
+      crop_type: focal_point
