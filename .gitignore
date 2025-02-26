@@ -68,6 +68,7 @@
 /drush
 /drupal.phar
 /drupal
+/private
 
 .DS_Store
 
