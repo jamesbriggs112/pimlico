@@ -565,6 +565,8 @@ $settings['update_free_access'] = FALSE;
  */
 # $settings['file_private_path'] = '';
 
+$settings['file_private_path'] =  $app_root . '/../private';
+
 /**
  * Temporary file path:
  *
@@ -763,6 +765,16 @@ $settings['entity_update_batch_size'] = 50;
  * retained after a successful entity update process.
  */
 $settings['entity_update_backup'] = TRUE;
+
+/**
+ * State caching.
+ *
+ * State caching uses the cache collector pattern to cache all requested keys
+ * from the state API in a single cache entry, which can greatly reduce the
+ * amount of database queries. However, some sites may use state with a
+ * lot of dynamic keys which could result in a very large cache.
+ */
+$settings['state_cache'] = TRUE;
 
 /**
  * Node migration type.
