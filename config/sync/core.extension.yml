@@ -40,6 +40,7 @@ module:
   gin_login: 0
   gin_toolbar: 0
   google_tag: 0
+  health_check: 0
   help: 0
   history: 0
   honeypot: 0
@@ -50,7 +51,6 @@ module:
   link: 0
   linkit: 0
   media: 0
-  media_duplicates: 0
   media_entity_download: 0
   media_entity_download_extended: 0
   media_library: 0
@@ -70,6 +70,7 @@ module:
   path_alias: 0
   phpass: 0
   quick_node_clone: 0
+  raven: 0
   responsive_image: 0
   robotstxt: 0
   schema_article: 0

@@ -8,7 +8,14 @@ const currentDir = dirname(fileURLToPath(import.meta.url));
 console.log(`@use "${join(currentDir, './src/mixins.scss')}" as *`);
 
 export default defineConfig({
-  plugins: [multiInput()],
+  plugins: [
+    multiInput(),
+    sentryVitePlugin({
+      org: process.env.SENTRY_ORG,
+      project: process.env.SENTRY_PROJECT,
+      authToken: process.env.SENTRY_AUTH_TOKEN,
+    }),
+  ],
   server: {
     cors: true,
   },
@@ -27,6 +34,7 @@ export default defineConfig({
   },
   build: {
     manifest: true,
+    sourcemap: true,
     rollupOptions: {
       input: [
         'src/sass/styles.scss',

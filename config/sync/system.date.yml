@@ -6,6 +6,6 @@ country:
 timezone:
   default: Europe/London
   user:
-    configurable: true
+    configurable: false
     default: 0
     warn: false

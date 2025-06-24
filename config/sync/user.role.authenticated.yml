@@ -9,6 +9,7 @@ dependencies:
     - file
     - filter
     - media
+    - raven
     - shortcut
     - system
 _core:
@@ -21,6 +22,8 @@ permissions:
   - 'access content'
   - 'access shortcuts'
   - 'delete own files'
+  - 'send javascript errors to sentry'
+  - 'send performance traces to sentry'
   - 'use text format basic_html'
   - 'use text format webform_default'
   - 'view media'
