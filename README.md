@@ -7,7 +7,7 @@ This repository should only be used as an upstream source for projects.
 ### Prerequisites
 
 - Node v20
-- Yarn 4
+- pnpm
 - PHP 8.3
 - Composer 2
 - ImageMagick: `brew install imagemagick`
@@ -23,7 +23,7 @@ export PATH=./vendor/bin:$PATH
 #### Do not follow these steps unless this is the very initial setup from the four-drupal-skeleton. Instead, skip straight to "Initial site set up"
 
 - `composer install` from your Drupal root folder
-- `yarn install`
+- `pnpm install`
 - Copy `web/sites/example.settings.local.php` to `web/sites/default/settings.local.php` and configure `$database` object at the bottom of the file. Set this up with the information you intend to use, and then create the database locally using Sequel Ace, or preferred database management software.
 - Run `drush si --existing-config && drush ib` and follow the steps, typically accepting all the default answers provided. This will import the local config and set up your database.
 - If you are hitting an error that looks like the following:
@@ -49,8 +49,8 @@ In install.core.inc line 1000:
 - Set the site up in Laravel Valet, and point the Document root to the `web` directory
 - `cd web/themes/custom/my_new_theme`
 - `nvm use`
-- `yarn`
-- `yarn dev` to build a dev version, start up a dev server and watch files
+- `pnpm i`
+- `pnpm dev` to build a dev version, start up a dev server and watch files
 - You can also enable theme scripts to be run from the project root by adding your theme to the packages in package.json along with the appripriate build and dev scripts
 - Navigate to /admin/appearance and `Install and set as default` on the theme you have created
 
@@ -211,7 +211,28 @@ This implements a grid system that doesn't require any breakpoints and allow you
 
 In most cases use the AWS stack https://bitbucket.org/rckt/four-aws-cdk-drupal-stack
 
-This will set up everything correctly to work with this skeleton. The only thing that will need configuring is the bitbucket pipeline.
+This will set up everything correctly to work with this skeleton. The only thing that will need configuring is the bitbucket pipeline which will need the following environment variables
+
+#### Respository Variables
+
+```
+AWS_ACCESS_KEY_ID // This will be displayed in cdk deployment output
+AWS_SECRET_ACCESS_KEY // This will be displayed in cdk deployment output
+AWS_DEFAULT_REGION // Usually eu-west-2
+APPLICATION_NAME // This is the Elastic Beanstalk Application name
+S3_BUCKET // This is the Elastic Beanstalk S3 bucket name
+SENTRY_AUTH_TOKEN // This can be found in 1Password
+SENTRY_ORG // Usually four-agency
+SENTRY_DSN // This is provided after creating a php project in Sentry
+THEME_NAME // i.e four_starterkit
+```
+
+#### Deployment Variables (staging / production)
+
+```
+ENVIRONMENT_NAME // This is the Elastic Beanstalk Environment name
+SENTRY_ENVIRONMENT // staging or production
+```
 
 ### Import/Export config and content?
 
