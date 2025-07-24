@@ -729,7 +729,7 @@ $settings['container_yamls'][] = $app_root . '/' . $site_path . '/services.yml';
 
  $settings['trusted_host_patterns'] = [
   '^.+\.preflight\.site$',
-  '^10\.0\.\d{1,3}\.\d{1,3}$', // Allow all 10.0.x.x IP addresses
+  '^10\.0\.\d{1,3}\.\d{1,3}$', // Allow all 10.0.x.x IP addresses this should be adjusted depending on vpc the site runs on.
 ];
 
 /**
