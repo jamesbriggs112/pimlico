@@ -1,7 +1,7 @@
 name: Four Starterkit
 type: theme
-"base theme": stable9
-description: "Four Starterkit Theme."
+'base theme': stable9
+description: 'Four Starterkit Theme.'
 starterkit: true
 version: VERSION
 vite:
@@ -29,4 +29,4 @@ libraries-extend:
   core/drupal.progress:
     - four_starterkit/progress
 core_version_requirement: ^10
-generator: "starterkit_theme:10.1.3"
+generator: 'starterkit_theme:10.1.3'
