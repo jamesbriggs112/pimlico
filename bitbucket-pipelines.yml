@@ -22,6 +22,7 @@ definitions:
         name: 'Build Package'
         script:
           - echo "Building package"
+          - sed -i "s/cloudfront_placeholder/$AWS_DISTRIBUTION_ID/g" .ebextensions/sentry.config
           - sed -i "s/release_placeholder/$BITBUCKET_COMMIT/g" .ebextensions/sentry.config
           - sed -i "s/environment_placeholder/$SENTRY_ENVIRONMENT/g" .ebextensions/sentry.config
           - sed -i "s#dsn_placeholder#$SENTRY_DSN#g" .ebextensions/sentry.config

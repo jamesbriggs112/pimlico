@@ -28,5 +28,5 @@ libraries-extend:
     - four_starterkit/file
   core/drupal.progress:
     - four_starterkit/progress
-core_version_requirement: ^10
+core_version_requirement: ^10 || ^11
 generator: 'starterkit_theme:10.1.3'
