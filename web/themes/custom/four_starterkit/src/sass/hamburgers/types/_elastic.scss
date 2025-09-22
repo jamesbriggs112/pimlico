@@ -1,6 +1,8 @@
-@use "sass:math";
+@use 'sass:math';
+@use 'sass:list';
+@use '../variables' as *;
 
-@if index($hamburger-types, elastic) {
+@if list.index($hamburger-types, elastic) {
   /*
    * Elastic
    */

@@ -1,4 +1,7 @@
-@if index($hamburger-types, minus) {
+@use 'sass:list';
+@use '../variables' as *;
+
+@if list.index($hamburger-types, minus) {
   /*
    * Minus
    */
@@ -6,9 +9,10 @@
     .hamburger-inner {
       &::before,
       &::after {
-        transition: bottom 0.08s 0s ease-out,
-                    top 0.08s 0s ease-out,
-                    opacity 0s linear;
+        transition:
+          bottom 0.08s 0s ease-out,
+          top 0.08s 0s ease-out,
+          opacity 0s linear;
       }
     }
 
@@ -17,9 +21,10 @@
         &::before,
         &::after {
           opacity: 0;
-          transition: bottom 0.08s ease-out,
-                      top 0.08s ease-out,
-                      opacity 0s 0.08s linear;
+          transition:
+            bottom 0.08s ease-out,
+            top 0.08s ease-out,
+            opacity 0s 0.08s linear;
         }
         &::before {
           top: 0;

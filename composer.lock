@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "4080247a1720c73f06510bfbd3d30af5",
+    "content-hash": "b4295b3adc38a3b8d1a3a093d1275eef",
     "packages": [
         {
             "name": "asm89/stack-cors",
@@ -1765,6 +1765,66 @@
             }
         },
         {
+            "name": "drupal/config_ignore",
+            "version": "3.3.0",
+            "source": {
+                "type": "git",
+                "url": "https://git.drupalcode.org/project/config_ignore.git",
+                "reference": "8.x-3.3"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://ftp.drupal.org/files/projects/config_ignore-8.x-3.3.zip",
+                "reference": "8.x-3.3",
+                "shasum": "4446811ecb023820a57c227d35c034e0d4363a70"
+            },
+            "require": {
+                "drupal/core": "^8.8 || ^9 || ^10 || ^11"
+            },
+            "require-dev": {
+                "drupal/config_filter": "^1.8||^2.2",
+                "drush/drush": "^10 || ^11 || ^12"
+            },
+            "type": "drupal-module",
+            "extra": {
+                "drupal": {
+                    "version": "8.x-3.3",
+                    "datestamp": "1713299496",
+                    "security-coverage": {
+                        "status": "covered",
+                        "message": "Covered by Drupal's security advisory policy"
+                    }
+                }
+            },
+            "notification-url": "https://packages.drupal.org/8/downloads",
+            "license": [
+                "GPL-2.0-or-later"
+            ],
+            "authors": [
+                {
+                    "name": "Tommy Lynge Jørgensen",
+                    "homepage": "https://www.drupal.org/u/tlyngej",
+                    "email": "tlyngej@gmail.com",
+                    "role": "Maintainer"
+                },
+                {
+                    "name": "Fabian Bircher",
+                    "homepage": "https://www.drupal.org/u/bircher",
+                    "role": "Maintainer"
+                },
+                {
+                    "name": "tlyngej",
+                    "homepage": "https://www.drupal.org/user/413139"
+                }
+            ],
+            "description": "Ignore certain configuration during import and export.",
+            "homepage": "http://drupal.org/project/config_ignore",
+            "support": {
+                "source": "https://git.drupalcode.org/project/config_ignore",
+                "issues": "http://drupal.org/project/config_ignore"
+            }
+        },
+        {
             "name": "drupal/core",
             "version": "11.2.4",
             "source": {
@@ -3513,17 +3573,17 @@
         },
         {
             "name": "drupal/linkit",
-            "version": "7.0.8",
+            "version": "7.0.9",
             "source": {
                 "type": "git",
                 "url": "https://git.drupalcode.org/project/linkit.git",
-                "reference": "7.0.8"
+                "reference": "7.0.9"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://ftp.drupal.org/files/projects/linkit-7.0.8.zip",
-                "reference": "7.0.8",
-                "shasum": "3a16053650934b3942cf369ac1ee3ad85c655d45"
+                "url": "https://ftp.drupal.org/files/projects/linkit-7.0.9.zip",
+                "reference": "7.0.9",
+                "shasum": "fa75d31583a5866c8dd1f0455b7b5d19642c6f34"
             },
             "require": {
                 "drupal/core": "^10.1 || ^11"
@@ -3535,8 +3595,8 @@
             "type": "drupal-module",
             "extra": {
                 "drupal": {
-                    "version": "7.0.8",
-                    "datestamp": "1754406731",
+                    "version": "7.0.9",
+                    "datestamp": "1757621287",
                     "security-coverage": {
                         "status": "covered",
                         "message": "Covered by Drupal's security advisory policy"
@@ -5547,18 +5607,71 @@
             }
         },
         {
-            "name": "drupal/vite",
-            "version": "1.4.2",
+            "name": "drupal/vitals",
+            "version": "2.5.0",
             "source": {
                 "type": "git",
-                "url": "https://git.drupalcode.org/project/vite.git",
-                "reference": "1.4.2"
+                "url": "https://git.drupalcode.org/project/vitals.git",
+                "reference": "2.5.0"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://ftp.drupal.org/files/projects/vite-1.4.2.zip",
-                "reference": "1.4.2",
-                "shasum": "d4778403821a4b0874aba1ded56586e97ec20b56"
+                "url": "https://ftp.drupal.org/files/projects/vitals-2.5.0.zip",
+                "reference": "2.5.0",
+                "shasum": "8ea02e8c6935baf0e25dcfcdf4ccba473c49cbe2"
+            },
+            "require": {
+                "drupal/core": "^8.9||^9.0||^10.0 || ^11"
+            },
+            "type": "drupal-module",
+            "extra": {
+                "drupal": {
+                    "version": "2.5.0",
+                    "datestamp": "1729474350",
+                    "security-coverage": {
+                        "status": "covered",
+                        "message": "Covered by Drupal's security advisory policy"
+                    }
+                }
+            },
+            "notification-url": "https://packages.drupal.org/8/downloads",
+            "license": [
+                "GPL-2.0+"
+            ],
+            "authors": [
+                {
+                    "name": "daceej",
+                    "homepage": "https://www.drupal.org/user/3190185"
+                },
+                {
+                    "name": "yodes",
+                    "homepage": "https://www.drupal.org/user/3593756"
+                }
+            ],
+            "description": "Exposes the update status and other vital site health information via an api.",
+            "homepage": "https://www.drupal.org/project/vitals",
+            "keywords": [
+                "Drupal",
+                "security"
+            ],
+            "support": {
+                "source": "https://git.drupalcode.org/project/vitals",
+                "issues": "http://drupal.org/project/issues/vitals"
+            }
+        },
+        {
+            "name": "drupal/vite",
+            "version": "1.5.0",
+            "source": {
+                "type": "git",
+                "url": "https://git.drupalcode.org/project/vite.git",
+                "reference": "1.5.0"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://ftp.drupal.org/files/projects/vite-1.5.0.zip",
+                "reference": "1.5.0",
+                "shasum": "e5ab4879dde1f29908c3ddcb10143f9033d4953f"
             },
             "require": {
                 "drupal/core": "^10.3 || ^11"
@@ -5570,8 +5683,8 @@
             "type": "drupal-module",
             "extra": {
                 "drupal": {
-                    "version": "1.4.2",
-                    "datestamp": "1743100638",
+                    "version": "1.5.0",
+                    "datestamp": "1757795706",
                     "security-coverage": {
                         "status": "covered",
                         "message": "Covered by Drupal's security advisory policy"

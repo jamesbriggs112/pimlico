@@ -1,4 +1,4 @@
-image: atlassian/default-image:4
+image: atlassian/default-image:5
 
 definitions:
   caches:
@@ -28,7 +28,7 @@ definitions:
           - sed -i "s#dsn_placeholder#$SENTRY_DSN#g" .ebextensions/sentry.config
           - zip -r application.zip web composer.json composer.lock .ebextensions .platform scaffold config --exclude='web/themes/custom/$THEME_NAME/node_modules/*'
           - export BITBUCKET_COMMIT_SHORT=$(echo $BITBUCKET_COMMIT | cut -c1-7)
-          - pipe: atlassian/aws-elasticbeanstalk-deploy:1.4.1
+          - pipe: atlassian/aws-elasticbeanstalk-deploy:1.5.0
             variables:
               AWS_ACCESS_KEY_ID: $AWS_ACCESS_KEY_ID
               AWS_SECRET_ACCESS_KEY: $AWS_SECRET_ACCESS_KEY
@@ -51,7 +51,7 @@ definitions:
     - step: &invalidate
         name: 'Invalidate Cache'
         script:
-          - pipe: atlassian/aws-cloudfront-invalidate:0.10.1
+          - pipe: atlassian/aws-cloudfront-invalidate:0.12.0
             variables:
               AWS_ACCESS_KEY_ID: $AWS_ACCESS_KEY_ID
               AWS_SECRET_ACCESS_KEY: $AWS_SECRET_ACCESS_KEY

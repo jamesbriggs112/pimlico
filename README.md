@@ -221,8 +221,6 @@ AWS_SECRET_ACCESS_KEY // This will be displayed in cdk deployment output
 AWS_DEFAULT_REGION // Usually eu-west-2
 APPLICATION_NAME // This is the Elastic Beanstalk Application name
 S3_BUCKET // This is the Elastic Beanstalk S3 bucket name
-SENTRY_AUTH_TOKEN // This can be found in 1Password
-SENTRY_ORG // Usually four-agency
 SENTRY_DSN // This is provided after creating a php project in Sentry
 THEME_NAME // i.e four_starterkit
 ```

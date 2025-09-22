@@ -1,0 +1,12 @@
+uuid: 98dfd52a-868b-47de-b84b-46ec85b86c86
+langcode: en
+status: true
+dependencies: {  }
+_core:
+  default_config_hash: EkEqMUm-6Wr7FZmmkTgsjF0c2gssHqC8QtrDF3GR7vc
+id: normalized_image_styles
+label: 'Normalized Image Styles'
+description: 'Uses the Image Style Generate source plugin to create image style sets.'
+source_type: 'Image Style Generate'
+module: null
+shared_configuration: null

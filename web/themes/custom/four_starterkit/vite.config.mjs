@@ -2,9 +2,9 @@ import { defineConfig } from 'vite';
 import multiInput from 'rollup-plugin-multi-input';
 import { dirname, join } from 'path';
 import { fileURLToPath } from 'url';
+import { sentryVitePlugin } from '@sentry/vite-plugin';
 
 const currentDir = dirname(fileURLToPath(import.meta.url));
-
 console.log(`@use "${join(currentDir, './src/mixins.scss')}" as *`);
 
 export default defineConfig({
