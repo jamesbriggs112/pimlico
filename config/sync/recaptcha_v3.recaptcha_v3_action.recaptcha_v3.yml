@@ -1,8 +1,0 @@
-uuid: b6bf77ca-ab7e-4319-ad21-d614ae37fdc9
-langcode: en
-status: true
-dependencies: {  }
-id: recaptcha_v3
-label: 'reCAPTCHA v3'
-threshold: 0.5
-challenge: recaptcha/reCAPTCHA
