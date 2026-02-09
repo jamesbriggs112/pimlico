@@ -4,7 +4,6 @@ status: true
 dependencies:
   config:
     - field.storage.paragraph.field_carousel
-    - paragraphs.paragraphs_type.carousel
     - paragraphs.paragraphs_type.home_page_banner
   module:
     - entity_reference_revisions
@@ -23,8 +22,7 @@ default_value_callback: ''
 settings:
   handler: 'default:paragraph'
   handler_settings:
-    target_bundles:
-      carousel: carousel
+    target_bundles: {  }
     negate: 0
     target_bundles_drag_drop:
       carousel:

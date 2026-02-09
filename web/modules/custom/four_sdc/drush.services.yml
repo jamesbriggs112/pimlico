@@ -1,0 +1,6 @@
+services:
+  four_sdc.generator:
+    class: Drupal\four_sdc\Drush\Generators\FourSingleDirectoryComponent
+    arguments: ["@module_handler", "@theme_handler", "@library.discovery"]
+    tags:
+      - { name: drush.generator }

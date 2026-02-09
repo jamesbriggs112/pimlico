@@ -10,28 +10,6 @@ dependencies:
   module:
     - entity_reference_revisions
     - fences
-    - field_group
-third_party_settings:
-  field_group:
-    group_left:
-      children:
-        - field_left
-      label: Left
-      parent_name: ''
-      region: content
-      weight: 1
-      format_type: html_element
-      format_settings:
-        classes: ''
-        show_empty_fields: false
-        id: ''
-        element: div
-        show_label: false
-        label_element: h3
-        label_element_classes: ''
-        attributes: ''
-        effect: none
-        speed: fast
 _core:
   default_config_hash: M9limD8gU566sqUXMmf9OcPOkeBj01wNX0ChpcSW_2U
 id: paragraph.two_column_area.default
@@ -46,13 +24,13 @@ content:
       link_to_entity: false
     third_party_settings:
       fences:
-        fences_field_tag: h2
+        fences_field_tag: none
         fences_field_classes: ''
         fences_field_items_wrapper_tag: none
         fences_field_items_wrapper_classes: ''
         fences_field_item_tag: none
         fences_field_item_classes: ''
-        fences_label_tag: div
+        fences_label_tag: none
         fences_label_classes: ''
     weight: 0
     region: content
@@ -70,7 +48,7 @@ content:
         fences_field_items_wrapper_classes: ''
         fences_field_item_tag: none
         fences_field_item_classes: ''
-        fences_label_tag: div
+        fences_label_tag: none
         fences_label_classes: ''
     weight: 2
     region: content
@@ -88,8 +66,9 @@ content:
         fences_field_items_wrapper_classes: ''
         fences_field_item_tag: none
         fences_field_item_classes: ''
-        fences_label_tag: div
+        fences_label_tag: none
         fences_label_classes: ''
     weight: 3
     region: content
-hidden: {  }
+hidden:
+  search_api_excerpt: true

@@ -10,8 +10,8 @@ dependencies:
     - four_starterkit
 id: four_starterkit_information
 theme: four_starterkit
-region: footer
-weight: 0
+region: footer_menu
+weight: -4
 provider: null
 plugin: 'system_menu_block:footer'
 settings:

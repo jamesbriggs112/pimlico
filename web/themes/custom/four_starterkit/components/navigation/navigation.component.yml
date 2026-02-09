@@ -1,0 +1,17 @@
+'$schema': 'https://git.drupalcode.org/project/drupal/-/raw/HEAD/core/assets/schemas/v1/metadata.schema.json'
+name: Navigation
+status: stable
+libraryOverrides:
+  css:
+    component:
+      navigation.scss: {}
+  js:
+    navigation.js: {}
+  dependencies:
+    - core/once
+    - core/drupal
+slots:
+  branding:
+    title: Branding
+  primary_menu:
+    title: Primary menu

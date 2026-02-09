@@ -6,18 +6,15 @@ dependencies:
     - field.storage.node.field_sections
     - node.type.page
     - paragraphs.paragraphs_type.accordion
-    - paragraphs.paragraphs_type.carousel
     - paragraphs.paragraphs_type.content_carousel
     - paragraphs.paragraphs_type.content_grid
     - paragraphs.paragraphs_type.cta
-    - paragraphs.paragraphs_type.full_width_image_with_text
     - paragraphs.paragraphs_type.iframe_embed
     - paragraphs.paragraphs_type.image
     - paragraphs.paragraphs_type.image_grid
     - paragraphs.paragraphs_type.map
     - paragraphs.paragraphs_type.quote
     - paragraphs.paragraphs_type.separator
-    - paragraphs.paragraphs_type.testimonial
     - paragraphs.paragraphs_type.text_wysiwyg_
     - paragraphs.paragraphs_type.two_column_area
     - paragraphs.paragraphs_type.video
@@ -39,9 +36,7 @@ settings:
   handler: 'default:paragraph'
   handler_settings:
     target_bundles:
-      carousel: carousel
       image: image
-      testimonial: testimonial
       text_wysiwyg_: text_wysiwyg_
       video: video
       accordion: accordion
@@ -50,7 +45,6 @@ settings:
       content_grid: content_grid
       separator: separator
       content_carousel: content_carousel
-      full_width_image_with_text: full_width_image_with_text
       iframe_embed: iframe_embed
       image_grid: image_grid
       two_column_area: two_column_area

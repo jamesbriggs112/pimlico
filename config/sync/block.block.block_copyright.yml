@@ -10,8 +10,8 @@ dependencies:
     - four_starterkit
 id: block_copyright
 theme: four_starterkit
-region: footer
-weight: 0
+region: footer_bottom
+weight: -4
 provider: null
 plugin: 'block_content:b9fcf31d-9a0e-4941-ba7c-f12da33cc016'
 settings:
@@ -19,7 +19,5 @@ settings:
   label: Copyright
   label_display: '0'
   provider: block_content
-  status: true
-  info: ''
   view_mode: full
 visibility: {  }

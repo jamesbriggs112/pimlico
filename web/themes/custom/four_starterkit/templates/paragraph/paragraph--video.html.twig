@@ -1,0 +1,10 @@
+{% embed "four_starterkit:paragraph_with_layout" with {
+  view_mode,
+  paragraph,
+  attributes,
+	layout: paragraph.hasField('field_layout') and not paragraph.get('field_layout').isEmpty() ? paragraph.field_layout.value|clean_class,
+} %}
+	{% block content %}
+		{{content.field_video}}
+	{% endblock %}
+{% endembed %}

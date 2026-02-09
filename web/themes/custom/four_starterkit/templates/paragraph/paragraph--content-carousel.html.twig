@@ -1,0 +1,11 @@
+{% block paragraph %}
+	{% embed "four_starterkit:content_carousel" with {
+		aria_label: heading,
+		color: paragraph.field_colour.value,
+		title: paragraph.field_heading.value,
+	} %}
+		{% block slides %}
+			{{ content.field_content }}
+		{% endblock %}
+	{% endembed %}
+{% endblock paragraph %}

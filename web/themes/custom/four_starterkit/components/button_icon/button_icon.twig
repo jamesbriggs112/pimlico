@@ -1,0 +1,18 @@
+{% set attributes = attributes|without('class') %}
+
+{% set classes = [
+  'btn-icon',
+  color ? 'btn-icon--' ~ color|default('primary'),
+	class
+] %}
+
+<button {{ attributes.addClass(classes) }}>
+	{% block icon %}
+		{# icon svg goes here #}
+	{% endblock %}
+	{% embed "four_starterkit:visually_hidden" %}
+		{% block content %}
+			{{ title }}
+		{% endblock %}
+	{% endembed %}
+</button>

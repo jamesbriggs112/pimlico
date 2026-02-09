@@ -6,7 +6,7 @@ This repository should only be used as an upstream source for projects.
 
 ### Prerequisites
 
-- Node v20
+- Node v22
 - pnpm
 - PHP 8.3
 - Composer 2
@@ -23,7 +23,6 @@ export PATH=./vendor/bin:$PATH
 #### Do not follow these steps unless this is the very initial setup from the four-drupal-skeleton. Instead, skip straight to "Initial site set up"
 
 - `composer install` from your Drupal root folder
-- `pnpm install`
 - Copy `web/sites/example.settings.local.php` to `web/sites/default/settings.local.php` and configure `$database` object at the bottom of the file. Set this up with the information you intend to use, and then create the database locally using Sequel Ace, or preferred database management software.
 - Run `drush si --existing-config && drush ib` and follow the steps, typically accepting all the default answers provided. This will import the local config and set up your database.
 - If you are hitting an error that looks like the following:
@@ -48,11 +47,23 @@ In install.core.inc line 1000:
 
 - Set the site up in Laravel Valet, and point the Document root to the `web` directory
 - `cd web/themes/custom/my_new_theme`
-- `nvm use`
 - `pnpm i`
 - `pnpm dev` to build a dev version, start up a dev server and watch files
 - You can also enable theme scripts to be run from the project root by adding your theme to the packages in package.json along with the appripriate build and dev scripts
 - Navigate to /admin/appearance and `Install and set as default` on the theme you have created
+
+### Storybook
+
+To ensure storybook works correctly you'll need to update the nginx config for the site `.config/valet/Nginx/drupal-skeleton.test` and add the following to each of the server blocks.
+
+```
+location ~* \.(css|js|png|jpg|jpeg|gif|ico|svg|woff|woff2)$ {
+    add_header Access-Control-Allow-Origin *;
+    try_files /path-to-site/four-drupal-skeleton/web$uri /path-to-site/four-drupal-skeleton$uri =404;
+    expires max;
+    log_not_found off;
+}
+```
 
 ### Development settings
 
@@ -82,27 +93,59 @@ To insure the best experience while developing ensure you have all the recommend
 
 ### Components
 
-Any sass or js files added in the components folders will generate their own files. These will then need to be declared in the libaries.yml. If added to the base config they will be included in the main bundle. If You wish to code split so that the css and js is only loaded when needed, create a seperate config i.e
+Components should be created using Drupal's SDC (Single directory components). Your can scaffold a new component using drush.
 
 ```
-paragraph-accordion:
-  version: 1.0
-  css:
-    component:
-      css/components/paragraph-accordion.css:
-        weight: -10
-  js:
-    js/components/paragraph-accordion.js: {}
-
+drush generate four-sdc
 ```
 
-and attach it in your twig template
+Answer all the questions accordling and this create a component.
 
-```
-{{ attach_library('four/paragraph-accordion') }}
+You will still need to twig templates in the /templates directory, but should only be used to compose a layout using using components.
+
+### CSS / SASS
+
+## CSS Naming Convention: BEM
+
+This project uses **BEM (Block, Element, Modifier)** for all CSS class names:
+
+- **Block**: Root component name (e.g., `.article`, `.accordion-item`, `.header`)
+- **Element**: Part of a block with `__` separator (e.g., `.article__content`, `.accordion-item__icon`)
+- **Modifier**: Variation or state with `--` separator (e.g., `.button--primary`, `.is-active`)
+
+**Examples from codebase**:
+
+```scss
+.article {
+  &__content {
+    // Element: article + content
+  }
+  &__header {
+    // Element: article + header
+  }
+}
+
+.button {
+  &--primary {
+    // Modifier: button in primary state
+  }
+  &--disabled {
+    // Modifier: button in disabled state
+  }
+}
+
+.is-active {
+  // State modifier for any element
+}
 ```
 
-You can bypass generating a seperate file by prefixing the file name with an `_`, and then import in either `styles.scss` or `site.js`
+**Guidelines**:
+
+- Block names match component names: `components/accordion_item/` → `.accordion-item`
+- Use kebab-case for multi-word names
+- Avoid nesting more than 2 levels deep (`block__element__subelement` is too deep)
+- Use `&` parent selector in SCSS to maintain readability
+- Keep scopes narrow to the component; don't create global BEM chains
 
 ### Breakpoints
 
@@ -204,6 +247,25 @@ This implements a grid system that doesn't require any breakpoints and allow you
   @include contentGrid;
 }
 ```
+
+---
+
+# Accessibility
+
+During the development process it is your responsibility to ensure the site meets WCAG 2.2 AA standards.
+
+This includes but is not limited to:
+
+- Ensuring all links and button have descriptive names, if it's an icon button use the Visually Hidden component to add hidden text for screen readers.
+- Ensuring all elements that can be focused have the correct focus state.
+- Where possible use native html components as these have built in accessibility. For example accordions should use `<details>` and `<summary>` tags (see Accordion Item component), and modals should use the `<dialog>` tag.
+- For animations where there is a lot of movement these should be disabled for users that have prefers-reduced-motion set. You can use the media query `@media (prefers-reduced-motion: reduce)` to disable animations or in javascript you can check using `const mediaQuery = window.matchMedia('(prefers-reduced-motion: reduce)');`
+
+---
+
+# Security
+
+While config export is great for keeping config in sync between environments, so modules that require secret kets or sensitive information can include these values on export. It is you responsibility to ensure such information in never commited as this can lead to leaked credentials.
 
 ---
 

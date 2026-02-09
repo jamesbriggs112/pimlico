@@ -1,0 +1,16 @@
+{% set classes = [
+	'two-column',
+] %}
+
+<div {{ attributes.addClass(classes) }}>
+	<div class="two-column__left">
+		{% block left %}
+			{# left column content #}
+		{% endblock %}
+	</div>
+	<div class="two-column__right">
+		{% block right %}
+			{# right column content #}
+		{% endblock %}
+	</div>
+</div>

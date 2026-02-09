@@ -1,0 +1,39 @@
+uuid: d1b837b2-ae1b-44b2-b278-55f5b42221b6
+langcode: en
+status: true
+dependencies:
+  config:
+    - core.entity_form_mode.paragraph.with_layout
+    - field.field.paragraph.video.field_layout
+    - field.field.paragraph.video.field_video
+    - paragraphs.paragraphs_type.video
+  module:
+    - media_library
+    - media_library_edit
+_core:
+  default_config_hash: tXH_p8ZpCjFvrv7YJWqC1JQhbmW9qh7NAoZmEPLqLQ4
+id: paragraph.video.with_layout
+targetEntityType: paragraph
+bundle: video
+mode: with_layout
+content:
+  field_layout:
+    type: options_select
+    weight: 3
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+  field_video:
+    type: media_library_widget
+    weight: 1
+    region: content
+    settings:
+      media_types:
+        - remote_video
+        - video
+    third_party_settings:
+      media_library_edit:
+        show_edit: '1'
+hidden:
+  created: true
+  status: true

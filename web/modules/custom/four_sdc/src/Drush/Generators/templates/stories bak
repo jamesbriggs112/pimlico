@@ -1,0 +1,25 @@
+{% stories component_machine_name with { title: 'Components/' ~ component_name } %}
+
+{% set args = {} %}
+{% if component_props|length > 0 %}
+	{% for prop in component_props %}
+		{% set args = args|merge({ (prop): '' }) %}
+	{% endfor %}
+{% endif %}
+
+{% story default with {
+	name: 'Default',
+	args: args
+  } %}
+{% set component = theme_machine_name ~ ':' ~ component_machine_name %}
+{% if component_slots|length > 0  %}
+	{% embed component with { args } %}
+		{# content here #}
+	{% endembed %}
+{% elseif %}
+	{% include component with { args } %}
+{% endif %}
+
+
+{% endstory %}
+{% endstories %}

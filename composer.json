@@ -14,6 +14,10 @@
       "url": "https://packages.drupal.org/8"
     },
     {
+      "type": "composer",
+      "url": "https://asset-packagist.org"
+    },
+    {
       "type": "vcs",
       "url": "https://bitbucket.org/rckt/media-entity-download-extended.git"
     }
@@ -56,8 +60,9 @@
     "drupal/paragraphs": "^1.15",
     "drupal/paragraphs_ee": "^10.0",
     "drupal/pathauto": "^1.11",
+    "drupal/plyr": "^1.0@alpha",
     "drupal/quick_node_clone": "^1.16",
-    "drupal/raven": "^6.0",
+    "drupal/raven": "^7.3",
     "drupal/recaptcha": "^3.4",
     "drupal/recaptcha_v3": "^2.0",
     "drupal/robotstxt": "^1.6",
@@ -65,6 +70,7 @@
     "drupal/search_api": "^1.35",
     "drupal/simple_gmap": "^4.0",
     "drupal/smtp": "^1.2",
+    "drupal/storybook": "^1.0",
     "drupal/structure_sync": "^2.0",
     "drupal/svg_image": "^3.0",
     "drupal/taxonomy_access_fix": "^4.0",
@@ -78,6 +84,8 @@
     "drupal/webform": "^6.3@beta",
     "drush/drush": "^13.6",
     "marmelo/media_entity_download_extended": "^3.0",
+    "npm-asset/plyr": "^3.7",
+    "oomphinc/composer-installers-extender": "^2.0",
     "wikimedia/composer-merge-plugin": "^2.1"
   },
   "conflict": {
@@ -88,22 +96,38 @@
   "config": {
     "allow-plugins": {
       "composer/installers": true,
+      "cweagans/composer-patches": true,
+      "dealerdirect/phpcodesniffer-composer-installer": true,
       "drupal/core-composer-scaffold": true,
       "drupal/core-project-message": true,
-      "dealerdirect/phpcodesniffer-composer-installer": true,
-      "cweagans/composer-patches": true,
+      "oomphinc/composer-installers-extender": true,
       "wikimedia/composer-merge-plugin": true
     },
     "sort-packages": true
   },
+  "autoload": {
+    "psr-4": {
+      "Drupal\\four_sdc\\": "web/modules/custom/four_sdc/src/"
+    }
+  },
   "extra": {
     "enable-patching": true,
+    "composer-exit-on-patch-failure": true,
     "patches": {
+      "drupal/focal_point": {
+        "limit image styles in preview": "https://www.drupal.org/files/issues/2024-11-14/2830678-44-focal-preview-limit.patch"
+      },
       "drupal/crop": {
         "fix webp": "https://www.drupal.org/files/issues/2022-08-16/crop-3293782-04-append-hash-for-webp-image-style-urls.patch"
       },
       "drupal/viewfield": {
         "fix viewfield php error": "https://www.drupal.org/files/issues/2023-08-21/3381787.patch"
+      },
+      "drupal/storybook": {
+        "#3442952": "https://www.drupal.org/files/issues/2025-05-29/storybook-fix-issues-with-symlinks-3442952-13.patch"
+      },
+      "drupal/plyr": {
+        "Load library locally": "https://www.drupal.org/files/issues/2024-09-05/plyr_libraries_npm_assets-3.patch"
       }
     },
     "drupal-scaffold": {
@@ -122,12 +146,18 @@
         "[web-root]/robots.txt": false
       }
     },
+    "installer-types": [
+      "npm-asset",
+      "bower-asset"
+    ],
     "installer-paths": {
       "web/core": [
         "type:drupal-core"
       ],
       "web/libraries/{$name}": [
-        "type:drupal-library"
+        "type:drupal-library",
+        "type:npm-asset",
+        "type:bower-asset"
       ],
       "web/modules/contrib/{$name}": [
         "type:drupal-module"
@@ -179,7 +209,9 @@
     }
   },
   "require-dev": {
+    "chi-teck/drupal-code-generator": "^4.2",
     "drupal/coder": "^8.3",
+    "drupal/core-dev": "^8.0@beta",
     "squizlabs/php_codesniffer": "^3.7"
   }
 }

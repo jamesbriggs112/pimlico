@@ -1,0 +1,115 @@
+uuid: 7b09fcfd-a4b4-46a9-8724-1a0a9b195967
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_image_with_caption
+    - paragraphs.paragraphs_type.image
+    - paragraphs.paragraphs_type.image_with_caption
+  module:
+    - entity_reference_revisions
+id: paragraph.image.field_image_with_caption
+field_name: field_image_with_caption
+entity_type: paragraph
+bundle: image
+label: Image
+description: ''
+required: true
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:paragraph'
+  handler_settings:
+    target_bundles:
+      image_with_caption: image_with_caption
+    negate: 0
+    target_bundles_drag_drop:
+      accordion:
+        weight: 30
+        enabled: false
+      accordion_item:
+        weight: 31
+        enabled: false
+      carousel:
+        weight: 32
+        enabled: false
+      carousel_item:
+        weight: 33
+        enabled: false
+      content_carousel:
+        weight: 34
+        enabled: false
+      content_grid:
+        weight: 35
+        enabled: false
+      cta:
+        weight: 36
+        enabled: false
+      document:
+        weight: 37
+        enabled: false
+      document_list:
+        weight: 38
+        enabled: false
+      download:
+        weight: 39
+        enabled: false
+      full_width_image_with_text:
+        weight: 40
+        enabled: false
+      grid:
+        weight: 41
+        enabled: false
+      home_page_banner:
+        weight: 42
+        enabled: false
+      iframe_embed:
+        weight: 43
+        enabled: false
+      image:
+        weight: 44
+        enabled: false
+      image_grid:
+        weight: 45
+        enabled: false
+      image_with_caption:
+        weight: 46
+        enabled: true
+      jump_menu_anchor:
+        weight: 47
+        enabled: false
+      map:
+        weight: 48
+        enabled: false
+      map_image:
+        weight: 49
+        enabled: false
+      page_banner:
+        weight: 50
+        enabled: false
+      quote:
+        weight: 51
+        enabled: false
+      separator:
+        weight: 52
+        enabled: false
+      standard_banner:
+        weight: 53
+        enabled: false
+      teaser:
+        weight: 54
+        enabled: false
+      testimonial:
+        weight: 55
+        enabled: false
+      text_wysiwyg_:
+        weight: 56
+        enabled: false
+      two_column_area:
+        weight: 57
+        enabled: false
+      video:
+        weight: 58
+        enabled: false
+field_type: entity_reference_revisions

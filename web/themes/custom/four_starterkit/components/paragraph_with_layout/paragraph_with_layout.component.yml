@@ -1,0 +1,26 @@
+'$schema': 'https://git.drupalcode.org/project/drupal/-/raw/HEAD/core/assets/schemas/v1/metadata.schema.json'
+name: Paragraph with layout
+status: stable
+libraryOverrides:
+  css:
+    component:
+      paragraph_with_layout.scss: {}
+props:
+  type: object
+  properties:
+    layout:
+      type: string
+      title: Layout
+      enum:
+        - 'default'
+        - 'narrow'
+        - 'full-width'
+    view_mode:
+      type: string
+      title: View mode
+    attributes:
+      type: Drupal\Core\Template\Attribute
+      title: Attributes
+slots:
+  content:
+    title: Content

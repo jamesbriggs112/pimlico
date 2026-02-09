@@ -12,18 +12,46 @@ body.not-logged-in.path-user {
   bottom: 20px;
   right: 20px;
   z-index: 20;
+  background-color: transparent;
+  border-radius: var(--button-border-radius-size);
 
   ul.tabs.primary {
-    margin: 0px;
+    list-style: none;
+    padding: 0;
+    margin: 0;
     display: inline-flex;
+    box-shadow: 0 4px 18px var(--gin-shadow-button);
+    border: 2px solid var(--gin-color-primary);
+    min-width: 0;
+    height: 1.75rem;
+    min-height: 1.75rem;
+    border-radius: var(--gin-border-s);
+    box-shadow: 0 4px 18px var(--gin-shadow-button);
+    box-sizing: border-box;
 
     li {
       margin: 0;
-
+      height: 100%;
+      border-inline-end: 1px solid var(--gin-color-primary-light-active);
+      background-color: var(--gin-bg-layer);
       a {
-        background-color: var(--gin-bg-layer);
+        padding-inline: var(--gin-spacing-s);
+        padding-top: calc(
+          var(--dropbutton-extrasmall-spacing-size) - var(
+              --dropbutton-border-size
+            )
+        );
+        padding-bottom: calc(
+          var(--dropbutton-extrasmall-spacing-size) - var(
+              --dropbutton-border-size
+            )
+        );
+        font-size: var(--dropbutton-extrasmall-font-size);
+        line-height: var(--dropbutton-extrasmall-line-height);
         color: var(--gin-color-primary);
         font-weight: var(--gin-font-weight-semibold);
+        text-decoration: none;
+        display: block;
 
         &:hover,
         &.is-active {
@@ -34,15 +62,15 @@ body.not-logged-in.path-user {
 
       &:first-child {
         a {
-          border-top-left-radius: 5px;
-          border-bottom-left-radius: 5px;
+          border-top-left-radius: 2px;
+          border-bottom-left-radius: 2px;
         }
       }
 
       &:last-child {
         a {
-          border-top-right-radius: 5px;
-          border-bottom-right-radius: 5px;
+          border-top-right-radius: 2px;
+          border-bottom-right-radius: 2px;
         }
       }
     }

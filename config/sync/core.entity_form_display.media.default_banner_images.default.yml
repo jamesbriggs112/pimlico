@@ -7,8 +7,8 @@ dependencies:
     - image.style.thumbnail
     - media.type.default_banner_images
   module:
+    - focal_point
     - path
-    - svg_image
 _core:
   default_config_hash: 9RLaHiOj8XYKkvNNElrGX-V81mPVX-5JVK9WxuNVdP0
 id: media.default_banner_images.default
@@ -23,12 +23,18 @@ content:
     settings: {  }
     third_party_settings: {  }
   field_media_image:
-    type: image_image
+    type: image_focal_point
     weight: 0
     region: content
     settings:
       progress_indicator: throbber
       preview_image_style: thumbnail
+      preview_link: true
+      offsets: '50,50'
+      preview_styles:
+        l08_040000_640x360: l08_040000_640x360
+        p05_040000_640x1138: p05_040000_640x1138
+        sq_040000_640x640: sq_040000_640x640
     third_party_settings: {  }
   name:
     type: string_textfield

@@ -1,0 +1,30 @@
+{% set attributes = attributes ?: create_attribute() %}
+
+{%
+  set classes = [
+    'card'
+  ]
+%}
+
+<article {{ attributes.addClass(classes) }}>
+	<div class="card__image">
+		{% block image %}
+			{# Display image #}
+		{% endblock %}
+	</div>
+
+	<div class="card__content">
+		{% block content %}
+			{# Display content #}
+		{% endblock %}
+		{% if url %}
+			<a href="{{ url }}">
+				{% embed "four_starterkit:visually_hidden" %}
+					{% block content %}
+						{{ linkTitle }}
+					{% endblock %}
+				{% endembed %}
+			</a>
+		{% endif %}
+	</div>
+</article>

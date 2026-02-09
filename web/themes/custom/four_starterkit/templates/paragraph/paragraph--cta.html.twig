@@ -1,0 +1,5 @@
+{% include "four_starterkit:button" with {
+  text: paragraph.field_link.0.title,
+  url: paragraph.field_link.0.uri,
+  color: paragraph.field_colour.value|default('primary'),
+} only %}

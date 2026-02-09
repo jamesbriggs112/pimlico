@@ -1,0 +1,8 @@
+{% embed "four_starterkit:paragraph" with {
+  content: content|without('field_heading'),
+  view_mode,
+  paragraph,
+  attributes,
+  heading: paragraph.hasField('field_heading') and not paragraph.get('field_heading').isEmpty() ? paragraph.field_heading.value : null,
+} only %}
+{% endembed %}

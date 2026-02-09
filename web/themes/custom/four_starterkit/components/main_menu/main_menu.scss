@@ -1,0 +1,58 @@
+.main-menu {
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  width: 100%;
+  padding: 0;
+  list-style: none;
+
+  @include mq($from: desktop) {
+    flex-direction: row;
+    width: auto;
+    height: auto;
+    padding: 0;
+  }
+
+  li {
+    padding: 0px;
+    margin-bottom: to.rem(50px);
+
+    &:last-of-type {
+      margin-bottom: 0;
+    }
+
+    @include mq($from: desktop) {
+      margin-bottom: 0;
+    }
+
+    &:not(:first-child) {
+      @include mq($from: desktop) {
+        padding-left: to.rem(50px);
+      }
+    }
+
+    a,
+    a:visited {
+      text-transform: uppercase;
+      font-weight: var(--main-menu-mobile-link-font-weight);
+      font-size: var(--main-menu-mobile-link-font-size);
+      color: var(--main-menu-mobile-link-color);
+
+      @include mq($from: desktop) {
+        font-weight: var(--main-menu-link-font-weight);
+        font-size: var(--main-menu-link-font-size);
+        color: var(--main-menu-link-color);
+      }
+    }
+
+    a:hover,
+    a:focus {
+      color: var(--main-menu-mobile-link-hover-color);
+
+      @include mq($from: desktop) {
+        color: var(--main-menu-link-hover-color);
+      }
+    }
+  }
+}

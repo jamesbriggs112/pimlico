@@ -1,0 +1,26 @@
+{% set attributes = attributes ?: create_attribute() %}
+{%
+  set classes = [
+    'node',
+    'node--type-' ~ bundle|clean_class,
+    promoted ? 'node--promoted',
+    sticky ? 'node--sticky',
+    not published ? 'node--unpublished',
+    view_mode ? 'node--view-mode-' ~ view_mode|clean_class,
+  ]
+%}
+
+{% set linkLabel = 'Read more' %}
+
+<article {{ attributes.addClass(classes)}}>
+	<header class="header">
+		{% block header %}
+			{# This is where the header of the node will be rendered. #}
+		{% endblock %}
+	</header>
+	<div class="content">
+		{% block content %}
+			{# This is where the content of the node will be rendered. #}
+		{% endblock %}
+	</div>
+</article>

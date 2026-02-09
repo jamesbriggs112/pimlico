@@ -6,44 +6,9 @@ html {
 }
 
 .dialog-off-canvas-main-canvas {
-  background-color: white;
   height: 100%;
-
-  .layout-container {
-    min-height: 100%;
-    box-sizing: border-box;
-    background-color: var(--background-color);
-    z-index: 1;
-    display: grid;
-    grid-template-rows: auto 1fr auto;
-    grid-template-columns: 1fr;
-    grid-template-areas:
-      'header'
-      'main'
-      'footer';
-
-    > header {
-      grid-area: header;
-      width: 100%;
-    }
-
-    > main {
-      z-index: 1;
-      grid-area: main;
-    }
-
-    > footer {
-      grid-area: footer;
-    }
-  }
-
-  .breadcrumb-area {
-    max-width: var(--page-width);
-    margin: 0 auto;
-  }
 }
 
-img {
-  width: 100%;
-  height: auto;
+@view-transition {
+  navigation: auto;
 }

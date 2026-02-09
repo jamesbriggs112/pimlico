@@ -23,14 +23,6 @@
  * @see template_preprocess_html()
  */
 #}
-{%
-  set body_classes = [
-    logged_in ? 'user-logged-in',
-    not root_path ? 'path-frontpage' : 'path-' ~ root_path|clean_class,
-    node_type ? 'page-node-type-' ~ node_type|clean_class,
-    db_offline ? 'db-offline',
-  ]
-%}
 <!DOCTYPE html>
 <html{{html_attributes}}>
 	<head>
@@ -40,14 +32,10 @@
 			</title>
 			<css-placeholder token="{{ placeholder_token }}">
 				<js-placeholder token="{{ placeholder_token }}"></head>
-				<body{{attributes.addClass(body_classes)}}>
-					{#
-					      Keyboard navigation/accessibility link to main content section in
-					      page.html.twig.
-					    #}
-					<a href="#main-content" class="visually-hidden focusable skip-link">
-						{{ 'Skip to main content'|t }}
-					</a>
+				<body{{attributes}}>
+					<nav class="skip-link-navigation" aria-label="Skip to main content">
+						{% include "four_starterkit:button" with {url: '#main-content', class: 'skip-link', text: 'Skip to main content'|t } %}
+					</nav>
 					{{ page_top }}
 					{{ page }}
 					{{ page_bottom }}

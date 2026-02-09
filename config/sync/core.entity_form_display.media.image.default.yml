@@ -31,6 +31,10 @@ content:
       preview_image_style: max_325x325
       preview_link: true
       offsets: '50,50'
+      preview_styles:
+        l08_040000_640x360: l08_040000_640x360
+        p05_040000_640x1138: p05_040000_640x1138
+        sq_040000_640x640: sq_040000_640x640
     third_party_settings: {  }
   path:
     type: path

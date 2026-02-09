@@ -7,7 +7,7 @@ dependencies:
     - media.type.video
   module:
     - fences
-    - file
+    - plyr
 _core:
   default_config_hash: SxvbuGh-6cQMxl9bBV27-hGI46u7ZvwlMm5ObaJMNnw
 id: media.video.default
@@ -16,17 +16,30 @@ bundle: video
 mode: default
 content:
   field_media_video_file:
-    type: file_video
+    type: plyr_file_video
     label: hidden
     settings:
-      controls: true
-      autoplay: false
-      loop: false
-      multiple_file_display_type: tags
-      muted: false
-      width: 640
-      height: 480
-      playsinline: false
+      resetOnEnd: '1'
+      controls:
+        play-large: '1'
+        play: '1'
+        progress: '1'
+        current-time: '1'
+        duration: '1'
+        mute: '1'
+        volume: '1'
+        fullscreen: '1'
+        restart: 0
+        rewind: 0
+        fast-forward: 0
+        settings: 0
+        airplay: 0
+        pip: 0
+      youtube:
+        noCookie: '1'
+      autoplay: 0
+      loop: 0
+      hideControls: 0
     third_party_settings:
       fences:
         fences_field_tag: none
@@ -35,7 +48,7 @@ content:
         fences_field_items_wrapper_classes: ''
         fences_field_item_tag: none
         fences_field_item_classes: ''
-        fences_label_tag: div
+        fences_label_tag: none
         fences_label_classes: ''
     weight: 0
     region: content

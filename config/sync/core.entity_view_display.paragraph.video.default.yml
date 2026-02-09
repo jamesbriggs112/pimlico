@@ -3,11 +3,12 @@ langcode: en
 status: true
 dependencies:
   config:
-    - field.field.paragraph.video.field_heading
+    - field.field.paragraph.video.field_layout
     - field.field.paragraph.video.field_video
     - paragraphs.paragraphs_type.video
   module:
     - fences
+    - options
 _core:
   default_config_hash: 4fl1WoQKk5-OL_apHOqL4DoYvYWVlS0jI4HKgfObFzE
 id: paragraph.video.default
@@ -15,22 +16,12 @@ targetEntityType: paragraph
 bundle: video
 mode: default
 content:
-  field_heading:
-    type: string
-    label: hidden
-    settings:
-      link_to_entity: false
-    third_party_settings:
-      fences:
-        fences_field_tag: h2
-        fences_field_classes: ''
-        fences_field_items_wrapper_tag: none
-        fences_field_items_wrapper_classes: ''
-        fences_field_item_tag: none
-        fences_field_item_classes: ''
-        fences_label_tag: div
-        fences_label_classes: ''
-    weight: 0
+  field_layout:
+    type: list_default
+    label: above
+    settings: {  }
+    third_party_settings: {  }
+    weight: 3
     region: content
   field_video:
     type: entity_reference_entity_view
@@ -50,4 +41,5 @@ content:
         fences_label_classes: ''
     weight: 1
     region: content
-hidden: {  }
+hidden:
+  search_api_excerpt: true

@@ -1,0 +1,21 @@
+uuid: 9d78792e-8ede-4edf-9224-72beb9ce6874
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_layout
+    - paragraphs.paragraphs_type.video
+  module:
+    - options
+id: paragraph.video.field_layout
+field_name: field_layout
+entity_type: paragraph
+bundle: video
+label: Layout
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: list_string

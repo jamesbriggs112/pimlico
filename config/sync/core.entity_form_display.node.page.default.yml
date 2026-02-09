@@ -122,7 +122,7 @@ content:
       autocollapse: all
       closed_mode_threshold: 0
       add_mode: modal
-      form_display_mode: default
+      form_display_mode: with_layout
       default_paragraph_type: _none
       features:
         add_above: add_above
@@ -141,6 +141,7 @@ content:
           dialog_off_canvas: false
           dialog_style: tiles
           drag_drop: true
+          sidebar_disabled: false
   field_seo_description:
     type: string_textarea
     weight: 7

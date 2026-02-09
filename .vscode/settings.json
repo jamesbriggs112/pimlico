@@ -5,7 +5,7 @@
     "editor.tabSize": 2,
     "editor.autoIndent": "full",
     "editor.insertSpaces": true,
-    "editor.formatOnPaste": true,
+    "editor.formatOnPaste": false,
     "editor.formatOnSave": true,
     "editor.renderWhitespace": "boundary",
     "editor.wordWrapColumn": 80,
@@ -48,18 +48,7 @@
     },
     "php-docblocker.gap": true,
     "php-docblocker.useShortNames": true,
-    "phpsab.snifferEnable": true,
     "phpsab.standard": "Drupal,DrupalPractice",
-    "phpsab.snifferArguments": [
-        "--extensions=inc,theme,install,module,profile,php,phtml"
-    ],
-    "phpsab.fixerEnable": true,
-    "phpsab.fixerArguments": [
-        "--extensions=inc,theme,install,module,profile,php,phtml"
-    ],
-    "[php]": {
-        "editor.defaultFormatter": "valeryanm.vscode-phpsab"
-    },
     "[twig]": {
         "editor.defaultFormatter": "mblode.twig-language-2"
     },
@@ -71,5 +60,13 @@
         "web/core/",
         "web/core/includes",
         "vendor/"
+    ],
+    "json.schemas": [
+        {
+            "fileMatch": [
+                "**/*.component.yml"
+            ],
+            "url": "https://git.drupalcode.org/project/drupal/-/raw/HEAD/core/assets/schemas/v1/metadata.schema.json"
+        }
     ],
 }

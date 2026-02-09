@@ -3,6 +3,7 @@ langcode: en
 status: true
 dependencies:
   config:
+    - field.field.paragraph.cta.field_colour
     - field.field.paragraph.cta.field_link
     - paragraphs.paragraphs_type.cta
   module:
@@ -14,6 +15,12 @@ targetEntityType: paragraph
 bundle: cta
 mode: default
 content:
+  field_colour:
+    type: options_select
+    weight: 2
+    region: content
+    settings: {  }
+    third_party_settings: {  }
   field_link:
     type: link_default
     weight: 0

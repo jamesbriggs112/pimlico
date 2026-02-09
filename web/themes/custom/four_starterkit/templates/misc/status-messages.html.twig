@@ -17,39 +17,14 @@
  * - status_headings: List of all status types.
  * - attributes: HTML attributes for the element, including:
  *   - class: HTML classes.
+ * - title_ids: A list of unique ids keyed by message type.
+ *
+ * @see claro_preprocess_status_messages().
  */
 #}
-<div data-drupal-messages>
-{% block messages %}
-{% for type, messages in message_list %}
-  {%
-    set classes = [
-      'messages',
-      'messages--' ~ type,
-    ]
-  %}
-  <div role="contentinfo" aria-label="{{ status_headings[type] }}"{{ attributes.addClass(classes)|without('role', 'aria-label') }}>
-    {% if type == 'error' %}
-      <div role="alert">
-    {% endif %}
-      {% if status_headings[type] %}
-        <h2 class="visually-hidden">{{ status_headings[type] }}</h2>
-      {% endif %}
-      {% if messages|length > 1 %}
-        <ul class="messages__list">
-          {% for message in messages %}
-            <li class="messages__item">{{ message }}</li>
-          {% endfor %}
-        </ul>
-      {% else %}
-        {{ messages|first }}
-      {% endif %}
-    {% if type == 'error' %}
-      </div>
-    {% endif %}
-  </div>
-  {# Remove type specific classes. #}
-  {% set attributes = attributes.removeClass(classes) %}
-{% endfor %}
-{% endblock messages %}
-</div>
+{% include "four_starterkit:messages" with {
+  message_list: message_list,
+  status_headings: status_headings,
+  attributes: attributes,
+  title_ids: title_ids
+} %}

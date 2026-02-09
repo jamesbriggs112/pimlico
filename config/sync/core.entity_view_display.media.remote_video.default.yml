@@ -7,7 +7,7 @@ dependencies:
     - media.type.remote_video
   module:
     - fences
-    - media
+    - plyr
 _core:
   default_config_hash: zQoBQ0BtnMM_rlDdgftyu6eI4AVs9mo5K8xq7NFO2Zc
 id: media.remote_video.default
@@ -16,13 +16,30 @@ bundle: remote_video
 mode: default
 content:
   field_media_oembed_video:
-    type: oembed
+    type: plyr_remote_video
     label: hidden
     settings:
-      max_width: 0
-      max_height: 0
-      loading:
-        attribute: lazy
+      resetOnEnd: '1'
+      hideControls: '1'
+      controls:
+        play-large: '1'
+        play: '1'
+        progress: '1'
+        current-time: '1'
+        mute: '1'
+        volume: '1'
+        settings: '1'
+        fullscreen: '1'
+        restart: 0
+        rewind: 0
+        fast-forward: 0
+        duration: 0
+        airplay: 0
+        pip: 0
+      youtube:
+        noCookie: '1'
+      autoplay: 0
+      loop: 0
     third_party_settings:
       fences:
         fences_field_tag: none
@@ -31,12 +48,13 @@ content:
         fences_field_items_wrapper_classes: ''
         fences_field_item_tag: none
         fences_field_item_classes: ''
-        fences_label_tag: div
+        fences_label_tag: none
         fences_label_classes: ''
     weight: 0
     region: content
 hidden:
   created: true
   name: true
+  search_api_excerpt: true
   thumbnail: true
   uid: true

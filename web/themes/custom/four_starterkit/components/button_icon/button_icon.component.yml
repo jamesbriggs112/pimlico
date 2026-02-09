@@ -1,0 +1,26 @@
+'$schema': 'https://git.drupalcode.org/project/drupal/-/raw/HEAD/core/assets/schemas/v1/metadata.schema.json'
+name: Button Icon
+status: stable
+libraryOverrides:
+  css:
+    component:
+      button_icon.scss: {}
+props:
+  type: object
+  properties:
+    title:
+      type: string
+      title: Title
+      description: Title will be used for accessiblity purposes only
+    class:
+      type: string
+      title: Class
+    color:
+      title: Color
+      type: string
+      enum:
+        - primary
+        - secondary
+slots:
+  icon:
+    title: Icon

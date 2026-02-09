@@ -1,0 +1,30 @@
+.navbar {
+  margin-left: auto;
+  display: none;
+  grid-area: menu;
+  overflow-y: visible;
+
+  .mobile-nav-open & {
+    display: flex;
+  }
+
+  @include mq($until: menu) {
+    position: absolute;
+    top: 0;
+    left: calc(-1 * var(--page-gutter-left));
+    right: calc(-1 * var(--page-gutter-right));
+    justify-content: center;
+    align-items: center;
+    background: var(--color-white);
+    color: var(--color--black);
+    z-index: 9;
+    transition: 0.4s ease transform;
+    height: calc(100dvh - var(--header-height));
+    overflow-y: scroll;
+  }
+
+  @include mq($from: menu) {
+    display: flex;
+    align-items: center;
+  }
+}

@@ -1,24 +1,9 @@
-{% extends "block.html.twig" %}
-{#
-/**
- * @file
- * Theme override for tabs.
- */
-#}
-{%
-  set classes = [
-    'block',
-    'block-' ~ configuration.provider|clean_class,
-    'block-' ~ plugin_id|clean_class,
-  ]
-%}
-
-{% block content %}
-	<div{{attributes.addClass(classes)}}>
-		{% if content %}
-			<nav class="tabs" role="navigation" aria-label="{{ 'Tabs'|t }}">
-				{{ content }}
-			</nav>
-		{% endif %}
-	</div>
-{% endblock %}
+{% embed "four_starterkit:block" with {
+  content,
+  plugin_id,
+  configuration,
+  attributes,
+  title_prefix,
+  title_suffix,
+} only %}
+{% endembed %}

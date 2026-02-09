@@ -1,0 +1,23 @@
+uuid: 45a4faf1-44dd-4d24-ba99-3c2a1081628e
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_image_style
+    - paragraphs.paragraphs_type.image_grid
+  module:
+    - options
+id: paragraph.image_grid.field_image_style
+field_name: field_image_style
+entity_type: paragraph
+bundle: image_grid
+label: 'Image Style'
+description: ''
+required: false
+translatable: false
+default_value:
+  -
+    value: '16_9'
+default_value_callback: ''
+settings: {  }
+field_type: list_string

@@ -38,13 +38,8 @@ export default defineConfig({
     rollupOptions: {
       input: [
         'src/sass/styles.scss',
-        'src/sass/hamburgers/hamburgers.scss',
-        'src/js/site.js',
-        '!src/sass/components/_*.scss',
-        'src/sass/components/*.scss',
-        '!src/js/components/_*.js',
-        'src/js/components/*.js',
-        'src/js/header/*.js',
+        'components/**/*.scss',
+        'components/**/*.js',
       ],
       output: {
         assetFileNames: ({ name }) => {

@@ -3,11 +3,13 @@ langcode: en
 status: true
 dependencies:
   config:
+    - field.field.paragraph.cta.field_colour
     - field.field.paragraph.cta.field_link
     - paragraphs.paragraphs_type.cta
   module:
     - fences
     - link
+    - options
 _core:
   default_config_hash: 0P5TD7-tP-vEoNJcPMcQM75VS3RHJ9kxKV3Ic0042sU
 id: paragraph.cta.default
@@ -15,6 +17,13 @@ targetEntityType: paragraph
 bundle: cta
 mode: default
 content:
+  field_colour:
+    type: list_default
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+    weight: 3
+    region: content
   field_link:
     type: link
     label: hidden
@@ -36,4 +45,5 @@ content:
         fences_label_classes: ''
     weight: 0
     region: content
-hidden: {  }
+hidden:
+  search_api_excerpt: true

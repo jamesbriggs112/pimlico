@@ -264,7 +264,7 @@ $databases = [];
  *   $settings['hash_salt'] = file_get_contents('/home/example/salt.txt');
  * @endcode
  */
-$settings['hash_salt'] = 'ja47quxh8qNB1HXTxFDKQq9e65fmJj2X8qpummiG9St0ARzMJxdRHU-POwXKFyqq2IyD2NQ73Q';
+$settings['hash_salt'] = hash('sha256', $app_root . '/' . $site_path);
 
 /**
  * Deployment identifier.

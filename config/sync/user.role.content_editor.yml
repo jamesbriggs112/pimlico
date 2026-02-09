@@ -6,7 +6,9 @@ dependencies:
     - node.type.article
     - node.type.page
     - taxonomy.vocabulary.tags
+    - workflows.workflow.content_moderation
   module:
+    - content_moderation
     - contextual
     - file
     - media
@@ -44,6 +46,9 @@ permissions:
   - 'edit terms in tags'
   - 'revert all revisions'
   - 'update any media'
+  - 'use content_moderation transition create_new_draft'
+  - 'use content_moderation transition publish'
+  - 'use content_moderation transition unpublish'
   - 'view all revisions'
   - 'view own unpublished content'
   - 'view the administration theme'

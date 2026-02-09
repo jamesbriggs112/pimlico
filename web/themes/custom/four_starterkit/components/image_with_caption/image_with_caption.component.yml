@@ -1,0 +1,19 @@
+'$schema': 'https://git.drupalcode.org/project/drupal/-/raw/HEAD/core/assets/schemas/v1/metadata.schema.json'
+name: Image with caption
+status: stable
+libraryOverrides:
+  css:
+    component:
+      image_with_caption.scss: {}
+props:
+  type: object
+  properties:
+    media_id:
+      type: integer
+      title: Media ID
+    image_style:
+      type: string
+      title: Image Style
+    caption:
+      type: string
+      title: Caption

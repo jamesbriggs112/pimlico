@@ -8,7 +8,41 @@ dependencies:
     - paragraphs.paragraphs_type.content_grid
   module:
     - fences
+    - field_group
     - viewfield
+third_party_settings:
+  field_group:
+    group_grid:
+      children:
+        - field_view
+      label: Grid
+      parent_name: ''
+      region: content
+      weight: 1
+      format_type: sdc_display
+      format_settings:
+        sdc_field_group:
+          component:
+            machine_name: 'four_starterkit:grid'
+            show_deprecated: 0
+          mappings:
+            static:
+              props:
+                columns: columns-3
+              slots:
+                content:
+                  value: ''
+                  format: basic_html
+            dynamic:
+              slots:
+                content:
+                  field_view: field_view
+              props:
+                columns: null
+        id: ''
+        classes: ''
+        show_empty_fields: 0
+        label_as_html: 0
 id: paragraph.content_grid.default
 targetEntityType: paragraph
 bundle: content_grid
@@ -21,13 +55,13 @@ content:
       link_to_entity: false
     third_party_settings:
       fences:
-        fences_field_tag: h2
+        fences_field_tag: none
         fences_field_classes: ''
         fences_field_items_wrapper_tag: none
         fences_field_items_wrapper_classes: ''
         fences_field_item_tag: none
         fences_field_item_classes: ''
-        fences_label_tag: div
+        fences_label_tag: none
         fences_label_classes: ''
     weight: 0
     region: content
@@ -36,7 +70,7 @@ content:
     label: hidden
     settings:
       view_title: hidden
-      always_build_output: false
+      always_build_output: true
       empty_view_title: hidden
     third_party_settings:
       fences:
@@ -46,9 +80,9 @@ content:
         fences_field_items_wrapper_classes: ''
         fences_field_item_tag: none
         fences_field_item_classes: ''
-        fences_label_tag: div
+        fences_label_tag: none
         fences_label_classes: ''
-    weight: 0
+    weight: 2
     region: content
 hidden:
   search_api_excerpt: true

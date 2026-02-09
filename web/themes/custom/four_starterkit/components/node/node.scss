@@ -1,0 +1,37 @@
+[data-component-id='four_starterkit:node'] {
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: auto var(--component-spacing) auto;
+  grid-template-areas:
+    'header'
+    '.'
+    'content';
+  justify-content: center;
+
+  > .header {
+    grid-area: header;
+  }
+
+  > .content {
+    grid-area: content;
+    @include contentWithGutters;
+    padding-bottom: var(--vertical-spacing);
+    overflow: hidden;
+
+    > * {
+      grid-column: popout;
+
+      &.narrow {
+        grid-column: content;
+      }
+
+      &.fullwidth {
+        grid-column: full;
+      }
+    }
+  }
+
+  .block-system-breadcrumb-block {
+    grid-column: popout;
+  }
+}

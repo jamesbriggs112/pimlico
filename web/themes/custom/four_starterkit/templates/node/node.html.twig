@@ -1,0 +1,21 @@
+{#
+/**
+ * @file
+ * Template for rendering Drupal 'page' nodes using the Four Starterkit theme.
+ *
+ * This template delegates rendering to the 'basic_page' component, passing:
+ *   - title: The node label.
+ *   - header: The 'field_banner' field content if present.
+ *   - sections: The 'field_sections' field content if present.
+ *
+ * Usage:
+ *   Used by Drupal when displaying nodes of type 'page'.
+ *   Follows Four Agency's component-driven theming conventions.
+ */
+#}
+
+{% include 'four_starterkit:article' with {
+  title: node.label,
+  header: node.hasField('field_banner') and not node.get('field_banner').isEmpty() ? content.field_banner,
+  sections: node.hasField('field_sections') and not node.get('field_sections').isEmpty() ? content.field_sections,
+} %}

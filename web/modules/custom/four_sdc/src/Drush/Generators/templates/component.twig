@@ -1,0 +1,49 @@
+'$schema': 'https://git.drupalcode.org/project/drupal/-/raw/HEAD/core/assets/schemas/v1/metadata.schema.json'
+name: {{ component_name }}
+status: stable
+{% if component_description %}
+description: {{ component_description }}
+{% endif %}
+{% if component_has_css or component_has_js or component_libraries|length > 0 %}
+libraryOverrides:
+  {% if component_has_css %}
+  css:
+    component:
+      {{ component_machine_name }}.scss: {}
+  {% endif %}
+  {% if component_has_js %}
+  js:
+    {{ component_machine_name }}.js: {}
+  {% endif %}
+{% endif %}
+{% if component_libraries|length > 0 %}
+  dependencies:
+    {% for library in component_libraries %}
+    - {{ library }}
+    {% endfor %}
+{% endif %}
+{% if component_props|length > 0 %}
+props:
+  type: object
+  properties:
+    {% for prop in component_props %}
+    {{ prop.name }}:
+      type: {{ prop.type }}
+      title: {{ prop.title }}
+      {% if prop.description %}
+      description: {{ prop.description }}
+      {% endif %}
+      # @todo Add examples here.
+      examples: []
+    {% endfor %}
+{% endif %}
+{% if component_slots|length > 0 %}
+slots:
+  {% for slot in component_slots %}
+  {{ slot.name }}:
+    title: {{ slot.title }}
+    {% if slot.description %}
+    description: {{ slot.description }}
+    {% endif %}
+  {% endfor %}
+{% endif %}

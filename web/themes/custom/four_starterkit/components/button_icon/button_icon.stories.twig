@@ -1,0 +1,23 @@
+{% stories my_card with { title: 'Components/ButtonIcon' } %}
+
+{% story chevron_right with {
+    name: 'Chevron Right',
+    args: { title: 'Go to next slide' },
+    parameters: {
+      design: {
+        type: 'figma',
+        url: 'https://www.figma.com/design/QVXtmITVlZbXe6KTXSmTkZ/-shadcn-ui---Design-System--Community-?node-id=4-462&m=dev',
+      }
+    }
+  } %}
+{# Write any Twig for the "chevron_right" story. The `args` above will be made #}
+{# available as variables for the template 👇 #}
+	{% embed "four_starterkit:button_icon" with {title: 'Go to next slide', class: 'content-carousel__next'}  %}
+		{% block icon %}
+			<svg class="icon icon-chevron-right" aria-hidden="true" focusable="false" fill="currentColor" viewbox="0 0 24 24"> <path d="M8.59 16.59L13.17 12 8.59 7.41 10 6l6 6-6 6z"/>
+		</svg>
+	{% endblock %}
+{% endembed %}
+{% endstory %}
+
+{% endstories %}

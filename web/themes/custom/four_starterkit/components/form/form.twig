@@ -1,0 +1,7 @@
+{% set classes = ['form'] %}
+
+<form {{ attributes.addClass(classes) }}>
+	{% block form %}
+		{# Render the form elements #}
+	{% endblock %}
+</form>

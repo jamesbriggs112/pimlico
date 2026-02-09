@@ -59,6 +59,10 @@ h6 {
   text-wrap: balance;
 }
 
+p {
+  text-wrap: pretty;
+}
+
 /* A elements that don't have a class get default styles */
 a:not([class]) {
   text-decoration-skip-ink: auto;
@@ -70,6 +74,12 @@ img,
 picture {
   max-width: 100%;
   display: block;
+  width: 100%;
+  height: auto;
+}
+
+figure {
+  margin: 0;
 }
 
 /* Inherit fonts for inputs and buttons */

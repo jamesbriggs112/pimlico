@@ -1,0 +1,11 @@
+uuid: b17604a9-ff16-4ce6-9107-a189675aed50
+langcode: en
+status: true
+dependencies:
+  module:
+    - paragraphs
+id: paragraph.with_layout
+label: 'With layout'
+description: null
+targetEntityType: paragraph
+cache: true

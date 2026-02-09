@@ -1,0 +1,19 @@
+{% embed "four_starterkit:paragraph" with {
+  view_mode,
+  attributes,
+  heading: paragraph.hasField('field_heading') and not paragraph.get('field_heading').isEmpty() ? paragraph.field_heading.value : null,
+} %}
+	{% block content %}
+		{% embed "four_starterkit:grid" with { columns: paragraph.field_columns.value } %}
+			{% block content %}
+				{% for item in paragraph.field_images_with_caption %}
+					{% include "four_starterkit:image_with_caption" with {
+            media_id: item.entity.field_image.0.entity.id(),
+            image_style: paragraph.field_image_style.value|default('square'),
+            caption: item.entity.field_caption.value
+          } only %}
+				{% endfor %}
+			{% endblock %}
+		{% endembed %}
+	{% endblock %}
+{% endembed %}

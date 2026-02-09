@@ -1,0 +1,31 @@
+{% set classes = [
+  'page',
+] %}
+
+{% set main_classes = [
+  'content',
+]  %}
+
+
+<div {{ attributes.addClass(classes) }}>
+	{% block header %}
+		{% embed 'four_starterkit:header' with {
+				branding: page.branding,
+        primary_menu: page.primary_menu,
+      } only %}
+		{% endembed %}
+	{% endblock %}
+	<main id="main-content" role=" main">
+		{% block main_content %}
+			{{ page.content }}
+		{% endblock %}
+	</main>
+	{% block footer %}
+		{% embed 'four_starterkit:footer' with {
+        menu: page.footer_menu,
+        branding: page.footer_branding,
+        bottom: page.footer_bottom,
+      } only %}
+		{% endembed %}
+	{% endblock %}
+</div>

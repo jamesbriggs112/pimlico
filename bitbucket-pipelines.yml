@@ -15,6 +15,7 @@ definitions:
           - corepack enable
           - corepack prepare pnpm@latest-10 --activate
           - pnpm i --frozen-lockfile
+          - pnpm run lint
           - pnpm run build
         artifacts:
           - web/**

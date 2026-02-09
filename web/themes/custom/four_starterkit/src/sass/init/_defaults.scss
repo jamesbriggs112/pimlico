@@ -28,20 +28,6 @@ a:visited {
   }
 }
 
-p {
-  font-size: to.rem(18px);
-  line-height: 1.15;
-  margin-top: 0;
-}
-
-.btn {
-  @include button;
-
-  &__dark {
-    @include button(white, var(--color-dark-grey));
-  }
-}
-
 q {
   display: flex;
   text-transform: uppercase;
@@ -55,12 +41,24 @@ q {
   }
 }
 
-.visually-hidden {
-  clip: rect(0 0 0 0);
-  clip-path: inset(50%);
-  height: 1px;
-  overflow: hidden;
-  position: absolute;
-  white-space: nowrap;
-  width: 1px;
+// style as a button
+.skip-link-navigation {
+  .skip-link {
+    position: absolute;
+    top: 0;
+    right: 100%; /* moves off screen */
+    z-index: 500; /* some number that will make sure it covers other elements */
+
+    &:focus {
+      right: auto;
+      left: to.rem(20px);
+      top: to.rem(20px);
+    }
+  }
+}
+
+.plyr--video.plyr--stopped .plyr__controls,
+.plyr--video.plyr--paused .plyr__controls {
+  opacity: 0;
+  pointer-events: none;
 }

@@ -1,7 +1,6 @@
 ignore:
-  - "/src/StarterKit.php"
-  - "/four_starterkit.starterkit.yml"
-no_edit: []
-no_rename: []
-info:
-  version: 1.0.0
+  - '/src/StarterKit.php'
+  - '/four_starterkit.starterkit.yml'
+starterkit:
+  replace_patterns:
+    - 'four_starterkit'

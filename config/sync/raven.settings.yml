@@ -50,3 +50,14 @@ send_inp_spans: true
 trace_propagation_targets_backend: {  }
 trace_propagation_targets_frontend: {  }
 database_tracing_args: false
+capture_user_ip: false
+logs_log_levels:
+  emergency: true
+  alert: true
+  critical: true
+  error: true
+  warning: false
+  notice: false
+  info: false
+  debug: false
+cli_enable_logs: false

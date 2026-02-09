@@ -1,0 +1,14 @@
+{% embed "four_starterkit:paragraph_with_layout" with {
+  view_mode,
+  paragraph,
+  attributes,
+	layout: paragraph.hasField('field_layout') and not paragraph.get('field_layout').isEmpty() ? paragraph.field_layout.value|clean_class,
+} %}
+	{% block content %}
+		{% include "four_starterkit:image_with_caption" with {
+					media_id: paragraph.field_image_with_caption.0.entity.field_image.0.entity.id(),
+					image_style: paragraph.field_image_style.value,
+					caption: paragraph.field_image_with_caption.0.entity.field_caption.value
+				} only %}
+	{% endblock %}
+{% endembed %}

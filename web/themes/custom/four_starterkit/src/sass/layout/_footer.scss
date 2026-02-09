@@ -2,33 +2,6 @@
 @use 'sass-mq/mq' as *;
 
 .site-footer {
-  padding: to.rem(60px) 0;
-  background-color: var(--footer-bg-color);
-  color: var(--footer-text-color);
-  display: grid;
-  grid-template-columns: var(--page-gutter-left) 1fr var(--page-gutter-right);
-  grid-template-rows: auto auto auto;
-  gap: to.rem(20px) 0;
-  grid-template-areas:
-    '. menu .'
-    '. social .'
-    '. copyright .';
-
-  a {
-    color: var(--footer-text-color);
-  }
-
-  @include mq($from: tablet) {
-    grid-template-columns:
-      var(--page-gutter-left) 1fr to.rem(20px) 1fr to.rem(20px)
-      1fr var(--page-gutter-right);
-    grid-template-rows: 1fr 1fr;
-    gap: to.rem(20px) 0;
-    grid-template-areas:
-      '. social . . . menu .'
-      '. copyright . . .  menu .';
-  }
-
   .menu--footer {
     grid-area: menu;
   }

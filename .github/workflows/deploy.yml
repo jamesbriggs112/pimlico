@@ -1,0 +1,106 @@
+name: Deploy
+
+on:
+  pull_request:
+    types: [closed]
+    branches:
+      - main
+      - staging
+
+jobs:
+  build-and-deploy:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        node-version: [22]
+    environment: ${{ github.ref == 'refs/heads/main' && 'production' || 'staging' }}
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v5
+
+      - name: Install pnpm
+        uses: pnpm/action-setup@v4
+        with:
+          version: latest-10
+
+      - name: Setup Node.js ${{ matrix.node-version }}
+        uses: actions/setup-node@v4
+        with:
+          node-version: ${{ matrix.node-version }}
+          cache: "pnpm"
+          cache-dependency-path: web/themes/custom/${{ vars.THEME_NAME }}/pnpm-lock.yaml
+
+      - name: Install dependencies
+        run: |
+          cd web/themes/custom/${{ vars.THEME_NAME }}
+          corepack enable
+          corepack prepare pnpm@latest-10 --activate
+          pnpm i --frozen-lockfile
+
+      - name: Lint theme
+        run: |
+          cd web/themes/custom/${{ vars.THEME_NAME }}
+          pnpm run lint
+
+      - name: Build theme
+        run: |
+          cd web/themes/custom/${{ vars.THEME_NAME }}
+          pnpm run build
+
+      - name: Configure AWS credentials
+        uses: aws-actions/configure-aws-credentials@v5
+        with:
+          aws-access-key-id: ${{ vars.AWS_ACCESS_KEY_ID }}
+          aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+          aws-region: ${{ vars.AWS_DEFAULT_REGION }}
+
+      - name: Prepare deployment package
+        run: |
+          echo "Preparing deployment package"
+
+          # Replace Sentry placeholders
+          sed -i "s/cloudfront_placeholder/${{ vars.AWS_DISTRIBUTION_ID }}/g" .ebextensions/sentry.config
+          sed -i "s/release_placeholder/${{ github.sha }}/g" .ebextensions/sentry.config
+          sed -i "s/environment_placeholder/${{ vars.SENTRY_ENVIRONMENT }}/g" .ebextensions/sentry.config
+          sed -i "s#dsn_placeholder#${{ vars.SENTRY_DSN }}#g" .ebextensions/sentry.config
+
+          # Create deployment zip
+          zip -r application.zip web composer.json composer.lock .ebextensions .platform scaffold config \
+            --exclude="web/themes/custom/${{ vars.THEME_NAME }}/node_modules/*"
+
+      - name: Deploy to Elastic Beanstalk
+        run: |
+          COMMIT_SHORT=$(echo ${{ github.sha }} | cut -c1-7)
+          VERSION_LABEL="build-${{ github.run_number }}-commit-${COMMIT_SHORT}"
+
+          aws s3 cp application.zip "s3://${{ vars.S3_BUCKET }}/application-${VERSION_LABEL}.zip"
+
+          aws elasticbeanstalk create-application-version \
+            --application-name "${{ vars.APPLICATION_NAME }}" \
+            --version-label "$VERSION_LABEL" \
+            --source-bundle "S3Bucket=${{ vars.S3_BUCKET }},S3Key=application-${VERSION_LABEL}.zip"
+
+          aws elasticbeanstalk update-environment \
+            --application-name "${{ vars.APPLICATION_NAME }}" \
+            --environment-name "${{ vars.ENVIRONMENT_NAME }}" \
+            --version-label "$VERSION_LABEL"
+
+          aws elasticbeanstalk wait environment-updated \
+            --application-name "${{ vars.APPLICATION_NAME }}" \
+            --environment-name "${{ vars.ENVIRONMENT_NAME }}"
+
+      - name: Invalidate CloudFront cache
+        run: |
+          aws cloudfront create-invalidation \
+            --distribution-id ${{ vars.AWS_DISTRIBUTION_ID }} \
+            --paths "/*"
+
+      - name: Create Sentry release
+        uses: getsentry/action-release@v3
+        env:
+          SENTRY_AUTH_TOKEN: ${{ secrets.SENTRY_AUTH_TOKEN }}
+          SENTRY_ORG: ${{ vars.SENTRY_ORG }}
+          SENTRY_PROJECT: ${{ vars.SENTRY_PROJECT }}
+        with:
+          environment: ${{ vars.SENTRY_ENVIRONMENT }}
+          version: "v1.3.4"
