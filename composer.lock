@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "9bc5ceb134f725601e2b21c62271fc78",
+    "content-hash": "7c0e7599fbefe350493c9c115bb5ba2a",
     "packages": [
         {
             "name": "asm89/stack-cors",
@@ -306,39 +306,37 @@
         },
         {
             "name": "composer/installers",
-            "version": "v1.12.0",
+            "version": "v2.3.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/composer/installers.git",
-                "reference": "d20a64ed3c94748397ff5973488761b22f6d3f19"
+                "reference": "12fb2dfe5e16183de69e784a7b84046c43d97e8e"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/composer/installers/zipball/d20a64ed3c94748397ff5973488761b22f6d3f19",
-                "reference": "d20a64ed3c94748397ff5973488761b22f6d3f19",
+                "url": "https://api.github.com/repos/composer/installers/zipball/12fb2dfe5e16183de69e784a7b84046c43d97e8e",
+                "reference": "12fb2dfe5e16183de69e784a7b84046c43d97e8e",
                 "shasum": ""
             },
             "require": {
-                "composer-plugin-api": "^1.0 || ^2.0"
-            },
-            "replace": {
-                "roundcube/plugin-installer": "*",
-                "shama/baton": "*"
+                "composer-plugin-api": "^1.0 || ^2.0",
+                "php": "^7.2 || ^8.0"
             },
             "require-dev": {
-                "composer/composer": "1.6.* || ^2.0",
-                "composer/semver": "^1 || ^3",
-                "phpstan/phpstan": "^0.12.55",
-                "phpstan/phpstan-phpunit": "^0.12.16",
-                "symfony/phpunit-bridge": "^4.2 || ^5",
-                "symfony/process": "^2.3"
+                "composer/composer": "^1.10.27 || ^2.7",
+                "composer/semver": "^1.7.2 || ^3.4.0",
+                "phpstan/phpstan": "^1.11",
+                "phpstan/phpstan-phpunit": "^1",
+                "symfony/phpunit-bridge": "^7.1.1",
+                "symfony/process": "^5 || ^6 || ^7"
             },
             "type": "composer-plugin",
             "extra": {
                 "class": "Composer\\Installers\\Plugin",
                 "branch-alias": {
-                    "dev-main": "1.x-dev"
-                }
+                    "dev-main": "2.x-dev"
+                },
+                "plugin-modifies-install-path": true
             },
             "autoload": {
                 "psr-4": {
@@ -359,7 +357,6 @@
             "description": "A multi-framework Composer library installer",
             "homepage": "https://composer.github.io/installers/",
             "keywords": [
-                "Craft",
                 "Dolibarr",
                 "Eliasis",
                 "Hurad",
@@ -380,7 +377,6 @@
                 "Whmcs",
                 "WolfCMS",
                 "agl",
-                "aimeos",
                 "annotatecms",
                 "attogram",
                 "bitrix",
@@ -389,6 +385,7 @@
                 "cockpit",
                 "codeigniter",
                 "concrete5",
+                "concreteCMS",
                 "croogo",
                 "dokuwiki",
                 "drupal",
@@ -399,7 +396,6 @@
                 "grav",
                 "installer",
                 "itop",
-                "joomla",
                 "known",
                 "kohana",
                 "laravel",
@@ -408,6 +404,7 @@
                 "magento",
                 "majima",
                 "mako",
+                "matomo",
                 "mediawiki",
                 "miaoxing",
                 "modulework",
@@ -427,9 +424,7 @@
                 "silverstripe",
                 "sydes",
                 "sylius",
-                "symfony",
                 "tastyigniter",
-                "typo3",
                 "wordpress",
                 "yawik",
                 "zend",
@@ -437,7 +432,7 @@
             ],
             "support": {
                 "issues": "https://github.com/composer/installers/issues",
-                "source": "https://github.com/composer/installers/tree/v1.12.0"
+                "source": "https://github.com/composer/installers/tree/v2.3.0"
             },
             "funding": [
                 {
@@ -453,7 +448,7 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2021-09-13T08:19:44+00:00"
+            "time": "2024-06-24T20:46:46+00:00"
         },
         {
             "name": "composer/semver",
@@ -1042,6 +1037,73 @@
             "time": "2022-12-20T22:53:13+00:00"
         },
         {
+            "name": "defuse/php-encryption",
+            "version": "v2.4.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/defuse/php-encryption.git",
+                "reference": "f53396c2d34225064647a05ca76c1da9d99e5828"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/defuse/php-encryption/zipball/f53396c2d34225064647a05ca76c1da9d99e5828",
+                "reference": "f53396c2d34225064647a05ca76c1da9d99e5828",
+                "shasum": ""
+            },
+            "require": {
+                "ext-openssl": "*",
+                "paragonie/random_compat": ">= 2",
+                "php": ">=5.6.0"
+            },
+            "require-dev": {
+                "phpunit/phpunit": "^5|^6|^7|^8|^9|^10",
+                "yoast/phpunit-polyfills": "^2.0.0"
+            },
+            "bin": [
+                "bin/generate-defuse-key"
+            ],
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "Defuse\\Crypto\\": "src"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Taylor Hornby",
+                    "email": "taylor@defuse.ca",
+                    "homepage": "https://defuse.ca/"
+                },
+                {
+                    "name": "Scott Arciszewski",
+                    "email": "info@paragonie.com",
+                    "homepage": "https://paragonie.com"
+                }
+            ],
+            "description": "Secure PHP Encryption Library",
+            "keywords": [
+                "aes",
+                "authenticated encryption",
+                "cipher",
+                "crypto",
+                "cryptography",
+                "encrypt",
+                "encryption",
+                "openssl",
+                "security",
+                "symmetric key cryptography"
+            ],
+            "support": {
+                "issues": "https://github.com/defuse/php-encryption/issues",
+                "source": "https://github.com/defuse/php-encryption/tree/v2.4.0"
+            },
+            "time": "2023-06-19T06:10:36+00:00"
+        },
+        {
             "name": "dflydev/dot-access-data",
             "version": "v3.0.3",
             "source": {
@@ -1115,6 +1177,96 @@
                 "source": "https://github.com/dflydev/dflydev-dot-access-data/tree/v3.0.3"
             },
             "time": "2024-07-08T12:26:09+00:00"
+        },
+        {
+            "name": "doctrine/inflector",
+            "version": "2.1.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/doctrine/inflector.git",
+                "reference": "6d6c96277ea252fc1304627204c3d5e6e15faa3b"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/doctrine/inflector/zipball/6d6c96277ea252fc1304627204c3d5e6e15faa3b",
+                "reference": "6d6c96277ea252fc1304627204c3d5e6e15faa3b",
+                "shasum": ""
+            },
+            "require": {
+                "php": "^7.2 || ^8.0"
+            },
+            "require-dev": {
+                "doctrine/coding-standard": "^12.0 || ^13.0",
+                "phpstan/phpstan": "^1.12 || ^2.0",
+                "phpstan/phpstan-phpunit": "^1.4 || ^2.0",
+                "phpstan/phpstan-strict-rules": "^1.6 || ^2.0",
+                "phpunit/phpunit": "^8.5 || ^12.2"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "Doctrine\\Inflector\\": "src"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Guilherme Blanco",
+                    "email": "guilhermeblanco@gmail.com"
+                },
+                {
+                    "name": "Roman Borschel",
+                    "email": "roman@code-factory.org"
+                },
+                {
+                    "name": "Benjamin Eberlei",
+                    "email": "kontakt@beberlei.de"
+                },
+                {
+                    "name": "Jonathan Wage",
+                    "email": "jonwage@gmail.com"
+                },
+                {
+                    "name": "Johannes Schmitt",
+                    "email": "schmittjoh@gmail.com"
+                }
+            ],
+            "description": "PHP Doctrine Inflector is a small library that can perform string manipulations with regard to upper/lowercase and singular/plural forms of words.",
+            "homepage": "https://www.doctrine-project.org/projects/inflector.html",
+            "keywords": [
+                "inflection",
+                "inflector",
+                "lowercase",
+                "manipulation",
+                "php",
+                "plural",
+                "singular",
+                "strings",
+                "uppercase",
+                "words"
+            ],
+            "support": {
+                "issues": "https://github.com/doctrine/inflector/issues",
+                "source": "https://github.com/doctrine/inflector/tree/2.1.0"
+            },
+            "funding": [
+                {
+                    "url": "https://www.doctrine-project.org/sponsorship.html",
+                    "type": "custom"
+                },
+                {
+                    "url": "https://www.patreon.com/phpdoctrine",
+                    "type": "patreon"
+                },
+                {
+                    "url": "https://tidelift.com/funding/github/packagist/doctrine%2Finflector",
+                    "type": "tidelift"
+                }
+            ],
+            "time": "2025-08-10T19:31:58+00:00"
         },
         {
             "name": "doctrine/lexer",
@@ -1644,6 +1796,103 @@
             }
         },
         {
+            "name": "drupal/conditional_fields",
+            "version": "4.0.0-alpha6",
+            "source": {
+                "type": "git",
+                "url": "https://git.drupalcode.org/project/conditional_fields.git",
+                "reference": "4.0.0-alpha6"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://ftp.drupal.org/files/projects/conditional_fields-4.0.0-alpha6.zip",
+                "reference": "4.0.0-alpha6",
+                "shasum": "0438e4e0e372cd68578679dfce3c990f8a12a4d7"
+            },
+            "require": {
+                "drupal/core": "^9 || ^10 || ^11"
+            },
+            "require-dev": {
+                "drupal/entity_reference_revisions": "1.x-dev",
+                "drupal/paragraphs": "^1"
+            },
+            "type": "drupal-module",
+            "extra": {
+                "drupal": {
+                    "version": "4.0.0-alpha6",
+                    "datestamp": "1733933531",
+                    "security-coverage": {
+                        "status": "not-covered",
+                        "message": "Alpha releases are not covered by Drupal security advisories."
+                    }
+                }
+            },
+            "notification-url": "https://packages.drupal.org/8/downloads",
+            "license": [
+                "GPL-2.0-or-later"
+            ],
+            "authors": [
+                {
+                    "name": "benjifisher",
+                    "homepage": "https://www.drupal.org/user/683300"
+                },
+                {
+                    "name": "colan",
+                    "homepage": "https://www.drupal.org/user/58704"
+                },
+                {
+                    "name": "dqd",
+                    "homepage": "https://www.drupal.org/user/1001934"
+                },
+                {
+                    "name": "ergonlogic",
+                    "homepage": "https://www.drupal.org/user/368613"
+                },
+                {
+                    "name": "geek-merlin",
+                    "homepage": "https://www.drupal.org/user/229048"
+                },
+                {
+                    "name": "heddn",
+                    "homepage": "https://www.drupal.org/user/1463982"
+                },
+                {
+                    "name": "itsekhmistro",
+                    "homepage": "https://www.drupal.org/user/928152"
+                },
+                {
+                    "name": "mparker17",
+                    "homepage": "https://www.drupal.org/user/536298"
+                },
+                {
+                    "name": "OlgaRabodzei",
+                    "homepage": "https://www.drupal.org/user/3389198"
+                },
+                {
+                    "name": "peterpoe",
+                    "homepage": "https://www.drupal.org/user/55674"
+                },
+                {
+                    "name": "saurabh-2k17",
+                    "homepage": "https://www.drupal.org/user/3622252"
+                },
+                {
+                    "name": "szhu",
+                    "homepage": "https://www.drupal.org/user/3525295"
+                },
+                {
+                    "name": "thalles",
+                    "homepage": "https://www.drupal.org/user/3589086"
+                }
+            ],
+            "description": "Enables conditional field behaviors.",
+            "homepage": "https://www.drupal.org/project/conditional_fields",
+            "support": {
+                "source": "https://git.drupalcode.org/project/conditional_fields",
+                "issues": "https://www.drupal.org/project/issues/conditional_fields"
+            }
+        },
+        {
             "name": "drupal/config_ignore",
             "version": "3.3.0",
             "source": {
@@ -1692,10 +1941,6 @@
                     "role": "Maintainer"
                 },
                 {
-                    "name": "nord102",
-                    "homepage": "https://www.drupal.org/user/3471419"
-                },
-                {
                     "name": "tlyngej",
                     "homepage": "https://www.drupal.org/user/413139"
                 }
@@ -1705,6 +1950,119 @@
             "support": {
                 "source": "https://git.drupalcode.org/project/config_ignore",
                 "issues": "http://drupal.org/project/config_ignore"
+            }
+        },
+        {
+            "name": "drupal/config_pages",
+            "version": "2.19.0",
+            "source": {
+                "type": "git",
+                "url": "https://git.drupalcode.org/project/config_pages.git",
+                "reference": "8.x-2.19"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://ftp.drupal.org/files/projects/config_pages-8.x-2.19.zip",
+                "reference": "8.x-2.19",
+                "shasum": "8791c8558b2095c72e605b76cfd26a514dab1e42"
+            },
+            "require": {
+                "drupal/core": "^8.5 | ^9 || ^10 || ^11"
+            },
+            "type": "drupal-module",
+            "extra": {
+                "drupal": {
+                    "version": "8.x-2.19",
+                    "datestamp": "1756896072",
+                    "security-coverage": {
+                        "status": "covered",
+                        "message": "Covered by Drupal's security advisory policy"
+                    }
+                },
+                "drush": {
+                    "services": {
+                        "drush.services.yml": "^9"
+                    }
+                }
+            },
+            "notification-url": "https://packages.drupal.org/8/downloads",
+            "license": [
+                "GPL-2.0-or-later"
+            ],
+            "authors": [
+                {
+                    "name": "m.krestnicov",
+                    "homepage": "https://www.drupal.org/user/3193903"
+                },
+                {
+                    "name": "qwaygon",
+                    "homepage": "https://www.drupal.org/user/636624"
+                },
+                {
+                    "name": "shumer",
+                    "homepage": "https://www.drupal.org/user/2297432"
+                }
+            ],
+            "description": "ConfigPages module",
+            "homepage": "http://drupal.org/project/config_pages",
+            "keywords": [
+                "Drupal"
+            ],
+            "support": {
+                "source": "http://cgit.drupalcode.org/config_pages",
+                "issues": "http://drupal.org/project/issues/config_pages"
+            }
+        },
+        {
+            "name": "drupal/consumers",
+            "version": "1.23.0",
+            "source": {
+                "type": "git",
+                "url": "https://git.drupalcode.org/project/consumers.git",
+                "reference": "8.x-1.23"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://ftp.drupal.org/files/projects/consumers-8.x-1.23.zip",
+                "reference": "8.x-1.23",
+                "shasum": "86350408b1608866184f5c2e9ccd5066ff2595c3"
+            },
+            "require": {
+                "drupal/core": "^10.3 || ^11"
+            },
+            "type": "drupal-module",
+            "extra": {
+                "drupal": {
+                    "version": "8.x-1.23",
+                    "datestamp": "1769094423",
+                    "security-coverage": {
+                        "status": "covered",
+                        "message": "Covered by Drupal's security advisory policy"
+                    }
+                }
+            },
+            "notification-url": "https://packages.drupal.org/8/downloads",
+            "license": [
+                "GPL-2.0+"
+            ],
+            "authors": [
+                {
+                    "name": "bojan_dev",
+                    "homepage": "https://www.drupal.org/user/2801849"
+                },
+                {
+                    "name": "e0ipso",
+                    "homepage": "https://www.drupal.org/user/550110"
+                },
+                {
+                    "name": "eojthebrave",
+                    "homepage": "https://www.drupal.org/user/79230"
+                }
+            ],
+            "description": "Declare all the consumers of your API.",
+            "homepage": "https://www.drupal.org/project/consumers",
+            "support": {
+                "source": "https://git.drupalcode.org/project/consumers"
             }
         },
         {
@@ -1972,6 +2330,50 @@
             "time": "2025-02-03T10:59:29+00:00"
         },
         {
+            "name": "drupal/core-recipe-unpack",
+            "version": "11.3.3",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/drupal/core-recipe-unpack.git",
+                "reference": "bcd7f0416d6197f684bb4f2e52374821e937fb64"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/drupal/core-recipe-unpack/zipball/bcd7f0416d6197f684bb4f2e52374821e937fb64",
+                "reference": "bcd7f0416d6197f684bb4f2e52374821e937fb64",
+                "shasum": ""
+            },
+            "require": {
+                "composer-plugin-api": "^2",
+                "php": ">=8.3"
+            },
+            "require-dev": {
+                "composer/composer": "^2.7"
+            },
+            "type": "composer-plugin",
+            "extra": {
+                "class": "Drupal\\Composer\\Plugin\\RecipeUnpack\\Plugin"
+            },
+            "autoload": {
+                "psr-4": {
+                    "Drupal\\Composer\\Plugin\\RecipeUnpack\\": ""
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "GPL-2.0-or-later"
+            ],
+            "description": "A Composer project unpacker for Drupal recipes.",
+            "homepage": "https://www.drupal.org/project/drupal",
+            "keywords": [
+                "drupal"
+            ],
+            "support": {
+                "source": "https://github.com/drupal/core-recipe-unpack/tree/11.3.3"
+            },
+            "time": "2025-10-28T11:20:22+00:00"
+        },
+        {
             "name": "drupal/core-recommended",
             "version": "11.3.3",
             "source": {
@@ -2081,6 +2483,9 @@
                         "status": "covered",
                         "message": "Covered by Drupal's security advisory policy"
                     }
+                },
+                "patches_applied": {
+                    "fix webp": "https://www.drupal.org/files/issues/2022-08-16/crop-3293782-04-append-hash-for-webp-image-style-urls.patch"
                 }
             },
             "notification-url": "https://packages.drupal.org/8/downloads",
@@ -2203,6 +2608,66 @@
             "support": {
                 "source": "https://git.drupalcode.org/project/ctools",
                 "issues": "https://www.drupal.org/project/issues/ctools"
+            }
+        },
+        {
+            "name": "drupal/decoupled_router",
+            "version": "2.0.6",
+            "source": {
+                "type": "git",
+                "url": "https://git.drupalcode.org/project/decoupled_router.git",
+                "reference": "2.0.6"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://ftp.drupal.org/files/projects/decoupled_router-2.0.6.zip",
+                "reference": "2.0.6",
+                "shasum": "93a725c93cac4f5c03c729c3984d926c4c52014e"
+            },
+            "require": {
+                "drupal/core": "^10.1 || ^11",
+                "php": ">=8.1"
+            },
+            "conflict": {
+                "drupal/redirect": "<1.12"
+            },
+            "require-dev": {
+                "drupal/redirect": "dev-1.x"
+            },
+            "type": "drupal-module",
+            "extra": {
+                "drupal": {
+                    "version": "2.0.6",
+                    "datestamp": "1757356868",
+                    "security-coverage": {
+                        "status": "covered",
+                        "message": "Covered by Drupal's security advisory policy"
+                    }
+                }
+            },
+            "notification-url": "https://packages.drupal.org/8/downloads",
+            "license": [
+                "GPL-2.0-or-later"
+            ],
+            "authors": [
+                {
+                    "name": "Mateu Aguiló Bosch",
+                    "homepage": "https://www.drupal.org/user/103796",
+                    "email": "mateu.aguilo.bosch@gmail.com"
+                },
+                {
+                    "name": "e0ipso",
+                    "homepage": "https://www.drupal.org/user/550110"
+                },
+                {
+                    "name": "mglaman",
+                    "homepage": "https://www.drupal.org/user/2416470"
+                }
+            ],
+            "description": "Provides an endpoint that will help you resolve path aliases and redirects for entity related routes.",
+            "homepage": "https://www.drupal.org/project/decoupled_router",
+            "support": {
+                "source": "https://git.drupalcode.org/project/decoupled_router"
             }
         },
         {
@@ -2561,10 +3026,6 @@
                     "homepage": "https://www.drupal.org/user/32095"
                 },
                 {
-                    "name": "lrwebks",
-                    "homepage": "https://www.drupal.org/user/3771806"
-                },
-                {
                     "name": "stevector",
                     "homepage": "https://www.drupal.org/user/179805"
                 },
@@ -2804,6 +3265,9 @@
                         "status": "covered",
                         "message": "Covered by Drupal's security advisory policy"
                     }
+                },
+                "patches_applied": {
+                    "limit image styles in preview": "https://www.drupal.org/files/issues/2024-11-14/2830678-44-focal-preview-limit.patch"
                 }
             },
             "notification-url": "https://packages.drupal.org/8/downloads",
@@ -3092,6 +3556,311 @@
             "support": {
                 "source": "https://git.drupalcode.org/project/google_tag"
             }
+        },
+        {
+            "name": "drupal/graphql",
+            "version": "4.13.0",
+            "source": {
+                "type": "git",
+                "url": "https://git.drupalcode.org/project/graphql.git",
+                "reference": "8.x-4.13"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://ftp.drupal.org/files/projects/graphql-8.x-4.13.zip",
+                "reference": "8.x-4.13",
+                "shasum": "c0915da84db9446fe83ec3248e611b298c603c9a"
+            },
+            "require": {
+                "drupal/core": "^10.2 || ^11",
+                "drupal/typed_data": "^1.0 || ^2.0",
+                "php": ">=8.1",
+                "webonyx/graphql-php": "^14.8.0"
+            },
+            "require-dev": {
+                "drupal/coder": "^8.3.30",
+                "drupal/node-node": "*",
+                "drupal/redirect": "^1.0",
+                "jangregor/phpstan-prophecy": "^2 || ^1",
+                "phpstan/phpstan-deprecation-rules": "^2 || ^1"
+            },
+            "type": "drupal-module",
+            "extra": {
+                "drupal": {
+                    "version": "8.x-4.13",
+                    "datestamp": "1757422052",
+                    "security-coverage": {
+                        "status": "covered",
+                        "message": "Covered by Drupal's security advisory policy"
+                    }
+                }
+            },
+            "notification-url": "https://packages.drupal.org/8/downloads",
+            "license": [
+                "GPL-2.0+"
+            ],
+            "authors": [
+                {
+                    "name": "fubhy",
+                    "homepage": "https://www.drupal.org/user/761344"
+                },
+                {
+                    "name": "hideaway",
+                    "homepage": "https://www.drupal.org/user/741876"
+                },
+                {
+                    "name": "joaogarin",
+                    "homepage": "https://www.drupal.org/user/612814"
+                },
+                {
+                    "name": "kingdutch",
+                    "homepage": "https://www.drupal.org/user/1868952"
+                },
+                {
+                    "name": "klausi",
+                    "homepage": "https://www.drupal.org/user/262198"
+                },
+                {
+                    "name": "luigisa",
+                    "homepage": "https://www.drupal.org/user/1022312"
+                },
+                {
+                    "name": "pmelab",
+                    "homepage": "https://www.drupal.org/user/555322"
+                }
+            ],
+            "description": "Exposes your Drupal data model through a GraphQL schema.",
+            "homepage": "http://drupal.org/project/graphql",
+            "support": {
+                "source": "https://git.drupalcode.org/project/graphql"
+            }
+        },
+        {
+            "name": "drupal/graphql_compose",
+            "version": "2.4.1",
+            "source": {
+                "type": "git",
+                "url": "https://git.drupalcode.org/project/graphql_compose.git",
+                "reference": "2.4.1"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://ftp.drupal.org/files/projects/graphql_compose-2.4.1.zip",
+                "reference": "2.4.1",
+                "shasum": "a58ccdbbf93aea9bc1da439ad8a4693573f6fe7b"
+            },
+            "require": {
+                "doctrine/inflector": "^2",
+                "drupal/core": "^10.2 || ^11",
+                "drupal/graphql": "^4.9",
+                "php": "^8.1"
+            },
+            "require-dev": {
+                "drupal/address": "^2",
+                "drupal/backward_compatibility": "^1",
+                "drupal/block_field": "^1",
+                "drupal/core-layout_builder": "*",
+                "drupal/double_field": "^4",
+                "drupal/dynamic_entity_reference": "^3",
+                "drupal/eck": "^2",
+                "drupal/geofield": "^1",
+                "drupal/graphql_compose_blocks": "*",
+                "drupal/graphql_compose_edges": "*",
+                "drupal/graphql_compose_layouts": "*",
+                "drupal/graphql_compose_routes": "*",
+                "drupal/layout_paragraphs": "^2",
+                "drupal/link_attributes": "^2",
+                "drupal/menu_item_extras": "^3",
+                "drupal/menu_link_attributes": "^1",
+                "drupal/metatag": "^2",
+                "drupal/paragraphs": "^1",
+                "drupal/redirect": "^1",
+                "drupal/schema_metatag": "^3",
+                "drupal/search_api": "^1",
+                "drupal/social_media_links": "^2",
+                "drupal/svg_image": "^3",
+                "drupal/token": "^1",
+                "drupal/triples_field": "^1",
+                "drupal/viewfield": "^3"
+            },
+            "type": "drupal-module",
+            "extra": {
+                "drupal": {
+                    "version": "2.4.1",
+                    "datestamp": "1763681644",
+                    "security-coverage": {
+                        "status": "covered",
+                        "message": "Covered by Drupal's security advisory policy"
+                    }
+                }
+            },
+            "notification-url": "https://packages.drupal.org/8/downloads",
+            "license": [
+                "GPL-2.0+"
+            ],
+            "authors": [
+                {
+                    "name": "almunnings",
+                    "homepage": "https://www.drupal.org/user/2251362"
+                },
+                {
+                    "name": "jmolivas",
+                    "homepage": "https://www.drupal.org/user/678770"
+                }
+            ],
+            "description": "Toolkit for generating GraphQL schemas in Drupal.",
+            "homepage": "http://drupal.org/project/graphql_compose",
+            "support": {
+                "source": "http://cgit.drupalcode.org/graphql_compose",
+                "issues": "https://www.drupal.org/project/issues/graphql_compose"
+            }
+        },
+        {
+            "name": "drupal/graphql_compose_preview",
+            "version": "1.1.1",
+            "source": {
+                "type": "git",
+                "url": "https://git.drupalcode.org/project/graphql_compose_preview.git",
+                "reference": "1.1.1"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://ftp.drupal.org/files/projects/graphql_compose_preview-1.1.1.zip",
+                "reference": "1.1.1",
+                "shasum": "79fefcdb98eccedbdc8d8fe2bf3e107baa76e270"
+            },
+            "require": {
+                "drupal/core": "^10.3 || ^11",
+                "drupal/graphql_compose": "^2 || ^3",
+                "drupal/graphql_compose_routes": "*",
+                "drupal/token": "*",
+                "php": "^8.1"
+            },
+            "require-dev": {
+                "drupal/token": "^1"
+            },
+            "type": "drupal-module",
+            "extra": {
+                "drupal": {
+                    "version": "1.1.1",
+                    "datestamp": "1752478927",
+                    "security-coverage": {
+                        "status": "covered",
+                        "message": "Covered by Drupal's security advisory policy"
+                    }
+                }
+            },
+            "notification-url": "https://packages.drupal.org/8/downloads",
+            "license": [
+                "GPL-2.0+"
+            ],
+            "authors": [
+                {
+                    "name": "almunnings",
+                    "homepage": "https://www.drupal.org/user/2251362"
+                },
+                {
+                    "name": "cedricl",
+                    "homepage": "https://www.drupal.org/user/3715087"
+                }
+            ],
+            "description": "Extended preview capabilities for GraphQL Compose.",
+            "homepage": "http://drupal.org/project/graphql_compose_preview",
+            "support": {
+                "source": "http://cgit.drupalcode.org/graphql_compose_preview",
+                "issues": "https://www.drupal.org/project/issues/graphql_compose_preview"
+            }
+        },
+        {
+            "name": "drupal/graphql_compose_routes",
+            "version": "2.4.1",
+            "require": {
+                "drupal/core": "^10.2 || ^11",
+                "drupal/graphql_compose": "*"
+            },
+            "type": "metapackage",
+            "extra": {
+                "drupal": {
+                    "version": "2.4.1",
+                    "datestamp": "1763681644",
+                    "security-coverage": {
+                        "status": "covered",
+                        "message": "Covered by Drupal's security advisory policy"
+                    }
+                }
+            },
+            "notification-url": "https://packages.drupal.org/8/downloads",
+            "license": [
+                "GPL-2.0-or-later"
+            ],
+            "authors": [
+                {
+                    "name": "almunnings",
+                    "homepage": "https://www.drupal.org/user/2251362"
+                },
+                {
+                    "name": "jmolivas",
+                    "homepage": "https://www.drupal.org/user/678770"
+                }
+            ],
+            "description": "Enable to load content by URL.",
+            "homepage": "https://www.drupal.org/project/graphql_compose",
+            "support": {
+                "source": "https://git.drupalcode.org/project/graphql_compose"
+            }
+        },
+        {
+            "name": "drupal/graphql_compose_webform",
+            "version": "dev-1.3.x",
+            "source": {
+                "type": "git",
+                "url": "https://git.drupalcode.org/project/graphql_compose_webform.git",
+                "reference": "1d4c872090e0da4b7d671725668368d51b886aad"
+            },
+            "require": {
+                "drupal/core": "^10.2 || ^11.0",
+                "drupal/graphql_compose": "*"
+            },
+            "require-dev": {
+                "drupal/graphql_compose": "^2.2",
+                "drupal/paragraphs": "^1.18"
+            },
+            "type": "drupal-module",
+            "extra": {
+                "branch-alias": {
+                    "dev-1.3.x": "1.3.x-dev"
+                },
+                "drupal": {
+                    "version": "1.3.x-dev",
+                    "datestamp": "1737123851",
+                    "security-coverage": {
+                        "status": "not-covered",
+                        "message": "Project has not opted into security advisory coverage!"
+                    }
+                }
+            },
+            "notification-url": "https://packages.drupal.org/8/downloads",
+            "license": [
+                "EUPL-1.2"
+            ],
+            "authors": [
+                {
+                    "name": "jeroen_schipper",
+                    "homepage": "https://www.drupal.org/user/3800928"
+                }
+            ],
+            "description": "Adds a GraphQL functionality for webforms.",
+            "homepage": "https://www.drupal.org/project/graphql_compose_webform",
+            "keywords": [
+                "Drupal",
+                "GraphQL",
+                "Webform"
+            ],
+            "support": {
+                "source": "https://git.drupalcode.org/project/graphql_compose_webform",
+                "issues": "https://www.drupal.org/project/issues/graphql_compose_webform"
+            },
+            "time": "2025-01-17T14:12:07+00:00"
         },
         {
             "name": "drupal/health_check",
@@ -3447,10 +4216,6 @@
                 {
                     "name": "jcnventura",
                     "homepage": "https://www.drupal.org/user/122464"
-                },
-                {
-                    "name": "vitaliyb98",
-                    "homepage": "https://www.drupal.org/user/3514011"
                 },
                 {
                     "name": "yannickoo",
@@ -3900,6 +4665,87 @@
             }
         },
         {
+            "name": "drupal/next",
+            "version": "2.0.1",
+            "source": {
+                "type": "git",
+                "url": "https://git.drupalcode.org/project/next.git",
+                "reference": "2.0.1"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://ftp.drupal.org/files/projects/next-2.0.1.zip",
+                "reference": "2.0.1",
+                "shasum": "d36a513b54267cbb03282f51e4e0835f3366ff84"
+            },
+            "require": {
+                "drupal/core": "^10 || ^11",
+                "drupal/decoupled_router": "^2.0",
+                "drupal/pathauto": "^1.11",
+                "drupal/simple_oauth": "^5.0 || ^6.0",
+                "drupal/subrequests": "^3.0"
+            },
+            "require-dev": {
+                "drupal/decoupled_router": "*",
+                "drupal/graphql": "*",
+                "drupal/graphql_compose": "*",
+                "drupal/jwt": "*",
+                "drupal/jwt_auth_consumer": "*",
+                "drupal/subrequests": "*",
+                "phpunit/phpunit": "^9 || ^10"
+            },
+            "type": "drupal-module",
+            "extra": {
+                "drupal": {
+                    "version": "2.0.1",
+                    "datestamp": "1764787542",
+                    "security-coverage": {
+                        "status": "covered",
+                        "message": "Covered by Drupal's security advisory policy"
+                    }
+                }
+            },
+            "notification-url": "https://packages.drupal.org/8/downloads",
+            "license": [
+                "GPL-2.0-or-later"
+            ],
+            "authors": [
+                {
+                    "name": "shadcn",
+                    "homepage": "https://www.chapterthree.com"
+                },
+                {
+                    "name": "bojan_dev",
+                    "homepage": "https://www.drupal.org/user/2801849"
+                },
+                {
+                    "name": "brianperry",
+                    "homepage": "https://www.drupal.org/user/2304500"
+                },
+                {
+                    "name": "johnalbin",
+                    "homepage": "https://www.drupal.org/user/32095"
+                },
+                {
+                    "name": "minnur",
+                    "homepage": "https://www.drupal.org/user/702026"
+                },
+                {
+                    "name": "rrrob",
+                    "homepage": "https://www.drupal.org/user/273533"
+                },
+                {
+                    "name": "shadcn",
+                    "homepage": "https://www.drupal.org/user/571032"
+                }
+            ],
+            "description": "Next.js + Drupal for Incremental Static Regeneration and Draft mode.",
+            "homepage": "http://drupal.org/project/next",
+            "support": {
+                "source": "https://git.drupalcode.org/project/next"
+            }
+        },
+        {
             "name": "drupal/normalized_image_styles",
             "version": "2.1.1",
             "source": {
@@ -4244,6 +5090,9 @@
                         "status": "not-covered",
                         "message": "Project has not opted into security advisory coverage!"
                     }
+                },
+                "patches_applied": {
+                    "Load library locally": "https://www.drupal.org/files/issues/2024-09-05/plyr_libraries_npm_assets-3.patch"
                 }
             },
             "notification-url": "https://packages.drupal.org/8/downloads",
@@ -4537,6 +5386,50 @@
             }
         },
         {
+            "name": "drupal/require_login",
+            "version": "3.0.7",
+            "source": {
+                "type": "git",
+                "url": "https://git.drupalcode.org/project/require_login.git",
+                "reference": "3.0.7"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://ftp.drupal.org/files/projects/require_login-3.0.7.zip",
+                "reference": "3.0.7",
+                "shasum": "790998d5181cada23e33ca331752db6c7d1d68ee"
+            },
+            "require": {
+                "drupal/core": "^9 || ^10 || ^11"
+            },
+            "type": "drupal-module",
+            "extra": {
+                "drupal": {
+                    "version": "3.0.7",
+                    "datestamp": "1733847518",
+                    "security-coverage": {
+                        "status": "covered",
+                        "message": "Covered by Drupal's security advisory policy"
+                    }
+                }
+            },
+            "notification-url": "https://packages.drupal.org/8/downloads",
+            "license": [
+                "GPL-2.0-or-later"
+            ],
+            "authors": [
+                {
+                    "name": "robbiehobby",
+                    "homepage": "https://www.drupal.org/user/459772"
+                }
+            ],
+            "description": "Easily require user authentication on all pages.",
+            "homepage": "https://www.drupal.org/project/require_login",
+            "support": {
+                "source": "https://git.drupalcode.org/project/require_login"
+            }
+        },
+        {
             "name": "drupal/robotstxt",
             "version": "1.6.0",
             "source": {
@@ -4792,10 +5685,6 @@
                     "homepage": "https://www.drupal.org/user/2659379"
                 },
                 {
-                    "name": "smulvih2",
-                    "homepage": "https://www.drupal.org/user/795442"
-                },
-                {
                     "name": "smustgrave",
                     "homepage": "https://www.drupal.org/user/3252890"
                 }
@@ -4804,6 +5693,75 @@
             "homepage": "https://www.drupal.org/project/simple_gmap",
             "support": {
                 "source": "https://git.drupalcode.org/project/simple_gmap"
+            }
+        },
+        {
+            "name": "drupal/simple_oauth",
+            "version": "6.1.0",
+            "source": {
+                "type": "git",
+                "url": "https://git.drupalcode.org/project/simple_oauth.git",
+                "reference": "6.1.0"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://ftp.drupal.org/files/projects/simple_oauth-6.1.0.zip",
+                "reference": "6.1.0",
+                "shasum": "3c345e42cf41a17b2922b0b69129ac2697cf566a"
+            },
+            "require": {
+                "drupal/consumers": "^1.17",
+                "drupal/core": "^10.3 || ^11",
+                "league/oauth2-server": "^9.0",
+                "php": ">=8.1",
+                "steverhoades/oauth2-openid-connect-server": "^3.0"
+            },
+            "require-dev": {
+                "drupal/simple_oauth_static_scope": "*",
+                "phpspec/prophecy-phpunit": "^2"
+            },
+            "type": "drupal-module",
+            "extra": {
+                "drupal": {
+                    "version": "6.1.0",
+                    "datestamp": "1765191669",
+                    "security-coverage": {
+                        "status": "covered",
+                        "message": "Covered by Drupal's security advisory policy"
+                    }
+                }
+            },
+            "notification-url": "https://packages.drupal.org/8/downloads",
+            "license": [
+                "GPL-2.0-or-later"
+            ],
+            "authors": [
+                {
+                    "name": "Mateu Aguiló Bosch",
+                    "homepage": "https://www.drupal.org/user/2801849",
+                    "email": "mateu.aguilo.bosch@gmail.com"
+                },
+                {
+                    "name": "bradjones1",
+                    "homepage": "https://www.drupal.org/user/405824"
+                },
+                {
+                    "name": "e0ipso",
+                    "homepage": "https://www.drupal.org/user/550110"
+                },
+                {
+                    "name": "kingdutch",
+                    "homepage": "https://www.drupal.org/user/1868952"
+                },
+                {
+                    "name": "pcambra",
+                    "homepage": "https://www.drupal.org/user/122101"
+                }
+            ],
+            "description": "The Simple OAuth module for Drupal",
+            "homepage": "https://www.drupal.org/project/simple_oauth",
+            "support": {
+                "source": "https://git.drupalcode.org/project/simple_oauth"
             }
         },
         {
@@ -4847,10 +5805,6 @@
             ],
             "authors": [
                 {
-                    "name": "bluegeek9",
-                    "homepage": "https://www.drupal.org/user/1286304"
-                },
-                {
                     "name": "japerry",
                     "homepage": "https://www.drupal.org/user/45640"
                 },
@@ -4871,12 +5825,12 @@
                     "homepage": "https://www.drupal.org/user/1773304"
                 },
                 {
-                    "name": "vikingew",
-                    "homepage": "https://www.drupal.org/user/93281"
-                },
-                {
                     "name": "wundo",
                     "homepage": "https://www.drupal.org/user/25523"
+                },
+                {
+                    "name": "yettyn",
+                    "homepage": "https://www.drupal.org/user/93281"
                 }
             ],
             "description": "Allow for site emails to be sent through an SMTP server of your choice.",
@@ -5022,6 +5976,9 @@
                         "status": "covered",
                         "message": "Covered by Drupal's security advisory policy"
                     }
+                },
+                "patches_applied": {
+                    "#3442952": "https://www.drupal.org/files/issues/2025-05-29/storybook-fix-issues-with-symlinks-3442952-13.patch"
                 }
             },
             "notification-url": "https://packages.drupal.org/8/downloads",
@@ -5124,6 +6081,59 @@
             "homepage": "https://www.drupal.org/project/structure_sync",
             "support": {
                 "source": "https://git.drupalcode.org/project/structure_sync"
+            }
+        },
+        {
+            "name": "drupal/subrequests",
+            "version": "3.0.12",
+            "source": {
+                "type": "git",
+                "url": "https://git.drupalcode.org/project/subrequests.git",
+                "reference": "3.0.12"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://ftp.drupal.org/files/projects/subrequests-3.0.12.zip",
+                "reference": "3.0.12",
+                "shasum": "b3081a064a0a2275c400cf871bc56aeeb1fe812c"
+            },
+            "require": {
+                "drupal/core": "^10 || ^11",
+                "galbar/jsonpath": "^1.0"
+            },
+            "require-dev": {
+                "justinrainbow/json-schema": "^5.2"
+            },
+            "type": "drupal-module",
+            "extra": {
+                "drupal": {
+                    "version": "3.0.12",
+                    "datestamp": "1722952638",
+                    "security-coverage": {
+                        "status": "covered",
+                        "message": "Covered by Drupal's security advisory policy"
+                    }
+                }
+            },
+            "notification-url": "https://packages.drupal.org/8/downloads",
+            "license": [
+                "GPL-2.0+"
+            ],
+            "authors": [
+                {
+                    "name": "Mateu Aguiló Bosch",
+                    "homepage": "https://www.drupal.org/user/550110",
+                    "email": "mateu.aguilo.bosch@gmail.com"
+                },
+                {
+                    "name": "phenaproxima",
+                    "homepage": "https://www.drupal.org/user/205645"
+                }
+            ],
+            "description": "Add a front controller that you can use to make subrequests.",
+            "homepage": "https://www.drupal.org/project/subrequests",
+            "support": {
+                "source": "https://git.drupalcode.org/project/subrequests"
             }
         },
         {
@@ -5247,6 +6257,62 @@
             "support": {
                 "source": "https://git.drupalcode.org/project/taxonomy_access_fix",
                 "issues": "https://www.drupal.org/project/issues/taxonomy_access_fix"
+            }
+        },
+        {
+            "name": "drupal/time_field",
+            "version": "2.2.0",
+            "source": {
+                "type": "git",
+                "url": "https://git.drupalcode.org/project/time_field.git",
+                "reference": "2.2.0"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://ftp.drupal.org/files/projects/time_field-2.2.0.zip",
+                "reference": "2.2.0",
+                "shasum": "c3bca96c80413d887995f3cdc5942c61d7edd51e"
+            },
+            "require": {
+                "drupal/core": "^10 || ^11"
+            },
+            "require-dev": {
+                "drupal/feeds": "^3.0@beta"
+            },
+            "type": "drupal-module",
+            "extra": {
+                "drupal": {
+                    "version": "2.2.0",
+                    "datestamp": "1753685407",
+                    "security-coverage": {
+                        "status": "covered",
+                        "message": "Covered by Drupal's security advisory policy"
+                    }
+                }
+            },
+            "notification-url": "https://packages.drupal.org/8/downloads",
+            "license": [
+                "GPL-2.0+"
+            ],
+            "authors": [
+                {
+                    "name": "bramdriesen",
+                    "homepage": "https://www.drupal.org/user/3383264"
+                },
+                {
+                    "name": "lostkoder",
+                    "homepage": "https://www.drupal.org/user/3545132"
+                },
+                {
+                    "name": "sickness29",
+                    "homepage": "https://www.drupal.org/user/2586096"
+                }
+            ],
+            "description": "Provides 'Time Field' and 'Time Range Field'.",
+            "homepage": "https://www.drupal.org/project/time_field",
+            "support": {
+                "source": "http://git.drupal.org/project/time_field.git",
+                "issues": "https://www.drupal.org/project/issues/time_field"
             }
         },
         {
@@ -5508,6 +6574,55 @@
             }
         },
         {
+            "name": "drupal/typed_data",
+            "version": "2.1.1",
+            "source": {
+                "type": "git",
+                "url": "https://git.drupalcode.org/project/typed_data.git",
+                "reference": "2.1.1"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://ftp.drupal.org/files/projects/typed_data-2.1.1.zip",
+                "reference": "2.1.1",
+                "shasum": "600cb9527dd93b200355f57ad4da71172ee5f6dc"
+            },
+            "require": {
+                "drupal/core": "^10.3 | ^11"
+            },
+            "type": "drupal-module",
+            "extra": {
+                "drupal": {
+                    "version": "2.1.1",
+                    "datestamp": "1728332112",
+                    "security-coverage": {
+                        "status": "covered",
+                        "message": "Covered by Drupal's security advisory policy"
+                    }
+                }
+            },
+            "notification-url": "https://packages.drupal.org/8/downloads",
+            "license": [
+                "GPL-2.0-or-later"
+            ],
+            "authors": [
+                {
+                    "name": "fago",
+                    "homepage": "https://www.drupal.org/user/16747"
+                },
+                {
+                    "name": "tr",
+                    "homepage": "https://www.drupal.org/user/202830"
+                }
+            ],
+            "description": "Extends the core Typed Data API with new APIs and features.",
+            "homepage": "https://www.drupal.org/project/typed_data",
+            "support": {
+                "source": "https://git.drupalcode.org/project/typed_data",
+                "issues": "https://www.drupal.org/project/issues/typed_data"
+            }
+        },
+        {
             "name": "drupal/viewfield",
             "version": "3.0.0-beta11",
             "source": {
@@ -5533,6 +6648,9 @@
                         "status": "not-covered",
                         "message": "Beta releases are not covered by Drupal security advisories."
                     }
+                },
+                "patches_applied": {
+                    "fix viewfield php error": "https://www.drupal.org/files/issues/2023-08-21/3381787.patch"
                 }
             },
             "notification-url": "https://packages.drupal.org/8/downloads",
@@ -6263,6 +7381,86 @@
                 "source": "https://github.com/FileEye/pel/tree/0.12.0"
             },
             "time": "2025-01-17T21:19:20+00:00"
+        },
+        {
+            "name": "four/graphql_compose_extra",
+            "version": "v2.1.5",
+            "source": {
+                "type": "git",
+                "url": "https://bitbucket.org/rckt/graphql_compose_extra.git",
+                "reference": "0a9e6c3a93ed960a63ea7ea48458a1c8e04bda22"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://bitbucket.org/rckt/graphql_compose_extra/get/0a9e6c3a93ed960a63ea7ea48458a1c8e04bda22.zip",
+                "reference": "0a9e6c3a93ed960a63ea7ea48458a1c8e04bda22",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=8.1"
+            },
+            "type": "drupal-module",
+            "license": [
+                "GPL-2.0+"
+            ],
+            "description": "Toolkit for generating GraphQL schemas in Drupal.",
+            "homepage": "https://bitbucket.org/rckt/graphql_compose_extra",
+            "support": {
+                "source": "https://bitbucket.org/rckt/graphql_compose_extra/src/0a9e6c3a93ed960a63ea7ea48458a1c8e04bda22/?at=v2.1.5"
+            },
+            "time": "2026-01-12T19:19:54+00:00"
+        },
+        {
+            "name": "galbar/jsonpath",
+            "version": "1.3.1",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/Galbar/JsonPath-PHP.git",
+                "reference": "38fdd37420626671394bb7e258d3b1be3724537b"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/Galbar/JsonPath-PHP/zipball/38fdd37420626671394bb7e258d3b1be3724537b",
+                "reference": "38fdd37420626671394bb7e258d3b1be3724537b",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.4"
+            },
+            "require-dev": {
+                "phpunit/phpunit": "~4.0",
+                "sami/sami": ">=3.3.0",
+                "satooshi/php-coveralls": ">=1.0.1"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "JsonPath\\": "src/Galbar/JsonPath",
+                    "Utilities\\": "src/Galbar/Utilities"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "Apache-2.0"
+            ],
+            "authors": [
+                {
+                    "name": "Alessio Linares",
+                    "email": "alessio@alessio.cc",
+                    "role": "Software Engineer"
+                }
+            ],
+            "description": "JSONPath implementation for querying and updating JSON objects",
+            "keywords": [
+                "json",
+                "jsonpath",
+                "path"
+            ],
+            "support": {
+                "issues": "https://github.com/Galbar/JsonPath-PHP/issues",
+                "source": "https://github.com/Galbar/JsonPath-PHP/tree/1.3.1"
+            },
+            "time": "2021-08-19T20:18:48+00:00"
         },
         {
             "name": "google/recaptcha",
@@ -7004,6 +8202,143 @@
             "time": "2025-09-19T13:47:56+00:00"
         },
         {
+            "name": "lcobucci/clock",
+            "version": "3.5.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/lcobucci/clock.git",
+                "reference": "a3139d9e97d47826f27e6a17bb63f13621f86058"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/lcobucci/clock/zipball/a3139d9e97d47826f27e6a17bb63f13621f86058",
+                "reference": "a3139d9e97d47826f27e6a17bb63f13621f86058",
+                "shasum": ""
+            },
+            "require": {
+                "php": "~8.3.0 || ~8.4.0 || ~8.5.0",
+                "psr/clock": "^1.0"
+            },
+            "provide": {
+                "psr/clock-implementation": "1.0"
+            },
+            "require-dev": {
+                "infection/infection": "^0.31",
+                "lcobucci/coding-standard": "^11.2.0",
+                "phpstan/extension-installer": "^1.3.1",
+                "phpstan/phpstan": "^2.0.0",
+                "phpstan/phpstan-deprecation-rules": "^2.0.0",
+                "phpstan/phpstan-phpunit": "^2.0.0",
+                "phpstan/phpstan-strict-rules": "^2.0.0",
+                "phpunit/phpunit": "^12.0.0"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "Lcobucci\\Clock\\": "src"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Luís Cobucci",
+                    "email": "lcobucci@gmail.com"
+                }
+            ],
+            "description": "Yet another clock abstraction",
+            "support": {
+                "issues": "https://github.com/lcobucci/clock/issues",
+                "source": "https://github.com/lcobucci/clock/tree/3.5.0"
+            },
+            "funding": [
+                {
+                    "url": "https://github.com/lcobucci",
+                    "type": "github"
+                },
+                {
+                    "url": "https://www.patreon.com/lcobucci",
+                    "type": "patreon"
+                }
+            ],
+            "time": "2025-10-27T09:03:17+00:00"
+        },
+        {
+            "name": "lcobucci/jwt",
+            "version": "5.6.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/lcobucci/jwt.git",
+                "reference": "bb3e9f21e4196e8afc41def81ef649c164bca25e"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/lcobucci/jwt/zipball/bb3e9f21e4196e8afc41def81ef649c164bca25e",
+                "reference": "bb3e9f21e4196e8afc41def81ef649c164bca25e",
+                "shasum": ""
+            },
+            "require": {
+                "ext-openssl": "*",
+                "ext-sodium": "*",
+                "php": "~8.2.0 || ~8.3.0 || ~8.4.0 || ~8.5.0",
+                "psr/clock": "^1.0"
+            },
+            "require-dev": {
+                "infection/infection": "^0.29",
+                "lcobucci/clock": "^3.2",
+                "lcobucci/coding-standard": "^11.0",
+                "phpbench/phpbench": "^1.2",
+                "phpstan/extension-installer": "^1.2",
+                "phpstan/phpstan": "^1.10.7",
+                "phpstan/phpstan-deprecation-rules": "^1.1.3",
+                "phpstan/phpstan-phpunit": "^1.3.10",
+                "phpstan/phpstan-strict-rules": "^1.5.0",
+                "phpunit/phpunit": "^11.1"
+            },
+            "suggest": {
+                "lcobucci/clock": ">= 3.2"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "Lcobucci\\JWT\\": "src"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "BSD-3-Clause"
+            ],
+            "authors": [
+                {
+                    "name": "Luís Cobucci",
+                    "email": "lcobucci@gmail.com",
+                    "role": "Developer"
+                }
+            ],
+            "description": "A simple library to work with JSON Web Token and JSON Web Signature",
+            "keywords": [
+                "JWS",
+                "jwt"
+            ],
+            "support": {
+                "issues": "https://github.com/lcobucci/jwt/issues",
+                "source": "https://github.com/lcobucci/jwt/tree/5.6.0"
+            },
+            "funding": [
+                {
+                    "url": "https://github.com/lcobucci",
+                    "type": "github"
+                },
+                {
+                    "url": "https://www.patreon.com/lcobucci",
+                    "type": "patreon"
+                }
+            ],
+            "time": "2025-10-17T11:30:53+00:00"
+        },
+        {
             "name": "league/container",
             "version": "4.2.5",
             "source": {
@@ -7084,6 +8419,343 @@
                 }
             ],
             "time": "2025-05-20T12:55:37+00:00"
+        },
+        {
+            "name": "league/event",
+            "version": "3.0.3",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/thephpleague/event.git",
+                "reference": "ec38ff7ea10cad7d99a79ac937fbcffb9334c210"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/thephpleague/event/zipball/ec38ff7ea10cad7d99a79ac937fbcffb9334c210",
+                "reference": "ec38ff7ea10cad7d99a79ac937fbcffb9334c210",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=7.2.0",
+                "psr/event-dispatcher": "^1.0"
+            },
+            "provide": {
+                "psr/event-dispatcher-implementation": "1.0"
+            },
+            "require-dev": {
+                "friendsofphp/php-cs-fixer": "^2.16",
+                "phpstan/phpstan": "^0.12.45",
+                "phpunit/phpunit": "^8.5"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "3.0-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "League\\Event\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Frank de Jonge",
+                    "email": "info@frenky.net"
+                }
+            ],
+            "description": "Event package",
+            "keywords": [
+                "emitter",
+                "event",
+                "listener"
+            ],
+            "support": {
+                "issues": "https://github.com/thephpleague/event/issues",
+                "source": "https://github.com/thephpleague/event/tree/3.0.3"
+            },
+            "time": "2024-09-04T16:06:53+00:00"
+        },
+        {
+            "name": "league/oauth2-server",
+            "version": "9.3.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/thephpleague/oauth2-server.git",
+                "reference": "d8e2f39f645a82b207bbac441694d6e6079357cb"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/thephpleague/oauth2-server/zipball/d8e2f39f645a82b207bbac441694d6e6079357cb",
+                "reference": "d8e2f39f645a82b207bbac441694d6e6079357cb",
+                "shasum": ""
+            },
+            "require": {
+                "defuse/php-encryption": "^2.4",
+                "ext-json": "*",
+                "ext-openssl": "*",
+                "lcobucci/clock": "^2.3 || ^3.0",
+                "lcobucci/jwt": "^5.0",
+                "league/event": "^3.0",
+                "league/uri": "^7.0",
+                "php": "~8.1.0 || ~8.2.0 || ~8.3.0 || ~8.4.0  || ~8.5.0",
+                "psr/http-message": "^2.0",
+                "psr/http-server-middleware": "^1.0"
+            },
+            "replace": {
+                "league/oauth2server": "*",
+                "lncd/oauth2": "*"
+            },
+            "require-dev": {
+                "laminas/laminas-diactoros": "^3.5",
+                "php-parallel-lint/php-parallel-lint": "^1.3.2",
+                "phpstan/extension-installer": "^1.3.1",
+                "phpstan/phpstan": "^1.12|^2.0",
+                "phpstan/phpstan-deprecation-rules": "^1.1.4|^2.0",
+                "phpstan/phpstan-phpunit": "^1.3.15|^2.0",
+                "phpstan/phpstan-strict-rules": "^1.5.2|^2.0",
+                "phpunit/phpunit": "^10.5|^11.5|^12.0",
+                "roave/security-advisories": "dev-master",
+                "slevomat/coding-standard": "^8.14.1",
+                "squizlabs/php_codesniffer": "^3.8"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "League\\OAuth2\\Server\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Alex Bilbie",
+                    "email": "hello@alexbilbie.com",
+                    "homepage": "http://www.alexbilbie.com",
+                    "role": "Developer"
+                },
+                {
+                    "name": "Andy Millington",
+                    "email": "andrew@noexceptions.io",
+                    "homepage": "https://www.noexceptions.io",
+                    "role": "Developer"
+                }
+            ],
+            "description": "A lightweight and powerful OAuth 2.0 authorization and resource server library with support for all the core specification grants. This library will allow you to secure your API with OAuth and allow your applications users to approve apps that want to access their data from your API.",
+            "homepage": "https://oauth2.thephpleague.com/",
+            "keywords": [
+                "Authentication",
+                "api",
+                "auth",
+                "authorisation",
+                "authorization",
+                "oauth",
+                "oauth 2",
+                "oauth 2.0",
+                "oauth2",
+                "protect",
+                "resource",
+                "secure",
+                "server"
+            ],
+            "support": {
+                "issues": "https://github.com/thephpleague/oauth2-server/issues",
+                "source": "https://github.com/thephpleague/oauth2-server/tree/9.3.0"
+            },
+            "funding": [
+                {
+                    "url": "https://github.com/sephster",
+                    "type": "github"
+                }
+            ],
+            "time": "2025-11-25T22:51:15+00:00"
+        },
+        {
+            "name": "league/uri",
+            "version": "7.8.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/thephpleague/uri.git",
+                "reference": "4436c6ec8d458e4244448b069cc572d088230b76"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/thephpleague/uri/zipball/4436c6ec8d458e4244448b069cc572d088230b76",
+                "reference": "4436c6ec8d458e4244448b069cc572d088230b76",
+                "shasum": ""
+            },
+            "require": {
+                "league/uri-interfaces": "^7.8",
+                "php": "^8.1",
+                "psr/http-factory": "^1"
+            },
+            "conflict": {
+                "league/uri-schemes": "^1.0"
+            },
+            "suggest": {
+                "ext-bcmath": "to improve IPV4 host parsing",
+                "ext-dom": "to convert the URI into an HTML anchor tag",
+                "ext-fileinfo": "to create Data URI from file contennts",
+                "ext-gmp": "to improve IPV4 host parsing",
+                "ext-intl": "to handle IDN host with the best performance",
+                "ext-uri": "to use the PHP native URI class",
+                "jeremykendall/php-domain-parser": "to further parse the URI host and resolve its Public Suffix and Top Level Domain",
+                "league/uri-components": "to provide additional tools to manipulate URI objects components",
+                "league/uri-polyfill": "to backport the PHP URI extension for older versions of PHP",
+                "php-64bit": "to improve IPV4 host parsing",
+                "rowbot/url": "to handle URLs using the WHATWG URL Living Standard specification",
+                "symfony/polyfill-intl-idn": "to handle IDN host via the Symfony polyfill if ext-intl is not present"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "7.x-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "League\\Uri\\": ""
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Ignace Nyamagana Butera",
+                    "email": "nyamsprod@gmail.com",
+                    "homepage": "https://nyamsprod.com"
+                }
+            ],
+            "description": "URI manipulation library",
+            "homepage": "https://uri.thephpleague.com",
+            "keywords": [
+                "URN",
+                "data-uri",
+                "file-uri",
+                "ftp",
+                "hostname",
+                "http",
+                "https",
+                "middleware",
+                "parse_str",
+                "parse_url",
+                "psr-7",
+                "query-string",
+                "querystring",
+                "rfc2141",
+                "rfc3986",
+                "rfc3987",
+                "rfc6570",
+                "rfc8141",
+                "uri",
+                "uri-template",
+                "url",
+                "ws"
+            ],
+            "support": {
+                "docs": "https://uri.thephpleague.com",
+                "forum": "https://thephpleague.slack.com",
+                "issues": "https://github.com/thephpleague/uri-src/issues",
+                "source": "https://github.com/thephpleague/uri/tree/7.8.0"
+            },
+            "funding": [
+                {
+                    "url": "https://github.com/sponsors/nyamsprod",
+                    "type": "github"
+                }
+            ],
+            "time": "2026-01-14T17:24:56+00:00"
+        },
+        {
+            "name": "league/uri-interfaces",
+            "version": "7.8.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/thephpleague/uri-interfaces.git",
+                "reference": "c5c5cd056110fc8afaba29fa6b72a43ced42acd4"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/thephpleague/uri-interfaces/zipball/c5c5cd056110fc8afaba29fa6b72a43ced42acd4",
+                "reference": "c5c5cd056110fc8afaba29fa6b72a43ced42acd4",
+                "shasum": ""
+            },
+            "require": {
+                "ext-filter": "*",
+                "php": "^8.1",
+                "psr/http-message": "^1.1 || ^2.0"
+            },
+            "suggest": {
+                "ext-bcmath": "to improve IPV4 host parsing",
+                "ext-gmp": "to improve IPV4 host parsing",
+                "ext-intl": "to handle IDN host with the best performance",
+                "php-64bit": "to improve IPV4 host parsing",
+                "rowbot/url": "to handle URLs using the WHATWG URL Living Standard specification",
+                "symfony/polyfill-intl-idn": "to handle IDN host via the Symfony polyfill if ext-intl is not present"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "7.x-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "League\\Uri\\": ""
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Ignace Nyamagana Butera",
+                    "email": "nyamsprod@gmail.com",
+                    "homepage": "https://nyamsprod.com"
+                }
+            ],
+            "description": "Common tools for parsing and resolving RFC3987/RFC3986 URI",
+            "homepage": "https://uri.thephpleague.com",
+            "keywords": [
+                "data-uri",
+                "file-uri",
+                "ftp",
+                "hostname",
+                "http",
+                "https",
+                "parse_str",
+                "parse_url",
+                "psr-7",
+                "query-string",
+                "querystring",
+                "rfc3986",
+                "rfc3987",
+                "rfc6570",
+                "uri",
+                "url",
+                "ws"
+            ],
+            "support": {
+                "docs": "https://uri.thephpleague.com",
+                "forum": "https://thephpleague.slack.com",
+                "issues": "https://github.com/thephpleague/uri-src/issues",
+                "source": "https://github.com/thephpleague/uri-interfaces/tree/7.8.0"
+            },
+            "funding": [
+                {
+                    "url": "https://github.com/sponsors/nyamsprod",
+                    "type": "github"
+                }
+            ],
+            "time": "2026-01-15T06:54:53+00:00"
         },
         {
             "name": "marmelo/media_entity_download_extended",
@@ -7488,6 +9160,56 @@
                 "source": "https://github.com/oomphinc/composer-installers-extender/tree/2.0.1"
             },
             "time": "2021-12-15T12:32:42+00:00"
+        },
+        {
+            "name": "paragonie/random_compat",
+            "version": "v9.99.100",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/paragonie/random_compat.git",
+                "reference": "996434e5492cb4c3edcb9168db6fbb1359ef965a"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/paragonie/random_compat/zipball/996434e5492cb4c3edcb9168db6fbb1359ef965a",
+                "reference": "996434e5492cb4c3edcb9168db6fbb1359ef965a",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">= 7"
+            },
+            "require-dev": {
+                "phpunit/phpunit": "4.*|5.*",
+                "vimeo/psalm": "^1"
+            },
+            "suggest": {
+                "ext-libsodium": "Provides a modern crypto API that can be used to generate random bytes."
+            },
+            "type": "library",
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Paragon Initiative Enterprises",
+                    "email": "security@paragonie.com",
+                    "homepage": "https://paragonie.com"
+                }
+            ],
+            "description": "PHP 5.x polyfill for random_bytes() and random_int() from PHP 7",
+            "keywords": [
+                "csprng",
+                "polyfill",
+                "pseudorandom",
+                "random"
+            ],
+            "support": {
+                "email": "info@paragonie.com",
+                "issues": "https://github.com/paragonie/random_compat/issues",
+                "source": "https://github.com/paragonie/random_compat"
+            },
+            "time": "2020-10-15T08:29:30+00:00"
         },
         {
             "name": "pear/archive_tar",
@@ -8059,6 +9781,54 @@
             ]
         },
         {
+            "name": "psr/clock",
+            "version": "1.0.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/php-fig/clock.git",
+                "reference": "e41a24703d4560fd0acb709162f73b8adfc3aa0d"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/php-fig/clock/zipball/e41a24703d4560fd0acb709162f73b8adfc3aa0d",
+                "reference": "e41a24703d4560fd0acb709162f73b8adfc3aa0d",
+                "shasum": ""
+            },
+            "require": {
+                "php": "^7.0 || ^8.0"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "Psr\\Clock\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "PHP-FIG",
+                    "homepage": "https://www.php-fig.org/"
+                }
+            ],
+            "description": "Common interface for reading the clock.",
+            "homepage": "https://github.com/php-fig/clock",
+            "keywords": [
+                "clock",
+                "now",
+                "psr",
+                "psr-20",
+                "time"
+            ],
+            "support": {
+                "issues": "https://github.com/php-fig/clock/issues",
+                "source": "https://github.com/php-fig/clock/tree/1.0.0"
+            },
+            "time": "2022-11-25T14:36:26+00:00"
+        },
+        {
             "name": "psr/container",
             "version": "2.0.2",
             "source": {
@@ -8320,6 +10090,119 @@
                 "source": "https://github.com/php-fig/http-message/tree/2.0"
             },
             "time": "2023-04-04T09:54:51+00:00"
+        },
+        {
+            "name": "psr/http-server-handler",
+            "version": "1.0.2",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/php-fig/http-server-handler.git",
+                "reference": "84c4fb66179be4caaf8e97bd239203245302e7d4"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/php-fig/http-server-handler/zipball/84c4fb66179be4caaf8e97bd239203245302e7d4",
+                "reference": "84c4fb66179be4caaf8e97bd239203245302e7d4",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=7.0",
+                "psr/http-message": "^1.0 || ^2.0"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "1.0.x-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Psr\\Http\\Server\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "PHP-FIG",
+                    "homepage": "https://www.php-fig.org/"
+                }
+            ],
+            "description": "Common interface for HTTP server-side request handler",
+            "keywords": [
+                "handler",
+                "http",
+                "http-interop",
+                "psr",
+                "psr-15",
+                "psr-7",
+                "request",
+                "response",
+                "server"
+            ],
+            "support": {
+                "source": "https://github.com/php-fig/http-server-handler/tree/1.0.2"
+            },
+            "time": "2023-04-10T20:06:20+00:00"
+        },
+        {
+            "name": "psr/http-server-middleware",
+            "version": "1.0.2",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/php-fig/http-server-middleware.git",
+                "reference": "c1481f747daaa6a0782775cd6a8c26a1bf4a3829"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/php-fig/http-server-middleware/zipball/c1481f747daaa6a0782775cd6a8c26a1bf4a3829",
+                "reference": "c1481f747daaa6a0782775cd6a8c26a1bf4a3829",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=7.0",
+                "psr/http-message": "^1.0 || ^2.0",
+                "psr/http-server-handler": "^1.0"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "1.0.x-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Psr\\Http\\Server\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "PHP-FIG",
+                    "homepage": "https://www.php-fig.org/"
+                }
+            ],
+            "description": "Common interface for HTTP server-side middleware",
+            "keywords": [
+                "http",
+                "http-interop",
+                "middleware",
+                "psr",
+                "psr-15",
+                "psr-7",
+                "request",
+                "response"
+            ],
+            "support": {
+                "issues": "https://github.com/php-fig/http-server-middleware/issues",
+                "source": "https://github.com/php-fig/http-server-middleware/tree/1.0.2"
+            },
+            "time": "2023-04-11T06:14:47+00:00"
         },
         {
             "name": "psr/log",
@@ -8734,6 +10617,52 @@
             "license": [
                 "MIT"
             ]
+        },
+        {
+            "name": "steverhoades/oauth2-openid-connect-server",
+            "version": "v3.0.1",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/steverhoades/oauth2-openid-connect-server.git",
+                "reference": "f20665aeeeec78fb336c1bc89e8152b4b2380221"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/steverhoades/oauth2-openid-connect-server/zipball/f20665aeeeec78fb336c1bc89e8152b4b2380221",
+                "reference": "f20665aeeeec78fb336c1bc89e8152b4b2380221",
+                "shasum": ""
+            },
+            "require": {
+                "lcobucci/jwt": "4.1.5|^4.2|^4.3|^5.0",
+                "league/oauth2-server": "^8.4.2|^9.0",
+                "php": ">=7.4"
+            },
+            "require-dev": {
+                "laminas/laminas-diactoros": "^1.3.2 || ^3.3",
+                "phpunit/phpunit": "^5.0|^9.5"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "OpenIDConnectServer\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Steve Rhoades",
+                    "email": "sedonami@gmail.com"
+                }
+            ],
+            "description": "An OpenID Connect Server that sites on The PHP League's OAuth2 Server",
+            "support": {
+                "issues": "https://github.com/steverhoades/oauth2-openid-connect-server/issues",
+                "source": "https://github.com/steverhoades/oauth2-openid-connect-server/tree/v3.0.1"
+            },
+            "time": "2024-09-26T16:19:13+00:00"
         },
         {
             "name": "svg-pan-zoom/svg-pan-zoom",
@@ -11851,6 +13780,71 @@
             "time": "2025-12-14T11:28:47+00:00"
         },
         {
+            "name": "webonyx/graphql-php",
+            "version": "v14.11.10",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/webonyx/graphql-php.git",
+                "reference": "d9c2fdebc6aa01d831bc2969da00e8588cffef19"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/webonyx/graphql-php/zipball/d9c2fdebc6aa01d831bc2969da00e8588cffef19",
+                "reference": "d9c2fdebc6aa01d831bc2969da00e8588cffef19",
+                "shasum": ""
+            },
+            "require": {
+                "ext-json": "*",
+                "ext-mbstring": "*",
+                "php": "^7.1 || ^8"
+            },
+            "require-dev": {
+                "amphp/amp": "^2.3",
+                "doctrine/coding-standard": "^6.0",
+                "nyholm/psr7": "^1.2",
+                "phpbench/phpbench": "^1.2",
+                "phpstan/extension-installer": "^1.0",
+                "phpstan/phpstan": "0.12.82",
+                "phpstan/phpstan-phpunit": "0.12.18",
+                "phpstan/phpstan-strict-rules": "0.12.9",
+                "phpunit/phpunit": "^7.2 || ^8.5",
+                "psr/http-message": "^1.0",
+                "react/promise": "2.*",
+                "simpod/php-coveralls-mirror": "^3.0"
+            },
+            "suggest": {
+                "psr/http-message": "To use standard GraphQL server",
+                "react/promise": "To leverage async resolving on React PHP platform"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "GraphQL\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "description": "A PHP port of GraphQL reference implementation",
+            "homepage": "https://github.com/webonyx/graphql-php",
+            "keywords": [
+                "api",
+                "graphql"
+            ],
+            "support": {
+                "issues": "https://github.com/webonyx/graphql-php/issues",
+                "source": "https://github.com/webonyx/graphql-php/tree/v14.11.10"
+            },
+            "funding": [
+                {
+                    "url": "https://opencollective.com/webonyx-graphql-php",
+                    "type": "open_collective"
+                }
+            ],
+            "time": "2023-07-05T14:23:37+00:00"
+        },
+        {
             "name": "wikimedia/composer-merge-plugin",
             "version": "v2.1.0",
             "source": {
@@ -12335,8 +14329,10 @@
     "minimum-stability": "dev",
     "stability-flags": {
         "drupal/block_field": 5,
+        "drupal/conditional_fields": 15,
         "drupal/core-dev": 10,
         "drupal/entity_reference_purger": 10,
+        "drupal/graphql_compose_webform": 20,
         "drupal/plyr": 15,
         "drupal/viewfield": 10,
         "drupal/webform": 10

@@ -1,0 +1,15 @@
+uuid: f32c759b-5a8f-4c85-b689-a8c1c0d3d153
+langcode: en
+status: true
+dependencies:
+  module:
+    - paragraphs_ee
+third_party_settings:
+  paragraphs_ee:
+    paragraphs_categories: {  }
+id: recurring_dates
+label: Date
+icon_uuid: null
+icon_default: null
+description: ''
+behavior_plugins: {  }

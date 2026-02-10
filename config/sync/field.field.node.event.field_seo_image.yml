@@ -1,0 +1,35 @@
+uuid: a6b4a3b7-53b9-417e-ba87-6c48c49362d6
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_seo_image
+    - media.type.image
+    - node.type.event
+  module:
+    - entity_reference_purger
+third_party_settings:
+  entity_reference_purger:
+    remove_orphaned: true
+    use_queue: true
+id: node.event.field_seo_image
+field_name: field_seo_image
+entity_type: node
+bundle: event
+label: 'Seo Image'
+description: 'Image that appears when a user shares this page. By default the banner image will used, add an image here to override'
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:media'
+  handler_settings:
+    target_bundles:
+      image: image
+    sort:
+      field: _none
+      direction: ASC
+    auto_create: false
+    auto_create_bundle: ''
+field_type: entity_reference

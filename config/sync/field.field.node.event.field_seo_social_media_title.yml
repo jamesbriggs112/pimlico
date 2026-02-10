@@ -1,0 +1,19 @@
+uuid: b5499165-b5c3-4d02-885d-967606940626
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_seo_social_media_title
+    - node.type.event
+id: node.event.field_seo_social_media_title
+field_name: field_seo_social_media_title
+entity_type: node
+bundle: event
+label: 'SEO Social Media Title'
+description: 'Tag that provides information about this page when shared on social media platforms.'
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

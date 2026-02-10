@@ -10,6 +10,16 @@
   },
   "repositories": [
     {
+      "name": "museum",
+      "type": "path",
+      "url": "recipes-src/museum"
+    },
+    {
+      "name": "headless",
+      "type": "path",
+      "url": "recipes-src/headless"
+    },
+    {
       "type": "composer",
       "url": "https://packages.drupal.org/8"
     },
@@ -20,22 +30,31 @@
     {
       "type": "vcs",
       "url": "https://bitbucket.org/rckt/media-entity-download-extended.git"
+    },
+    {
+      "type": "vcs",
+      "url": "https://bitbucket.org/rckt/graphql_compose_extra"
     }
   ],
   "require": {
     "aws/aws-sdk-php": "^3.319",
-    "composer/installers": "^1.9",
+    "composer/installers": "^2.3",
     "cweagans/composer-patches": "^1.7",
     "drupal/admin_toolbar": "^3.4",
     "drupal/autocomplete_deluxe": "^2.0",
     "drupal/block_field": "^1.0@RC",
     "drupal/classy": "^2.0",
     "drupal/cloudfront_cache_path_invalidate": "^4.0",
+    "drupal/conditional_fields": "^4.0@alpha",
     "drupal/config_ignore": "^3.3",
+    "drupal/config_pages": "^2.19",
+    "drupal/consumers": "^1.22",
     "drupal/core-composer-scaffold": "^11",
     "drupal/core-project-message": "^11",
+    "drupal/core-recipe-unpack": "^11.3",
     "drupal/core-recommended": "^11",
     "drupal/crop": "^2.3",
+    "drupal/decoupled_router": "^2.0",
     "drupal/easy_breadcrumb": "^2.0",
     "drupal/entity_reference_purger": "^1.0@beta",
     "drupal/entity_type_clone": "^4.0",
@@ -44,9 +63,13 @@
     "drupal/field_group": "^4.0",
     "drupal/focal_point": "^2.0",
     "drupal/gin": "^5.0",
-    "drupal/gin_login": "^2.0",
+    "drupal/gin_login": "^2.1",
     "drupal/gin_toolbar": "^3.0",
     "drupal/google_tag": "^2.0",
+    "drupal/graphql": "^4.13",
+    "drupal/graphql_compose": "^2.4",
+    "drupal/graphql_compose_preview": "^1.1",
+    "drupal/graphql_compose_webform": "1.3.x-dev@dev",
     "drupal/health_check": "^3.1",
     "drupal/image_effects": "^4.0",
     "drupal/imagemagick": "^4.0",
@@ -56,6 +79,7 @@
     "drupal/media_entity_download": "^2.2",
     "drupal/media_library_edit": "^3.0",
     "drupal/metatag": "^2.0",
+    "drupal/next": "^2.0",
     "drupal/normalized_image_styles": "^2.1",
     "drupal/paragraphs": "^1.15",
     "drupal/paragraphs_ee": "^10.0",
@@ -65,6 +89,7 @@
     "drupal/raven": "^7.3",
     "drupal/recaptcha": "^3.4",
     "drupal/recaptcha_v3": "^2.0",
+    "drupal/require_login": "^3.0",
     "drupal/robotstxt": "^1.6",
     "drupal/schema_metatag": "^3.0",
     "drupal/search_api": "^1.35",
@@ -74,6 +99,7 @@
     "drupal/structure_sync": "^2.0",
     "drupal/svg_image": "^3.0",
     "drupal/taxonomy_access_fix": "^4.0",
+    "drupal/time_field": "^2.2",
     "drupal/token_filter": "^2.0",
     "drupal/token_or": "^2.3",
     "drupal/twig_tweak": "^3.3",
@@ -83,6 +109,7 @@
     "drupal/vite": "^1.5",
     "drupal/webform": "^6.3@beta",
     "drush/drush": "^13.6",
+    "four/graphql_compose_extra": "^2.1",
     "marmelo/media_entity_download_extended": "^3.0",
     "npm-asset/plyr": "^3.7",
     "oomphinc/composer-installers-extender": "^2.0",
@@ -101,7 +128,8 @@
       "drupal/core-composer-scaffold": true,
       "drupal/core-project-message": true,
       "oomphinc/composer-installers-extender": true,
-      "wikimedia/composer-merge-plugin": true
+      "wikimedia/composer-merge-plugin": true,
+      "drupal/core-recipe-unpack": true
     },
     "sort-packages": true
   },
@@ -151,6 +179,9 @@
       "bower-asset"
     ],
     "installer-paths": {
+      "recipes/{$name}": [
+        "type:drupal-recipe"
+      ],
       "web/core": [
         "type:drupal-core"
       ],

@@ -1,0 +1,21 @@
+uuid: 8ead74fd-acb9-40dd-83a3-179115a23dbe
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_week_days
+    - node.type.event
+  module:
+    - options
+id: node.event.field_week_days
+field_name: field_week_days
+entity_type: node
+bundle: event
+label: 'Week Days'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: list_string

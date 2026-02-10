@@ -1,0 +1,77 @@
+uuid: 4abc6eea-9ebc-42e9-a3d8-ffc33aaac03e
+langcode: en
+status: true
+dependencies:
+  config:
+    - core.entity_view_mode.node.teaser
+    - field.field.node.event.body
+    - field.field.node.event.field_banner
+    - field.field.node.event.field_duration
+    - field.field.node.event.field_end_date
+    - field.field.node.event.field_event_type
+    - field.field.node.event.field_frequency
+    - field.field.node.event.field_recurring_dates
+    - field.field.node.event.field_recurring_frequency
+    - field.field.node.event.field_sections
+    - field.field.node.event.field_seo_description
+    - field.field.node.event.field_seo_image
+    - field.field.node.event.field_seo_social_media_title
+    - field.field.node.event.field_seo_title
+    - field.field.node.event.field_start_date
+    - field.field.node.event.field_start_time
+    - field.field.node.event.field_tags
+    - field.field.node.event.field_teaser
+    - field.field.node.event.field_week_days
+    - node.type.event
+  module:
+    - entity_reference_revisions
+    - fences
+    - user
+id: node.event.teaser
+targetEntityType: node
+bundle: event
+mode: teaser
+content:
+  content_moderation_control:
+    settings: {  }
+    third_party_settings: {  }
+    weight: -20
+    region: content
+  field_teaser:
+    type: entity_reference_revisions_entity_view
+    label: hidden
+    settings:
+      view_mode: default
+      link: ''
+    third_party_settings:
+      fences:
+        fences_field_tag: none
+        fences_field_classes: ''
+        fences_field_items_wrapper_tag: none
+        fences_field_items_wrapper_classes: ''
+        fences_field_item_tag: none
+        fences_field_item_classes: ''
+        fences_label_tag: none
+        fences_label_classes: ''
+    weight: 0
+    region: content
+hidden:
+  body: true
+  field_banner: true
+  field_duration: true
+  field_end_date: true
+  field_event_type: true
+  field_frequency: true
+  field_recurring_dates: true
+  field_recurring_frequency: true
+  field_sections: true
+  field_seo_description: true
+  field_seo_image: true
+  field_seo_social_media_title: true
+  field_seo_title: true
+  field_start_date: true
+  field_start_time: true
+  field_tags: true
+  field_week_days: true
+  links: true
+  search_api_excerpt: true

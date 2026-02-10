@@ -1,0 +1,109 @@
+uuid: 7cd1dc29-432b-42b9-b8d4-4f4f24ff1bf7
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_recurring_dates
+    - node.type.event
+    - paragraphs.paragraphs_type.recurring_dates
+  module:
+    - entity_reference_revisions
+id: node.event.field_recurring_dates
+field_name: field_recurring_dates
+entity_type: node
+bundle: event
+label: Dates
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:paragraph'
+  handler_settings:
+    target_bundles:
+      recurring_dates: recurring_dates
+    negate: 0
+    target_bundles_drag_drop:
+      accordion:
+        weight: 28
+        enabled: false
+      accordion_item:
+        weight: 29
+        enabled: false
+      content_carousel:
+        weight: 30
+        enabled: false
+      content_grid:
+        weight: 31
+        enabled: false
+      cta:
+        weight: 32
+        enabled: false
+      document:
+        weight: 33
+        enabled: false
+      document_list:
+        weight: 34
+        enabled: false
+      download:
+        weight: 35
+        enabled: false
+      grid:
+        weight: 36
+        enabled: false
+      home_page_banner:
+        weight: 37
+        enabled: false
+      iframe_embed:
+        weight: 38
+        enabled: false
+      image:
+        weight: 39
+        enabled: false
+      image_grid:
+        weight: 40
+        enabled: false
+      image_with_caption:
+        weight: 41
+        enabled: false
+      jump_menu_anchor:
+        weight: 42
+        enabled: false
+      map:
+        weight: 43
+        enabled: false
+      map_image:
+        weight: 44
+        enabled: false
+      page_banner:
+        weight: 45
+        enabled: false
+      quote:
+        weight: 46
+        enabled: false
+      recurring_dates:
+        weight: 47
+        enabled: true
+      recurring_times:
+        weight: 48
+        enabled: false
+      separator:
+        weight: 49
+        enabled: false
+      standard_banner:
+        weight: 50
+        enabled: false
+      teaser:
+        weight: 51
+        enabled: false
+      text_wysiwyg_:
+        weight: 52
+        enabled: false
+      two_column_area:
+        weight: 53
+        enabled: false
+      video:
+        weight: 54
+        enabled: false
+field_type: entity_reference_revisions

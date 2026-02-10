@@ -1,0 +1,19 @@
+uuid: a15c44c0-3c7e-4c8c-801b-283d5d0db8c4
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_frequency
+    - node.type.event
+id: node.event.field_frequency
+field_name: field_frequency
+entity_type: node
+bundle: event
+label: Frequency
+description: "i.e. 'every Tuesday', 'First Thursday of the month'"
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

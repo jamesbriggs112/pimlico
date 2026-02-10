@@ -1,0 +1,21 @@
+uuid: 11bbbc74-2ee5-4133-89ce-a861b0a1c9cd
+langcode: en
+status: true
+dependencies:
+  module:
+    - entity_reference_revisions
+    - node
+    - paragraphs
+id: node.field_recurring_dates
+field_name: field_recurring_dates
+entity_type: node
+type: entity_reference_revisions
+settings:
+  target_type: paragraph
+module: entity_reference_revisions
+locked: false
+cardinality: -1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

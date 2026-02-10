@@ -1,0 +1,248 @@
+_core:
+  default_config_hash: HjBACF5NUOUEE_nzaQUEQf3mwzx-c-cevV4NejXsv1A
+entity_config:
+  config_pages:
+    site_settings:
+      enabled: true
+      query_load_enabled: true
+  image_style:
+    landscape_16_9:
+      enabled: true
+    large:
+      enabled: true
+    media_library:
+      enabled: false
+    medium:
+      enabled: true
+    natural:
+      enabled: true
+    portrait_9_16:
+      enabled: true
+    social_media:
+      enabled: true
+    square_1_1:
+      enabled: true
+    thumbnail:
+      enabled: false
+    wide:
+      enabled: false
+  media:
+    audio:
+      enabled: false
+    document:
+      enabled: false
+    image:
+      enabled: true
+    remote_video:
+      enabled: true
+    vector_image:
+      enabled: true
+    video:
+      enabled: true
+  menu:
+    account:
+      enabled: false
+    admin:
+      enabled: false
+    footer:
+      enabled: true
+    main:
+      enabled: true
+    tools:
+      enabled: false
+  node:
+    article:
+      enabled: true
+      routes_enabled: true
+    page:
+      enabled: true
+      routes_enabled: true
+  paragraph:
+    accordion:
+      enabled: true
+    accordion_item:
+      enabled: true
+    band:
+      enabled: true
+    button:
+      enabled: true
+    button_list:
+      enabled: true
+    content_carousel:
+      enabled: true
+    content_grid:
+      enabled: true
+    image:
+      enabled: true
+    image_grid:
+      enabled: true
+    image_hero_header:
+      enabled: true
+    quote:
+      enabled: true
+    social_icon_link:
+      enabled: true
+    spacer:
+      enabled: true
+    teaser:
+      enabled: true
+    text:
+      enabled: true
+    video:
+      enabled: true
+  taxonomy_term:
+    tags:
+      enabled: false
+  webform:
+    contact:
+      enabled: true
+field_config:
+  config_pages:
+    site_settings:
+      field_copyright:
+        enabled: true
+      field_frontend_url:
+        enabled: true
+      field_share_image:
+        enabled: true
+      field_social_links:
+        enabled: true
+  media:
+    image:
+      field_media_image:
+        enabled: true
+    remote_video:
+      field_media_oembed_video:
+        enabled: true
+    vector_image:
+      field_media_svg:
+        enabled: true
+    video:
+      field_media_video_file:
+        enabled: true
+  node:
+    article:
+      field_sections:
+        enabled: true
+      field_seo_description:
+        enabled: true
+      field_seo_image:
+        enabled: true
+      field_seo_social_media_title:
+        enabled: true
+      field_seo_title:
+        enabled: true
+      field_teaser:
+        enabled: true
+    page:
+      field_page_header:
+        enabled: true
+      field_sections:
+        enabled: true
+      field_seo_description:
+        enabled: true
+      field_seo_image:
+        enabled: true
+      field_seo_social_media_title:
+        enabled: true
+      field_seo_title:
+        enabled: true
+      field_teaser:
+        enabled: true
+  paragraph:
+    accordion:
+      field_accordion_items:
+        enabled: true
+      field_heading:
+        enabled: true
+    accordion_item:
+      field_heading:
+        enabled: true
+      field_sections:
+        enabled: true
+    band:
+      field_background:
+        enabled: true
+      field_sections:
+        enabled: true
+    button:
+      field_link:
+        enabled: true
+      field_variant:
+        enabled: true
+    button_list:
+      field_buttons:
+        enabled: true
+    content_carousel:
+      field_content_teasers:
+        enabled: true
+      field_heading:
+        enabled: true
+      field_link:
+        enabled: true
+    content_grid:
+      field_content_teasers:
+        enabled: true
+      field_heading:
+        enabled: true
+      field_link:
+        enabled: true
+    image:
+      field_full_width:
+        enabled: true
+      field_image:
+        enabled: true
+      field_image_style:
+        enabled: true
+      field_url:
+        enabled: true
+    image_grid:
+      field_heading:
+        enabled: true
+      field_images:
+        enabled: true
+    image_hero_header:
+      field_image:
+        enabled: true
+    quote:
+      field_source:
+        enabled: true
+      field_text:
+        enabled: true
+    social_icon_link:
+      field_icon:
+        enabled: true
+      field_link:
+        enabled: true
+    spacer:
+      field_spacer_line:
+        enabled: true
+      field_spacer_size:
+        enabled: true
+    teaser:
+      field_image:
+        enabled: true
+      field_title_override:
+        enabled: true
+    text:
+      field_text:
+        enabled: true
+    video:
+      field_video:
+        enabled: true
+settings:
+  exclude_unpublished: false
+  expose_entity_ids: true
+  field_required_override: false
+  schema_description: 'GraphQL Compose'
+  schema_version: '1'
+  simple_queries: false
+  simple_unions: false
+  site_name: false
+  site_slogan: false
+  site_front: true
+  svg_image: false
+  svg_filesize: 100
+  inflector_langcode: en
+  inflector_singularize: false
+  custom: {  }

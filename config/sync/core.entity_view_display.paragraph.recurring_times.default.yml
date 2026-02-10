@@ -1,0 +1,33 @@
+uuid: 2811b6a8-6795-4fa2-a2f5-6b8cb6cf1193
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.paragraph.recurring_times.field_end_time
+    - field.field.paragraph.recurring_times.field_start_time
+    - paragraphs.paragraphs_type.recurring_times
+  module:
+    - time_field
+id: paragraph.recurring_times.default
+targetEntityType: paragraph
+bundle: recurring_times
+mode: default
+content:
+  field_end_time:
+    type: time_formatter
+    label: above
+    settings:
+      time_format: 'h:i a'
+    third_party_settings: {  }
+    weight: 1
+    region: content
+  field_start_time:
+    type: time_formatter
+    label: above
+    settings:
+      time_format: 'h:i a'
+    third_party_settings: {  }
+    weight: 0
+    region: content
+hidden:
+  search_api_excerpt: true

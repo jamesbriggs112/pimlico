@@ -1,0 +1,15 @@
+uuid: e3d3cd6b-1828-4a69-baa5-333d03bde188
+langcode: en
+status: true
+dependencies:
+  module:
+    - paragraphs_ee
+third_party_settings:
+  paragraphs_ee:
+    paragraphs_categories: {  }
+id: recurring_times
+label: Time
+icon_uuid: null
+icon_default: null
+description: ''
+behavior_plugins: {  }

@@ -1,0 +1,23 @@
+uuid: 5e451b36-00e4-4986-8aa6-1cc6e95a82d0
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_recurring_frequency
+    - node.type.event
+  module:
+    - options
+id: node.event.field_recurring_frequency
+field_name: field_recurring_frequency
+entity_type: node
+bundle: event
+label: 'Recurring Frequency'
+description: ''
+required: false
+translatable: false
+default_value:
+  -
+    value: daily
+default_value_callback: ''
+settings: {  }
+field_type: list_string

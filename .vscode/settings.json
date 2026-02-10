@@ -69,4 +69,10 @@
             "url": "https://git.drupalcode.org/project/drupal/-/raw/HEAD/core/assets/schemas/v1/metadata.schema.json"
         }
     ],
+    "yaml.schemas": {
+        "https://www.schemastore.org/drupal-recipe.json": [
+            "file:///Users/marcus.williams/Projects/four-drupal-skeleton/recipes/museum-recipe/recipe.yml",
+            "file:///Users/marcus.williams/Projects/four-drupal-skeleton/recipes-src/headless/recipe.yml"
+        ]
+    },
 }

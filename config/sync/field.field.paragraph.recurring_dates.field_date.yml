@@ -1,0 +1,21 @@
+uuid: cecff35f-67fc-4d5f-9ed8-65d4ee6dbcce
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_date
+    - paragraphs.paragraphs_type.recurring_dates
+  module:
+    - datetime
+id: paragraph.recurring_dates.field_date
+field_name: field_date
+entity_type: paragraph
+bundle: recurring_dates
+label: Date
+description: ''
+required: true
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: datetime

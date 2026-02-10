@@ -1,0 +1,30 @@
+uuid: 1544e1a1-5ecd-4826-816b-af116e251629
+langcode: en
+status: true
+dependencies:
+  module:
+    - node
+    - options
+id: node.field_recurring_frequency
+field_name: field_recurring_frequency
+entity_type: node
+type: list_string
+settings:
+  allowed_values:
+    -
+      value: daily
+      label: Daily
+    -
+      value: weekly
+      label: Weekly
+    -
+      value: specific
+      label: Specific
+  allowed_values_function: ''
+module: options
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

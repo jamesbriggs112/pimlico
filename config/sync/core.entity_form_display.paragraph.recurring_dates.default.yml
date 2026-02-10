@@ -1,0 +1,61 @@
+uuid: 22332f9d-9ddd-4568-b26c-cd28f099fbfd
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.paragraph.recurring_dates.field_date
+    - field.field.paragraph.recurring_dates.field_times
+    - paragraphs.paragraphs_type.recurring_dates
+  module:
+    - conditional_fields
+    - datetime
+    - paragraphs
+    - paragraphs_ee
+    - paragraphs_features
+id: paragraph.recurring_dates.default
+targetEntityType: paragraph
+bundle: recurring_dates
+mode: default
+content:
+  field_date:
+    type: datetime_default
+    weight: 0
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+  field_times:
+    type: paragraphs
+    weight: 1
+    region: content
+    settings:
+      title: Time
+      title_plural: Times
+      edit_mode: closed
+      closed_mode: summary
+      autocollapse: none
+      closed_mode_threshold: 0
+      add_mode: button
+      form_display_mode: default
+      default_paragraph_type: _none
+      features:
+        add_above: '0'
+        collapse_edit_all: collapse_edit_all
+        convert: '0'
+        duplicate: duplicate
+    third_party_settings:
+      paragraphs_features:
+        add_in_between: false
+        add_in_between_link_count: 3
+        delete_confirmation: false
+        show_drag_and_drop: false
+        show_collapse_all: true
+      paragraphs_ee:
+        paragraphs_ee:
+          dialog_off_canvas: false
+          dialog_style: tiles
+          drag_drop: false
+          sidebar_disabled: false
+      conditional_fields: {  }
+hidden:
+  created: true
+  status: true

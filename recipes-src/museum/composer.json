@@ -1,0 +1,15 @@
+{
+    "name": "four/museum-recipe",
+    "type": "drupal-recipe",
+    "description": "A Drupal recipe for the Four Museum project.",
+    "authors": [
+        {
+            "name": "Marcus Williams",
+            "email": "marcus.williams@four.agency"
+        }
+    ],
+    "require": {
+        "drupal/conditional_fields": "^4.0@alpha",
+        "drupal/time_field": "^2.2"
+    }
+}

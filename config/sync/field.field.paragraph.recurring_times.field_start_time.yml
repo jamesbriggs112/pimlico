@@ -1,0 +1,21 @@
+uuid: 89704e54-d73b-49b8-8212-1c41ac074c9c
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_start_time
+    - paragraphs.paragraphs_type.recurring_times
+  module:
+    - time_field
+id: paragraph.recurring_times.field_start_time
+field_name: field_start_time
+entity_type: paragraph
+bundle: recurring_times
+label: 'Start Time'
+description: ''
+required: true
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: time

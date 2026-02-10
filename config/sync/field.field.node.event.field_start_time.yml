@@ -1,0 +1,21 @@
+uuid: cb3b8198-64d1-4200-8677-2dc8e4184cae
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_start_time
+    - node.type.event
+  module:
+    - time_field
+id: node.event.field_start_time
+field_name: field_start_time
+entity_type: node
+bundle: event
+label: 'Start Time'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: time
