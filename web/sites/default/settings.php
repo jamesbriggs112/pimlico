@@ -727,7 +727,7 @@ $settings['container_yamls'][] = $app_root . '/' . $site_path . '/services.yml';
  * @see https://www.drupal.org/docs/installing-drupal/trusted-host-settings
  */
 
- $settings['trusted_host_patterns'] = [
+$settings['trusted_host_patterns'] = [
   '^.+\.preflight\.site$',
   '^10\.0\.\d{1,3}\.\d{1,3}$', // Allow all 10.0.x.x IP addresses this should be adjusted depending on vpc the site runs on.
 ];
@@ -842,9 +842,9 @@ if (isset($_SERVER['AWS_SECRETS_NAME'])) {
     $username = $secret['username'];
     $password = $secret['password'];
   } else {
-      // Handle error
-      $username = '';
-      $password = '';
+    // Handle error
+    $username = '';
+    $password = '';
   }
 }
 
@@ -864,7 +864,7 @@ if (isset($_SERVER['RDS_DB_NAME'])) {
   );
 
   $settings['aws.distributionid'] = $_SERVER['CLOUDFRONT_DISTRIBUTIONID'];
-  $settings['aws.region'] = $_SERVER['CLOUDFRONT_REGION'];
+  $settings['aws.region'] = $_SERVER['AWS_REGION'];
   $settings['s3fs.access_key'] = $_SERVER['AWS_ACCESS_KEY'];
   $settings['s3fs.secret_key'] = $_SERVER['AWS_SECRET_KEY'];
 }
