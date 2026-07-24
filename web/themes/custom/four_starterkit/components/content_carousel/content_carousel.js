@@ -12,7 +12,7 @@ import EmblaCarousel from 'embla-carousel';
           '.content-carousel__viewport'
         );
 
-        let options = {};
+        let options = { align: 'start' };
 
         const prefersReducedMotionQuery = window.matchMedia(
           '(prefers-reduced-motion: reduce)'
@@ -20,7 +20,7 @@ import EmblaCarousel from 'embla-carousel';
         const prefersReducedMotion = prefersReducedMotionQuery.matches;
 
         if (prefersReducedMotion) {
-          options = { duration: 0 };
+          options = { ...options, duration: 0 };
         }
 
         // Initialize the carousel

@@ -1,5 +1,5 @@
 {% set node = paragraph.getParentEntity() %}
-{% set title = paragraph.field_heading.value is not empty ? paragraph.field_heading : node.label %}
+{% set title = paragraph.field_heading.value ?: node.label %}
 {% block paragraph %}
 	{% embed 'four_starterkit:card' with {
 	url: path('entity.node.canonical', {'node': node.id}),
