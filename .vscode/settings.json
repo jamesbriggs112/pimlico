@@ -43,12 +43,16 @@
         "./web"
     ],
     "editor.defaultFormatter": "esbenp.prettier-vscode",
+    "[php]": {
+        "editor.defaultFormatter": "valeryanm.vscode-phpsab"
+    },
     "editor.codeActionsOnSave": {
         "source.fixAll.eslint": "explicit"
     },
     "php-docblocker.gap": true,
     "php-docblocker.useShortNames": true,
     "phpsab.standard": "Drupal,DrupalPractice",
+    "phpsab.autoRulesetSearch": false,
     "[twig]": {
         "editor.defaultFormatter": "mblode.twig-language-2"
     },

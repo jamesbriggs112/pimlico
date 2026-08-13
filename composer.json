@@ -29,11 +29,11 @@
     },
     {
       "type": "vcs",
-      "url": "https://bitbucket.org/rckt/media-entity-download-extended.git"
+      "url": "https://github.com/Four-Agency/media-entity-download-extended.git"
     },
     {
       "type": "vcs",
-      "url": "https://bitbucket.org/rckt/graphql_compose_extra"
+      "url": "https://github.com/Four-Agency/graphql_compose_extra.git"
     }
   ],
   "require": {
@@ -127,9 +127,13 @@
       "dealerdirect/phpcodesniffer-composer-installer": true,
       "drupal/core-composer-scaffold": true,
       "drupal/core-project-message": true,
+      "drupal/core-recipe-unpack": true,
       "oomphinc/composer-installers-extender": true,
-      "wikimedia/composer-merge-plugin": true,
-      "drupal/core-recipe-unpack": true
+      "php-http/discovery": true,
+      "phpstan/extension-installer": true,
+      "symfony/runtime": true,
+      "tbachert/spi": true,
+      "wikimedia/composer-merge-plugin": true
     },
     "sort-packages": true
   },
@@ -146,7 +150,7 @@
         "limit image styles in preview": "https://www.drupal.org/files/issues/2024-11-14/2830678-44-focal-preview-limit.patch"
       },
       "drupal/crop": {
-        "fix webp": "https://www.drupal.org/files/issues/2022-08-16/crop-3293782-04-append-hash-for-webp-image-style-urls.patch"
+        "fix provider fallback loop clobbering crop (drops ?h= hash)": "patches/crop-fallback-loop-first-hit.patch"
       },
       "drupal/viewfield": {
         "fix viewfield php error": "https://www.drupal.org/files/issues/2023-08-21/3381787.patch"
@@ -242,7 +246,7 @@
   "require-dev": {
     "chi-teck/drupal-code-generator": "^4.2",
     "drupal/coder": "^8.3",
-    "drupal/core-dev": "^8.0@beta",
+    "drupal/core-dev": "^11.4",
     "squizlabs/php_codesniffer": "^3.7"
   }
 }

@@ -65,7 +65,7 @@ jobs:
           sed -i "s#dsn_placeholder#${{ vars.SENTRY_DSN }}#g" .ebextensions/sentry.config
 
           # Create deployment zip
-          zip -r application.zip web composer.json composer.lock .ebextensions .platform scaffold config \
+          zip -r application.zip web composer.json composer.lock .ebextensions .platform scaffold patches config \
             --exclude="web/themes/custom/${{ vars.THEME_NAME }}/node_modules/*"
 
       - name: Deploy to Elastic Beanstalk
