@@ -33,7 +33,7 @@ content:
         - video
     third_party_settings:
       media_library_edit:
-        show_edit: '1'
+        show_edit: true
 hidden:
   created: true
   status: true

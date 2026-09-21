@@ -32,9 +32,16 @@ content:
       preview_link: true
       offsets: '50,50'
       preview_styles:
-        l08_040000_640x360: l08_040000_640x360
-        p05_040000_640x1138: p05_040000_640x1138
-        sq_040000_640x640: sq_040000_640x640
+        l08_048000_768x432: l08_048000_768x432
+        p05_048000_768x1365: p05_048000_768x1365
+        sq_048000_768x768: sq_048000_768x768
+    third_party_settings: {  }
+  langcode:
+    type: language_select
+    weight: 2
+    region: content
+    settings:
+      include_locked: true
     third_party_settings: {  }
   path:
     type: path

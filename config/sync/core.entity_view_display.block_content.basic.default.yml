@@ -31,4 +31,6 @@ content:
         fences_label_classes: ''
     weight: 0
     region: content
-hidden: {  }
+hidden:
+  langcode: true
+  search_api_excerpt: true

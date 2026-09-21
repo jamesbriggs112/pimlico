@@ -14,3 +14,4 @@ mode: default
 content: {  }
 hidden:
   field_styling_options: true
+  search_api_excerpt: true

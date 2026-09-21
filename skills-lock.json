@@ -1,0 +1,11 @@
+{
+  "version": 1,
+  "skills": {
+    "drupal-expert": {
+      "source": "Four-Agency/four-dev-skills",
+      "sourceType": "github",
+      "skillPath": "skills/drupal/drupal-expert/SKILL.md",
+      "computedHash": "c0d9966b6b701dc002bc29aa8f703b291bb0f342c250ff5143274d2b8a7f96ef"
+    }
+  }
+}

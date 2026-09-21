@@ -2,7 +2,10 @@ uuid: 826d7105-c621-40ea-8ab0-0eb47399b857
 langcode: en
 status: true
 dependencies:
+  config:
+    - workflows.workflow.content_moderation
   module:
+    - content_moderation
     - node
     - user
   enforced:
@@ -679,7 +682,7 @@ display:
           plugin_id: moderation_state_filter
           operator: 'not in'
           value:
-            editorial-published: editorial-published
+            content_moderation-published: content_moderation-published
           group: 1
           exposed: false
           expose:
@@ -814,7 +817,8 @@ display:
         - url.query_args
         - 'user.node_grants:view'
         - user.permissions
-      tags: {  }
+      tags:
+        - 'config:workflow_list'
   moderated_content:
     id: moderated_content
     display_title: 'Moderated content'
@@ -833,4 +837,5 @@ display:
         - url.query_args
         - 'user.node_grants:view'
         - user.permissions
-      tags: {  }
+      tags:
+        - 'config:workflow_list'

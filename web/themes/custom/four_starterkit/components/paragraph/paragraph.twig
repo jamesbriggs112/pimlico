@@ -23,7 +23,7 @@
 <section {{ attributes.addClass(classes) }}>
 	{% if heading %}
 		{% block heading %}
-			{% embed "four_starterkit:heading" %}
+            {% embed "four_starterkit:heading" with {tag: 'h2'} %}
 				{% block content %}
 					{{ heading }}
 				{% endblock %}

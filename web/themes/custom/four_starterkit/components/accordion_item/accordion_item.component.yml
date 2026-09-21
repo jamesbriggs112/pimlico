@@ -12,7 +12,7 @@ props:
       type: string
       title: Title
     id:
-      type: number
+      type: string
       title: id
 slots:
   content:

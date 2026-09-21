@@ -60,4 +60,3 @@ logs_log_levels:
   notice: false
   info: false
   debug: false
-cli_enable_logs: false

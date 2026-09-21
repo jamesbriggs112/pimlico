@@ -45,7 +45,7 @@ content:
       media_types: {  }
     third_party_settings:
       media_library_edit:
-        show_edit: '1'
+        show_edit: true
   field_image:
     type: media_library_widget
     weight: 0
@@ -54,7 +54,7 @@ content:
       media_types: {  }
     third_party_settings:
       media_library_edit:
-        show_edit: '1'
+        show_edit: true
   field_show_territory_picker:
     type: boolean_checkbox
     weight: 1

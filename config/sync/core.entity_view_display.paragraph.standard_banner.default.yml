@@ -67,3 +67,4 @@ content:
     region: content
 hidden:
   field_show_territory_picker: true
+  search_api_excerpt: true

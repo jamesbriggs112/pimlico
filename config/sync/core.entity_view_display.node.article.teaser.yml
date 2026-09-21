@@ -25,6 +25,11 @@ targetEntityType: node
 bundle: article
 mode: teaser
 content:
+  content_moderation_control:
+    settings: {  }
+    third_party_settings: {  }
+    weight: -20
+    region: content
   field_teaser:
     type: entity_reference_revisions_entity_view
     label: hidden
@@ -52,5 +57,6 @@ hidden:
   field_seo_social_media_title: true
   field_seo_title: true
   field_tags: true
+  langcode: true
   links: true
   search_api_excerpt: true

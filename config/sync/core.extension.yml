@@ -3,7 +3,6 @@ _core:
 module:
   admin_toolbar: 0
   admin_toolbar_tools: 0
-  autocomplete_deluxe: 0
   automated_cron: 0
   big_pipe: 0
   block: 0
@@ -14,7 +13,6 @@ module:
   ckeditor5: 0
   cloudfront_cache_home_page: 0
   cloudfront_cache_path_invalidate: 0
-  conditional_fields: 0
   config: 0
   config_ignore: 0
   content_moderation: 0
@@ -41,7 +39,6 @@ module:
   file_mdm_font: 0
   filter: 0
   focal_point: 0
-  four_museum_events: 0
   four_sdc: 0
   gin_login: 0
   gin_toolbar: 0
@@ -54,8 +51,8 @@ module:
   image_style_generate: 0
   image_style_quality: 0
   imagemagick: 0
+  language: 0
   link: 0
-  linkit: 0
   media: 0
   media_entity_download: 0
   media_entity_download_extended: 0
@@ -83,6 +80,7 @@ module:
   quick_node_clone: 0
   raven: 0
   responsive_image: 0
+  rest: 0
   robotstxt: 0
   schema_article: 0
   schema_image_object: 0
@@ -102,9 +100,10 @@ module:
   structure_sync: 0
   svg_image: 0
   system: 0
+  tagify: 0
+  tagify_link: 0
   taxonomy: 0
   text: 0
-  time_field: 0
   token: 0
   token_filter: 0
   token_or: 0
@@ -129,8 +128,5 @@ module:
 theme:
   claro: 0
   gin: 0
-  stable: 0
-  classy: 0
-  stable9: 0
   four_starterkit: 0
 profile: minimal

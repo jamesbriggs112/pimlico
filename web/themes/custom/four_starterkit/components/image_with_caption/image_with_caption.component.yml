@@ -9,7 +9,7 @@ props:
   type: object
   properties:
     media_id:
-      type: integer
+      type: string
       title: Media ID
     image_style:
       type: string

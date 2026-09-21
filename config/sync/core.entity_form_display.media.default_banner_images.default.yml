@@ -36,6 +36,13 @@ content:
         p05_040000_640x1138: p05_040000_640x1138
         sq_040000_640x640: sq_040000_640x640
     third_party_settings: {  }
+  langcode:
+    type: language_select
+    weight: 2
+    region: content
+    settings:
+      include_locked: true
+    third_party_settings: {  }
   name:
     type: string_textfield
     weight: -5

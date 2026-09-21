@@ -7,7 +7,7 @@ dependencies:
     - field.field.paragraph.cta.field_link
     - paragraphs.paragraphs_type.cta
   module:
-    - link
+    - tagify_link
 _core:
   default_config_hash: VpWJ4h58vLvAPoqYVvLZvniezR3M4wRZdiYhoGLGdqc
 id: paragraph.cta.default
@@ -22,12 +22,19 @@ content:
     settings: {  }
     third_party_settings: {  }
   field_link:
-    type: link_default
+    type: tagify_link_widget
     weight: 0
     region: content
     settings:
       placeholder_url: ''
       placeholder_title: "This text will not be displayed - the 'text' value below will be instead"
+      match_operator: CONTAINS
+      match_limit: 20
+      suggestions_dropdown: 1
+      placeholder: ''
+      show_entity_id: false
+      show_info_label: true
+      info_label: '[node:content-type:name]'
     third_party_settings: {  }
 hidden:
   created: true

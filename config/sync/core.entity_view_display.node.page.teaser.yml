@@ -30,6 +30,11 @@ content:
     third_party_settings: {  }
     weight: 100
     region: content
+  content_moderation_control:
+    settings: {  }
+    third_party_settings: {  }
+    weight: -20
+    region: content
   links:
     weight: 101
     region: content
@@ -40,4 +45,5 @@ hidden:
   field_seo_image: true
   field_seo_social_media_title: true
   field_seo_title: true
+  langcode: true
   search_api_excerpt: true

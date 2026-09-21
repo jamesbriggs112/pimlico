@@ -22,6 +22,11 @@ targetEntityType: node
 bundle: page
 mode: default
 content:
+  content_moderation_control:
+    settings: {  }
+    third_party_settings: {  }
+    weight: -20
+    region: content
   field_banner:
     type: entity_reference_revisions_entity_view
     label: hidden
@@ -91,4 +96,5 @@ content:
 hidden:
   body: true
   field_seo_description: true
+  langcode: true
   search_api_excerpt: true

@@ -32,5 +32,7 @@ hidden:
   created: true
   field_media_document: true
   field_thumbnail: true
+  langcode: true
   name: true
+  search_api_excerpt: true
   uid: true

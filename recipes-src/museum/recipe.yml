@@ -1,7 +1,0 @@
-name: 'Four Museum Recipe'
-description: 'Adds the content types and fields Events'
-type: 'Site'
-install:
-  - 'conditional_fields'
-  - 'time_field'
-  - 'four_museum_events'

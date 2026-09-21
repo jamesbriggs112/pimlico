@@ -1,6 +1,6 @@
 name: Four Starterkit
 type: theme
-'base theme': stable9
+'base theme': false
 description: 'Four Starterkit Theme.'
 version: '2.0.0'
 vite:
