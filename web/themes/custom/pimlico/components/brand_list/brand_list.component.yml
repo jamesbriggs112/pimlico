@@ -1,0 +1,33 @@
+'$schema': 'https://git.drupalcode.org/project/drupal/-/raw/HEAD/core/assets/schemas/v1/metadata.schema.json'
+name: Brand list
+status: stable
+description: 'Figma "A / Brand list · hover": centred brand names in Display L. Hovering or focusing a name brings its photograph up from behind the list and fades the other names.'
+libraryOverrides:
+  css:
+    component:
+      brand_list.scss: {}
+  dependencies:
+    - core/components.pimlico--button
+props:
+  type: object
+  properties:
+    eyebrow:
+      type: string
+      title: Eyebrow
+    heading:
+      type: string
+      title: Heading
+      description: 'Visually hidden: the eyebrow and names carry the section.'
+    intro:
+      type: string
+      title: Intro
+    items:
+      type: array
+      title: Brands
+      description: '{ name, url, image } where image is a rendered image.'
+    link_text:
+      type: string
+      title: Button text
+    link_url:
+      type: string
+      title: Button URL

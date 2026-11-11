@@ -1,0 +1,117 @@
+// Figma brand "Gallery" (9:956). Desktop: header row (Display L heading,
+// Body S caption right), rows 30px apart; widths follow the shapes so each
+// row is one height (815+435, 625+625, 3x407, 435+815 at 1280).
+// Mobile (182:5730): one 300px-tall swipe track, 12px gaps, 44px arrow
+// buttons below.
+.image-gallery {
+  padding-bottom: var(--section-space);
+
+  &__header {
+    @include pageContainer;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: flex-end;
+    justify-content: space-between;
+    gap: var(--space-12) var(--space-24);
+    margin-bottom: #{to.rem(40px)};
+  }
+
+  &__heading {
+    margin: 0;
+  }
+
+  &__caption {
+    margin: 0;
+    font-size: var(--font-size-body-s);
+    line-height: var(--line-height-body-s);
+  }
+
+  &__item {
+    margin: 0;
+    overflow: hidden;
+    background-color: var(--color-border-default);
+
+    img {
+      display: block;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    &--l {
+      --_ratio: 1.5;
+      aspect-ratio: 3 / 2;
+    }
+
+    &--p {
+      --_ratio: 0.8;
+      aspect-ratio: 4 / 5;
+    }
+  }
+
+  // Mobile: a single horizontal track
+  @include mq($until: desktop) {
+    &__track {
+      display: flex;
+      gap: var(--space-12);
+      overflow-x: auto;
+      overscroll-behavior-inline: contain;
+      scroll-snap-type: inline mandatory;
+      scroll-padding-inline: var(--page-gutter);
+      padding-inline: var(--page-gutter);
+      scrollbar-width: none;
+
+      &::-webkit-scrollbar {
+        display: none;
+      }
+    }
+
+    &__row {
+      display: contents;
+    }
+
+    &__item {
+      flex: 0 0 auto;
+      height: #{to.rem(300px)};
+      scroll-snap-align: start;
+    }
+
+    &__controls {
+      display: flex;
+      gap: var(--space-12);
+      padding: #{to.rem(16px)} var(--page-gutter) #{to.rem(8px)};
+    }
+
+    .btn-icon {
+      --button-icon-size: #{to.rem(44px)};
+    }
+  }
+
+  // Desktop: justified rows
+  @include mq($from: desktop) {
+    &__track {
+      @include pageContainer;
+      display: grid;
+      gap: #{to.rem(30px)};
+    }
+
+    &__row {
+      display: flex;
+      gap: #{to.rem(30px)};
+    }
+
+    &__item {
+      flex: var(--_ratio) 1 0;
+      min-width: 0;
+    }
+
+    &__controls {
+      display: none;
+    }
+  }
+
+  &__track:focus-visible {
+    outline: var(--focus-outline-width) solid transparent;
+    box-shadow: var(--focus-ring);
+  }
+}

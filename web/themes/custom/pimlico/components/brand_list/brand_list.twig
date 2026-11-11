@@ -1,0 +1,22 @@
+{% set attributes = attributes ?: create_attribute() %}
+{% set heading_id = 'brand-list-' ~ random() %}
+<section {{ attributes.addClass('brand-list').setAttribute('aria-labelledby', heading_id) }}>
+  <div class="brand-list__inner">
+    {% if eyebrow %}<p class="eyebrow">{{ eyebrow }}</p>{% endif %}
+    <h2 class="visually-hidden" id="{{ heading_id }}">{{ heading|default(eyebrow|default('Brands'|t)) }}</h2>
+    {% if intro %}<p class="brand-list__intro body-l">{{ intro }}</p>{% endif %}
+    <ul class="brand-list__items">
+      {% for item in items %}
+        <li class="brand-list__item" style="--i: {{ loop.index0 }}">
+          <a class="brand-list__link" href="{{ item.url }}">{{ item.name }}</a>
+          {% if item.image %}
+            <div class="brand-list__photo" aria-hidden="true">{{ item.image }}</div>
+          {% endif %}
+        </li>
+      {% endfor %}
+    </ul>
+    {% if link_text and link_url %}
+      {% include 'pimlico:button' with { text: link_text, url: link_url, variant: 'yellow' } only %}
+    {% endif %}
+  </div>
+</section>

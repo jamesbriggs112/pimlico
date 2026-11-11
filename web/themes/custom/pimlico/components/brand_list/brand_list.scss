@@ -1,0 +1,115 @@
+// Figma "A / Brand list · hover" (3:1733): linen, centred eyebrow, Body L
+// intro, brand names in Fraunces Light 64/1.08 (rows padded 6px 24px), a
+// Yellow button. Hover/focus: the name turns italic, the others fade to 20%,
+// and its 270x350 photo (rotated ±3°, alternating sides, behind the list)
+// fades in rising 50px. 350ms ease-out. No photos on touch or small screens.
+.brand-list {
+  overflow: hidden;
+  background-color: var(--color-tint-linen-30);
+  padding-block: #{fluid(60px, 130px)};
+
+  &__inner {
+    @include pageContainer;
+    position: relative;
+    display: grid;
+    justify-items: center;
+    text-align: center;
+  }
+
+  &__intro {
+    margin: #{to.rem(20px)} 0 0;
+  }
+
+  // Photos position against __inner (the full section width), so they sit
+  // 50px in from either edge as in Figma; names stack above them.
+  &__items {
+    margin: #{to.rem(48px)} 0 #{to.rem(56px)};
+    padding: 0;
+    list-style: none;
+  }
+
+  &__link {
+    position: relative;
+    z-index: 1;
+    display: inline-block;
+    padding: #{to.rem(6px)} var(--space-24);
+    color: var(--color-text-primary);
+    font-family: var(--font-family-display);
+    font-size: var(--font-size-display-l);
+    font-weight: var(--font-weight-light);
+    line-height: var(--line-height-display-l);
+    letter-spacing: var(--letter-spacing-display-l);
+    text-decoration: none;
+    font-variation-settings: var(--font-display-variation);
+    transition: opacity 0.35s ease-out;
+  }
+
+  &__photo {
+    display: none;
+  }
+
+  @media (hover: hover) and (min-width: 61.25em) {
+    &__photo {
+      position: absolute;
+      z-index: 0;
+      top: calc(var(--i) * #{to.rem(79px)} + #{to.rem(60px)});
+      left: #{to.rem(50px)};
+      display: block;
+      width: #{to.rem(270px)};
+      aspect-ratio: 270 / 350;
+      overflow: hidden;
+      opacity: 0;
+      transform: translateY(#{to.rem(50px)}) rotate(-3deg);
+      box-shadow: 0 30px 60px rgb(33 43 56 / 22%);
+      pointer-events: none;
+      transition:
+        opacity 0.35s ease-out,
+        transform 0.35s ease-out;
+
+      img {
+        display: block;
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+      }
+    }
+
+    &__item:nth-child(even) &__photo {
+      left: auto;
+      right: #{to.rem(50px)};
+      transform: translateY(#{to.rem(50px)}) rotate(3deg);
+    }
+
+    &__items:has(&__link:hover, &__link:focus-visible) &__link {
+      opacity: 0.2;
+    }
+
+    &__item:has(&__link:hover, &__link:focus-visible) {
+      .brand-list__link {
+        opacity: 1;
+        font-style: italic;
+      }
+
+      .brand-list__photo {
+        opacity: 1;
+        transform: translateY(0) rotate(-3deg);
+      }
+    }
+
+    &__item:nth-child(even):has(&__link:hover, &__link:focus-visible)
+      .brand-list__photo {
+      transform: translateY(0) rotate(3deg);
+    }
+  }
+
+  &__link:focus-visible {
+    outline: var(--focus-outline-width) solid transparent;
+    box-shadow: var(--focus-ring);
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    &__photo {
+      transition-property: opacity;
+    }
+  }
+}

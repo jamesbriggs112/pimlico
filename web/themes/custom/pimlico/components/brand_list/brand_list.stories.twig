@@ -1,0 +1,22 @@
+{% stories brand_list with { title: 'Components/Brand list' } %}
+
+{% story default with {
+  name: 'Default',
+  parameters: { design: { type: 'figma', url: 'https://www.figma.com/design/REw9zZENN4OEozQHrt17pD/Pimlico-Visuals---V01?node-id=3-1733' } }
+} %}
+  {% set img = url('<front>')|render|trim('/', 'right') ~ '/themes/custom/pimlico/src/stories/images/' %}
+  {% include 'pimlico:brand_list' with {
+    eyebrow: 'Brands',
+    intro: 'Makers, dealers and interior houses, door by door.',
+    link_text: 'Discover every brand',
+    link_url: '#',
+    items: [
+      { name: 'Sibyl Colefax & John Fowler', url: '#', image: { '#markup': '<img src="' ~ img ~ 'story-1.jpg" alt="">' } },
+      { name: 'Jamb', url: '#', image: { '#markup': '<img src="' ~ img ~ 'gallery-1-landscape.jpg" alt="">' } },
+      { name: 'Rose Uniacke', url: '#', image: { '#markup': '<img src="' ~ img ~ 'story-3.jpg" alt="">' } },
+      { name: 'Daylesford', url: '#', image: { '#markup': '<img src="' ~ img ~ 'intro-daylesford-terrace.jpg" alt="">' } },
+    ],
+  } only %}
+{% endstory %}
+
+{% endstories %}
