@@ -7,7 +7,7 @@ const preview = {
         date: /Date$/i,
       },
       server: {
-        url: 'http://localhost:8888/storybook/stories/render',
+        url: 'https://pimlico.test/storybook/stories/render',
       },
     },
   },

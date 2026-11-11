@@ -1,33 +1,53 @@
 # Local development
 
-The skeleton expects Laravel Valet, which needs admin rights to install. Until Valet is available, the site runs on PHP's built-in web server at **http://localhost:8888**. Everything except HTTPS works the same way.
+The site runs on **Laravel Valet** at **https://pimlico.test**, like the rest of the Four team's Drupal sites (not DDEV). PHP 8.4 matches the AWS servers (`.ebextensions/packages.config`).
 
 ## One-off set-up
 
-You need Homebrew, PHP 8.4, Composer, MySQL, Node 22 and pnpm:
+You need Homebrew, PHP 8.4, Composer, MySQL, Node 22, pnpm and admin rights on your Mac (Valet uses `sudo` to install).
 
 ```bash
 brew install php@8.4 composer mysql
 brew services start mysql
 npm i -g pnpm@10
+composer global require laravel/valet
 ```
 
-Then follow the skeleton README's "Initial site set-up": `composer install` and `web/sites/default/settings.local.php` with the database credentials. Add the local hosts to the end of `settings.local.php`:
+Add Composer's global tools to your PATH in `~/.zshrc` (make sure the file ends with a newline first):
+
+```bash
+export PATH="$HOME/.composer/vendor/bin:$PATH"
+```
+
+Then install Valet, switch it to PHP 8.4, and link and secure the site from `web/`:
+
+```bash
+valet install
+valet use php@8.4
+cd web && valet link pimlico && valet secure pimlico
+```
+
+Follow the skeleton README's "Initial site set-up" for `composer install` and `web/sites/default/settings.local.php`, and add the local hosts to the end of `settings.local.php`:
 
 ```php
+$settings['trusted_host_patterns'][] = '^pimlico\.test$';
 $settings['trusted_host_patterns'][] = '^localhost$';
 $settings['trusted_host_patterns'][] = '^127\.0\.0\.1$';
 ```
 
-## Every day
+### If `pimlico.test` doesn't resolve
 
-Run these in two terminal tabs from the project root.
-
-The site:
+Valet sends every `*.test` address to `127.0.0.1` through dnsmasq. On Macs running the company's Sophos ZTNA client, that DNS rule can be bypassed (`ping pimlico.test` says "Unknown host"). Add the site to `/etc/hosts` instead:
 
 ```bash
-scripts/serve.sh
+echo "127.0.0.1 pimlico.test" | sudo tee -a /etc/hosts
 ```
+
+### Storybook assets
+
+The skeleton README's nginx rule (static assets with `Access-Control-Allow-Origin *`) is added to `~/.config/valet/Nginx/pimlico.test` in both server blocks. Re-add it if you run `valet secure` again, which rewrites that file, then run `valet restart nginx`.
+
+## Every day
 
 The theme (styles and scripts, with hot reload):
 
@@ -35,17 +55,23 @@ The theme (styles and scripts, with hot reload):
 cd web/themes/custom/pimlico && pnpm dev
 ```
 
-Open http://localhost:8888. If the page has no styling, `pnpm dev` isn't running.
+Open https://pimlico.test. If the page has no styling, `pnpm dev` isn't running. To sign in:
+
+```bash
+vendor/bin/drush uli --uri=https://pimlico.test
+```
+
+Valet sets PHP's memory limit to 512MB. For a full `drush si` or a large `drush cim`, lift it: `php -d memory_limit=-1 vendor/bin/drush ...`.
 
 ## Storybook
 
-Stories live beside each component (`*.stories.twig`) and are compiled to JSON by Drush, pointing at the local site:
+Stories live beside each component (`*.stories.twig`) and are compiled to JSON by Drush:
 
 ```bash
-/opt/homebrew/opt/php@8.4/bin/php vendor/drush/drush/drush.php storybook:generate-all-stories --uri=http://localhost:8888
+vendor/bin/drush storybook:generate-all-stories --uri=https://pimlico.test
 ```
 
-Then, with the site and `pnpm dev` running:
+Then, with `pnpm dev` running:
 
 ```bash
 cd web/themes/custom/pimlico && pnpm storybook
@@ -53,28 +79,8 @@ cd web/themes/custom/pimlico && pnpm storybook
 
 Storybook opens at http://localhost:6006. Rendering works without extra permissions because `development.services.yml` turns on Storybook's development mode.
 
-Vite serves assets from `http://localhost:5173` (its `server.origin`), so fonts and images load in both Drupal and Storybook. Set `VITE_DEV_ORIGIN` if your dev server runs elsewhere.
+Vite serves assets from `http://localhost:5173` (its `server.origin`). Chrome and Firefox allow those on the HTTPS site because `localhost` counts as secure. Set `VITE_DEV_ORIGIN` if your dev server runs elsewhere.
 
-## Drush
+## Without Valet
 
-Drush runs with whichever `php` is first on your PATH. Use PHP 8.4 explicitly, and lift the memory limit for heavy commands such as `si` and `cim`:
-
-```bash
-/opt/homebrew/opt/php@8.4/bin/php -d memory_limit=-1 vendor/drush/drush/drush.php cr
-```
-
-To sign in, generate a one-time login link:
-
-```bash
-/opt/homebrew/opt/php@8.4/bin/php vendor/drush/drush/drush.php uli --uri=http://localhost:8888
-```
-
-## Limitations without Valet
-
-- **No HTTPS.** The map's "show my location" button needs HTTPS, so test it on staging.
-- **One request at a time.** The built-in server is single-threaded, so pages are slower than under nginx. It's not for performance testing.
-- **Storybook:** the README's nginx CORS rule doesn't apply. If Storybook can't load theme assets, raise it rather than changing the theme.
-
-## Moving to Valet later
-
-Once you have admin rights: add `~/.composer/vendor/bin` to your PATH, then run `valet install`, `valet use php@8.4`, and from `web/`, `valet link pimlico` and `valet secure pimlico`. Then add `'^pimlico\.test$'` to the trusted hosts and change the dev URL in `AGENTS.md` back to `https://pimlico.test`.
+On a Mac without admin rights, `scripts/serve.sh` serves the site on PHP's built-in server at http://localhost:8888. It has no HTTPS (so the map's "show my location" can't be tested) and handles one request at a time.
