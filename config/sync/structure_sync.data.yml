@@ -13,6 +13,410 @@ blocks:
           value: '<p>©[current-date:custom:Y], [site:name]</p>'
           summary: ''
           format: simple_text_with_tokens
+menus:
+  -
+    menu_name: main
+    title: Brands
+    parent: null
+    uri: 'internal:/brands'
+    link_title: null
+    description: 'Explore the street'
+    enabled: true
+    expanded: true
+    weight: 0
+    langcode: en
+    uuid: 703cf6bf-b116-4430-8e26-4f1eb69f5639
+    options: {  }
+  -
+    menu_name: main
+    title: Interiors
+    parent: 'menu_link_content:703cf6bf-b116-4430-8e26-4f1eb69f5639'
+    uri: 'internal:/brands?category=home-interiors'
+    link_title: null
+    description: null
+    enabled: true
+    expanded: false
+    weight: 0
+    langcode: en
+    uuid: f414d1e3-41b0-4593-b0a6-ce57a3662132
+    options: {  }
+  -
+    menu_name: main
+    title: 'Antiques & art'
+    parent: 'menu_link_content:703cf6bf-b116-4430-8e26-4f1eb69f5639'
+    uri: 'internal:/brands?category=antiques-and-art'
+    link_title: null
+    description: null
+    enabled: true
+    expanded: false
+    weight: 1
+    langcode: en
+    uuid: e0569bd6-5068-44ef-ae91-1005e5d799d6
+    options: {  }
+  -
+    menu_name: main
+    title: 'Food & drink'
+    parent: 'menu_link_content:703cf6bf-b116-4430-8e26-4f1eb69f5639'
+    uri: 'internal:/dine'
+    link_title: null
+    description: null
+    enabled: true
+    expanded: false
+    weight: 2
+    langcode: en
+    uuid: f2435c38-607a-419d-ba77-92684f35ee69
+    options: {  }
+  -
+    menu_name: main
+    title: 'All brands'
+    parent: 'menu_link_content:703cf6bf-b116-4430-8e26-4f1eb69f5639'
+    uri: 'internal:/brands'
+    link_title: null
+    description: null
+    enabled: true
+    expanded: false
+    weight: 3
+    langcode: en
+    uuid: 2b7bc17a-05ae-44c5-9d80-1b6346c18a5d
+    options: {  }
+  -
+    menu_name: main
+    title: Dine
+    parent: null
+    uri: 'internal:/dine'
+    link_title: null
+    description: null
+    enabled: true
+    expanded: false
+    weight: 1
+    langcode: en
+    uuid: 4b020a85-88b3-4ec2-a21e-0a1f8d76b4ce
+    options: {  }
+  -
+    menu_name: main
+    title: 'Newson’s Yard'
+    parent: null
+    uri: 'internal:/newsons-yard'
+    link_title: null
+    description: null
+    enabled: true
+    expanded: true
+    weight: 2
+    langcode: en
+    uuid: 529da6b5-8522-42bc-be97-8642f77c9ee9
+    options: {  }
+  -
+    menu_name: main
+    title: 'About the yard'
+    parent: 'menu_link_content:529da6b5-8522-42bc-be97-8642f77c9ee9'
+    uri: 'internal:/newsons-yard'
+    link_title: null
+    description: null
+    enabled: true
+    expanded: false
+    weight: 0
+    langcode: en
+    uuid: 3acdcae6-3f83-4e7b-ad65-80a82512b3dd
+    options: {  }
+  -
+    menu_name: main
+    title: 'Resident brands'
+    parent: 'menu_link_content:529da6b5-8522-42bc-be97-8642f77c9ee9'
+    uri: 'internal:/newsons-yard#resident-brands'
+    link_title: null
+    description: null
+    enabled: true
+    expanded: false
+    weight: 1
+    langcode: en
+    uuid: f31713f5-2be4-49db-9b4b-628cbf9a6844
+    options: {  }
+  -
+    menu_name: main
+    title: 'Visit the yard'
+    parent: 'menu_link_content:529da6b5-8522-42bc-be97-8642f77c9ee9'
+    uri: 'internal:/visit'
+    link_title: null
+    description: null
+    enabled: true
+    expanded: false
+    weight: 2
+    langcode: en
+    uuid: 5b476762-8131-4ade-9555-19b30d918289
+    options: {  }
+  -
+    menu_name: main
+    title: News
+    parent: null
+    uri: 'internal:/news'
+    link_title: null
+    description: null
+    enabled: true
+    expanded: true
+    weight: 3
+    langcode: en
+    uuid: 1033e395-0b8a-4897-bc8b-d7c5f7f57849
+    options: {  }
+  -
+    menu_name: main
+    title: 'All stories'
+    parent: 'menu_link_content:1033e395-0b8a-4897-bc8b-d7c5f7f57849'
+    uri: 'internal:/news'
+    link_title: null
+    description: null
+    enabled: true
+    expanded: false
+    weight: 0
+    langcode: en
+    uuid: ac1bc7b9-313e-409d-b98c-42bbdbdc70c7
+    options: {  }
+  -
+    menu_name: main
+    title: News
+    parent: 'menu_link_content:1033e395-0b8a-4897-bc8b-d7c5f7f57849'
+    uri: 'internal:/news?type=article'
+    link_title: null
+    description: null
+    enabled: true
+    expanded: false
+    weight: 1
+    langcode: en
+    uuid: 0d49cae8-d901-4a43-ba50-0102d2b0db6f
+    options: {  }
+  -
+    menu_name: main
+    title: Press
+    parent: 'menu_link_content:1033e395-0b8a-4897-bc8b-d7c5f7f57849'
+    uri: 'internal:/news?type=press_article'
+    link_title: null
+    description: null
+    enabled: true
+    expanded: false
+    weight: 2
+    langcode: en
+    uuid: 199ab669-ebdc-451b-8a32-f846518a8817
+    options: {  }
+  -
+    menu_name: main
+    title: Visit
+    parent: null
+    uri: 'internal:/visit'
+    link_title: null
+    description: null
+    enabled: true
+    expanded: true
+    weight: 4
+    langcode: en
+    uuid: 349c3b90-963b-45e4-b151-391b84d0a760
+    options: {  }
+  -
+    menu_name: main
+    title: 'Plan your visit'
+    parent: 'menu_link_content:349c3b90-963b-45e4-b151-391b84d0a760'
+    uri: 'internal:/visit'
+    link_title: null
+    description: null
+    enabled: true
+    expanded: false
+    weight: 0
+    langcode: en
+    uuid: ff25493a-99a9-4e30-acf6-37c812997c02
+    options: {  }
+  -
+    menu_name: main
+    title: 'The street map'
+    parent: 'menu_link_content:349c3b90-963b-45e4-b151-391b84d0a760'
+    uri: 'internal:/visit#the-street'
+    link_title: null
+    description: null
+    enabled: true
+    expanded: false
+    weight: 1
+    langcode: en
+    uuid: fbc062dd-8e3a-4c50-a57f-c6351bb55219
+    options: {  }
+  -
+    menu_name: main
+    title: 'Getting here'
+    parent: 'menu_link_content:349c3b90-963b-45e4-b151-391b84d0a760'
+    uri: 'internal:/visit#getting-here'
+    link_title: null
+    description: null
+    enabled: true
+    expanded: false
+    weight: 2
+    langcode: en
+    uuid: b439e3f9-2ac8-4fb0-b286-3178022178e9
+    options: {  }
+  -
+    menu_name: main
+    title: Contact
+    parent: 'menu_link_content:349c3b90-963b-45e4-b151-391b84d0a760'
+    uri: 'internal:/contact'
+    link_title: null
+    description: null
+    enabled: true
+    expanded: false
+    weight: 3
+    langcode: en
+    uuid: 5b0ced1b-2fe7-4805-8674-2cc85944d00d
+    options: {  }
+  -
+    menu_name: footer
+    title: Brands
+    parent: null
+    uri: 'internal:/brands'
+    link_title: null
+    description: null
+    enabled: true
+    expanded: false
+    weight: 0
+    langcode: en
+    uuid: e5804c49-b0aa-4eee-b20f-454d13f1be61
+    options: {  }
+  -
+    menu_name: footer
+    title: Dine
+    parent: null
+    uri: 'internal:/dine'
+    link_title: null
+    description: null
+    enabled: true
+    expanded: false
+    weight: 1
+    langcode: en
+    uuid: 4a7e3b34-5930-48ea-b6f6-d659c3f3cdf3
+    options: {  }
+  -
+    menu_name: footer
+    title: 'Newson’s Yard'
+    parent: null
+    uri: 'internal:/newsons-yard'
+    link_title: null
+    description: null
+    enabled: true
+    expanded: false
+    weight: 2
+    langcode: en
+    uuid: 544acee8-34b8-47d3-be23-41be14742a11
+    options: {  }
+  -
+    menu_name: footer
+    title: News
+    parent: null
+    uri: 'internal:/news'
+    link_title: null
+    description: null
+    enabled: true
+    expanded: false
+    weight: 3
+    langcode: en
+    uuid: 7d2d5475-cadb-47b4-b653-57f3fe3e95a7
+    options: {  }
+  -
+    menu_name: footer
+    title: Visit
+    parent: null
+    uri: 'internal:/visit'
+    link_title: null
+    description: null
+    enabled: true
+    expanded: false
+    weight: 4
+    langcode: en
+    uuid: 255f2b8b-8184-40f7-a63a-06c67dc9409d
+    options: {  }
+  -
+    menu_name: footer-information
+    title: 'About Pimlico Road'
+    parent: null
+    uri: 'internal:/about'
+    link_title: null
+    description: null
+    enabled: true
+    expanded: false
+    weight: 0
+    langcode: en
+    uuid: 32479bb7-0366-490f-af9f-62aab9575727
+    options: {  }
+  -
+    menu_name: footer-information
+    title: Contact
+    parent: null
+    uri: 'internal:/contact'
+    link_title: null
+    description: null
+    enabled: true
+    expanded: false
+    weight: 1
+    langcode: en
+    uuid: 2942e8c0-e58a-4840-acc2-b0dada79e2d6
+    options: {  }
+  -
+    menu_name: footer-information
+    title: Accessibility
+    parent: null
+    uri: 'internal:/accessibility'
+    link_title: null
+    description: null
+    enabled: true
+    expanded: false
+    weight: 2
+    langcode: en
+    uuid: 80077a56-eb32-4c05-b7c9-16178eca85c4
+    options: {  }
+  -
+    menu_name: social-media
+    title: Instagram
+    parent: null
+    uri: 'https://www.instagram.com/'
+    link_title: null
+    description: null
+    enabled: true
+    expanded: false
+    weight: 0
+    langcode: en
+    uuid: c264aacf-78f7-4363-bced-0ae037e80724
+    options: {  }
+  -
+    menu_name: legal
+    title: Privacy
+    parent: null
+    uri: 'internal:/privacy'
+    link_title: null
+    description: null
+    enabled: true
+    expanded: false
+    weight: 0
+    langcode: en
+    uuid: 772779d5-7a6f-4154-9104-58997d0f68b1
+    options: {  }
+  -
+    menu_name: legal
+    title: Cookies
+    parent: null
+    uri: 'internal:/cookies'
+    link_title: null
+    description: null
+    enabled: true
+    expanded: false
+    weight: 1
+    langcode: en
+    uuid: e8bbc572-82d9-43e5-a03a-49e7263571d0
+    options: {  }
+  -
+    menu_name: legal
+    title: 'Cookie preferences'
+    parent: null
+    uri: 'internal:/cookies#cookie-preferences'
+    link_title: null
+    description: null
+    enabled: true
+    expanded: false
+    weight: 2
+    langcode: en
+    uuid: d91fbf15-25fb-4d6d-baee-12d3c1a81d84
+    options: {  }
 taxonomies:
   area:
     -

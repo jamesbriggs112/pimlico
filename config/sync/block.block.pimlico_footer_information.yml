@@ -1,0 +1,25 @@
+uuid: ce35746d-c687-4757-9d2b-becc8b8a6d8b
+langcode: en
+status: true
+dependencies:
+  config:
+    - system.menu.footer-information
+  module:
+    - system
+  theme:
+    - pimlico
+id: pimlico_footer_information
+theme: pimlico
+region: footer_menu
+weight: 1
+provider: null
+plugin: 'system_menu_block:footer-information'
+settings:
+  id: 'system_menu_block:footer-information'
+  label: Information
+  label_display: visible
+  provider: system
+  level: 1
+  depth: 1
+  expand_all_items: false
+visibility: {  }

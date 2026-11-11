@@ -1,0 +1,8 @@
+uuid: 0469e2f3-b1d2-4a03-96af-be503a0b0d23
+langcode: en
+status: true
+dependencies: {  }
+id: footer-information
+label: 'Footer information'
+description: 'Information links in the footer and mobile menu.'
+locked: false

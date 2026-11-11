@@ -1,0 +1,25 @@
+uuid: 9bbb53a1-a6d6-4360-a5e4-2cd5939a9ea3
+langcode: en
+status: true
+dependencies:
+  config:
+    - system.menu.social-media
+  module:
+    - system
+  theme:
+    - pimlico
+id: pimlico_social_media
+theme: pimlico
+region: footer_menu
+weight: 2
+provider: null
+plugin: 'system_menu_block:social-media'
+settings:
+  id: 'system_menu_block:social-media'
+  label: Follow
+  label_display: visible
+  provider: system
+  level: 1
+  depth: 1
+  expand_all_items: false
+visibility: {  }
