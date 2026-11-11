@@ -6,8 +6,13 @@ libraryOverrides:
   css:
     component:
       card_grid.scss: {}
+  js:
+    card_grid.js: {}
   dependencies:
+    - core/drupal
+    - core/once
     - core/components.pimlico--section_heading
+    - core/components.pimlico--button_icon
 props:
   type: object
   properties:

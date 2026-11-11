@@ -56,4 +56,24 @@
       }
     }
   }
+
+  // Mobile arrows under the swipe track, as the image gallery.
+  &__controls {
+    @include pageContainer;
+    display: flex;
+    gap: var(--space-12);
+    padding-top: #{to.rem(16px)};
+
+    &[hidden] {
+      display: none;
+    }
+
+    .btn-icon {
+      --button-icon-size: #{to.rem(44px)};
+    }
+
+    @include mq($from: desktop) {
+      display: none;
+    }
+  }
 }

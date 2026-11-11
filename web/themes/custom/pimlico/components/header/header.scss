@@ -184,16 +184,24 @@
     transform: translateY(-100%);
   }
 
+  // Once scrolled, the header is off-white (linen) with a slate logo on
+  // every page.
+  &--pinned {
+    background-color: var(--color-surface-tint);
+  }
+
   &--overlay.header--pinned {
     position: fixed;
     top: 0;
-    background-color: var(--header-bg-color);
+    background-color: var(--color-surface-tint);
     border-bottom-color: var(--color-border-strong);
     color: var(--color-text-primary);
     --focus-ring: var(--focus-ring-on-light);
 
-    .text-link {
+    .text-link,
+    .logo--light {
       color: var(--color-text-primary);
+      --focus-ring: var(--focus-ring-on-light);
     }
   }
 }
