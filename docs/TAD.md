@@ -48,11 +48,11 @@ There is no commerce, membership or CRM integration, so the architecture is much
 | T16 | Privacy, Cookies, Accessibility | `page` node with rich text |
 | T17/T18 | Search, search results | Search API view |
 
-Global elements: desktop header with mega menus (Brands, Newson's Yard, News, Visit), mobile menu overlay, newsletter section, footer (Explore, Information, Follow, legal links, Pimlico Road and Grosvenor logos), and cookie preferences (the Toggle and Dialog components).
+Global elements: desktop header with mega menus (Brands, Newson's Yard, News, Visit), mobile menu overlay, newsletter section, footer (Explore, Information, Follow, legal links, Pimlico Road and Grosvenor logos), and a Cookie preferences link that reopens the CookieScript consent banner.
 
-### 2.2 Out of scope (unless confirmed otherwise)
+### 2.2 Out of scope
 
-- Events. The Components page has an Event card and Event row, but no template uses them. See [open questions](#11-open-questions).
+- Events. The Components page has an Event card and Event row, but events were confirmed as no longer required on 11 November 2026.
 - Transactions, accounts or a members' area.
 - Multilingual content. The site is English only.
 
@@ -280,14 +280,13 @@ Mapped from the Figma Components page. "Skeleton" means the starterkit component
 | `rich_text` | Rich text | new |
 | `filter_link` | Filter link (default, active, hover, focus) | new |
 | `pagination` | Pagination | new |
-| `form` + `field` | Field (input, select, textarea; default, error, focus), Checkbox, Toggle | skeleton `form`, extended |
-| `dialog` | Dialog (desktop, mobile) | new (`<dialog>`) |
+| `form` + `field` | Field (input, select, textarea; default, error, focus), Checkbox | skeleton `form`, extended |
 | `newsletter` | Newsletter | new |
 | `footer` | Footer | skeleton |
 | `street_map` | Map · Overview, Map · Brand | new; wraps `<pimlico-map>` |
 | `visually_hidden`, `messages`, `grid`, `view_clean` | | skeleton |
 
-Event card and Event row are left out until events are confirmed.
+Not built: Event card and Event row (events are out of scope), and Toggle and Dialog, which were for cookie preferences and are replaced by CookieScript's own banner.
 
 ### 7.3 Design tokens
 
@@ -318,7 +317,8 @@ From the Figma variables, in `src/sass/init/_root.scss`:
 }
 ```
 
-- **Typography:** body and UI in **Lato** (300, 400, 500, 700). Body L 20/1.55 light, Body M 16/1.6, Body S 14/1.55. Labels: Nav 14 medium, tracking 0.14em; Eyebrow 12 bold, tracking 0.16em, uppercase, pumpkin. Display sizes 96, 64, 44 and 26, scaled with `fluid()` between 390 px and 1440 px. **The display serif is not exposed as a Figma variable and must be confirmed** (see open questions).
+- **Typography:** body and UI in **Lato** (300, 400, 500, 700). Body L 20/1.55 light, Body M 16/1.6, Body S 14/1.55. Labels: Nav 14 medium, tracking 0.14em; Eyebrow 12 bold, tracking 0.16em, uppercase, pumpkin. Display sizes 96, 64, 44 and 26, scaled with `fluid()` between 390 px and 1440 px.
+- **Display serif: Fraunces** (confirmed 11 November 2026). It's on Google Fonts under the SIL Open Font License, so it's free for web use and can be self-hosted. Self-host the variable WOFF2 in `assets/fonts` rather than loading from Google, for performance and GDPR. Fraunces has optical size (`opsz`), `SOFT` and `WONK` axes: set `font-optical-sizing: auto`, and fix `SOFT` and `WONK` with `font-variation-settings` once matched against the Figma headings. Define it as `--font-family-display`, with Lato as `--font-family-body`.
 - **Breakpoints:** the design has two artboards, 390 and 1440. Keep the starterkit's sass-mq set, and treat `tablet` (768) and `desktop` (980) as the main switches. The header and mega menu switch at `desktop`.
 - **Layout:** the 1280 px content column with 80 px gutters maps directly onto the `contentWithGutters()` mixin.
 
@@ -376,27 +376,34 @@ The map is the one piece of real engineering on this site, and most of it is alr
 
 | Concern | Approach |
 |---|---|
-| **Accessibility** | WCAG 2.2 AA. Native elements first: `<dialog>` for the mobile menu and cookie dialog, `<details>` for transcripts, `<button aria-pressed>` for filters. Visible focus states (every Figma component has a Focus variant). Pause control on hero films. Storybook a11y addon on every component. Screen reader pass before launch. |
+| **Accessibility** | WCAG 2.2 AA. Native elements first: `<dialog>` for the mobile menu, `<details>` for transcripts, `<button aria-pressed>` for filters. Visible focus states (every Figma component has a Focus variant). Pause control on hero films. Storybook a11y addon on every component. Screen reader pass before launch. |
 | **Performance** | Vite-built, per-component libraries. Responsive images with WebP. Hero video with poster and `preload="none"` on mobile. Page cache and dynamic page cache, with CloudFront in front (`cloudfront_cache_path_invalidate`, `cloudfront_cache_home_page`). The Base Map JSON is about 48 KB gzipped and cached long-term. |
 | **SEO** | Metatag and Schema Metatag (`LocalBusiness` on Brand, `NewsArticle` on Article, `PodcastEpisode` on episodes), Pathauto patterns (`brands/[node:title]`, `news/[node:title]`), Simple XML sitemap (to add), robots.txt. |
 | **Search** | Search API with the database backend, indexing Brands, Stories and Pages. Solr is unnecessary at this content volume. |
 | **Forms** | Webform for Contact (with error and success states from the design), reCAPTCHA v3, SMTP delivery. |
-| **Newsletter** | A block form posting to the client's email platform. The provider is an open question. |
-| **Cookie consent** | Required, because Google Tag is in the stack. The design's Cookie preferences link, Toggle and Dialog suggest a custom-styled consent UI. Recommended: a consent module that can be themed with the `dialog` and `toggle` components, wired to Google Consent Mode. To be confirmed. |
+| **Newsletter** | A block form posting to the client's email platform. The provider is an open task: build the `newsletter` component and block with a form that doesn't submit anywhere yet, and wire it up once the provider is chosen. |
+| **Cookie consent** | **CookieScript** (decided 11 November 2026; set-up later). It's a hosted script, so no Drupal module is needed: the script tag is loaded first in `<head>` through a theme library, with its ID from environment config so staging and production can differ. The banner is styled in the CookieScript dashboard with the site's colours and fonts. The footer's Cookie preferences link opens it again (`CookieScript.instance.show()`). Google Tag uses CookieScript's Google Consent Mode v2 integration, so no tags fire before consent. |
 | **Monitoring** | Sentry (Raven) for PHP and the Vite plugin for JS, as in the skeleton. Health check module. |
 | **Security** | No secrets in config export. Contrib modules never patched in place (patches go in `patches/`). Feed is read-only public data. |
 
 ## 11. Open questions
 
-1. **Display serif:** which typeface are the headings set in, and is a web licence in place?
-2. **Events:** are events in scope? The Event card and Event row components suggest so, but no template uses them.
-3. **Newsletter provider:** Mailchimp, Dotdigital or something else?
-4. **Cookie consent:** custom-styled module, or the client's existing CMP (OneTrust, Civic)?
-5. **Brand map IDs:** will brands ever be renamed? If so, add a separate `field_map_id` rather than relying on the path alias.
-6. **Map open questions** carried over from the map project: base map source (OSM or Grosvenor survey), the unit register, tenancy status by hand or by dates, structured opening hours, short map labels, the six flagged placements, and a Newson's Yard site plan.
-7. **Hero films:** final footage, length and file size budget.
-8. **Content migration:** beyond the 47 brands, is any news or page content migrated from belgraviavillage.com, or written fresh?
-9. **Analytics:** GA4 through Google Tag, and who owns the container?
+1. **Newsletter provider:** Mailchimp, Dotdigital or something else? Left as an open task (§10).
+2. **CookieScript set-up:** the account, banner configuration and script ID will be sorted later. The build leaves a slot for the script (§10).
+3. **Map data:** the map project's open questions still apply and will be tackled later: base map source (OSM or Grosvenor survey), the unit register, tenancy status by hand or by dates, structured opening hours, short map labels, the six flagged brand placements, and a Newson's Yard site plan. Until then the migration uses the current placements.
+4. **Brand map IDs:** will brands ever be renamed? If so, add a separate `field_map_id` rather than relying on the path alias.
+5. **Hero films:** final footage, length and file size budget.
+6. **Content migration:** beyond the 47 brands, is any news or page content migrated from belgraviavillage.com, or written fresh?
+7. **Analytics:** GA4 through Google Tag, and who owns the container?
+
+### Resolved
+
+| Date | Question | Decision |
+|---|---|---|
+| 11 Nov 2026 | Repository | `jamesbriggs112/pimlico`, with `dev`, `staging` and `production` branches (§3) |
+| 11 Nov 2026 | Display serif | Fraunces, self-hosted (§7.3) |
+| 11 Nov 2026 | Events | Not required (§2.2) |
+| 11 Nov 2026 | Cookie consent | CookieScript, set up later (§10) |
 
 ## 12. Architecture decisions to record
 
