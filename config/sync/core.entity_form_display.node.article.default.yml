@@ -10,7 +10,6 @@ dependencies:
     - field.field.node.article.field_seo_image
     - field.field.node.article.field_seo_social_media_title
     - field.field.node.article.field_seo_title
-    - field.field.node.article.field_tags
     - field.field.node.article.field_teaser
     - node.type.article
     - workflows.workflow.content_moderation
@@ -22,7 +21,6 @@ dependencies:
     - paragraphs_ee
     - paragraphs_features
     - path
-    - tagify
 third_party_settings:
   field_group:
     group_header:
@@ -179,20 +177,6 @@ content:
       size: 60
       placeholder: ''
     third_party_settings: {  }
-  field_tags:
-    type: tagify_entity_reference_autocomplete_widget
-    weight: 4
-    region: content
-    settings:
-      match_operator: CONTAINS
-      match_limit: 10
-      placeholder: ''
-      suggestions_dropdown: 1
-      show_entity_id: 0
-      show_info_label: 0
-      info_label: ''
-      parent_selection: 1
-    third_party_settings: {  }
   field_teaser:
     type: paragraphs
     weight: 1
@@ -248,6 +232,11 @@ content:
     region: content
     settings:
       display_label: true
+    third_party_settings: {  }
+  simple_sitemap:
+    weight: 10
+    region: content
+    settings: {  }
     third_party_settings: {  }
   status:
     type: boolean_checkbox

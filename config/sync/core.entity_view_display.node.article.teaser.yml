@@ -11,7 +11,6 @@ dependencies:
     - field.field.node.article.field_seo_image
     - field.field.node.article.field_seo_social_media_title
     - field.field.node.article.field_seo_title
-    - field.field.node.article.field_tags
     - field.field.node.article.field_teaser
     - node.type.article
   module:
@@ -56,7 +55,6 @@ hidden:
   field_seo_image: true
   field_seo_social_media_title: true
   field_seo_title: true
-  field_tags: true
   langcode: true
   links: true
   search_api_excerpt: true

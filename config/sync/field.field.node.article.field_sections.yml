@@ -7,9 +7,7 @@ dependencies:
     - node.type.article
     - paragraphs.paragraphs_type.accordion
     - paragraphs.paragraphs_type.cta
-    - paragraphs.paragraphs_type.document_list
     - paragraphs.paragraphs_type.image
-    - paragraphs.paragraphs_type.separator
     - paragraphs.paragraphs_type.text_wysiwyg_
     - paragraphs.paragraphs_type.video
   module:
@@ -32,9 +30,7 @@ settings:
     target_bundles:
       accordion: accordion
       cta: cta
-      document_list: document_list
       image: image
-      separator: separator
       text_wysiwyg_: text_wysiwyg_
       video: video
     negate: 0

@@ -13,3 +13,109 @@ blocks:
           value: '<p>©[current-date:custom:Y], [site:name]</p>'
           summary: ''
           format: simple_text_with_tokens
+taxonomies:
+  area:
+    -
+      vid: area
+      tid: '9'
+      langcode: en
+      name: 'Bourne Street'
+      description__value: null
+      description__format: null
+      weight: '3'
+      parent: '0'
+      uuid: 420da3c4-d79c-454a-90ff-0ca69cea3bcc
+    -
+      vid: area
+      tid: '8'
+      langcode: en
+      name: 'Ebury Street'
+      description__value: null
+      description__format: null
+      weight: '2'
+      parent: '0'
+      uuid: 9417ad0a-c796-4ab6-95eb-f1e206400d68
+    -
+      vid: area
+      tid: '10'
+      langcode: en
+      name: 'Holbein Place'
+      description__value: null
+      description__format: null
+      weight: '4'
+      parent: '0'
+      uuid: 45e3affc-90ee-4734-b15f-7bc4ee6ad34e
+    -
+      vid: area
+      tid: '7'
+      langcode: en
+      name: "Newson's Yard"
+      description__value: null
+      description__format: null
+      weight: '1'
+      parent: '0'
+      uuid: f23848ff-b200-48f4-8828-693ec61e3a4a
+    -
+      vid: area
+      tid: '6'
+      langcode: en
+      name: 'Pimlico Road'
+      description__value: null
+      description__format: null
+      weight: '0'
+      parent: '0'
+      uuid: ba036fba-3299-45e6-9048-7ed7130e6bb3
+  brand_category:
+    -
+      vid: brand_category
+      tid: '2'
+      langcode: en
+      name: 'Antiques and art'
+      description__value: null
+      description__format: null
+      weight: '1'
+      parent: '0'
+      uuid: 6fcf4b16-a3ad-4a60-95cd-26f38938693b
+    -
+      vid: brand_category
+      tid: '5'
+      langcode: en
+      name: 'Food & Drink'
+      description__value: null
+      description__format: null
+      weight: '4'
+      parent: '0'
+      uuid: 0d9117e8-f4ea-4d7d-81b2-86a2821cf0ab
+    -
+      vid: brand_category
+      tid: '1'
+      langcode: en
+      name: 'Home & Interiors'
+      description__value: null
+      description__format: null
+      weight: '0'
+      parent: '0'
+      uuid: c233084f-986d-4f08-99a7-d364b2d2905d
+    -
+      vid: brand_category
+      tid: '4'
+      langcode: en
+      name: Lighting
+      description__value: null
+      description__format: null
+      weight: '3'
+      parent: '0'
+      uuid: b65df053-308a-4706-892b-65146fa444bd
+    -
+      vid: brand_category
+      tid: '3'
+      langcode: en
+      name: 'Soft furnishings and fabrics'
+      description__value: null
+      description__format: null
+      weight: '2'
+      parent: '0'
+      uuid: b0281f07-1584-48cf-9269-fe78176d9dcb
+  image_paragraph_styles: {  }
+  news_category: {  }
+  paragraph_styles: {  }

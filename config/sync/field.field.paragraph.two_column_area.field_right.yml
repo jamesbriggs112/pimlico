@@ -5,7 +5,6 @@ dependencies:
   config:
     - field.storage.paragraph.field_right
     - paragraphs.paragraphs_type.cta
-    - paragraphs.paragraphs_type.download
     - paragraphs.paragraphs_type.image
     - paragraphs.paragraphs_type.text_wysiwyg_
     - paragraphs.paragraphs_type.two_column_area
@@ -30,7 +29,6 @@ settings:
       text_wysiwyg_: text_wysiwyg_
       image: image
       cta: cta
-      download: download
     negate: 0
     target_bundles_drag_drop:
       accordion:

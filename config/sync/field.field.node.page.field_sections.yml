@@ -9,12 +9,10 @@ dependencies:
     - paragraphs.paragraphs_type.content_carousel
     - paragraphs.paragraphs_type.content_grid
     - paragraphs.paragraphs_type.cta
-    - paragraphs.paragraphs_type.iframe_embed
     - paragraphs.paragraphs_type.image
     - paragraphs.paragraphs_type.image_grid
     - paragraphs.paragraphs_type.map
     - paragraphs.paragraphs_type.quote
-    - paragraphs.paragraphs_type.separator
     - paragraphs.paragraphs_type.text_wysiwyg_
     - paragraphs.paragraphs_type.two_column_area
     - paragraphs.paragraphs_type.video
@@ -43,9 +41,7 @@ settings:
       map: map
       cta: cta
       content_grid: content_grid
-      separator: separator
       content_carousel: content_carousel
-      iframe_embed: iframe_embed
       image_grid: image_grid
       two_column_area: two_column_area
       quote: quote

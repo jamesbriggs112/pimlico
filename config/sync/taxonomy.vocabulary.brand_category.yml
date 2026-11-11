@@ -1,0 +1,9 @@
+uuid: e972d871-93db-4075-829f-ec21d4590027
+langcode: en
+status: true
+dependencies: {  }
+name: 'Brand category'
+vid: brand_category
+description: 'The primary category a Brand is filtered by on listings and the street map. Order by weight to set the filter order.'
+weight: 0
+new_revision: false
