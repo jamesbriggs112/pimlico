@@ -1,0 +1,13 @@
+{% stories audio_player with { title: 'Components/Audio player' } %}
+{% story default with {
+  name: 'Default',
+  parameters: { design: { type: 'figma', url: 'https://www.figma.com/design/REw9zZENN4OEozQHrt17pD/Pimlico-Visuals---V01?node-id=13-105' } }
+} %}
+  {% include 'pimlico:audio_player' with {
+    src: 'https://interactive-examples.mdn.mozilla.net/media/cc0-audio/t-rex-roar.mp3',
+    title: 'A conversation with the makers of Newson’s Yard',
+    meta: 'Ep. 04 · 38 min',
+    transcript_url: '#',
+  } only %}
+{% endstory %}
+{% endstories %}

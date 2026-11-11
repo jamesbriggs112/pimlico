@@ -1,0 +1,124 @@
+// Figma "Audio player" (13:105, as placed on the episode page): dark grey
+// panel, 1px grey border, 32px padding, 24px gap; 64px Media control; yellow
+// eyebrow meta; Fraunces Regular 26 white title; 2px progress bar (played
+// yellow, remaining grey at 40%). Without JavaScript the native player shows.
+.audio-player {
+  display: flex;
+  align-items: center;
+  gap: var(--space-24);
+  max-width: #{to.rem(760px)};
+  padding: #{fluid(24px, 32px)};
+  border: 1px solid var(--color-border-inverse);
+  background-color: var(--color-surface-inverse);
+  color: var(--color-text-inverse);
+  --focus-ring: var(--focus-ring-on-dark);
+
+  &--enhanced &__audio {
+    display: none;
+  }
+
+  &__audio {
+    width: 100%;
+  }
+
+  &__toggle {
+    --button-icon-size: #{to.rem(64px)};
+  }
+
+  &__icon {
+    display: contents;
+  }
+
+  &__icon--pause,
+  &--playing &__icon--play {
+    display: none;
+  }
+
+  &--playing &__icon--pause {
+    display: contents;
+  }
+
+  &__body {
+    display: grid;
+    flex: 1;
+    gap: #{to.rem(8px)};
+    min-width: 0;
+  }
+
+  &:not(&--enhanced) &__body {
+    display: none;
+  }
+
+  &__meta {
+    margin: 0;
+    color: var(--color-brand-yellow);
+    font-size: var(--font-size-label-eyebrow);
+    font-weight: var(--font-weight-bold);
+    line-height: var(--line-height-label);
+    letter-spacing: var(--letter-spacing-label-eyebrow);
+    text-transform: uppercase;
+  }
+
+  &__title {
+    @include title;
+    margin: 0;
+  }
+
+  &__range {
+    width: 100%;
+    height: #{to.rem(18px)};
+    margin: 0;
+    background: transparent;
+    appearance: none;
+    cursor: pointer;
+
+    &::-webkit-slider-runnable-track {
+      height: 2px;
+      background: linear-gradient(
+        to right,
+        var(--color-brand-yellow) var(--_played, 0%),
+        rgb(197 211 210 / 40%) var(--_played, 0%)
+      );
+    }
+
+    &::-moz-range-track {
+      height: 2px;
+      background: rgb(197 211 210 / 40%);
+    }
+
+    &::-moz-range-progress {
+      height: 2px;
+      background: var(--color-brand-yellow);
+    }
+
+    &::-webkit-slider-thumb {
+      width: 10px;
+      height: 10px;
+      margin-top: -4px;
+      border-radius: 50%;
+      background: var(--color-brand-yellow);
+      appearance: none;
+    }
+
+    &::-moz-range-thumb {
+      width: 10px;
+      height: 10px;
+      border: 0;
+      border-radius: 50%;
+      background: var(--color-brand-yellow);
+    }
+
+    &:focus-visible {
+      outline: var(--focus-outline-width) solid transparent;
+      box-shadow: var(--focus-ring);
+    }
+  }
+
+  &__transcript {
+    justify-self: start;
+    color: inherit;
+    font-size: var(--font-size-body-s);
+    text-decoration: underline;
+    text-underline-offset: var(--link-underline-offset);
+  }
+}

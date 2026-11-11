@@ -1,0 +1,5 @@
+{% set attributes = attributes ?: create_attribute() %}
+<figure {{ attributes.addClass('media-video') }}>
+  <div class="media-video__frame">{% block media %}{{ media }}{% endblock %}</div>
+  {% if caption %}<figcaption class="media-video__caption">{{ caption }}</figcaption>{% endif %}
+</figure>

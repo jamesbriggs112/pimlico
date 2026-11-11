@@ -1,0 +1,28 @@
+'$schema': 'https://git.drupalcode.org/project/drupal/-/raw/HEAD/core/assets/schemas/v1/metadata.schema.json'
+name: Episode row
+status: stable
+description: 'Figma "Episode row": a white-ruled row on dark grey with a play icon, yellow episode number, Fraunces title and duration.'
+libraryOverrides:
+  css:
+    component:
+      episode_row.scss: {}
+props:
+  type: object
+  required:
+    - url
+    - title
+  properties:
+    url:
+      type: string
+      title: URL
+    number:
+      type: string
+      title: Number
+      examples: ['Ep. 04']
+    title:
+      type: string
+      title: Title
+    duration:
+      type: string
+      title: Duration
+      examples: ['38 min']

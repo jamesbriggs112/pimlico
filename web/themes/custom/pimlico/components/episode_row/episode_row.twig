@@ -1,0 +1,7 @@
+{% set attributes = attributes ?: create_attribute() %}
+<a {{ attributes.addClass('episode-row').setAttribute('href', url) }}>
+  <span class="episode-row__icon" aria-hidden="true">{% include 'pimlico:icon' with { name: 'play', size: 16 } only %}</span>
+  {% if number %}<span class="episode-row__number">{{ number }}</span>{% endif %}
+  <span class="episode-row__title">{{ title }}</span>
+  {% if duration %}<span class="episode-row__duration">{{ duration }}</span>{% endif %}
+</a>

@@ -1,0 +1,61 @@
+// Figma "Media / Video" (13:115): 16:9, linen-grey placeholder, an 88px
+// circle with a 1px white outline and white play icon centred (the Media
+// control). Restyles the Plyr player the skeleton uses for video media.
+.media-video {
+  @include pageContainer;
+  margin-block: 0;
+  padding-block: var(--section-space);
+
+  &__frame {
+    aspect-ratio: 16 / 9;
+    overflow: hidden;
+    background-color: var(--color-border-default);
+
+    video,
+    iframe,
+    .plyr {
+      width: 100%;
+      height: 100%;
+    }
+  }
+
+  &__caption {
+    margin-top: var(--space-12);
+    font-size: var(--font-size-body-s);
+    line-height: var(--line-height-body-s);
+  }
+
+  .plyr {
+    --plyr-color-main: var(--color-brand-yellow);
+    --plyr-video-control-color: var(--color-text-inverse);
+    --plyr-video-control-color-hover: var(--color-brand-dark-grey);
+    --plyr-font-family: var(--font-family-body);
+  }
+
+  .plyr__control--overlaid {
+    width: #{to.rem(88px)};
+    height: #{to.rem(88px)};
+    padding: 0;
+    display: grid;
+    place-items: center;
+    border: 1px solid var(--color-text-inverse);
+    background: transparent;
+    color: var(--color-text-inverse);
+
+    svg {
+      width: #{to.rem(20px)};
+      height: #{to.rem(20px)};
+      left: 0;
+    }
+
+    &:hover,
+    &:focus-visible {
+      background: var(--color-text-inverse);
+      color: var(--color-brand-dark-grey);
+    }
+
+    &:focus-visible {
+      box-shadow: var(--focus-ring-on-dark);
+    }
+  }
+}
