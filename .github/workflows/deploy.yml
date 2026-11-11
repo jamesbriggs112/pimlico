@@ -4,19 +4,25 @@ on:
   pull_request:
     types: [closed]
     branches:
-      - main
       - staging
+      - production
 
 jobs:
   build-and-deploy:
+    # Only deploy PRs that were merged, not ones closed without merging.
+    if: github.event.pull_request.merged == true
     runs-on: ubuntu-latest
     strategy:
       matrix:
         node-version: [22]
-    environment: ${{ github.ref == 'refs/heads/main' && 'production' || 'staging' }}
+    # On pull_request events github.ref is the PR merge ref, so pick the
+    # environment from the branch the PR was merged into.
+    environment: ${{ github.base_ref == 'production' && 'production' || 'staging' }}
     steps:
       - name: Checkout code
         uses: actions/checkout@v5
+        with:
+          ref: ${{ github.event.pull_request.merge_commit_sha }}
 
       - name: Install pnpm
         uses: pnpm/action-setup@v4
