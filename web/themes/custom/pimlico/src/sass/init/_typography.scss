@@ -66,6 +66,18 @@ h6,
   letter-spacing: var(--letter-spacing-display-s);
 }
 
+// Body and label styles are always Lato, even on a heading element: an <h2>
+// styled as an eyebrow ("Latest" on News) would otherwise inherit Fraunces
+// and the heading weight from the rule above.
+.body-l,
+.body-m,
+.body-s,
+.eyebrow,
+.label-nav {
+  font-family: var(--body-text);
+  font-variation-settings: normal;
+}
+
 // Body text styles
 .body-l {
   font-size: var(--font-size-body-l);
@@ -76,11 +88,13 @@ h6,
 .body-m {
   font-size: var(--font-size-body-m);
   line-height: var(--line-height-body-m);
+  font-weight: var(--font-weight-regular);
 }
 
 .body-s {
   font-size: var(--font-size-body-s);
   line-height: var(--line-height-body-s);
+  font-weight: var(--font-weight-regular);
 }
 
 // Label styles

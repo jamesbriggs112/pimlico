@@ -3,6 +3,11 @@
 // eyebrow meta; Fraunces Regular 26 white title; 2px progress bar (played
 // yellow, remaining grey at 40%). Without JavaScript the native player shows.
 .audio-player {
+  // Plyr sets its own font from --plyr-font-family, which is empty unless
+  // given; use the site's Lato.
+  --plyr-font-family: var(--body-text);
+  font-family: var(--body-text);
+
   display: flex;
   align-items: center;
   gap: var(--space-24);
