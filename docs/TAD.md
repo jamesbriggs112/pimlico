@@ -181,7 +181,7 @@ Search API with the database backend (Solr isn't needed at this content volume);
 
 Fixed fields:
 
-- **Brand:** title, category, summary, main image.
+- **Brand:** title, category, summary, hero image.
 - **About:** heading, text, pull quote, gallery and photography credit.
 - **What you'll find:** specialisms.
 - **Find the showroom:** address, opening hours, trade note, email, phone, website, accessibility link.
@@ -224,7 +224,7 @@ A shopfront that Brands trade from: name, address, area and its building(s) on t
 
 | Vocabulary | Terms | Used for |
 |---|---|---|
-| Brand category | Home & Interiors, Antiques and art, Soft furnishings and fabrics, Lighting, Food & Drink (with Pubs and restaurants, Cafés) | Brand filters, map filter, card labels. The Brands page groups them as Figma does: Interiors and Antiques & art. |
+| Brand category | Interiors, Antiques & art, Food & Drink (with Pubs and restaurants, Cafés) | The filters on Brands (Interiors, Antiques & art), Dine (Pubs and restaurants, Cafés) and the street map (the three top-level terms), and card labels. Editors choose from the categories the site shows; Food & Drink is a heading, not a choice. |
 | News category | Interiors, Antiques & art, Food & drink, Makers, The street | Story labels and related stories |
 | Area | Pimlico Road, Newson's Yard, Ebury Street, Bourne Street, Holbein Place | Grouping Units |
 
@@ -422,7 +422,7 @@ The admin theme is Gin, branded by the `pimlico_admin` module (Fraunces page tit
 | Module | Responsibility |
 |---|---|
 | `pimlico_map` | The Unit entity, the brand feed at `/api/map/brands`, the map on Brand pages, the Unit map picker, and CloudFront purging of the feed. |
-| `pimlico_brands` | The Brands page category groups from Figma: Interiors (Home & Interiors, Soft furnishings and fabrics, Lighting) and Antiques & art. Used by the filter, card labels and Brand breadcrumbs. |
+| `pimlico_brands` | The Brands and Dine category filters (a contextual filter, so pager links keep `?category=`), card labels and Brand breadcrumbs, and the Brand form's category list grouped as Brands and Dine. |
 | `pimlico_search` | Sorts indexed content into search groups (Brands, Dine, News, Press). |
 | `pimlico_migrate` | Imports Brands, Units and photos from the map project's data and belgraviavillage.com. Uninstalled after launch. |
 | `pimlico_admin` | CMS branding on top of Gin. |

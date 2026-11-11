@@ -22,13 +22,13 @@ final class BrandGroupsTest extends KernelTestBase {
   protected static $modules = ['system', 'user', 'text', 'filter', 'taxonomy', 'node', 'views', 'pimlico_brands'];
 
   /**
-   * Interiors gathers three categories; Food & Drink is in no group.
+   * Each filter is one category; Food & Drink is in no group.
    */
   public function testGroups(): void {
     $this->installEntitySchema('taxonomy_term');
     Vocabulary::create(['vid' => 'brand_category', 'name' => 'Brand category'])->save();
     $terms = [];
-    foreach (['Home & Interiors', 'Soft furnishings and fabrics', 'Lighting', 'Antiques and art', 'Food & Drink'] as $name) {
+    foreach (['Interiors', 'Antiques & art', 'Food & Drink'] as $name) {
       $terms[$name] = Term::create(['vid' => 'brand_category', 'name' => $name]);
       $terms[$name]->save();
     }
@@ -37,21 +37,12 @@ final class BrandGroupsTest extends KernelTestBase {
 
     $groups = $this->container->get(BrandGroups::class);
     $this->assertSame(['interiors', 'antiques-and-art'], array_keys($groups->labels()));
-
-    $interiors = $groups->termIds('interiors');
-    sort($interiors);
-    $expected = [
-      (int) $terms['Home & Interiors']->id(),
-      (int) $terms['Soft furnishings and fabrics']->id(),
-      (int) $terms['Lighting']->id(),
-    ];
-    sort($expected);
-    $this->assertSame($expected, $interiors);
-    $this->assertSame([(int) $terms['Antiques and art']->id()], $groups->termIds('antiques-and-art'));
+    $this->assertSame([(int) $terms['Interiors']->id()], $groups->termIds('interiors'));
+    $this->assertSame([(int) $terms['Antiques & art']->id()], $groups->termIds('antiques-and-art'));
     $this->assertSame([], $groups->termIds('food'));
 
-    $this->assertSame('Interiors', $groups->labelFor($terms['Lighting']));
-    $this->assertSame('Antiques & art', $groups->labelFor($terms['Antiques and art']));
+    $this->assertSame('Interiors', $groups->labelFor($terms['Interiors']));
+    $this->assertSame('Antiques & art', $groups->labelFor($terms['Antiques & art']));
     $this->assertNull($groups->groupFor($cafes));
     $this->assertSame('Cafés', $groups->labelFor($cafes));
   }

@@ -7,3 +7,4 @@ dependencies:
   - search_api:search_api
   - drupal:node
   - drupal:taxonomy
+  - drupal:path_alias

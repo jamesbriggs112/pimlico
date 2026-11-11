@@ -10,7 +10,7 @@ id: node.brand.field_image
 field_name: field_image
 entity_type: node
 bundle: brand
-label: 'Shopfront image'
+label: 'Hero image'
 description: 'Portrait (4:5). Shown in the hero and on cards.'
 required: true
 translatable: true

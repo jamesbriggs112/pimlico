@@ -500,7 +500,7 @@ taxonomies:
       vid: brand_category
       tid: '2'
       langcode: en
-      name: 'Antiques and art'
+      name: 'Antiques & art'
       description__value: null
       description__format: null
       weight: '1'
@@ -523,29 +523,19 @@ taxonomies:
       name: 'Food & Drink'
       description__value: null
       description__format: null
-      weight: '4'
+      weight: '2'
       parent: '0'
       uuid: 0d9117e8-f4ea-4d7d-81b2-86a2821cf0ab
     -
       vid: brand_category
       tid: '1'
       langcode: en
-      name: 'Home & Interiors'
+      name: Interiors
       description__value: null
       description__format: null
       weight: '0'
       parent: '0'
       uuid: c233084f-986d-4f08-99a7-d364b2d2905d
-    -
-      vid: brand_category
-      tid: '4'
-      langcode: en
-      name: Lighting
-      description__value: null
-      description__format: null
-      weight: '3'
-      parent: '0'
-      uuid: b65df053-308a-4706-892b-65146fa444bd
     -
       vid: brand_category
       tid: '16'
@@ -556,17 +546,6 @@ taxonomies:
       weight: '0'
       parent: '5'
       uuid: 85590ad0-3075-4852-b6d1-429a58042d52
-    -
-      vid: brand_category
-      tid: '3'
-      langcode: en
-      name: 'Soft furnishings and fabrics'
-      description__value: null
-      description__format: null
-      weight: '2'
-      parent: '0'
-      uuid: b0281f07-1584-48cf-9269-fe78176d9dcb
-  image_paragraph_styles: {  }
   news_category:
     -
       vid: news_category
@@ -618,4 +597,3 @@ taxonomies:
       weight: '4'
       parent: '0'
       uuid: 9d46879b-8298-4256-9e69-4da677c274f4
-  paragraph_styles: {  }

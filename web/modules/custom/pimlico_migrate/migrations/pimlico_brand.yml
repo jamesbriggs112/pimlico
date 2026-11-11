@@ -44,12 +44,19 @@ process:
   status: constants/status
   moderation_state: constants/published
   field_brand_category:
-    plugin: entity_lookup
-    source: category
-    entity_type: taxonomy_term
-    bundle_key: vid
-    bundle: brand_category
-    value_key: name
+    - plugin: static_map
+      source: category
+      bypass: true
+      map:
+        'Home & Interiors': Interiors
+        'Soft furnishings and fabrics': Interiors
+        Lighting: Interiors
+        'Antiques and art': 'Antiques & art'
+    - plugin: entity_lookup
+      entity_type: taxonomy_term
+      bundle_key: vid
+      bundle: brand_category
+      value_key: name
   field_summary: summary
   field_opening_hours: opening_hours
   field_website/uri:

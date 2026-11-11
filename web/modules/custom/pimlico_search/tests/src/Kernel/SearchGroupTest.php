@@ -24,7 +24,7 @@ final class SearchGroupTest extends KernelTestBase {
    * {@inheritdoc}
    */
   protected static $modules = [
-    'system', 'user', 'node', 'field', 'text', 'filter', 'taxonomy',
+    'system', 'path_alias', 'user', 'node', 'field', 'text', 'filter', 'taxonomy',
     'search_api', 'pimlico_search',
   ];
 

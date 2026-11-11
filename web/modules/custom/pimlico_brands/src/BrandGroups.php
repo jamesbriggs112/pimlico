@@ -9,12 +9,11 @@ use Drupal\Core\StringTranslation\StringTranslationTrait;
 use Drupal\taxonomy\TermInterface;
 
 /**
- * The Brands page's category groups, as in Figma (T02).
+ * The Brands page's category filters, as in Figma (T02).
  *
- * Figma's Brands filter has two categories, "Interiors" and "Antiques &
- * art", while Brands are filed under finer Brand Categories (which the map
- * uses). Each group gathers top-level categories; Food & Drink is on Dine
- * and belongs to none.
+ * Each filter is a top-level Brand Category (Interiors, Antiques & art) and
+ * its sub-categories, if it ever has any. Food & Drink is on Dine and
+ * belongs to none. Keys are the ?category= values in the URL.
  */
 final class BrandGroups {
 
@@ -24,8 +23,8 @@ final class BrandGroups {
    * Group key => top-level Brand Category names, in filter order.
    */
   private const GROUPS = [
-    'interiors' => ['Home & Interiors', 'Soft furnishings and fabrics', 'Lighting'],
-    'antiques-and-art' => ['Antiques and art'],
+    'interiors' => ['Interiors'],
+    'antiques-and-art' => ['Antiques & art'],
   ];
 
   public function __construct(

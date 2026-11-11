@@ -34,7 +34,7 @@ if (!$photos) {
 
 // Category sample copy, keyed by top-level Brand Category.
 $copy = [
-  'Home & Interiors' => [
+  'Interiors' => [
     'heading' => 'Rooms that look as though they have always been there, made with fabrics, colour and furniture chosen over years',
     'more' => 'The showroom is set out as a sequence of rooms rather than a shop floor, so pieces can be seen together and at their true scale. Visit to see the current collection and talk through a project.',
     'specialisms' => [
@@ -43,7 +43,7 @@ $copy = [
       ['Interior projects', 'Whole houses and single rooms'],
     ],
   ],
-  'Antiques and art' => [
+  'Antiques & art' => [
     'heading' => 'Pieces with a past, chosen with a dealer’s eye and shown as they would live in a house',
     'more' => 'Stock changes often, and much of it never reaches a catalogue, so the showroom is the place to see what is new. The team can advise on provenance, care and placing a piece.',
     'specialisms' => [
@@ -52,24 +52,8 @@ $copy = [
       ['Sourcing', 'Help finding a particular piece'],
     ],
   ],
-  'Soft furnishings and fabrics' => [
-    'heading' => 'Cloth, colour and pattern, to see and handle before it becomes curtains, cushions and upholstery',
-    'more' => 'Fabrics are hung and folded so you can see how they drape and how colours sit together. Bring swatches, paint colours or a plan of the room.',
-    'specialisms' => [
-      ['Fabrics', 'Printed, woven and plain'],
-      ['Linens & bedding', 'For every room in the house'],
-      ['Made to measure', 'Curtains, blinds and cushions'],
-    ],
-  ],
-  'Lighting' => [
-    'heading' => 'Light made to be lived with, from table lamps to pieces that hold a whole room together',
-    'more' => 'Seeing a light switched on in a room tells you more than any photograph, so the showroom is lit as a house would be. The team can help with scale, finish and placing.',
-    'specialisms' => [
-      ['Pendants & chandeliers', 'For halls, stairs and dining rooms'],
-      ['Wall & table lights', 'Finishes to see in person'],
-      ['Bespoke', 'Sizes and finishes made to order'],
-    ],
-  ],
+
+
   'Food & Drink' => [
     'heading' => 'Somewhere to stop on Pimlico Road, between showrooms or at the end of the day',
     'more' => 'Check opening times before you visit, and book ahead for larger tables.',
@@ -94,7 +78,7 @@ foreach ($brands as $brand) {
     $parents = $terms->loadAllParents($category->id());
     $category = end($parents) ?: $category;
   }
-  $c = $copy[$category ? $category->label() : ''] ?? $copy['Home & Interiors'];
+  $c = $copy[$category ? $category->label() : ''] ?? $copy['Interiors'];
   $summary = trim((string) $brand->get('field_summary')->value);
   $address = $brand->get('field_address')->first();
   $street = $address ? trim($address->getAddressLine1()) : '';

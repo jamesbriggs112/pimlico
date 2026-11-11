@@ -8,9 +8,6 @@ dependencies:
     - taxonomy.vocabulary.brand_category
   content:
     - 'block_content:promo:5f1eb665-003e-4c93-ab95-7691e97561b3'
-    - 'taxonomy_term:brand_category:0d9117e8-f4ea-4d7d-81b2-86a2821cf0ab'
-    - 'taxonomy_term:brand_category:85590ad0-3075-4852-b6d1-429a58042d52'
-    - 'taxonomy_term:brand_category:da9f3fae-4f5b-4651-8ea7-04e031907791'
   module:
     - node
     - taxonomy
@@ -360,7 +357,18 @@ display:
           entity_field: title
           plugin_id: standard
           order: ASC
-      arguments: {  }
+      arguments:
+        field_brand_category_target_id:
+          id: field_brand_category_target_id
+          table: node__field_brand_category
+          field: field_brand_category_target_id
+          admin_label: 'Category group (set by pimlico_brands)'
+          plugin_id: entity_target_id
+          default_action: ignore
+          specify_validation: false
+          break_phrase: true
+          not: false
+          target_entity_type_id: taxonomy_term
       filters:
         status:
           id: status
@@ -382,60 +390,6 @@ display:
           value:
             brand: brand
           group: 1
-        field_brand_category_target_id:
-          id: field_brand_category_target_id
-          table: node__field_brand_category
-          field: field_brand_category_target_id
-          plugin_id: taxonomy_index_tid
-          operator: or
-          value:
-            5: 5
-            16: 16
-            17: 17
-          group: 1
-          exposed: false
-          expose:
-            operator_id: field_brand_category_target_id_op
-            label: Category
-            use_operator: false
-            operator: field_brand_category_target_id_op
-            identifier: field_brand_category_target_id
-            required: false
-            remember: false
-            multiple: false
-            reduce: false
-          vid: brand_category
-          type: select
-          hierarchy: false
-          limit: true
-          error_message: true
-        field_brand_category_target_id_1:
-          id: field_brand_category_target_id_1
-          table: node__field_brand_category
-          field: field_brand_category_target_id
-          plugin_id: taxonomy_index_tid
-          operator: or
-          value:
-            5: 5
-            16: 16
-            17: 17
-          group: 1
-          exposed: true
-          expose:
-            operator_id: field_brand_category_target_id_1_op
-            label: Category
-            use_operator: false
-            operator: field_brand_category_target_id_1_op
-            identifier: category
-            required: false
-            remember: false
-            multiple: false
-            reduce: true
-          vid: brand_category
-          type: select
-          hierarchy: false
-          limit: true
-          error_message: true
       filter_groups:
         operator: AND
         groups:
