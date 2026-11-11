@@ -7,7 +7,7 @@ Phase 7 of the build plan. Automated checks were run locally on 11 November 2026
 | Check | Result |
 |---|---|
 | Security advisories (`composer audit`) | None. Updated Drupal core 11.4.7 → 11.4.12 (one critical remote code execution, two XSS) and CAPTCHA, Easy Breadcrumb, Gin, Linked Field, Webform, SVG Image and Symfony packages. `drush updatedb` run. |
-| Accessibility: axe, WCAG 2.2 AA | No violations on 17 templates at 1440 and 390. Fixed: pumpkin text was 3:1 (now `--color-brand-pumpkin-text` #a64f00, 5:1); yellow eyebrows on dark bands lost to the global eyebrow colour; info rows were invalid `<dl>` markup. |
+| Accessibility: axe, WCAG 2.2 AA | No violations on 17 templates at 1440 and 390, except eyebrow colour: the client chose the design orange #e87400 (3:1 on white, below AA for small text) over the AA-passing #a64f00. Fixed: yellow eyebrows on dark bands lost to the global eyebrow colour; info rows were invalid `<dl>` markup. |
 | Keyboard | Skip link first; every stop on Home, Contact and a Brand page has a visible focus style. |
 | 200% zoom (720px) and 390px | No sideways scroll on any template. Fixed: visually hidden text in the gallery and card swipe tracks widened Brand pages to 2,000px+. |
 | Reduced motion | The hero film never starts; Play is available. |

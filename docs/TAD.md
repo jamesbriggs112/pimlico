@@ -392,7 +392,7 @@ Rules:
 
 Design tokens from the Figma variables are CSS custom properties in `src/sass/init/_root.scss`:
 
-- **Palette:** dark grey `#394959`, yellow `#f9e577`, pumpkin `#e87400`, and pumpkin for text `#a64f00`. The text pumpkin meets WCAG AA contrast on white and linen.
+- **Palette:** dark grey `#394959`, yellow `#f9e577`, pumpkin `#e87400`, with eyebrows in pumpkin `#e87400` at the client's request. That is 3:1 on white, below the WCAG AA 4.5:1 for small text; `#a64f00` (5:1) is kept as a token if this is revisited.
 - **Linens:** `#f4f2eb` and `#ece9df`.
 - **Layout:** a 1280px page width and fluid spacing between 390px and 1440px.
 
