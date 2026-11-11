@@ -8,7 +8,7 @@
   {% if value %}<dd class="info-row__value">{% block value %}{{ value }}{% endblock %}</dd>{% endif %}
   {% if link_text and link_url %}
     <dd class="info-row__action">
-      {% include 'pimlico:text_link' with { text: link_text, url: link_url, arrow: true } only %}
+      {% include 'pimlico:text_link' with { text: link_text, url: link_url } only %}
     </dd>
   {% endif %}
 </div>
