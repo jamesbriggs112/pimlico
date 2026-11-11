@@ -130,7 +130,8 @@ $page('Newson’s Yard', '/newsons-yard', 'A timber yard, reopened to makers.', 
     'field_eyebrow' => 'Introduction',
     'field_heading' => 'About Newson’s Yard',
     'field_text' => $text('<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p><p>Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat duis aute.</p>'),
-    'field_images' => [$media['gallery-1-landscape']],
+    // No images: the centred layout (Figma 23:763), with the film below.
+    'field_video' => $film,
   ]),
   $visit_banner('Visit Newson’s Yard', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit sed do eiusmod.', 'Plan your visit', '/visit'),
 ]);

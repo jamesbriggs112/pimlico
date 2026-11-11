@@ -70,6 +70,7 @@
     "drupal/structure_sync": "^2.0",
     "drupal/svg_image": "^3.0",
     "drupal/token_filter": "^2.0",
+    "drupal/token_or": "^2.3",
     "drupal/twig_tweak": "^3.3",
     "drupal/vitals": "^2.5",
     "drupal/vite": "^1.5",

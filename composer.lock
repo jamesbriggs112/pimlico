@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "9fa76a6648c99d66e9b9d96350fb377d",
+    "content-hash": "330653352cf7d71799b1a7e7f710580c",
     "packages": [
         {
             "name": "asm89/stack-cors",
@@ -5180,6 +5180,63 @@
             "support": {
                 "source": "https://git.drupalcode.org/project/token_filter"
             }
+        },
+        {
+            "name": "drupal/token_or",
+            "version": "2.3.4",
+            "source": {
+                "type": "git",
+                "url": "https://git.drupalcode.org/project/token_or.git",
+                "reference": "2.3.4"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://ftp.drupal.org/files/projects/token_or-2.3.4.zip",
+                "reference": "2.3.4",
+                "shasum": "5fe02b635d6935522a237e75523fe4d93bb1fc64"
+            },
+            "require": {
+                "drupal/core": "^9.2 || ^10 || ^11",
+                "drupal/token": "^1.0"
+            },
+            "require-dev": {
+                "drupal/webform": "*"
+            },
+            "type": "drupal-module",
+            "extra": {
+                "drupal": {
+                    "version": "2.3.4",
+                    "datestamp": "1793105851",
+                    "security-coverage": {
+                        "status": "covered",
+                        "message": "Covered by Drupal's security advisory policy"
+                    }
+                }
+            },
+            "notification-url": "https://packages.drupal.org/8/downloads",
+            "license": [
+                "GPL-2.0-or-later"
+            ],
+            "authors": [
+                {
+                    "name": "danielbeeke",
+                    "homepage": "https://www.drupal.org/user/2484978"
+                },
+                {
+                    "name": "jeroent",
+                    "homepage": "https://www.drupal.org/user/2228934"
+                },
+                {
+                    "name": "pianomansam",
+                    "homepage": "https://www.drupal.org/user/407020"
+                }
+            ],
+            "description": "Provides an 'or-able' token.",
+            "homepage": "https://www.drupal.org/project/token_or",
+            "support": {
+                "source": "https://git.drupalcode.org/project/token_or"
+            },
+            "published-time": "2026-10-27T12:57:10+00:00"
         },
         {
             "name": "drupal/twig_tweak",
