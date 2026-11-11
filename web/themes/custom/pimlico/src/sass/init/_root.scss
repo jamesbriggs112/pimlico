@@ -344,14 +344,6 @@
   --messages-info-background-color: var(--color-info);
   --messages-info-text-color: var(--color-info-text);
 
-  // Embla
-  --embla-theme-color: black;
-  --embla-navigation-color: var(--color-white);
-  --embla-navigation-background: var(--color-primary);
-  --embla-navigation-size: #{to.rem(24px)};
-  --embla-navigation-radius: 50%;
-  --embla-navigation-sides-offset: calc(-1 * var(--embla-navigation-size));
-
   // Plyr
   --plyr-color-main: var(--color-primary);
   --plyr-color-main-hover: var(--color-primary-hover);

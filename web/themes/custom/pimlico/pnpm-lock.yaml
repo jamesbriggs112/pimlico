@@ -8,9 +8,6 @@ importers:
 
   .:
     dependencies:
-      embla-carousel:
-        specifier: ^8.6.0
-        version: 8.6.0
       sass-embedded:
         specifier: ^1.97.0
         version: 1.97.0
@@ -54,9 +51,6 @@ importers:
       prettier:
         specifier: ^3.7.4
         version: 3.7.4
-      rollup-plugin-multi-input:
-        specifier: ^1.6.0
-        version: 1.6.0
       sass:
         specifier: ^1.97.0
         version: 1.97.0
@@ -1525,9 +1519,6 @@ packages:
   electron-to-chromium@1.5.267:
     resolution: {integrity: sha512-0Drusm6MVRXSOJpGbaSVgcQsuB4hEkMpHXaVstcPmhu5LIedxs1xNK/nIxmQIU/RPC0+1/o0AVZfBTkTNJOdUw==}
 
-  embla-carousel@8.6.0:
-    resolution: {integrity: sha512-SjWyZBHJPbqxHOzckOfo8lHisEaJWmwd23XppYFYVh10bU66/Pn5tkVkbkCMZVdbUE5eTCI2nD8OyIP4Z+uwkA==}
-
   emoji-regex@8.0.0:
     resolution: {integrity: sha512-MSjYzcWNOA0ewAHpz0MxpYFvwg6yjy1NG3xteoqz644VCo/RPgnr1/GGt+ic3iJTzQ8Eu3TdM14SawnVUmGE6A==}
 
@@ -2265,10 +2256,6 @@ packages:
   reusify@1.0.4:
     resolution: {integrity: sha512-U9nH88a3fc/ekCF1l0/UP1IosiuIjyTh7hBvXVMHYgVcfGvt897Xguj2UOLDeI5BG2m7/uwyaLVT6fbtCwTyzw==}
     engines: {iojs: '>=1.0.0', node: '>=0.10.0'}
-
-  rollup-plugin-multi-input@1.6.0:
-    resolution: {integrity: sha512-4m+YggEiRavXMidP4eSzJLcwp0wQ7rHBtihlBuYDwVC35GA8LT7xoHlW9bW9kw/T2B0bDSoCLZfI5xJh01qhvg==}
-    engines: {node: '>=16'}
 
   rollup@4.52.5:
     resolution: {integrity: sha512-3GuObel8h7Kqdjt0gxkEzaifHTqLVW56Y/bjN7PSQtkKr0w3V/QYSdt6QWYtd7A1xUtYQigtdUfgj1RvWVtorw==}
@@ -4144,8 +4131,6 @@ snapshots:
 
   electron-to-chromium@1.5.267: {}
 
-  embla-carousel@8.6.0: {}
-
   emoji-regex@8.0.0: {}
 
   emoji-regex@9.2.2: {}
@@ -4915,10 +4900,6 @@ snapshots:
   resolve-from@4.0.0: {}
 
   reusify@1.0.4: {}
-
-  rollup-plugin-multi-input@1.6.0:
-    dependencies:
-      fast-glob: 3.3.2
 
   rollup@4.52.5:
     dependencies:

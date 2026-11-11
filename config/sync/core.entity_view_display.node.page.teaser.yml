@@ -5,7 +5,6 @@ dependencies:
   config:
     - core.entity_view_mode.node.teaser
     - field.field.node.page.body
-    - field.field.node.page.field_banner
     - field.field.node.page.field_sections
     - field.field.node.page.field_seo_description
     - field.field.node.page.field_seo_image
@@ -44,7 +43,6 @@ content:
 hidden:
   body: true
   content_moderation_control: true
-  field_banner: true
   field_sections: true
   field_seo_description: true
   field_seo_social_media_title: true

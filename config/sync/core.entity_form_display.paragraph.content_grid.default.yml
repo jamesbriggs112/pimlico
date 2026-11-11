@@ -10,12 +10,10 @@ dependencies:
     - field.field.paragraph.content_grid.field_heading
     - field.field.paragraph.content_grid.field_link
     - field.field.paragraph.content_grid.field_text
-    - field.field.paragraph.content_grid.field_view
     - paragraphs.paragraphs_type.content_grid
   module:
     - link
     - text
-    - viewfield
 id: paragraph.content_grid.default
 targetEntityType: paragraph
 bundle: content_grid
@@ -70,12 +68,6 @@ content:
     settings:
       rows: 5
       placeholder: ''
-    third_party_settings: {  }
-  field_view:
-    type: viewfield_select
-    weight: 0
-    region: content
-    settings: {  }
     third_party_settings: {  }
 hidden:
   created: true

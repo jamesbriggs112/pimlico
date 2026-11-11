@@ -1,8 +1,0 @@
-{% set attributes = attributes ?: create_attribute() %}
-<a {{ attributes.addClass('story-row').setAttribute('href', url) }}>
-  <div class="story-row__media">{% block image %}{{ image }}{% endblock %}</div>
-  <div class="story-row__body">
-    {% if meta %}<p class="story-row__meta">{{ meta }}</p>{% endif %}
-    <h3 class="story-row__title">{{ title }}</h3>
-  </div>
-</a>

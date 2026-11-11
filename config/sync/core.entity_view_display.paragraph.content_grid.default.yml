@@ -10,14 +10,12 @@ dependencies:
     - field.field.paragraph.content_grid.field_heading
     - field.field.paragraph.content_grid.field_link
     - field.field.paragraph.content_grid.field_text
-    - field.field.paragraph.content_grid.field_view
     - paragraphs.paragraphs_type.content_grid
   module:
     - fences
     - field_group
     - link
     - text
-    - viewfield
 third_party_settings:
   field_group:
     group_grid:
@@ -125,25 +123,6 @@ content:
         fences_field_item_tag: none
         fences_field_item_classes: ''
         fences_label_tag: ''
-        fences_label_classes: ''
-    weight: 2
-    region: content
-  field_view:
-    type: viewfield_default
-    label: hidden
-    settings:
-      view_title: hidden
-      always_build_output: true
-      empty_view_title: hidden
-    third_party_settings:
-      fences:
-        fences_field_tag: none
-        fences_field_classes: ''
-        fences_field_items_wrapper_tag: none
-        fences_field_items_wrapper_classes: ''
-        fences_field_item_tag: none
-        fences_field_item_classes: ''
-        fences_label_tag: none
         fences_label_classes: ''
     weight: 2
     region: content
