@@ -1,0 +1,10 @@
+uuid: 7ab692db-1f03-43fc-909e-7b8f92d3d402
+langcode: en
+status: true
+dependencies: {  }
+id: info_rows
+label: 'Info rows'
+icon_uuid: null
+icon_default: null
+description: 'Heading on the left, ruled rows of title and text on the right, such as "Getting here".'
+behavior_plugins: {  }

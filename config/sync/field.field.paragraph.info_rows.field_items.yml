@@ -1,0 +1,30 @@
+uuid: ded270b8-e442-4053-8319-a3ef60b6ee30
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_items
+    - paragraphs.paragraphs_type.info_rows
+  module:
+    - entity_reference_revisions
+id: paragraph.info_rows.field_items
+field_name: field_items
+entity_type: paragraph
+bundle: info_rows
+label: Rows
+description: ''
+required: true
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:paragraph'
+  handler_settings:
+    target_bundles:
+      info_row: info_row
+    negate: 0
+    target_bundles_drag_drop:
+      info_row:
+        weight: 0
+        enabled: true
+field_type: entity_reference_revisions

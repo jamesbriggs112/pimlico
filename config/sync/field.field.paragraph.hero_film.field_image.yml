@@ -1,0 +1,24 @@
+uuid: 8c514ea9-df6c-4d95-b8b8-852c8395a9ff
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_image
+    - media.type.image
+    - paragraphs.paragraphs_type.hero_film
+id: paragraph.hero_film.field_image
+field_name: field_image
+entity_type: paragraph
+bundle: hero_film
+label: 'Poster image'
+description: 'Shown before the film plays, and instead of it for people who prefer reduced motion.'
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:media'
+  handler_settings:
+    target_bundles:
+      image: image
+field_type: entity_reference

@@ -1,0 +1,19 @@
+uuid: f086532f-70f3-4374-829f-1ee323c7e46c
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_heading
+    - paragraphs.paragraphs_type.visit_banner
+id: paragraph.visit_banner.field_heading
+field_name: field_heading
+entity_type: paragraph
+bundle: visit_banner
+label: Heading
+description: ''
+required: true
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

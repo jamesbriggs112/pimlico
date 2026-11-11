@@ -1,0 +1,35 @@
+uuid: 49d87291-920a-4b70-9618-05b53a5eeced
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.paragraph.info_row.field_heading
+    - field.field.paragraph.info_row.field_link
+    - field.field.paragraph.info_row.field_text
+    - paragraphs.paragraphs_type.info_row
+id: paragraph.info_row.default
+targetEntityType: paragraph
+bundle: info_row
+mode: default
+content:
+  field_heading:
+    type: string_textfield
+    weight: 0
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+  field_link:
+    type: link_default
+    weight: 2
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+  field_text:
+    type: text_textarea
+    weight: 1
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+hidden:
+  created: true
+  status: true

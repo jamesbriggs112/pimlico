@@ -1,0 +1,23 @@
+uuid: 490cc3c5-d6de-4d84-a08a-2f6b9b010074
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_content
+    - paragraphs.paragraphs_type.content_grid
+id: paragraph.content_grid.field_content
+field_name: field_content
+entity_type: paragraph
+bundle: content_grid
+label: Items
+description: 'Hand-picked items, shown as cards. Leave empty to use the listing below.'
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:node'
+  handler_settings:
+    target_bundles: null
+    auto_create: false
+field_type: entity_reference

@@ -1,0 +1,10 @@
+uuid: 8e95d6df-729a-43c6-ada5-ea5abbf00553
+langcode: en
+status: true
+dependencies: {  }
+id: visit_banner
+label: 'Visit banner'
+icon_uuid: null
+icon_default: null
+description: 'Photograph beside a dark panel with a heading and button, such as "Plan your visit".'
+behavior_plugins: {  }

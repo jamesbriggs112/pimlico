@@ -11,7 +11,7 @@ third_party_settings:
 _core:
   default_config_hash: tfIdDUxJcNtCR4e2W07eV3Lq3m0gQrccmdtlxN2vH0s
 id: text_wysiwyg_
-label: 'Text (WYSIWYG)'
+label: 'Rich text'
 icon_uuid: null
 icon_default: null
 description: ''

@@ -3,12 +3,19 @@ langcode: en
 status: true
 dependencies:
   config:
+    - field.field.paragraph.content_grid.field_anchor
+    - field.field.paragraph.content_grid.field_content
+    - field.field.paragraph.content_grid.field_eyebrow
     - field.field.paragraph.content_grid.field_heading
+    - field.field.paragraph.content_grid.field_link
+    - field.field.paragraph.content_grid.field_text
     - field.field.paragraph.content_grid.field_view
     - paragraphs.paragraphs_type.content_grid
   module:
     - fences
     - field_group
+    - link
+    - text
     - viewfield
 third_party_settings:
   field_group:
@@ -48,6 +55,38 @@ targetEntityType: paragraph
 bundle: content_grid
 mode: default
 content:
+  field_anchor:
+    type: string
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+    weight: 4
+    region: content
+  field_content:
+    type: entity_reference_entity_view
+    label: hidden
+    settings:
+      view_mode: teaser
+      link: false
+    third_party_settings:
+      fences:
+        fences_field_tag: none
+        fences_field_classes: ''
+        fences_field_items_wrapper_tag: none
+        fences_field_items_wrapper_classes: ''
+        fences_field_item_tag: none
+        fences_field_item_classes: ''
+        fences_label_tag: ''
+        fences_label_classes: ''
+    weight: 5
+    region: content
+  field_eyebrow:
+    type: string
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+    weight: 0
+    region: content
   field_heading:
     type: string
     label: hidden
@@ -64,6 +103,29 @@ content:
         fences_label_tag: none
         fences_label_classes: ''
     weight: 0
+    region: content
+  field_link:
+    type: link
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+    weight: 3
+    region: content
+  field_text:
+    type: text_default
+    label: hidden
+    settings: {  }
+    third_party_settings:
+      fences:
+        fences_field_tag: none
+        fences_field_classes: ''
+        fences_field_items_wrapper_tag: none
+        fences_field_items_wrapper_classes: ''
+        fences_field_item_tag: none
+        fences_field_item_classes: ''
+        fences_label_tag: ''
+        fences_label_classes: ''
+    weight: 2
     region: content
   field_view:
     type: viewfield_default

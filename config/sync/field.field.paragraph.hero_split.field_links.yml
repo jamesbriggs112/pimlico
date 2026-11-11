@@ -1,0 +1,23 @@
+uuid: 637ed135-6273-4b4a-b1aa-df10aece57cc
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_links
+    - paragraphs.paragraphs_type.hero_split
+  module:
+    - link
+id: paragraph.hero_split.field_links
+field_name: field_links
+entity_type: paragraph
+bundle: hero_split
+label: Buttons
+description: 'Up to three buttons. The first is the lead action.'
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings:
+  title: 2
+  link_type: 17
+field_type: link

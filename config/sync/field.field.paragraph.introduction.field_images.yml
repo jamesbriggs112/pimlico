@@ -1,0 +1,24 @@
+uuid: 2f7d70f1-980f-4752-bfca-b7ccf91cc556
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_images
+    - media.type.image
+    - paragraphs.paragraphs_type.introduction
+id: paragraph.introduction.field_images
+field_name: field_images
+entity_type: paragraph
+bundle: introduction
+label: Images
+description: 'Two photographs make the collage: the first large, the second small. Leave empty for a centred introduction.'
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:media'
+  handler_settings:
+    target_bundles:
+      image: image
+field_type: entity_reference

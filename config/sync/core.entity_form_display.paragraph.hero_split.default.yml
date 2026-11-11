@@ -1,0 +1,55 @@
+uuid: 7890dd54-ef7b-481c-b4d2-4a7993a2dbc2
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.paragraph.hero_split.field_eyebrow
+    - field.field.paragraph.hero_split.field_heading
+    - field.field.paragraph.hero_split.field_image
+    - field.field.paragraph.hero_split.field_links
+    - field.field.paragraph.hero_split.field_text
+    - paragraphs.paragraphs_type.hero_split
+  module:
+    - link
+    - media_library
+    - text
+id: paragraph.hero_split.default
+targetEntityType: paragraph
+bundle: hero_split
+mode: default
+content:
+  field_eyebrow:
+    type: string_textfield
+    weight: 0
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+  field_heading:
+    type: string_textfield
+    weight: 1
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+  field_image:
+    type: media_library_widget
+    weight: 4
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+  field_links:
+    type: link_default
+    weight: 3
+    region: content
+    settings:
+      placeholder_url: ''
+      placeholder_title: ''
+    third_party_settings: {  }
+  field_text:
+    type: text_textarea
+    weight: 2
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+hidden:
+  created: true
+  status: true

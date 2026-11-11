@@ -10,6 +10,7 @@ dependencies:
     - field.field.node.page.field_seo_image
     - field.field.node.page.field_seo_social_media_title
     - field.field.node.page.field_seo_title
+    - field.field.node.page.field_summary
     - node.type.page
     - workflows.workflow.content_moderation
   module:
@@ -175,6 +176,14 @@ content:
       size: 60
       placeholder: ''
     third_party_settings: {  }
+  field_summary:
+    type: string_textarea
+    weight: 1
+    region: content
+    settings:
+      rows: 3
+      placeholder: ''
+    third_party_settings: {  }
   langcode:
     type: language_select
     weight: 2
@@ -200,6 +209,11 @@ content:
     region: content
     settings:
       display_label: true
+    third_party_settings: {  }
+  simple_sitemap:
+    weight: 10
+    region: content
+    settings: {  }
     third_party_settings: {  }
   status:
     type: boolean_checkbox

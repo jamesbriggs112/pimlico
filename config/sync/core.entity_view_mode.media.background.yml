@@ -1,0 +1,11 @@
+uuid: fc2f371c-d8e1-4e5b-8ab2-683aa28423dd
+langcode: en
+status: true
+dependencies:
+  module:
+    - media
+id: media.background
+label: 'Background film'
+description: 'Silent looping film behind a hero: autoplay, muted, no controls.'
+targetEntityType: media
+cache: true

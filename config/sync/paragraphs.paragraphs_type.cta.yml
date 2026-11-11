@@ -11,7 +11,7 @@ third_party_settings:
 _core:
   default_config_hash: 8WGf0ivp19IJyTLQ9LWzDCP8GREGIGQaAkRpEjc11rQ
 id: cta
-label: CTA
+label: 'Next step'
 icon_uuid: null
 icon_default: null
 description: ''

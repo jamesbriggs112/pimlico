@@ -1,0 +1,19 @@
+uuid: 74ab43a8-fbbe-4f7d-bb3f-2e49b94d68e9
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_eyebrow
+    - paragraphs.paragraphs_type.hero_film
+id: paragraph.hero_film.field_eyebrow
+field_name: field_eyebrow
+entity_type: paragraph
+bundle: hero_film
+label: Eyebrow
+description: 'The small orange label above the heading.'
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

@@ -1,20 +1,18 @@
-uuid: b26df1c4-2e31-4869-8613-2211f5832b63
+uuid: 66976c95-d66b-4e0f-a5be-22e5e241cbfd
 langcode: en
 status: true
 dependencies:
   config:
     - field.storage.paragraph.field_link
-    - paragraphs.paragraphs_type.cta
+    - paragraphs.paragraphs_type.feature_banner
   module:
     - link
-_core:
-  default_config_hash: vODJib9-6Dd7EmKkhIMuXy-pJet5YSVkzphvS6P8U7I
-id: paragraph.cta.field_link
+id: paragraph.feature_banner.field_link
 field_name: field_link
 entity_type: paragraph
-bundle: cta
+bundle: feature_banner
 label: Link
-description: ''
+description: 'The button or link label and destination.'
 required: false
 translatable: true
 default_value: {  }

@@ -1,0 +1,21 @@
+uuid: 1fe62c60-5485-4cd9-8d3d-fb29ab3ebef9
+langcode: en
+status: true
+dependencies:
+  module:
+    - paragraphs
+id: paragraph.field_anchor
+field_name: field_anchor
+entity_type: paragraph
+type: string
+settings:
+  max_length: 64
+  case_sensitive: false
+  is_ascii: false
+module: core
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

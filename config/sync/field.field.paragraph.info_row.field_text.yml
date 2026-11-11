@@ -1,0 +1,22 @@
+uuid: e16d411c-b62b-443c-a53f-3fecfd5df1fe
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_text
+    - paragraphs.paragraphs_type.info_row
+  module:
+    - text
+id: paragraph.info_row.field_text
+field_name: field_text
+entity_type: paragraph
+bundle: info_row
+label: Text
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings:
+  allowed_formats: {  }
+field_type: text_long

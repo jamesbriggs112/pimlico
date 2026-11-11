@@ -13,8 +13,8 @@ field_name: field_view
 entity_type: paragraph
 bundle: content_grid
 label: View
-description: ''
-required: true
+description: 'A listing, such as the latest news. Used when no items are picked above.'
+required: false
 translatable: false
 default_value:
   -
