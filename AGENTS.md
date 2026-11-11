@@ -1,6 +1,6 @@
 # Agent Instructions for Pimlico Road
 
-- Dev site url is https://pimlico.test
+- Dev site url is http://localhost:8888, served by `scripts/serve.sh` (PHP built-in server, no Valet yet). See `docs/local-development.md`; run Drush with PHP 8.4 as shown there.
 - In development the theme is using pnpm dev so assume this is already running there is never any need to run pnpm build or pnpm dev
 - Always use css vars over sass vars
 - Never modify contributed modules
