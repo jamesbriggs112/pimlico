@@ -67,16 +67,31 @@ Build each SDC, then its paragraph type and the thin `paragraph--*.html.twig` ad
 
 | # | Step | Templates unblocked |
 |---|---|---|
-| 3.1 | `section_heading`, `introduction`, `rich_text`, `quote` (restyle) | Most pages |
-| 3.2 | `story_card`, `story_row`, `brand_card`, `content_grid` (restyle, with viewfield) | Home, News, related content |
-| 3.3 | `hero_film` (video with poster, pause control, reduced-motion handling) | Home, Newson's Yard |
-| 3.4 | `hero_split`, `feature_banner` (full-bleed and split styles), `visit_banner` | Brand, About, Newson's Yard, Contact |
-| 3.5 | `image_gallery` (desktop row layouts; embla swipe gallery with arrows on mobile) | Brand, articles |
-| 3.6 | `info_rows` / `info_row` | Visit, Brand specialisms, Contact enquiry routes |
-| 3.7 | `brand_list` (hover image list) | Newson's Yard |
-| 3.8 | `people`, `cta` (restyle), `webform` paragraph | About, Contact |
-| 3.9 | `filter_link`, `pagination` | Listings |
-| 3.10 | `audio_player` (plyr), `episode_row`, `media_video` (restyle) | Podcast, articles |
+| 3.1 | ✅ `section_heading`, `introduction`, `rich_text`, `quote` (restyle) | Most pages |
+| 3.2 | ✅ `story_card`, `story_row`, `brand_card`, `content_grid` (restyle, with viewfield) | Home, News, related content |
+| 3.3 | ✅ `hero_film` (video with poster, pause control, reduced-motion handling) | Home, Newson's Yard |
+| 3.4 | ✅ `hero_split`, `feature_banner` (full-bleed and split styles), `visit_banner` | Brand, About, Newson's Yard, Contact |
+| 3.5 | ✅ `image_gallery` (desktop row layouts; embla swipe gallery with arrows on mobile) | Brand, articles |
+| 3.6 | ✅ `info_rows` / `info_row` | Visit, Brand specialisms, Contact enquiry routes |
+| 3.7 | ✅ `brand_list` (hover image list) | Newson's Yard |
+| 3.8 | ✅ `people`, `cta` (restyle), `webform` paragraph | About, Contact |
+| 3.9 | ✅ `filter_link`, `pagination` | Listings |
+| 3.10 | ✅ `audio_player` (plyr), `episode_row`, `media_video` (restyle) | Podcast, articles |
+
+**Phase 3 notes (11 November 2026):**
+
+- **Section components:** `section_heading`, `introduction`, `rich_text`, `quote`, `story_card`, `story_row`, `card_grid`, `hero_film`, `hero_split`, `feature_banner`, `visit_banner`, `image_gallery`, `info_row`/`info_rows`, `brand_list`, `next_step`, `form_section`, `filter_bar`, `pagination`, `media_video`, `audio_player`, `episode_row`. Measured against Figma at 1440 and 390.
+- **Content model changes from the Figma detail:**
+  - About "People" turned out to be two story cards, so it's the Cards paragraph (`content_grid`) with hand-picked items; there are no people/person types.
+  - "Next step" is the skeleton `cta`, now with eyebrow, heading, text and up to three buttons (`field_links`).
+  - Introduction covers the Home collage and the centred Newson’s Yard layout with an optional film; About is an Image section plus a Rich text section.
+- **Pages** render as full-width section stacks (`node--page--full`). They get the Page title band (title plus a new `field_summary` intro) unless the first section is a hero; a film hero switches the header to its transparent version.
+- **Images** use the uncropped `full` media view mode and are cropped to each slot by CSS. Switch cards to focal-point crops once the 4:5 image style code is agreed.
+- **Hero films** play through a new media `background` view mode (autoplay, muted, loop, inline, no controls), with a pause control and a poster for reduced motion.
+- **Forms:** Inline Form Errors is enabled so errors sit under each field, as in Figma. Status messages are restyled as an in-page band (Figma has no design for them). The `contact` webform is added and deployed with config (`~webform.webform.contact`); who receives its emails is an open question.
+- **Not yet wired:** the brand list, filter bar, story row, audio player and episode row are built with Storybook stories; their paragraphs or views arrive with Brands, News and podcasts in phase 4.
+- **Design queries:** the Yard banner lock-up is white everywhere (Figma uses yellow on About); filter links stay 14px in every state (Figma draws 12px when active); story card hover zooms the image without Figma's 88% fade.
+- **QA pages:** "Component test" pages (unpublished, local only) exercise every section.
 
 ## Phase 4: Content types and listings
 

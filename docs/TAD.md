@@ -207,8 +207,7 @@ Each renders the SDC of the same name (§7.2). Skeleton types are kept where the
 | `info_rows` / `info_row` | new | Getting here, Specialisms, Enquiry routes | `field_eyebrow`, `field_heading`, `field_text`; rows: `field_heading`, `field_text`, `field_link` |
 | `street_map` | new | Visit | `field_eyebrow`, `field_heading`; renders the overview map and category filter |
 | `brand_list` | new | Newson's Yard "Resident brands" (the A / Brand list hover component) | `field_heading`, references → `brand` |
-| `people` | new | About "People" | `field_heading`; people as `person` paragraphs (name, role, photo) |
-| `cta` | skeleton | About "Next step" | restyled |
+| `cta` | skeleton | About "Next step" (labelled "Next step") | `field_eyebrow`, `field_heading`, `field_text`, `field_links` (up to 3) |
 | `text_wysiwyg_` | skeleton | Policies, article bodies | name kept for compatibility |
 | `video` | skeleton | Articles (Media / Video) | restyled |
 | `webform` | new | Contact | `field_webform` (webform reference) |
@@ -395,6 +394,7 @@ The map is the one piece of real engineering on this site, and most of it is alr
 5. **Hero films:** final footage, length and file size budget.
 6. **Content migration:** beyond the 47 brands, is any news or page content migrated from belgraviavillage.com, or written fresh?
 7. **Analytics:** GA4 through Google Tag, and who owns the container?
+8. **Contact form recipients:** who should receive Contact form enquiries, and should they be routed by enquiry type?
 
 ### Resolved
 
