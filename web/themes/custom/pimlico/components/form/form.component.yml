@@ -5,6 +5,12 @@ libraryOverrides:
   css:
     component:
       form.scss: {}
+  js:
+    form.js: {}
+  dependencies:
+    - core/drupal
+    - core/once
+    - core/drupal.ajax
 slots:
   form:
     title: Form

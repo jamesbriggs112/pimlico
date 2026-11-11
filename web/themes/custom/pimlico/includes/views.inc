@@ -32,7 +32,7 @@ function _pimlico_listings(): array {
       'vocabulary' => 'brand_category',
       'parent' => 'Food & Drink',
       'param' => 'category',
-      'align' => 'start',
+      'align' => 'center',
       'label' => t('Filter places to eat and drink'),
     ],
     'news:page_news' => [

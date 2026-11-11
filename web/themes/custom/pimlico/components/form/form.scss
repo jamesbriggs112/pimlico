@@ -116,22 +116,31 @@ $icon-check: "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width
   }
 
   // Error message row: alert icon + Body/S message
+  // A block, not flex: the message is one run of text, so emphasised words
+  // (Drupal wraps the bad value in <em>) flow inline instead of becoming
+  // columns. The icon sits in a 24px gutter.
   &-item--error-message,
   .form-item--error-message {
-    display: flex;
-    align-items: center;
-    gap: #{to.rem(8px)};
+    position: relative;
+    padding-left: #{to.rem(24px)};
     font-size: var(--font-size-body-s);
     line-height: var(--line-height-body-s);
     color: var(--color-text-primary);
 
     &::before {
       content: '';
-      flex-shrink: 0;
+      position: absolute;
+      top: calc((1lh - #{to.rem(16px)}) / 2);
+      left: 0;
       width: #{to.rem(16px)};
       height: #{to.rem(16px)};
       background-color: currentColor;
       mask: url($icon-alert) center / contain no-repeat;
+    }
+
+    em {
+      font-style: normal;
+      font-weight: var(--font-weight-bold);
     }
 
     strong {
@@ -221,4 +230,11 @@ $icon-check: "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width
   .button {
     width: fit-content;
   }
+}
+
+// The error summary Inline Form Errors adds ("1 error has been found") spans
+// the whole form, above the fields, whatever the form's layout.
+.form > [data-drupal-messages],
+.form > .messages__wrapper {
+  grid-column: 1 / -1;
 }

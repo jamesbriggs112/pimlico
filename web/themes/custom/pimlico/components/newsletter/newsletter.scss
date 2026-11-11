@@ -76,3 +76,15 @@
     }
   }
 }
+
+// One field: the message under it says everything, so the error summary is
+// dropped rather than pushing the field and button apart.
+.newsletter__form .form > [data-drupal-messages],
+.newsletter__form .form > .messages__wrapper {
+  display: none;
+}
+
+// The error message sits under the email field only.
+.newsletter__form .form-item--error-message {
+  grid-column: 1;
+}
