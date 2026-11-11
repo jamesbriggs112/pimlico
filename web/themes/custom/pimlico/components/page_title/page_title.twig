@@ -1,0 +1,19 @@
+{% set attributes = attributes ?: create_attribute() %}
+<div {{ attributes.addClass('page-title') }}>
+  <div class="page-title__inner">
+    {% if breadcrumb %}
+      <div class="page-title__breadcrumb">
+        {% block breadcrumb %}{{ breadcrumb }}{% endblock %}
+      </div>
+    {% endif %}
+    {% if logo %}
+      <div class="page-title__logo">
+        {% block logo %}{{ logo }}{% endblock %}
+      </div>
+    {% endif %}
+    <h1 class="page-title__title display-xl">{{ title }}</h1>
+    {% if intro %}
+      <p class="page-title__intro body-l">{{ intro }}</p>
+    {% endif %}
+  </div>
+</div>

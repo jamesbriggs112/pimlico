@@ -1,0 +1,28 @@
+'$schema': 'https://git.drupalcode.org/project/drupal/-/raw/HEAD/core/assets/schemas/v1/metadata.schema.json'
+name: Page title
+status: stable
+description: 'Figma "Page title": linen band with breadcrumbs, a Display XL title and a Body L intro, for listing and landing pages.'
+libraryOverrides:
+  css:
+    component:
+      page_title.scss: {}
+props:
+  type: object
+  required:
+    - title
+  properties:
+    title:
+      type: string
+      title: Title
+      examples:
+        - Brands
+    intro:
+      type: string
+      title: Intro
+slots:
+  breadcrumb:
+    title: Breadcrumb
+    description: 'Desktop only, as in Figma.'
+  logo:
+    title: Publication logo
+    description: 'Press article variant: the publication logo above the title.'

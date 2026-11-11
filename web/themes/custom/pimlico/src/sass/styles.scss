@@ -8,12 +8,10 @@
 @use 'init/defaults';
 @use 'init/utilities';
 @use 'init/animations';
-@use 'hamburgers/hamburgers';
 
 // Layout
 @use 'layout/layout';
-@use 'layout/header';
-@use 'layout/footer';
+@use 'layout/breadcrumb';
 
 // Pages
 @use 'pages/admin';

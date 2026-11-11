@@ -1,0 +1,15 @@
+{% stories page_title with { title: 'Components/Page title' } %}
+
+{% story default with {
+  name: 'Default',
+  args: { title: 'Brands', intro: 'Laboris nisi aliquip ex ea commodo consequat duis aute irure in reprehenderit.' },
+  parameters: { design: { type: 'figma', url: 'https://www.figma.com/design/REw9zZENN4OEozQHrt17pD/Pimlico-Visuals---V01?node-id=7-32' } }
+} %}
+  {% embed 'pimlico:page_title' with { title, intro } only %}
+    {% block breadcrumb %}
+      <nav class="breadcrumb" aria-label="Breadcrumb"><ol><li><a href="#">Home</a></li><li aria-current="page">Brands</li></ol></nav>
+    {% endblock %}
+  {% endembed %}
+{% endstory %}
+
+{% endstories %}

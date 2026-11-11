@@ -1,25 +1,21 @@
 {#
 /**
  * @file
- * Theme override for a breadcrumb trail.
- *
- * Available variables:
- * - breadcrumb: Breadcrumb trail items.
+ * Breadcrumb trail (Figma "Page title"): Body S, "/" separators drawn in CSS.
  */
 #}
 {% if breadcrumb %}
-  <nav class="breadcrumb" role="navigation" aria-labelledby="system-breadcrumb">
-    <h2 id="system-breadcrumb" class="visually-hidden">{{ 'Breadcrumb'|t }}</h2>
-    <ol>
-    {% for item in breadcrumb %}
-      <li>
-        {% if item.url %}
-          <a href="{{ item.url }}">{{ item.text }}</a>
-        {% else %}
-          {{ item.text }}
-        {% endif %}
-      </li>
-    {% endfor %}
+  <nav class="breadcrumb" aria-label="{{ 'Breadcrumb'|t }}">
+    <ol class="breadcrumb__list">
+      {% for item in breadcrumb %}
+        <li class="breadcrumb__item">
+          {% if item.url and not loop.last %}
+            <a class="breadcrumb__link" href="{{ item.url }}">{{ item.text }}</a>
+          {% else %}
+            <span aria-current="page">{{ item.text }}</span>
+          {% endif %}
+        </li>
+      {% endfor %}
     </ol>
   </nav>
 {% endif %}

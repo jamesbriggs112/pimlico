@@ -1,0 +1,48 @@
+// Figma "Page title". Desktop: centred, 60px padding, 24px gaps, Display XL
+// title (max 1040px), Body L intro (620px). Mobile: 40px padding, 16px gaps,
+// breadcrumbs hidden.
+.page-title {
+  background-color: var(--color-tint-linen-30);
+  text-align: center;
+
+  &__inner {
+    display: grid;
+    justify-items: center;
+    gap: #{fluid(16px, 24px)};
+    max-width: calc(#{to.rem(1040px)} + 2 * var(--page-gutter));
+    margin-inline: auto;
+    padding: var(--section-space) var(--page-gutter);
+  }
+
+  &__breadcrumb {
+    @include mq($until: desktop) {
+      display: none;
+    }
+  }
+
+  &__logo {
+    width: #{fluid(180px, 240px)};
+
+    img,
+    svg {
+      display: block;
+      width: 100%;
+      height: auto;
+    }
+  }
+
+  &__title {
+    margin: 0;
+  }
+
+  &__intro {
+    margin: 0;
+    max-width: #{to.rem(620px)};
+
+    @include mq($until: desktop) {
+      font-size: var(--font-size-body-m);
+      font-weight: var(--font-weight-regular);
+      line-height: var(--line-height-body-m);
+    }
+  }
+}

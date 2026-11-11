@@ -1,0 +1,38 @@
+@use 'sass-rem' as to;
+
+// Breadcrumb trail (Figma "Page title"): Body S with spaced "/" separators.
+.breadcrumb {
+  font-size: var(--font-size-body-s);
+  line-height: var(--line-height-body-s);
+
+  &__list {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: inherit;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+  }
+
+  &__item + &__item::before {
+    content: '/';
+    padding-inline: #{to.rem(8px)};
+  }
+
+  &__link {
+    color: inherit;
+    text-decoration-line: underline;
+    text-decoration-color: transparent;
+    text-underline-offset: var(--link-hover-underline-offset);
+    transition: text-decoration-color 0.3s ease-out;
+
+    &:hover,
+    &:focus-visible {
+      text-decoration-color: currentColor;
+    }
+  }
+}
+
+.page-title .breadcrumb__list {
+  justify-content: center;
+}
