@@ -1,9 +1,11 @@
+{#
+  One <div> holding the row's <dt> and <dd>s, so it is a valid child of the
+  parent <dl> (info_rows, info_band, Brand specialisms).
+#}
 {% set attributes = attributes ?: create_attribute() %}
 <div {{ attributes.addClass(['info-row', 'info-row--' ~ variant|default('title')]) }}>
-  <div class="info-row__main">
-    <dt class="info-row__label">{{ label }}</dt>
-    {% if value %}<dd class="info-row__value">{% block value %}{{ value }}{% endblock %}</dd>{% endif %}
-  </div>
+  <dt class="info-row__label">{{ label }}</dt>
+  {% if value %}<dd class="info-row__value">{% block value %}{{ value }}{% endblock %}</dd>{% endif %}
   {% if link_text and link_url %}
     <dd class="info-row__action">
       {% include 'pimlico:text_link' with { text: link_text, url: link_url, arrow: true } only %}

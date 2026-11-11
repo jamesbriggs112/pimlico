@@ -6,6 +6,8 @@
   padding-block: var(--section-space);
 
   @include mq($from: desktop) {
+    // Eyebrows on the dark band are yellow (7:1), whatever loads first.
+    --color-text-eyebrow: var(--color-brand-yellow);
     background-color: var(--color-surface-inverse);
     color: var(--color-text-inverse);
     --focus-ring: var(--focus-ring-on-dark);

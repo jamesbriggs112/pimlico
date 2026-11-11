@@ -1,10 +1,16 @@
 /**
  * @file
- * Hero film: pause and play the background film (WCAG 2.2.2). Films don't
- * start for people who prefer reduced motion until they press play.
+ * Hero film: the poster shows first and the film starts once the page has
+ * loaded, so the film never delays the page's main image (LCP). It stays on
+ * the poster, with a Play button, for people who prefer reduced motion, have
+ * data saver on, or are on a slow connection. Pause and play meet WCAG 2.2.2.
  */
 (function (Drupal, once) {
   const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
+  const connection = navigator.connection || {};
+  const slow =
+    connection.saveData ||
+    ['slow-2g', '2g', '3g'].includes(connection.effectiveType);
 
   Drupal.behaviors.heroFilm = {
     attach(context) {
@@ -30,19 +36,26 @@
           text.textContent = words;
         };
 
-        if (reducedMotion.matches) {
-          video.pause();
-          video.removeAttribute('autoplay');
-          setPaused(true);
-          hero.classList.remove('hero-film--playing');
-        } else {
-          setPaused(video.paused && !video.autoplay);
+        const play = () => {
+          video.play().then(
+            () => setPaused(false),
+            () => setPaused(true)
+          );
+        };
+
+        video.preload = 'none';
+        setPaused(true);
+        if (!reducedMotion.matches && !slow) {
+          if (document.readyState === 'complete') {
+            play();
+          } else {
+            window.addEventListener('load', play, { once: true });
+          }
         }
 
         toggle.addEventListener('click', () => {
           if (video.paused) {
-            video.play();
-            setPaused(false);
+            play();
           } else {
             video.pause();
             setPaused(true);

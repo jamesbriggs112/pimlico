@@ -1,0 +1,18 @@
+{#
+/**
+ * @file
+ * Video file field: core's markup, but nothing downloads until something
+ * asks it to play (the hero film starts after page load; see hero_film.js).
+ * Without this, the browser fetches the film before any script runs and it
+ * competes with the page's main image.
+ *
+ * Available variables:
+ * - attributes: Attributes for the video tag.
+ * - files: Each with source_attributes.
+ */
+#}
+<video {{ attributes.setAttribute('preload', 'none') }}>
+  {% for file in files %}
+    <source {{ file.source_attributes }} />
+  {% endfor %}
+</video>

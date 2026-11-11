@@ -1,8 +1,9 @@
 {#
 /**
  * @file
- * Cards paragraph → pimlico:card_grid. Hand-picked items win over the
- * listing; both render as teasers (story cards).
+ * Cards paragraph → pimlico:card_grid. Hand-picked items, or else the
+ * latest three Stories (Home "This week"); both render as teasers. The
+ * skeleton's field_view listing (every node type) isn't used.
  */
 #}
 {% set link = paragraph.field_link.0 %}
@@ -19,5 +20,5 @@
   link_text: link.title|default(''),
   link_url: link ? link.url.toString() : '',
   text: content.field_text,
-  items: paragraph.field_content.isEmpty() ? content.field_view : content.field_content,
+  items: paragraph.field_content.isEmpty() ? drupal_view('news', 'block_latest') : content.field_content,
 } only %}

@@ -19,7 +19,7 @@ content:
     label: hidden
     settings:
       controls: false
-      autoplay: true
+      autoplay: false
       loop: true
       multiple_file_display_type: tags
       muted: true

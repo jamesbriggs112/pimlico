@@ -25,6 +25,7 @@ dependencies:
     - node.type.press_article
   module:
     - fences
+    - user
 id: node.press_article.featured
 targetEntityType: node
 bundle: press_article
@@ -34,7 +35,7 @@ content:
     type: entity_reference_entity_view
     label: hidden
     settings:
-      view_mode: full
+      view_mode: hero
       link: false
     third_party_settings:
       fences:

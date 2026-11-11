@@ -5,6 +5,9 @@
 // 720x800 map edge to edge). Mobile: stacked, full-width buttons; photos
 // are dropped, maps sit full width below.
 .info-band {
+  // Eyebrows on the dark band are yellow (7:1), whatever loads first.
+  --color-text-eyebrow: var(--color-brand-yellow);
+
   display: grid;
   background-color: var(--color-surface-inverse);
   color: var(--color-text-inverse);
@@ -58,7 +61,7 @@
     width: 100%;
     margin: 0;
 
-    .info-row--compact .info-row__main {
+    .info-row--compact {
       padding-block: #{to.rem(18px)};
     }
 

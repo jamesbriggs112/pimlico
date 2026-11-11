@@ -4,6 +4,9 @@
 // a Yellow button. Mobile: 390x300 photo, panel 56 24 72, full-width button,
 // no body text when there are no rows (Home).
 .visit-banner {
+  // Eyebrows on the dark band are yellow (7:1), whatever loads first.
+  --color-text-eyebrow: var(--color-brand-yellow);
+
   display: grid;
   background-color: var(--color-surface-inverse);
   color: var(--color-text-inverse);

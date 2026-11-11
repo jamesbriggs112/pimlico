@@ -27,6 +27,9 @@
   }
 
   &__items {
+    // Contain absolutely positioned (visually hidden) text in the swipe
+    // track, or it widens the page at its scrolled-off position.
+    position: relative;
     @include pageContainer;
     display: grid;
     grid-auto-flow: column;

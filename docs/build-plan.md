@@ -187,6 +187,14 @@ The map project's `docs/PIMLICO-MAP-GUIDE.md` Part B is the spec. Its code sampl
 | 7.4 | Editor training material and a short editorial guide (Brands, Units, map picker, News). | Handover session done |
 | 7.5 | Staging sign-off, production deploy, DNS, Sentry environments, uptime monitoring. Add the real domains to `trusted_host_patterns` in the staging and production config (the skeleton only trusts `*.preflight.site` and `10.0.x.x`). | Live |
 
+**Phase 7 notes (11 November 2026):** see `docs/launch-checklist.md` for results and what is left, and `docs/editor-guide.md` for 7.4.
+
+- **Security:** Drupal core 11.4.12 (from 11.4.7, including a critical remote code execution fix) and patched contrib and Symfony packages. `composer audit` is clean.
+- **Accessibility:** axe shows no WCAG 2.2 AA violations on 17 templates at 1440 and 390. I fixed text contrast (a darker pumpkin for text), eyebrow colours on dark bands, info row `<dl>` markup and swipe-track overflow. Keyboard focus, 200% zoom and reduced motion all check out. Screen reader and device testing are logged as manual.
+- **Performance:** above-the-fold images load eagerly (the new "Hero" media view mode). The hero film no longer downloads before the page (`preload="none"`, starts after load, skipped on data saver or slow connections). Mobile LCP on slow 4G: Home 2.6 s, Brand 0.9 s, Visit 0.7 s, News 0.8 s.
+- **Deploy:** the post-deploy hook now runs `drush deploy`, so config is imported. `SITE_HOST` and `HASH_SALT` come from environment properties.
+- **CMS branding:** Gin uses the Pimlico navy accent and a "P" monogram, the login page shows the wordmark and a Newson's Yard photo, and `pimlico_admin` gives admin page titles Fraunces. The site favicon is the monogram.
+
 ## Dependencies on the client
 
 These block specific steps; everything else can proceed.

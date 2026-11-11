@@ -1,0 +1,4 @@
+favicon:
+  use_default: false
+  path: themes/custom/pimlico/assets/brand/monogram.svg
+  mimetype: image/svg+xml

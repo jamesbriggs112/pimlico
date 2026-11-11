@@ -25,6 +25,7 @@ dependencies:
     - node.type.podcast_episode
   module:
     - fences
+    - user
 id: node.podcast_episode.featured
 targetEntityType: node
 bundle: podcast_episode
@@ -34,7 +35,7 @@ content:
     type: entity_reference_entity_view
     label: hidden
     settings:
-      view_mode: full
+      view_mode: hero
       link: false
     third_party_settings:
       fences:

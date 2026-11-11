@@ -80,6 +80,7 @@ module:
   path: 0
   path_alias: 0
   phpass: 0
+  pimlico_admin: 0
   pimlico_map: 0
   pimlico_migrate: 0
   pimlico_search: 0

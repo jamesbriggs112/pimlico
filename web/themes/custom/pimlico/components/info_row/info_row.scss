@@ -3,18 +3,15 @@
 // mobile: stacked. An action link sits under the row (Contact routes).
 // Compact (Visit banner): eyebrow label in a 150px column, white on dark.
 .info-row {
+  display: grid;
+  gap: #{to.rem(8px)};
+  padding-block: #{fluid(20px, 24px)};
   border-top: 1px solid var(--_rule, var(--color-border-strong));
 
-  &__main {
-    display: grid;
-    gap: #{to.rem(8px)};
-    padding-block: #{fluid(20px, 24px)};
-
-    @include mq($from: tablet) {
-      grid-template-columns: auto minmax(0, 1fr);
-      align-items: center;
-      gap: var(--space-24);
-    }
+  @include mq($from: tablet) {
+    grid-template-columns: auto minmax(0, 1fr);
+    align-items: center;
+    column-gap: var(--space-24);
   }
 
   &__label {
@@ -36,22 +33,20 @@
   }
 
   &__action {
+    grid-column: 1 / -1;
     margin: 0;
-    padding-bottom: var(--space-24);
+    padding-top: var(--space-12);
   }
 
   @include mq($until: tablet) {
     --_rule: var(--color-border-default);
   }
 
-  // Visit banner rows
+  // Visit banner and showroom rows
   &--compact {
     --_rule: var(--color-text-inverse);
-    color: var(--color-text-inverse);
-  }
-
-  &--compact &__main {
     padding-block: #{fluid(16px, 22px)};
+    color: var(--color-text-inverse);
 
     @include mq($from: tablet) {
       grid-template-columns: #{to.rem(150px)} minmax(0, 1fr);

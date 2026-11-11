@@ -115,3 +115,9 @@
     box-shadow: var(--focus-ring);
   }
 }
+
+// Contain absolutely positioned (visually hidden) text in the swipe track,
+// or it widens the page at its scrolled-off position.
+.image-gallery__track {
+  position: relative;
+}
