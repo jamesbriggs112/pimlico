@@ -1,0 +1,34 @@
+'$schema': 'https://git.drupalcode.org/project/drupal/-/raw/HEAD/core/assets/schemas/v1/metadata.schema.json'
+name: Logo
+status: stable
+description: 'The Pimlico Road wordmark or the Grosvenor logo, drawn as inline SVG in the current text colour.'
+libraryOverrides:
+  css:
+    component:
+      logo.scss: {}
+props:
+  type: object
+  properties:
+    brand:
+      type: string
+      title: Brand
+      enum:
+        - pimlico_road
+        - grosvenor
+      default: pimlico_road
+    tone:
+      type: string
+      title: Tone
+      description: 'Dark on light surfaces, light on photos and dark bands.'
+      enum:
+        - dark
+        - light
+      default: dark
+    url:
+      type: string
+      title: Link URL
+      description: 'Wraps the logo in a link when set, such as the home page.'
+    label:
+      type: string
+      title: Accessible name
+      description: 'Defaults to the brand name.'

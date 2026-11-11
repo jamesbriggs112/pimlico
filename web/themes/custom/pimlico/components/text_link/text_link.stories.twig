@@ -1,0 +1,24 @@
+{% stories text_link with { title: 'Primitives/Text link' } %}
+
+{% story dark with {
+  name: 'Dark',
+  parameters: { design: { type: 'figma', url: 'https://www.figma.com/design/REw9zZENN4OEozQHrt17pD/Pimlico-Visuals---V01?node-id=49-5182' } }
+} %}
+  <div style="display: grid; gap: 24px; justify-items: start">
+    {% for size in ['caps', 'body', 'small'] %}
+      {% include 'pimlico:text_link' with { text: 'All brands', url: '#', size, arrow: true } only %}
+      {% include 'pimlico:text_link' with { text: 'All brands', url: '#', size, arrow: true, underlined: true } only %}
+    {% endfor %}
+  </div>
+{% endstory %}
+
+{% story light with { name: 'Light' } %}
+  <div style="display: grid; gap: 24px; justify-items: start; padding: 40px; background: #394959">
+    {% for size in ['caps', 'body', 'small'] %}
+      {% include 'pimlico:text_link' with { text: 'All brands', url: '#', size, tone: 'light', arrow: true } only %}
+      {% include 'pimlico:text_link' with { text: 'All brands', url: '#', size, tone: 'light', arrow: true, underlined: true } only %}
+    {% endfor %}
+  </div>
+{% endstory %}
+
+{% endstories %}

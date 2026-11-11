@@ -1,0 +1,26 @@
+{% stories logo with { title: 'Primitives/Logo' } %}
+
+{% story pimlico_road_dark with {
+  name: 'Pimlico Road, dark',
+  args: { brand: 'pimlico_road', tone: 'dark' },
+  parameters: { design: { type: 'figma', url: 'https://www.figma.com/design/REw9zZENN4OEozQHrt17pD/Pimlico-Visuals---V01?node-id=3-1695' } }
+} %}
+  <div style="width: 420px">{% include 'pimlico:logo' with { brand, tone } only %}</div>
+{% endstory %}
+
+{% story pimlico_road_light with {
+  name: 'Pimlico Road, light',
+  args: { brand: 'pimlico_road', tone: 'light' },
+  parameters: { backgrounds: { default: 'dark grey' } }
+} %}
+  <div style="width: 420px; padding: 24px; background: #394959">{% include 'pimlico:logo' with { brand, tone } only %}</div>
+{% endstory %}
+
+{% story grosvenor with {
+  name: 'Grosvenor',
+  args: { brand: 'grosvenor', tone: 'dark' }
+} %}
+  <div style="width: 151px">{% include 'pimlico:logo' with { brand, tone } only %}</div>
+{% endstory %}
+
+{% endstories %}

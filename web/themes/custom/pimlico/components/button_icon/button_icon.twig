@@ -1,18 +1,24 @@
+{% set attributes = attributes ?: create_attribute() %}
 {% set attributes = attributes|without('class') %}
+{% set tone = tone|default(color ? 'dark' : 'light') %}
 
 {% set classes = [
   'btn-icon',
-  color ? 'btn-icon--' ~ color|default('primary'),
-	class
+  'btn-icon--' ~ tone,
+  class,
 ] %}
 
-<button {{ attributes.addClass(classes) }}>
-	{% block icon %}
-		{# icon svg goes here #}
-	{% endblock %}
-	{% embed "pimlico:visually_hidden" %}
-		{% block content %}
-			{{ title }}
-		{% endblock %}
-	{% endembed %}
+{% if pressed is defined and pressed is not null %}
+  {% set attributes = attributes.setAttribute('aria-pressed', pressed ? 'true' : 'false') %}
+{% endif %}
+
+<button {{ attributes.addClass(classes).setAttribute('type', 'button') }}>
+  {% block icon %}
+    {% if icon_name %}
+      {% include 'pimlico:icon' with { name: icon_name, size: 20 } only %}
+    {% endif %}
+  {% endblock %}
+  {% embed 'pimlico:visually_hidden' with { title } only %}
+    {% block content %}{{ title }}{% endblock %}
+  {% endembed %}
 </button>

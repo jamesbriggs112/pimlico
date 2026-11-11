@@ -1,14 +1,8 @@
-#
-Button icon
+# Button Icon (media control)
 
-This is some default content for the README. Change this to the appropriate
-content.
+Figma "Media control" (Components page): a 48px outlined circle with an icon. Hover fills the circle and inverts the icon.
 
-## Usage
+- `tone: light` (default): white outline, for films, photos and dark bands.
+- `tone: dark`: dark outline, for light surfaces such as the mobile gallery arrows.
 
-Here you should describe how/when to use this component. This information may be
-for developers or for editors, depending on the component type.
-
-## Additional information
-
-Some extra info about the component.
+`title` is the accessible name and is required ("Pause film", "Next image"). Use `pressed` for toggles. Pass `icon_name` with an icon name, or fill the `icon` slot. To resize, set `--button-icon-size` on the element.

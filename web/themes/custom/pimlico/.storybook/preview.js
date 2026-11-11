@@ -7,7 +7,7 @@ const preview = {
         date: /Date$/i,
       },
       server: {
-        url: 'https://drupal-skeleton.test/storybook/stories/render',
+        url: 'http://localhost:8888/storybook/stories/render',
       },
     },
   },

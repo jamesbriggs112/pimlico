@@ -1,23 +1,51 @@
 '$schema': 'https://git.drupalcode.org/project/drupal/-/raw/HEAD/core/assets/schemas/v1/metadata.schema.json'
 name: Button Icon
 status: stable
+description: 'Figma "Media control": a 48px outlined circle with an icon, such as play and pause for films and audio, or carousel arrows.'
 libraryOverrides:
   css:
     component:
       button_icon.scss: {}
 props:
   type: object
+  required:
+    - title
   properties:
     title:
       type: string
-      title: Title
-      description: Title will be used for accessiblity purposes only
+      title: Accessible name
+      description: 'Read by screen readers only, such as "Pause film".'
+    icon_name:
+      type: string
+      title: Icon
+      description: 'An icon component name. Leave empty to use the icon slot.'
+      enum:
+        - play
+        - pause
+        - arrow-left
+        - arrow-right
+        - close
+        - search
+        - menu
+    tone:
+      type: string
+      title: Tone
+      description: 'Light (white outline) on media and dark bands; dark on light surfaces.'
+      enum:
+        - light
+        - dark
+      default: light
+    pressed:
+      type: boolean
+      title: Pressed
+      description: 'Sets aria-pressed, for toggles such as play and pause.'
     class:
       type: string
       title: Class
     color:
-      title: Color
       type: string
+      title: Color (starterkit)
+      description: 'Deprecated: any value renders the dark tone. Use tone.'
       enum:
         - primary
         - secondary

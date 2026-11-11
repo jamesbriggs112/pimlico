@@ -1,0 +1,17 @@
+.logo {
+  display: inline-block;
+  color: var(--color-text-primary);
+  line-height: 0;
+
+  &--light {
+    color: var(--color-text-inverse);
+    --focus-ring: var(--focus-ring-on-dark);
+  }
+
+  &__svg {
+    display: block;
+    width: 100%;
+    max-width: 100%;
+    height: auto;
+  }
+}

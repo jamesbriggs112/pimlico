@@ -1,0 +1,16 @@
+{% set attributes = attributes ?: create_attribute() %}
+{% set classes = [
+  'text-link',
+  'text-link--' ~ tone|default('dark'),
+  'text-link--' ~ size|default('caps'),
+  underlined or current ? 'text-link--underlined',
+] %}
+{% if current %}
+  {% set attributes = attributes.setAttribute('aria-current', 'page') %}
+{% endif %}
+<a {{ attributes.addClass(classes).setAttribute('href', url) }}>
+  <span class="text-link__text">{{ text }}</span>
+  {%- if arrow %}
+    {% include 'pimlico:icon' with { name: 'arrow-link', attributes: create_attribute({ class: ['text-link__arrow'] }) } only %}
+  {% endif -%}
+</a>
