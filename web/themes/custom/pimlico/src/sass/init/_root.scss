@@ -29,8 +29,9 @@
   // #dab845 gives 4.8:1. Confirm with design.
   --color-brand-mustard: #dab845;
   --color-brand-pumpkin: #e87400;
-  // Pumpkin for text: #e87400 is 3:1 on white, short of the 4.5:1 WCAG AA
-  // needs for small text; this darker tone is 5:1 on white and both linens.
+  // Darker pumpkin (5:1 on white): kept for reference. Eyebrows use the
+  // design's #e87400 at the client's request, although it is 3:1 on white,
+  // short of the 4.5:1 WCAG AA asks for small text.
   --color-brand-pumpkin-text: #a64f00;
   --color-brand-white: #ffffff;
   --color-tint-linen-30: #f4f2eb;
@@ -44,7 +45,7 @@
   // Semantic colours (Figma variables)
   --color-text-primary: var(--color-brand-dark-grey);
   --color-text-inverse: var(--color-brand-white);
-  --color-text-eyebrow: var(--color-brand-pumpkin-text);
+  --color-text-eyebrow: var(--color-brand-pumpkin);
   --color-action-primary: var(--color-brand-yellow);
   --color-action-primary-hover: var(--color-brand-mustard);
   --color-action-on-primary: var(--color-brand-dark-grey);

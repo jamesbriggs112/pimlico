@@ -5,7 +5,7 @@
  */
 #}
 {% set type = node.type.entity.label %}
-{% set meta = ['Featured'|t, node.field_news_category.entity.label|default(type), node.created.value|format_date('custom', 'j F Y')]|filter(v => v)|join(' · ') %}
+{% set meta = ['Featured'|t, node.created.value|format_date('custom', 'j M Y')]|filter(v => v)|join(' · ') %}
 {% set minutes = node.hasField('field_reading_time') ? node.field_reading_time.value : null %}
 {% include 'pimlico:featured_story' with {
   attributes,
