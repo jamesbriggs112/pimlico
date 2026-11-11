@@ -30,3 +30,4 @@ tags:
   schema_web_page_id: '[current-page:url:absolute]'
   schema_web_page_name: '[node:field_seo_title|node:title]'
   schema_web_page_description: '[node:field_seo_description|node:field_summary]'
+  schema_web_page_breadcrumb: 'Yes'

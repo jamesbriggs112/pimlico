@@ -1,0 +1,7 @@
+pimlico_search.llms_txt:
+  path: '/llms.txt'
+  defaults:
+    _controller: '\Drupal\pimlico_search\Controller\LlmsTxtController'
+  methods: [GET]
+  requirements:
+    _permission: 'access content'

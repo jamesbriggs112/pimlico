@@ -427,7 +427,14 @@ display:
     display_plugin: page
     position: 1
     display_options:
-      display_extenders: {  }
+      display_extenders:
+        metatag_display_extender:
+          metatags:
+            title: 'News from Pimlico Road'
+            description: 'Stories, podcasts and press coverage from Pimlico Road and Newson’s Yard: the makers, dealers and places on the street.'
+            og_title: 'News from Pimlico Road'
+            og_description: 'Stories, podcasts and press coverage from Pimlico Road and Newson’s Yard: the makers, dealers and places on the street.'
+            canonical_url: '[current-page:url:absolute]'
       path: news
     cache_metadata:
       max-age: -1

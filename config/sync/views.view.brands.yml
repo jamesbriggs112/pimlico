@@ -314,7 +314,14 @@ display:
           view_mode: full
           tokenize: false
           bypass_access: false
-      display_extenders: {  }
+      display_extenders:
+        metatag_display_extender:
+          metatags:
+            title: 'Brands on Pimlico Road'
+            description: 'Antique dealers, furniture makers, fabric houses, lighting and interior designers on Pimlico Road, Belgravia, with opening hours, addresses and a map.'
+            og_title: 'Brands on Pimlico Road'
+            og_description: 'Antique dealers, furniture makers, fabric houses, lighting and interior designers on Pimlico Road, Belgravia, with opening hours, addresses and a map.'
+            canonical_url: '[current-page:url:absolute]'
       path: brands
     cache_metadata:
       max-age: -1
@@ -450,7 +457,14 @@ display:
           empty: false
           content: 'Restaurants, cafés and a few good places for lunch.'
           tokenize: false
-      display_extenders: {  }
+      display_extenders:
+        metatag_display_extender:
+          metatags:
+            title: 'Places to eat and drink on Pimlico Road'
+            description: 'Restaurants, pubs and cafés on Pimlico Road and in Newson’s Yard, Belgravia.'
+            og_title: 'Places to eat and drink on Pimlico Road'
+            og_description: 'Restaurants, pubs and cafés on Pimlico Road and in Newson’s Yard, Belgravia.'
+            canonical_url: '[current-page:url:absolute]'
       path: dine
     cache_metadata:
       max-age: -1

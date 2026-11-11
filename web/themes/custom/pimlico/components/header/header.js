@@ -58,6 +58,43 @@
         }
       );
 
+      // Hide on scroll down, show on scroll up. Past the header's own
+      // height the overlay header (hero pages) is pinned as the solid
+      // header; at the top it goes back over the hero. Focus inside the
+      // header always shows it, for keyboard users.
+      once('header-scroll', '.header', context).forEach((header) => {
+        let lastY = window.scrollY;
+        let ticking = false;
+        const update = () => {
+          const y = window.scrollY;
+          const height = header.offsetHeight;
+          if (y <= height) {
+            header.classList.remove('header--hidden', 'header--pinned');
+          } else if (y > lastY + 4) {
+            header.classList.add('header--hidden');
+            header.classList.add('header--pinned');
+          } else if (y < lastY - 4) {
+            header.classList.add('header--pinned');
+            header.classList.remove('header--hidden');
+          }
+          lastY = y;
+          ticking = false;
+        };
+        window.addEventListener(
+          'scroll',
+          () => {
+            if (!ticking) {
+              ticking = true;
+              window.requestAnimationFrame(update);
+            }
+          },
+          { passive: true }
+        );
+        header.addEventListener('focusin', () =>
+          header.classList.remove('header--hidden')
+        );
+      });
+
       once('header', '.header', context).forEach((header) => {
         header
           .querySelector('.header__menu-toggle')

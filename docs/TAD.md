@@ -74,7 +74,7 @@ Within the CMS, pages are built from a palette of **sections** (Paragraphs) that
 
 The front end is one custom theme, `pimlico`. Every visual pattern is a Single Directory Component (SDC), documented in Storybook, and built with Vite. Drupal creates the responsive image variants and serves them as WebP.
 
-Drupal also provides the metadata for SEO: meta tags, Open Graph, structured data (WebPage for pages and brands, Article for stories) and an XML sitemap.
+Drupal also provides the metadata for search engines and AI search: meta tags and Open Graph on every page and listing; schema.org structured data (Organization on the home page, LocalBusiness with address, phone and website for each brand, Article for stories, and a BreadcrumbList on every page); an XML sitemap linked from `robots.txt`; and `/llms.txt`, a plain-text summary of the site with every brand and the latest stories, built from published content (pimlico_search).
 
 ### Target specification
 

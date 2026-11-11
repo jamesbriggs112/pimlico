@@ -206,7 +206,14 @@ display:
     display_plugin: page
     position: 1
     display_options:
-      display_extenders: {  }
+      display_extenders:
+        metatag_display_extender:
+          metatags:
+            title: 'Search Pimlico Road'
+            description: 'Search the brands, places to eat and stories of Pimlico Road.'
+            og_title: 'Search Pimlico Road'
+            og_description: 'Search the brands, places to eat and stories of Pimlico Road.'
+            canonical_url: '[current-page:url:absolute]'
       path: search
     cache_metadata:
       max-age: -1

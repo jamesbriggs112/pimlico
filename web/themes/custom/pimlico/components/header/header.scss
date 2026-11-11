@@ -167,6 +167,37 @@
   }
 }
 
+// Scroll behaviour (header.js): the header slides away as you scroll down
+// and back as soon as you scroll up. On hero pages the overlay header comes
+// back as the solid header ("pinned"), and turns transparent again at the
+// top of the page.
+.header {
+  transition:
+    transform 0.3s ease-out,
+    background-color 0.3s ease-out;
+
+  @media (prefers-reduced-motion: reduce) {
+    transition: none;
+  }
+
+  &--hidden:not(.header--nav-open) {
+    transform: translateY(-100%);
+  }
+
+  &--overlay.header--pinned {
+    position: fixed;
+    top: 0;
+    background-color: var(--header-bg-color);
+    border-bottom-color: var(--color-border-strong);
+    color: var(--color-text-primary);
+    --focus-ring: var(--focus-ring-on-light);
+
+    .text-link {
+      color: var(--color-text-primary);
+    }
+  }
+}
+
 // Lock page scrolling while the mobile menu is open.
 html:has(.header--nav-open) {
   @include mq($until: desktop) {
