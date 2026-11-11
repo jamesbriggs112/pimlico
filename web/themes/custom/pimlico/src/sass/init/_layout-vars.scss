@@ -1,2 +1,4 @@
-$default-min-bp: 320px;
-$default-max-bp: 1245px;
+// The design is drawn at two widths: 390px (mobile) and 1440px (desktop).
+// fluid() interpolates between them by default.
+$default-min-bp: 390px;
+$default-max-bp: 1440px;

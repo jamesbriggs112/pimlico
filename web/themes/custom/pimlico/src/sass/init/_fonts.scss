@@ -1,105 +1,36 @@
-@font-face {
-  font-family: 'Advocate Sans';
-  src:
-    url('/themes/custom/pimlico/assets/fonts/AdvocateSans-SemiboldItalic.woff2')
-      format('woff2'),
-    url('themes/custom/pimlico/assets/fonts/AdvocateSans-SemiboldItalic.woff')
-      format('woff');
-  font-weight: 600;
-  font-style: italic;
-  font-display: swap;
+// Self-hosted fonts. Sources and licences: assets/fonts/README.md.
+// Paths are relative to the entry stylesheet (src/sass/styles.scss): Vite
+// does not rebase interpolated urls in partials. They resolve from the dev
+// server and in the production build, which fingerprints the files.
+
+$font-path: '../../assets/fonts';
+
+// Lato 2.0 (has the Medium weight the design uses), subset to Latin.
+@each $file,
+  $weight
+    in (
+      'lato-light': 300,
+      'lato-normal': 400,
+      'lato-medium': 500,
+      'lato-bold': 700
+    )
+{
+  @font-face {
+    font-family: 'Lato';
+    src: url('#{$font-path}/#{$file}.woff2') format('woff2');
+    font-weight: $weight;
+    font-style: normal;
+    font-display: swap;
+  }
 }
 
+// Fraunces variable font, Latin subset, with the opsz, wght, SOFT and WONK axes.
 @font-face {
-  font-family: 'Advocate Sans';
+  font-family: 'Fraunces';
   src:
-    url('/themes/custom/pimlico/assets/fonts/AdvocateSans-Medium.woff2')
-      format('woff2'),
-    url('/themes/custom/pimlico/assets/fonts/AdvocateSans-Medium.woff')
-      format('woff');
-  font-weight: 500;
+    url('#{$font-path}/fraunces-variable.woff2') format('woff2-variations'),
+    url('#{$font-path}/fraunces-variable.woff2') format('woff2');
+  font-weight: 100 900;
   font-style: normal;
   font-display: swap;
-}
-
-@font-face {
-  font-family: 'Advocate Sans';
-  src:
-    url('/themes/custom/pimlico/assets/fonts/AdvocateSans-RegularItalic.woff2')
-      format('woff2'),
-    url('/themes/custom/pimlico/assets/fonts/AdvocateSans-RegularItalic.woff')
-      format('woff');
-  font-weight: normal;
-  font-style: italic;
-  font-display: swap;
-}
-
-@font-face {
-  font-family: 'Advocate Sans';
-  src:
-    url('/themes/custom/pimlico/assets/fonts/AdvocateSans-Semibold.woff2')
-      format('woff2'),
-    url('/themes/custom/pimlico/assets/fonts/AdvocateSans-Semibold.woff')
-      format('woff');
-  font-weight: 600;
-  font-style: normal;
-  font-display: swap;
-}
-
-@font-face {
-  font-family: 'Advocate Sans';
-  src:
-    url('/themes/custom/pimlico/assets/fonts/AdvocateSans-Regular.woff2')
-      format('woff2'),
-    url('/themes/custom/pimlico/assets/fonts/AdvocateSans-Regular.woff')
-      format('woff');
-  font-weight: normal;
-  font-style: normal;
-  font-display: swap;
-}
-
-@font-face {
-  font-family: 'Advocate Sans';
-  src:
-    url('/themes/custom/pimlico/assets/fonts/AdvocateSans-MediumItalic.woff2')
-      format('woff2'),
-    url('/themes/custom/pimlico/assets/fonts/AdvocateSans-MediumItalic.woff')
-      format('woff');
-  font-weight: 500;
-  font-style: italic;
-  font-display: swap;
-}
-
-@font-face {
-  font-family: 'Advocate Sans';
-  src:
-    url('/themes/custom/pimlico/assets/fonts/AdvocateSans-Light.woff2')
-      format('woff2'),
-    url('/themes/custom/pimlico/assets/fonts/AdvocateSans-Light.woff')
-      format('woff');
-  font-weight: 300;
-  font-style: normal;
-  font-display: swap;
-}
-
-@font-face {
-  font-family: 'Advocate Sans';
-  src:
-    url('/themes/custom/pimlico/assets/fonts/AdvocateSans-LightItalic.woff2')
-      format('woff2'),
-    url('/themes/custom/pimlico/assets/fonts/AdvocateSans-LightItalic.woff')
-      format('woff');
-  font-weight: 300;
-  font-style: italic;
-  font-display: swap;
-}
-
-// https://screenspan.net/fallback
-@font-face {
-  font-family: 'Adjusted Arial Fallback';
-  src: local(Arial);
-  size-adjust: 89%;
-  ascent-override: 108%;
-  descent-override: 22%;
-  line-gap-override: normal;
 }

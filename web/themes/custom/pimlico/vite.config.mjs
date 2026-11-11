@@ -16,6 +16,10 @@ export default defineConfig({
   ],
   server: {
     cors: true,
+    // Pages are served by Drupal (or Storybook), not Vite, and Vite injects
+    // CSS as inline <style> tags in development. Absolute asset URLs make
+    // fonts and images load from the dev server instead of the page's origin.
+    origin: process.env.VITE_DEV_ORIGIN ?? 'http://localhost:5173',
   },
   css: {
     preprocessorOptions: {
