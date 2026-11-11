@@ -45,6 +45,57 @@
     row-gap: #{fluid(44px, 64px)};
   }
 
+  // News on mobile (Figma T07 · Mobile 390): after the large featured story,
+  // compact ruled rows: an 88x110 photo beside the eyebrow and a 20px title.
+  // The rows' own rules replace the section rule and "Latest" label.
+  @include mq($until: tablet) {
+    &--news &__results--ruled::before {
+      display: none;
+    }
+
+    &--news &__label {
+      position: absolute;
+      width: 1px;
+      height: 1px;
+      overflow: hidden;
+      clip-path: inset(50%);
+      white-space: nowrap;
+    }
+
+    &--news &__grid {
+      gap: 0;
+    }
+
+    &--news &__grid .story-card {
+      display: grid;
+      grid-template-columns: #{to.rem(88px)} minmax(0, 1fr);
+      gap: #{to.rem(16px)};
+      align-items: center;
+      padding-block: #{to.rem(18px)};
+      border-top: 1px solid var(--color-border-strong);
+    }
+
+    &--news &__grid .story-card__media {
+      aspect-ratio: 88 / 110;
+    }
+
+    &--news &__grid .story-card__body {
+      gap: #{to.rem(8px)};
+      padding-top: 0;
+    }
+
+    &--news &__grid .story-card__title {
+      font-size: #{to.rem(20px)};
+      font-weight: var(--font-weight-regular);
+      line-height: 1.25;
+      letter-spacing: -0.5px;
+    }
+
+    &--news &__grid .story-card__link {
+      display: none;
+    }
+  }
+
   &__promo {
     grid-column: 1 / -1;
 

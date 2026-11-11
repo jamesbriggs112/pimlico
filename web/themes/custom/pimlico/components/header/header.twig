@@ -3,8 +3,9 @@
 
 <header {{ attributes.addClass(classes) }}>
   <div class="header__inner">
+    {# The burger turns into a cross while the menu is open, and closes it. #}
     <button class="header__icon-button header__menu-toggle" type="button" aria-expanded="false" aria-controls="header-nav">
-      {% include 'pimlico:icon' with { name: 'menu' } only %}
+      <span class="header__burger" aria-hidden="true"><span></span><span></span></span>
       <span class="visually-hidden">{{ 'Menu'|t }}</span>
     </button>
 
@@ -16,14 +17,6 @@
     } only %}
 
     <div class="header__nav" id="header-nav">
-      <div class="header__nav-bar">
-        {% include 'pimlico:logo' with { url: home_url|default('/'), label: 'The Pimlico Road home'|t, attributes: create_attribute({ class: ['header__nav-logo'] }) } only %}
-        <button class="header__icon-button header__menu-close" type="button">
-          {% include 'pimlico:icon' with { name: 'close' } only %}
-          <span class="visually-hidden">{{ 'Close menu'|t }}</span>
-        </button>
-      </div>
-
       <div class="header__nav-primary">
         {% block primary_menu %}{{ primary_menu }}{% endblock %}
       </div>

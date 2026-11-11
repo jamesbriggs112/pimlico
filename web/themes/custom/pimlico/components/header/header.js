@@ -31,15 +31,19 @@
 
   const setMobileMenu = (header, open) => {
     const toggle = header.querySelector('.header__menu-toggle');
+    // The menu opens below the header bar, wherever the bar sits now.
+    if (open) {
+      header.style.setProperty(
+        '--header-nav-top',
+        `${Math.max(0, header.getBoundingClientRect().bottom)}px`
+      );
+    }
     header.classList.toggle('header--nav-open', open);
     toggle?.setAttribute('aria-expanded', open ? 'true' : 'false');
     pageRegions(header).forEach((el) => (el.inert = open));
 
-    if (open) {
-      header.querySelector('.header__menu-close')?.focus();
-    } else {
+    if (!open) {
       closePanels(header);
-      toggle?.focus();
     }
   };
 
@@ -96,13 +100,10 @@
       });
 
       once('header', '.header', context).forEach((header) => {
-        header
-          .querySelector('.header__menu-toggle')
-          ?.addEventListener('click', () => setMobileMenu(header, true));
-
-        header
-          .querySelector('.header__menu-close')
-          ?.addEventListener('click', () => setMobileMenu(header, false));
+        const menuToggle = header.querySelector('.header__menu-toggle');
+        menuToggle?.addEventListener('click', () =>
+          setMobileMenu(header, !header.classList.contains('header--nav-open'))
+        );
 
         // In-page links in the mobile menu (newsletter) close it first.
         header
@@ -125,6 +126,7 @@
             open.focus();
           } else if (header.classList.contains('header--nav-open')) {
             setMobileMenu(header, false);
+            menuToggle?.focus();
           }
         });
 

@@ -60,8 +60,7 @@
   }
 
   // 44px targets around 20px icons take no extra height (WCAG 2.5.8).
-  &__search,
-  &__menu-close {
+  &__search {
     margin: #{to.rem(-12px)};
   }
 
@@ -70,42 +69,117 @@
     justify-self: end;
   }
 
-  // Mobile menu overlay
+  // Burger (Figma "menu" icon: two 18px lines 8px apart) that turns into a
+  // cross while the mobile menu is open.
+  &__burger {
+    position: relative;
+    width: #{to.rem(24px)};
+    height: #{to.rem(24px)};
+
+    > span {
+      position: absolute;
+      left: #{to.rem(3px)};
+      width: #{to.rem(18px)};
+      height: #{to.rem(1.2px)};
+      background-color: currentColor;
+      transition: transform 0.35s cubic-bezier(0.65, 0, 0.35, 1);
+
+      &:first-child {
+        top: #{to.rem(7.4px)};
+      }
+
+      &:last-child {
+        top: #{to.rem(15.4px)};
+      }
+    }
+
+    [aria-expanded='true'] > & > span:first-child {
+      transform: translateY(#{to.rem(4px)}) rotate(45deg);
+    }
+
+    [aria-expanded='true'] > & > span:last-child {
+      transform: translateY(#{to.rem(-4px)}) rotate(-45deg);
+    }
+  }
+
+  // Mobile menu: a linen panel that unrolls from under the header bar, which
+  // stays in place (burger, logo, search). Links rise in after it.
   &__nav {
     @include mq($until: desktop) {
+      --nav-ease: cubic-bezier(0.65, 0, 0.35, 1);
       position: fixed;
-      inset: 0;
+      inset: var(--header-nav-top, #{to.rem(72px)}) 0 0;
       z-index: 60;
-      display: none;
+      display: flex;
       flex-direction: column;
       overflow-y: auto;
       overscroll-behavior: contain;
       background-color: var(--color-tint-linen-30);
+      color: var(--color-text-primary);
+      --focus-ring: var(--focus-ring-on-light);
+      visibility: hidden;
+      clip-path: inset(0 0 100% 0);
+      transition:
+        clip-path 0.45s var(--nav-ease),
+        visibility 0s linear 0.45s;
+
+      > * {
+        opacity: 0;
+        transform: translateY(#{to.rem(12px)});
+        transition:
+          opacity 0.2s ease-out,
+          transform 0.2s ease-out;
+      }
+
+      .text-link {
+        color: var(--color-text-primary);
+      }
 
       .header--nav-open & {
-        display: flex;
+        visibility: visible;
+        clip-path: inset(0);
+        transition:
+          clip-path 0.5s var(--nav-ease),
+          visibility 0s;
+
+        > * {
+          opacity: 1;
+          transform: none;
+          transition:
+            opacity 0.4s ease-out,
+            transform 0.5s var(--nav-ease);
+        }
+
+        > :nth-child(1) {
+          transition-delay: 0.15s;
+        }
+
+        > :nth-child(2) {
+          transition-delay: 0.22s;
+        }
+
+        > :nth-child(3) {
+          transition-delay: 0.29s;
+        }
+      }
+
+      @media (prefers-reduced-motion: reduce) {
+        &,
+        .header--nav-open & {
+          transition: visibility 0s;
+        }
+
+        &,
+        > * {
+          clip-path: none;
+          transform: none;
+        }
       }
     }
 
     @include mq($from: desktop) {
       display: contents;
     }
-  }
-
-  &__nav-bar {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    padding: #{to.rem(16px)} var(--space-24);
-    background-color: var(--color-surface-raised);
-
-    @include mq($from: desktop) {
-      display: none;
-    }
-  }
-
-  &__nav-logo {
-    width: #{to.rem(239px)};
   }
 
   &__nav-primary {
@@ -200,6 +274,23 @@
 
     .text-link,
     .logo--light {
+      color: var(--color-text-primary);
+      --focus-ring: var(--focus-ring-on-light);
+    }
+  }
+}
+
+// While the mobile menu is open the bar is solid linen, so the burger, logo
+// and search are visible over a hero too.
+.header--nav-open {
+  @include mq($until: desktop) {
+    background-color: var(--color-tint-linen-30);
+    border-bottom-color: var(--color-border-strong);
+    color: var(--color-text-primary);
+    --focus-ring: var(--focus-ring-on-light);
+
+    .logo--light,
+    .header__nav .text-link {
       color: var(--color-text-primary);
       --focus-ring: var(--focus-ring-on-light);
     }
