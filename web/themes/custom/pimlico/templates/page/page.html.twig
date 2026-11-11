@@ -20,9 +20,20 @@
     {% endembed %}
   {% endblock %}
 
-  <main id="main-content">
+  {# Node pages are stacks of full-width sections that set their own widths.
+     Other pages (access denied, not found, login, search) get the Page
+     title band and the content column. #}
+  <main id="main-content"{{ node ? '' : ' class="main main--contained"' }}>
     {% block main_content %}
-      {{ page.content }}
+      {% if not node %}
+        {% set title = drupal_title()|render|striptags|trim %}
+        {% if title %}
+          {% include 'pimlico:page_title' with { title } only %}
+        {% endif %}
+        <div class="main__content">{{ page.content }}</div>
+      {% else %}
+        {{ page.content }}
+      {% endif %}
     {% endblock %}
   </main>
 
