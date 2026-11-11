@@ -45,11 +45,21 @@ This is the delivery plan for the architecture in [TAD.md](TAD.md). Phases run i
 
 | # | Step | Done when |
 |---|---|---|
-| 2.1 | **Header:** desktop header with left and right menus, centred logo and search icon; transparent-over-hero variant for Home and Newson's Yard; sticky behaviour. | Matches Header (desktop and mobile) |
-| 2.2 | **Mega menu:** four panels (Brands, Newson's Yard, News, Visit), driven by the `main` menu plus a featured-brands view block. Keyboard: open on Enter or Space, close on Escape, focus returns to the trigger. | Matches Mega menu frames; keyboard tested |
-| 2.3 | **Mobile menu:** `<dialog>` overlay with `mobile_nav_item` accordions. | Matches Overlay · Mobile menu |
-| 2.4 | **Footer and newsletter:** `footer`, `footer-information`, `social-media` and `legal` menus; Grosvenor logo; `newsletter` block (the form is built but not wired to a provider yet; that stays an open task, TAD §11). Export menus with `structure_sync`. | Matches Footer and Newsletter at both breakpoints |
-| 2.5 | **Page title:** restyle `page_banner` with breadcrumbs (Easy Breadcrumb). | Matches Section · Page title |
+| 2.1 | ✅ **Header:** desktop header with left and right menus, centred logo and search icon; transparent-over-hero variant for Home and Newson's Yard; sticky behaviour. | Matches Header (desktop and mobile) |
+| 2.2 | ✅ **Mega menu:** four panels (Brands, Newson's Yard, News, Visit), driven by the `main` menu plus a featured-brands view block. Keyboard: open on Enter or Space, close on Escape, focus returns to the trigger. | Matches Mega menu frames; keyboard tested |
+| 2.3 | ✅ **Mobile menu:** `<dialog>` overlay with `mobile_nav_item` accordions. | Matches Overlay · Mobile menu |
+| 2.4 | ✅ **Footer and newsletter:** `footer`, `footer-information`, `social-media` and `legal` menus; Grosvenor logo; `newsletter` block (the form is built but not wired to a provider yet; that stays an open task, TAD §11). Export menus with `structure_sync`. | Matches Footer and Newsletter at both breakpoints |
+| 2.5 | ✅ **Page title:** restyle `page_banner` with breadcrumbs (Easy Breadcrumb). | Matches Section · Page title |
+
+**Phase 2 notes (11 November 2026):**
+
+- The mega menu uses **Advanced Mega Menu**, as in the reference project. Each top-level item's children are the panel's primary links (and the mobile accordion). The "Featured"/"Latest" list and the feature card are added per item under Structure » Menus » Main navigation once the brands and news views exist (4.2, 4.4). Panel layouts are editor-managed, so `advanced_mega_menu.megamenu_content.*` is in Config Ignore, as in the reference project.
+- A menu link's description is its panel eyebrow (Brands: "Explore the street").
+- The newsletter is the `newsletter` Webform in a new Newsletter region. It saves nothing and posts nowhere until a provider is chosen. `~webform.webform.newsletter` is excluded from Config Ignore so it deploys with the site.
+- The Figma "Page title" is a new `page_title` component; the starterkit `page_banner` is an image banner and stays for that. Breadcrumbs render inside it via `drupal_block('system_breadcrumb_block')`, not as a page region.
+- The overlay header (transparent over a hero) is built as `header--overlay`; pages switch it on with the `header_overlay` variable in 3.3.
+- Menu links are exported with Structure Sync (`drush em`); the copyright block with `drush eb`.
+- Removed the starterkit's unused hamburger, header and footer partials.
 
 ## Phase 3: Section components and paragraphs
 

@@ -197,7 +197,7 @@ Each renders the SDC of the same name (§7.2). Skeleton types are kept where the
 |---|---|---|---|
 | `hero_film` | new | Home, Newson's Yard | `field_heading`, `field_media` (video), `field_media_poster` (image), `field_link` |
 | `hero_split` | new | Brand (via node template), About | `field_heading`, `field_text`, `field_media`, `field_link` |
-| `page_banner` | skeleton | Most pages ("Page title") | `field_heading`, `field_text`, breadcrumb from Easy Breadcrumb |
+| `page_title` | new | Most pages (Figma "Page title") | `field_heading`, `field_text`; breadcrumb from Easy Breadcrumb (the starterkit `page_banner` image banner is kept separately) |
 | `introduction` | new | Home, About, Newson's Yard | `field_eyebrow`, `field_heading`, `field_text`, `field_link`, `field_media` (up to 3, collage) |
 | `content_grid` | skeleton | "This week on Pimlico Road", Related content, Similar brands | `field_eyebrow`, `field_heading`, `field_link`, `field_view` (viewfield) or manual references |
 | `feature_banner` | new | Newson's Yard banner, Yard banner | `field_eyebrow`, `field_heading`, `field_text`, `field_link`, `field_media`; style: full-bleed or split |
@@ -258,9 +258,9 @@ Mapped from the Figma Components page. "Skeleton" means the starterkit component
 | `text_link` | Text link (tone, size, underlined) | new |
 | `header` | Header (desktop, mobile) | skeleton |
 | `main_menu` + `menu_link` | Menu link | skeleton |
-| `mega_menu` | Mega menu (Brands, Newson's Yard, News, Visit) | new |
+| `mega_menu` | Mega menu (Brands, Newson's Yard, News, Visit) | new; columns beyond the primary links come from Advanced Mega Menu, as in the reference project |
 | `mobile_menu` + `mobile_nav_item` | Mobile menu, Mobile nav item | new (`<dialog>`) |
-| `page_banner` | Page title (desktop, mobile) | skeleton |
+| `page_title` | Page title (desktop, mobile) | new (the starterkit `page_banner` is an image banner) |
 | `hero_film` | Hero · Street film | new |
 | `hero_split` | Hero / Split | new |
 | `introduction` | Section · Introduction | new |
