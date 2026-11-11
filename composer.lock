@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "cb418b2d9dfca7a97775983782c93914",
+    "content-hash": "144204c1053846ac0ea3eb5c8b2bf4a7",
     "packages": [
         {
             "name": "asm89/stack-cors",
@@ -1590,6 +1590,51 @@
                 "source": "https://git.drupalcode.org/project/admin_toolbar",
                 "issues": "https://www.drupal.org/project/issues/admin_toolbar"
             }
+        },
+        {
+            "name": "drupal/advanced_mega_menu",
+            "version": "1.1.0",
+            "source": {
+                "type": "git",
+                "url": "https://git.drupalcode.org/project/advanced_mega_menu.git",
+                "reference": "1.1.0"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://ftp.drupal.org/files/projects/advanced_mega_menu-1.1.0.zip",
+                "reference": "1.1.0",
+                "shasum": "f37a4fb22153b18579d2a73f957ca5f2f7839ff0"
+            },
+            "require": {
+                "drupal/core": "^10 || ^11"
+            },
+            "type": "drupal-module",
+            "extra": {
+                "drupal": {
+                    "version": "1.1.0",
+                    "datestamp": "1769453951",
+                    "security-coverage": {
+                        "status": "not-covered",
+                        "message": "Project has not opted into security advisory coverage!"
+                    }
+                }
+            },
+            "notification-url": "https://packages.drupal.org/8/downloads",
+            "license": [
+                "GPL-2.0-or-later"
+            ],
+            "authors": [
+                {
+                    "name": "sujan shrestha",
+                    "homepage": "https://www.drupal.org/user/3475737"
+                }
+            ],
+            "description": "Advanced grid-based layout builder for creating dynamic, multi-column mega menus using Views and Blocks.",
+            "homepage": "https://www.drupal.org/project/advanced_mega_menu",
+            "support": {
+                "source": "https://git.drupalcode.org/project/advanced_mega_menu"
+            },
+            "published-time": "2026-01-26T18:58:58+00:00"
         },
         {
             "name": "drupal/block_field",

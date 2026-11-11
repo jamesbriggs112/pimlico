@@ -1,45 +1,175 @@
+// Figma "Header". Desktop (1440): 24px 40px padding, 1px dark rule, nav lists
+// either side of a 229px logo, search at the far right. Mobile (390): 16px
+// 24px padding, menu button, 239px logo, search. The mobile menu (Figma
+// "Mobile menu") is the same nav shown as a full-screen overlay.
 .header {
-  z-index: 10;
+  position: sticky;
+  top: 0;
+  z-index: 50;
   background-color: var(--header-bg-color);
-  height: var(--header-height);
-  padding: var(--header-padding);
+  border-bottom: 1px solid var(--color-border-strong);
+  color: var(--color-text-primary);
 
   &__inner {
-    position: relative;
-    max-width: var(--page-width);
-    margin-inline: auto;
-    width: 100%;
-    height: 100%;
+    position: static;
     display: grid;
-    grid-template-columns: auto 1fr;
-    grid-template-rows: 1fr auto;
-    grid-template-areas:
-      'brand burger'
-      'menu menu';
+    grid-template-columns: auto 1fr auto;
+    grid-template-areas: 'toggle logo search';
+    align-items: center;
+    padding: #{to.rem(16px)} var(--space-24);
 
-    @include mq($from: menu) {
-      grid-template-columns: auto 1fr;
-      grid-template-rows: 1fr;
-      grid-template-areas: 'brand menu';
+    @include mq($from: desktop) {
+      grid-template-columns: 1fr auto 1fr auto;
+      grid-template-areas: 'start logo end search';
+      column-gap: #{to.rem(36px)};
+      padding: var(--space-24) #{to.rem(40px)};
     }
   }
 
-  .hamburger {
-    grid-area: burger;
-    align-self: center;
-    justify-self: flex-end;
+  &__icon-button {
+    display: inline-grid;
+    place-items: center;
+    width: #{to.rem(44px)};
+    height: #{to.rem(44px)};
+    margin: #{to.rem(-10px)};
+    padding: 0;
+    border: 0;
+    background: none;
+    color: inherit;
+    cursor: pointer;
+  }
 
-    @include mq($from: menu) {
+  &__menu-toggle {
+    grid-area: toggle;
+    justify-self: start;
+
+    @include mq($from: desktop) {
       display: none;
     }
   }
 
-  .site-logo {
-    grid-area: brand;
+  &__logo {
+    grid-area: logo;
+    justify-self: center;
+    width: #{to.rem(239px)};
+    max-width: 100%;
 
-    img {
-      height: 100%;
-      width: auto;
+    @include mq($from: desktop) {
+      width: #{to.rem(229px)};
     }
+  }
+
+  // 44px targets around 20px icons take no extra height (WCAG 2.5.8).
+  &__search,
+  &__menu-close {
+    margin: #{to.rem(-12px)};
+  }
+
+  &__search {
+    grid-area: search;
+    justify-self: end;
+  }
+
+  // Mobile menu overlay
+  &__nav {
+    @include mq($until: desktop) {
+      position: fixed;
+      inset: 0;
+      z-index: 60;
+      display: none;
+      flex-direction: column;
+      overflow-y: auto;
+      overscroll-behavior: contain;
+      background-color: var(--color-tint-linen-30);
+
+      .header--nav-open & {
+        display: flex;
+      }
+    }
+
+    @include mq($from: desktop) {
+      display: contents;
+    }
+  }
+
+  &__nav-bar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: #{to.rem(16px)} var(--space-24);
+    background-color: var(--color-surface-raised);
+
+    @include mq($from: desktop) {
+      display: none;
+    }
+  }
+
+  &__nav-logo {
+    width: #{to.rem(239px)};
+  }
+
+  &__nav-primary {
+    @include mq($until: desktop) {
+      padding: #{to.rem(48px)} var(--space-24) 0;
+    }
+
+    @include mq($from: desktop) {
+      display: contents;
+    }
+  }
+
+  &__nav-secondary {
+    display: grid;
+    gap: var(--space-12);
+    padding: #{to.rem(40px)} var(--space-24) 0;
+
+    ul {
+      display: grid;
+      gap: var(--space-12);
+      margin: 0;
+      padding: 0;
+      list-style: none;
+    }
+
+    a {
+      color: var(--color-text-primary);
+      font-size: var(--font-size-body-m);
+      line-height: var(--line-height-body-m);
+    }
+
+    @include mq($from: desktop) {
+      display: none;
+    }
+  }
+
+  &__nav-actions {
+    display: grid;
+    gap: var(--space-12);
+    padding: var(--space-24) var(--space-24) #{to.rem(40px)};
+
+    @include mq($from: desktop) {
+      display: none;
+    }
+  }
+
+  // Transparent over a full-bleed hero (Home, Newson's Yard)
+  &--overlay {
+    position: absolute;
+    inset-inline: 0;
+    background-color: transparent;
+    border-bottom-color: transparent;
+    color: var(--color-text-inverse);
+    --focus-ring: var(--focus-ring-on-dark);
+
+    .text-link {
+      color: var(--color-text-inverse);
+    }
+  }
+}
+
+// Lock page scrolling while the mobile menu is open.
+html:has(.header--nav-open) {
+  @include mq($until: desktop) {
+    overflow: hidden;
   }
 }

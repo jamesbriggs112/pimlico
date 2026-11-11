@@ -1,0 +1,97 @@
+// Figma "Mega menu": drops below the header, full width, 1px top rule,
+// 64px top / 80px bottom padding, 80px gaps. On mobile it is the
+// accordion body and only the primary links show.
+.mega-menu {
+  &[hidden] {
+    display: none;
+  }
+
+  &__links {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+  }
+
+  &__link {
+    color: var(--color-text-primary);
+    text-decoration-line: underline;
+    text-decoration-thickness: var(--link-underline-thickness);
+    text-decoration-color: transparent;
+    text-underline-offset: var(--link-hover-underline-offset);
+    transition: text-decoration-color 0.3s ease-out;
+
+    &:hover,
+    &:focus-visible,
+    &[aria-current='page'] {
+      text-decoration-color: currentColor;
+    }
+  }
+
+  @include mq($until: desktop) {
+    &__eyebrow,
+    &__extra {
+      display: none;
+    }
+
+    &__links {
+      display: grid;
+      gap: #{to.rem(16px)};
+      padding: #{to.rem(4px)} 0 var(--space-24);
+    }
+
+    &__link {
+      font-size: var(--font-size-body-m);
+      line-height: var(--line-height-body-m);
+    }
+  }
+
+  @include mq($from: desktop) {
+    position: absolute;
+    inset-inline: 0;
+    top: 100%;
+    z-index: 20;
+    background-color: var(--color-surface-raised);
+    border-top: 1px solid var(--color-border-strong);
+    border-bottom: 1px solid var(--color-border-strong);
+
+    &__inner {
+      display: flex;
+      gap: #{to.rem(80px)};
+      align-items: flex-start;
+      max-width: calc(var(--page-width) + 2 * var(--page-gutter));
+      margin-inline: auto;
+      padding: #{to.rem(64px)} var(--page-gutter) #{to.rem(80px)};
+    }
+
+    &__primary {
+      flex: 0 0 #{to.rem(420px)};
+      display: grid;
+      gap: var(--space-12);
+    }
+
+    &__eyebrow {
+      margin-bottom: #{to.rem(8px)};
+    }
+
+    &__links {
+      display: grid;
+      gap: var(--space-12);
+    }
+
+    &__link {
+      display: inline-block;
+      padding-block: #{to.rem(4px)};
+      font-family: var(--font-family-display);
+      font-size: #{to.rem(26px)};
+      font-weight: var(--font-weight-regular);
+      line-height: 1.25;
+      letter-spacing: #{to.rem(-0.5px)};
+      font-variation-settings: var(--font-display-variation);
+    }
+
+    &__extra {
+      flex: 1;
+      min-width: 0;
+    }
+  }
+}

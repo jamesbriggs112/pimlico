@@ -1,58 +1,93 @@
+// Desktop: two lists placed into the header grid either side of the logo.
+// Mobile (inside the mobile menu): one stacked accordion in Fraunces.
 .main-menu {
-  margin: 0 auto;
-  display: flex;
-  flex-direction: column;
-  text-align: center;
-  width: 100%;
-  padding: 0;
-  list-style: none;
-
-  @include mq($from: desktop) {
-    flex-direction: row;
-    width: auto;
-    height: auto;
+  &__list {
+    margin: 0;
     padding: 0;
+    list-style: none;
   }
 
-  li {
-    padding: 0px;
-    margin-bottom: to.rem(50px);
+  &__item {
+    display: flex;
+    flex-direction: column;
+  }
 
-    &:last-of-type {
-      margin-bottom: 0;
+  &__toggle {
+    border: 0;
+    padding: 0;
+    background: none;
+    font-family: inherit;
+    cursor: pointer;
+  }
+
+  &__chevron {
+    transition: transform 0.3s ease-out;
+  }
+
+  &__toggle[aria-expanded='true'] &__chevron {
+    transform: rotate(180deg);
+  }
+
+  // Mobile accordion (Figma "Mobile nav item")
+  @include mq($until: desktop) {
+    display: block;
+
+    &__item {
+      border-bottom: 1px solid var(--color-map-ground);
     }
 
-    @include mq($from: desktop) {
-      margin-bottom: 0;
+    &__link {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      width: 100%;
+      min-height: #{to.rem(44px)};
+      padding-block: var(--space-12);
+      font-family: var(--font-family-display);
+      font-size: #{to.rem(32px)};
+      font-weight: var(--font-weight-light);
+      line-height: 1.12;
+      letter-spacing: #{to.rem(-0.5px)};
+      text-transform: none;
+      font-variation-settings: var(--font-display-variation);
     }
 
-    &:not(:first-child) {
-      @include mq($from: desktop) {
-        padding-left: to.rem(50px);
+    // Figma draws the 20px chevron in a 44px box; the row is the target.
+    &__chevron {
+      width: #{to.rem(20px)};
+      height: #{to.rem(20px)};
+      margin: #{to.rem(12px)};
+    }
+  }
+
+  // Desktop: the nav takes no box of its own, so each list is a header
+  // grid item (see header.scss).
+  @include mq($from: desktop) {
+    display: contents;
+
+    &__list {
+      display: flex;
+      align-items: center;
+      gap: #{to.rem(36px)};
+
+      &--start {
+        grid-area: start;
+      }
+
+      &--end {
+        grid-area: end;
+        justify-content: flex-end;
       }
     }
 
-    a,
-    a:visited {
-      text-transform: uppercase;
-      font-weight: var(--main-menu-mobile-link-font-weight);
-      font-size: var(--main-menu-mobile-link-font-size);
-      color: var(--main-menu-mobile-link-color);
-
-      @include mq($from: desktop) {
-        font-weight: var(--main-menu-link-font-weight);
-        font-size: var(--main-menu-link-font-size);
-        color: var(--main-menu-link-color);
-      }
+    &__chevron {
+      display: none;
     }
 
-    a:hover,
-    a:focus {
-      color: var(--main-menu-mobile-link-hover-color);
-
-      @include mq($from: desktop) {
-        color: var(--main-menu-link-hover-color);
-      }
+    // The open item keeps its underline while its panel is open.
+    &__toggle[aria-expanded='true'] .text-link__text {
+      text-decoration-color: currentColor;
+      text-underline-offset: var(--link-hover-underline-offset);
     }
   }
 }

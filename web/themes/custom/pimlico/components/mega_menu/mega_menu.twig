@@ -1,0 +1,24 @@
+{% set attributes = attributes ?: create_attribute() %}
+<div {{ attributes.addClass('mega-menu').setAttribute('id', id).setAttribute('hidden', true) }}>
+  <div class="mega-menu__inner">
+    {% if links %}
+      <div class="mega-menu__primary">
+        {% if eyebrow %}
+          <p class="mega-menu__eyebrow eyebrow">{{ eyebrow }}</p>
+        {% endif %}
+        <ul class="mega-menu__links">
+          {% for link in links %}
+            <li>
+              <a class="mega-menu__link" href="{{ link.url }}"{{ link.in_active_trail ? ' aria-current="page"' }}>{{ link.title }}</a>
+            </li>
+          {% endfor %}
+        </ul>
+      </div>
+    {% endif %}
+    {% block content %}
+      {% if rows %}
+        <div class="mega-menu__extra">{{ rows }}</div>
+      {% endif %}
+    {% endblock %}
+  </div>
+</div>

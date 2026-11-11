@@ -8,9 +8,11 @@ vite:
 regions:
   branding: Branding
   primary_menu: 'Primary menu'
+  mega_menu_blocks: 'Mega menu blocks'
   banner: 'Banner area'
   breadcrumb: Breadcrumb
   content: 'Main content area'
+  newsletter: Newsletter
   footer_branding: 'Footer Branding'
   footer_menu: 'Footer Menu'
   footer_bottom: 'Footer Bottom'

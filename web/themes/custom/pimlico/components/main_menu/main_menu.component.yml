@@ -1,22 +1,27 @@
 '$schema': 'https://git.drupalcode.org/project/drupal/-/raw/HEAD/core/assets/schemas/v1/metadata.schema.json'
 name: Main Menu
 status: stable
+description: 'Header navigation: two lists either side of the logo on desktop, and the accordion in the mobile menu. Items with children open a mega menu panel.'
 libraryOverrides:
   css:
     component:
       main_menu.scss: {}
+  dependencies:
+    - core/components.pimlico--text_link
+    - core/components.pimlico--icon
+    - core/components.pimlico--mega_menu
 props:
   type: object
   properties:
     items:
-      title: Nav items
+      title: Menu items
+      description: 'Drupal menu items (menu.html.twig "items"), two levels deep.'
       type: array
-      item:
-        type: object
-        properties:
-          url:
-            title: url
-            type: ['string', 'object', 'null']
-          text:
-            title: text
-            type: ['string', 'object', 'null']
+    split:
+      title: Items left of the logo
+      type: integer
+      default: 3
+    label:
+      title: Navigation label
+      type: string
+      default: Main

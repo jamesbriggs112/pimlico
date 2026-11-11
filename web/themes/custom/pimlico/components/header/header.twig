@@ -1,20 +1,46 @@
-{% set classes = [
-  'header',
-] %}
+{% set attributes = attributes ?: create_attribute() %}
+{% set classes = ['header', overlay ? 'header--overlay'] %}
 
 <header {{ attributes.addClass(classes) }}>
-	{% block content %}
-		<div class="header__inner">
-			{{ branding }}
-			<button class="hamburger hamburger--collapse" type="button">
-				<span class="hamburger-box">
-					<span class="hamburger-inner"></span>
-				</span>
-			</button>
-			{% embed 'pimlico:navigation' with {
-      primary_menu: primary_menu
+  <div class="header__inner">
+    <button class="header__icon-button header__menu-toggle" type="button" aria-expanded="false" aria-controls="header-nav">
+      {% include 'pimlico:icon' with { name: 'menu' } only %}
+      <span class="visually-hidden">{{ 'Menu'|t }}</span>
+    </button>
+
+    {% include 'pimlico:logo' with {
+      url: home_url|default('/'),
+      label: 'The Pimlico Road home'|t,
+      tone: overlay ? 'light' : 'dark',
+      attributes: create_attribute({ class: ['header__logo'] }),
     } only %}
-			{% endembed %}
-		</div>
-	{% endblock %}
+
+    <div class="header__nav" id="header-nav">
+      <div class="header__nav-bar">
+        {% include 'pimlico:logo' with { url: home_url|default('/'), label: 'The Pimlico Road home'|t, attributes: create_attribute({ class: ['header__nav-logo'] }) } only %}
+        <button class="header__icon-button header__menu-close" type="button">
+          {% include 'pimlico:icon' with { name: 'close' } only %}
+          <span class="visually-hidden">{{ 'Close menu'|t }}</span>
+        </button>
+      </div>
+
+      <div class="header__nav-primary">
+        {% block primary_menu %}{{ primary_menu }}{% endblock %}
+      </div>
+
+      <div class="header__nav-secondary">
+        {% block secondary_menu %}{{ secondary_menu }}{% endblock %}
+      </div>
+
+      <div class="header__nav-actions">
+        {% include 'pimlico:button' with { text: 'Plan your visit'|t, url: visit_url|default('/visit'), variant: 'yellow', full_width: true } only %}
+        {% include 'pimlico:button' with { text: 'Sign up to the newsletter'|t, url: newsletter_url|default('#newsletter'), variant: 'yellow', full_width: true, attributes: create_attribute({ class: ['header__newsletter-link'] }) } only %}
+      </div>
+    </div>
+
+    <a class="header__icon-button header__search" href="{{ search_url|default('/search') }}">
+      {% include 'pimlico:icon' with { name: 'search' } only %}
+      <span class="visually-hidden">{{ 'Search'|t }}</span>
+    </a>
+  </div>
 </header>

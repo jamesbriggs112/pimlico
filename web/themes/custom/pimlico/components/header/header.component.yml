@@ -1,6 +1,7 @@
 '$schema': 'https://git.drupalcode.org/project/drupal/-/raw/HEAD/core/assets/schemas/v1/metadata.schema.json'
 name: Header
 status: stable
+description: 'Figma "Header": split navigation either side of the logo on desktop; menu, logo and search on mobile, with the mobile menu overlay.'
 libraryOverrides:
   css:
     component:
@@ -10,6 +11,32 @@ libraryOverrides:
   dependencies:
     - core/once
     - core/drupal
+props:
+  type: object
+  properties:
+    home_url:
+      type: string
+      title: Home URL
+      default: /
+    search_url:
+      type: string
+      title: Search URL
+      default: /search
+    visit_url:
+      type: string
+      title: Plan your visit URL
+      default: /visit
+    newsletter_url:
+      type: string
+      title: Newsletter sign-up URL
+      default: '#newsletter'
+    overlay:
+      type: boolean
+      title: Over a hero
+      description: 'Transparent with light text, for pages that open with a full-bleed film or image.'
 slots:
-  content:
-    title: Content
+  primary_menu:
+    title: Primary menu
+  secondary_menu:
+    title: Secondary links
+    description: 'Shown in the mobile menu only.'
