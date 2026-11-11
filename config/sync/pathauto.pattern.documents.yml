@@ -9,7 +9,7 @@ _core:
 id: documents
 label: Documents
 type: 'canonical_entities:media'
-pattern: 'docs/[media:name]'
+pattern: '/docs/[media:name]'
 selection_criteria:
   6c1e7cba-086d-4cd2-ab69-a23d45a15ea2:
     id: 'entity_bundle:media'

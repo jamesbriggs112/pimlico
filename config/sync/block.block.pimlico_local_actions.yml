@@ -1,0 +1,20 @@
+uuid: 500ad6cf-ab4a-4311-bffa-cd127fdee9ae
+langcode: en
+status: true
+dependencies:
+  theme:
+    - pimlico
+_core:
+  default_config_hash: XRdb8LpbArVA6CpuuEZxzi50JIdjsJaCCZ5o3fH0Blk
+id: pimlico_local_actions
+theme: pimlico
+region: content
+weight: -3
+provider: null
+plugin: local_actions_block
+settings:
+  id: local_actions_block
+  label: 'Primary admin actions'
+  label_display: '0'
+  provider: core
+visibility: {  }

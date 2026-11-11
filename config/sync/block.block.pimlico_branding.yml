@@ -1,0 +1,25 @@
+uuid: 59f87333-f016-4560-8738-8df3bdff61a0
+langcode: en
+status: true
+dependencies:
+  module:
+    - system
+  theme:
+    - pimlico
+_core:
+  default_config_hash: d-0emr1mEq7sFKDu5RHUJckvNk62hvIZdRwPEfnJyGg
+id: pimlico_branding
+theme: pimlico
+region: branding
+weight: -4
+provider: null
+plugin: system_branding_block
+settings:
+  id: system_branding_block
+  label: 'Site branding'
+  label_display: '0'
+  provider: system
+  use_site_logo: true
+  use_site_name: true
+  use_site_slogan: false
+visibility: {  }

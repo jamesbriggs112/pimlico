@@ -9,7 +9,7 @@ _core:
 id: pages
 label: Pages
 type: 'canonical_entities:node'
-pattern: '[node:menu-link:parents:join-path]/[node:title]'
+pattern: '/[node:menu-link:parents:join-path]/[node:title]'
 selection_criteria:
   3032bac8-292c-41d3-a46c-6be91454c7e1:
     id: 'entity_bundle:node'

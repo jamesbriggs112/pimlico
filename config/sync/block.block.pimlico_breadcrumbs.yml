@@ -1,0 +1,22 @@
+uuid: b0d1adf5-41bf-45f6-888c-5fd90068a5c8
+langcode: en
+status: true
+dependencies:
+  module:
+    - system
+  theme:
+    - pimlico
+_core:
+  default_config_hash: y0bXRvKYQQKkf_RVxA3aOPGpIfKKsDOzzrWYCgjxJ9Y
+id: pimlico_breadcrumbs
+theme: pimlico
+region: breadcrumb
+weight: 0
+provider: null
+plugin: system_breadcrumb_block
+settings:
+  id: system_breadcrumb_block
+  label: Breadcrumbs
+  label_display: '0'
+  provider: system
+visibility: {  }
