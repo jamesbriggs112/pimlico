@@ -75,3 +75,7 @@
 node_modules
 application.zip
 recipes
+
+# PHPUnit
+.phpunit.cache
+/phpunit.xml
