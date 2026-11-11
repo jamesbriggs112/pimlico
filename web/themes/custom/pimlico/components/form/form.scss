@@ -72,14 +72,18 @@ $icon-check: "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width
         opacity: 1;
       }
 
+      // Focus thickens the rule to 2px with a shadow, not a wider border,
+      // so focusing a field never moves the layout.
       &:focus {
         outline: none;
-        border-bottom-width: var(--form-element-border-width-active);
+        box-shadow: 0 1px 0 0 var(--form-element-border-color);
       }
 
       &:focus-visible {
         outline: var(--focus-outline-width) solid transparent;
-        box-shadow: var(--focus-ring);
+        box-shadow:
+          0 1px 0 0 var(--form-element-border-color),
+          var(--focus-ring);
       }
 
       &:disabled {
@@ -89,9 +93,11 @@ $icon-check: "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width
       }
 
       // Drupal marks invalid fields with .error and aria-invalid.
+      // The 2px error rule is the 1px border plus a 1px shadow under it, so
+      // the field keeps its height and nothing moves.
       &.error,
       &[aria-invalid='true'] {
-        border-bottom-width: var(--form-element-border-width-active);
+        box-shadow: 0 1px 0 0 var(--form-element-border-color);
       }
     }
 
@@ -237,4 +243,21 @@ $icon-check: "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width
 .form > [data-drupal-messages],
 .form > .messages__wrapper {
   grid-column: 1 / -1;
+}
+
+// Messages added on the page (form.js) sit in the space under their field,
+// out of the flow, so showing or clearing one never moves the layout. The
+// gap between fields (--row-gap, 32–40px) holds one line. Messages from a
+// server round trip (no JavaScript) stay in the flow.
+.form-item:has(> [data-inline-error]),
+.js-form-item:has(> [data-inline-error]) {
+  position: relative;
+}
+
+.form .form-item--error-message[data-inline-error],
+.form-item--error-message[data-inline-error] {
+  position: absolute;
+  top: calc(100% + #{to.rem(6px)});
+  right: 0;
+  left: 0;
 }

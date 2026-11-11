@@ -33,9 +33,11 @@
   }
 
   // Webform markup
+  // The rows are 36px apart (Figma: 14px) to leave room for a one-line
+  // validation message under the field without moving anything.
   &__form .form {
     display: grid;
-    gap: #{to.rem(14px)} var(--space-24);
+    gap: #{to.rem(36px)} var(--space-24);
 
     @include mq($from: tablet) {
       grid-template-columns: minmax(0, #{to.rem(420px)}) auto;

@@ -35,7 +35,7 @@
       return Drupal.t('Enter your @label', { '@label': label });
     }
     if (v.typeMismatch && field.type === 'email') {
-      return Drupal.t('Enter an email address in the format name@example.com');
+      return Drupal.t('Enter an email address like name@example.com');
     }
     if (v.typeMismatch && field.type === 'url') {
       return Drupal.t('Enter a web address starting with https://');
@@ -76,6 +76,8 @@
     const wrapper = wrapperFor(field);
     const error = document.createElement('div');
     error.className = 'form-item--error-message';
+    // Shown in the space under the field, so nothing moves (form.scss).
+    error.dataset.inlineError = '';
     error.id = `${field.id}--error`;
     error.textContent = text;
     // Under the control, before any description.

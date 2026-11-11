@@ -261,7 +261,75 @@ display:
     display_plugin: page
     position: 1
     display_options:
+      filters:
+        status:
+          id: status
+          table: node_field_data
+          field: status
+          entity_type: node
+          entity_field: status
+          plugin_id: boolean
+          value: '1'
+          group: 1
+        type:
+          id: type
+          table: node_field_data
+          field: type
+          entity_type: node
+          entity_field: type
+          plugin_id: bundle
+          operator: in
+          value:
+            brand: brand
+          group: 1
+        field_brand_category_target_id:
+          id: field_brand_category_target_id
+          table: node__field_brand_category
+          field: field_brand_category_target_id
+          plugin_id: taxonomy_index_tid
+          operator: or
+          value: {  }
+          group: 1
+          exposed: true
+          expose:
+            operator_id: field_brand_category_target_id_op
+            label: Category
+            use_operator: false
+            operator: field_brand_category_target_id_op
+            identifier: category
+            required: false
+            remember: false
+            multiple: false
+            reduce: false
+          vid: brand_category
+          type: select
+          hierarchy: false
+          limit: true
+          error_message: true
+        field_brand_category_target_id_1:
+          id: field_brand_category_target_id_1
+          table: node__field_brand_category
+          field: field_brand_category_target_id
+          admin_label: 'Not Food & Drink (on Dine)'
+          plugin_id: taxonomy_index_tid
+          operator: not
+          value:
+            5: 5
+            16: 16
+            17: 17
+          group: 1
+          reduce_duplicates: false
+          vid: brand_category
+          type: select
+          hierarchy: false
+          limit: true
+      filter_groups:
+        operator: AND
+        groups:
+          1: AND
       defaults:
+        filters: false
+        filter_groups: false
         footer: false
       footer:
         entity_block_content:

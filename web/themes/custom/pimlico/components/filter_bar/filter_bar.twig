@@ -3,7 +3,12 @@
   <ul class="filter-bar__list">
     {% for item in items %}
       <li>
-        <a class="filter-bar__link" href="{{ item.url }}"{{ item.active ? ' aria-current="true"' }}>{{ item.text }}</a>
+        {# The active filter is the current page: text, not a link back to it. #}
+        {% if item.active %}
+          <span class="filter-bar__link" aria-current="true">{{ item.text }}</span>
+        {% else %}
+          <a class="filter-bar__link" href="{{ item.url }}">{{ item.text }}</a>
+        {% endif %}
       </li>
     {% endfor %}
   </ul>

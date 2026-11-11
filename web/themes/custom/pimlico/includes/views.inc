@@ -24,6 +24,8 @@ function _pimlico_listings(): array {
     'brands:page_brands' => [
       'vocabulary' => 'brand_category',
       'parent' => 0,
+      // Food & Drink has its own listing, Dine.
+      'exclude' => ['Food & Drink'],
       'param' => 'category',
       'align' => 'center',
       'label' => t('Filter brands by category'),
@@ -90,6 +92,9 @@ function pimlico_preprocess_views_view(array &$variables): void {
       $parent = $match ? (int) reset($match)->id() : 0;
     }
     foreach ($storage->loadTree($config['vocabulary'], $parent, 1, TRUE) as $term) {
+      if (in_array($term->label(), $config['exclude'] ?? [], TRUE)) {
+        continue;
+      }
       $items[] = [
         'text' => $term->label(),
         'url' => $link([$param => $term->id()]),
