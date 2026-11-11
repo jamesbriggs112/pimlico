@@ -5,9 +5,10 @@
   args: { url: '#', title: 'New in the windows', meta: 'Interiors', link_text: 'Step inside' },
   parameters: { design: { type: 'figma', url: 'https://www.figma.com/design/REw9zZENN4OEozQHrt17pD/Pimlico-Visuals---V01?node-id=3-1714' } }
 } %}
+  {% set img = url('<front>')|render|trim('/', 'right') ~ '/themes/custom/pimlico/src/stories/images/' %}
   <div style="max-width: 400px">
     {% embed 'pimlico:story_card' with { url, title, meta, link_text } only %}
-      {% block image %}<img src="/themes/custom/pimlico/src/stories/images/story-1.jpg" alt="">{% endblock %}
+      {% block image %}<img src="{{ img }}story-1.jpg" alt="">{% endblock %}
     {% endembed %}
   </div>
 {% endstory %}

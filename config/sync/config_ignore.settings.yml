@@ -5,4 +5,5 @@ ignored_config_entities:
   - 'advanced_mega_menu.megamenu_content.*'
   - vitals.settings
   - 'webform.webform.*'
+  - ~webform.webform.contact
   - ~webform.webform.newsletter
