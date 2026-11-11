@@ -81,6 +81,9 @@ settings:
       quote:
         weight: 9
         enabled: true
+      street_map:
+        weight: 40
+        enabled: false
       text_wysiwyg_:
         weight: 10
         enabled: true

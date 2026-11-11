@@ -1,0 +1,3 @@
+administer pimlico units:
+  title: 'Administer units'
+  description: 'Create, edit and delete Units, and place them on the street map.'

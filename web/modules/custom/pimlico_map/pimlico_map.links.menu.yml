@@ -1,0 +1,6 @@
+entity.pimlico_unit.collection:
+  title: Units
+  description: 'Shopfronts on the street map that Brands trade from.'
+  route_name: entity.pimlico_unit.collection
+  parent: system.admin_content
+  weight: 20

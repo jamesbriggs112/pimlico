@@ -175,10 +175,12 @@ Existing skeleton bundle: `field_banner` (optional page title or hero), `field_s
 | Field | Type | Notes |
 |---|---|---|
 | `label` | string | "95–97 Pimlico Road" |
-| `field_address` | address | |
-| `field_map_buildings` | string (multiple) | Set with the map picker widget |
-| `field_area` | entity reference → `area` vocabulary | Pimlico Road, Newson's Yard, Ebury Street… |
-| `field_entrance_note` | string | Optional |
+| `address` | address | |
+| `map_buildings` | string (multiple) | Set with the map picker widget |
+| `area` | entity reference → `area` vocabulary | Pimlico Road, Newson's Yard, Ebury Street… |
+| `entrance_note` | string | Optional |
+
+These are base fields defined in code (`Unit::baseFieldDefinitions()`), not configurable `field_*` fields: the Unit is the module's own entity, its fields are part of the map contract, and keeping them in code keeps them out of config and testable in kernel tests. Brands reference Units through `field_units` on `brand`. Admin list at `/admin/content/units` (permission "Administer units").
 
 ### 6.3 Vocabularies
 

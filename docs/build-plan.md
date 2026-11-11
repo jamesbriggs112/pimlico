@@ -131,6 +131,20 @@ The map project's `docs/PIMLICO-MAP-GUIDE.md` Part B is the spec. Its code sampl
 | 5.5 | Map picker widget for `field_map_buildings` (`pick` mode, read-only input, `Drupal.behaviors.pimlicoMapPicker`). | An editor can move a Unit by clicking a building |
 | 5.6 | Run the map project's `npm test` suite against the Drupal pages, adjusting URLs. | All checks pass, or failures are logged as issues |
 
+**Phase 5 notes (built):**
+
+- **`pimlico_map` module:**
+  - The `pimlico_unit` entity (base fields; admin list under Content » Units).
+  - `field_units` on Brand.
+  - The map component and base map copied unchanged from the map project at version 1.0.0 (`assets/`). The library version is also the base map's `?v=`.
+- **Tenancy Feed** at `/api/map/brands`: the B3 shape, cached by tag (`node_list:brand`, `pimlico_unit_list`, `taxonomy_term_list:brand_category`). CloudFront is purged by URL when a Brand or Unit changes. Sub-categories roll up to their top-level category (Cafés → Food & Drink), so the map's filter only needs top-level terms. A Brand's map ID is the last segment of its path alias. Kernel tests cover the shape, the filtering and the cache tags.
+- **Visit page:** a new `street_map` paragraph (eyebrow, heading) renders the `street_map` component: heading, category filter buttons and the map with search and locate. It's offered on pages only.
+- **Brand page:** a "Showroom map" pseudo-field (OOP hooks) fills the media half of "Find the showroom" when the Brand is active, shown on the map and placed. Otherwise the band has no media column.
+- **Picker:** Units use the "Map building picker" widget. It shows the map once in pick mode above read-only inputs; a click fills the box the editor last selected, else the first empty one.
+- **QA:** `scripts/map-qa.sh` runs the map project's 96-check browser suite against the Drupal pages. All 96 pass locally, including the strict CSP check. Only one check needed changing: Drupal never renders a map for an unknown brand, so that check switches the Visit map to an unknown brand instead of loading a page.
+- **Sample data:** Units for the 47 brands come from the map project's placements (local only). Phase 6's migration creates them properly, and the flagged placements (map guide B7) still need checking with the picker.
+- **Not done:** Safari/iOS device testing and a screen-reader pass (phase 7). The skeleton's old `map` paragraph is no longer offered on pages; its config is left in place until someone decides to delete it.
+
 ## Phase 6: Pages and content
 
 | # | Step | Done when |

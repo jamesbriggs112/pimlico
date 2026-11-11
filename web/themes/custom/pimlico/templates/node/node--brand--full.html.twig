@@ -103,7 +103,11 @@
     heading: 'Find the showroom'|t,
     rows,
     links: showroom_links,
+    media: content.showroom_map['#theme'] is defined ? content.showroom_map : null,
+    media_fill: content.showroom_map['#theme'] is defined,
   } only %}
+  {# No map: still render the (empty) field so its Unit cache tags bubble. #}
+  {% if content.showroom_map['#theme'] is not defined %}{{ content.showroom_map }}{% endif %}
 
   {# Similar brands: picked, or others in the same category. #}
   {% set similar = node.field_similar_brands.isEmpty()

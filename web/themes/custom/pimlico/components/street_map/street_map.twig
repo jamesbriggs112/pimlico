@@ -1,0 +1,22 @@
+{% set attributes = attributes ?: create_attribute() %}
+{% set map_id = map_id|default('street-map') %}
+{% set heading_id = heading ? 'street-map-' ~ heading|clean_id %}
+<section {{ attributes.addClass('street-map').setAttribute('aria-labelledby', heading_id ?: null).setAttribute('aria-label', heading_id ? null : 'Street map'|t) }}>
+  {% if heading %}
+    <div class="street-map__heading">
+      {% if eyebrow %}<p class="eyebrow street-map__eyebrow">{{ eyebrow }}</p>{% endif %}
+      <h2 class="display-l street-map__title" id="{{ heading_id }}">{{ heading }}</h2>
+    </div>
+  {% endif %}
+  {% if categories %}
+    <nav class="filter-bar filter-bar--center street-map__filters" data-map-filter="{{ map_id }}" aria-label="{{ 'Show brands by category'|t }}">
+      <ul class="filter-bar__list">
+        <li><button type="button" class="filter-bar__link" data-category="" aria-pressed="true">{{ 'All'|t }}</button></li>
+        {% for category in categories %}
+          <li><button type="button" class="filter-bar__link" data-category="{{ category }}" aria-pressed="false">{{ category }}</button></li>
+        {% endfor %}
+      </ul>
+    </nav>
+  {% endif %}
+  <div class="street-map__map">{% block map %}{{ map }}{% endblock %}</div>
+</section>

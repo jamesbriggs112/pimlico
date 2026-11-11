@@ -1,0 +1,29 @@
+// Figma T13 "Section · The street": centred Eyebrow + Display L heading,
+// the ruled filter bar, then the map edge to edge (640px desktop, 440px
+// mobile). The map's colours already match the palette (--pm-* defaults).
+.street-map {
+  &__heading {
+    display: grid;
+    justify-items: center;
+    gap: var(--space-12);
+    padding: #{fluid(40px, 60px)} var(--page-gutter) #{fluid(16px, 24px)};
+    text-align: center;
+  }
+
+  &__title {
+    margin: 0;
+  }
+
+  &__filters {
+    border-top: 0;
+  }
+
+  &__map pimlico-map {
+    display: block;
+    height: #{to.rem(440px)};
+
+    @include mq($from: desktop) {
+      height: #{to.rem(640px)};
+    }
+  }
+}

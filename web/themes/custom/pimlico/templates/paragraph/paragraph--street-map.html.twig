@@ -1,0 +1,15 @@
+{#
+/**
+ * @file
+ * Street map paragraph → pimlico:street_map, with the map element and the
+ * Brand Categories from includes/paragraph.inc.
+ */
+#}
+{% include 'pimlico:street_map' with {
+  attributes,
+  eyebrow: paragraph.field_eyebrow.value|default(''),
+  heading: paragraph.field_heading.value|default(''),
+  map_id: street_map.id,
+  categories: street_map.categories,
+  map: street_map.map,
+} only %}

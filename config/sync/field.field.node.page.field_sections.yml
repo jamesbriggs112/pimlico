@@ -15,6 +15,7 @@ dependencies:
     - paragraphs.paragraphs_type.info_rows
     - paragraphs.paragraphs_type.introduction
     - paragraphs.paragraphs_type.quote
+    - paragraphs.paragraphs_type.street_map
     - paragraphs.paragraphs_type.text_wysiwyg_
     - paragraphs.paragraphs_type.video
     - paragraphs.paragraphs_type.visit_banner
@@ -51,6 +52,7 @@ settings:
       cta: cta
       video: video
       webform: webform
+      street_map: street_map
     negate: 0
     target_bundles_drag_drop:
       content_grid:
@@ -82,6 +84,9 @@ settings:
         enabled: true
       quote:
         weight: 9
+        enabled: true
+      street_map:
+        weight: 40
         enabled: true
       text_wysiwyg_:
         weight: 10

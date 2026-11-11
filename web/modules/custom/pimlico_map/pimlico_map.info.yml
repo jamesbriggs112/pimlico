@@ -1,0 +1,9 @@
+name: 'Pimlico map'
+type: module
+description: 'The street map: Units, the tenancy feed at /api/map/brands, the map on Brand pages and the Unit map picker.'
+package: Pimlico
+core_version_requirement: ^11
+dependencies:
+  - address:address
+  - drupal:node
+  - drupal:taxonomy

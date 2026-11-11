@@ -1,0 +1,19 @@
+uuid: 28595a28-d30d-432b-8d28-b236685ee9bc
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_eyebrow
+    - paragraphs.paragraphs_type.street_map
+id: paragraph.street_map.field_eyebrow
+field_name: field_eyebrow
+entity_type: paragraph
+bundle: street_map
+label: Eyebrow
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

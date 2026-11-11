@@ -1,0 +1,38 @@
+'$schema': 'https://git.drupalcode.org/project/drupal/-/raw/HEAD/core/assets/schemas/v1/metadata.schema.json'
+name: Street map
+status: stable
+description: 'Figma T13 "Section · The street" (189:6147 / 189:6402): optional centred heading, the Brand Category filter bar, then the map full width (1440x640 desktop, 390x440 mobile). The filter sets the map’s category attribute.'
+libraryOverrides:
+  css:
+    component:
+      street_map.scss: {}
+  js:
+    street_map.js: {}
+  dependencies:
+    - core/drupal
+    - core/once
+    - core/components.pimlico--filter_bar
+props:
+  type: object
+  properties:
+    eyebrow:
+      type: string
+      title: Eyebrow
+    heading:
+      type: string
+      title: Heading
+    map_id:
+      type: string
+      title: Map element ID
+      description: 'The ID of the <pimlico-map> element in the map slot, which the filter points at.'
+      default: street-map
+    categories:
+      type: array
+      title: Categories
+      description: 'Brand Category names in filter order. "All" is added first.'
+      items:
+        type: string
+slots:
+  map:
+    title: Map
+    description: 'The <pimlico-map> element (pimlico_map module).'

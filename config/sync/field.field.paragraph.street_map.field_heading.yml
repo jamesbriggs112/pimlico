@@ -1,0 +1,19 @@
+uuid: 45bbd641-a5a7-404a-a2c5-f64b34cf63ee
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_heading
+    - paragraphs.paragraphs_type.street_map
+id: paragraph.street_map.field_heading
+field_name: field_heading
+entity_type: paragraph
+bundle: street_map
+label: Heading
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

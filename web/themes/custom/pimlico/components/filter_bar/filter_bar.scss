@@ -63,3 +63,18 @@
     }
   }
 }
+
+// Buttons (the street map's category filter) look like the links; the
+// pressed one is the active filter.
+button.filter-bar__link {
+  padding: 0;
+  border: 0;
+  background: none;
+  font-family: inherit;
+  cursor: pointer;
+
+  &[aria-pressed='true'] {
+    text-decoration-color: currentColor;
+    text-underline-offset: #{to.rem(3px)};
+  }
+}

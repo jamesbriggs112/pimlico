@@ -26,6 +26,7 @@ dependencies:
     - field.field.node.brand.field_summary
     - field.field.node.brand.field_tenancy_status
     - field.field.node.brand.field_trade_info
+    - field.field.node.brand.field_units
     - field.field.node.brand.field_website
     - node.type.brand
   module:
@@ -168,6 +169,11 @@ content:
         fences_label_classes: ''
     weight: 4
     region: content
+  showroom_map:
+    settings: {  }
+    third_party_settings: {  }
+    weight: 20
+    region: content
 hidden:
   content_moderation_control: true
   field_accessibility_link: true
@@ -185,6 +191,7 @@ hidden:
   field_summary: true
   field_tenancy_status: true
   field_trade_info: true
+  field_units: true
   field_website: true
   langcode: true
   links: true
