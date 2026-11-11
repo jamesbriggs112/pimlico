@@ -17,7 +17,7 @@ Phase 7 of the build plan. Automated checks were run locally on 11 November 2026
 
 ## Needs a decision or content before launch
 
-- [ ] **Hero film budget.** The film uploaded on 11 November (`pimlicoPlaceholder.mp4`) is 92.8 MB. Aim for a 10–20 s loop at 3–5 MB (H.264, 1080p, no audio), ideally with a 720p version for phones. It now waits until the page has loaded, but on 4G it still uses a lot of data.
+- [ ] **Hero film budget** (client handling it). The film uploaded on 11 November (`pimlicoPlaceholder.mp4`) is 92.8 MB. Aim for a 10–20 s loop at 3–5 MB (H.264, 1080p, no audio), ideally with a 720p version for phones. It now waits until the page has loaded, but on 4G it still uses a lot of data.
 - [ ] **Sentry in the browser.** The Raven module ships only the tracing build (145 KB) of the browser SDK. Keep browser error reporting (as now), or turn off "JavaScript error handler" in Raven settings to save the weight.
 - [ ] **CookieScript and Google Tag** (build plan 6.4): waits on the CookieScript account.
 - [ ] **Redirects** from belgraviavillage.com Pimlico Road URLs: needs the list of old URLs.
