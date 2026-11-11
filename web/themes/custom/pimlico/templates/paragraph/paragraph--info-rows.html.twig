@@ -1,0 +1,16 @@
+{#
+/**
+ * @file
+ * Info rows paragraph → pimlico:info_rows, with each row an info_row.
+ */
+#}
+{% if paragraph.field_anchor.value %}
+  {% set attributes = attributes.setAttribute('id', paragraph.field_anchor.value) %}
+{% endif %}
+{% include 'pimlico:info_rows' with {
+  attributes,
+  eyebrow: paragraph.field_eyebrow.value|default(''),
+  heading: paragraph.field_heading.value|default(''),
+  text: content.field_text,
+  rows: content.field_items,
+} only %}

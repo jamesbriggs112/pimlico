@@ -1,0 +1,74 @@
+// Figma "Info row" (7:256) and "Info row · Mobile" (16:2111): 1px top rule,
+// Fraunces Regular 26 label, Body M value. Desktop: one row, value right;
+// mobile: stacked. An action link sits under the row (Contact routes).
+// Compact (Visit banner): eyebrow label in a 150px column, white on dark.
+.info-row {
+  border-top: 1px solid var(--_rule, var(--color-border-strong));
+
+  &__main {
+    display: grid;
+    gap: #{to.rem(8px)};
+    padding-block: #{fluid(20px, 24px)};
+
+    @include mq($from: tablet) {
+      grid-template-columns: auto minmax(0, 1fr);
+      align-items: center;
+      gap: var(--space-24);
+    }
+  }
+
+  &__label {
+    @include title;
+    margin: 0;
+  }
+
+  &__value {
+    margin: 0;
+
+    @include mq($from: tablet) {
+      text-align: end;
+    }
+
+    > * {
+      margin: 0;
+      max-width: none;
+    }
+  }
+
+  &__action {
+    margin: 0;
+    padding-bottom: var(--space-24);
+  }
+
+  @include mq($until: tablet) {
+    --_rule: var(--color-border-default);
+  }
+
+  // Visit banner rows
+  &--compact {
+    --_rule: var(--color-text-inverse);
+    color: var(--color-text-inverse);
+  }
+
+  &--compact &__main {
+    padding-block: #{fluid(16px, 22px)};
+
+    @include mq($from: tablet) {
+      grid-template-columns: #{to.rem(150px)} minmax(0, 1fr);
+      align-items: start;
+    }
+  }
+
+  &--compact &__label {
+    font-family: var(--font-family-body);
+    font-size: var(--font-size-label-eyebrow);
+    font-weight: var(--font-weight-bold);
+    line-height: var(--line-height-label);
+    letter-spacing: var(--letter-spacing-label-eyebrow);
+    text-transform: uppercase;
+  }
+
+  &--compact &__value {
+    text-align: start;
+  }
+}

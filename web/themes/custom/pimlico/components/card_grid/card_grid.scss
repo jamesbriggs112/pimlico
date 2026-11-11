@@ -1,0 +1,56 @@
+// Figma "Section · This week" (9:453): 60px padding, 64px under the heading,
+// three 400px cards 40px apart (two 620px cards on About "People").
+// Mobile: a horizontal swipe track of 290px cards, 16px apart, bleeding to
+// the right edge.
+.card-grid {
+  padding-block: var(--section-space);
+
+  &__header {
+    @include pageContainer;
+    display: grid;
+    gap: #{fluid(14px, 20px)};
+    margin-bottom: #{fluid(32px, 64px)};
+  }
+
+  &__text {
+    max-width: #{to.rem(620px)};
+
+    > * {
+      margin: 0;
+    }
+
+    @include mq($until: desktop) {
+      font-size: var(--font-size-body-m);
+      font-weight: var(--font-weight-regular);
+      line-height: var(--line-height-body-m);
+    }
+  }
+
+  &__items {
+    @include pageContainer;
+    display: grid;
+    grid-auto-flow: column;
+    grid-auto-columns: #{to.rem(290px)};
+    gap: #{to.rem(16px)};
+    overflow-x: auto;
+    overscroll-behavior-inline: contain;
+    scroll-snap-type: inline mandatory;
+    scroll-padding-inline: var(--page-gutter);
+    padding-bottom: #{to.rem(4px)}; // room for the focus ring
+
+    > * {
+      scroll-snap-align: start;
+    }
+
+    @include mq($from: desktop) {
+      grid-auto-flow: row;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: var(--column-gap);
+      overflow: visible;
+
+      &:has(> :nth-child(2):last-child) {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+    }
+  }
+}

@@ -1,0 +1,118 @@
+// Figma "Rich text" (13:100) plus the Privacy page styles: 760px measure,
+// 24px between blocks. h2 Display M, h3 Fraunces Regular 26, h4 eyebrow in
+// dark grey, lists with a 16x1px pumpkin rule or bold pumpkin numbers.
+.rich-text {
+  display: flow-root;
+  max-width: #{to.rem(760px)};
+  color: var(--color-text-primary);
+  font-size: var(--font-size-body-m);
+  line-height: var(--line-height-body-m);
+
+  &--center {
+    margin-inline: auto;
+  }
+
+  > * {
+    margin-block: 0;
+  }
+
+  > * + * {
+    margin-top: var(--space-24);
+  }
+
+  h2 {
+    font-size: var(--font-size-display-m);
+    line-height: var(--line-height-display-m);
+    letter-spacing: var(--letter-spacing-display-m);
+  }
+
+  h3 {
+    @include title;
+  }
+
+  h4,
+  h5,
+  h6 {
+    font-family: var(--font-family-body);
+    font-size: var(--font-size-label-eyebrow);
+    font-weight: var(--font-weight-bold);
+    line-height: var(--line-height-label);
+    letter-spacing: var(--letter-spacing-label-eyebrow);
+    text-transform: uppercase;
+  }
+
+  p {
+    max-width: none;
+  }
+
+  strong,
+  b {
+    font-weight: var(--font-weight-bold);
+  }
+
+  a {
+    color: inherit;
+    text-decoration: underline;
+    text-decoration-thickness: var(--link-underline-thickness);
+    text-underline-offset: var(--link-underline-offset);
+    transition: text-underline-offset 0.3s ease-out;
+
+    &:hover,
+    &:focus-visible {
+      text-underline-offset: var(--link-hover-underline-offset);
+    }
+  }
+
+  ul,
+  ol {
+    display: grid;
+    gap: #{to.rem(16px)};
+    padding: 0;
+    list-style: none;
+  }
+
+  li {
+    position: relative;
+    padding-left: #{to.rem(32px)};
+  }
+
+  ul > li::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: #{to.rem(12px)};
+    width: #{to.rem(16px)};
+    height: 1px;
+    background-color: var(--color-brand-pumpkin);
+  }
+
+  ol {
+    counter-reset: rich-text;
+  }
+
+  ol > li {
+    padding-left: #{to.rem(40px)};
+    counter-increment: rich-text;
+
+    &::before {
+      content: counter(rich-text) '.';
+      position: absolute;
+      left: 0;
+      top: #{to.rem(5px)};
+      font-size: var(--font-size-label-eyebrow);
+      font-weight: var(--font-weight-bold);
+      line-height: var(--line-height-label);
+      letter-spacing: var(--letter-spacing-label-eyebrow);
+      color: var(--color-brand-pumpkin);
+    }
+  }
+
+  blockquote {
+    margin-inline: 0;
+    font-family: var(--font-family-display);
+    font-style: italic;
+    font-weight: var(--font-weight-light);
+    font-size: #{to.rem(26px)};
+    line-height: 1.3;
+  }
+}

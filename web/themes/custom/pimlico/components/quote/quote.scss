@@ -1,57 +1,49 @@
+// Figma "Quote": centred, 60px padding, 40x1px pumpkin rule, Fraunces Light
+// Italic 44/1.25 at 860px, attribution as a dark eyebrow. Mobile: left
+// aligned, 26/1.3 (as on the mobile article pages).
 .quote {
-  max-width: var(--max-text-width);
-  padding: var(--quote-padding);
-  border-radius: var(--quote-border-radius);
-  border-width: var(--quote-border-width);
-  border-style: solid;
+  @include pageContainer;
+  display: grid;
+  justify-items: center;
+  gap: #{fluid(20px, 28px)};
+  margin-block: 0;
+  padding-block: var(--section-space);
+  text-align: center;
 
-  &--primary {
-    background-color: var(--color-primary);
-    color: var(--color-primary-text);
-    border-color: var(--quote-border-color-primary);
+  &::before {
+    content: '';
+    width: #{to.rem(40px)};
+    height: 1px;
+    background-color: var(--color-brand-pumpkin);
   }
 
-  &--secondary {
-    background-color: var(--color-secondary);
-    color: var(--color-secondary-text);
-    border-color: var(--quote-border-color-secondary);
-  }
-
-  blockquote {
-    padding: to.rem(5px 0 0 0);
-    margin: to.rem(25px 0 0 0);
-    font-style: normal;
-    font-weight: var(--font-weight-bold);
-    position: relative;
-
-    &::before {
-      content: '“';
-      position: absolute;
-      left: -0.05em;
-      top: -0.7em;
-      font-size: 4.8em;
-    }
+  &__text {
+    max-width: #{to.rem(860px)};
+    margin: 0;
+    font-family: var(--font-family-display);
+    font-size: #{fluid(26px, 44px)};
+    font-style: italic;
+    font-weight: var(--font-weight-light);
+    line-height: #{fluid(33.8px, 55px)};
+    letter-spacing: #{to.rem(-0.5px)};
+    font-variation-settings: var(--font-display-variation);
 
     p {
-      padding-right: 0;
-
-      &:last-child {
-        margin-bottom: 0;
-
-        &::after {
-          content: '”';
-          font-family: inherit;
-          font-size: to.rem(20px);
-          margin-top: to.rem(5px);
-        }
-      }
+      max-width: none;
+      margin: 0;
     }
   }
 
-  cite {
-    display: block;
-    font-style: normal;
-    font-size: to.rem(16px);
-    margin-top: to.rem(14px);
+  &__cite {
+    font-size: var(--font-size-label-eyebrow);
+    font-weight: var(--font-weight-bold);
+    line-height: var(--line-height-label);
+    letter-spacing: var(--letter-spacing-label-eyebrow);
+    text-transform: uppercase;
+  }
+
+  @include mq($until: tablet) {
+    justify-items: start;
+    text-align: start;
   }
 }

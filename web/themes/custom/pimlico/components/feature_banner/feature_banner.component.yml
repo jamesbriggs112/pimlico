@@ -1,0 +1,37 @@
+'$schema': 'https://git.drupalcode.org/project/drupal/-/raw/HEAD/core/assets/schemas/v1/metadata.schema.json'
+name: Feature banner
+status: stable
+description: 'Figma "Section · Newson’s Yard" and "Yard banner": full-bleed photograph under a 72% dark scrim, a lock-up, centred title, text and a Yellow button.'
+libraryOverrides:
+  css:
+    component:
+      feature_banner.scss: {}
+  dependencies:
+    - core/components.pimlico--button
+props:
+  type: object
+  required:
+    - heading
+  properties:
+    lockup:
+      type: string
+      title: Lock-up
+      description: 'The spaced serif name above the title, e.g. "Newson’s Yard".'
+    caption:
+      type: string
+      title: Lock-up caption
+      description: 'e.g. "Est. 1840".'
+    heading:
+      type: string
+      title: Heading
+    link_text:
+      type: string
+      title: Button text
+    link_url:
+      type: string
+      title: Button URL
+slots:
+  text:
+    title: Text
+  image:
+    title: Background image

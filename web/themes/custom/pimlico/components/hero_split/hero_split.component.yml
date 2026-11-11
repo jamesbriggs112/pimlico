@@ -1,0 +1,38 @@
+'$schema': 'https://git.drupalcode.org/project/drupal/-/raw/HEAD/core/assets/schemas/v1/metadata.schema.json'
+name: Hero split
+status: stable
+description: 'Figma "Hero / Split": breadcrumbs, Display XL title, intro and up to two buttons on linen beside a tall photograph. Mobile stacks the image above.'
+libraryOverrides:
+  css:
+    component:
+      hero_split.scss: {}
+  dependencies:
+    - core/components.pimlico--button
+props:
+  type: object
+  required:
+    - title
+  properties:
+    title:
+      type: string
+      title: Title
+    intro:
+      type: string
+      title: Intro
+    links:
+      type: array
+      title: Buttons
+      description: 'Up to two { text, url }.'
+      items:
+        type: object
+        properties:
+          text: { type: string }
+          url: { type: string }
+slots:
+  breadcrumb:
+    title: Breadcrumb
+  image:
+    title: Image (4:5)
+  extra:
+    title: Extra
+    description: 'Anything after the buttons.'

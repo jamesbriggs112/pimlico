@@ -1,22 +1,12 @@
-{% embed "pimlico:paragraph" with {
-  view_mode,
-  paragraph,
+{#
+/**
+ * @file
+ * Quote paragraph → pimlico:quote. The attribution joins name and role.
+ */
+#}
+{% set cite = [paragraph.field_name.value, paragraph.field_position_company.value]|filter(v => v)|join(', ') %}
+{% include 'pimlico:quote' with {
   attributes,
-} %}
-	{% block content %}
-		{% embed "pimlico:quote" with {
-        color: paragraph.field_colour.value|default('primary'),
-    } %}
-			{% block quote %}
-				{{ content.field_text }}
-			{% endblock %}
-			{% block cite %}
-				{% embed "pimlico:cite" %}
-					{% block cite %}
-						{{ content|without('field_text') }}
-					{% endblock %}
-				{% endembed %}
-			{% endblock %}
-		{% endembed %}
-	{% endblock %}
-{% endembed %}
+  cite,
+  quote: content.field_text,
+} only %}

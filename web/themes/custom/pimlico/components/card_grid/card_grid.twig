@@ -1,0 +1,20 @@
+{% set attributes = attributes ?: create_attribute() %}
+{% set heading_id = heading ? 'cards-' ~ heading|clean_id %}
+{% if heading_id %}
+  {% set attributes = attributes.setAttribute('aria-labelledby', heading_id) %}
+{% endif %}
+<section {{ attributes.addClass('card-grid') }}>
+  {% if heading %}
+    <div class="card-grid__header">
+      {% include 'pimlico:section_heading' with {
+        eyebrow: eyebrow|default(''),
+        title: heading,
+        link_text: link_text|default(''),
+        link_url: link_url|default(''),
+        id: heading_id,
+      } only %}
+      {% if text %}<div class="card-grid__text body-l">{% block text %}{{ text }}{% endblock %}</div>{% endif %}
+    </div>
+  {% endif %}
+  <div class="card-grid__items">{% block items %}{{ items }}{% endblock %}</div>
+</section>

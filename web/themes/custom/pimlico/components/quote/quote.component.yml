@@ -1,6 +1,7 @@
 '$schema': 'https://git.drupalcode.org/project/drupal/-/raw/HEAD/core/assets/schemas/v1/metadata.schema.json'
 name: Quote
 status: stable
+description: 'Figma "Quote": pull quote in Fraunces Light Italic under a pumpkin rule, with the attribution below.'
 libraryOverrides:
   css:
     component:
@@ -8,18 +9,9 @@ libraryOverrides:
 props:
   type: object
   properties:
-    class:
+    cite:
       type: string
-      title: Class
-      # @todo Add examples here.
-      examples: []
-    color:
-      type: string
-      title: Color
-      # @todo Add examples here.
-      examples: []
+      title: Attribution
 slots:
   quote:
     title: Quote
-  cite:
-    title: Cite

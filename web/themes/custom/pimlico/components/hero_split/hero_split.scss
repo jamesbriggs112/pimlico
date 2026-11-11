@@ -1,0 +1,82 @@
+// Figma "Hero / Split" (11:52 / 11:42). Desktop: linen, text column (padding
+// 0 80 88) bottom-aligned beside a 680x850 photo flush right. Mobile:
+// 390x440 photo on top, linen panel (40 24 56) below, full-width buttons.
+.hero-split {
+  display: grid;
+  background-color: var(--color-tint-linen-30);
+
+  @include mq($from: desktop) {
+    grid-template-columns: minmax(0, 1fr) minmax(0, #{to.rem(680px)});
+    align-items: end;
+  }
+
+  &__image {
+    overflow: hidden;
+    aspect-ratio: 390 / 440;
+    background-color: var(--color-border-default);
+
+    @include mq($from: desktop) {
+      grid-column: 2;
+      grid-row: 1;
+      aspect-ratio: 4 / 5;
+    }
+
+    img {
+      display: block;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+  }
+
+  &__text {
+    display: grid;
+    justify-items: start;
+    gap: #{fluid(20px, 28px)};
+    padding: #{to.rem(40px)} var(--space-24) #{to.rem(56px)};
+
+    @include mq($from: desktop) {
+      grid-column: 1;
+      grid-row: 1;
+      padding: #{to.rem(60px)} #{to.rem(80px)} #{to.rem(88px)};
+    }
+  }
+
+  &__title {
+    max-width: #{to.rem(620px)};
+    margin: 0;
+
+    @include mq($from: desktop) {
+      line-height: 1;
+    }
+  }
+
+  &__intro {
+    max-width: #{to.rem(520px)};
+    margin: 0;
+
+    @include mq($until: desktop) {
+      font-size: var(--font-size-body-m);
+      font-weight: var(--font-weight-regular);
+      line-height: var(--line-height-body-m);
+    }
+  }
+
+  &__actions {
+    display: grid;
+    gap: #{fluid(20px, 16px)};
+    width: 100%;
+
+    @include mq($from: tablet) {
+      display: flex;
+      flex-wrap: wrap;
+      width: auto;
+    }
+
+    .btn {
+      @include mq($until: tablet) {
+        width: 100%;
+      }
+    }
+  }
+}

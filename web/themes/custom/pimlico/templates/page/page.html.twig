@@ -4,11 +4,14 @@
  * Page layout: header, main content, newsletter band and footer.
  */
 #}
+{# Pages that open with a film hero get the transparent header over it. #}
+{% set first_section = node.field_sections.entity ?? null %}
+{% set header_overlay = node.bundle is defined and first_section and first_section.bundle() == 'hero_film' %}
 <div {{ attributes.addClass('page') }}>
   {% block header %}
     {% embed 'pimlico:header' with {
       primary_menu: page.primary_menu,
-      overlay: header_overlay|default(false),
+      overlay: header_overlay ? true : false,
     } only %}
       {% block secondary_menu %}
         {{ drupal_menu('footer-information', 1, 1) }}

@@ -1,0 +1,39 @@
+'$schema': 'https://git.drupalcode.org/project/drupal/-/raw/HEAD/core/assets/schemas/v1/metadata.schema.json'
+name: Hero film
+status: stable
+description: 'Figma "Hero · Street film": full-bleed silent film under a gradient scrim, the page heading and a Pause film control. The header sits over it.'
+libraryOverrides:
+  css:
+    component:
+      hero_film.scss: {}
+  js:
+    hero_film.js: {}
+  dependencies:
+    - core/drupal
+    - core/once
+    - core/components.pimlico--button_icon
+    - core/components.pimlico--button
+props:
+  type: object
+  required:
+    - heading
+  properties:
+    eyebrow:
+      type: string
+      title: Eyebrow
+    heading:
+      type: string
+      title: Heading
+    link_text:
+      type: string
+      title: Button text
+    link_url:
+      type: string
+      title: Button URL
+slots:
+  media:
+    title: Film
+    description: 'A <video> (autoplay, muted, looping).'
+  poster:
+    title: Poster image
+    description: 'Shown under the film, and instead of it with reduced motion.'

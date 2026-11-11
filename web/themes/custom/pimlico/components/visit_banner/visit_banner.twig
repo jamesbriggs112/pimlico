@@ -1,0 +1,16 @@
+{% set attributes = attributes ?: create_attribute() %}
+{% set heading_id = 'visit-' ~ heading|clean_id %}
+<section {{ attributes.addClass(['visit-banner', rows ? 'visit-banner--rows']).setAttribute('aria-labelledby', heading_id) }}>
+  <div class="visit-banner__image">{% block image %}{{ image }}{% endblock %}</div>
+  <div class="visit-banner__content">
+    {% if eyebrow %}<p class="visit-banner__eyebrow eyebrow">{{ eyebrow }}</p>{% endif %}
+    <h2 class="visit-banner__heading display-l" id="{{ heading_id }}">{{ heading }}</h2>
+    {% if text %}<div class="visit-banner__text body-l">{% block text %}{{ text }}{% endblock %}</div>{% endif %}
+    {% if rows %}<dl class="visit-banner__rows">{% block rows %}{{ rows }}{% endblock %}</dl>{% endif %}
+    {% if link_text and link_url %}
+      <div class="visit-banner__action">
+        {% include 'pimlico:button' with { text: link_text, url: link_url, variant: 'yellow' } only %}
+      </div>
+    {% endif %}
+  </div>
+</section>

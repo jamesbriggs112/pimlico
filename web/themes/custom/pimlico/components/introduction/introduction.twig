@@ -1,0 +1,27 @@
+{% set attributes = attributes ?: create_attribute() %}
+{% set collage = image_large is not empty %}
+{% set heading_id = 'introduction-' ~ heading|clean_id %}
+<section {{ attributes.addClass(['introduction', collage ? 'introduction--collage' : 'introduction--centred']).setAttribute('aria-labelledby', heading_id) }}>
+  <div class="introduction__inner">
+    <div class="introduction__text">
+      {% if eyebrow %}<p class="eyebrow">{{ eyebrow }}</p>{% endif %}
+      <h2 class="introduction__heading display-m" id="{{ heading_id }}">{{ heading }}</h2>
+      {% if text %}
+        <div class="introduction__body">{% block text %}{{ text }}{% endblock %}</div>
+      {% endif %}
+      {% if link_text and link_url %}
+        {% include 'pimlico:text_link' with { text: link_text, url: link_url, underlined: true } only %}
+      {% endif %}
+    </div>
+    {% if collage %}
+      <div class="introduction__collage">
+        <div class="introduction__image introduction__image--large">{% block image_large %}{{ image_large }}{% endblock %}</div>
+        {% if image_small %}
+          <div class="introduction__image introduction__image--small">{% block image_small %}{{ image_small }}{% endblock %}</div>
+        {% endif %}
+      </div>
+    {% elseif media %}
+      <div class="introduction__media">{% block media %}{{ media }}{% endblock %}</div>
+    {% endif %}
+  </div>
+</section>

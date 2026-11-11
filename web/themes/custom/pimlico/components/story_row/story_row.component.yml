@@ -1,0 +1,26 @@
+'$schema': 'https://git.drupalcode.org/project/drupal/-/raw/HEAD/core/assets/schemas/v1/metadata.schema.json'
+name: Story row
+status: stable
+description: 'Figma "Story row · Mobile": a compact ruled row with an 88x110 image, meta and title.'
+libraryOverrides:
+  css:
+    component:
+      story_row.scss: {}
+props:
+  type: object
+  required:
+    - url
+    - title
+  properties:
+    url:
+      type: string
+      title: URL
+    title:
+      type: string
+      title: Title
+    meta:
+      type: string
+      title: Meta
+slots:
+  image:
+    title: Image

@@ -1,0 +1,11 @@
+{% set attributes = attributes ?: create_attribute() %}
+{% set tag = tag|default('h2') %}
+<div {{ attributes.addClass(['section-heading', 'section-heading--' ~ align|default('start')]) }}>
+  <div class="section-heading__text">
+    {% if eyebrow %}<p class="section-heading__eyebrow eyebrow">{{ eyebrow }}</p>{% endif %}
+    <{{ tag }} class="section-heading__title display-{{ size|default('l') }}"{{ id ? ' id="' ~ id ~ '"' }}>{{ title }}</{{ tag }}>
+  </div>
+  {% if link_text and link_url %}
+    {% include 'pimlico:text_link' with { text: link_text, url: link_url, attributes: create_attribute({ class: ['section-heading__link'] }) } only %}
+  {% endif %}
+</div>

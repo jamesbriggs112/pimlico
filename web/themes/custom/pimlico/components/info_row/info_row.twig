@@ -1,0 +1,12 @@
+{% set attributes = attributes ?: create_attribute() %}
+<div {{ attributes.addClass(['info-row', 'info-row--' ~ variant|default('title')]) }}>
+  <div class="info-row__main">
+    <dt class="info-row__label">{{ label }}</dt>
+    {% if value %}<dd class="info-row__value">{% block value %}{{ value }}{% endblock %}</dd>{% endif %}
+  </div>
+  {% if link_text and link_url %}
+    <dd class="info-row__action">
+      {% include 'pimlico:text_link' with { text: link_text, url: link_url, arrow: true } only %}
+    </dd>
+  {% endif %}
+</div>

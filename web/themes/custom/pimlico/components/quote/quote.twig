@@ -1,13 +1,9 @@
-{% set attributes = attributes ? create_attribute() %}
-{% set classes = [ 'quote',  color ? 'quote--' ~ color ] %}
-
-<div {{ attributes.addClass(classes) }}>
-	<blockquote>
-		{% block quote %}
-			{# Quote content goes here #}
-		{% endblock %}
-	</blockquote>
-	{% block cite %}
-		{# Citation content goes here #}
-	{% endblock %}
-</div>
+{% set attributes = attributes ?: create_attribute() %}
+<figure {{ attributes.addClass('quote') }}>
+  <blockquote class="quote__text">
+    {% block quote %}{{ quote }}{% endblock %}
+  </blockquote>
+  {% if cite %}
+    <figcaption class="quote__cite">{{ cite }}</figcaption>
+  {% endif %}
+</figure>

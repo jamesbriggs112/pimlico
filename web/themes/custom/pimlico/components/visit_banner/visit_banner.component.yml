@@ -1,0 +1,34 @@
+'$schema': 'https://git.drupalcode.org/project/drupal/-/raw/HEAD/core/assets/schemas/v1/metadata.schema.json'
+name: Visit banner
+status: stable
+description: 'Figma "Visit banner" and Home "Section · Visit": photograph beside a dark panel with a yellow eyebrow, title, text, optional practical information rows and a Yellow button.'
+libraryOverrides:
+  css:
+    component:
+      visit_banner.scss: {}
+  dependencies:
+    - core/components.pimlico--button
+props:
+  type: object
+  required:
+    - heading
+  properties:
+    eyebrow:
+      type: string
+      title: Eyebrow
+    heading:
+      type: string
+      title: Heading
+    link_text:
+      type: string
+      title: Button text
+    link_url:
+      type: string
+      title: Button URL
+slots:
+  text:
+    title: Text
+  rows:
+    title: Practical information rows
+  image:
+    title: Image

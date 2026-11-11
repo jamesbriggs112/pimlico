@@ -1,0 +1,16 @@
+{#
+/**
+ * @file
+ * Info row paragraph → pimlico:info_row. Rows inside a Visit banner use the
+ * compact variant.
+ */
+#}
+{% set link = paragraph.field_link.0 %}
+{% set parent = paragraph.getParentEntity() %}
+{% include 'pimlico:info_row' with {
+  label: paragraph.field_heading.value|default(''),
+  value: content.field_text,
+  link_text: link.title|default(''),
+  link_url: link ? link.url.toString() : '',
+  variant: parent and parent.bundle() == 'visit_banner' ? 'compact' : 'title',
+} only %}

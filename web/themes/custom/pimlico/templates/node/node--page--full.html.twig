@@ -1,0 +1,23 @@
+{#
+/**
+ * @file
+ * Page, full view: a stack of full-width sections.
+ *
+ * Pages that open with a hero (Home, Newson's Yard) start with it; the rest
+ * get the Figma "Page title" band with breadcrumbs, title and intro.
+ */
+#}
+{% set first = node.field_sections.entity %}
+{% set has_hero = first and first.bundle() in ['hero_film', 'hero_split'] %}
+<article{{ attributes.addClass('node', 'node--page') }}>
+  {{ title_prefix }}
+  {{ title_suffix }}
+  {% if not has_hero %}
+    {% include 'pimlico:page_title' with {
+      title: label|render|striptags|trim,
+      intro: node.field_summary.value|default(''),
+      breadcrumb: drupal_block('system_breadcrumb_block'),
+    } only %}
+  {% endif %}
+  {{ content.field_sections }}
+</article>
