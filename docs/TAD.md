@@ -317,7 +317,7 @@ From the Figma variables, in `src/sass/init/_root.scss`:
 }
 ```
 
-- **Typography:** body and UI in **Lato** (300, 400, 500, 700). Body L 20/1.55 light, Body M 16/1.6, Body S 14/1.55. Labels: Nav 14 medium, tracking 0.14em; Eyebrow 12 bold, tracking 0.16em, uppercase, pumpkin. Display sizes 96, 64, 44 and 26, scaled with `fluid()` between 390 px and 1440 px.
+- **Typography:** body and UI in **Lato 2.0** (300, 400, 500, 700), self-hosted and subset to Latin, because Google's Lato has no Medium. Body L 20/1.55 light, Body M 16/1.6, Body S 14/1.55. Labels: Nav 14 medium, tracking 0.14em; Eyebrow 12 bold, tracking 0.16em, uppercase, pumpkin. Display sizes 96, 64, 44 and 26, scaled with `fluid()` between 390 px and 1440 px.
 - **Display serif: Fraunces** (confirmed 11 November 2026). It's on Google Fonts under the SIL Open Font License, so it's free for web use and can be self-hosted. Self-host the variable WOFF2 in `assets/fonts` rather than loading from Google, for performance and GDPR. Fraunces has optical size (`opsz`), `SOFT` and `WONK` axes: set `font-optical-sizing: auto`, and fix `SOFT` and `WONK` with `font-variation-settings` once matched against the Figma headings. Define it as `--font-family-display`, with Lato as `--font-family-body`.
 - **Breakpoints:** the design has two artboards, 390 and 1440. Keep the starterkit's sass-mq set, and treat `tablet` (768) and `desktop` (980) as the main switches. The header and mega menu switch at `desktop`.
 - **Layout:** the 1280 px content column with 80 px gutters maps directly onto the `contentWithGutters()` mixin.

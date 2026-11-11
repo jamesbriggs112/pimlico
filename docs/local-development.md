@@ -37,6 +37,24 @@ cd web/themes/custom/pimlico && pnpm dev
 
 Open http://localhost:8888. If the page has no styling, `pnpm dev` isn't running.
 
+## Storybook
+
+Stories live beside each component (`*.stories.twig`) and are compiled to JSON by Drush, pointing at the local site:
+
+```bash
+/opt/homebrew/opt/php@8.4/bin/php vendor/drush/drush/drush.php storybook:generate-all-stories --uri=http://localhost:8888
+```
+
+Then, with the site and `pnpm dev` running:
+
+```bash
+cd web/themes/custom/pimlico && pnpm storybook
+```
+
+Storybook opens at http://localhost:6006. Rendering works without extra permissions because `development.services.yml` turns on Storybook's development mode.
+
+Vite serves assets from `http://localhost:5173` (its `server.origin`), so fonts and images load in both Drupal and Storybook. Set `VITE_DEV_ORIGIN` if your dev server runs elsewhere.
+
 ## Drush
 
 Drush runs with whichever `php` is first on your PATH. Use PHP 8.4 explicitly, and lift the memory limit for heavy commands such as `si` and `cim`:

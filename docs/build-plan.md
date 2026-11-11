@@ -28,10 +28,18 @@ This is the delivery plan for the architecture in [TAD.md](TAD.md). Phases run i
 
 | # | Step | Done when |
 |---|---|---|
-| 1.1 | **Tokens and typography.** `_root.scss` from TAD §7.3, Lato and Fraunces (variable, OFL) self-hosted in `assets/fonts`, the type scale with `fluid()`, eyebrow and label styles, `contentWithGutters()` set to the 1280 / 80 grid. | A Storybook "Tokens" page matches the Figma styles |
-| 1.2 | **Primitives:** `logo`, `icon` (SVG sprite), `button` (Dark, Yellow), `text_link`, `visually_hidden`, `button_icon` (media control). Every state from Figma, including Focus. | Stories for each variant, a11y addon clean |
-| 1.3 | **Form controls:** `field` (input, select, textarea with error and focus), checkbox, `form` styling for Webform and core forms. | Contact form error state matches T15 · Form error |
-| 1.4 | **Config clean-up:** remove unused skeleton paragraph types, vocabularies and views (TAD §6.3). Add `brand_category` and `area` vocabularies with terms. Add the image style sets and responsive image styles (TAD §7.4). | `drush cex` diff reviewed; nothing in the UI that the design can't render |
+| 1.1 | ✅ **Tokens and typography.** `_root.scss` from TAD §7.3, Lato and Fraunces (variable, OFL) self-hosted in `assets/fonts`, the type scale with `fluid()`, eyebrow and label styles, `contentWithGutters()` set to the 1280 / 80 grid. | A Storybook "Tokens" page matches the Figma styles |
+| 1.2 | ✅ **Primitives:** `logo`, `icon` (SVG sprite), `button` (Dark, Yellow), `text_link`, `visually_hidden`, `button_icon` (media control). Every state from Figma, including Focus. | Stories for each variant, a11y addon clean |
+| 1.3 | ✅ **Form controls:** `field` (input, select, textarea with error and focus), checkbox, `form` styling for Webform and core forms. | Contact form error state matches T15 · Form error |
+| 1.4 | ✅ **Config clean-up:** remove unused skeleton paragraph types, vocabularies and views (TAD §6.3). Add `brand_category` and `area` vocabularies with terms. Add the image style sets and responsive image styles (TAD §7.4). | `drush cex` diff reviewed; nothing in the UI that the design can't render |
+
+**Phase 1 notes (11 November 2026):**
+
+- Lato comes from Lato 2.0 (npm `lato-font`), subset to Latin, because Google's Lato has no Medium (500). Sources are in `assets/fonts/README.md`.
+- **Design query, button hover:** Figma draws the hover as an outline, but its description says "mustard fill + dark label (4.8:1)" and `--color-action-primary-hover` is the same yellow as the default. The build follows the description, with `--color-brand-mustard: #dab845` (4.8:1 against dark grey). Confirm the colour with design.
+- **Design query, caps text link:** the underlined and hover caps variants are 12px in Figma; the rest-state caps link is 14px. The build keeps the size steady on hover (no jump) and uses 12px only for "underlined at rest".
+- The 4:3 image styles (`l23_*_webp`, `aspect_ratio_4_3`, media view mode `4_3`) are copied from the reference project. The 4:5 set still needs a ratio code agreed with the lead developer (TAD §7.4).
+- Brand category and Area terms are exported with Structure Sync (`drush et`); import them elsewhere with `drush it` (safe mode).
 
 ## Phase 2: Global layout
 
