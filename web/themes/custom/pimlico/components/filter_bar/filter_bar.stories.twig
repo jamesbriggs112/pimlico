@@ -1,0 +1,17 @@
+{% stories filter_bar with { title: 'Components/Filter bar' } %}
+{% story default with {
+  name: 'Brands',
+  parameters: { design: { type: 'figma', url: 'https://www.figma.com/design/REw9zZENN4OEozQHrt17pD/Pimlico-Visuals---V01?node-id=13-123' } }
+} %}
+  {% include 'pimlico:filter_bar' with {
+    label: 'Filter brands by category',
+    items: [
+      { text: 'All', url: '#', active: true },
+      { text: 'Interiors', url: '#' },
+      { text: 'Antiques & art', url: '#' },
+      { text: 'Lighting', url: '#' },
+      { text: 'Food & drink', url: '#' },
+    ],
+  } only %}
+{% endstory %}
+{% endstories %}

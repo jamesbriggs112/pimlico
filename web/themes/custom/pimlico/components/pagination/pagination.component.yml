@@ -1,0 +1,24 @@
+'$schema': 'https://git.drupalcode.org/project/drupal/-/raw/HEAD/core/assets/schemas/v1/metadata.schema.json'
+name: Pagination
+status: stable
+description: 'Figma "Pagination": page numbers in Body M, the current one underlined, and a caps next link ("Next", "Older stories").'
+libraryOverrides:
+  css:
+    component:
+      pagination.scss: {}
+props:
+  type: object
+  properties:
+    items:
+      type: object
+      title: Pager items
+      description: 'Drupal pager "items" (pages, previous, next).'
+    current:
+      type: integer
+      title: Current page
+    ellipses:
+      type: object
+      title: Ellipses
+    heading_id:
+      type: string
+      title: Heading ID

@@ -1,0 +1,32 @@
+'$schema': 'https://git.drupalcode.org/project/drupal/-/raw/HEAD/core/assets/schemas/v1/metadata.schema.json'
+name: Next step
+status: stable
+description: 'Figma About "Section · Next step": centred eyebrow, Display L title, Body L text and up to three Yellow buttons on linen.'
+libraryOverrides:
+  css:
+    component:
+      next_step.scss: {}
+  dependencies:
+    - core/components.pimlico--button
+props:
+  type: object
+  required:
+    - heading
+  properties:
+    eyebrow:
+      type: string
+      title: Eyebrow
+    heading:
+      type: string
+      title: Heading
+    links:
+      type: array
+      title: Buttons
+      items:
+        type: object
+        properties:
+          text: { type: string }
+          url: { type: string }
+slots:
+  text:
+    title: Text

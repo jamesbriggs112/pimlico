@@ -1,0 +1,26 @@
+{% if items %}
+  <nav class="pagination" aria-labelledby="{{ heading_id }}">
+    <h2 id="{{ heading_id }}" class="visually-hidden">{{ 'Pagination'|t }}</h2>
+    <ul class="pagination__items js-pager__items">
+      {% if items.previous %}
+        <li class="pagination__item pagination__item--step">
+          <a class="pagination__step" href="{{ items.previous.href }}" rel="prev"{{ items.previous.attributes|without('href', 'title', 'rel') }}>{{ items.previous.text|default('Previous'|t) }}</a>
+        </li>
+      {% endif %}
+      {% if ellipses.previous %}<li class="pagination__item" role="presentation">&hellip;</li>{% endif %}
+      {% for key, item in items.pages %}
+        <li class="pagination__item">
+          <a class="pagination__page" href="{{ item.href }}"{{ current == key ? ' aria-current="page"' }}{{ item.attributes|without('href', 'title') }}>
+            <span class="visually-hidden">{{ 'Page'|t }}</span>{{ key }}
+          </a>
+        </li>
+      {% endfor %}
+      {% if ellipses.next %}<li class="pagination__item" role="presentation">&hellip;</li>{% endif %}
+      {% if items.next %}
+        <li class="pagination__item pagination__item--step">
+          <a class="pagination__step" href="{{ items.next.href }}" rel="next"{{ items.next.attributes|without('href', 'title', 'rel') }}>{{ items.next.text|default('Next'|t) }}</a>
+        </li>
+      {% endif %}
+    </ul>
+  </nav>
+{% endif %}

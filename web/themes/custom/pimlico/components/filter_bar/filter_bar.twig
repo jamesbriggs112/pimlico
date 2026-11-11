@@ -1,0 +1,10 @@
+{% set attributes = attributes ?: create_attribute() %}
+<nav {{ attributes.addClass(['filter-bar', 'filter-bar--' ~ align|default('center')]).setAttribute('aria-label', label|default('Filter'|t)) }}>
+  <ul class="filter-bar__list">
+    {% for item in items %}
+      <li>
+        <a class="filter-bar__link" href="{{ item.url }}"{{ item.active ? ' aria-current="true"' }}>{{ item.text }}</a>
+      </li>
+    {% endfor %}
+  </ul>
+</nav>

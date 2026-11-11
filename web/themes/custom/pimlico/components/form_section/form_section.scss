@@ -1,0 +1,64 @@
+// Figma Contact "Section · Contact form" (30:3855): linen, 420px intro and a
+// 760px form column (48px padding, 32px between fields), 100px apart.
+// Mobile: stacked, the form full width with 28px between fields. Buttons in
+// forms are Yellow here.
+.form-section {
+  background-color: var(--color-tint-linen-30);
+  padding-block: var(--section-space);
+
+  &__inner {
+    @include pageContainer;
+    display: grid;
+    gap: #{to.rem(28px)};
+
+    @include mq($from: desktop) {
+      grid-template-columns: minmax(0, #{to.rem(420px)}) minmax(
+          0,
+          #{to.rem(760px)}
+        );
+      justify-content: space-between;
+      gap: #{to.rem(100px)};
+      align-items: start;
+    }
+  }
+
+  &__intro {
+    display: grid;
+    gap: #{fluid(14px, 20px)};
+  }
+
+  &__heading {
+    margin: 0;
+  }
+
+  &__text > * {
+    margin: 0;
+  }
+
+  &__form {
+    @include mq($from: desktop) {
+      padding: #{to.rem(48px)};
+    }
+
+    .form {
+      row-gap: #{fluid(28px, 32px)};
+    }
+
+    .form-item-privacy-note,
+    .webform-element-description {
+      font-size: var(--font-size-body-s);
+      line-height: var(--line-height-body-s);
+    }
+
+    .btn {
+      --_bg: var(--button-background-color-yellow);
+      --_color: var(--button-text-color-yellow);
+      --_hover-bg: var(--button-hover-background-color-yellow);
+      --_hover-color: var(--button-hover-text-color-yellow);
+
+      @include mq($until: tablet) {
+        width: 100%;
+      }
+    }
+  }
+}
