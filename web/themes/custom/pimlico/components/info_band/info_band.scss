@@ -128,3 +128,43 @@
   height: 100%;
   min-height: inherit;
 }
+
+// Intro text under the heading (Visit "Location & directions").
+.info-band__text {
+  max-width: #{to.rem(560px)};
+  color: var(--color-text-inverse);
+
+  > * {
+    margin: 0;
+  }
+
+  @include mq($until: desktop) {
+    font-size: var(--font-size-body-m);
+    line-height: var(--line-height-body-m);
+  }
+}
+
+// Inset photo (23:971): 560px, 3:2, 80px in from the edge, centred against
+// the text. Mobile (189:6405): above the text, inside the gutters.
+.info-band.info-band--inset {
+  @include mq($from: desktop) {
+    grid-template-columns: minmax(0, 1fr) #{to.rem(560px)};
+    padding-right: #{to.rem(80px)};
+  }
+
+  .info-band__media {
+    aspect-ratio: 3 / 2;
+
+    @include mq($until: desktop) {
+      display: block;
+      order: -1;
+      margin: #{to.rem(40px)} var(--space-24) 0;
+    }
+  }
+
+  .info-band__content {
+    @include mq($from: desktop) {
+      padding-block: #{to.rem(110px)};
+    }
+  }
+}

@@ -1,0 +1,21 @@
+uuid: 30d21cd7-2f3c-4c9c-92ec-0c2d4cbec98d
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.paragraph.policy_content.field_text
+    - paragraphs.paragraphs_type.policy_content
+id: paragraph.policy_content.default
+targetEntityType: paragraph
+bundle: policy_content
+mode: default
+content:
+  field_text:
+    type: text_textarea
+    weight: 0
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+hidden:
+  created: true
+  status: true

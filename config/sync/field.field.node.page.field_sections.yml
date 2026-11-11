@@ -12,9 +12,12 @@ dependencies:
     - paragraphs.paragraphs_type.hero_split
     - paragraphs.paragraphs_type.image
     - paragraphs.paragraphs_type.image_gallery
+    - paragraphs.paragraphs_type.info_band
     - paragraphs.paragraphs_type.info_rows
     - paragraphs.paragraphs_type.introduction
+    - paragraphs.paragraphs_type.policy_content
     - paragraphs.paragraphs_type.quote
+    - paragraphs.paragraphs_type.split_text
     - paragraphs.paragraphs_type.street_map
     - paragraphs.paragraphs_type.text_wysiwyg_
     - paragraphs.paragraphs_type.video
@@ -53,6 +56,9 @@ settings:
       video: video
       webform: webform
       street_map: street_map
+      info_band: info_band
+      policy_content: policy_content
+      split_text: split_text
     negate: 0
     target_bundles_drag_drop:
       content_grid:
@@ -76,14 +82,23 @@ settings:
       image_gallery:
         weight: 7
         enabled: true
+      info_band:
+        weight: 41
+        enabled: true
       info_rows:
         weight: 8
         enabled: true
       introduction:
         weight: 2
         enabled: true
+      policy_content:
+        weight: 41
+        enabled: true
       quote:
         weight: 9
+        enabled: true
+      split_text:
+        weight: 42
         enabled: true
       street_map:
         weight: 40

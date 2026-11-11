@@ -1,0 +1,15 @@
+{#
+/**
+ * @file
+ * Split text paragraph → pimlico:split_section (About "Area story").
+ */
+#}
+{% set body %}<div class="rich-text rich-text--start">{{ content.field_text }}</div>{% endset %}
+{% include 'pimlico:split_section' with {
+  attributes,
+  eyebrow: paragraph.field_eyebrow.value|default(''),
+  heading: paragraph.field_heading.value|default(''),
+  intro: paragraph.field_intro.value|default(''),
+  tint: paragraph.field_background.value == 'linen',
+  content: body,
+} only %}

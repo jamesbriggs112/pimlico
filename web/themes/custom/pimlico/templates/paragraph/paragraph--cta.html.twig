@@ -1,7 +1,8 @@
 {#
 /**
  * @file
- * Next step paragraph (cta) → pimlico:next_step.
+ * Next step paragraph (cta) → pimlico:next_step. With only a heading and
+ * buttons it's the compact "Related information" bar (T16).
  */
 #}
 {% set links = [] %}
@@ -12,6 +13,7 @@
   attributes,
   eyebrow: paragraph.field_eyebrow.value|default(''),
   heading: paragraph.field_heading.value|default(''),
-  text: content.field_text,
+  text: paragraph.field_text.isEmpty() ? null : content.field_text,
   links,
+  inline: not paragraph.field_eyebrow.value and paragraph.field_text.isEmpty(),
 } only %}

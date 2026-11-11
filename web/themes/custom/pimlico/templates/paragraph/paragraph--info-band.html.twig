@@ -1,0 +1,20 @@
+{#
+/**
+ * @file
+ * Info band paragraph → pimlico:info_band with an inset photo (Visit
+ * "Location & directions"). Links to other sites open in a new tab.
+ */
+#}
+{% set links = [] %}
+{% for item in paragraph.field_links %}
+  {% set links = links|merge([{ text: item.title, url: item.url.toString(), external: item.url.isExternal() }]) %}
+{% endfor %}
+{% include 'pimlico:info_band' with {
+  attributes,
+  eyebrow: paragraph.field_eyebrow.value|default(''),
+  heading: paragraph.field_heading.value|default(''),
+  text: content.field_text,
+  links,
+  media: paragraph.field_image.isEmpty() ? null : content.field_image,
+  media_inset: true,
+} only %}

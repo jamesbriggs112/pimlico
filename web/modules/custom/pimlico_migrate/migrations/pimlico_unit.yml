@@ -1,0 +1,46 @@
+# Units: one per Brand in the source, named by its shopfront, placed on the
+# Map Buildings the map project matched (see the map guide, B7, for the
+# placements still to check).
+id: pimlico_unit
+label: 'Units from the map project'
+migration_tags:
+  - pimlico
+source:
+  plugin: url
+  data_fetcher_plugin: file
+  data_parser_plugin: json
+  # Relative to the web root.
+  urls:
+    - modules/custom/pimlico_migrate/data/brands.json
+  item_selector: brands
+  ids:
+    id:
+      type: string
+  fields:
+    - { name: id, selector: id }
+    - { name: unit, selector: unit }
+    - { name: address_line1, selector: address_line1 }
+    - { name: address_line2, selector: address_line2 }
+    - { name: postal_code, selector: postal_code }
+    - { name: area, selector: area }
+    - { name: buildings, selector: buildings }
+  constants:
+    country: GB
+    city: London
+process:
+  label: unit
+  address/country_code: constants/country
+  address/address_line1: address_line1
+  address/address_line2: address_line2
+  address/locality: constants/city
+  address/postal_code: postal_code
+  map_buildings: buildings
+  area:
+    plugin: entity_lookup
+    source: area
+    entity_type: taxonomy_term
+    bundle_key: vid
+    bundle: area
+    value_key: name
+destination:
+  plugin: 'entity:pimlico_unit'

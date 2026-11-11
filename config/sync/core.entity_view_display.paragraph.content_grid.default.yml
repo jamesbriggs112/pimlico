@@ -4,6 +4,7 @@ status: true
 dependencies:
   config:
     - field.field.paragraph.content_grid.field_anchor
+    - field.field.paragraph.content_grid.field_background
     - field.field.paragraph.content_grid.field_content
     - field.field.paragraph.content_grid.field_eyebrow
     - field.field.paragraph.content_grid.field_heading
@@ -147,4 +148,5 @@ content:
     weight: 2
     region: content
 hidden:
+  field_background: true
   search_api_excerpt: true

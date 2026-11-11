@@ -1,0 +1,13 @@
+{#
+/**
+ * @file
+ * Policy text paragraph → pimlico:policy_content. The body, its contents
+ * list and the "Last updated" date come from includes/paragraph.inc.
+ */
+#}
+{% include 'pimlico:policy_content' with {
+  attributes,
+  updated: policy.updated,
+  contents: policy.contents,
+  body: policy.body,
+} only %}

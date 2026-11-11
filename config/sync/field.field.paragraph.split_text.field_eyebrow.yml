@@ -1,0 +1,19 @@
+uuid: 01d0c109-dd1f-417a-80f0-2bb41a48448e
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_eyebrow
+    - paragraphs.paragraphs_type.split_text
+id: paragraph.split_text.field_eyebrow
+field_name: field_eyebrow
+entity_type: paragraph
+bundle: split_text
+label: Eyebrow
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

@@ -1,9 +1,9 @@
 {% set attributes = attributes ?: create_attribute() %}
 {% set heading_id = 'next-step-' ~ heading|clean_id %}
-<section {{ attributes.addClass('next-step').setAttribute('aria-labelledby', heading_id) }}>
+<section {{ attributes.addClass(['next-step', inline ? 'next-step--inline']).setAttribute('aria-labelledby', heading_id) }}>
   <div class="next-step__inner">
     {% if eyebrow %}<p class="eyebrow">{{ eyebrow }}</p>{% endif %}
-    <h2 class="next-step__heading display-l" id="{{ heading_id }}">{{ heading }}</h2>
+    <h2 class="next-step__heading {{ inline ? 'display-m' : 'display-l' }}" id="{{ heading_id }}">{{ heading }}</h2>
     {% if text %}<div class="next-step__text body-l">{% block text %}{{ text }}{% endblock %}</div>{% endif %}
     {% if links %}
       <div class="next-step__actions">

@@ -1,0 +1,16 @@
+uuid: c6298e96-e805-4944-bb76-1c8505e25873
+langcode: en
+status: true
+dependencies:
+  module:
+    - paragraphs_ee
+third_party_settings:
+  paragraphs_ee:
+    paragraphs_categories:
+      content: content
+id: policy_content
+label: 'Policy text'
+icon_uuid: null
+icon_default: null
+description: 'A policy or long page: the text, with an "On this page" contents list built from its main headings (Heading 2).'
+behavior_plugins: {  }

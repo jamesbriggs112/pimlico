@@ -1,0 +1,850 @@
+{
+    "brands": [
+        {
+            "id": "anthony-outred-ltd",
+            "name": "Anthony Outred Ltd",
+            "category": "Home & Interiors",
+            "summary": "Established 40 years ago, Anthony Outred Ltd is recognised worldwide as specialists in exceptional Furniture, Works of Art and Sculpture.",
+            "website": "https://www.outred.co.uk/",
+            "opening_hours": "Monday to Friday: 10am to 6pm\nSaturday: 10am to 5pm\nSunday: Closed",
+            "unit": "74 Pimlico Road",
+            "address_line1": "74 Pimlico Road",
+            "address_line2": "",
+            "postal_code": "SW1W 8LS",
+            "area": "Pimlico Road",
+            "buildings": [
+                "w535769896"
+            ],
+            "placed_by": "address",
+            "source_url": "https://www.belgraviavillage.com/brand/anthony-outred-ltd"
+        },
+        {
+            "id": "bonadea",
+            "name": "Bonadea",
+            "category": "Home & Interiors",
+            "summary": "Bonadea offers a meticulously curated assortment of luxury tableware, glassware, table linens and antiques from its home on the Pimlico Road.",
+            "website": "https://www.bonadea.com/?amp%3Butm_medium=referral&amp%3Butm_term=tenant_referral",
+            "opening_hours": "Monday to Friday: 10am to 6pm\nSaturday: 10am to 5pm\nSunday: Closed",
+            "unit": "20 Pimlico Road",
+            "address_line1": "20 Pimlico Road",
+            "address_line2": "",
+            "postal_code": "SW1W 8LJ",
+            "area": "Pimlico Road",
+            "buildings": [
+                "w174444762-20"
+            ],
+            "placed_by": "address",
+            "source_url": "https://www.belgraviavillage.com/brand/bonadea"
+        },
+        {
+            "id": "haynes-fine-art",
+            "name": "Haynes Fine Art",
+            "category": "Home & Interiors",
+            "summary": "Established in 1971, Haynes Fine Art, a family run business, quickly became the largest dealers of fine art outside of London.",
+            "website": "https://www.haynesfineart.com/",
+            "opening_hours": "Monday to Friday: 10am - 6pm\nSaturday: 10am - 5pm\nSunday: Closed",
+            "unit": "70 Pimlico Road",
+            "address_line1": "70 Pimlico Road",
+            "address_line2": "",
+            "postal_code": "SW1W 8LS",
+            "area": "Pimlico Road",
+            "buildings": [
+                "w535769901-70"
+            ],
+            "placed_by": "address",
+            "source_url": "https://www.belgraviavillage.com/brand/haynes-fine-art"
+        },
+        {
+            "id": "howe",
+            "name": "Howe",
+            "category": "Home & Interiors",
+            "summary": "Howe offers an unusually varied stock of antique furniture and lighting dating from the 17th to the 20th century, as well as a range of new bespoke furniture and lighting traditionally made in England.",
+            "website": "https://howelondon.com/",
+            "opening_hours": "Monday to Saturday: 9am - 6pm\nSunday: Closed",
+            "unit": "93 Pimlico Road",
+            "address_line1": "93 Pimlico Road",
+            "address_line2": "",
+            "postal_code": "SW1W 8PH",
+            "area": "Pimlico Road",
+            "buildings": [
+                "w535769840"
+            ],
+            "placed_by": "address",
+            "source_url": "https://www.belgraviavillage.com/brand/howe"
+        },
+        {
+            "id": "jamb",
+            "name": "Jamb",
+            "category": "Home & Interiors",
+            "summary": "Jamb has built a reputation with the world's leading architects and designers for dealing in the finest antique and reproduction chimneypieces, fire grates, lighting and furniture.",
+            "website": "https://www.jamb.co.uk/",
+            "opening_hours": "Monday to Friday: 9am to 6pm\nSaturday: 11am to 5pm\nSunday: Closed",
+            "unit": "95–97 Pimlico Road",
+            "address_line1": "95–97 Pimlico Road",
+            "address_line2": "",
+            "postal_code": "SW1W 8PH",
+            "area": "Pimlico Road",
+            "buildings": [
+                "w535769837"
+            ],
+            "placed_by": "address",
+            "source_url": "https://www.belgraviavillage.com/brand/jamb"
+        },
+        {
+            "id": "keshishian",
+            "name": "Keshishian",
+            "category": "Home & Interiors",
+            "summary": "Keshishian specialise in carpets and tapestries that cover the periods from Gothic to Op-Art.",
+            "website": "https://www.keshishiancarpets.com/index.html/",
+            "opening_hours": "Monday to Friday: 10am to 6pm\nSaturday: 10am to 4pm\nSunday: Closed",
+            "unit": "73 Pimlico Road",
+            "address_line1": "73 Pimlico Road",
+            "address_line2": "",
+            "postal_code": "SW1W 8NE",
+            "area": "Pimlico Road",
+            "buildings": [
+                "w535799224"
+            ],
+            "placed_by": "address",
+            "source_url": "https://www.belgraviavillage.com/brand/keshishian"
+        },
+        {
+            "id": "modernity",
+            "name": "Modernity",
+            "category": "Home & Interiors",
+            "summary": "Modernity specialises in the collection and sale of rare and high-grade furniture, ceramics, glass, lighting and jewellery by the most renowned Nordic designers of the 20th century.",
+            "website": "http://www.modernity.se/",
+            "opening_hours": "Monday to Friday: 10am to 6pm\nSaturday and Sunday: Closed",
+            "unit": "Unit 7, Newson’s Yard",
+            "address_line1": "Unit 7, Newson’s Yard",
+            "address_line2": "57 Pimlico Road",
+            "postal_code": "SW1W 8NE",
+            "area": "Newson's Yard",
+            "buildings": [
+                "w544484759-7"
+            ],
+            "placed_by": "address",
+            "source_url": "https://www.belgraviavillage.com/brand/modernity"
+        },
+        {
+            "id": "paolo-moschino-ltd",
+            "name": "Paolo Moschino Ltd",
+            "category": "Home & Interiors",
+            "summary": "Helmed by Paolo Moschino and Philip Vergeylen, Paolo Moschino Ltd. is an award-winning design studio and a go-to shopping source for elegant design.",
+            "website": "https://www.paolomoschino.com/",
+            "opening_hours": "Monday to Friday: 10am to 6pm\nSaturday and Sunday: Closed",
+            "unit": "202 Ebury Street",
+            "address_line1": "202 Ebury Street",
+            "address_line2": "",
+            "postal_code": "SW1W 8UN",
+            "area": "Ebury Street",
+            "buildings": [
+                "w481597841-202"
+            ],
+            "placed_by": "address",
+            "source_url": "https://www.belgraviavillage.com/brand/paolo-moschino-ltd"
+        },
+        {
+            "id": "roseberys-london",
+            "name": "Roseberys London",
+            "category": "Antiques and art",
+            "summary": "Roseberys London is a leading auctioneer with locations in Belgravia and South London, offering fresh-to-market works across collecting categories.",
+            "website": "https://www.roseberys.co.uk/",
+            "opening_hours": "Monday - Friday: 9am - 5:30pm\nSaturday: 10am - 5pm\nSunday: Closed",
+            "unit": "26 Pimlico Road",
+            "address_line1": "26 Pimlico Road",
+            "address_line2": "",
+            "postal_code": "",
+            "area": "Pimlico Road",
+            "buildings": [
+                "w174444762-26"
+            ],
+            "placed_by": "address",
+            "source_url": "https://www.belgraviavillage.com/brand/roseberys-london"
+        },
+        {
+            "id": "rose-uniacke-1",
+            "name": "Rose Uniacke",
+            "category": "Home & Interiors",
+            "summary": "Rose Uniacke is a British interiors and product designer, as well as a specialist in antiques.",
+            "website": "https://www.roseuniacke.com/",
+            "opening_hours": "Monday – Friday: 9:30 – 18:00\nSaturday: 10:00 – 16:00\nSunday: Closed",
+            "unit": "76 Pimlico Road",
+            "address_line1": "76 Pimlico Road",
+            "address_line2": "",
+            "postal_code": "SW1W 8PL",
+            "area": "Pimlico Road",
+            "buildings": [
+                "w535769910-76-80"
+            ],
+            "placed_by": "address",
+            "source_url": "https://www.belgraviavillage.com/brand/rose-uniacke-1"
+        },
+        {
+            "id": "robert-kime",
+            "name": "Robert Kime",
+            "category": "Home & Interiors",
+            "summary": "Robert Kime, uniquely amongst interior designers, rose to eminence in the profession via antique dealing, textile collecting and a passion for putting rooms together.",
+            "website": "https://www.robertkime.com/",
+            "opening_hours": "Monday – Friday: 10:00 – 18:00\nSaturday: 11:00 – 17:00\nSunday: Closed",
+            "unit": "190-192 Ebury Street",
+            "address_line1": "190-192 Ebury Street",
+            "address_line2": "",
+            "postal_code": "SW1W 8UP",
+            "area": "Ebury Street",
+            "buildings": [
+                "w548345932"
+            ],
+            "placed_by": "address",
+            "source_url": "https://www.belgraviavillage.com/brand/robert-kime"
+        },
+        {
+            "id": "sibyl-colefax-john-fowler",
+            "name": "Sibyl Colefax & John Fowler",
+            "category": "Home & Interiors",
+            "summary": "Sibyl Colefax & John Fowler, founded in the 1930s, is one of the most highly respected interior decorating firms in the UK.",
+            "website": "https://www.sibylcolefax.com/",
+            "opening_hours": "Monday - Friday: 9:30am - 5:30pm\nSaturday: 10am - 3:30pm",
+            "unit": "89-91 Pimlico Road",
+            "address_line1": "89-91 Pimlico Road",
+            "address_line2": "",
+            "postal_code": "SW1W 8PH",
+            "area": "Pimlico Road",
+            "buildings": [
+                "w535769842"
+            ],
+            "placed_by": "address",
+            "source_url": "https://www.belgraviavillage.com/brand/sibyl-colefax-john-fowler"
+        },
+        {
+            "id": "tarquin-bilgen-and-nicholas-guedroitz",
+            "name": "Tarquin Bilgen",
+            "category": "Home & Interiors",
+            "summary": "An antiques shop that deals in 18th and 19th-century English and continental furniture, with objects d'art as well.",
+            "website": "https://www.tarquinbilgen.com/",
+            "opening_hours": "Monday - Friday: 10:00 - 18:00\nSaturday: 10:00 - 16:00\nSunday: Closed",
+            "unit": "227 Ebury Street",
+            "address_line1": "227 Ebury Street",
+            "address_line2": "",
+            "postal_code": "SW1W 8UT",
+            "area": "Ebury Street",
+            "buildings": [
+                "w174444766-227"
+            ],
+            "placed_by": "address",
+            "source_url": "https://www.belgraviavillage.com/brand/tarquin-bilgen-and-nicholas-guedroitz"
+        },
+        {
+            "id": "timothy-langston-fine-art-antiques",
+            "name": "Timothy Langston Fine Art & Antiques",
+            "category": "Home & Interiors",
+            "summary": "A spacious, light-filled showroom that's home to an impressive collection of antiques, art and decorative pieces.",
+            "website": "https://www.timothylangston.com/",
+            "opening_hours": "Monday to Friday: 10am to 6pm\nSaturday: 10am to 5pm\nSunday: 11am to 4pm.",
+            "unit": "198 Ebury Street",
+            "address_line1": "198 Ebury Street",
+            "address_line2": "",
+            "postal_code": "SW1W 8UN",
+            "area": "Ebury Street",
+            "buildings": [
+                "w481597841-198"
+            ],
+            "placed_by": "address",
+            "source_url": "https://www.belgraviavillage.com/brand/timothy-langston-fine-art-antiques"
+        },
+        {
+            "id": "and-objects",
+            "name": "And Objects",
+            "category": "Home & Interiors",
+            "summary": "Co-founded in 2015, And Objects launched with the aim of allowing exclusive access to the designers’ creations.",
+            "website": "https://andobjects.com/",
+            "opening_hours": "Monday to Friday: 10:00—17:30\nSaturday: 10:00—17:00\nSundays and Bank Holidays: Closed",
+            "unit": "5 Newson’s Yard",
+            "address_line1": "5 Newson’s Yard",
+            "address_line2": "57 Pimlico Road",
+            "postal_code": "SW1W 8NE",
+            "area": "Newson's Yard",
+            "buildings": [
+                "w544484759-5"
+            ],
+            "placed_by": "address",
+            "source_url": "https://www.belgraviavillage.com/brand/and-objects"
+        },
+        {
+            "id": "carl-hansen-son",
+            "name": "Carl Hansen & Son",
+            "category": "Home & Interiors",
+            "summary": "The third-generation Danish furniture manufacturer has opened a second London location due to increasing UK demand for Danish mid-century design.",
+            "website": "https://www.carlhansen.com/en/",
+            "opening_hours": "Monday to Friday: 10am to 6pm\nSaturday: 10am to 5pm\nSunday: By appointment",
+            "unit": "48A Pimlico Road",
+            "address_line1": "48A Pimlico Road",
+            "address_line2": "",
+            "postal_code": "SW1W 8LP",
+            "area": "Pimlico Road",
+            "buildings": [
+                "w535799252"
+            ],
+            "placed_by": "address",
+            "source_url": "https://www.belgraviavillage.com/brand/carl-hansen-son"
+        },
+        {
+            "id": "chelsea-textiles",
+            "name": "Chelsea Textiles",
+            "category": "Home & Interiors",
+            "summary": "Chelsea Textiles prides itself on using only authentic materials, hand-worked by master craftsmen into unique pieces which will stand the test of time, to become the antiques for future generations.",
+            "website": "https://www.chelseatextiles.com/uk/?amp%3Butm_medium=referral&amp%3Butm_term=tenant_referral",
+            "opening_hours": "Monday to Friday: 9am to 6pm\nSaturday: 10am to 5pm\nSunday: Closed",
+            "unit": "40-42 Pimlico Road",
+            "address_line1": "40-42 Pimlico Road",
+            "address_line2": "",
+            "postal_code": "SW1W 8LP",
+            "area": "Pimlico Road",
+            "buildings": [
+                "w535799260"
+            ],
+            "placed_by": "approximate",
+            "source_url": "https://www.belgraviavillage.com/brand/chelsea-textiles"
+        },
+        {
+            "id": "cox-london",
+            "name": "Cox London",
+            "category": "Home & Interiors",
+            "summary": "Cox London, makers of unique functional art based design, is headed up by design duo Christopher and Nicola Cox.",
+            "website": "https://coxlondon.com/",
+            "opening_hours": "Monday to Friday: 9:30am to 6pm\nSaturday: 10am to 4pm\nSunday: Closed",
+            "unit": "46 Pimlico Road",
+            "address_line1": "46 Pimlico Road",
+            "address_line2": "",
+            "postal_code": "SW1W 8LP",
+            "area": "Pimlico Road",
+            "buildings": [
+                "w535799252"
+            ],
+            "placed_by": "approximate",
+            "source_url": "https://www.belgraviavillage.com/brand/cox-london"
+        },
+        {
+            "id": "the-dining-chair-company",
+            "name": "Dining Chair Company",
+            "category": "Home & Interiors",
+            "summary": "The Dining Chair Company range comprises beautifully hand crafted furniture designed for style and comfort.",
+            "website": "https://www.diningchair.co.uk/",
+            "opening_hours": "Monday - Friday: 9:30 - 13:00\n14:00 - 17:30\nSaturday + Sunday: Closed",
+            "unit": "4 St Barnabas Street",
+            "address_line1": "4 St Barnabas Street",
+            "address_line2": "",
+            "postal_code": "SW1W 8PE",
+            "area": "Pimlico Road",
+            "buildings": [
+                "w536215788"
+            ],
+            "placed_by": "address",
+            "source_url": "https://www.belgraviavillage.com/brand/the-dining-chair-company"
+        },
+        {
+            "id": "collier-webb",
+            "name": "Collier Webb",
+            "category": "Home & Interiors",
+            "summary": "A third-generation British family business since 1977, Collier Webb are designers and makers of lighting, furniture and hardware for the world’s most beautiful interior spaces.",
+            "website": "https://collierwebb.com/?amp%3Butm_medium=referral&amp%3Butm_term=tenant_referral",
+            "opening_hours": "Monday to Friday: 9:30am to 5:30pm\nSaturday: 11am to 4pm\nSunday: Closed",
+            "unit": "68 Pimlico Road",
+            "address_line1": "68 Pimlico Road",
+            "address_line2": "",
+            "postal_code": "SW1W 8LS",
+            "area": "Pimlico Road",
+            "buildings": [
+                "w535769901-68"
+            ],
+            "placed_by": "address",
+            "source_url": "https://www.belgraviavillage.com/brand/collier-webb"
+        },
+        {
+            "id": "howe-at-36-bourne-street",
+            "name": "Howe at 36 Bourne Street",
+            "category": "Home & Interiors",
+            "summary": "HOWE at 36 Bourne Street: an increasingly rare and nostalgic shop, unique, in an ever-changing London.",
+            "website": "https://howelondon.com/",
+            "opening_hours": "Monday to Friday: 9:30am to 5:30pm\nSaturday: 10am to 4:30pm\nSunday: Closed",
+            "unit": "36 Bourne Street",
+            "address_line1": "36 Bourne Street",
+            "address_line2": "",
+            "postal_code": "SW1W 8JA",
+            "area": "Bourne Street",
+            "buildings": [
+                "w548346040"
+            ],
+            "placed_by": "address",
+            "source_url": "https://www.belgraviavillage.com/brand/howe-at-36-bourne-street"
+        },
+        {
+            "id": "the-lacquer-company",
+            "name": "The Lacquer Company",
+            "category": "Home & Interiors",
+            "summary": "A specialist in handmade lacquer furniture and accessories.",
+            "website": "http://www.thelacquercompany.com/",
+            "opening_hours": "Monday - Friday: 9:30 - 17:30\nSaturday + Sunday: Closed",
+            "unit": "6 Newson’s Yard",
+            "address_line1": "6 Newson’s Yard",
+            "address_line2": "57 Pimlico Road",
+            "postal_code": "SW1W 8NE",
+            "area": "Newson's Yard",
+            "buildings": [
+                "w544484759-6"
+            ],
+            "placed_by": "address",
+            "source_url": "https://www.belgraviavillage.com/brand/the-lacquer-company"
+        },
+        {
+            "id": "lapicida",
+            "name": "Lapicida",
+            "category": "Home & Interiors",
+            "summary": "Lapicida is the renowned supplier, merchant and fabricator of marble, limestone, sandstone, terracotta and antique reclaimed stone surfaces including porcelain.",
+            "website": "https://www.lapicida.com/",
+            "opening_hours": "Monday – Friday: 10:00am to 6:00pm\nSaturday: 10:00am to 4:00pm\nSunday: Closed",
+            "unit": "225 Ebury Street",
+            "address_line1": "225 Ebury Street",
+            "address_line2": "",
+            "postal_code": "",
+            "area": "Ebury Street",
+            "buildings": [
+                "w174444766-225"
+            ],
+            "placed_by": "address",
+            "source_url": "https://www.belgraviavillage.com/brand/lapicida"
+        },
+        {
+            "id": "linley",
+            "name": "LINLEY",
+            "category": "Home & Interiors",
+            "summary": "Founded by David Linley in 1985, LINLEY has a world-renowned reputation for fusing striking design with exemplary craftsmanship.",
+            "website": "https://www.davidlinley.com/",
+            "opening_hours": "Monday to Saturday: 10am to 6pm\nSunday: Closed",
+            "unit": "60 Pimlico Road",
+            "address_line1": "60 Pimlico Road",
+            "address_line2": "",
+            "postal_code": "SW1W 8LP",
+            "area": "Pimlico Road",
+            "buildings": [
+                "w535799340"
+            ],
+            "placed_by": "address",
+            "source_url": "https://www.belgraviavillage.com/brand/linley"
+        },
+        {
+            "id": "new-craftmaker",
+            "name": "The New Craftmaker",
+            "category": "Home & Interiors",
+            "summary": "The New Craftmaker is a platform for celebrating genuine craftsmanship in meaningful design.",
+            "website": "https://thenewcraftmaker.com/",
+            "opening_hours": "Monday to Friday: 9.30am - 6pm\nSaturday: 10am - 4pm",
+            "unit": "67 Pimlico Road",
+            "address_line1": "67 Pimlico Road",
+            "address_line2": "",
+            "postal_code": "",
+            "area": "Pimlico Road",
+            "buildings": [
+                "w544479370"
+            ],
+            "placed_by": "address",
+            "source_url": "https://www.belgraviavillage.com/brand/new-craftmaker"
+        },
+        {
+            "id": "nina-campbell",
+            "name": "Nina Campbell",
+            "category": "Home & Interiors",
+            "summary": "Founded more than 50 years ago by Nina Campbell, this interiors mecca offers furniture, interior accessories, homeware, fabric and wallpaper.",
+            "website": "https://shop.ninacampbell.com/",
+            "opening_hours": "Monday to Friday: 10am to 6pm\nSaturday: 10am to 5pm\nSunday: Closed",
+            "unit": "Newson’s Yard (Nina Campbell)",
+            "address_line1": "Newson’s Yard",
+            "address_line2": "57 Pimlico Road",
+            "postal_code": "SW1W 8NE",
+            "area": "Newson's Yard",
+            "buildings": [
+                "w544484759-nina-campbell"
+            ],
+            "placed_by": "override",
+            "source_url": "https://www.belgraviavillage.com/brand/nina-campbell"
+        },
+        {
+            "id": "the-odd-chair-company",
+            "name": "The Odd Chair Company",
+            "category": "Home & Interiors",
+            "summary": "Luxury furniture handmade in-house, from frame to finish, by a skilled team of artisans.",
+            "website": "https://www.theoddchaircompany.com/",
+            "opening_hours": "Monday - Friday: 10:00 - 18:00\nSaturday: 10:00 - 17:00\nSunday: Closed",
+            "unit": "45 Pimlico Road",
+            "address_line1": "45 Pimlico Road",
+            "address_line2": "",
+            "postal_code": "SW1W 8NE",
+            "area": "Pimlico Road",
+            "buildings": [
+                "w544513605"
+            ],
+            "placed_by": "approximate",
+            "source_url": "https://www.belgraviavillage.com/brand/the-odd-chair-company"
+        },
+        {
+            "id": "pinch",
+            "name": "PINCH",
+            "category": "Home & Interiors",
+            "summary": "PINCH is an established British design studio, celebrated for its consistently high quality and genre-defining furniture.",
+            "website": "https://pinchdesign.com/",
+            "opening_hours": "Monday – Friday: 9:00 - 18:00\nSaturday: 10:00 - 17:00",
+            "unit": "200 Ebury Street",
+            "address_line1": "200 Ebury Street",
+            "address_line2": "",
+            "postal_code": "SW1W 8UN",
+            "area": "Ebury Street",
+            "buildings": [
+                "w481597841-200"
+            ],
+            "placed_by": "address",
+            "source_url": "https://www.belgraviavillage.com/brand/pinch"
+        },
+        {
+            "id": "plain-english",
+            "name": "Plain English",
+            "category": "Home & Interiors",
+            "summary": "Plain English use skilled craftsmen to create handmade kitchens using traditional techniques.",
+            "website": "https://www.plainenglishdesign.co.uk/pimlico-road-showroom/",
+            "opening_hours": "Monday to Friday: Open from 10am to 5.30pm.\nSaturday: Open from 10am to 5pm.\nClosed on Sunday.",
+            "unit": "Newson’s Yard (Plain English)",
+            "address_line1": "Newson’s Yard",
+            "address_line2": "57 Pimlico Road",
+            "postal_code": "SW1W 8NE",
+            "area": "Newson's Yard",
+            "buildings": [
+                "w544484759-61"
+            ],
+            "placed_by": "address",
+            "source_url": "https://www.belgraviavillage.com/brand/plain-english"
+        },
+        {
+            "id": "tom-faulkner",
+            "name": "Tom Faulkner",
+            "category": "Home & Interiors",
+            "summary": "Hand-crafted furniture made in Wiltshire.",
+            "website": "https://www.tomfaulkner.co.uk/",
+            "opening_hours": "Monday – Friday: 9:00am – 5:00pm\nSaturday: 10:00am – 5:00pm\nSunday: Closed",
+            "unit": "28 Pimlico Road",
+            "address_line1": "28 Pimlico Road",
+            "address_line2": "",
+            "postal_code": "SW1W 8LJ",
+            "area": "Pimlico Road",
+            "buildings": [
+                "w174444762-28"
+            ],
+            "placed_by": "address",
+            "source_url": "https://www.belgraviavillage.com/brand/tom-faulkner"
+        },
+        {
+            "id": "ochre",
+            "name": "Ochre",
+            "category": "Home & Interiors",
+            "summary": "Ochre designs furniture, lighting and accessories for the interior. Their designs place equal importance on harmonious proportions, luxurious materials and matchless craftsmanship.",
+            "website": "https://www.ochre.net/",
+            "opening_hours": "Monday to Friday: 10am to 6pm\nSaturday: 10am to 4pm\nSunday: Closed",
+            "unit": "22-24 Pimlico Road",
+            "address_line1": "22-24 Pimlico Road",
+            "address_line2": "",
+            "postal_code": "",
+            "area": "Pimlico Road",
+            "buildings": [
+                "w174444762-22-24"
+            ],
+            "placed_by": "address",
+            "source_url": "https://www.belgraviavillage.com/brand/ochre"
+        },
+        {
+            "id": "soane-britain",
+            "name": "Soane Britain",
+            "category": "Home & Interiors",
+            "summary": "Soane Britain designs and makes enduring furniture, lighting, fabrics and wallpapers through collaborations with some of the best craftspeople in Britain.",
+            "website": "https://www.soane.co.uk/",
+            "opening_hours": "Monday – Thursday: 9:30 - 18:00\nFriday: 9:30 - 17:00\nSaturday: 10:00 - 17:00",
+            "unit": "50 - 52 Pimlico Road",
+            "address_line1": "50 - 52 Pimlico Road",
+            "address_line2": "",
+            "postal_code": "SW1W 8LP",
+            "area": "Pimlico Road",
+            "buildings": [
+                "w535799276"
+            ],
+            "placed_by": "address",
+            "source_url": "https://www.belgraviavillage.com/brand/soane-britain"
+        },
+        {
+            "id": "de-le-cuona",
+            "name": "de Le Cuona",
+            "category": "Home & Interiors",
+            "summary": "Fabrics and accessories for interiors, rooted in nature and responsibly crafted from the worlds’ finest natural fibres: flax, wool, silk, hemp, cashmere, and alpaca.",
+            "website": "https://delecuona.com/?amp%3Butm_medium=referral&amp%3Butm_term=tenant_referral",
+            "opening_hours": "Monday to Friday: 10am to 6pm\nSaturday: 10am to 5pm\nSunday: Closed",
+            "unit": "44 Pimlico Road",
+            "address_line1": "44 Pimlico Road",
+            "address_line2": "",
+            "postal_code": "SW1W 8LP",
+            "area": "Pimlico Road",
+            "buildings": [
+                "w535799260"
+            ],
+            "placed_by": "address",
+            "source_url": "https://www.belgraviavillage.com/brand/de-le-cuona"
+        },
+        {
+            "id": "fermoie",
+            "name": "Fermoie",
+            "category": "Home & Interiors",
+            "summary": "From highly pigmented paint to printing fine textiles.",
+            "website": "https://fermoie.com/?amp%3Butm_medium=referral&amp%3Butm_term=tenant_referral",
+            "opening_hours": "Monday to Friday: 9:30am to 5:30pm\nSaturday: 10am to 5pm\nSunday: Closed",
+            "unit": "53-55 Pimlico Road",
+            "address_line1": "53-55 Pimlico Road",
+            "address_line2": "",
+            "postal_code": "SW1W 8NE",
+            "area": "Pimlico Road",
+            "buildings": [
+                "w544505325"
+            ],
+            "placed_by": "approximate",
+            "source_url": "https://www.belgraviavillage.com/brand/fermoie"
+        },
+        {
+            "id": "jane-churchill",
+            "name": "Jane Churchill",
+            "category": "Home & Interiors",
+            "summary": "More than forty years in the design business has made Jane Churchill a household name and a revered figure in the industry.",
+            "website": "https://www.janechurchillinteriors.co.uk/",
+            "opening_hours": "Monday to Friday: 9:30am to 5:30pm\nSaturday and Sunday: Closed",
+            "unit": "81 Pimlico Road",
+            "address_line1": "81 Pimlico Road",
+            "address_line2": "",
+            "postal_code": "SW1W 8PH",
+            "area": "Pimlico Road",
+            "buildings": [
+                "w544469122"
+            ],
+            "placed_by": "name",
+            "source_url": "https://www.belgraviavillage.com/brand/jane-churchill"
+        },
+        {
+            "id": "luke-irwin",
+            "name": "Luke Irwin",
+            "category": "Home & Interiors",
+            "summary": "Award-winning bespoke rug designer Luke Irwin specialises in the design and manufacture of hand-knotted custom-made rugs.",
+            "website": "https://lukeirwin.com/",
+            "opening_hours": "Monday to Friday: 10am to 6pm\nSaturday: 10am to 5pm\nSunday: Closed",
+            "unit": "54 Pimlico Road",
+            "address_line1": "54 Pimlico Road",
+            "address_line2": "",
+            "postal_code": "SW1W 8LP",
+            "area": "Pimlico Road",
+            "buildings": [
+                "w535799276"
+            ],
+            "placed_by": "approximate",
+            "source_url": "https://www.belgraviavillage.com/brand/luke-irwin"
+        },
+        {
+            "id": "volga-linen",
+            "name": "Volga Linen",
+            "category": "Soft furnishings and fabrics",
+            "summary": "A luxury British brand synonymous with creativity and craft that produce heirloom-quality, pure linens for the bedroom, table and bathroom and fabric by the metre.",
+            "website": "https://volgalinen.com/",
+            "opening_hours": "Monday to Friday: 10am – 6pm\nSaturday & Sunday: Closed",
+            "unit": "20a Pimlico Road",
+            "address_line1": "20a Pimlico Road",
+            "address_line2": "",
+            "postal_code": "",
+            "area": "Pimlico Road",
+            "buildings": [
+                "w174444762-20"
+            ],
+            "placed_by": "address",
+            "source_url": "https://www.belgraviavillage.com/brand/volga-linen"
+        },
+        {
+            "id": "cto-lighting",
+            "name": "CTO Lighting",
+            "category": "Lighting",
+            "summary": "CTO Lighting is an exclusive, luxury lighting company, which celebrates contemporary design and British craftmanship.",
+            "website": "https://ctolighting.co.uk/",
+            "opening_hours": "Monday to Thursday: 9am to 5:30pm\nSaturday: 10am to 4pm\nSunday: Closed",
+            "unit": "66 Pimlico Road",
+            "address_line1": "66 Pimlico Road",
+            "address_line2": "",
+            "postal_code": "",
+            "area": "Pimlico Road",
+            "buildings": [
+                "w548932934"
+            ],
+            "placed_by": "address",
+            "source_url": "https://www.belgraviavillage.com/brand/cto-lighting"
+        },
+        {
+            "id": "mgco",
+            "name": "MG&Co.",
+            "category": "Home & Interiors",
+            "summary": "MG&Co. is a destination for unique lighting, hardware and homewares, designed by founder Matilda Goad.",
+            "website": "https://matildagoad.com/",
+            "opening_hours": "Monday: 9.30am to 6pm\nTuesday: 9.30am to 6pm\nWednesday: 9.30am to 6pm\nThursday: 9.30am to 6pm\nFriday: 9.30am to 6pm\nSaturday: 11am to 5pm\nSunday: Closed",
+            "unit": "194 Ebury Street",
+            "address_line1": "194 Ebury Street",
+            "address_line2": "",
+            "postal_code": "SW1W 8UP",
+            "area": "Ebury Street",
+            "buildings": [
+                "w548345933"
+            ],
+            "placed_by": "address",
+            "source_url": "https://www.belgraviavillage.com/brand/mgco"
+        },
+        {
+            "id": "daylesford",
+            "name": "Daylesford Organic",
+            "category": "Food & Drink",
+            "summary": "Shop artisan bread and pastries, seasonal fruit and vegetables, pasture-raised meat, fresh fish and cheeses, along with ready to cook meals and soups, pantry essentials and organic wines.",
+            "website": "https://www.daylesford.com/?amp%3Butm_medium=referral&amp%3Butm_term=tenant_referral",
+            "opening_hours": "Farmshop\nMonday - Saturday: 8am - 8pm\nSunday: 9am - 6pm\nCafé\nMonday - Saturday: 8am - 6pm\nSunday: 9am - 6pm\nLast orders half an hour before close.",
+            "unit": "44B Pimlico Road",
+            "address_line1": "44B Pimlico Road",
+            "address_line2": "",
+            "postal_code": "SW1W 8LP",
+            "area": "Pimlico Road",
+            "buildings": [
+                "w535799260"
+            ],
+            "placed_by": "address",
+            "source_url": "https://www.belgraviavillage.com/brand/daylesford"
+        },
+        {
+            "id": "edward-bulmer",
+            "name": "Edward Bulmer Natural Paint",
+            "category": "Home & Interiors",
+            "summary": "Edward Bulmer Natural Paint has opened its first ‘colour’ shop on Orange Square in the Pimlico Road Design District.",
+            "website": "https://www.edwardbulmerpaint.co.uk/",
+            "opening_hours": "Monday to Friday: 9:30am to 6pm\nSaturday: 10am to 5pm\nSunday: By Appointment",
+            "unit": "69 Pimlico Road",
+            "address_line1": "69 Pimlico Road",
+            "address_line2": "",
+            "postal_code": "SW1W 8NE",
+            "area": "Pimlico Road",
+            "buildings": [
+                "w544478859"
+            ],
+            "placed_by": "address",
+            "source_url": "https://www.belgraviavillage.com/brand/edward-bulmer"
+        },
+        {
+            "id": "tomasz-starzewski",
+            "name": "Tomasz Starzewski",
+            "category": "Home & Interiors",
+            "summary": "One of Britain's leading fashion designers, showcasing his collection of hand-embroidered textiles, antiques and art.",
+            "website": "https://www.starzewski.com/",
+            "opening_hours": "Monday to Friday: 10am to 5pm\nSaturday and Sunday: Closed",
+            "unit": "229 Ebury Street",
+            "address_line1": "229 Ebury Street",
+            "address_line2": "",
+            "postal_code": "SW1W 8UT",
+            "area": "Ebury Street",
+            "buildings": [
+                "w174444766-229"
+            ],
+            "placed_by": "address",
+            "source_url": "https://www.belgraviavillage.com/brand/tomasz-starzewski"
+        },
+        {
+            "id": "hunan",
+            "name": "Hunan",
+            "category": "Food & Drink",
+            "summary": "Established since 1982, the family-run Hunan is a favourite with the local community.",
+            "website": "https://www.hunanlondon.com/",
+            "opening_hours": "Monday to Saturday: 12:30pm to 2pm\n6pm to 11pm\nSunday: Closed",
+            "unit": "51 Pimlico Road",
+            "address_line1": "51 Pimlico Road",
+            "address_line2": "",
+            "postal_code": "SW1W 8NE",
+            "area": "Pimlico Road",
+            "buildings": [
+                "w544506649"
+            ],
+            "placed_by": "address",
+            "source_url": "https://www.belgraviavillage.com/brand/hunan"
+        },
+        {
+            "id": "hagen",
+            "name": "Hagen",
+            "category": "Food & Drink",
+            "summary": "Enjoy Danish speciality coffee overlooking Orange Square.",
+            "website": "https://www.thehagenproject.com/",
+            "opening_hours": "Monday to Friday: 7am to 6pm\nSaturday to Sunday: 8am to 6pm.",
+            "unit": "30a Pimlico Road",
+            "address_line1": "30a Pimlico Road",
+            "address_line2": "",
+            "postal_code": "SW1W 8LJ",
+            "area": "Pimlico Road",
+            "buildings": [
+                "w174444762-30a"
+            ],
+            "placed_by": "address",
+            "source_url": "https://www.belgraviavillage.com/brand/hagen"
+        },
+        {
+            "id": "the-orange-public-house-hotel",
+            "name": "The Orange Public House & Hotel",
+            "category": "Food & Drink",
+            "summary": "A ground floor pub and first floor restaurant serving British seasonal classics and wood-fired pizzas.",
+            "website": "https://www.theorange.co.uk/",
+            "opening_hours": "THE BAR\nMonday – Thursday: 20:00 - 23:30\nFriday - Saturday: 20:00 - 00:00\nSunday: 20:00 - 22:30 DINING ROOM\nOPENING HOURS\nMonday – Wednesday: 18:00 - 22:00\nThursday: 12:00 - 22:00\nFriday + Saturday: 12:00 – 22:30\nSunday: 12:00 – 21:30",
+            "unit": "37 Pimlico Road",
+            "address_line1": "37 Pimlico Road",
+            "address_line2": "",
+            "postal_code": "SW1W 8NE",
+            "area": "Pimlico Road",
+            "buildings": [
+                "w147249462"
+            ],
+            "placed_by": "address",
+            "source_url": "https://www.belgraviavillage.com/brand/the-orange-public-house-hotel"
+        },
+        {
+            "id": "la-poule-au-pot",
+            "name": "La Poule au Pot",
+            "category": "Food & Drink",
+            "summary": "Distinguished, relaxed and romantic, La Poule au Pot offers authentic French cuisine in London.",
+            "website": "http://www.pouleaupot.co.uk/",
+            "opening_hours": "Monday to Sunday: 12pm to 9pm",
+            "unit": "231 Ebury Street",
+            "address_line1": "231 Ebury Street",
+            "address_line2": "",
+            "postal_code": "SW1W 8UT",
+            "area": "Ebury Street",
+            "buildings": [
+                "w174444766-231"
+            ],
+            "placed_by": "address",
+            "source_url": "https://www.belgraviavillage.com/brand/la-poule-au-pot"
+        },
+        {
+            "id": "wildflowers-restaurant",
+            "name": "Wildflowers Restaurant",
+            "category": "Food & Drink",
+            "summary": "Wildflowers is a Mediterranean-inspired restaurant and wine bar. We focus on seasonal, high-quality ingredients, all cooked over coals.",
+            "website": "https://www.wildflowersrestaurant.co.uk/",
+            "opening_hours": "Monday - Closed\nTuesday 12- 11.30pm\nWednesday 12- 11.30pm\nThursday 12-11.30pm\nFriday 12-11.30pm\nSaturday 12-11.30pm\nSunday 12-4pm",
+            "unit": "Newson’s Yard (Wildflowers Restaurant)",
+            "address_line1": "Newson’s Yard",
+            "address_line2": "57 Pimlico Road",
+            "postal_code": "SW1W 8NE",
+            "area": "Newson's Yard",
+            "buildings": [
+                "w544484759-wildflowers"
+            ],
+            "placed_by": "override",
+            "source_url": "https://www.belgraviavillage.com/brand/wildflowers-restaurant"
+        }
+    ]
+}

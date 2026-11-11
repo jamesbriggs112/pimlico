@@ -2,8 +2,8 @@
 /**
  * @file
  * Image paragraph → pimlico:figure (3:2 image at the 760px reading measure,
- * Body S caption). The image and caption live on the nested
- * image_with_caption paragraph.
+ * Body S caption; "Full width" layout = the 1280px 2:1 image, as on About).
+ * The image and caption live on the nested image_with_caption paragraph.
  */
 #}
 {% set item = paragraph.field_image_with_caption.entity %}
@@ -11,6 +11,7 @@
   {% include 'pimlico:figure' with {
     attributes,
     caption: item.field_caption.value|default(''),
+    wide: paragraph.field_layout.value == 'full_width',
     image: drupal_field('field_image', 'paragraph', item.id.value),
   } only %}
 {% endif %}

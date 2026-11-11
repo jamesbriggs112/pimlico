@@ -8,6 +8,7 @@ libraryOverrides:
       split_section.scss: {}
   dependencies:
     - core/components.pimlico--button
+    - core/components.pimlico--rich_text
 props:
   type: object
   required:

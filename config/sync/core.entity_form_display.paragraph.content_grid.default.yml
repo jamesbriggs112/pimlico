@@ -4,6 +4,7 @@ status: true
 dependencies:
   config:
     - field.field.paragraph.content_grid.field_anchor
+    - field.field.paragraph.content_grid.field_background
     - field.field.paragraph.content_grid.field_content
     - field.field.paragraph.content_grid.field_eyebrow
     - field.field.paragraph.content_grid.field_heading
@@ -23,6 +24,12 @@ content:
   field_anchor:
     type: string_textfield
     weight: 4
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+  field_background:
+    type: options_buttons
+    weight: 20
     region: content
     settings: {  }
     third_party_settings: {  }

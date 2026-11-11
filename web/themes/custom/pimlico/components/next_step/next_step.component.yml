@@ -19,6 +19,10 @@ props:
     heading:
       type: string
       title: Heading
+    inline:
+      type: boolean
+      title: Inline
+      description: 'Policy "Related information" (30:4059): heading left, buttons right, on one row.'
     links:
       type: array
       title: Buttons

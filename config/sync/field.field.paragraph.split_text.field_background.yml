@@ -1,0 +1,23 @@
+uuid: c2f62dc4-22fd-4475-b660-2d63abaca1d4
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_background
+    - paragraphs.paragraphs_type.split_text
+  module:
+    - options
+id: paragraph.split_text.field_background
+field_name: field_background
+entity_type: paragraph
+bundle: split_text
+label: Background
+description: ''
+required: true
+translatable: true
+default_value:
+  -
+    value: linen
+default_value_callback: ''
+settings: {  }
+field_type: list_string

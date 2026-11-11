@@ -1,7 +1,17 @@
-_core:
-  default_config_hash: 25hWeYa4sasuJtHqKKcEN_nYiuEC1lMPYHsn5dawJEw
 links:
   -
     path: /
-    priority: '1.0'
+    priority: '1'
+    changefreq: daily
+  -
+    path: /brands
+    priority: '0.9'
+    changefreq: daily
+  -
+    path: /dine
+    priority: '0.8'
+    changefreq: daily
+  -
+    path: /news
+    priority: '0.8'
     changefreq: daily

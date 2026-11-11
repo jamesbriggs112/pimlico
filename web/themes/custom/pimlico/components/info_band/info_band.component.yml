@@ -29,11 +29,18 @@ props:
           text: { type: string }
           url: { type: string }
           external: { type: boolean }
+    media_inset:
+      type: boolean
+      title: Inset photo
+      description: 'Visit "Location & directions" (23:971): a 3:2 photo 560px wide, inset 80px from the edge and centred; shown above the text on mobile.'
     media_fill:
       type: boolean
       title: Media fills the half
       description: 'True for a map (720x800, edge to edge); false for a framed photo.'
 slots:
+  text:
+    title: Text
+    description: 'Body L intro under the heading.'
   rows:
     title: Detail rows
   media:

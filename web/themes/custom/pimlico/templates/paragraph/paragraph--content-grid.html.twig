@@ -9,6 +9,9 @@
 {% if paragraph.field_anchor.value %}
   {% set attributes = attributes.setAttribute('id', paragraph.field_anchor.value) %}
 {% endif %}
+{% if paragraph.field_background.value == 'linen' %}
+  {% set attributes = attributes.addClass('card-grid--tint') %}
+{% endif %}
 {% include 'pimlico:card_grid' with {
   attributes,
   eyebrow: paragraph.field_eyebrow.value|default(''),

@@ -1,0 +1,16 @@
+uuid: 2c688f43-cd72-4c5f-afeb-7904a510f578
+langcode: en
+status: true
+dependencies:
+  module:
+    - paragraphs_ee
+third_party_settings:
+  paragraphs_ee:
+    paragraphs_categories:
+      content: content
+id: split_text
+label: 'Split text'
+icon_uuid: null
+icon_default: null
+description: 'A heading and short intro on the left, rich text on the right (About "A street with a story").'
+behavior_plugins: {  }

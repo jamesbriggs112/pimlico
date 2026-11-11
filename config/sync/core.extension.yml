@@ -81,6 +81,7 @@ module:
   path_alias: 0
   phpass: 0
   pimlico_map: 0
+  pimlico_migrate: 0
   pimlico_search: 0
   plyr: 0
   quick_node_clone: 0

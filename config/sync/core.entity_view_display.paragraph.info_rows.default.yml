@@ -4,11 +4,16 @@ status: true
 dependencies:
   config:
     - field.field.paragraph.info_rows.field_anchor
+    - field.field.paragraph.info_rows.field_background
     - field.field.paragraph.info_rows.field_eyebrow
     - field.field.paragraph.info_rows.field_heading
     - field.field.paragraph.info_rows.field_items
     - field.field.paragraph.info_rows.field_text
     - paragraphs.paragraphs_type.info_rows
+  module:
+    - entity_reference_revisions
+    - fences
+    - text
 id: paragraph.info_rows.default
 targetEntityType: paragraph
 bundle: info_rows
@@ -97,4 +102,5 @@ content:
     weight: 2
     region: content
 hidden:
+  field_background: true
   search_api_excerpt: true

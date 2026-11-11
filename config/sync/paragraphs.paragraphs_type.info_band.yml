@@ -1,0 +1,16 @@
+uuid: fbde0bee-193f-4cb2-b064-27642f438909
+langcode: en
+status: true
+dependencies:
+  module:
+    - paragraphs_ee
+third_party_settings:
+  paragraphs_ee:
+    paragraphs_categories:
+      content: content
+id: info_band
+label: 'Info band'
+icon_uuid: null
+icon_default: null
+description: 'A dark band: eyebrow, heading, text and buttons beside an inset photo (Visit "Location & directions").'
+behavior_plugins: {  }

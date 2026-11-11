@@ -4,11 +4,15 @@ status: true
 dependencies:
   config:
     - field.field.paragraph.info_rows.field_anchor
+    - field.field.paragraph.info_rows.field_background
     - field.field.paragraph.info_rows.field_eyebrow
     - field.field.paragraph.info_rows.field_heading
     - field.field.paragraph.info_rows.field_items
     - field.field.paragraph.info_rows.field_text
     - paragraphs.paragraphs_type.info_rows
+  module:
+    - paragraphs
+    - text
 id: paragraph.info_rows.default
 targetEntityType: paragraph
 bundle: info_rows
@@ -17,6 +21,12 @@ content:
   field_anchor:
     type: string_textfield
     weight: 4
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+  field_background:
+    type: options_buttons
+    weight: 20
     region: content
     settings: {  }
     third_party_settings: {  }
