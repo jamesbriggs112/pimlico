@@ -10,7 +10,6 @@ libraryOverrides:
   dependencies:
     - core/drupal
     - core/once
-    - core/drupal.ajax
 slots:
   form:
     title: Form

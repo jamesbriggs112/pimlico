@@ -10,7 +10,10 @@ use Drupal\views\ViewExecutable;
 use Symfony\Component\HttpFoundation\RequestStack;
 
 /**
- * Lets /brands?category=interiors filter by a whole category group.
+ * Filters the Brands page by category group (/brands?category=interiors).
+ *
+ * The group's term IDs go to the page_brands display's contextual filter
+ * ("1+3+4").
  */
 final class BrandsViewHooks {
 
@@ -29,13 +32,15 @@ final class BrandsViewHooks {
     }
     $request = $this->requestStack->getCurrentRequest();
     $group = (string) $request?->query->get('category', '');
-    if (!isset($this->groups->labels()[$group])) {
-      return;
+    // "All" is every grouped category, which leaves out Food & Drink (Dine).
+    $keys = isset($this->groups->labels()[$group]) ? [$group] : array_keys($this->groups->labels());
+    $tids = [];
+    foreach ($keys as $key) {
+      array_push($tids, ...$this->groups->termIds($key));
     }
-    $input = $view->getExposedInput();
-    $tids = $this->groups->termIds($group);
-    $input['category'] = $tids ? array_combine($tids, $tids) : ['0' => '0'];
-    $view->setExposedInput($input);
+    // A contextual filter, not the exposed one: pager links keep the URL's
+    // ?category=interiors instead of an array of term IDs.
+    $args = [$tids ? implode('+', $tids) : '0'];
   }
 
 }

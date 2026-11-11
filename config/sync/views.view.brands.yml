@@ -112,7 +112,7 @@ display:
             identifier: category
             required: false
             remember: false
-            multiple: true
+            multiple: false
             reduce: false
           vid: brand_category
           type: select
@@ -261,6 +261,18 @@ display:
     display_plugin: page
     position: 1
     display_options:
+      arguments:
+        field_brand_category_target_id:
+          id: field_brand_category_target_id
+          table: node__field_brand_category
+          field: field_brand_category_target_id
+          admin_label: 'Category group (set by pimlico_brands)'
+          plugin_id: entity_target_id
+          default_action: ignore
+          specify_validation: false
+          break_phrase: true
+          not: false
+          target_entity_type_id: taxonomy_term
       filters:
         status:
           id: status
@@ -282,52 +294,12 @@ display:
           value:
             brand: brand
           group: 1
-        field_brand_category_target_id:
-          id: field_brand_category_target_id
-          table: node__field_brand_category
-          field: field_brand_category_target_id
-          plugin_id: taxonomy_index_tid
-          operator: or
-          value: {  }
-          group: 1
-          exposed: true
-          expose:
-            operator_id: field_brand_category_target_id_op
-            label: Category
-            use_operator: false
-            operator: field_brand_category_target_id_op
-            identifier: category
-            required: false
-            remember: false
-            multiple: true
-            reduce: false
-          vid: brand_category
-          type: select
-          hierarchy: false
-          limit: true
-          error_message: true
-        field_brand_category_target_id_1:
-          id: field_brand_category_target_id_1
-          table: node__field_brand_category
-          field: field_brand_category_target_id
-          admin_label: 'Not Food & Drink (on Dine)'
-          plugin_id: taxonomy_index_tid
-          operator: not
-          value:
-            5: 5
-            16: 16
-            17: 17
-          group: 1
-          reduce_duplicates: false
-          vid: brand_category
-          type: select
-          hierarchy: false
-          limit: true
       filter_groups:
         operator: AND
         groups:
           1: AND
       defaults:
+        arguments: false
         filters: false
         filter_groups: false
         footer: false

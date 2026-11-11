@@ -1,5 +1,6 @@
-// Figma "Pagination" (7:252): a row 28px apart; numbers Body M with the
-// current page underlined; the next link Label/Nav caps, underlined.
+// Figma "Pagination" (7:252): a row 28px apart; numbers Body M; the next
+// link Label/Nav caps. The pages you can go to are underlined; the current
+// page isn't (client request, 11 November 2026).
 .pagination {
   @include pageContainer;
   padding-block: #{to.rem(8px)} var(--section-space);
@@ -19,18 +20,17 @@
     color: var(--color-text-primary);
     text-decoration-line: underline;
     text-decoration-thickness: 1px;
-    text-decoration-color: transparent;
-    text-underline-offset: var(--link-hover-underline-offset);
-    transition: text-decoration-color 0.3s ease-out;
+    text-decoration-color: currentColor;
+    text-underline-offset: var(--link-underline-offset);
+    transition: text-underline-offset 0.3s ease-out;
 
     &:hover,
-    &:focus-visible,
-    &[aria-current='page'] {
-      text-decoration-color: currentColor;
+    &:focus-visible {
+      text-underline-offset: var(--link-hover-underline-offset);
     }
 
     &[aria-current='page'] {
-      text-underline-offset: var(--link-underline-offset);
+      text-decoration-line: none;
     }
 
     &:focus {
@@ -54,12 +54,5 @@
     line-height: var(--line-height-label);
     letter-spacing: var(--letter-spacing-label-nav);
     text-transform: uppercase;
-    text-decoration-color: currentColor;
-    text-underline-offset: var(--link-underline-offset);
-
-    &:hover,
-    &:focus-visible {
-      text-underline-offset: var(--link-hover-underline-offset);
-    }
   }
 }

@@ -15,6 +15,7 @@ dependencies:
     - node.type.page
   module:
     - fences
+    - user
 _core:
   default_config_hash: 8BgdRtLbtQ0F__o0FHSH0Mx5fvXOra9tfT1GmNKbRYw
 id: node.page.teaser
@@ -26,7 +27,7 @@ content:
     type: entity_reference_entity_view
     label: hidden
     settings:
-      view_mode: full
+      view_mode: card
       link: false
     third_party_settings:
       fences:

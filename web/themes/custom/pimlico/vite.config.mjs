@@ -14,6 +14,10 @@ export default defineConfig({
       authToken: process.env.SENTRY_AUTH_TOKEN,
     }),
   ],
+  // Built CSS refers to fonts and images relative to itself
+  // (dist/assets/x.woff2), so they resolve under the theme path on any host.
+  // With the default '/', every font 404s in production.
+  base: './',
   server: {
     cors: true,
     // Pages are served by Drupal (or Storybook), not Vite, and Vite injects

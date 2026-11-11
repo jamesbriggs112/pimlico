@@ -3,7 +3,11 @@
 <section {{ attributes.addClass('featured-story') }}>
   <div class="featured-story__inner">
     <div class="featured-story__image">{% block image %}{{ image }}{% endblock %}</div>
-    <{{ tag }} class="featured-story__text"{{ url ? ' href="' ~ url ~ '"' }}>
+    {# An attribute object, so the URL is escaped once (a string attribute
+       was escaped whole and broke the link). #}
+    {% set text_attributes = create_attribute({ class: ['featured-story__text'] }) %}
+    {% if url %}{% set text_attributes = text_attributes.setAttribute('href', url) %}{% endif %}
+    <{{ tag }}{{ text_attributes }}>
       {% if logo %}<div class="featured-story__logo">{% block logo %}{{ logo }}{% endblock %}</div>{% endif %}
       {% if meta %}<p class="featured-story__meta eyebrow">{{ meta }}</p>{% endif %}
       {% if title %}<h2 class="featured-story__title display-l">{{ title }}</h2>{% endif %}

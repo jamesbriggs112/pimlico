@@ -10,9 +10,14 @@
       {% if ellipses.previous %}<li class="pagination__item" role="presentation">&hellip;</li>{% endif %}
       {% for key, item in items.pages %}
         <li class="pagination__item">
-          <a class="pagination__page" href="{{ item.href }}"{{ current == key ? ' aria-current="page"' }}{{ item.attributes|without('href', 'title') }}>
-            <span class="visually-hidden">{{ 'Page'|t }}</span>{{ key }}
-          </a>
+          {# The current page is text, not a link back to itself. #}
+          {% if current == key %}
+            <span class="pagination__page" aria-current="page"><span class="visually-hidden">{{ 'Page'|t }}</span>{{ key }}</span>
+          {% else %}
+            <a class="pagination__page" href="{{ item.href }}"{{ item.attributes|without('href', 'title', 'aria-current') }}>
+              <span class="visually-hidden">{{ 'Page'|t }}</span>{{ key }}
+            </a>
+          {% endif %}
         </li>
       {% endfor %}
       {% if ellipses.next %}<li class="pagination__item" role="presentation">&hellip;</li>{% endif %}

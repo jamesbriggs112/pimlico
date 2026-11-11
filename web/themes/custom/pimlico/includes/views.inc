@@ -126,7 +126,50 @@ function pimlico_preprocess_views_view(array &$variables): void {
 function pimlico_preprocess_views_view_unformatted(array &$variables): void {
   $view = $variables['view'];
   if ($view->id() === 'brands' && $view->current_display === 'page_brands') {
-    $variables['promo'] = $view->display_handler->renderArea('footer');
+    $variables['promo'] = _pimlico_promo_band($view->display_handler->getHandlers('footer')['entity_block_content'] ?? NULL);
     $variables['promo_after'] = 6;
   }
+}
+
+/**
+ * Builds the promo band from the block content in a view's footer.
+ *
+ * Block content rendered as an entity has no template of its own, so the
+ * block-content--promo template (used when it's placed as a block) never
+ * applies here; this maps the block's fields onto pimlico:promo_band.
+ *
+ * @param object|null $area
+ *   The view's "Rendered entity" area handler, if there is one.
+ */
+function _pimlico_promo_band(?object $area): array {
+  $target = $area->options['target'] ?? '';
+  if (!$target) {
+    return [];
+  }
+  $storage = \Drupal::entityTypeManager()->getStorage('block_content');
+  $block = current($storage->loadByProperties(['uuid' => $target])) ?: $storage->load($target);
+  if (!$block || !$block->access('view')) {
+    return [];
+  }
+  $link = $block->get('field_link')->first();
+  $build = [
+    '#type' => 'component',
+    '#component' => 'pimlico:promo_band',
+    '#props' => [
+      'eyebrow' => (string) $block->get('field_eyebrow')->value,
+      'heading' => (string) $block->get('field_heading')->value,
+      'link_text' => $link ? (string) $link->title : '',
+      'link_url' => $link ? $link->getUrl()->toString() : '',
+    ],
+    '#slots' => [
+      'text' => $block->get('field_text')->view(['label' => 'hidden']),
+      'image' => $block->get('field_image')->view([
+        'label' => 'hidden',
+        'type' => 'entity_reference_entity_view',
+        'settings' => ['view_mode' => 'full'],
+      ]),
+    ],
+  ];
+  CacheableMetadata::createFromObject($block)->applyTo($build);
+  return $build;
 }

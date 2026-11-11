@@ -119,10 +119,14 @@
     return invalid.length === 0;
   };
 
-  // Webforms submit over AJAX, which Drupal sends on the button's mousedown,
-  // before any submit event. jQuery Form aborts when beforeSerialize returns
-  // false, so validate there too.
-  if (Drupal.Ajax && !Drupal.Ajax.prototype.pimlicoValidates) {
+  // Webforms with AJAX on (Contact) submit on the button's mousedown,
+  // before any submit event. jQuery Form aborts when beforeSerialize
+  // returns false, so validate there too. Patched once, when Drupal's AJAX
+  // is on the page; this script doesn't load it itself.
+  const patchAjax = () => {
+    if (!Drupal.Ajax || Drupal.Ajax.prototype.pimlicoValidates) {
+      return;
+    }
     const { beforeSerialize } = Drupal.Ajax.prototype;
     Drupal.Ajax.prototype.beforeSerialize = function pimlicoBeforeSerialize(
       element,
@@ -135,10 +139,11 @@
       return beforeSerialize.call(this, element, options);
     };
     Drupal.Ajax.prototype.pimlicoValidates = true;
-  }
+  };
 
   Drupal.behaviors.pimlicoFormValidation = {
     attach(context) {
+      patchAjax();
       once(
         'pimlico-form-validation',
         'form.webform-submission-form',
