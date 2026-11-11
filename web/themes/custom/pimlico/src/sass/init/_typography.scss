@@ -128,3 +128,12 @@ main {
     }
   }
 }
+
+// Fraunces Regular titles: cards, info rows, the audio player.
+.title-m {
+  @include title;
+}
+
+.title-s {
+  @include title(var(--font-size-title-s));
+}

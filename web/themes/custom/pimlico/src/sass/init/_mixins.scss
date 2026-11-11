@@ -64,3 +64,23 @@
   );
   grid-gap: var(--row-gap) var(--column-gap);
 }
+
+// Centre content in the 1280px column with the page gutters, as every
+// Figma section does (80px at 1440, 24px at 390).
+@mixin pageContainer() {
+  box-sizing: border-box;
+  width: 100%;
+  max-width: calc(var(--page-width) + 2 * var(--page-gutter));
+  margin-inline: auto;
+  padding-inline: var(--page-gutter);
+}
+
+// Fraunces Regular titles used by cards, info rows and menu links.
+@mixin title($size: var(--font-size-title-m)) {
+  font-family: var(--font-family-display);
+  font-size: $size;
+  font-weight: var(--font-weight-regular);
+  line-height: var(--line-height-title);
+  letter-spacing: var(--letter-spacing-title);
+  font-variation-settings: var(--font-display-variation);
+}

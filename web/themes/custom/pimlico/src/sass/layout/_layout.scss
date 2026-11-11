@@ -12,3 +12,9 @@ html {
 @view-transition {
   navigation: auto;
 }
+
+// The page is the positioning context for the overlay header, so it sits on
+// top of the hero below the admin toolbar too.
+.page {
+  position: relative;
+}

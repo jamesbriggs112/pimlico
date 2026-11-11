@@ -33,6 +33,10 @@
   --color-tint-linen-30: #f4f2eb;
   --color-tint-linen-60: #ece9df;
   --color-map-ground: #e0dcce;
+  --color-border-default: #e0dccd;
+  --color-border-inverse: var(--color-brand-grey);
+  // Dark-grey scrim over photographs behind white text (Figma: 72%)
+  --color-scrim: rgb(57 73 89 / 72%);
 
   // Semantic colours (Figma variables)
   --color-text-primary: var(--color-brand-dark-grey);
@@ -125,6 +129,12 @@
   --font-size-display-s: #{fluid(22px, 26px)};
   --line-height-display-s: 1.2;
   --letter-spacing-display-s: #{to.rem(-0.5px)};
+
+  // Typography: titles (Fraunces Regular) for cards, rows and menus
+  --font-size-title-m: #{fluid(20px, 26px)};
+  --font-size-title-s: #{to.rem(20px)};
+  --line-height-title: 1.25;
+  --letter-spacing-title: #{to.rem(-0.5px)};
 
   // Typography: body and labels (Lato)
   --font-size-body-l: #{fluid(18px, 20px)};
