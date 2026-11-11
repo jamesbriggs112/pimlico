@@ -1,0 +1,23 @@
+{#
+/**
+ * @file
+ * Remote video media. YouTube links → pimlico:youtube_player (poster first,
+ * nothing from YouTube until play); other providers (Vimeo) keep the Plyr
+ * formatter from the display.
+ *
+ * youtube: { video_id, start, title, poster } from includes/media.inc.
+ */
+#}
+{% if youtube %}
+  {% include 'pimlico:youtube_player' with {
+    video_id: youtube.video_id,
+    start: youtube.start,
+    title: youtube.title,
+    poster: youtube.poster,
+  } only %}
+{% else %}
+  <div{{ attributes }}>
+    {{ title_suffix.contextual_links }}
+    {{ content }}
+  </div>
+{% endif %}

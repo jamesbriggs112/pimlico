@@ -59,6 +59,7 @@ Pages are built from **Sections**. The ones made for this site:
 
 - Upload photos at least 1600 px wide; they're cropped to fit each section.
 - Always write alt text that says what's in the photo, unless it's purely decorative.
+- **YouTube videos**: in a Video section, choose **Add media » Remote video** and paste the YouTube link (a start time such as `?t=90` is kept). The video's thumbnail shows with a play button; nothing loads from YouTube until someone presses play. Vimeo links work too, in the standard player.
 - **Hero films**: a 10–20 second silent loop, under 5 MB. Larger films use a lot of mobile data. Always set a poster image (the film's first frame works well).
 
 ## Publishing
