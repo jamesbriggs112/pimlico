@@ -1,0 +1,36 @@
+{#
+/**
+ * @file
+ * Paragraph component template.
+ *
+ * Renders a Drupal Paragraph entity with dynamic classes and optional heading.
+ * - Accepts 'paragraph', 'view_mode', 'heading', 'content', 'layout', and 'attributes' variables.
+ * - Applies BEM-style classes based on paragraph bundle, view mode, and publication status.
+ * - Heading is rendered using the pimlico:heading component if provided.
+ * - Content block outputs the paragraph's rendered fields.
+ *
+ * Usage:
+ *   Attach this template to a Paragraph entity in a theme/component context.
+ */
+#}
+{% set attributes = attributes ?: create_attribute() %}
+{%
+  set classes = [
+    'paragraph',
+  ]
+%}
+
+<section {{ attributes.addClass(classes) }}>
+	{% if heading %}
+		{% block heading %}
+            {% embed "pimlico:heading" with {tag: 'h2'} %}
+				{% block content %}
+					{{ heading }}
+				{% endblock %}
+			{% endembed %}
+		{% endblock %}
+	{% endif %}
+	{% block content %}
+		{{ content }}
+	{% endblock %}
+</section>

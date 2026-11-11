@@ -1,0 +1,14 @@
+{% set banner_attributes = attributes|without('class') %}
+
+<header {{ banner_attributes.addClass('page-banner') }}>
+	<div class="page-banner__media">
+		{{ media }}
+	</div>
+	{% if content %}
+		<div class="page-banner__content">
+			{% block content %}
+				Display content
+			{% endblock %}
+		</div>
+	{% endif %}
+</header>

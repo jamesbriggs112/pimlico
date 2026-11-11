@@ -1,0 +1,11 @@
+{% set classes = [
+	'grid',
+	'grid--columns-' ~ columns,
+	class,
+] %}
+
+<div {{ attributes.addClass(classes) }}>
+	{% block content %}
+		{#  content goes here #}
+	{% endblock %}
+</div>

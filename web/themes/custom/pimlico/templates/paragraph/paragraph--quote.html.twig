@@ -1,0 +1,22 @@
+{% embed "pimlico:paragraph" with {
+  view_mode,
+  paragraph,
+  attributes,
+} %}
+	{% block content %}
+		{% embed "pimlico:quote" with {
+        color: paragraph.field_colour.value|default('primary'),
+    } %}
+			{% block quote %}
+				{{ content.field_text }}
+			{% endblock %}
+			{% block cite %}
+				{% embed "pimlico:cite" %}
+					{% block cite %}
+						{{ content|without('field_text') }}
+					{% endblock %}
+				{% endembed %}
+			{% endblock %}
+		{% endembed %}
+	{% endblock %}
+{% endembed %}

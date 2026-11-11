@@ -1,0 +1,45 @@
+.footer {
+  padding: to.rem(60px) 0;
+  background-color: var(--footer-bg-color);
+  color: var(--footer-text-color);
+  display: grid;
+  grid-template-columns: var(--page-gutter-left) 1fr var(--page-gutter-right);
+  grid-template-rows: auto auto auto;
+  gap: to.rem(20px) 0;
+  grid-template-areas:
+    '. menu .'
+    '. branding .'
+    '. bottom .';
+
+  @include mq($from: tablet) {
+    grid-template-columns: var(--page-gutter-left) 1fr 1fr var(
+        --page-gutter-right
+      );
+    grid-template-rows: 1fr 1fr;
+    gap: var(--row-gap) var(--column-gap);
+    grid-template-areas:
+      '. branding menu .'
+      '. bottom menu .';
+  }
+
+  &__branding {
+    grid-area: branding;
+  }
+
+  &__menu {
+    grid-area: menu;
+  }
+
+  &__bottom {
+    grid-area: bottom;
+  }
+
+  a {
+    color: var(--footer-link-color);
+
+    &:hover,
+    &:focus {
+      color: var(--footer-link-hover-color);
+    }
+  }
+}

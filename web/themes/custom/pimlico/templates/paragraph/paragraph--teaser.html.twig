@@ -1,0 +1,20 @@
+{% set node = paragraph.getParentEntity() %}
+{% set title = paragraph.field_heading.value ?: node.label %}
+{% block paragraph %}
+	{% embed 'pimlico:card' with {
+	url: path('entity.node.canonical', {'node': node.id}),
+	linkTitle: title
+} %}
+		{% block image %}
+			{{ content.field_image }}
+		{% endblock %}
+		{% block content %}
+			{% embed "pimlico:heading" with {tag: 'h3'} %}
+				{% block content %}
+					{{ title }}
+				{% endblock %}
+			{% endembed %}
+			{{content.field_text}}
+		{% endblock %}
+	{% endembed %}
+{% endblock paragraph %}

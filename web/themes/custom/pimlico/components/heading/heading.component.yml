@@ -1,0 +1,32 @@
+'$schema': 'https://git.drupalcode.org/project/drupal/-/raw/HEAD/core/assets/schemas/v1/metadata.schema.json'
+name: Heading
+status: stable
+description: Component for h1, h2, h3, h4, h5 and h6 tags
+props:
+  type: object
+  required:
+    - tag
+  properties:
+    tag:
+      type: string
+      title: Tag
+      enum:
+        - 'h1'
+        - 'h2'
+        - 'h3'
+        - 'h4'
+        - 'h5'
+        - 'h6'
+    class:
+      type: string
+      title: Class
+      enum:
+        - 'h1'
+        - 'h2'
+        - 'h3'
+        - 'h4'
+        - 'h5'
+        - 'h6'
+slots:
+  content:
+    title: Content

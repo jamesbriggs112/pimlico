@@ -1,0 +1,29 @@
+{% stories my_card with { title: 'Components/AccordionItem' } %}
+{% story default with {
+    name: 'Default',
+    args: { id: '55' }
+  } %}
+{% embed 'pimlico:accordion_item' with { title: 'Item 1', id: id } %}
+	{% block content %}
+		<p>
+			I am the
+			<em>
+				accordion contents
+			</em>
+			contents.
+		</p>
+	{% endblock %}
+{% endembed %}
+{% embed 'pimlico:accordion_item' with { title: 'Item 2', id: id } %}
+	{% block content %}
+		<p>
+			I am the
+			<em>
+				accordion contents
+			</em>
+			contents.
+		</p>
+	{% endblock %}
+{% endembed %}
+{% endstory %}
+{% endstories %}

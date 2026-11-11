@@ -1,0 +1,26 @@
+.two-column {
+  display: flex;
+  flex-direction: column;
+  gap: var(--row-gap) var(--column-gap);
+
+  &__left,
+  &__right {
+    flex: 1 1 0;
+
+    > * {
+      margin-block-start: var(--row-gap);
+
+      &:first-child {
+        margin-block-start: 0;
+      }
+    }
+
+    @include mq($from: tablet) {
+      flex: 1 1 50%;
+    }
+  }
+
+  @include mq($from: tablet) {
+    flex-direction: row;
+  }
+}

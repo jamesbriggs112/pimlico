@@ -1,0 +1,42 @@
+.article {
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: auto auto;
+  grid-template-areas:
+    'header'
+    'content';
+  justify-content: center;
+  gap: var(--component-spacing);
+
+  > header {
+    grid-area: header;
+  }
+
+  &__content {
+    grid-area: content;
+    @include contentWithGutters;
+
+    > * {
+      grid-column: popout;
+      margin-block-start: var(--component-spacing);
+
+      &:first-child {
+        margin-block-start: 0;
+      }
+
+      &.is-flush + .is-flush {
+        margin-block-start: 0;
+      }
+
+      &.full-width {
+        grid-column: full;
+      }
+
+      &.narrow {
+        grid-column: content;
+        max-width: var(--max-text-width);
+        margin-inline: auto;
+      }
+    }
+  }
+}

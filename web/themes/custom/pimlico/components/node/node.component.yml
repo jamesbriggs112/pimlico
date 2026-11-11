@@ -1,0 +1,33 @@
+'$schema': 'https://git.drupalcode.org/project/drupal/-/raw/HEAD/core/assets/schemas/v1/metadata.schema.json'
+name: Node
+status: stable
+libraryOverrides:
+  css:
+    component:
+      node.scss: {}
+props:
+  type: object
+  properties:
+    bundle:
+      type: string
+      title: Bundle
+    view_mode:
+      type: string
+      title: View mode
+    promoted:
+      type: boolean
+      title: Promoted
+    sticky:
+      type: boolean
+      title: Sticky
+    published:
+      type: boolean
+      title: Published
+    attributes:
+      type: Drupal\Core\Template\Attribute
+      title: Attributes
+slots:
+  header:
+    title: Header
+  content:
+    title: Content

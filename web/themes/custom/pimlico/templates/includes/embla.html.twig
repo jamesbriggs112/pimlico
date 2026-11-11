@@ -1,0 +1,16 @@
+{{ attach_library('pimlico/embla') }}
+<div class="embla">
+	<div class="embla__viewport">
+		<div class="embla__container">
+			{% block slides %}
+				{# Slides go here #}
+			{% endblock %}
+		</div>
+	</div>
+	<button class="embla__prev">
+		Prev
+	</button>
+	<button class="embla__next">
+		Next
+	</button>
+</div>

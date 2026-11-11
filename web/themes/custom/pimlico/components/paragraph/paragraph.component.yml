@@ -1,0 +1,17 @@
+'$schema': 'https://git.drupalcode.org/project/drupal/-/raw/HEAD/core/assets/schemas/v1/metadata.schema.json'
+name: Paragraph
+status: stable
+props:
+  type: object
+  properties:
+    view_mode:
+      type: string
+      title: View mode
+    attributes:
+      type: Drupal\Core\Template\Attribute
+      title: Attributes
+slots:
+  heading:
+    title: Heading
+  content:
+    title: Content

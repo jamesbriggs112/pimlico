@@ -1,0 +1,29 @@
+'$schema': 'https://git.drupalcode.org/project/drupal/-/raw/HEAD/core/assets/schemas/v1/metadata.schema.json'
+name: Content Carousel
+status: stable
+libraryOverrides:
+  css:
+    component:
+      content_carousel.scss: {}
+  js:
+    content_carousel.js: {}
+  dependencies:
+    - core/once
+    - core/drupal
+props:
+  type: object
+  properties:
+    class:
+      type: string
+      title: Class
+    color:
+      title: Color
+      type: string
+      enum:
+        - primary
+        - secondary
+slots:
+  title:
+    title: Title
+  slides:
+    title: Slides

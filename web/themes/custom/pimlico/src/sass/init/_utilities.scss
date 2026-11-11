@@ -1,0 +1,28 @@
+@use 'sass-rem' as to;
+@use 'sass-mq' as *;
+@use './mixins' as *;
+
+// Generic helpers carried over from the reference theme. Add project
+// utilities here only when no component owns the pattern.
+
+.truncate {
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+
+  &--small {
+    -webkit-line-clamp: 2;
+  }
+}
+
+.two-column {
+  display: grid;
+  gap: var(--row-gap) var(--column-gap);
+  grid-template-columns: 1fr;
+  align-items: center;
+
+  @include mq($from: desktop) {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}

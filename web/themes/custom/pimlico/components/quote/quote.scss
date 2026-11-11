@@ -1,0 +1,57 @@
+.quote {
+  max-width: var(--max-text-width);
+  padding: var(--quote-padding);
+  border-radius: var(--quote-border-radius);
+  border-width: var(--quote-border-width);
+  border-style: solid;
+
+  &--primary {
+    background-color: var(--color-primary);
+    color: var(--color-primary-text);
+    border-color: var(--quote-border-color-primary);
+  }
+
+  &--secondary {
+    background-color: var(--color-secondary);
+    color: var(--color-secondary-text);
+    border-color: var(--quote-border-color-secondary);
+  }
+
+  blockquote {
+    padding: to.rem(5px 0 0 0);
+    margin: to.rem(25px 0 0 0);
+    font-style: normal;
+    font-weight: var(--font-weight-bold);
+    position: relative;
+
+    &::before {
+      content: '“';
+      position: absolute;
+      left: -0.05em;
+      top: -0.7em;
+      font-size: 4.8em;
+    }
+
+    p {
+      padding-right: 0;
+
+      &:last-child {
+        margin-bottom: 0;
+
+        &::after {
+          content: '”';
+          font-family: inherit;
+          font-size: to.rem(20px);
+          margin-top: to.rem(5px);
+        }
+      }
+    }
+  }
+
+  cite {
+    display: block;
+    font-style: normal;
+    font-size: to.rem(16px);
+    margin-top: to.rem(14px);
+  }
+}

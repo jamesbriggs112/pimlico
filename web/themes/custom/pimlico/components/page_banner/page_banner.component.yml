@@ -1,0 +1,12 @@
+'$schema': 'https://git.drupalcode.org/project/drupal/-/raw/HEAD/core/assets/schemas/v1/metadata.schema.json'
+name: Page Banner
+status: stable
+libraryOverrides:
+  css:
+    component:
+      page_banner.scss: {}
+slots:
+  media:
+    title: Banner Media
+  content:
+    title: Banner Content

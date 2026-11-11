@@ -1,0 +1,14 @@
+body,
+html {
+  margin: 0px;
+  padding: 0px;
+  height: 100%;
+}
+
+.dialog-off-canvas-main-canvas {
+  height: 100%;
+}
+
+@view-transition {
+  navigation: auto;
+}

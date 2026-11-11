@@ -1,0 +1,11 @@
+{% block paragraph %}
+	{% embed "pimlico:content_carousel" with {
+		aria_label: heading,
+		color: paragraph.field_colour.value|default('primary'),
+		title: paragraph.field_heading.value,
+	} %}
+		{% block slides %}
+			{{ content.field_content }}
+		{% endblock %}
+	{% endembed %}
+{% endblock paragraph %}

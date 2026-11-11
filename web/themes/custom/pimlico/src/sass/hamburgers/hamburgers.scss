@@ -1,0 +1,62 @@
+@charset "UTF-8";
+/*!
+ * Hamburgers
+ * @description Tasty CSS-animated hamburgers
+ * @author Jonathan Suh @jonsuh
+ * @site https://jonsuh.com/hamburgers
+ * @link https://github.com/jonsuh/hamburgers
+ */
+
+// Base Hamburger (We need this)
+// ==================================================
+@use 'base' as *;
+
+// Hamburger types
+// ==================================================
+@use 'types/3dx' as *;
+@use 'types/3dx-r' as *;
+@use 'types/3dy' as *;
+@use 'types/3dy-r' as *;
+@use 'types/3dxy' as *;
+@use 'types/3dxy-r' as *;
+@use 'types/arrow' as *;
+@use 'types/arrow-r' as *;
+@use 'types/arrowalt' as *;
+@use 'types/arrowalt-r' as *;
+@use 'types/arrowturn' as *;
+@use 'types/arrowturn-r' as *;
+@use 'types/boring' as *;
+@use 'types/collapse' as *;
+@use 'types/collapse-r' as *;
+@use 'types/elastic' as *;
+@use 'types/elastic-r' as *;
+@use 'types/emphatic' as *;
+@use 'types/emphatic-r' as *;
+@use 'types/minus' as *;
+@use 'types/slider' as *;
+@use 'types/slider-r' as *;
+@use 'types/spin' as *;
+@use 'types/spin-r' as *;
+@use 'types/spring' as *;
+@use 'types/spring-r' as *;
+@use 'types/stand' as *;
+@use 'types/stand-r' as *;
+@use 'types/squeeze' as *;
+@use 'types/vortex' as *;
+@use 'types/vortex-r' as *;
+
+// ==================================================
+// Cooking up additional types:
+//
+// The Sass for each hamburger type should be nested
+// inside an @if directive to check whether or not
+// it exists in $hamburger-types so only the CSS for
+// included types are generated.
+//
+// e.g. hamburgers/types/_new-type.scss
+//
+// @if index($hamburger-types, new-type) {
+//   .hamburger--new-type {
+//     ...
+//   }
+// }

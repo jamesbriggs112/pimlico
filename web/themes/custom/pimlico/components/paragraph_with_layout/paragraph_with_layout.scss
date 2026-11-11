@@ -1,0 +1,9 @@
+.paragraph-with-layout {
+  &.full-width {
+    grid-column: full;
+  }
+
+  &.narrow {
+    grid-column: content;
+  }
+}
