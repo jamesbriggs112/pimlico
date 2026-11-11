@@ -137,7 +137,7 @@ $page('Newson’s Yard', '/newsons-yard', 'A timber yard, reopened to makers.', 
 
 // Visit (T13, with "The street" from the 03 Brand with Map page).
 $page('Visit', '/visit', 'Plan a visit to Pimlico Road: the street, its showrooms and places to eat.', [
-  $p('street_map', ['field_eyebrow' => 'Visit', 'field_heading' => 'The street']),
+  $p('street_map', []),
   $p('info_band', [
     'field_eyebrow' => 'Location & directions',
     'field_heading' => 'Find Pimlico Road',

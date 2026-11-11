@@ -4,4 +4,4 @@ The dark-grey band behind Figma’s brand "Find the showroom" and the press "Sou
 
 - A framed photo (640×800) is dropped on mobile, as designed.
 - `media_fill: true` is for the map: it takes half the band edge to edge, and sits full width below the text on mobile.
-- Buttons with `external: true` open in a new tab with an ↗ marker.
+- Buttons with `external: true` open in a new tab; screen readers hear "(opens in a new tab)". No arrow marker.

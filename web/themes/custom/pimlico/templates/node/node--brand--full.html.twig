@@ -90,7 +90,7 @@
       {% include 'pimlico:info_row' with { label: 'Contact'|t, value: contact, variant: 'compact' } only %}
     {% endif %}
     {% if node.field_accessibility_link.0 %}
-      {% set access %}<a href="{{ node.field_accessibility_link.0.url.toString() }}" target="_blank" rel="noopener">{{ 'Accessibility information'|t }} ↗</a>{% endset %}
+      {% set access %}<a href="{{ node.field_accessibility_link.0.url.toString() }}" target="_blank" rel="noopener">{{ 'Accessibility information'|t }}<span class="visually-hidden"> {{ '(opens in a new tab)'|t }}</span></a>{% endset %}
       {% include 'pimlico:info_row' with { label: 'Accessibility'|t, value: access, variant: 'compact' } only %}
     {% endif %}
   {% endset %}
