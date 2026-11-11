@@ -1,14 +1,22 @@
 '$schema': 'https://git.drupalcode.org/project/drupal/-/raw/HEAD/core/assets/schemas/v1/metadata.schema.json'
 name: Footer
 status: stable
+description: 'Figma "Footer": link columns and the Pimlico Road and Grosvenor logos, above a legal row with the copyright.'
 libraryOverrides:
   css:
     component:
       footer.scss: {}
+props:
+  type: object
+  properties:
+    home_url:
+      type: string
+      title: Home URL
+      default: /
 slots:
-  branding:
-    title: Branding
   menu:
-    title: Menu
+    title: Link columns
+    description: 'Menu blocks with visible labels ("Explore", "Information", "Follow").'
   bottom:
-    title: Bottom
+    title: Legal row
+    description: 'Legal menu and copyright.'

@@ -1,0 +1,78 @@
+// Figma "Newsletter". Desktop: text left, form right, aligned to the
+// bottom; 420px underlined field beside a yellow button; note below.
+// Mobile: stacked, button full width.
+.newsletter {
+  background-color: var(--color-surface-raised);
+
+  &__inner {
+    display: grid;
+    gap: var(--space-32);
+    max-width: calc(var(--page-width) + 2 * var(--page-gutter));
+    margin-inline: auto;
+    padding: var(--section-space) var(--page-gutter);
+
+    @include mq($from: desktop) {
+      grid-template-columns: 1fr auto;
+      align-items: end;
+      gap: #{to.rem(40px)};
+    }
+  }
+
+  &__text {
+    display: grid;
+    gap: #{to.rem(18px)};
+  }
+
+  &__heading {
+    margin: 0;
+  }
+
+  &__intro {
+    margin: 0;
+    max-width: #{to.rem(480px)};
+  }
+
+  // Webform markup
+  &__form .form {
+    display: grid;
+    gap: #{to.rem(14px)} var(--space-24);
+
+    @include mq($from: tablet) {
+      grid-template-columns: minmax(0, #{to.rem(420px)}) auto;
+      align-items: end;
+    }
+  }
+
+  &__form .form-item {
+    gap: var(--space-12);
+  }
+
+  &__form input[type='email'] {
+    padding-bottom: #{to.rem(14px)};
+    font-size: var(--font-size-body-l);
+    font-weight: var(--font-weight-light);
+    line-height: var(--line-height-body-l);
+  }
+
+  // Webform renders the submit without a wrapper; Figma uses Yellow here.
+  &__form .btn {
+    @include mq($until: tablet) {
+      width: 100%;
+    }
+
+    --_bg: var(--button-background-color-yellow);
+    --_color: var(--button-text-color-yellow);
+    --_hover-bg: var(--button-hover-background-color-yellow);
+    --_hover-color: var(--button-hover-text-color-yellow);
+  }
+
+  &__form .form-item-privacy-note {
+    grid-column: 1 / -1;
+    font-size: var(--font-size-body-s);
+    line-height: var(--line-height-body-s);
+
+    p {
+      margin: 0;
+    }
+  }
+}

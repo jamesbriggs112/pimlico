@@ -1,0 +1,16 @@
+{% set attributes = attributes ?: create_attribute() %}
+{% set heading_id = 'newsletter-heading' %}
+<section {{ attributes.addClass('newsletter').setAttribute('aria-labelledby', heading_id) }}>
+  <div class="newsletter__inner">
+    <div class="newsletter__text">
+      <p class="eyebrow">{{ eyebrow|default('Newsletter'|t) }}</p>
+      <h2 class="newsletter__heading display-l" id="{{ heading_id }}">{{ heading }}</h2>
+      {% if intro %}
+        <p class="newsletter__intro body-l">{{ intro }}</p>
+      {% endif %}
+    </div>
+    <div class="newsletter__form">
+      {% block form %}{{ form }}{% endblock %}
+    </div>
+  </div>
+</section>

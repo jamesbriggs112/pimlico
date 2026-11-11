@@ -1,14 +1,8 @@
-#
-Footer
+# Footer
 
-This is some default content for the README. Change this to the appropriate
-content.
+Figma "Footer": the link columns and the Pimlico Road and Grosvenor logos, above a ruled legal row.
 
-## Usage
+- `menu`: the footer_menu region (menu blocks whose labels show as the column titles).
+- `bottom`: the footer_bottom region (the legal menu, then the copyright block).
 
-Here you should describe how/when to use this component. This information may be
-for developers or for editors, depending on the component type.
-
-## Additional information
-
-Some extra info about the component.
+The logos are part of the component.

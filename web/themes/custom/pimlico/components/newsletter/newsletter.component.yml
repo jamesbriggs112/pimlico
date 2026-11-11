@@ -1,0 +1,29 @@
+'$schema': 'https://git.drupalcode.org/project/drupal/-/raw/HEAD/core/assets/schemas/v1/metadata.schema.json'
+name: Newsletter
+status: stable
+description: 'Figma "Newsletter": sign-up band above the footer on every page.'
+libraryOverrides:
+  css:
+    component:
+      newsletter.scss: {}
+  dependencies:
+    - core/components.pimlico--form
+    - core/components.pimlico--button
+props:
+  type: object
+  properties:
+    eyebrow:
+      type: string
+      title: Eyebrow
+      default: Newsletter
+    heading:
+      type: string
+      title: Heading
+      examples:
+        - 'The Pimlico Road edit'
+    intro:
+      type: string
+      title: Intro
+slots:
+  form:
+    title: Form

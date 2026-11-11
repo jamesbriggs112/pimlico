@@ -1,14 +1,5 @@
-#
-Menu
+# Menu
 
-This is some default content for the README. Change this to the appropriate
-content.
+A list of `text_link` links for menus other than the main navigation: footer columns, the legal row (`size: small`, `inline: true`) and the secondary links in the mobile menu. The current page is underlined and marked `aria-current`.
 
-## Usage
-
-Here you should describe how/when to use this component. This information may be
-for developers or for editors, depending on the component type.
-
-## Additional information
-
-Some extra info about the component.
+Used by `templates/menu/menu.html.twig` for every menu without a more specific template.

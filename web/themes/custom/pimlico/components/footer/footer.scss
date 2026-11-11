@@ -1,45 +1,83 @@
+// Figma "Footer". Desktop: linen-60, 60px top / 40px bottom, 80px column
+// gaps, logos right, 72px gap to a 1px-ruled legal row. Mobile: stacked
+// columns, 40px gaps, logos below, legal links inline.
 .footer {
-  padding: to.rem(60px) 0;
   background-color: var(--footer-bg-color);
   color: var(--footer-text-color);
-  display: grid;
-  grid-template-columns: var(--page-gutter-left) 1fr var(--page-gutter-right);
-  grid-template-rows: auto auto auto;
-  gap: to.rem(20px) 0;
-  grid-template-areas:
-    '. menu .'
-    '. branding .'
-    '. bottom .';
 
-  @include mq($from: tablet) {
-    grid-template-columns: var(--page-gutter-left) 1fr 1fr var(
-        --page-gutter-right
-      );
-    grid-template-rows: 1fr 1fr;
-    gap: var(--row-gap) var(--column-gap);
-    grid-template-areas:
-      '. branding menu .'
-      '. bottom menu .';
+  &__inner {
+    display: grid;
+    gap: #{fluid(40px, 72px)};
+    max-width: calc(var(--page-width) + 2 * var(--page-gutter));
+    margin-inline: auto;
+    padding: var(--section-space) var(--page-gutter) #{to.rem(40px)};
   }
 
-  &__branding {
-    grid-area: branding;
+  &__top {
+    display: grid;
+    gap: #{to.rem(40px)};
+
+    @include mq($from: tablet) {
+      grid-template-columns: 1fr auto;
+      align-items: start;
+    }
   }
 
-  &__menu {
-    grid-area: menu;
+  &__menus {
+    display: grid;
+    gap: #{to.rem(40px)};
+
+    @include mq($from: tablet) {
+      display: flex;
+      gap: #{to.rem(80px)};
+    }
+  }
+
+  .menu-block__title {
+    margin-bottom: #{to.rem(14px)};
+    font-family: var(--font-family-body);
+    font-size: #{to.rem(20px)};
+    font-weight: var(--font-weight-bold);
+    line-height: 1.4;
+    letter-spacing: 0;
+  }
+
+  &__logos {
+    display: grid;
+    gap: #{to.rem(20px)};
+    justify-items: start;
+
+    @include mq($from: tablet) {
+      gap: #{to.rem(28px)};
+      justify-items: end;
+    }
+  }
+
+  &__logo {
+    width: #{to.rem(200px)};
+
+    @include mq($from: tablet) {
+      width: #{to.rem(240px)};
+    }
   }
 
   &__bottom {
-    grid-area: bottom;
-  }
+    display: grid;
+    gap: #{to.rem(10px)};
+    padding-top: #{to.rem(20px)};
+    border-top: 1px solid var(--color-border-strong);
+    font-size: var(--font-size-body-s);
+    line-height: var(--line-height-body-s);
 
-  a {
-    color: var(--footer-link-color);
+    @include mq($from: tablet) {
+      display: flex;
+      justify-content: space-between;
+      align-items: start;
+      padding-top: var(--space-24);
+    }
 
-    &:hover,
-    &:focus {
-      color: var(--footer-link-hover-color);
+    p {
+      margin: 0;
     }
   }
 }
