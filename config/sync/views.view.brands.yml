@@ -112,7 +112,7 @@ display:
             identifier: category
             required: false
             remember: false
-            multiple: false
+            multiple: true
             reduce: false
           vid: brand_category
           type: select
@@ -299,7 +299,7 @@ display:
             identifier: category
             required: false
             remember: false
-            multiple: false
+            multiple: true
             reduce: false
           vid: brand_category
           type: select

@@ -12,6 +12,7 @@ declare(strict_types=1);
 
 use Drupal\Core\Cache\CacheableMetadata;
 use Drupal\Core\Url;
+use Drupal\pimlico_brands\BrandGroups;
 
 /**
  * Listing pages that render their own title band and filters.
@@ -21,11 +22,9 @@ use Drupal\Core\Url;
  */
 function _pimlico_listings(): array {
   return [
+    // Figma's category groups (pimlico_brands); Food & Drink is on Dine.
     'brands:page_brands' => [
-      'vocabulary' => 'brand_category',
-      'parent' => 0,
-      // Food & Drink has its own listing, Dine.
-      'exclude' => ['Food & Drink'],
+      'groups' => TRUE,
       'param' => 'category',
       'align' => 'center',
       'label' => t('Filter brands by category'),
@@ -75,7 +74,16 @@ function pimlico_preprocess_views_view(array &$variables): void {
     ],
   ];
 
-  if (isset($config['types'])) {
+  if (!empty($config['groups'])) {
+    foreach (\Drupal::service(BrandGroups::class)->labels() as $key => $label) {
+      $items[] = [
+        'text' => $label,
+        'url' => $link([$param => $key]),
+        'active' => $current === $key,
+      ];
+    }
+  }
+  elseif (isset($config['types'])) {
     foreach ($config['types'] as $type => $label) {
       $items[] = [
         'text' => (string) $label,
@@ -92,9 +100,6 @@ function pimlico_preprocess_views_view(array &$variables): void {
       $parent = $match ? (int) reset($match)->id() : 0;
     }
     foreach ($storage->loadTree($config['vocabulary'], $parent, 1, TRUE) as $term) {
-      if (in_array($term->label(), $config['exclude'] ?? [], TRUE)) {
-        continue;
-      }
       $items[] = [
         'text' => $term->label(),
         'url' => $link([$param => $term->id()]),

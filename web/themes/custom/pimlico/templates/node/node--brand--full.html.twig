@@ -20,9 +20,11 @@
 {% set breadcrumb %}
   <nav class="breadcrumb" aria-label="{{ 'Breadcrumb'|t }}">
     <ol class="breadcrumb__list">
-      <li class="breadcrumb__item"><a class="breadcrumb__link" href="{{ path('view.brands.page_brands') }}">{{ 'Brands'|t }}</a></li>
-      {% if category %}
-        <li class="breadcrumb__item"><a class="breadcrumb__link" href="{{ path('view.brands.page_brands', {}, { query: { category: category.id } }) }}">{{ category.label }}</a></li>
+      {% if brand_category %}
+        <li class="breadcrumb__item"><a class="breadcrumb__link" href="{{ brand_category.section_url }}">{{ brand_category.section }}</a></li>
+        <li class="breadcrumb__item"><a class="breadcrumb__link" href="{{ brand_category.url }}">{{ brand_category.label }}</a></li>
+      {% else %}
+        <li class="breadcrumb__item"><a class="breadcrumb__link" href="{{ path('view.brands.page_brands') }}">{{ 'Brands'|t }}</a></li>
       {% endif %}
     </ol>
   </nav>

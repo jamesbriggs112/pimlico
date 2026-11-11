@@ -337,7 +337,7 @@ From the Figma variables, in `src/sass/init/_root.scss`:
 | Module | Responsibility |
 |---|---|
 | `pimlico_map` | The `pimlico_unit` entity, the tenancy feed route, the map render element and theme hook, the overview paragraph formatter, the brand-page pseudo-field, and the map picker widget |
-| `pimlico_brands` | Brand-specific behaviour: the similar-brands fallback, the brands promo interstitial, and the `/dine` alias logic if the view can't express it |
+| `pimlico_brands` | Brand-specific behaviour: the Brands page category groups from Figma (Interiors = Home & Interiors, Soft furnishings and fabrics, Lighting; Antiques & art), used by the filter (`/brands?category=interiors`), card eyebrows and Brand breadcrumbs. Similar Brands and the promo stay in Views and the theme. |
 | `pimlico_news` | Only if views and config can't express "featured story" and related-content fallback. Created lazily, not up front. |
 | `pimlico_migrate` | Migration of the 47 brands and their Units from the map project's `map-source.json` (migrate_plus JSON source). Uninstalled after launch. |
 
