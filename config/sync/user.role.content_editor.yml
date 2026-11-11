@@ -4,7 +4,13 @@ status: true
 dependencies:
   config:
     - node.type.article
+    - node.type.brand
     - node.type.page
+    - node.type.podcast_episode
+    - node.type.press_article
+    - taxonomy.vocabulary.area
+    - taxonomy.vocabulary.brand_category
+    - taxonomy.vocabulary.news_category
     - workflows.workflow.content_moderation
   module:
     - content_moderation
@@ -12,8 +18,11 @@ dependencies:
     - file
     - media
     - node
+    - pimlico_map
     - system
+    - taxonomy
     - toolbar
+    - webform
 _core:
   default_config_hash: Wur9kcEOwY1Jal81NssKnz3RhVJxAvBwyWQBGcA_1Go
 id: content_editor
@@ -26,25 +35,70 @@ permissions:
   - 'access contextual links'
   - 'access files overview'
   - 'access media overview'
+  - 'access taxonomy overview'
   - 'access toolbar'
+  - 'access webform overview'
+  - 'administer menu'
+  - 'administer pimlico units'
   - 'create article content'
+  - 'create brand content'
   - 'create media'
   - 'create page content'
+  - 'create podcast_episode content'
+  - 'create press_article content'
+  - 'create terms in area'
+  - 'create terms in brand_category'
+  - 'create terms in news_category'
+  - 'delete any article content'
+  - 'delete any brand content'
   - 'delete any media'
+  - 'delete any page content'
+  - 'delete any podcast_episode content'
+  - 'delete any press_article content'
   - 'delete article revisions'
+  - 'delete brand revisions'
   - 'delete own article content'
+  - 'delete own brand content'
   - 'delete own files'
   - 'delete own page content'
+  - 'delete own podcast_episode content'
+  - 'delete own press_article content'
   - 'delete page revisions'
+  - 'delete podcast_episode revisions'
+  - 'delete press_article revisions'
+  - 'delete terms in area'
+  - 'delete terms in brand_category'
+  - 'delete terms in news_category'
   - 'edit any article content'
+  - 'edit any brand content'
   - 'edit any page content'
+  - 'edit any podcast_episode content'
+  - 'edit any press_article content'
   - 'edit own article content'
+  - 'edit own brand content'
   - 'edit own page content'
+  - 'edit own podcast_episode content'
+  - 'edit own press_article content'
+  - 'edit terms in area'
+  - 'edit terms in brand_category'
+  - 'edit terms in news_category'
   - 'revert all revisions'
+  - 'revert article revisions'
+  - 'revert brand revisions'
+  - 'revert page revisions'
+  - 'revert podcast_episode revisions'
+  - 'revert press_article revisions'
   - 'update any media'
   - 'use content_moderation transition create_new_draft'
   - 'use content_moderation transition publish'
   - 'use content_moderation transition unpublish'
   - 'view all revisions'
+  - 'view any unpublished content'
+  - 'view any webform submission'
+  - 'view article revisions'
+  - 'view brand revisions'
   - 'view own unpublished content'
+  - 'view page revisions'
+  - 'view podcast_episode revisions'
+  - 'view press_article revisions'
   - 'view the administration theme'
