@@ -28,6 +28,7 @@ props:
         properties:
           text: { type: string }
           url: { type: string }
+          class: { type: string }
 slots:
   breadcrumb:
     title: Breadcrumb

@@ -1,0 +1,23 @@
+uuid: 3003f3f1-48d8-4dbb-b9e3-2bc60f77cfb2
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_tenancy_status
+    - node.type.brand
+  module:
+    - options
+id: node.brand.field_tenancy_status
+field_name: field_tenancy_status
+entity_type: node
+bundle: brand
+label: 'Tenancy status'
+description: 'Only trading brands light up on the street map.'
+required: true
+translatable: true
+default_value:
+  -
+    value: active
+default_value_callback: ''
+settings: {  }
+field_type: list_string

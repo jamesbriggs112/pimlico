@@ -1,0 +1,11 @@
+uuid: f8a2c0be-aa96-47cb-8636-c5a73d5251ea
+langcode: en
+status: true
+dependencies: {  }
+name: 'Podcast episode'
+type: podcast_episode
+description: 'A podcast episode in News.'
+help: null
+new_revision: true
+preview_mode: 1
+display_submitted: false

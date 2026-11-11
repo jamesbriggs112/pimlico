@@ -1,0 +1,107 @@
+// Figma News "Featured story" (9:1179) / press "Section · Publication"
+// (160:4152): 60px padding, a 760x507 (3:2) image and a 440px text column
+// 80px apart: pumpkin meta, Display L title, Body L standfirst, Body S reading
+// time, caps underlined link. Mobile: image on top, Display S title; the
+// standfirst and reading time are dropped (News).
+.featured-story {
+  padding-block: #{fluid(32px, 60px)} var(--section-space);
+
+  &__inner {
+    @include pageContainer;
+    display: grid;
+    gap: #{to.rem(16px)};
+
+    @include mq($from: desktop) {
+      grid-template-columns: minmax(0, #{to.rem(760px)}) minmax(
+          0,
+          #{to.rem(440px)}
+        );
+      justify-content: space-between;
+      align-items: center;
+      gap: #{to.rem(80px)};
+    }
+  }
+
+  &__image {
+    overflow: hidden;
+    aspect-ratio: 3 / 2;
+    background-color: var(--color-border-default);
+
+    img {
+      display: block;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.3s ease-out;
+    }
+  }
+
+  &__text {
+    display: grid;
+    justify-items: start;
+    gap: #{fluid(16px, 22px)};
+    color: var(--color-text-primary);
+    text-decoration: none;
+  }
+
+  &__logo {
+    width: #{fluid(180px, 240px)};
+    height: #{fluid(30px, 40px)};
+
+    img,
+    svg {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+      object-position: left center;
+    }
+  }
+
+  &__title,
+  &__summary,
+  &__time,
+  &__meta {
+    margin: 0;
+  }
+
+  @include mq($until: desktop) {
+    &__title {
+      font-size: var(--font-size-display-s);
+      line-height: 1.12;
+    }
+
+    a &__summary,
+    &__time {
+      display: none;
+    }
+  }
+
+  &__link {
+    font-size: var(--font-size-label-nav);
+    font-weight: var(--font-weight-medium);
+    letter-spacing: var(--letter-spacing-label-nav);
+    text-transform: uppercase;
+    text-decoration: underline;
+    text-decoration-thickness: 1px;
+    text-underline-offset: var(--link-underline-offset);
+    transition: text-underline-offset 0.3s ease-out;
+  }
+
+  a.featured-story__text:hover .featured-story__link,
+  a.featured-story__text:focus-visible .featured-story__link {
+    text-underline-offset: var(--link-hover-underline-offset);
+  }
+
+  &:has(a.featured-story__text:hover) &__image img {
+    transform: scale(1.05);
+  }
+
+  a.featured-story__text:focus {
+    outline: none;
+  }
+
+  a.featured-story__text:focus-visible {
+    outline: var(--focus-outline-width) solid transparent;
+    box-shadow: var(--focus-ring);
+  }
+}

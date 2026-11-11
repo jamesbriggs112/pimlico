@@ -26,3 +26,6 @@ slots:
   logo:
     title: Publication logo
     description: 'Press article variant: the publication logo above the title.'
+  after:
+    title: After the intro
+    description: 'e.g. the News filters, or the search form.'

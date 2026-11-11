@@ -10,9 +10,35 @@ blocks:
     fields:
       body:
         -
-          value: '<p>©[current-date:custom:Y], [site:name]</p>'
-          summary: ''
+          value: '<p>© [current-date:custom:Y] [site:name] · Part of Belgravia</p>'
+          summary: null
           format: simple_text_with_tokens
+  -
+    info: 'Brands: food and drink'
+    langcode: en
+    uuid: 5f1eb665-003e-4c93-ab95-7691e97561b3
+    bundle: promo
+    revision_id: null
+    rev_id_current: null
+    fields:
+      field_eyebrow:
+        -
+          value: 'Food & drink'
+      field_heading:
+        -
+          value: 'Somewhere to pause between showrooms'
+      field_image:
+        -
+          target_id: '8'
+      field_link:
+        -
+          uri: 'internal:/dine'
+          title: 'See food & drink'
+          options: {  }
+      field_text:
+        -
+          value: '<p>Lunch on the terrace, coffee at the counter and a long table for Friday evenings.</p>'
+          format: basic_html
 menus:
   -
     menu_name: main
@@ -482,6 +508,16 @@ taxonomies:
       uuid: 6fcf4b16-a3ad-4a60-95cd-26f38938693b
     -
       vid: brand_category
+      tid: '17'
+      langcode: en
+      name: Cafés
+      description__value: null
+      description__format: null
+      weight: '1'
+      parent: '5'
+      uuid: da9f3fae-4f5b-4651-8ea7-04e031907791
+    -
+      vid: brand_category
       tid: '5'
       langcode: en
       name: 'Food & Drink'
@@ -512,6 +548,16 @@ taxonomies:
       uuid: b65df053-308a-4706-892b-65146fa444bd
     -
       vid: brand_category
+      tid: '16'
+      langcode: en
+      name: 'Pubs and restaurants'
+      description__value: null
+      description__format: null
+      weight: '0'
+      parent: '5'
+      uuid: 85590ad0-3075-4852-b6d1-429a58042d52
+    -
+      vid: brand_category
       tid: '3'
       langcode: en
       name: 'Soft furnishings and fabrics'
@@ -521,5 +567,55 @@ taxonomies:
       parent: '0'
       uuid: b0281f07-1584-48cf-9269-fe78176d9dcb
   image_paragraph_styles: {  }
-  news_category: {  }
+  news_category:
+    -
+      vid: news_category
+      tid: '12'
+      langcode: en
+      name: 'Antiques & art'
+      description__value: null
+      description__format: null
+      weight: '1'
+      parent: '0'
+      uuid: 686574e0-1a10-4e2a-9bb9-620a06a6a094
+    -
+      vid: news_category
+      tid: '13'
+      langcode: en
+      name: 'Food & drink'
+      description__value: null
+      description__format: null
+      weight: '2'
+      parent: '0'
+      uuid: f0d3efcb-d1e1-424f-abd8-caf1a3a6f58f
+    -
+      vid: news_category
+      tid: '11'
+      langcode: en
+      name: Interiors
+      description__value: null
+      description__format: null
+      weight: '0'
+      parent: '0'
+      uuid: bceebbc3-3c33-4254-9d1a-20ef14a63bd3
+    -
+      vid: news_category
+      tid: '14'
+      langcode: en
+      name: Makers
+      description__value: null
+      description__format: null
+      weight: '3'
+      parent: '0'
+      uuid: 44804862-49cc-42ba-a5cb-3293878b9845
+    -
+      vid: news_category
+      tid: '15'
+      langcode: en
+      name: 'The street'
+      description__value: null
+      description__format: null
+      weight: '4'
+      parent: '0'
+      uuid: 9d46879b-8298-4256-9e69-4da677c274f4
   paragraph_styles: {  }

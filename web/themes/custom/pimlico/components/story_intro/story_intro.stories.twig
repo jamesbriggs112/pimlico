@@ -1,0 +1,10 @@
+{% stories story_intro with { title: 'Components/Story intro' } %}
+{% story default with { name: 'Default' } %}
+  {% set img = url('<front>')|render|trim('/', 'right') ~ '/themes/custom/pimlico/src/stories/images/' %}
+  {% include 'pimlico:story_intro' with {
+    meta: 'Interiors · 11 November 2026 · Words by the Pimlico Road team · 4 min read',
+    caption: 'Photography: placeholder',
+    image: { '#markup': '<img src="' ~ img ~ 'hero-street.jpg" alt="">' },
+  } only %}
+{% endstory %}
+{% endstories %}

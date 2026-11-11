@@ -1,0 +1,19 @@
+uuid: 8727ed0e-57c8-449b-87a5-e443d59c5ed0
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_author
+    - node.type.press_article
+id: node.press_article.field_author
+field_name: field_author
+entity_type: node
+bundle: press_article
+label: Journalist
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

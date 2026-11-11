@@ -1,0 +1,22 @@
+'$schema': 'https://git.drupalcode.org/project/drupal/-/raw/HEAD/core/assets/schemas/v1/metadata.schema.json'
+name: Story intro
+status: stable
+description: 'Figma article "Section · Introduction": a centred pumpkin meta line (category · date · author · reading time) over the wide lead image and caption.'
+libraryOverrides:
+  css:
+    component:
+      story_intro.scss: {}
+  dependencies:
+    - core/components.pimlico--figure
+props:
+  type: object
+  properties:
+    meta:
+      type: string
+      title: Meta
+    caption:
+      type: string
+      title: Caption
+slots:
+  image:
+    title: Lead image

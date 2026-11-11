@@ -80,6 +80,7 @@ module:
   path: 0
   path_alias: 0
   phpass: 0
+  pimlico_search: 0
   plyr: 0
   quick_node_clone: 0
   raven: 0
@@ -108,6 +109,7 @@ module:
   tagify: 0
   tagify_link: 0
   taxonomy: 0
+  telephone: 0
   text: 0
   token: 0
   token_filter: 0

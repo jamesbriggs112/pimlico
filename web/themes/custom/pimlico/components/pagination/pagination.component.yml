@@ -10,14 +10,14 @@ props:
   type: object
   properties:
     items:
-      type: object
+      type: [object, array, 'null']
       title: Pager items
       description: 'Drupal pager "items" (pages, previous, next).'
     current:
-      type: integer
+      type: [integer, 'null']
       title: Current page
     ellipses:
-      type: object
+      type: [object, array, 'null']
       title: Ellipses
     heading_id:
       type: string

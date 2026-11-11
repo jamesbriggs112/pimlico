@@ -1,0 +1,18 @@
+{% set attributes = attributes ?: create_attribute() %}
+{% set heading_id = 'band-' ~ heading|clean_id %}
+<section {{ attributes.addClass(['info-band', media_fill ? 'info-band--fill', media ? '' : 'info-band--no-media']).setAttribute('aria-labelledby', heading_id) }}>
+  <div class="info-band__content">
+    {% if eyebrow %}<p class="info-band__eyebrow eyebrow">{{ eyebrow }}</p>{% endif %}
+    <h2 class="info-band__heading display-l" id="{{ heading_id }}">{{ heading }}</h2>
+    {% if rows %}<dl class="info-band__rows">{% block rows %}{{ rows }}{% endblock %}</dl>{% endif %}
+    {% if links %}
+      <div class="info-band__actions">
+        {% for link in links %}
+          {% set attrs = link.external ? create_attribute({ target: '_blank', rel: 'noopener' }) : create_attribute() %}
+          {% include 'pimlico:button' with { text: link.text ~ (link.external ? ' ↗' : ''), url: link.url, variant: 'yellow', attributes: attrs } only %}
+        {% endfor %}
+      </div>
+    {% endif %}
+  </div>
+  {% if media %}<div class="info-band__media">{% block media %}{{ media }}{% endblock %}</div>{% endif %}
+</section>

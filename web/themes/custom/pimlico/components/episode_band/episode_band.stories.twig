@@ -1,0 +1,19 @@
+{% stories episode_band with { title: 'Components/Episode band' } %}
+{% story default with { name: 'Default' } %}
+  {% set img = url('<front>')|render|trim('/', 'right') ~ '/themes/custom/pimlico/src/stories/images/' %}
+  {% set player %}
+    {% include 'pimlico:audio_player' with {
+      src: 'https://interactive-examples.mdn.mozilla.net/media/cc0-audio/t-rex-roar.mp3',
+      title: 'Episode 1: Fifty years on the road',
+      meta: 'Episode 1 · 38 min',
+    } only %}
+  {% endset %}
+  {% include 'pimlico:episode_band' with {
+    meta: 'Podcast · 4 November · 38 min',
+    guest: 'With a guest from the street',
+    transcript_url: '#',
+    image: { '#markup': '<img src="' ~ img ~ 'intro-daylesford-terrace.jpg" alt="">' },
+    player,
+  } only %}
+{% endstory %}
+{% endstories %}

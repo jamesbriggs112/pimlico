@@ -1,0 +1,13 @@
+{% stories promo_band with { title: 'Components/Promo band' } %}
+{% story default with { name: 'Brands: food and drink' } %}
+  {% set img = url('<front>')|render|trim('/', 'right') ~ '/themes/custom/pimlico/src/stories/images/' %}
+  {% include 'pimlico:promo_band' with {
+    eyebrow: 'Food & drink',
+    heading: 'Somewhere to stop on the way',
+    link_text: 'Find places to eat',
+    link_url: '#',
+    text: 'Lunch on the terrace, coffee at the counter and long tables for Friday evenings.',
+    image: { '#markup': '<img src="' ~ img ~ 'intro-daylesford-terrace.jpg" alt="">' },
+  } only %}
+{% endstory %}
+{% endstories %}

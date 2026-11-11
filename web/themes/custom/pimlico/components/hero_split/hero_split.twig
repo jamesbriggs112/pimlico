@@ -8,7 +8,7 @@
     {% if links %}
       <div class="hero-split__actions">
         {% for link in links %}
-          {% include 'pimlico:button' with { text: link.text, url: link.url, variant: 'yellow' } only %}
+          {% include 'pimlico:button' with { text: link.text, url: link.url, variant: 'yellow', class: link.class|default('') } only %}
         {% endfor %}
       </div>
     {% endif %}

@@ -1,0 +1,72 @@
+uuid: a59904b5-67eb-498e-b6e0-a90eb6bde57c
+langcode: en
+status: true
+dependencies:
+  config:
+    - core.entity_view_mode.node.featured
+    - field.field.node.podcast_episode.field_audio
+    - field.field.node.podcast_episode.field_caption
+    - field.field.node.podcast_episode.field_chapters
+    - field.field.node.podcast_episode.field_duration
+    - field.field.node.podcast_episode.field_episode_number
+    - field.field.node.podcast_episode.field_featured
+    - field.field.node.podcast_episode.field_featured_brand
+    - field.field.node.podcast_episode.field_guest
+    - field.field.node.podcast_episode.field_image
+    - field.field.node.podcast_episode.field_news_category
+    - field.field.node.podcast_episode.field_related
+    - field.field.node.podcast_episode.field_sections
+    - field.field.node.podcast_episode.field_seo_description
+    - field.field.node.podcast_episode.field_seo_image
+    - field.field.node.podcast_episode.field_seo_social_media_title
+    - field.field.node.podcast_episode.field_seo_title
+    - field.field.node.podcast_episode.field_summary
+    - field.field.node.podcast_episode.field_transcript
+    - node.type.podcast_episode
+  module:
+    - fences
+id: node.podcast_episode.featured
+targetEntityType: node
+bundle: podcast_episode
+mode: featured
+content:
+  field_image:
+    type: entity_reference_entity_view
+    label: hidden
+    settings:
+      view_mode: full
+      link: false
+    third_party_settings:
+      fences:
+        fences_field_tag: none
+        fences_field_classes: ''
+        fences_field_items_wrapper_tag: none
+        fences_field_items_wrapper_classes: ''
+        fences_field_item_tag: none
+        fences_field_item_classes: ''
+        fences_label_tag: ''
+        fences_label_classes: ''
+    weight: 0
+    region: content
+hidden:
+  content_moderation_control: true
+  field_audio: true
+  field_caption: true
+  field_chapters: true
+  field_duration: true
+  field_episode_number: true
+  field_featured: true
+  field_featured_brand: true
+  field_guest: true
+  field_news_category: true
+  field_related: true
+  field_sections: true
+  field_seo_description: true
+  field_seo_image: true
+  field_seo_social_media_title: true
+  field_seo_title: true
+  field_summary: true
+  field_transcript: true
+  langcode: true
+  links: true
+  search_api_excerpt: true

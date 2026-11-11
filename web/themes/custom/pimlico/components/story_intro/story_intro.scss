@@ -1,0 +1,17 @@
+// Figma article "Section · Introduction" (25:3164): 60px top, 24px gap,
+// centred pumpkin meta, 1280x640 lead image with caption. Mobile: left
+// aligned, 3:2 image.
+.story-intro {
+  display: grid;
+  gap: #{fluid(16px, 24px)};
+  padding-top: var(--section-space);
+
+  &__meta {
+    @include pageContainer;
+    margin: 0;
+
+    @include mq($from: desktop) {
+      text-align: center;
+    }
+  }
+}

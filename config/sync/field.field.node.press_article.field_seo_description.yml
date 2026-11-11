@@ -1,0 +1,19 @@
+uuid: 95a04963-e01b-445a-b153-33f1ccba72b4
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_seo_description
+    - node.type.press_article
+id: node.press_article.field_seo_description
+field_name: field_seo_description
+entity_type: node
+bundle: press_article
+label: 'SEO description'
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string_long

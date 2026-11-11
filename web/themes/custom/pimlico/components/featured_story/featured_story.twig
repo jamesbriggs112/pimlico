@@ -1,0 +1,15 @@
+{% set attributes = attributes ?: create_attribute() %}
+{% set tag = url ? 'a' : 'div' %}
+<section {{ attributes.addClass('featured-story') }}>
+  <div class="featured-story__inner">
+    <div class="featured-story__image">{% block image %}{{ image }}{% endblock %}</div>
+    <{{ tag }} class="featured-story__text"{{ url ? ' href="' ~ url ~ '"' }}>
+      {% if logo %}<div class="featured-story__logo">{% block logo %}{{ logo }}{% endblock %}</div>{% endif %}
+      {% if meta %}<p class="featured-story__meta eyebrow">{{ meta }}</p>{% endif %}
+      {% if title %}<h2 class="featured-story__title display-l">{{ title }}</h2>{% endif %}
+      {% if summary %}<p class="featured-story__summary body-l">{{ summary }}</p>{% endif %}
+      {% if reading_time %}<p class="featured-story__time body-s">{{ reading_time }}</p>{% endif %}
+      {% if url and link_text %}<span class="featured-story__link" aria-hidden="true">{{ link_text }}</span>{% endif %}
+    </{{ tag }}>
+  </div>
+</section>

@@ -1,0 +1,5 @@
+{% set attributes = attributes ?: create_attribute() %}
+<figure {{ attributes.addClass(['figure', wide ? 'figure--wide']) }}>
+  <div class="figure__image">{% block image %}{{ image }}{% endblock %}</div>
+  {% if caption %}<figcaption class="figure__caption body-s">{{ caption }}</figcaption>{% endif %}
+</figure>

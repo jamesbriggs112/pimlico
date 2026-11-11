@@ -1,0 +1,19 @@
+uuid: 3c08121b-5454-438c-b1dd-360dff284b1d
+langcode: en
+status: true
+dependencies:
+  config:
+    - block_content.type.promo
+    - field.storage.block_content.field_heading
+id: block_content.promo.field_heading
+field_name: field_heading
+entity_type: block_content
+bundle: promo
+label: Heading
+description: ''
+required: true
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

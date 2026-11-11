@@ -1,0 +1,25 @@
+uuid: 7ac8d90c-3ba0-446b-9165-1480363460a4
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_featured_brand
+    - node.type.brand
+    - node.type.podcast_episode
+id: node.podcast_episode.field_featured_brand
+field_name: field_featured_brand
+entity_type: node
+bundle: podcast_episode
+label: 'Featured brand'
+description: 'Optional. Adds a link to the brand the story is about.'
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:node'
+  handler_settings:
+    target_bundles:
+      brand: brand
+    auto_create: false
+field_type: entity_reference

@@ -1,0 +1,13 @@
+{#
+/**
+ * @file
+ * Brand results as bare cards. On the Brands page the promo band (the
+ * view's footer area, see includes/views.inc) follows the sixth card.
+ */
+#}
+{% for row in rows %}
+  {{- row.content -}}
+  {% if promo and loop.index == promo_after and not loop.last %}
+    <div class="listing__promo">{{ promo }}</div>
+  {% endif %}
+{% endfor %}

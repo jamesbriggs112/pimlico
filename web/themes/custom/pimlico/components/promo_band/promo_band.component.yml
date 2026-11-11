@@ -1,0 +1,24 @@
+'$schema': 'https://git.drupalcode.org/project/drupal/-/raw/HEAD/core/assets/schemas/v1/metadata.schema.json'
+name: Promo band
+status: stable
+description: 'Figma Brands "Band · Food & drink": a linen band, 640x427 image left, eyebrow, Display M heading, text and a caps link right. Sits inside a listing grid.'
+libraryOverrides:
+  css:
+    component:
+      promo_band.scss: {}
+  dependencies:
+    - core/components.pimlico--text_link
+props:
+  type: object
+  required:
+    - heading
+  properties:
+    eyebrow: { type: string, title: Eyebrow }
+    heading: { type: string, title: Heading }
+    link_text: { type: string, title: Link text }
+    link_url: { type: string, title: Link URL }
+slots:
+  text:
+    title: Text
+  image:
+    title: Image (3:2)

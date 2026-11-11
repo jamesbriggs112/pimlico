@@ -1,0 +1,19 @@
+{#
+/**
+ * @file
+ * The lead story on the News page → pimlico:featured_story.
+ */
+#}
+{% set type = node.type.entity.label %}
+{% set meta = ['Featured'|t, node.field_news_category.entity.label|default(type), node.created.value|format_date('custom', 'j F Y')]|filter(v => v)|join(' · ') %}
+{% set minutes = node.hasField('field_reading_time') ? node.field_reading_time.value : null %}
+{% include 'pimlico:featured_story' with {
+  attributes,
+  url,
+  meta,
+  title: node.label,
+  summary: node.field_summary.value|default(''),
+  reading_time: minutes ? '@count minute read'|t({ '@count': minutes }) : '',
+  link_text: node.bundle == 'podcast_episode' ? 'Listen to the episode'|t : 'Read the story'|t,
+  image: content.field_image,
+} only %}

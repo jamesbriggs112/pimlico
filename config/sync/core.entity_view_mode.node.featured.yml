@@ -1,0 +1,11 @@
+uuid: d80fc28e-3ee4-4a0d-993d-37c502256da9
+langcode: en
+status: true
+dependencies:
+  module:
+    - node
+id: node.featured
+label: Featured
+description: 'The lead story on the News page.'
+targetEntityType: node
+cache: true

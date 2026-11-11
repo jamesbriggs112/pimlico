@@ -1,0 +1,15 @@
+{% set attributes = attributes ?: create_attribute() %}
+{% if credits or links %}
+  <div {{ attributes.addClass('story-credits') }}>
+    <div class="story-credits__inner">
+      {% if credits %}<p class="story-credits__text body-s">{{ credits }}</p>{% endif %}
+      {% if links %}
+        <div class="story-credits__actions">
+          {% for link in links %}
+            {% include 'pimlico:button' with { text: link.text, url: link.url, variant: 'yellow' } only %}
+          {% endfor %}
+        </div>
+      {% endif %}
+    </div>
+  </div>
+{% endif %}

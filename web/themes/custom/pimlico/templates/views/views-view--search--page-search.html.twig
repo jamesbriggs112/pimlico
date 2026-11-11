@@ -1,0 +1,86 @@
+{#
+/**
+ * @file
+ * Search (Figma T17) and search results (T18): title band with the search
+ * bar and either popular searches or the result filters with counts; then
+ * three top hits per group, or every result for the chosen group.
+ *
+ * search: built in includes/search.inc.
+ */
+#}
+{% set keys = search.keys %}
+{% set title = keys ? 'Results for ‘@keys’'|t({ '@keys': keys }) : view.getTitle() %}
+{% if not keys %}
+  {% set intro = header|render|striptags|trim %}
+{% elseif search.total %}
+  {% set intro = search.total == 1 ? '1 result across brands, places to eat and stories.'|t : '@count results across brands, places to eat and stories.'|t({ '@count': search.total }) %}
+{% else %}
+  {% set intro = 'No results across brands, places to eat and stories.'|t %}
+{% endif %}
+
+<div{{ attributes.addClass('listing', 'listing--search') }}>
+  {{ title_prefix }}
+  {{ title_suffix }}
+  {% set after %}
+    <form class="search-bar" action="{{ search.action }}" method="get" role="search">
+      <div class="form-item search-bar__field">
+        <label for="search-keys">{{ 'Search Pimlico Road'|t }}</label>
+        <input type="search" id="search-keys" name="keys" value="{{ keys }}" placeholder="{{ 'Try ‘antiques’, ‘lunch’ or a brand name'|t }}">
+      </div>
+      {% include 'pimlico:button' with { text: 'Search'|t, variant: 'yellow', class: 'search-bar__submit' } only %}
+    </form>
+    {% if search.popular %}
+      <div class="search-popular">
+        <span class="search-popular__label body-l" id="search-popular">{{ 'Popular searches:'|t }}</span>
+        {% include 'pimlico:filter_bar' with { items: search.popular, label: 'Popular searches'|t } only %}
+      </div>
+    {% elseif search.filters %}
+      {% include 'pimlico:filter_bar' with { items: search.filters, label: 'Filter results by type'|t } only %}
+    {% endif %}
+  {% endset %}
+  {% include 'pimlico:page_title' with {
+    title,
+    intro,
+    breadcrumb: drupal_block('system_breadcrumb_block'),
+    after,
+  } only %}
+
+  {% if not keys %}
+    {% include 'pimlico:card_grid' with {
+      heading: 'Start exploring'|t,
+      link_text: 'All brands'|t,
+      link_url: path('view.brands.page_brands'),
+      items: drupal_view('brands', 'block_similar', 'all', 0),
+    } only %}
+    {% include 'pimlico:card_grid' with {
+      heading: 'Latest stories'|t,
+      link_text: 'All news'|t,
+      link_url: path('view.news.page_news'),
+      items: drupal_view('news', 'block_latest'),
+    } only %}
+  {% elseif search.type %}
+    <section class="listing__results" aria-label="{{ 'Search results'|t }}">
+      {% if rows %}
+        <div class="listing__grid">{{ rows }}</div>
+      {% else %}
+        <div class="listing__empty">{{ empty }}</div>
+      {% endif %}
+    </section>
+    {{ pager }}
+  {% elseif search.groups %}
+    <div class="search-groups">
+      {% for group in search.groups %}
+        {% include 'pimlico:card_grid' with {
+          heading: group.heading,
+          link_text: group.link_text,
+          link_url: group.link_url,
+          items: drupal_view('search', 'block_group', group.id),
+        } only %}
+      {% endfor %}
+    </div>
+  {% else %}
+    <section class="listing__results">
+      <div class="listing__empty">{{ empty }}</div>
+    </section>
+  {% endif %}
+</div>

@@ -1,0 +1,23 @@
+uuid: a8f37c3e-5ee6-4ca0-941c-7b28247b1a11
+langcode: en
+status: true
+dependencies:
+  config:
+    - node.type.brand
+  module:
+    - node
+id: brands
+label: Brands
+type: 'canonical_entities:node'
+pattern: '/brands/[node:title]'
+selection_criteria:
+  4309f7f4-d62b-43ea-adbc-0916b71655e6:
+    id: 'entity_bundle:node'
+    negate: false
+    context_mapping:
+      node: node
+    bundles:
+      brand: brand
+selection_logic: and
+weight: -10
+relationships: {  }

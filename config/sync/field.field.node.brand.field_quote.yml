@@ -1,0 +1,31 @@
+uuid: 0af94679-8e64-4114-a730-d57847faaeca
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_quote
+    - node.type.brand
+    - paragraphs.paragraphs_type.quote
+  module:
+    - entity_reference_revisions
+id: node.brand.field_quote
+field_name: field_quote
+entity_type: node
+bundle: brand
+label: Quote
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:paragraph'
+  handler_settings:
+    target_bundles:
+      quote: quote
+    negate: 0
+    target_bundles_drag_drop:
+      quote:
+        weight: 0
+        enabled: true
+field_type: entity_reference_revisions

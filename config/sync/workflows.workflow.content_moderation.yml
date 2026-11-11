@@ -4,7 +4,10 @@ status: true
 dependencies:
   config:
     - node.type.article
+    - node.type.brand
     - node.type.page
+    - node.type.podcast_episode
+    - node.type.press_article
   module:
     - content_moderation
 id: content_moderation
@@ -51,5 +54,8 @@ type_settings:
   entity_types:
     node:
       - article
+      - brand
       - page
+      - podcast_episode
+      - press_article
   default_moderation_state: draft

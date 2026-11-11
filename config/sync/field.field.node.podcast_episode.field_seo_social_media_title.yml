@@ -1,0 +1,19 @@
+uuid: cd6295bd-2d2f-4743-b7a1-97dc49fe71a1
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_seo_social_media_title
+    - node.type.podcast_episode
+id: node.podcast_episode.field_seo_social_media_title
+field_name: field_seo_social_media_title
+entity_type: node
+bundle: podcast_episode
+label: 'Social media title'
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

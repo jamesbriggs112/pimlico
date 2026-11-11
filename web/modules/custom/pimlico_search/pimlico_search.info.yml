@@ -1,0 +1,9 @@
+name: 'Pimlico search'
+type: module
+description: 'Site search: sorts indexed content into the result groups shown on /search (Brands, Dine, News, Press).'
+package: Pimlico
+core_version_requirement: ^11
+dependencies:
+  - search_api:search_api
+  - drupal:node
+  - drupal:taxonomy

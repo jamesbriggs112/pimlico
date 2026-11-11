@@ -1,0 +1,28 @@
+uuid: 5c53817c-2f8f-427f-8fd6-3242be2e4a50
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_related
+    - node.type.article
+    - node.type.podcast_episode
+    - node.type.press_article
+id: node.podcast_episode.field_related
+field_name: field_related
+entity_type: node
+bundle: podcast_episode
+label: 'Related stories'
+description: 'Up to three. Leave empty to show the latest in the same category.'
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:node'
+  handler_settings:
+    target_bundles:
+      article: article
+      podcast_episode: podcast_episode
+      press_article: press_article
+    auto_create: false
+field_type: entity_reference

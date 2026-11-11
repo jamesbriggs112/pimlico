@@ -1,0 +1,156 @@
+@use 'sass-rem' as to;
+@use 'sass-mq/mq' as *;
+@use '../init/mixins' as *;
+
+// Listing pages (Figma T02 Brands, T02b Dine, T07 News): a grid of three
+// 400px story cards, 40px apart with 72px between rows (64 on News); one
+// column on mobile, 44px apart. The promo band spans the row.
+.listing {
+  &__results {
+    @include pageContainer;
+    padding-top: var(--section-space);
+  }
+
+  &__results--ruled {
+    padding-top: 0;
+
+    &::before {
+      content: '';
+      display: block;
+      height: 1px;
+      margin-bottom: #{fluid(24px, 40px)};
+      background-color: var(--color-border-strong);
+    }
+  }
+
+  &__label {
+    margin: 0 0 #{fluid(24px, 64px)};
+    color: var(--color-text-primary);
+  }
+
+  &__grid {
+    display: grid;
+    gap: #{fluid(44px, 72px)} var(--column-gap);
+
+    @include mq($from: tablet) {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    @include mq($from: desktop) {
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+    }
+  }
+
+  &--news &__grid {
+    row-gap: #{fluid(44px, 64px)};
+  }
+
+  &__promo {
+    grid-column: 1 / -1;
+
+    @include mq($until: desktop) {
+      display: none;
+    }
+  }
+
+  &__empty {
+    padding-block: var(--section-space);
+  }
+
+  .pagination {
+    padding-top: #{fluid(44px, 72px)};
+  }
+}
+
+// Story pages: the body sections sit in the 760px reading column (rich text
+// centres itself), 56px apart; press bodies start with a rule.
+.story-body {
+  display: grid;
+  gap: #{fluid(32px, 56px)};
+  padding-block: #{fluid(40px, 56px)} var(--space-24);
+
+  > * {
+    margin-block: 0;
+  }
+
+  &--ruled::before {
+    content: '';
+    box-sizing: border-box;
+    width: calc(100% - 2 * var(--page-gutter));
+    max-width: #{to.rem(760px)};
+    height: 1px;
+    margin-inline: auto;
+    background-color: var(--color-border-strong);
+  }
+}
+
+.card-grid--tint {
+  background-color: var(--color-tint-linen-30);
+}
+
+.story-notes > * + * {
+  margin-top: var(--space-24);
+}
+
+// Search (Figma T17/T18): a 708px bar (560px underlined field + 132px
+// button, bottom-aligned) and the popular searches row in the title band.
+.search-bar {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-16);
+  width: 100%;
+  max-width: #{to.rem(708px)};
+  margin-inline: auto;
+  text-align: start;
+
+  @include mq($from: desktop) {
+    flex-direction: row;
+    align-items: flex-end;
+  }
+
+  &__field {
+    flex: 1;
+  }
+
+  &__submit {
+    flex: none;
+
+    @include mq($from: desktop) {
+      width: #{to.rem(132px)};
+    }
+  }
+}
+
+.search-popular {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  column-gap: var(--space-32);
+  row-gap: var(--space-16);
+
+  &__label {
+    margin: 0;
+  }
+}
+
+.search-groups > .card-grid + .card-grid {
+  padding-top: 0;
+}
+
+// Search filters and popular searches wrap onto rows on mobile (T17/T18
+// mobile) rather than scrolling sideways.
+.listing--search .filter-bar__list {
+  flex-wrap: wrap;
+  justify-content: center;
+  column-gap: var(--space-24);
+  row-gap: var(--space-12);
+
+  @include mq($from: desktop) {
+    column-gap: var(--space-32);
+  }
+}
+
+.search-popular .filter-bar__list {
+  padding-inline: 0;
+}

@@ -103,6 +103,21 @@ Build each SDC, then its paragraph type and the thin `paragraph--*.html.twig` ad
 | 4.4 | **News listing:** `news` view with featured story, grid, pagination; `block_latest`; `block_related`. | T07 matches; Home "This week" works |
 | 4.5 | **Search:** Search API database index of Brands, Stories and Pages; `search` view; header search icon links to it. | T17 and T18 match |
 
+**Phase 4 notes (built):**
+
+- **Brand page:** hero, about, quote, gallery, specialisms, a "Find the showroom" band (address, opening hours, trade, contact, accessibility, directions to Google Maps, website) and Similar Brands (chosen, or three random from the same category). The map slot waits for phase 5.
+- **Listings:** `/brands` (category filter, promo band after the sixth card, 15 per page), `/dine` (Food & Drink and its child categories: Pubs and restaurants, Cafés) and `/news` (featured story, News/Press filter, 12 per page). The filter bars and the promo position come from `includes/views.inc`; Views can't build them.
+- **Stories:** article, podcast episode and press article templates follow T08, T10 and T12. Image sections inside stories render as the 760px `figure`. Related stories fall back to the same News Category.
+- **Featured story:** `field_featured` defaults to off; the News grid excludes the featured story, which the attachment shows above it.
+- **Search:** `/search` indexes Brands and Stories (pages are left out; they are few and reached from the menu). Results are grouped Brands, Dine, News, Press with counts in the filter bar, three top hits per group, and every result with a pager once a group is chosen. The `pimlico_search` module's processor assigns each node its group (kernel test included).
+- **Content model changes:** opening hours are text lines, not office_hours. Brand and story images are `field_image` (was `field_banner`); intros are `field_summary` (was `field_teaser`). Article `body`, `field_banner` and `field_teaser` were removed.
+- **Sample content:** 47 brands from the map project's import and 11 placeholder stories, local only. Phase 6 replaces them with the migration and real copy.
+- **Design queries:**
+  - "Popular searches" is a fixed list in `includes/search.inc` (Antiques, Interiors, Lighting, Lunch, Newson’s Yard, Art). Should editors manage it?
+  - The no-results state isn't designed. It currently shows "No results…" with the empty text.
+  - T18 draws only Brands and Stories groups. The build shows a group for every type with results (Brands, Dine, News, Press).
+  - Related-section headings follow each Figma page ("Also on this street", "Continue the conversation", "Discover the places in the story"); confirm whether they should be editable.
+
 ## Phase 5: The map (`pimlico_map`)
 
 The map project's `docs/PIMLICO-MAP-GUIDE.md` Part B is the spec. Its code samples are rewritten to project conventions (TAD §8): strict types, final classes, injected services, OOP hooks, attributes.

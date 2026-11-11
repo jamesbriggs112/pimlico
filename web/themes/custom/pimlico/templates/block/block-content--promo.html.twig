@@ -1,0 +1,15 @@
+{#
+/**
+ * @file
+ * Promo block content → pimlico:promo_band.
+ */
+#}
+{% set link = block_content.field_link.0 %}
+{% include 'pimlico:promo_band' with {
+  eyebrow: block_content.field_eyebrow.value|default(''),
+  heading: block_content.field_heading.value|default(''),
+  link_text: link.title|default(''),
+  link_url: link ? link.url.toString() : '',
+  text: content.field_text,
+  image: content.field_image,
+} only %}

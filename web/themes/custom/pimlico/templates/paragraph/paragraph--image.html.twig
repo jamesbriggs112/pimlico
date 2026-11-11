@@ -1,14 +1,16 @@
-{% embed "pimlico:paragraph_with_layout" with {
-  view_mode,
-  paragraph,
-  attributes,
-	layout: paragraph.hasField('field_layout') and not paragraph.get('field_layout').isEmpty() ? paragraph.field_layout.value|clean_class,
-} %}
-	{% block content %}
-		{% include "pimlico:image_with_caption" with {
-					media_id: paragraph.field_image_with_caption.0.entity.field_image.0.entity.id(),
-					image_style: paragraph.field_image_style.value,
-					caption: paragraph.field_image_with_caption.0.entity.field_caption.value
-				} only %}
-	{% endblock %}
-{% endembed %}
+{#
+/**
+ * @file
+ * Image paragraph → pimlico:figure (3:2 image at the 760px reading measure,
+ * Body S caption). The image and caption live on the nested
+ * image_with_caption paragraph.
+ */
+#}
+{% set item = paragraph.field_image_with_caption.entity %}
+{% if item and not item.field_image.isEmpty() %}
+  {% include 'pimlico:figure' with {
+    attributes,
+    caption: item.field_caption.value|default(''),
+    image: drupal_field('field_image', 'paragraph', item.id.value),
+  } only %}
+{% endif %}

@@ -1,0 +1,12 @@
+{% set attributes = attributes ?: create_attribute() %}
+<aside {{ attributes.addClass('promo-band') }}>
+  <div class="promo-band__image">{% block image %}{{ image }}{% endblock %}</div>
+  <div class="promo-band__text">
+    {% if eyebrow %}<p class="eyebrow">{{ eyebrow }}</p>{% endif %}
+    <h2 class="promo-band__heading display-m">{{ heading }}</h2>
+    {% if text %}<div class="promo-band__body">{% block text %}{{ text }}{% endblock %}</div>{% endif %}
+    {% if link_text and link_url %}
+      {% include 'pimlico:text_link' with { text: link_text, url: link_url, underlined: true } only %}
+    {% endif %}
+  </div>
+</aside>

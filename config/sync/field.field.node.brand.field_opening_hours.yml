@@ -1,0 +1,19 @@
+uuid: a23d6634-9753-47e9-b94d-63942ba50c28
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_opening_hours
+    - node.type.brand
+id: node.brand.field_opening_hours
+field_name: field_opening_hours
+entity_type: node
+bundle: brand
+label: 'Opening hours'
+description: 'One line per row, e.g. "Monday to Friday: 10am to 6pm".'
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string_long

@@ -1,0 +1,23 @@
+uuid: 71dd5310-171c-48f2-8302-46664b13ac99
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_featured
+    - node.type.podcast_episode
+id: node.podcast_episode.field_featured
+field_name: field_featured
+entity_type: node
+bundle: podcast_episode
+label: 'Feature at the top of News'
+description: 'The most recent featured story leads the News page.'
+required: false
+translatable: true
+default_value:
+  -
+    value: 0
+default_value_callback: ''
+settings:
+  on_label: 'On'
+  off_label: 'Off'
+field_type: boolean

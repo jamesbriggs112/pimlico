@@ -1,0 +1,20 @@
+'$schema': 'https://git.drupalcode.org/project/drupal/-/raw/HEAD/core/assets/schemas/v1/metadata.schema.json'
+name: Figure
+status: stable
+description: 'Figma article "Supporting image": a 3:2 image at the 760px reading measure with a Body S caption. Wide = the 1280 x 640 (2:1) lead image.'
+libraryOverrides:
+  css:
+    component:
+      figure.scss: {}
+props:
+  type: object
+  properties:
+    caption:
+      type: string
+      title: Caption
+    wide:
+      type: boolean
+      title: Wide (lead image)
+slots:
+  image:
+    title: Image

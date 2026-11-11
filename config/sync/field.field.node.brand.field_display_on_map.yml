@@ -1,0 +1,23 @@
+uuid: 566d3d8b-0463-4daa-bfca-6d26ec3f96f1
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_display_on_map
+    - node.type.brand
+id: node.brand.field_display_on_map
+field_name: field_display_on_map
+entity_type: node
+bundle: brand
+label: 'Show on the street map'
+description: ''
+required: false
+translatable: true
+default_value:
+  -
+    value: 1
+default_value_callback: ''
+settings:
+  on_label: 'On'
+  off_label: 'Off'
+field_type: boolean

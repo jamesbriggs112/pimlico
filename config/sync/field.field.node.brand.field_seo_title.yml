@@ -1,0 +1,19 @@
+uuid: 86c22aea-5de4-4321-b071-c8f7be794c33
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_seo_title
+    - node.type.brand
+id: node.brand.field_seo_title
+field_name: field_seo_title
+entity_type: node
+bundle: brand
+label: 'SEO title'
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

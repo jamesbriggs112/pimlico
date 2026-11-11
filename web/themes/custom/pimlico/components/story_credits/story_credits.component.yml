@@ -1,0 +1,24 @@
+'$schema': 'https://git.drupalcode.org/project/drupal/-/raw/HEAD/core/assets/schemas/v1/metadata.schema.json'
+name: Story credits
+status: stable
+description: 'Figma article credits: a ruled Body S credit line at the 760px measure, then Yellow buttons ("Explore the featured brand", "Explore more news").'
+libraryOverrides:
+  css:
+    component:
+      story_credits.scss: {}
+  dependencies:
+    - core/components.pimlico--button
+props:
+  type: object
+  properties:
+    credits:
+      type: string
+      title: Credits
+    links:
+      type: array
+      title: Buttons
+      items:
+        type: object
+        properties:
+          text: { type: string }
+          url: { type: string }

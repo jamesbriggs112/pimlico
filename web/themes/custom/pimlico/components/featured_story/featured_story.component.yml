@@ -1,0 +1,38 @@
+'$schema': 'https://git.drupalcode.org/project/drupal/-/raw/HEAD/core/assets/schemas/v1/metadata.schema.json'
+name: Featured story
+status: stable
+description: 'Figma News "Featured story" and press "Section · Publication": a 760px 3:2 image beside a 440px text column (meta, Display L title, standfirst, reading time, link).'
+libraryOverrides:
+  css:
+    component:
+      featured_story.scss: {}
+  dependencies:
+    - core/components.pimlico--text_link
+props:
+  type: object
+  properties:
+    url:
+      type: string
+      title: URL
+      description: 'Makes the text column a link (News). Leave empty for the press Publication block.'
+    meta:
+      type: string
+      title: Meta
+    title:
+      type: string
+      title: Title
+      description: 'Optional: the press Publication block has none.'
+    summary:
+      type: string
+      title: Standfirst
+    reading_time:
+      type: string
+      title: Reading time
+    link_text:
+      type: string
+      title: Link label
+slots:
+  image:
+    title: Image (3:2)
+  logo:
+    title: Publication logo

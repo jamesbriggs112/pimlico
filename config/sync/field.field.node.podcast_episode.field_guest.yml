@@ -1,0 +1,19 @@
+uuid: d16ccaab-924c-487e-85b7-b87afeaddd90
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_guest
+    - node.type.podcast_episode
+id: node.podcast_episode.field_guest
+field_name: field_guest
+entity_type: node
+bundle: podcast_episode
+label: Guest
+description: 'e.g. "With Rose Uniacke, designer".'
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

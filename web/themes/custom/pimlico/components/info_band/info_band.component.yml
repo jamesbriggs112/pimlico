@@ -1,0 +1,40 @@
+'$schema': 'https://git.drupalcode.org/project/drupal/-/raw/HEAD/core/assets/schemas/v1/metadata.schema.json'
+name: Info band
+status: stable
+description: 'Figma brand "Find the showroom" and press "Section · Source": a dark-grey band with a white Display L heading, optional white-ruled detail rows and Yellow buttons, beside a photo or map.'
+libraryOverrides:
+  css:
+    component:
+      info_band.scss: {}
+  dependencies:
+    - core/components.pimlico--button
+    - core/components.pimlico--info_row
+props:
+  type: object
+  required:
+    - heading
+  properties:
+    eyebrow:
+      type: string
+      title: Eyebrow
+    heading:
+      type: string
+      title: Heading
+    links:
+      type: array
+      title: Buttons
+      items:
+        type: object
+        properties:
+          text: { type: string }
+          url: { type: string }
+          external: { type: boolean }
+    media_fill:
+      type: boolean
+      title: Media fills the half
+      description: 'True for a map (720x800, edge to edge); false for a framed photo.'
+slots:
+  rows:
+    title: Detail rows
+  media:
+    title: Photo or map

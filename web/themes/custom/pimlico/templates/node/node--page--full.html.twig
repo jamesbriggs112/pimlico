@@ -14,7 +14,7 @@
   {{ title_suffix }}
   {% if not has_hero %}
     {% include 'pimlico:page_title' with {
-      title: label|render|striptags|trim,
+      title: node.label,
       intro: node.field_summary.value|default(''),
       breadcrumb: drupal_block('system_breadcrumb_block'),
     } only %}

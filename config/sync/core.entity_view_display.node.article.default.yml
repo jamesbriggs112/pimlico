@@ -3,14 +3,21 @@ langcode: en
 status: true
 dependencies:
   config:
-    - field.field.node.article.body
-    - field.field.node.article.field_banner
+    - field.field.node.article.field_author
+    - field.field.node.article.field_caption
+    - field.field.node.article.field_credits
+    - field.field.node.article.field_featured
+    - field.field.node.article.field_featured_brand
+    - field.field.node.article.field_image
+    - field.field.node.article.field_news_category
+    - field.field.node.article.field_reading_time
+    - field.field.node.article.field_related
     - field.field.node.article.field_sections
     - field.field.node.article.field_seo_description
     - field.field.node.article.field_seo_image
     - field.field.node.article.field_seo_social_media_title
     - field.field.node.article.field_seo_title
-    - field.field.node.article.field_teaser
+    - field.field.node.article.field_summary
     - node.type.article
   module:
     - entity_reference_revisions
@@ -23,17 +30,12 @@ targetEntityType: node
 bundle: article
 mode: default
 content:
-  content_moderation_control:
-    settings: {  }
-    third_party_settings: {  }
-    weight: -20
-    region: content
-  field_banner:
-    type: entity_reference_revisions_entity_view
+  field_image:
+    type: entity_reference_entity_view
     label: hidden
     settings:
-      view_mode: default
-      link: ''
+      view_mode: full
+      link: false
     third_party_settings:
       fences:
         fences_field_tag: none
@@ -42,9 +44,27 @@ content:
         fences_field_items_wrapper_classes: ''
         fences_field_item_tag: none
         fences_field_item_classes: ''
-        fences_label_tag: div
+        fences_label_tag: ''
         fences_label_classes: ''
     weight: 0
+    region: content
+  field_related:
+    type: entity_reference_entity_view
+    label: hidden
+    settings:
+      view_mode: teaser
+      link: false
+    third_party_settings:
+      fences:
+        fences_field_tag: none
+        fences_field_classes: ''
+        fences_field_items_wrapper_tag: none
+        fences_field_items_wrapper_classes: ''
+        fences_field_item_tag: none
+        fences_field_item_classes: ''
+        fences_label_tag: ''
+        fences_label_classes: ''
+    weight: 20
     region: content
   field_sections:
     type: entity_reference_revisions_entity_view
@@ -60,21 +80,24 @@ content:
         fences_field_items_wrapper_classes: ''
         fences_field_item_tag: none
         fences_field_item_classes: ''
-        fences_label_tag: div
+        fences_label_tag: ''
         fences_label_classes: ''
     weight: 1
     region: content
-  links:
-    settings: {  }
-    third_party_settings: {  }
-    weight: 2
-    region: content
 hidden:
-  body: true
+  content_moderation_control: true
+  field_author: true
+  field_caption: true
+  field_credits: true
+  field_featured: true
+  field_featured_brand: true
+  field_news_category: true
+  field_reading_time: true
   field_seo_description: true
   field_seo_image: true
   field_seo_social_media_title: true
   field_seo_title: true
-  field_teaser: true
+  field_summary: true
   langcode: true
+  links: true
   search_api_excerpt: true

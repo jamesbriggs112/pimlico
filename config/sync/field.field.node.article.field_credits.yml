@@ -1,0 +1,19 @@
+uuid: 4039af4a-d47b-4177-b99b-ea0072a45f32
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_credits
+    - node.type.article
+id: node.article.field_credits
+field_name: field_credits
+entity_type: node
+bundle: article
+label: Credits
+description: 'e.g. "Words: … · Photography: …".'
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

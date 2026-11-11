@@ -1,0 +1,31 @@
+uuid: ca392424-c6a8-49d6-9729-86238be8e3a1
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_specialisms
+    - node.type.brand
+    - paragraphs.paragraphs_type.info_row
+  module:
+    - entity_reference_revisions
+id: node.brand.field_specialisms
+field_name: field_specialisms
+entity_type: node
+bundle: brand
+label: Specialisms
+description: '“What you’ll find”: a title and short line for each.'
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:paragraph'
+  handler_settings:
+    target_bundles:
+      info_row: info_row
+    negate: 0
+    target_bundles_drag_drop:
+      info_row:
+        weight: 0
+        enabled: true
+field_type: entity_reference_revisions

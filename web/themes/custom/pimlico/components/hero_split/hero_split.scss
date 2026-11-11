@@ -80,3 +80,10 @@
     }
   }
 }
+
+// Buttons only the mobile design has (e.g. the brand "Find the showroom").
+.hero-split__mobile-only {
+  @include mq($from: desktop) {
+    display: none;
+  }
+}

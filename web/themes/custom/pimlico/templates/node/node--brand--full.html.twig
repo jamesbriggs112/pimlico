@@ -1,0 +1,118 @@
+{#
+/**
+ * @file
+ * Brand page (Figma T03): split hero, about, quote, gallery, specialisms,
+ * find the showroom, similar brands. The street map joins "Find the
+ * showroom" in phase 5.
+ */
+#}
+{% set category = node.field_brand_category.entity %}
+{% set website = node.field_website.0 ? node.field_website.0.url.toString() : '' %}
+{% set a = node.field_address.0 %}
+{% set address = a ? [a.address_line1, a.address_line2, a.locality, a.postal_code]|filter(v => v)|join(', ') : '' %}
+{% set directions = address ? 'https://www.google.com/maps/dir/?api=1&destination=' ~ (node.label ~ ', ' ~ address)|url_encode : '' %}
+
+{# Hero: breadcrumb is "Brands / Category", as drawn. #}
+{% set hero_links = [{ text: 'Find the showroom'|t, url: '#find-the-showroom', class: 'hero-split__mobile-only' }] %}
+{% if website %}
+  {% set hero_links = hero_links|merge([{ text: 'Visit the website'|t, url: website }]) %}
+{% endif %}
+{% set breadcrumb %}
+  <nav class="breadcrumb" aria-label="{{ 'Breadcrumb'|t }}">
+    <ol class="breadcrumb__list">
+      <li class="breadcrumb__item"><a class="breadcrumb__link" href="{{ path('view.brands.page_brands') }}">{{ 'Brands'|t }}</a></li>
+      {% if category %}
+        <li class="breadcrumb__item"><a class="breadcrumb__link" href="{{ path('view.brands.page_brands', {}, { query: { category: category.id } }) }}">{{ category.label }}</a></li>
+      {% endif %}
+    </ol>
+  </nav>
+{% endset %}
+
+<article{{ attributes.addClass('node', 'node--brand') }}>
+  {{ title_prefix }}
+  {{ title_suffix }}
+
+  {% include 'pimlico:hero_split' with {
+    title: node.label,
+    intro: node.field_summary.value|default(''),
+    links: hero_links,
+    image: content.field_image,
+    breadcrumb,
+  } only %}
+
+  {% if node.field_heading.value or node.body.value %}
+    {% include 'pimlico:introduction' with {
+      eyebrow: 'About the house'|t,
+      heading: node.field_heading.value|default(node.label),
+      text: content.body,
+    } only %}
+  {% endif %}
+
+  {{ content.field_quote }}
+
+  {% if not node.field_gallery.isEmpty() %}
+    {% set images = [] %}
+    {% for key, item in content.field_gallery|filter((v, k) => k|first != '#') %}
+      {% set images = images|merge([item]) %}
+    {% endfor %}
+    {% include 'pimlico:image_gallery' with {
+      heading: 'Inside the showroom'|t,
+      caption: node.field_caption.value|default(''),
+      images,
+    } only %}
+  {% endif %}
+
+  {% if not node.field_specialisms.isEmpty() %}
+    {% include 'pimlico:info_rows' with {
+      eyebrow: 'Specialisms'|t,
+      heading: 'What you’ll find'|t,
+      rows: content.field_specialisms,
+    } only %}
+  {% endif %}
+
+  {# Find the showroom #}
+  {% set rows %}
+    {% if address %}
+      {% include 'pimlico:info_row' with { label: 'Address'|t, value: address, variant: 'compact' } only %}
+    {% endif %}
+    {% if not node.field_opening_hours.isEmpty() %}
+      {% include 'pimlico:info_row' with { label: 'Opening hours'|t, value: content.field_opening_hours, variant: 'compact' } only %}
+    {% endif %}
+    {% if node.field_trade_info.value %}
+      {% include 'pimlico:info_row' with { label: 'Trade'|t, value: node.field_trade_info.value, variant: 'compact' } only %}
+    {% endif %}
+    {% if node.field_email.value or node.field_phone.value %}
+      {% set contact %}
+        {% if node.field_email.value %}<a href="mailto:{{ node.field_email.value }}">{{ node.field_email.value }}</a>{% endif %}
+        {% if node.field_email.value and node.field_phone.value %}<br>{% endif %}
+        {% if node.field_phone.value %}<a href="tel:{{ node.field_phone.value|replace({' ': ''}) }}">{{ node.field_phone.value }}</a>{% endif %}
+      {% endset %}
+      {% include 'pimlico:info_row' with { label: 'Contact'|t, value: contact, variant: 'compact' } only %}
+    {% endif %}
+    {% if node.field_accessibility_link.0 %}
+      {% set access %}<a href="{{ node.field_accessibility_link.0.url.toString() }}" target="_blank" rel="noopener">{{ 'Accessibility information'|t }} ↗</a>{% endset %}
+      {% include 'pimlico:info_row' with { label: 'Accessibility'|t, value: access, variant: 'compact' } only %}
+    {% endif %}
+  {% endset %}
+  {% set showroom_links = directions ? [{ text: 'Get directions'|t, url: directions, external: true }] : [] %}
+  {% if website %}
+    {% set showroom_links = showroom_links|merge([{ text: 'Visit the website'|t, url: website, external: true }]) %}
+  {% endif %}
+  {% include 'pimlico:info_band' with {
+    attributes: create_attribute({ id: 'find-the-showroom' }),
+    heading: 'Find the showroom'|t,
+    rows,
+    links: showroom_links,
+  } only %}
+
+  {# Similar brands: picked, or others in the same category. #}
+  {% set similar = node.field_similar_brands.isEmpty()
+    ? drupal_view('brands', 'block_similar', category ? category.id : 'all', node.id)
+    : content.field_similar_brands %}
+  {% include 'pimlico:card_grid' with {
+    heading: 'Similar brands'|t,
+    link_text: 'All brands'|t,
+    link_url: path('view.brands.page_brands'),
+    items: similar,
+  } only %}
+</article>

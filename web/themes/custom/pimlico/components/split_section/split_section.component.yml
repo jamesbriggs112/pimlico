@@ -1,0 +1,39 @@
+'$schema': 'https://git.drupalcode.org/project/drupal/-/raw/HEAD/core/assets/schemas/v1/metadata.schema.json'
+name: Split section
+status: stable
+description: 'Figma podcast "Episode notes" and "Transcript": a 420px intro (eyebrow, Display L heading, Body L text) beside a 760px content column.'
+libraryOverrides:
+  css:
+    component:
+      split_section.scss: {}
+  dependencies:
+    - core/components.pimlico--button
+props:
+  type: object
+  required:
+    - heading
+  properties:
+    eyebrow:
+      type: string
+      title: Eyebrow
+    heading:
+      type: string
+      title: Heading
+    intro:
+      type: string
+      title: Intro
+    tint:
+      type: boolean
+      title: Linen background
+    links:
+      type: array
+      title: Buttons
+      items:
+        type: object
+        properties:
+          text: { type: string }
+          url: { type: string }
+          external: { type: boolean }
+slots:
+  content:
+    title: Content

@@ -1,0 +1,25 @@
+{#
+/**
+ * @file
+ * Dine listing (Figma T02b): title band, left-aligned filter bar, a grid of
+ * story cards and pagination.
+ */
+#}
+<div{{ attributes.addClass('listing', 'listing--' ~ id|clean_class) }}>
+  {{ title_prefix }}
+  {{ title_suffix }}
+  {% include 'pimlico:page_title' with {
+    title: view.getTitle()|default(''),
+    intro: header|render|striptags|trim,
+    breadcrumb: drupal_block('system_breadcrumb_block'),
+  } only %}
+  {% include 'pimlico:filter_bar' with { items: listing.filters, align: listing.align, label: listing.label } only %}
+  <div class="listing__results">
+    {% if rows %}
+      <div class="listing__grid">{{ rows }}</div>
+    {% else %}
+      <div class="listing__empty">{{ empty }}</div>
+    {% endif %}
+  </div>
+  {{ pager }}
+</div>

@@ -15,5 +15,8 @@
     {% if intro %}
       <p class="page-title__intro body-l">{{ intro }}</p>
     {% endif %}
+    {% if after %}
+      <div class="page-title__after">{% block after %}{{ after }}{% endblock %}</div>
+    {% endif %}
   </div>
 </div>

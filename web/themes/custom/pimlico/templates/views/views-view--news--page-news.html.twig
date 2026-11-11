@@ -1,0 +1,30 @@
+{#
+/**
+ * @file
+ * News listing (Figma T07): title band with the type filters inside it, the
+ * featured story (attachment), then "Latest" cards and "Older stories".
+ */
+#}
+<div{{ attributes.addClass('listing', 'listing--news') }}>
+  {{ title_prefix }}
+  {{ title_suffix }}
+  {% set filters %}
+    {% include 'pimlico:filter_bar' with { items: listing.filters, align: listing.align, label: listing.label } only %}
+  {% endset %}
+  {% include 'pimlico:page_title' with {
+    title: view.getTitle()|default(''),
+    intro: header|render|striptags|trim,
+    breadcrumb: drupal_block('system_breadcrumb_block'),
+    after: filters,
+  } only %}
+  {{ attachment_before }}
+  <section class="listing__results listing__results--ruled" aria-labelledby="news-latest">
+    <h2 class="listing__label eyebrow" id="news-latest">{{ 'Latest'|t }}</h2>
+    {% if rows %}
+      <div class="listing__grid">{{ rows }}</div>
+    {% else %}
+      <div class="listing__empty">{{ empty }}</div>
+    {% endif %}
+  </section>
+  {{ pager }}
+</div>

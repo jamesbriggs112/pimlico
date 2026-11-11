@@ -1,0 +1,24 @@
+uuid: d71d2b40-ff62-494c-a8fd-1defe7cd1a52
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_similar_brands
+    - node.type.brand
+id: node.brand.field_similar_brands
+field_name: field_similar_brands
+entity_type: node
+bundle: brand
+label: 'Similar brands'
+description: 'Up to three. Leave empty to show other brands in the same category.'
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:node'
+  handler_settings:
+    target_bundles:
+      brand: brand
+    auto_create: false
+field_type: entity_reference

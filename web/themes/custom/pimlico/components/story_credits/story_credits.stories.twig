@@ -1,0 +1,14 @@
+{% stories story_credits with { title: 'Components/Story credits' } %}
+{% story default with { name: 'Credits and links' } %}
+  {% include 'pimlico:story_credits' with {
+    credits: 'Words: placeholder · Photography: placeholder',
+    links: [
+      { text: 'Explore the featured brand', url: '#' },
+      { text: 'Explore more news', url: '#' },
+    ],
+  } only %}
+{% endstory %}
+{% story credits_only with { name: 'Credits only' } %}
+  {% include 'pimlico:story_credits' with { credits: 'Excerpt reproduced with permission.' } only %}
+{% endstory %}
+{% endstories %}

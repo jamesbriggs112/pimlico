@@ -1,0 +1,23 @@
+uuid: 7524575e-6db6-4daa-828a-995b339ba4ca
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_source_link
+    - node.type.press_article
+  module:
+    - link
+id: node.press_article.field_source_link
+field_name: field_source_link
+entity_type: node
+bundle: press_article
+label: 'Original article'
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings:
+  title: 0
+  link_type: 16
+field_type: link

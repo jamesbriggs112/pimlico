@@ -1,0 +1,191 @@
+uuid: 1a98dd07-791d-47b5-993f-b23364c3e527
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.node.brand.body
+    - field.field.node.brand.field_accessibility_link
+    - field.field.node.brand.field_address
+    - field.field.node.brand.field_brand_category
+    - field.field.node.brand.field_caption
+    - field.field.node.brand.field_display_on_map
+    - field.field.node.brand.field_email
+    - field.field.node.brand.field_gallery
+    - field.field.node.brand.field_heading
+    - field.field.node.brand.field_image
+    - field.field.node.brand.field_map_label
+    - field.field.node.brand.field_opening_hours
+    - field.field.node.brand.field_phone
+    - field.field.node.brand.field_quote
+    - field.field.node.brand.field_seo_description
+    - field.field.node.brand.field_seo_image
+    - field.field.node.brand.field_seo_social_media_title
+    - field.field.node.brand.field_seo_title
+    - field.field.node.brand.field_similar_brands
+    - field.field.node.brand.field_specialisms
+    - field.field.node.brand.field_summary
+    - field.field.node.brand.field_tenancy_status
+    - field.field.node.brand.field_trade_info
+    - field.field.node.brand.field_website
+    - node.type.brand
+  module:
+    - address
+    - entity_reference_revisions
+    - fences
+    - text
+    - user
+id: node.brand.default
+targetEntityType: node
+bundle: brand
+mode: default
+content:
+  body:
+    type: text_default
+    label: hidden
+    settings: {  }
+    third_party_settings:
+      fences:
+        fences_field_tag: none
+        fences_field_classes: ''
+        fences_field_items_wrapper_tag: none
+        fences_field_items_wrapper_classes: ''
+        fences_field_item_tag: none
+        fences_field_item_classes: ''
+        fences_label_tag: ''
+        fences_label_classes: ''
+    weight: 1
+    region: content
+  field_address:
+    type: address_plain
+    label: hidden
+    settings: {  }
+    third_party_settings:
+      fences:
+        fences_field_tag: none
+        fences_field_classes: ''
+        fences_field_items_wrapper_tag: none
+        fences_field_items_wrapper_classes: ''
+        fences_field_item_tag: none
+        fences_field_item_classes: ''
+        fences_label_tag: ''
+        fences_label_classes: ''
+    weight: 6
+    region: content
+  field_gallery:
+    type: entity_reference_entity_view
+    label: hidden
+    settings:
+      view_mode: full
+      link: false
+    third_party_settings:
+      fences:
+        fences_field_tag: none
+        fences_field_classes: ''
+        fences_field_items_wrapper_tag: none
+        fences_field_items_wrapper_classes: ''
+        fences_field_item_tag: none
+        fences_field_item_classes: ''
+        fences_label_tag: ''
+        fences_label_classes: ''
+    weight: 3
+    region: content
+  field_image:
+    type: entity_reference_entity_view
+    label: hidden
+    settings:
+      view_mode: full
+      link: false
+    third_party_settings:
+      fences:
+        fences_field_tag: none
+        fences_field_classes: ''
+        fences_field_items_wrapper_tag: none
+        fences_field_items_wrapper_classes: ''
+        fences_field_item_tag: none
+        fences_field_item_classes: ''
+        fences_label_tag: ''
+        fences_label_classes: ''
+    weight: 0
+    region: content
+  field_opening_hours:
+    type: basic_string
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+    weight: 5
+    region: content
+  field_quote:
+    type: entity_reference_revisions_entity_view
+    label: hidden
+    settings:
+      view_mode: default
+      link: ''
+    third_party_settings:
+      fences:
+        fences_field_tag: none
+        fences_field_classes: ''
+        fences_field_items_wrapper_tag: none
+        fences_field_items_wrapper_classes: ''
+        fences_field_item_tag: none
+        fences_field_item_classes: ''
+        fences_label_tag: ''
+        fences_label_classes: ''
+    weight: 2
+    region: content
+  field_similar_brands:
+    type: entity_reference_entity_view
+    label: hidden
+    settings:
+      view_mode: teaser
+      link: false
+    third_party_settings:
+      fences:
+        fences_field_tag: none
+        fences_field_classes: ''
+        fences_field_items_wrapper_tag: none
+        fences_field_items_wrapper_classes: ''
+        fences_field_item_tag: none
+        fences_field_item_classes: ''
+        fences_label_tag: ''
+        fences_label_classes: ''
+    weight: 20
+    region: content
+  field_specialisms:
+    type: entity_reference_revisions_entity_view
+    label: hidden
+    settings:
+      view_mode: default
+      link: ''
+    third_party_settings:
+      fences:
+        fences_field_tag: none
+        fences_field_classes: ''
+        fences_field_items_wrapper_tag: none
+        fences_field_items_wrapper_classes: ''
+        fences_field_item_tag: none
+        fences_field_item_classes: ''
+        fences_label_tag: ''
+        fences_label_classes: ''
+    weight: 4
+    region: content
+hidden:
+  content_moderation_control: true
+  field_accessibility_link: true
+  field_brand_category: true
+  field_caption: true
+  field_display_on_map: true
+  field_email: true
+  field_heading: true
+  field_map_label: true
+  field_phone: true
+  field_seo_description: true
+  field_seo_image: true
+  field_seo_social_media_title: true
+  field_seo_title: true
+  field_summary: true
+  field_tenancy_status: true
+  field_trade_info: true
+  field_website: true
+  langcode: true
+  links: true
+  search_api_excerpt: true

@@ -1,0 +1,19 @@
+uuid: 3be6e7da-ae0c-49cc-928b-8d758f9bc342
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_publication
+    - node.type.press_article
+id: node.press_article.field_publication
+field_name: field_publication
+entity_type: node
+bundle: press_article
+label: Publication
+description: 'e.g. "The World of Interiors".'
+required: true
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string
