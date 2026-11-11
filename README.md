@@ -8,7 +8,7 @@ This repository should only be used as an upstream source for projects.
 
 - Node v22
 - pnpm
-- PHP 8.3
+- PHP 8.4 (the Composer lock needs 8.4 or later)
 - Composer 2
 - ImageMagick: `brew install imagemagick`
 

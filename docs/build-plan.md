@@ -18,11 +18,11 @@ This is the delivery plan for the architecture in [TAD.md](TAD.md). Phases run i
 | # | Step | Done when |
 |---|---|---|
 | 0.1 | Repository `jamesbriggs112/pimlico` created from the skeleton, with the skeleton as `upstream` and `dev`, `staging` and `production` branches (TAD §3). Done 11 November 2026. Still to do on GitHub: make `dev` the default branch if it isn't, protect `staging` and `production` (PRs only), and create the `staging` and `production` environments with their variables. | Branch protection and environments set |
-| 0.2 | Local install: `composer install`, `settings.local.php`, `drush si --existing-config && drush ib`, Valet site at `https://pimlico.test`. Credentials saved to 1Password. | The site installs from config |
-| 0.3 | Update `AGENTS.md` (dev URL, project name), add `CONTEXT.md` from TAD §5, `docs/agents/{code-review,domain}.md` copied from the reference project, and ADRs 0001–0006 (TAD §12). | Docs reviewed by the lead developer |
-| 0.4 | Generate the theme: `php web/core/scripts/drupal generate-theme --starterkit four_starterkit pimlico --path themes/custom`. Set as default, `pnpm i`, `pnpm dev`. Bring across the reference project's theme additions the starterkit lacks: `init/_utilities`, `init/_animations`, `vitest` set-up and `tests/` folders. | The theme renders the skeleton content and Storybook runs |
-| 0.5 | Composer additions: `drupal/address`, `drupal/office_hours`, `drupal/migrate_plus`, `drupal/migrate_tools`, `drupal/simple_sitemap`, and `drupal/search_api_db` (if not bundled). No cookie consent module: CookieScript is a hosted script. | `composer.lock` committed, modules enabled and exported |
-| 0.6 | CI: set `THEME_NAME=pimlico` and the AWS variables. Add a PHP job to the workflow for phpcs (`Drupal,DrupalPractice`) and PHPUnit on `web/modules/custom/pimlico_*`. | A PR runs lint and tests |
+| 0.2 | ✅ Local install: `composer install`, `settings.local.php`, `drush si --existing-config && drush ib`, Valet site at `https://pimlico.test` (still to do: `valet install`, `valet use php@8.4` and `valet link pimlico` in `web/`, which need sudo). The admin account has a random password; sign in with `drush uli`. | The site installs from config |
+| 0.3 | ✅ Update `AGENTS.md` (dev URL, project name), add `CONTEXT.md` from TAD §5, `docs/agents/{code-review,domain}.md` copied from the reference project, and ADRs 0001–0006 (TAD §12). | Docs reviewed by the lead developer |
+| 0.4 | ✅ Generate the theme: `php web/core/scripts/drupal generate-theme --starterkit four_starterkit pimlico --path themes/custom`. Set as default, `pnpm i`, `pnpm dev`. Bring across the reference project's theme additions the starterkit lacks: `init/_utilities`, `init/_animations`, `vitest` set-up and `tests/` folders. | The theme renders the skeleton content and Storybook runs |
+| 0.5 | ✅ Composer additions: `drupal/address`, `drupal/office_hours`, `drupal/migrate_plus`, `drupal/migrate_tools`, `drupal/simple_sitemap`, and `drupal/search_api_db` (if not bundled). No cookie consent module: CookieScript is a hosted script. | `composer.lock` committed, modules enabled and exported |
+| 0.6 | CI: set `THEME_NAME=pimlico` and the AWS variables (GitHub settings, still to do). ✅ Added a PHP job (`.github/workflows/checks.yml`) to the workflow for phpcs (`Drupal,DrupalPractice`) and PHPUnit on `web/modules/custom/pimlico_*`. | A PR runs lint and tests |
 
 ## Phase 1: Foundations
 
@@ -100,7 +100,7 @@ The map project's `docs/PIMLICO-MAP-GUIDE.md` Part B is the spec. Its code sampl
 | 7.2 | Browser and device testing: Chrome, Firefox, Safari, iOS Safari (map pinch and full-screen overlay especially), Android Chrome. | Test log complete |
 | 7.3 | Performance: Lighthouse on Home, Brand and Visit; image and video budgets; CloudFront caching and invalidation. | LCP under 2.5 s on 4G for Home and Brand |
 | 7.4 | Editor training material and a short editorial guide (Brands, Units, map picker, News). | Handover session done |
-| 7.5 | Staging sign-off, production deploy, DNS, Sentry environments, uptime monitoring. | Live |
+| 7.5 | Staging sign-off, production deploy, DNS, Sentry environments, uptime monitoring. Add the real domains to `trusted_host_patterns` in the staging and production config (the skeleton only trusts `*.preflight.site` and `10.0.x.x`). | Live |
 
 ## Dependencies on the client
 

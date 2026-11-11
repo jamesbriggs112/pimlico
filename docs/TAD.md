@@ -75,7 +75,7 @@ Global elements: desktop header with mega menus (Brands, Newson's Yard, News, Vi
 
 | Environment | URL | Notes |
 |---|---|---|
-| Local | `https://pimlico.test` | Laravel Valet (not DDEV), PHP 8.3, Node 22, pnpm. `pnpm dev` runs in the theme. |
+| Local | `https://pimlico.test` | Laravel Valet (not DDEV), PHP 8.4 (the Composer lock needs 8.4 or later; the AWS platform must match), Node 22, pnpm. `pnpm dev` runs in the theme. |
 | Staging | AWS EB staging environment | `.github/workflows/deploy.yml`, on a PR merged into `staging` |
 | Production | AWS EB production environment | `.github/workflows/deploy.yml`, on a PR merged into `production` |
 
