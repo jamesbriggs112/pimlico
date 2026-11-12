@@ -78,6 +78,11 @@ picture {
   height: auto;
 }
 
+/* Cropped images keep the editor's focal point in view (image.inc) */
+img {
+  object-position: var(--focal-point, 50% 50%);
+}
+
 figure {
   margin: 0;
 }

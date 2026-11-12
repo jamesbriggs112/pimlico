@@ -82,11 +82,16 @@ final class Unit extends ContentEntityBase implements UnitInterface {
     $fields['address'] = BaseFieldDefinition::create('address')
       ->setLabel(new TranslatableMarkup('Address'))
       ->setSetting('available_countries', ['GB' => 'GB'])
+      ->setDefaultValue(['country_code' => 'GB', 'locality' => 'London'])
       ->setSetting('field_overrides', [
         'givenName' => ['override' => 'hidden'],
         'additionalName' => ['override' => 'hidden'],
         'familyName' => ['override' => 'hidden'],
         'organization' => ['override' => 'hidden'],
+        'addressLine3' => ['override' => 'hidden'],
+        'dependentLocality' => ['override' => 'hidden'],
+        'locality' => ['override' => 'hidden'],
+        'administrativeArea' => ['override' => 'hidden'],
       ])
       ->setDisplayOptions('form', ['type' => 'address_default', 'weight' => 1])
       ->setDisplayConfigurable('form', TRUE);

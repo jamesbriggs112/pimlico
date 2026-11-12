@@ -8,7 +8,7 @@ How to look after the Pimlico Road website. Log in at `/user/login`.
 
 - **Title, Summary and Hero image** appear on the Brand page and on cards across the site.
 - **Brand category**: the list matches the site. Under **Brands**, Interiors or Antiques & art put it on the Brands page; under **Dine**, Pubs and restaurants or Cafés put it on Dine.
-- **Address, Opening hours** (one line per row, e.g. "Monday to Friday: 10am to 6pm"), **Trade, Email, Phone, Accessibility link and Website** fill the "Find the showroom" section.
+- **Address** (street and postcode: London and the United Kingdom are added automatically), **Opening hours** (one line per row, e.g. "Monday to Friday: 10am to 6pm"), **Trade, Email, Phone, Accessibility link and Website** fill the "Find the showroom" section.
 - **Gallery, Specialisms, Quote** are optional; empty sections don't show.
 - **Similar brands**: choose up to three, or leave empty to show three from the same category.
 
@@ -59,6 +59,7 @@ Pages are built from **Sections**. The ones made for this site:
 
 - Upload photos at least 1600 px wide; they're cropped to fit each section.
 - Always write alt text that says what's in the photo, unless it's purely decorative.
+- **Focal point:** click the part of the photo that must stay in view. Cards, heroes and banners crop around it at every screen size.
 - **YouTube videos**: in a Video section, choose **Add media » Remote video** and paste the YouTube link (a start time such as `?t=90` is kept). The video's thumbnail shows with a play button; nothing loads from YouTube until someone presses play. Vimeo links work too, in the standard player.
 - **Hero films**: a 10–20 second silent loop, under 5 MB. Larger films use a lot of mobile data. Always set a poster image (the film's first frame works well).
 

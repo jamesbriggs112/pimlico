@@ -15,7 +15,10 @@ label: Address
 description: ''
 required: false
 translatable: true
-default_value: {  }
+default_value:
+  -
+    country_code: GB
+    locality: London
 default_value_callback: ''
 settings:
   available_countries:
@@ -29,6 +32,14 @@ settings:
     familyName:
       override: hidden
     organization:
+      override: hidden
+    addressLine3:
+      override: hidden
+    dependentLocality:
+      override: hidden
+    locality:
+      override: hidden
+    administrativeArea:
       override: hidden
   fields: {  }
 field_type: address
