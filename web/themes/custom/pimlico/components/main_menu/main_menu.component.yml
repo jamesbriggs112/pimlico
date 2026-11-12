@@ -1,7 +1,7 @@
 '$schema': 'https://git.drupalcode.org/project/drupal/-/raw/HEAD/core/assets/schemas/v1/metadata.schema.json'
 name: Main Menu
 status: stable
-description: 'Header navigation: two lists either side of the logo on desktop, and the accordion in the mobile menu. Items with children open a mega menu panel.'
+description: 'Header navigation: two lists either side of the logo on desktop, and the accordion in the mobile menu. One level of links, no drop-downs.'
 libraryOverrides:
   css:
     component:
@@ -9,7 +9,6 @@ libraryOverrides:
   dependencies:
     - core/components.pimlico--text_link
     - core/components.pimlico--icon
-    - core/components.pimlico--mega_menu
 props:
   type: object
   properties:

@@ -1,5 +1,5 @@
 // Desktop: two lists placed into the header grid either side of the logo.
-// Mobile (inside the mobile menu): one stacked accordion in Fraunces.
+// Mobile (inside the mobile menu): stacked links in Fraunces.
 .main-menu {
   &__list {
     margin: 0;
@@ -12,23 +12,7 @@
     flex-direction: column;
   }
 
-  &__toggle {
-    border: 0;
-    padding: 0;
-    background: none;
-    font-family: inherit;
-    cursor: pointer;
-  }
-
-  &__chevron {
-    transition: transform 0.3s ease-out;
-  }
-
-  &__toggle[aria-expanded='true'] &__chevron {
-    transform: rotate(180deg);
-  }
-
-  // Mobile accordion (Figma "Mobile nav item")
+  // Mobile (Figma "Mobile nav item")
   @include mq($until: desktop) {
     display: block;
 
@@ -51,13 +35,6 @@
       text-transform: none;
       font-variation-settings: var(--font-display-variation);
     }
-
-    // Figma draws the 20px chevron in a 44px box; the row is the target.
-    &__chevron {
-      width: #{to.rem(20px)};
-      height: #{to.rem(20px)};
-      margin: #{to.rem(12px)};
-    }
   }
 
   // Desktop: the nav takes no box of its own, so each list is a header
@@ -78,16 +55,6 @@
         grid-area: end;
         justify-content: flex-end;
       }
-    }
-
-    &__chevron {
-      display: none;
-    }
-
-    // The open item keeps its underline while its panel is open.
-    &__toggle[aria-expanded='true'] .text-link__text {
-      text-decoration-color: currentColor;
-      text-underline-offset: var(--link-hover-underline-offset);
     }
   }
 }

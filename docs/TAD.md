@@ -372,7 +372,7 @@ PHP:
 - Dependency injection in classes; theme preprocess (`includes/*.inc`) may use `\Drupal::service()`.
 - Coding standard `Drupal,DrupalPractice`; Kernel tests by default.
 
-Configuration is exported to `config/sync`. Taxonomy terms, menu links and custom blocks are exported with Structure Sync (`drush et`, `drush em`, `drush eb`). Config Ignore keeps editor-managed config (webforms, mega menu panels) as edited on the server.
+Configuration is exported to `config/sync`. Taxonomy terms, menu links and custom blocks are exported with Structure Sync (`drush et`, `drush em`, `drush eb`). Config Ignore keeps editor-managed config (webforms other than Contact and Newsletter) as edited on the server.
 
 ## Appendix B: Theme architecture
 
@@ -415,7 +415,6 @@ Main components, by area:
 | Media | `media_video`, `youtube_player` |
 | Map | `street_map` |
 | Drupal wrappers | `block`, `paragraph`, `view_clean` |
-| Dormant | `mega_menu` (the navigation has one level; kept until the client confirms no drop-downs) |
 
 The admin theme is Gin, branded by the `pimlico_admin` module (Fraunces page titles), Gin settings (navy accent, the Pimlico Road CMS icon) and Gin Login (wordmark and photography).
 

@@ -53,7 +53,8 @@ This is the delivery plan for the architecture in [TAD.md](TAD.md). Phases run i
 
 **Phase 2 notes (11 November 2026):**
 
-- The mega menu uses **Advanced Mega Menu**, as in the reference project. Each top-level item's children are the panel's primary links (and the mobile accordion). The "Featured"/"Latest" list and the feature card are added per item under Structure » Menus » Main navigation once the brands and news views exist (4.2, 4.4). Panel layouts are editor-managed, so `advanced_mega_menu.megamenu_content.*` is in Config Ignore, as in the reference project.
+- **Later removed (phase 7):** the client chose a one-level navigation, so the mega menu, Advanced Mega Menu and its templates were removed. The note below is kept as a record.
+- The mega menu used **Advanced Mega Menu**, as in the reference project. Each top-level item's children are the panel's primary links (and the mobile accordion). The "Featured"/"Latest" list and the feature card are added per item under Structure » Menus » Main navigation once the brands and news views exist (4.2, 4.4). Panel layouts are editor-managed, so `advanced_mega_menu.megamenu_content.*` is in Config Ignore, as in the reference project.
 - A menu link's description is its panel eyebrow (Brands: "Explore the street").
 - The newsletter is the `newsletter` Webform in a new Newsletter region. It saves nothing and posts nowhere until a provider is chosen. `~webform.webform.newsletter` is excluded from Config Ignore so it deploys with the site.
 - The Figma "Page title" is a new `page_title` component; the starterkit `page_banner` is an image banner and stays for that. Breadcrumbs render inside it via `drupal_block('system_breadcrumb_block')`, not as a page region.

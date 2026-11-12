@@ -4,9 +4,8 @@
  * Main navigation (Figma "Header" and "Mobile nav item").
  *
  * Desktop: the first `split` items sit left of the logo and the rest right.
- * Items with children (or Advanced Mega Menu rows) render a disclosure
- * button and a mega menu panel; header.js opens one panel at a time.
- * Mobile: the same markup is the accordion inside the mobile menu.
+ * Mobile: the same links, stacked, inside the mobile menu. One level only:
+ * no drop-downs.
  */
 #}
 {% set attributes = attributes ?: create_attribute() %}
@@ -14,27 +13,11 @@
 {% import _self as menu %}
 
 {% macro item(item) %}
-  {% set has_panel = item.below or item.mega_menu_rows %}
-  {% set panel_id = 'mega-menu-' ~ item.title|clean_id %}
   {% set link_classes = ['text-link', 'text-link--caps', 'main-menu__link', item.in_active_trail ? 'text-link--underlined'] %}
-  <li class="main-menu__item{{ has_panel ? ' main-menu__item--has-panel' }}">
-    {% if has_panel %}
-      <button class="{{ link_classes|join(' ') }} main-menu__toggle" type="button" aria-expanded="false" aria-controls="{{ panel_id }}">
-        <span class="text-link__text">{{ item.title }}</span>
-        {% include 'pimlico:icon' with { name: 'chevron-down', attributes: create_attribute({ class: ['main-menu__chevron'] }) } only %}
-      </button>
-      {% embed 'pimlico:mega_menu' with {
-        id: panel_id,
-        eyebrow: item.original_link.getDescription()|default(item.title),
-        links: item.below,
-        rows: item.mega_menu_rows,
-      } only %}
-      {% endembed %}
-    {% else %}
-      <a class="{{ link_classes|join(' ') }}" href="{{ item.url }}"{{ item.in_active_trail ? ' aria-current="page"' }}>
-        <span class="text-link__text">{{ item.title }}</span>
-      </a>
-    {% endif %}
+  <li class="main-menu__item">
+    <a class="{{ link_classes|join(' ') }}" href="{{ item.url }}"{{ item.in_active_trail ? ' aria-current="page"' }}>
+      <span class="text-link__text">{{ item.title }}</span>
+    </a>
   </li>
 {% endmacro %}
 
