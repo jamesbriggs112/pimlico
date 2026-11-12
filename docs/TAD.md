@@ -354,7 +354,7 @@ These follow the lead developer's reference project (Sheffield Chamber of Commer
 | Theme | short client machine name | `pimlico` |
 | Client modules | `pimlico_*`, `package: Pimlico` | `pimlico_map`, `pimlico_brands`, `pimlico_search`, `pimlico_migrate`, `pimlico_admin` |
 | Node bundles | snake_case singular nouns | `brand`, `article`, `podcast_episode`, `press_article`, `page` |
-| Paragraph types | snake_case, named for the SDC they render | `hero_film`, `street_map`, `info_band`, `policy_content` |
+| Paragraph types | snake_case. New types are named for the SDC they render; types inherited from the skeleton keep their IDs (`cta` renders `next_step`, `content_grid` renders `card_grid`, `text_wysiwyg_` renders `rich_text`) | `hero_film`, `street_map`, `info_band`, `policy_content` |
 | Vocabularies | `{context}_{type}` | `brand_category`, `news_category`, `area` |
 | Fields | `field_` + snake_case, no bundle prefix, storage reused across bundles | `field_heading`, `field_text`, `field_image`, `field_sections` |
 | Views | plural nouns | `brands`, `news`, `search` |
@@ -388,7 +388,7 @@ Rules:
 
 - Drupal templates are thin adapters that map fields onto components with `include`/`embed` and `only`.
 - Preprocess is written only where display configuration and Twig Tweak can't do the job, with cache metadata applied.
-- Every component has `.component.yml`, `.twig`, `.scss`, optional `.js`, `.stories.twig`, `README.md` and `thumbnail.png`.
+- Every component has `.component.yml`, `.twig`, `.scss`, `README.md` and `thumbnail.png`, with `.js` where it needs behaviour and `.stories.twig` where it can be shown on its own (29 of 51). See [front-end-conventions.md](front-end-conventions.md).
 
 Design tokens from the Figma variables are CSS custom properties in `src/sass/init/_root.scss`:
 
@@ -407,13 +407,15 @@ Main components, by area:
 
 | Area | Components |
 |---|---|
-| Primitives | `logo`, `icon`, `button`, `button_icon`, `text_link`, `form`, `visually_hidden`, `messages` |
-| Layout | `header`, `main_menu`, `menu`, `footer`, `newsletter`, `page_title`, `pagination`, `filter_bar` |
+| Primitives | `logo`, `icon`, `button`, `button_icon`, `text_link`, `heading`, `form`, `visually_hidden`, `messages` |
+| Layout | `header`, `main_menu`, `menu`, `footer`, `newsletter`, `page_title`, `page_banner`, `pagination`, `filter_bar`, `grid` |
 | Heroes and banners | `hero_film`, `hero_split`, `feature_banner`, `visit_banner`, `info_band`, `promo_band` |
-| Sections | `introduction`, `section_heading`, `rich_text`, `quote`, `card_grid`, `story_card`, `story_row`, `image_gallery`, `info_rows`, `info_row`, `split_section`, `next_step`, `form_section`, `policy_content`, `figure` |
-| Stories | `featured_story`, `story_intro`, `story_credits`, `episode_band`, `episode_row`, `audio_player` |
+| Sections | `introduction`, `section_heading`, `rich_text`, `quote`, `card_grid`, `story_card`, `image_gallery`, `info_rows`, `info_row`, `split_section`, `next_step`, `form_section`, `policy_content`, `figure` |
+| Stories | `article`, `featured_story`, `story_intro`, `story_credits`, `episode_band`, `audio_player` |
 | Media | `media_video`, `youtube_player` |
 | Map | `street_map` |
+| Drupal wrappers | `block`, `paragraph`, `view_clean` |
+| Dormant | `mega_menu` (the navigation has one level; kept until the client confirms no drop-downs) |
 
 The admin theme is Gin, branded by the `pimlico_admin` module (Fraunces page titles), Gin settings (navy accent, the Pimlico Road CMS icon) and Gin Login (wordmark and photography).
 

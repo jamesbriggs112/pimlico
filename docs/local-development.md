@@ -27,7 +27,26 @@ valet use php@8.4
 cd web && valet link pimlico && valet secure pimlico
 ```
 
-Follow the skeleton README's "Initial site set-up" for `composer install` and `web/sites/default/settings.local.php`, and add the local hosts to the end of `settings.local.php`:
+Then install the site:
+
+1. Run `composer install` from the project root.
+2. Copy `web/sites/example.settings.local.php` to `web/sites/default/settings.local.php` and set the `$databases` array at the bottom to your local MySQL database (create it first, for example in Sequel Ace). If the installer says "Access denied", create a MySQL user `drupal` with password `drupal` and full rights on that database.
+3. Run `vendor/bin/drush si --existing-config`, then `vendor/bin/drush php:script scripts/dev/seed-pages.php` and `vendor/bin/drush php:script scripts/dev/seed-brand-content.php` for sample content.
+4. In `web/themes/custom/pimlico`, run `pnpm i` and `pnpm build` (or `pnpm dev` to watch).
+5. Log in with `vendor/bin/drush uli`.
+
+For Twig debugging and no caching while developing (never exported with config):
+
+```bash
+vendor/bin/drush state:set twig_debug TRUE
+vendor/bin/drush state:set twig_autoreload TRUE
+vendor/bin/drush state:set twig_cache_disable TRUE
+vendor/bin/drush state:set disable_rendered_output_cache_bins TRUE
+```
+
+How the theme is written (BEM, tokens, breakpoints, mixins, tests) is in [front-end-conventions.md](front-end-conventions.md).
+
+Add the local hosts to the end of `settings.local.php`:
 
 ```php
 $settings['trusted_host_patterns'][] = '^pimlico\.test$';

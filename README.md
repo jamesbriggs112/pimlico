@@ -22,6 +22,7 @@ It gives every Brand on the street its own page, opening hours and place on an i
 | [docs/TAD.md](docs/TAD.md) | Technical architecture: content model, users, integrations, hosting, launch, open questions |
 | [docs/build-plan.md](docs/build-plan.md) | The build, phase by phase |
 | [docs/local-development.md](docs/local-development.md) | Setting up the site locally |
+| [docs/front-end-conventions.md](docs/front-end-conventions.md) | How the theme is written: components, BEM, tokens, breakpoints, mixins, JS, tests |
 | [docs/editor-guide.md](docs/editor-guide.md) | Short guide for content editors |
 | [docs/launch-checklist.md](docs/launch-checklist.md) | Pre-launch checks and their status |
 | [docs/adr/](docs/adr/) | Architecture decisions |
@@ -68,7 +69,7 @@ Twig templates are thin adapters onto the components in `components/`. Preproces
 
 - **Branches:** `feature/…`, `bugfix/…` or `hotfix/…`, then a pull request into `dev`, then `dev` into `staging`, then `staging` into `production`.
 - **Config:** export with `drush cex` and commit it with the code that needs it. Menus, taxonomy terms and custom blocks go through Structure Sync (`drush em`, `drush et`, `drush eb`); import taxonomies in safe mode.
-- **Checks:** `vendor/bin/phpcs`, `vendor/bin/phpunit --testsuite custom`, and `pnpm lint` in the theme. Pull requests run phpcs and the tests.
+- **Checks:** `vendor/bin/phpcs`, `vendor/bin/phpunit --testsuite custom`, and `pnpm lint` and `pnpm test` in the theme. Pull requests run phpcs and the tests.
 - **Secrets:** never commit keys or passwords. Environment values are Elastic Beanstalk properties.
 - **Accessibility:** WCAG 2.2 AA. Use native elements, visible focus states, and respect `prefers-reduced-motion`.
 
