@@ -5,6 +5,8 @@
  * Theme and preprocess functions for pages.
  */
 
+declare(strict_types=1);
+
 /**
  * Implements hook_preprocess_HOOK() for page.
  *

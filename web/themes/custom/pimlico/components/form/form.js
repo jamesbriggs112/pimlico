@@ -141,7 +141,7 @@
     Drupal.Ajax.prototype.pimlicoValidates = true;
   };
 
-  Drupal.behaviors.pimlicoFormValidation = {
+  Drupal.behaviors.formValidation = {
     attach(context) {
       patchAjax();
       once(

@@ -5,6 +5,8 @@
  * Functions to support theming.
  */
 
+declare(strict_types=1);
+
 use Drupal\Core\Cache\CacheableMetadata;
 use Drupal\crop\Entity\Crop;
 

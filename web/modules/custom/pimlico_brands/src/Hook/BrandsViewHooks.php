@@ -52,7 +52,6 @@ final class BrandsViewHooks {
     $args = [$tids ? implode('+', $tids) : '0'];
   }
 
-
   /**
    * Returns Dine's term IDs: one sub-category, or Food & Drink and all below.
    *

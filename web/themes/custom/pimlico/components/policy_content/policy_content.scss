@@ -3,7 +3,7 @@
 // with a strong top rule, Fraunces title and a Body S number. Body: pumpkin
 // eyebrow, Body L lead, sections 64px apart, "Back to contents" button.
 // Mobile: contents above the body.
-.policy {
+.policy-content {
   @include pageContainer;
   display: grid;
   gap: #{to.rem(40px)};
@@ -51,8 +51,8 @@
     color: var(--color-text-primary);
     text-decoration: none;
 
-    &:hover .policy__title,
-    &:focus-visible .policy__title {
+    &:hover .policy-content__title,
+    &:focus-visible .policy-content__title {
       text-decoration: underline;
       text-underline-offset: var(--link-underline-offset);
     }

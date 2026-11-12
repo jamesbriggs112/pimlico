@@ -362,7 +362,7 @@ These follow the lead developer's reference project (Sheffield Chamber of Commer
 | SDC folders | snake_case nouns | `story_card`, `info_row`, `youtube_player` |
 | CSS classes | BEM, block = the component in kebab-case | `.story-card__title`, `.info-band--inset` |
 | CSS custom properties | brand, then semantic, then component | `--color-brand-yellow`, `--color-text-eyebrow`, `--button-hover-background-color-yellow` |
-| JS behaviours | camelCase, in an IIFE with `once` and `Drupal` | `Drupal.behaviors.pimlicoFormValidation` |
+| JS behaviours | camelCase, in an IIFE with `once` and `Drupal` | `Drupal.behaviors.formValidation` |
 | ADRs | `docs/adr/NNNN-imperative-kebab-title.md` | `0001-keep-the-map-component-as-an-unmodified-dependency.md` |
 
 PHP:

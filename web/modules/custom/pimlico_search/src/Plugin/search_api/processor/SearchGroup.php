@@ -92,11 +92,12 @@ final class SearchGroup extends ProcessorPluginBase {
     if (!$term) {
       return FALSE;
     }
-    $storage = \Drupal::entityTypeManager()->getStorage('taxonomy_term');
-    foreach ($storage->loadAllParents($term->id()) as $ancestor) {
-      if ($ancestor->label() === self::DINE_CATEGORY) {
+    // Walk up the term's own parents; categories are a shallow tree.
+    for ($depth = 0; $term && $depth < 10; $depth++) {
+      if ($term->label() === self::DINE_CATEGORY) {
         return TRUE;
       }
+      $term = $term->hasField('parent') ? $term->get('parent')->entity : NULL;
     }
     return FALSE;
   }

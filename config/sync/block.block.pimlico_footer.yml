@@ -1,4 +1,4 @@
-uuid: ee7ef71b-7df9-4c04-bffc-8667652f627d
+uuid: ef7de5ce-08dc-4c78-9a81-f584864251d6
 langcode: en
 status: true
 dependencies:
@@ -8,7 +8,7 @@ dependencies:
     - system
   theme:
     - pimlico
-id: pimlico_information
+id: pimlico_footer
 theme: pimlico
 region: footer_menu
 weight: 0

@@ -32,10 +32,3 @@ props:
     class:
       type: string
       title: Class
-    color:
-      type: string
-      title: Color (starterkit)
-      description: 'Deprecated: primary maps to dark, secondary to yellow. Use variant.'
-      enum:
-        - primary
-        - secondary

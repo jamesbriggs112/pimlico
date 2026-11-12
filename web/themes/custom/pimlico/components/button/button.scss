@@ -42,8 +42,8 @@
 
   &:disabled,
   &[aria-disabled='true'] {
-    background-color: var(--button-disabled-background-color-primary);
-    color: var(--button-disabled-text-color-primary);
+    background-color: var(--button-disabled-background-color);
+    color: var(--button-disabled-text-color);
     cursor: not-allowed;
   }
 

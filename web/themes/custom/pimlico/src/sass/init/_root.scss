@@ -58,7 +58,6 @@
 
   // Starterkit aliases, so components not yet restyled stay on brand
   --color-black: var(--color-brand-dark-grey);
-  --color--black: var(--color-brand-dark-grey);
   --color-white: var(--color-brand-white);
   --color-dark-grey: var(--color-brand-dark-grey);
   --color-mid-grey: var(--color-brand-grey);
@@ -234,48 +233,10 @@
   --button-hover-background-color-yellow: var(--color-action-primary-hover);
   --button-hover-text-color-yellow: var(--color-action-on-primary);
 
-  // Starterkit names, mapped onto Dark (primary) and Yellow (secondary)
-  --button-background-color-primary: var(--button-background-color-dark);
-  --button-text-color-primary: var(--button-text-color-dark);
-  --button-border-color-primary: transparent;
-  --button-hover-background-color-primary: var(
-    --button-hover-background-color-dark
-  );
-  --button-hover-text-color-primary: var(--button-hover-text-color-dark);
-  --button-hover-border-color-primary: transparent;
-  --button-active-background-color-primary: var(
-    --button-hover-background-color-dark
-  );
-  --button-active-text-color-primary: var(--button-hover-text-color-dark);
-  --button-active-border-color-primary: transparent;
-  --button-focus-background-color-primary: var(--button-background-color-dark);
-  --button-focus-text-color-primary: var(--button-text-color-dark);
-  --button-focus-border-color-primary: transparent;
-  --button-focus-outline-color-primary: var(--color-border-strong);
   --button-focus-outline-offset: #{to.rem(2px)};
   --button-focus-outline-width: #{to.rem(2px)};
-  --button-disabled-background-color-primary: var(--color-disabled);
-  --button-disabled-text-color-primary: var(--color-disabled-text);
-  --button-disabled-border-color-primary: transparent;
-  --button-background-color-secondary: var(--button-background-color-yellow);
-  --button-text-color-secondary: var(--button-text-color-yellow);
-  --button-border-color-secondary: transparent;
-  --button-hover-background-color-secondary: var(
-    --button-hover-background-color-yellow
-  );
-  --button-hover-text-color-secondary: var(--button-hover-text-color-yellow);
-  --button-hover-border-color-secondary: transparent;
-  --button-active-background-color-secondary: var(
-    --button-hover-background-color-yellow
-  );
-  --button-active-text-color-secondary: var(--button-hover-text-color-yellow);
-  --button-active-border-color-secondary: transparent;
-  --button-focus-background-color-secondary: var(
-    --button-background-color-yellow
-  );
-  --button-focus-text-color-secondary: var(--button-text-color-yellow);
-  --button-focus-border-color-secondary: transparent;
-  --button-focus-outline-color-secondary: var(--color-border-strong);
+  --button-disabled-background-color: var(--color-disabled);
+  --button-disabled-text-color: var(--color-disabled-text);
   --button-disabled-background-color-secondary: var(--color-disabled);
   --button-disabled-text-color-secondary: var(--color-disabled-text);
   --button-disabled-border-color-secondary: transparent;

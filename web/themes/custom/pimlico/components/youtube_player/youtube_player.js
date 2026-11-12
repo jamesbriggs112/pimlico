@@ -26,7 +26,7 @@
     return iframe;
   };
 
-  Drupal.behaviors.pimlicoYoutubePlayer = {
+  Drupal.behaviors.youtubePlayer = {
     attach(context) {
       once('youtube-player', '[data-youtube-player]', context).forEach(
         (figure) => {

@@ -1,6 +1,6 @@
 {% set attributes = attributes ?: create_attribute() %}
 {% set attributes = attributes|without('class') %}
-{% set variant = variant|default(color == 'secondary' ? 'yellow' : 'dark') %}
+{% set variant = variant|default('dark') %}
 
 {% set classes = [
   'btn',

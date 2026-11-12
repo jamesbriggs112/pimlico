@@ -2,6 +2,9 @@ name: 'Pimlico Road'
 type: theme
 'base theme': false
 description: 'Theme for the Pimlico Road website.'
+dependencies:
+  - pimlico_brands:pimlico_brands
+  - pimlico_map:pimlico_map
 vite:
   enableInAllComponents: true
   enableInAllLibraries: true

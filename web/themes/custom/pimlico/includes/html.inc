@@ -5,6 +5,8 @@
  * Theme and preprocess functions for html.
  */
 
+declare(strict_types=1);
+
 use Drupal\Core\Template\Attribute;
 
 /**
