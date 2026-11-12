@@ -28,7 +28,6 @@
     "cweagans/composer-patches": "^1.7",
     "drupal/address": "^2.0",
     "drupal/admin_toolbar": "^3.4",
-    "drupal/advanced_mega_menu": "^1.1",
     "drupal/cloudfront_cache_path_invalidate": "^4.0",
     "drupal/config_ignore": "^3.3",
     "drupal/core-composer-scaffold": "^11",
@@ -113,7 +112,7 @@
     "composer-exit-on-patch-failure": true,
     "patches": {
       "drupal/focal_point": {
-        "limit image styles in preview": "https://www.drupal.org/files/issues/2024-11-14/2830678-44-focal-preview-limit.patch"
+        "limit image styles in preview": "https://www.drupal.org/files/issues/2026-10-07/2830678-46-focal-preview-limit.patch"
       },
       "drupal/crop": {
         "fix provider fallback loop clobbering crop (drops ?h= hash)": "patches/crop-fallback-loop-first-hit.patch"
