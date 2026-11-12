@@ -4,7 +4,7 @@
   "description": "Pimlico Road theme",
   "main": " ",
   "scripts": {
-    "test": "vitest run --passWithNoTests",
+    "test": "vitest run",
     "dev": "vite",
     "build": "vite build",
     "storybook": "storybook dev -p 6006",

@@ -65,7 +65,7 @@ final class AddressHooks {
     }
     $address = $entity->get($field)->first()->getValue();
     $address['country_code'] = 'GB';
-    $address['locality'] = $address['locality'] ?: 'London';
+    $address['locality'] = ($address['locality'] ?? '') ?: 'London';
     $address['administrative_area'] = '';
     $entity->get($field)->setValue([$address]);
   }
