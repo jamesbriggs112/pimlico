@@ -1,0 +1,22 @@
+uuid: 79ba4fbb-dbc4-4d27-bb80-f7cd20f63d17
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_text
+    - paragraphs.paragraphs_type.content_grid
+  module:
+    - text
+id: paragraph.content_grid.field_text
+field_name: field_text
+entity_type: paragraph
+bundle: content_grid
+label: Text
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings:
+  allowed_formats: {  }
+field_type: text_long

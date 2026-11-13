@@ -1,0 +1,10 @@
+uuid: 88921a06-ee28-453a-b2e7-ba2520d0ac92
+langcode: en
+status: true
+dependencies: {  }
+id: image_gallery
+label: 'Image gallery'
+icon_uuid: null
+icon_default: null
+description: 'Rows of landscape and portrait photographs; a swipe gallery on mobile.'
+behavior_plugins: {  }

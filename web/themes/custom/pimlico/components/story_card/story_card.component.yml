@@ -1,0 +1,38 @@
+'$schema': 'https://git.drupalcode.org/project/drupal/-/raw/HEAD/core/assets/schemas/v1/metadata.schema.json'
+name: Story card
+status: stable
+description: 'Figma "A / Story card": the whole card is a link. 4:5 image, eyebrow meta, Fraunces title, caps link label. Used for stories and brands.'
+libraryOverrides:
+  css:
+    component:
+      story_card.scss: {}
+props:
+  type: object
+  required:
+    - url
+    - title
+  properties:
+    url:
+      type: string
+      title: URL
+    title:
+      type: string
+      title: Title
+    meta:
+      type: string
+      title: Meta
+      description: 'Category and date, e.g. "Interiors · Added 12 Oct".'
+    summary:
+      type: string
+      title: Summary
+    link_text:
+      type: string
+      title: Link label
+      default: 'Step inside'
+    heading_level:
+      type: integer
+      title: Heading level
+      default: 3
+slots:
+  image:
+    title: Image

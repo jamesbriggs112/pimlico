@@ -1,0 +1,24 @@
+{#
+/**
+ * @file
+ * Cards paragraph → pimlico:card_grid. Hand-picked items, or else the
+ * latest three Stories (Home "This week"); both render as teasers. The
+ * skeleton's field_view listing (every node type) isn't used.
+ */
+#}
+{% set link = paragraph.field_link.0 %}
+{% if paragraph.field_anchor.value %}
+  {% set attributes = attributes.setAttribute('id', paragraph.field_anchor.value) %}
+{% endif %}
+{% if paragraph.field_background.value == 'linen' %}
+  {% set attributes = attributes.addClass('card-grid--tint') %}
+{% endif %}
+{% include 'pimlico:card_grid' with {
+  attributes,
+  eyebrow: paragraph.field_eyebrow.value|default(''),
+  heading: paragraph.field_heading.value|default(''),
+  link_text: link.title|default(''),
+  link_url: link ? link.url.toString() : '',
+  text: content.field_text,
+  items: paragraph.field_content.isEmpty() ? drupal_view('news', 'block_latest') : content.field_content,
+} only %}

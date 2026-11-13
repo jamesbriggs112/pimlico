@@ -5,15 +5,15 @@ dependencies:
   config:
     - core.entity_view_mode.node.teaser
     - field.field.node.page.body
-    - field.field.node.page.field_banner
     - field.field.node.page.field_sections
     - field.field.node.page.field_seo_description
     - field.field.node.page.field_seo_image
     - field.field.node.page.field_seo_social_media_title
     - field.field.node.page.field_seo_title
+    - field.field.node.page.field_summary
     - node.type.page
   module:
-    - text
+    - fences
     - user
 _core:
   default_config_hash: 8BgdRtLbtQ0F__o0FHSH0Mx5fvXOra9tfT1GmNKbRYw
@@ -22,28 +22,32 @@ targetEntityType: node
 bundle: page
 mode: teaser
 content:
-  body:
-    type: text_summary_or_trimmed
+  field_seo_image:
+    type: entity_reference_entity_view
     label: hidden
     settings:
-      trim_length: 600
-    third_party_settings: {  }
-    weight: 100
-    region: content
-  content_moderation_control:
-    settings: {  }
-    third_party_settings: {  }
-    weight: -20
-    region: content
-  links:
-    weight: 101
+      view_mode: card
+      link: false
+    third_party_settings:
+      fences:
+        fences_field_tag: none
+        fences_field_classes: ''
+        fences_field_items_wrapper_tag: none
+        fences_field_items_wrapper_classes: ''
+        fences_field_item_tag: none
+        fences_field_item_classes: ''
+        fences_label_tag: ''
+        fences_label_classes: ''
+    weight: 0
     region: content
 hidden:
-  field_banner: true
+  body: true
+  content_moderation_control: true
   field_sections: true
   field_seo_description: true
-  field_seo_image: true
   field_seo_social_media_title: true
   field_seo_title: true
+  field_summary: true
   langcode: true
+  links: true
   search_api_excerpt: true

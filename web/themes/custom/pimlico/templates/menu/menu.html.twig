@@ -1,0 +1,14 @@
+{#
+/**
+ * @file
+ * Every menu except the main navigation renders as a list of text links.
+ * The legal menu is small and inline, as in the footer's bottom row.
+ */
+#}
+{% set legal = menu_name == 'legal' %}
+{% include 'pimlico:menu' with {
+  items,
+  attributes,
+  size: legal ? 'small' : 'body',
+  inline: legal,
+} only %}

@@ -1,0 +1,50 @@
+'$schema': 'https://git.drupalcode.org/project/drupal/-/raw/HEAD/core/assets/schemas/v1/metadata.schema.json'
+name: Text link
+status: stable
+description: 'Figma "Text link": a standalone link with an optional arrow. The colour never changes on hover; the underline moves to a 6px offset.'
+libraryOverrides:
+  css:
+    component:
+      text_link.scss: {}
+props:
+  type: object
+  required:
+    - text
+    - url
+  properties:
+    text:
+      type: string
+      title: Text
+      examples:
+        - 'All brands'
+    url:
+      type: string
+      title: Url
+    tone:
+      type: string
+      title: Tone
+      description: 'Dark on light surfaces, light on dark bands.'
+      enum:
+        - dark
+        - light
+      default: dark
+    size:
+      type: string
+      title: Size
+      description: 'Caps: navigation and "All brands" links. Body: footer columns. Small: footer legal row and inline links.'
+      enum:
+        - caps
+        - body
+        - small
+      default: caps
+    underlined:
+      type: boolean
+      title: Underlined at rest
+      description: 'For the current navigation or footer item, and links that are underlined at rest.'
+    arrow:
+      type: boolean
+      title: Show arrow
+    current:
+      type: boolean
+      title: Current page
+      description: 'Adds aria-current="page" and the underline.'

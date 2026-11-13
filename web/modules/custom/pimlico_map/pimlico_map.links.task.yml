@@ -1,0 +1,14 @@
+entity.pimlico_unit.collection:
+  title: Units
+  route_name: entity.pimlico_unit.collection
+  base_route: system.admin_content
+  weight: 20
+entity.pimlico_unit.edit_form:
+  title: Edit
+  route_name: entity.pimlico_unit.edit_form
+  base_route: entity.pimlico_unit.edit_form
+entity.pimlico_unit.delete_form:
+  title: Delete
+  route_name: entity.pimlico_unit.delete_form
+  base_route: entity.pimlico_unit.edit_form
+  weight: 10

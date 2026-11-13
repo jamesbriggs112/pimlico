@@ -1,0 +1,22 @@
+uuid: b6b5ee66-74fe-4bf9-ae15-ca891ce23acb
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_transcript
+    - node.type.podcast_episode
+  module:
+    - text
+id: node.podcast_episode.field_transcript
+field_name: field_transcript
+entity_type: node
+bundle: podcast_episode
+label: Transcript
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings:
+  allowed_formats: {  }
+field_type: text_long

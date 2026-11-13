@@ -1,0 +1,31 @@
+uuid: c2f962c3-3083-4fa9-9249-c708667ed03a
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_chapters
+    - node.type.podcast_episode
+    - paragraphs.paragraphs_type.info_row
+  module:
+    - entity_reference_revisions
+id: node.podcast_episode.field_chapters
+field_name: field_chapters
+entity_type: node
+bundle: podcast_episode
+label: Chapters
+description: 'Title as "00:00 · Introduction" and a short description.'
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:paragraph'
+  handler_settings:
+    target_bundles:
+      info_row: info_row
+    negate: 0
+    target_bundles_drag_drop:
+      info_row:
+        weight: 0
+        enabled: true
+field_type: entity_reference_revisions

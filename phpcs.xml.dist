@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ruleset name="pimlico">
+  <description>Drupal coding standards for Pimlico Road custom code.</description>
+  <!-- Project code only. Skeleton modules and four_starterkit come from the
+       upstream skeleton and are fixed there, so merges stay clean. -->
+  <file>web/themes/custom/pimlico</file>
+  <file>web/modules/custom</file>
+  <exclude-pattern>web/modules/custom/(?!pimlico_)[^/]+/*</exclude-pattern>
+  <arg name="extensions" value="php,module,inc,install,test,profile,theme,info,yml"/>
+  <arg name="colors"/>
+  <arg value="sp"/>
+  <exclude-pattern>*/node_modules/*</exclude-pattern>
+  <exclude-pattern>*/dist/*</exclude-pattern>
+  <exclude-pattern>*/vendor/*</exclude-pattern>
+  <rule ref="Drupal"/>
+  <rule ref="DrupalPractice"/>
+</ruleset>

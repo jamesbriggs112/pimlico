@@ -1,0 +1,18 @@
+{#
+/**
+ * @file
+ * Hero split paragraph → pimlico:hero_split, with the page breadcrumb.
+ */
+#}
+{% set links = [] %}
+{% for item in paragraph.field_links %}
+  {% set links = links|merge([{ text: item.title, url: item.url.toString() }]) %}
+{% endfor %}
+{% include 'pimlico:hero_split' with {
+  attributes,
+  title: paragraph.field_heading.value|default(''),
+  intro: paragraph.field_text.value|default('')|striptags|trim,
+  links,
+  image: content.field_image,
+  breadcrumb: drupal_block('system_breadcrumb_block'),
+} only %}

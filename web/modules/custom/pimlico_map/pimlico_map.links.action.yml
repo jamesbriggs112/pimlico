@@ -1,0 +1,5 @@
+entity.pimlico_unit.add_form:
+  title: 'Add unit'
+  route_name: entity.pimlico_unit.add_form
+  appears_on:
+    - entity.pimlico_unit.collection

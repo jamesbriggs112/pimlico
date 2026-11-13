@@ -1,0 +1,35 @@
+{#
+/**
+ * @file
+ * News article (Figma T08): title band, intro (meta, lead image), body
+ * sections, credits, related stories.
+ */
+#}
+{% set title = node.label %}
+{% set date = node.created.value|format_date('custom', 'j F Y') %}
+{% set minutes = node.field_reading_time.value %}
+{% set meta = [node.field_news_category.entity.label, date, node.field_author.value, minutes ? '@count min read'|t({ '@count': minutes })]|filter(v => v)|join(' · ') %}
+{% set brand = node.field_featured_brand.entity %}
+{% set links = brand ? [{ text: 'Explore the featured brand'|t, url: path('entity.node.canonical', { node: brand.id }) }] : [] %}
+{% set links = links|merge([{ text: 'Explore more news'|t, url: path('view.news.page_news') }]) %}
+
+<article{{ attributes.addClass('node', 'node--story', 'node--article') }}>
+  {{ title_prefix }}
+  {{ title_suffix }}
+  {% include 'pimlico:page_title' with {
+    title,
+    intro: node.field_summary.value|default(''),
+    breadcrumb: drupal_block('system_breadcrumb_block'),
+  } only %}
+  {% include 'pimlico:story_intro' with { meta, caption: node.field_caption.value|default(''), image: content.field_image } only %}
+  <div class="story-body">{{ content.field_sections }}</div>
+  {% include 'pimlico:story_credits' with { credits: node.field_credits.value|default(''), links } only %}
+  {% include 'pimlico:card_grid' with {
+    attributes: create_attribute({ class: ['card-grid--tint'] }),
+    heading: 'Also on this street'|t,
+    text: 'Continue through the brands and stories linked to this place.'|t,
+    link_text: 'All news'|t,
+    link_url: path('view.news.page_news'),
+    items: node.field_related.isEmpty() ? drupal_view('news', 'block_related', node.field_news_category.target_id|default('all'), node.id) : content.field_related,
+  } only %}
+</article>

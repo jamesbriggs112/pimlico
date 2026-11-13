@@ -1,0 +1,5 @@
+name: 'Pimlico admin'
+type: module
+description: 'Pimlico Road branding for the CMS: Fraunces page titles and login page touches on top of Gin.'
+package: Pimlico
+core_version_requirement: ^11

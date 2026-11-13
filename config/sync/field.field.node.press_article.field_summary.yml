@@ -1,0 +1,19 @@
+uuid: 92e15be2-2f46-4737-b2d1-edadd5049318
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_summary
+    - node.type.press_article
+id: node.press_article.field_summary
+field_name: field_summary
+entity_type: node
+bundle: press_article
+label: Standfirst
+description: 'One or two sentences under the title, also used on cards.'
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string_long

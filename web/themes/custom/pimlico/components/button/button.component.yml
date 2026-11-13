@@ -1,0 +1,34 @@
+'$schema': 'https://git.drupalcode.org/project/drupal/-/raw/HEAD/core/assets/schemas/v1/metadata.schema.json'
+name: Button
+status: stable
+description: 'Figma "A / Button". Dark is the default action; Yellow leads on dark bands and photos, or is the second of a pair.'
+libraryOverrides:
+  css:
+    component:
+      button.scss: {}
+props:
+  type: object
+  properties:
+    text:
+      type: string
+      title: Text
+      examples:
+        - 'Discover every brand'
+    url:
+      type: string
+      title: Url
+      description: 'Renders a link when set, otherwise a button.'
+    variant:
+      type: string
+      title: Variant
+      enum:
+        - dark
+        - yellow
+      default: dark
+    full_width:
+      type: boolean
+      title: Full width
+      description: 'Stretch to the container, as on mobile.'
+    class:
+      type: string
+      title: Class

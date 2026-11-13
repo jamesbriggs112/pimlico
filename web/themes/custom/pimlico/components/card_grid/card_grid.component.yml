@@ -1,0 +1,35 @@
+'$schema': 'https://git.drupalcode.org/project/drupal/-/raw/HEAD/core/assets/schemas/v1/metadata.schema.json'
+name: Cards
+status: stable
+description: 'Figma "Section · This week" and About "People": section heading over two or three story cards. A swipe track on mobile.'
+libraryOverrides:
+  css:
+    component:
+      card_grid.scss: {}
+  js:
+    card_grid.js: {}
+  dependencies:
+    - core/drupal
+    - core/once
+    - core/components.pimlico--section_heading
+    - core/components.pimlico--button_icon
+props:
+  type: object
+  properties:
+    eyebrow:
+      type: string
+      title: Eyebrow
+    heading:
+      type: string
+      title: Heading
+    link_text:
+      type: string
+      title: Link text
+    link_url:
+      type: string
+      title: Link URL
+slots:
+  text:
+    title: Intro text
+  items:
+    title: Cards

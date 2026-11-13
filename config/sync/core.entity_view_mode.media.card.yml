@@ -1,0 +1,11 @@
+uuid: 60cde9e9-4fda-4c39-9312-d57c8610bca2
+langcode: en
+status: true
+dependencies:
+  module:
+    - media
+id: media.card
+label: Card
+description: 'Images in story and brand cards: sized for the card, not the window.'
+targetEntityType: media
+cache: true

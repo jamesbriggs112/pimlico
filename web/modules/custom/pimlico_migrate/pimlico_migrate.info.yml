@@ -1,0 +1,9 @@
+name: 'Pimlico migrate'
+type: module
+description: 'Imports the 47 Brands and their Units from the map project’s data (data/brands.json). Uninstall after launch.'
+package: Pimlico
+core_version_requirement: ^11
+dependencies:
+  - migrate_plus:migrate_plus
+  - migrate_tools:migrate_tools
+  - pimlico_map:pimlico_map

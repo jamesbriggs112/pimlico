@@ -1,0 +1,21 @@
+{#
+/**
+ * @file
+ * Breadcrumb trail (Figma "Page title"): Body S, "/" separators drawn in CSS.
+ */
+#}
+{% if breadcrumb %}
+  <nav class="breadcrumb" aria-label="{{ 'Breadcrumb'|t }}">
+    <ol class="breadcrumb__list">
+      {% for item in breadcrumb %}
+        <li class="breadcrumb__item">
+          {% if item.url and not loop.last %}
+            <a class="breadcrumb__link" href="{{ item.url }}">{{ item.text }}</a>
+          {% else %}
+            <span aria-current="page">{{ item.text }}</span>
+          {% endif %}
+        </li>
+      {% endfor %}
+    </ol>
+  </nav>
+{% endif %}

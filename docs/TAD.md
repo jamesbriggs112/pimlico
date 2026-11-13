@@ -1,413 +1,452 @@
-# Pimlico Road: Technical Architecture Document
+# Pimlico Road
+## Technical Architecture Document
 
-| | |
-|---|---|
-| **Project** | The Pimlico Road website (Grosvenor, part of Belgravia) |
-| **Design source** | Figma "Pimlico Visuals – V01" (`REw9zZENN4OEozQHrt17pD`): pages 01 Desktop, 02 Mobile, 03 Brand with Map, Components |
-| **Starting point** | `four-drupal-skeleton` (Drupal 11, `four_starterkit` theme, Vite, SDC, Storybook) |
-| **Conventions source** | `Reference/sheffield-chamber-of-commerce` (lead developer's project) |
-| **Map source** | `~/Documents/Builds/pimlico-map` (`<pimlico-map>` web component and data pipeline) |
-| **Status** | Draft for review, 11 November 2026 |
+| Date | Author | Notes |
+|---|---|---|
+| 11 November 2026 | James Briggs | Initial draft, with the build plan |
+| 11 November 2026 | James Briggs | Rewritten as built (phases 0–7), in the format of the Grosvenor B2B TAD |
 
-The build plan that goes with this document is in [build-plan.md](build-plan.md).
+The build plan that goes with this document is [build-plan.md](build-plan.md). The launch checklist is [launch-checklist.md](launch-checklist.md) and the editor guide is [editor-guide.md](editor-guide.md). The domain language (Brand, Unit, Map Building, Story…) is defined in [CONTEXT.md](../CONTEXT.md).
+
+## Contents
+
+1. [Background and overview](#background-and-overview)
+2. [Site map and structure](#site-map-and-structure)
+3. [Technical architecture](#technical-architecture)
+4. [Specific considerations](#specific-considerations)
+5. [Content types](#content-types)
+6. [Hosting and domains](#hosting-and-domains)
+7. [Tracking](#tracking)
+8. [Testing](#testing)
+9. [Deploying to live](#deploying-to-live)
+10. [Post-launch actions](#post-launch-actions)
+11. [Open questions](#open-questions)
+12. [Appendix A: Build conventions](#appendix-a-build-conventions)
+13. [Appendix B: Theme architecture](#appendix-b-theme-architecture)
+14. [Appendix C: Custom modules](#appendix-c-custom-modules)
+15. [Appendix D: The street map](#appendix-d-the-street-map)
+16. [Appendix E: Architecture decisions](#appendix-e-architecture-decisions)
 
 ---
 
-## 1. Summary
+## Background and overview
 
-Pimlico Road is a brochure and discovery site for one London street: its brands (showrooms, dealers, restaurants), Newson's Yard, news, and visitor information. Its distinctive feature is an interactive bird's-eye map of the street, which already exists as a standalone, tested web component.
+Four has been briefed by Grosvenor to build a website for Pimlico Road, one street in Belgravia: its brands (showrooms, dealers, restaurants and cafés), Newson's Yard, news and visitor information. It replaces the Pimlico Road pages of belgraviavillage.com.
 
-The site is a standard Four Drupal build:
+The site is built in Drupal. Its distinctive feature is an interactive bird's-eye map of the street, which lights up each brand's building and is shown on the Visit page and on every brand page. The map was built and tested as a separate project and is brought into Drupal unchanged.
 
-- **Drupal 11** from `four-drupal-skeleton`, hosted on the Four AWS Elastic Beanstalk stack.
-- **One custom theme, `pimlico`**, generated from `four_starterkit`, with every visual pattern built as a Single Directory Component (SDC) and documented in Storybook.
-- **Paragraph-based pages** for editorial flexibility, plus three structured content types (Brand, News, and a Unit entity for the map).
-- **Client-specific modules prefixed `pimlico_`**, following the reference project's PHP and hook conventions.
-- **The map integrated as `pimlico_map`**, a module that serves the tenancy feed from Drupal and renders the existing component unchanged.
+The content includes photography, background films, YouTube videos, a podcast player and a contact form. There is no commerce, membership or CRM integration.
 
-There is no commerce, membership or CRM integration, so the architecture is much smaller than the reference project. The conventions still apply in full.
+## Site map and structure
 
-## 2. Scope
+Link to designs: Figma "Pimlico Visuals – V01" (`REw9zZENN4OEozQHrt17pD`), pages 01 Desktop, 02 Mobile, 03 Brand with Map and Components.
 
-### 2.1 Templates in the design
-
-| Ref | Template | Drupal implementation |
+| Ref | Page | Built as |
 |---|---|---|
-| T01 | Home | `page` node with `field_sections` |
-| T02 | Brands (listing, category filter, pagination, promo interstitial) | `brands` view, page display |
-| T02b | Dine (Food & Drink listing) | `brands` view, display pre-filtered to Food & Drink |
-| T03 | Brand detail, with "Find the showroom" map | `brand` node, full view mode |
-| T06 | Newson's Yard (film hero, resident brands, intro, visit banner) | `page` node with `field_sections` |
-| T07 | News (featured story, story grid, pagination) | `news` view, page display |
-| T08 | News article | `article` node |
-| T10 | Podcast episode (audio player, notes, transcript) | `podcast_episode` node |
-| T12 | Press article (publication, source), plus the "Publication" variant | `press_article` node |
-| T13 | Visit (page title, "The street" overview map, location, getting here) | `page` node; the map is a `street_map` paragraph |
-| T14 | About Pimlico Road (intro, yard banner, area story, people, next step) | `page` node with `field_sections` |
-| T15 | Contact (enquiry routes, form, error and success states, visit banner) | `page` node with a `webform` paragraph |
-| T16 | Privacy, Cookies, Accessibility | `page` node with rich text |
-| T17/T18 | Search, search results | Search API view |
+| T01 | Home | Page with sections |
+| T02 | Brands: listing with category filter (All, Interiors, Antiques & art), pagination and a promo band | `brands` view |
+| T02b | Dine: places to eat and drink, filtered by Pubs and restaurants or Cafés | `brands` view |
+| T03 | Brand, with "Find the showroom" and the map | Brand content type |
+| T06 | Newson's Yard | Page with sections |
+| T07 | News: featured story, grid, News/Press filter, pagination | `news` view |
+| T08 | News article | Article content type |
+| T10 | Podcast episode: player, notes, chapters, transcript | Podcast episode content type |
+| T12 | Press article: publication, source link | Press article content type |
+| T13 | Visit: the street map with category filter, location, getting here | Page with sections |
+| T14 | About Pimlico Road | Page with sections |
+| T15 | Contact: enquiry routes, form (inline validation), success message | Page with sections and a Webform |
+| T16 | Privacy, Cookies, Accessibility | Pages with a Policy text section |
+| T17/T18 | Search and search results, grouped by Brands, Dine, News and Press | `search` view |
 
-Global elements: desktop header with mega menus (Brands, Newson's Yard, News, Visit), mobile menu overlay, newsletter section, footer (Explore, Information, Follow, legal links, Pimlico Road and Grosvenor logos), and a Cookie preferences link that reopens the CookieScript consent banner.
+Global elements: a header with five top-level links (Brands, Dine, Newson's Yard, News, Visit) and search, a mobile menu, the newsletter sign-up, and a footer with Explore, Information and Follow menus, legal links and the Pimlico Road and Grosvenor logos.
 
-### 2.2 Out of scope
+Out of scope: events (confirmed not required, 11 November 2026), accounts or a members' area, and multilingual content (the site is English only).
 
-- Events. The Components page has an Event card and Event row, but events were confirmed as no longer required on 11 November 2026.
-- Transactions, accounts or a members' area.
-- Multilingual content. The site is English only.
+## Technical architecture
 
-## 3. Repository and environments
+### General application structure
 
-**The skeleton is an upstream source, not a project repository.** Pimlico Road lives in its own repository, `git@github.com:jamesbriggs112/pimlico.git`, cloned from the skeleton with its full history:
+The site is built on **Drupal 11** (11.4) and PHP 8.4, starting from Four's `four-drupal-skeleton`. AWS CloudFront sits between visitors and the site, caching pages and assets close to them; Drupal purges the pages that change when an editor saves (see [Caching](#caching)).
 
-| Remote | Repository | Use |
-|---|---|---|
-| `origin` | `jamesbriggs112/pimlico` | The project |
-| `upstream` | `Four-Agency/four-drupal-skeleton` | Skeleton updates: `git fetch upstream && git merge upstream/main` into `dev` |
+The site is hosted on AWS Elastic Beanstalk. The database is held in a managed relational database service and uploaded media in shared file storage, so the application servers hold no state and can scale.
 
-**Branches:**
+Within the CMS, pages are built from a palette of **sections** (Paragraphs) that editors arrange in any order: heroes, introductions, cards, banners, galleries, info rows, the street map, forms and so on. Brands and stories are **structured content types** with fixed fields, so every brand page and story follows the design.
 
-| Branch | Purpose | Deploys to |
-|---|---|---|
-| `dev` | Default branch. Feature branches (`feature/…`, `bugfix/…`) are merged here by PR. | Nothing (local development) |
-| `staging` | Release candidates, merged from `dev` by PR | AWS EB staging, on a merged PR |
-| `production` | Live code, merged from `staging` by PR | AWS EB production, on a merged PR |
+The front end is one custom theme, `pimlico`. Every visual pattern is a Single Directory Component (SDC), documented in Storybook, and built with Vite. Drupal creates the responsive image variants and serves them as WebP.
 
-| Environment | URL | Notes |
-|---|---|---|
-| Local | `https://pimlico.test` | Laravel Valet (not DDEV), PHP 8.3, Node 22, pnpm. `pnpm dev` runs in the theme. |
-| Staging | AWS EB staging environment | `.github/workflows/deploy.yml`, on a PR merged into `staging` |
-| Production | AWS EB production environment | `.github/workflows/deploy.yml`, on a PR merged into `production` |
+Drupal also provides the metadata for search engines and AI search: meta tags and Open Graph on every page and listing; schema.org structured data (Organization on the home page, LocalBusiness with address, phone and website for each brand, Article for stories, and a BreadcrumbList on every page); an XML sitemap linked from `robots.txt`; and `/llms.txt`, a plain-text summary of the site with every brand and the latest stories, built from published content (pimlico_search).
 
-The workflow picks the GitHub environment (`staging` or `production`) from the PR's base branch, so each environment's variables (`ENVIRONMENT_NAME`, `SENTRY_ENVIRONMENT`, and so on) are set on the matching GitHub environment.
+### Target specification
 
-Environment-specific settings follow the skeleton pattern: `config/{development,staging,production}/{env}.config.php`, loaded by `settings.php` from `$_SERVER['ENVIRONMENT']`. Secrets come from environment variables and are never exported to config. The project does not use config_split.
+The site targets every browser with 1% or more UK share, achieved through responsive code and testing at the design's two artboards (390px and 1440px) and between. In practice:
 
-## 4. Naming conventions
+- Chrome, Edge and Firefox (latest two versions) on desktop.
+- Safari (latest two versions) on macOS and iOS.
+- Chrome and Samsung Internet on Android.
 
-These follow the reference project exactly. Where Pimlico needs a new name, it uses the same pattern.
+It meets **WCAG 2.2 AA**. See [Testing](#testing).
 
-| Thing | Convention | Pimlico examples |
-|---|---|---|
-| Theme | short client machine name | `pimlico` |
-| Client modules | `pimlico_*`, `package: Pimlico` | `pimlico_map`, `pimlico_brands`, `pimlico_news`, `pimlico_migrate` |
-| Reusable agency modules | `four_*` or unprefixed generic | `four_sdc`, `custom_image_styles` (from the skeleton) |
-| Node bundles | snake_case singular nouns | `brand`, `article`, `podcast_episode`, `press_article`, `page` |
-| Paragraph types | snake_case, same name as the SDC they render | `hero_film`, `hero_split`, `street_map`, `info_rows` |
-| Vocabularies | `{context}_{type}` | `brand_category`, `news_category` |
-| Fields | `field_` + snake_case, no bundle prefix, storage reused across bundles | `field_heading`, `field_text`, `field_media`, `field_link`, `field_sections`, `field_banner`, `field_teaser` |
-| SEO fields | the shared set | `field_seo_title`, `field_seo_description`, `field_seo_image`, `field_seo_social_media_title` |
-| Views | plural nouns | `brands`, `news`, `search` |
-| Menus | kebab-case | `main`, `footer`, `legal`, `social-media`, `footer-information` |
-| Blocks | `{theme}_{name}` | `pimlico_main_menu`, `pimlico_newsletter` |
-| SDC folders | snake_case nouns | `story_card`, `mega_menu`, `info_row` |
-| CSS classes | BEM, block = kebab-case of the component | `.story-card__image`, `.mega-menu__panel`, `.button--yellow` |
-| CSS custom properties | brand, then semantic, then component | `--color-brand-yellow`, `--color-action-primary`, `--button-hover-background-color-yellow` |
-| JS behaviours | camelCase in an IIFE with `once` and `Drupal` | `Drupal.behaviors.heroFilm` |
-| Image styles | `{ratio}_{size×1000}_{W}x{H}` NIS sets | `l23_064000_1024x768` (see [§7.4](#74-images-and-media)) |
-| ADRs | `docs/adr/NNNN-imperative-kebab-title.md`, prose, no status header | `0001-keep-the-map-component-as-an-unmodified-dependency.md` |
+## Specific considerations
 
-## 5. Domain language
+### Authentication
 
-This becomes `CONTEXT.md` in the project repository, in the reference project's format.
+Only the client's editors log in, with Drupal accounts at `/user/login` (the Gin admin theme, branded with the Pimlico Road logo, colours and login photography). There is no public login. The login, password reset and registration forms have a CAPTCHA point set to reCAPTCHA; the reCAPTCHA module and its keys (per environment) are still to be enabled before launch.
 
-- **Brand:** a business trading on Pimlico Road or in Newson's Yard, with its own page. Restaurants and cafés are Brands in the Food & Drink category. _Avoid:_ shop, tenant, retailer.
-- **Brand Category:** the single primary grouping a Brand is filtered by: Home & Interiors, Antiques and art, Soft furnishings and fabrics, Lighting, Food & Drink. _Avoid:_ tag, sector.
-- **Specialism:** a short line describing what a Brand offers, shown in "What you'll find". _Avoid:_ service, category.
-- **Unit:** a physical shopfront that a Brand trades from. A Unit points at one or more Map Buildings, and outlives the Brands that occupy it. _Avoid:_ address, location.
-- **Map Building:** a building or shop-unit ID in the Base Map, such as `w535769837` or `w535769910-76-80`. Editors pick it on the map and never type it.
-- **Base Map:** the static geometry file (`pimlico-map.json`) built from OpenStreetMap by developers.
-- **Tenancy Feed:** the JSON list of active Brands and their Map Buildings that Drupal serves to the map.
-- **Tenancy Status:** whether a Brand lights its Units on the map: `active`, `coming_soon` or `closed`.
-- **Story:** any item in News: an Article, a Podcast Episode or a Press Article. _Avoid:_ post, blog.
-- **Newson's Yard:** the redeveloped timber yard off Pimlico Road. It is an Area, and its Brands are Resident Brands.
+### Users and permissions
 
-## 6. Content architecture
+#### Public facing
 
-### 6.1 Node types
+Visitors are anonymous. They can browse everything published, search, use the map, sign up to the newsletter and send the contact form.
 
-**`brand`** (T03, cards in T02, T02b and mega menu)
+#### Admin
 
-| Field | Type | Notes |
-|---|---|---|
-| `title` | core | Brand name |
-| `field_brand_category` | entity reference → `brand_category` (single) | Filter bar, eyebrow, map category |
-| `field_teaser` | plain text, long | Hero intro and card text |
-| `field_banner` | media reference → `image` | Shopfront hero (split hero, 680 × 850) |
-| `field_heading` + `field_text` | string + formatted text | "About the house" |
-| `field_quote` | paragraph reference → `quote` | Optional pull quote |
-| `field_gallery` | media reference → `image` (multiple) | "Inside the showroom". Layout chosen by image orientation (§7.3). |
-| `field_gallery_credit` | string | "Photography: …" |
-| `field_specialisms` | paragraph reference → `info_row` (multiple) | "What you'll find" |
-| `field_address` | address | Showroom address |
-| `field_opening_hours` | office_hours | Structured, see open questions |
-| `field_trade_info` | plain text | "Trade" row |
-| `field_email`, `field_phone` | email, telephone | "Contact" row |
-| `field_link` | link | Website button |
-| `field_unit` | entity reference → `pimlico_unit` (multiple) | **The link to the map** |
-| `field_tenancy_status` | list (`active`, `coming_soon`, `closed`) | Only `active` lights the map |
-| `field_display_on_map` | boolean, default on | |
-| `field_map_label` | string, max 24 | Shorter name for map labels |
-| `field_similar_brands` | entity reference → `brand` (max 3) | Falls back to three Brands in the same category |
-| SEO fields | shared set | |
+| Role | Can |
+|---|---|
+| **Administrator** | Everything, including configuration. Four only. |
+| **Content editor** | Create, edit, publish and delete all content (pages, Brands, Units, stories), media and categories; manage menus. |
+| **Writer** | Create and edit their own content and save drafts; an editor publishes. |
 
-The Brand's map ID is its path alias's last segment, generated by Pathauto (`brands/[node:title]`) and locked once published. A separate `field_map_id` is only needed if the client expects to rename brands; see open questions.
+Content goes through a simple **Draft → Published** workflow (Content Moderation) on every content type.
 
-**`article`**, **`podcast_episode`**, **`press_article`** (News, T07–T12)
+### Traffic and load
 
-Three bundles rather than one with a type switch, because each has fields the others don't, and separate bundles keep the edit forms clean. ADR 0004 records this. They share these fields: `field_banner`, `field_teaser`, `field_news_category`, `field_sections` (body paragraphs), `field_related` (manual related content, falling back to the same category), and the SEO set. Bundle-specific fields:
+No special traffic or load measures are expected. The site is mostly static pages served from the page cache and CloudFront; the map's data feed is cached too. Elastic Beanstalk can add instances if needed.
 
-- `podcast_episode`: `field_audio` (media `audio`), `field_episode_number`, `field_duration`, `field_transcript` (formatted text, shown in a `<details>`).
-- `press_article`: `field_publication` (string), `field_publication_logo` (media), `field_source_link` (link), `field_publication_date`.
+### Optimisation and responsive
 
-The existing `news_category` vocabulary in the skeleton is reused for the News filters.
+#### Caching
 
-**`page`** (Home, Newson's Yard, Visit, About, Contact, policies)
+The site has three levels of caching:
 
-Existing skeleton bundle: `field_banner` (optional page title or hero), `field_sections` (paragraphs) and the SEO set.
+- **CloudFront CDN** in front of the site. When an editor saves the Home page, a Brand or a Unit, Drupal invalidates the affected paths (`/`, `/api/map/brands`).
+- **Drupal's page cache and dynamic page cache**, invalidated by cache tags the moment content changes.
+- **Long-lived static assets:** CSS, JS, images and the base map file carry version strings, so they can be cached for a year.
 
-### 6.2 Unit entity
+#### Images
 
-**`pimlico_unit`** is a custom content entity defined in `pimlico_map`, with no public route. A Unit is an editor-only record, so an entity avoids public node pages, Pathauto, sitemap entries and SEO fields for something no visitor should see. Taxonomy was rejected because term pages are public by default and its admin UI makes a poor list of shopfronts. ADR 0003 records this.
+- Responsive images in WebP, at the sizes each slot needs. Drupal creates all variants and stores them on the shared file storage; CloudFront caches them.
+- Focal point on image media, so crops keep the subject.
+- The main image at the top of each page loads first ("Hero" media view mode, eager loading); everything else loads lazily.
 
-| Field | Type | Notes |
-|---|---|---|
-| `label` | string | "95–97 Pimlico Road" |
-| `field_address` | address | |
-| `field_map_buildings` | string (multiple) | Set with the map picker widget |
-| `field_area` | entity reference → `area` vocabulary | Pimlico Road, Newson's Yard, Ebury Street… |
-| `field_entrance_note` | string | Optional |
+#### Media library
 
-### 6.3 Vocabularies
+The standard Drupal media library, with Image, Video (uploaded films), Remote video (YouTube and Vimeo links), Audio (podcasts) and Document types.
 
-| Vocabulary | Status | Use |
-|---|---|---|
-| `brand_category` | new | Filter bars, map category, brand eyebrow. Weighted for filter order. |
-| `news_category` | skeleton | News filters and eyebrows (Interiors, Food & Drink, …) |
-| `area` | new | Unit grouping |
-| `paragraph_styles`, `image_paragraph_styles` | skeleton | Paragraph style variants |
+#### Video hosting
 
-Unused skeleton vocabularies (`download_styles`, `tags`) and paragraph types (`document`, `document_list`, `download`, `iframe_embed`, `jump_menu_anchor`, `map_image`, `separator`) are removed in phase 1 so editors only see what the design supports.
+- **Background films** (Home, Newson's Yard heroes) are short silent loops uploaded as MP4. Budget: 10–20 seconds and 3–5 MB. They don't download until the page has loaded, and don't play for people who prefer reduced motion, use data saver or are on a slow connection.
+- **Other video** goes on YouTube (or Vimeo) and is added as a Remote video. YouTube videos show their thumbnail and the site's play button; nothing loads from YouTube until someone presses play, and playback uses YouTube's privacy-enhanced (no-cookie) player in the site's player controls.
 
-### 6.4 Paragraph types
+#### Front-end performance
 
-Each renders the SDC of the same name (§7.2). Skeleton types are kept where the design matches and restyled.
+Measured locally on a throttled phone (slow 4G, 4× CPU): largest contentful paint is Home 2.6 s, Brand 0.9 s, Visit 0.7 s and News 0.8 s, with no layout shift. Each component's CSS and JS loads only on pages that use it.
 
-| Paragraph | Origin | Used in | Fields |
+### Forms and data collection
+
+| Form | Collects | Stored | Sent to |
 |---|---|---|---|
-| `hero_film` | new | Home, Newson's Yard | `field_heading`, `field_media` (video), `field_media_poster` (image), `field_link` |
-| `hero_split` | new | Brand (via node template), About | `field_heading`, `field_text`, `field_media`, `field_link` |
-| `page_banner` | skeleton | Most pages ("Page title") | `field_heading`, `field_text`, breadcrumb from Easy Breadcrumb |
-| `introduction` | new | Home, About, Newson's Yard | `field_eyebrow`, `field_heading`, `field_text`, `field_link`, `field_media` (up to 3, collage) |
-| `content_grid` | skeleton | "This week on Pimlico Road", Related content, Similar brands | `field_eyebrow`, `field_heading`, `field_link`, `field_view` (viewfield) or manual references |
-| `feature_banner` | new | Newson's Yard banner, Yard banner | `field_eyebrow`, `field_heading`, `field_text`, `field_link`, `field_media`; style: full-bleed or split |
-| `visit_banner` | new | Plan your visit (Home, Contact, Newson's Yard) | `field_eyebrow`, `field_heading`, `field_text`, `field_link`, `field_media` |
-| `quote` | skeleton | Brand, articles | `field_text`, `field_cite` |
-| `image_gallery` | new | Brand, articles | `field_media` (multiple), `field_heading`, `field_caption` |
-| `info_rows` / `info_row` | new | Getting here, Specialisms, Enquiry routes | `field_eyebrow`, `field_heading`, `field_text`; rows: `field_heading`, `field_text`, `field_link` |
-| `street_map` | new | Visit | `field_eyebrow`, `field_heading`; renders the overview map and category filter |
-| `brand_list` | new | Newson's Yard "Resident brands" (the A / Brand list hover component) | `field_heading`, references → `brand` |
-| `people` | new | About "People" | `field_heading`; people as `person` paragraphs (name, role, photo) |
-| `cta` | skeleton | About "Next step" | restyled |
-| `text_wysiwyg_` | skeleton | Policies, article bodies | name kept for compatibility |
-| `video` | skeleton | Articles (Media / Video) | restyled |
-| `webform` | new | Contact | `field_webform` (webform reference) |
+| **Contact** (Webform) | Name, email, enquiry type, message | Webform submissions in Drupal | Email to the client (recipients to confirm) |
+| **Newsletter** (Webform) | Email address | Not stored; the provider is to be chosen | The newsletter provider, once chosen |
 
-### 6.5 Views
+- Both forms validate inline as people type and on submit, with messages under each field that don't move the layout, and Drupal checks again on the server.
+- **Spam protection:** not yet in place on either form. The recommendation is the Honeypot module, which works with Webform and adds nothing visible, with reCAPTCHA as a fallback if spam still gets through.
+- **GDPR:** the newsletter form exists only to sign up. The visitor enters their own email and presses Subscribe, and the note under the form says what they'll get, that they can unsubscribe at any time, and links to the privacy notice. That is clear, affirmative consent, so no separate tick-box is needed. The provider should record when and where each person signed up; double opt-in is recommended.
+- Contact form submissions hold personal data. Set a retention period with the client (for example, delete after 12 months), and name Drupal as a processor in the privacy notice.
 
-| View | Displays |
-|---|---|
-| `brands` | `page_brands` (T02, `/brands`, exposed category filter as Filter links, 15 per page, promo interstitial after row 2); `page_dine` (`/dine`, Food & Drink); `block_similar` (same category, excludes current); `block_mega_menu` (featured brands) |
-| `news` | `page_news` (T07, featured story plus grid, pagination); `block_latest` ("This week"); `block_related` |
-| `search` | `page_search` (T17/T18), Search API with a database backend |
+### Integration points
 
-### 6.6 Menus
+#### The street map
 
-`main` (Brands, Dine, Newson's Yard, News, Visit, with mega menu children), `footer` (Explore), `footer-information` (Information), `social-media` (Follow), `legal` (Privacy, Cookies, Cookie preferences). Menu links are exported with `structure_sync`.
+The map component, its base map and the data pipeline live in the separate map project. Drupal serves the list of active brands and the buildings they occupy at `/api/map/brands`, and editors place each shopfront (Unit) by clicking it on the map. Details are in [Appendix D](#appendix-d-the-street-map).
 
-## 7. Theme architecture (`pimlico`)
+#### Brand import from belgraviavillage.com
 
-### 7.1 Generation and structure
+The 47 Pimlico Road brands, their shopfronts, categories, addresses, opening hours, websites and photography were imported from the current belgraviavillage.com pages through the map project's data, by the `pimlico_migrate` module. The import is re-runnable and is uninstalled after launch.
 
-Generated with:
+#### Newsletter provider
 
-```bash
-php web/core/scripts/drupal generate-theme --starterkit four_starterkit pimlico --path themes/custom
-```
+To be chosen (open question). The sign-up form is built and styled but doesn't post anywhere yet.
 
-It keeps the reference project's layout: `components/`, `templates/{block,field,form,layout,media,menu,navigation,node,page,paragraph,region,views}`, `includes/*.inc` (one per entity or area, required by `pimlico.theme`), `src/{js,sass,stories}`, `tests/{js,src/Kernel}` and `assets/{fonts,icons}`.
+#### CookieScript and Google Tag
 
-Rules carried over from the reference project and `AGENTS.md`:
+See [Tracking](#tracking).
 
-- Drupal templates are thin adapters. They map fields onto SDCs with `include`/`embed` using the `pimlico:` namespace and `only`, and use `|without` for fields consumed elsewhere.
-- Use rendered fields, display configuration and Twig Tweak first. Write preprocess PHP only for a requirement those can't meet, and apply `CacheableMetadata` when you do.
-- Never reproduce field rendering, access checks or cache metadata by hand.
-- Scaffold every component with `drush generate four-sdc`, so each has the same files: `.component.yml`, `.twig`, `.scss`, optional `.js`, `.stories.twig`, `README.md`, `thumbnail.png`.
-- CSS custom properties over Sass variables. Units in `to.rem()`, logical properties, breakpoints with `@include mq($from: …)`.
+### Search
 
-### 7.2 Component inventory
+Search API with the database backend (Solr isn't needed at this content volume); Drupal's core search is off. It indexes Brands and Stories. Results are grouped (Brands, Dine, News, Press) with counts in the filter bar, three top hits per group, and every result with a pager once a group is chosen. Before a search, the page shows popular searches and suggestions.
 
-Mapped from the Figma Components page. "Skeleton" means the starterkit component is kept and restyled.
+## Content types
 
-| SDC | Figma component | Origin |
+### Brand
+
+Fixed fields:
+
+- **Brand:** title, category, summary, hero image.
+- **About:** heading, text, pull quote, gallery and photography credit.
+- **What you'll find:** specialisms.
+- **Find the showroom:** address, opening hours, trade note, email, phone, website, accessibility link.
+- **Map:** Units, tenancy status, display on map, short map label.
+- **Similar brands:** up to three, otherwise three from the same category.
+- **SEO:** title, social media title, description, image.
+
+### Article
+
+- **Story:** title, news category, summary, lead image and caption, author, reading time, credits, featured flag, featured Brand.
+- **Sections:** Text, Image, Quote, Gallery, Video and other sections.
+- **Related stories:** chosen, otherwise from the same category.
+- **SEO:** the shared set.
+
+### Podcast episode
+
+As Article, plus:
+
+- **Episode:** audio file, episode number, duration, guest.
+- **Chapters:** time and topic.
+- **Transcript.**
+
+### Press article
+
+As Article, plus:
+
+- **Coverage:** publication and its logo, publication date, journalist, link to the original.
+
+### Page
+
+- **Page:** title and summary.
+- **Sections:** Hero film, Split hero, Introduction, Cards, Feature banner, Visit banner, Info rows, Info band, Split text, Rich text, Image, Gallery, Quote, Video, Street map, Policy text, Next step, Contact form.
+- **SEO:** the shared set.
+
+### Unit (not public)
+
+A shopfront that Brands trade from: name, address, area and its building(s) on the map, set with the map picker. Units have no public page.
+
+### Categories (taxonomy)
+
+| Vocabulary | Terms | Used for |
 |---|---|---|
-| `logo` | Logo / Pimlico Road (dark, light), Logo / Grosvenor | new |
-| `icon` | Icon / search, pause, play, menu, arrowL, arrowR, chevron-down, close, check, alert | new (SVG sprite in `assets/icons`) |
-| `button` | A / Button (Dark, Yellow; default, hover, focus) | skeleton |
-| `button_icon` | Media control (play, pause) | skeleton |
-| `text_link` | Text link (tone, size, underlined) | new |
-| `header` | Header (desktop, mobile) | skeleton |
-| `main_menu` + `menu_link` | Menu link | skeleton |
-| `mega_menu` | Mega menu (Brands, Newson's Yard, News, Visit) | new |
-| `mobile_menu` + `mobile_nav_item` | Mobile menu, Mobile nav item | new (`<dialog>`) |
-| `page_banner` | Page title (desktop, mobile) | skeleton |
-| `hero_film` | Hero · Street film | new |
-| `hero_split` | Hero / Split | new |
-| `introduction` | Section · Introduction | new |
-| `section_heading` | Section heading | new (extends `heading`) |
-| `story_card` | A / Story card (default, hover, focus) | new (from `card`) |
-| `story_row` | Story row · Mobile | new |
-| `brand_card` | link:brand | new |
-| `brand_list` | A / Brand list · hover | new |
-| `feature_banner` | Yard banner, Newson's Yard section | new |
-| `visit_banner` | Visit banner | new |
-| `quote` | Quote | skeleton |
-| `image_gallery` | Gallery rows, Gallery (swipe) on mobile | new (embla-carousel on mobile) |
-| `info_row` | Info row, Info row · Mobile | new |
-| `episode_row` | Episode row | new |
-| `audio_player` | Audio player | new (plyr, already in composer) |
-| `media_video` | Media / Video | skeleton `video`, restyled |
-| `rich_text` | Rich text | new |
-| `filter_link` | Filter link (default, active, hover, focus) | new |
-| `pagination` | Pagination | new |
-| `form` + `field` | Field (input, select, textarea; default, error, focus), Checkbox | skeleton `form`, extended |
-| `newsletter` | Newsletter | new |
-| `footer` | Footer | skeleton |
-| `street_map` | Map · Overview, Map · Brand | new; wraps `<pimlico-map>` |
-| `visually_hidden`, `messages`, `grid`, `view_clean` | | skeleton |
+| Brand category | Interiors, Antiques & art, Food & Drink (with Pubs and restaurants, Cafés) | The filters on Brands (Interiors, Antiques & art), Dine (Pubs and restaurants, Cafés) and the street map (the three top-level terms), and card labels. Editors choose from the categories the site shows; Food & Drink is a heading, not a choice. |
+| News category | Interiors, Antiques & art, Food & drink, Makers, The street | Story labels and related stories |
+| Area | Pimlico Road, Newson's Yard, Ebury Street, Bourne Street, Holbein Place | Grouping Units |
 
-Not built: Event card and Event row (events are out of scope), and Toggle and Dialog, which were for cookie preferences and are replaced by CookieScript's own banner.
+## Hosting and domains
 
-### 7.3 Design tokens
+### Source code
 
-From the Figma variables, in `src/sass/init/_root.scss`:
+The source code is in GitHub: `git@github.com:Four-Agency/pimlico-website.git`, with branches `dev`, `staging` and `main` (production). The agency skeleton is the `upstream` remote, for skeleton updates.
 
-```scss
-:root {
-  // Brand palette
-  --color-brand-dark-grey: #394959;
-  --color-brand-yellow: #f9e577;
-  --color-brand-pumpkin: #e87400;
-  --color-brand-white: #ffffff;
-  --color-tint-linen-30: #f4f2eb;
-  --color-tint-linen-60: #ece9df;
+Branches follow the format `feature/…`, `bugfix/…` and `hotfix/…`. These are merged into `dev` by pull request, then `dev` into `staging`, then `staging` into `main` (production).
 
-  // Semantic
-  --color-text-primary: var(--color-brand-dark-grey);
-  --color-text-inverse: var(--color-brand-white);
-  --color-text-eyebrow: var(--color-brand-pumpkin);
-  --color-action-primary: var(--color-brand-yellow);
-  --color-action-on-primary: var(--color-brand-dark-grey);
+### Environments
 
-  // Shape and spacing
-  --radius-pill: 999px;
-  --section-space: #{fluid(40px, 60px)};
-  --page-gutter: #{fluid(24px, 80px)};
-  --page-width: #{to.rem(1280px)};
-}
-```
+**Development** is done locally with Laravel Valet at `https://pimlico.test` ([local-development.md](local-development.md)).
 
-- **Typography:** body and UI in **Lato** (300, 400, 500, 700). Body L 20/1.55 light, Body M 16/1.6, Body S 14/1.55. Labels: Nav 14 medium, tracking 0.14em; Eyebrow 12 bold, tracking 0.16em, uppercase, pumpkin. Display sizes 96, 64, 44 and 26, scaled with `fluid()` between 390 px and 1440 px.
-- **Display serif: Fraunces** (confirmed 11 November 2026). It's on Google Fonts under the SIL Open Font License, so it's free for web use and can be self-hosted. Self-host the variable WOFF2 in `assets/fonts` rather than loading from Google, for performance and GDPR. Fraunces has optical size (`opsz`), `SOFT` and `WONK` axes: set `font-optical-sizing: auto`, and fix `SOFT` and `WONK` with `font-variation-settings` once matched against the Figma headings. Define it as `--font-family-display`, with Lato as `--font-family-body`.
-- **Breakpoints:** the design has two artboards, 390 and 1440. Keep the starterkit's sass-mq set, and treat `tablet` (768) and `desktop` (980) as the main switches. The header and mega menu switch at `desktop`.
-- **Layout:** the 1280 px content column with 80 px gutters maps directly onto the `contentWithGutters()` mixin.
+Deployment is by GitHub Actions: merging a pull request into `staging` or `main` deploys that branch to its Elastic Beanstalk environment. After deploying, the server runs `drush deploy`, which runs database updates, imports configuration and clears caches. Developers export configuration with `drush cex` and commit it with the code that needs it.
 
-### 7.4 Images and media
+There are two server environments:
 
-- Keep the skeleton's NIS image style sets: `l08` (16:9), `p05` (9:16), `sq` and `sc`.
-- Add the ratios the design uses, generated in the same pattern: the reference project's `l23` set (4:3, gallery landscapes) and a new 4:5 portrait set for brand cards, story cards, gallery portraits (435 × 544) and the split hero (680 × 850). The reference project's ratio codes (`l08`, `l23`, `p05`, `p09`) aren't derivable from the ratio, so agree the 4:5 code with the lead developer before generating it. Add the matching `responsive_image.styles.aspect_ratio_*` and media view modes (`4_3`, `4_5`).
-- Focal point on all image media. WebP conversion and quality 50 as in the reference project.
-- Hero films are self-hosted MP4 in the `video` media type, autoplay muted with a poster, with a visible pause control (WCAG 2.2.2) and no autoplay under `prefers-reduced-motion`.
+- **Staging** is the final checkpoint before going live, used for content entry and client review. It stays after launch for ongoing development. It is set to `noindex`.
+- **Production** is the live site.
 
-## 8. Custom modules
+Each environment's values are Elastic Beanstalk environment properties, so no domain or secret is committed:
 
-| Module | Responsibility |
+| Property | Value |
 |---|---|
-| `pimlico_map` | The `pimlico_unit` entity, the tenancy feed route, the map render element and theme hook, the overview paragraph formatter, the brand-page pseudo-field, and the map picker widget |
-| `pimlico_brands` | Brand-specific behaviour: the similar-brands fallback, the brands promo interstitial, and the `/dine` alias logic if the view can't express it |
-| `pimlico_news` | Only if views and config can't express "featured story" and related-content fallback. Created lazily, not up front. |
-| `pimlico_migrate` | Migration of the 47 brands and their Units from the map project's `map-source.json` (migrate_plus JSON source). Uninstalled after launch. |
+| `ENVIRONMENT` | `staging` or `production` |
+| `SITE_HOST` | The public host name (trusted host and sitemap base URL) |
+| `HASH_SALT` | A long random string per environment |
+| `SENTRY_DSN`, `SENTRY_ENVIRONMENT`, `SENTRY_RELEASE` | Error reporting |
+| `SMTP_USERNAME`, `SMTP_PASSWORD` | Mail delivery |
 
-PHP conventions, from the reference project:
+Developers maintain their own local environments, not included above and not visible to anyone else.
 
-- `declare(strict_types=1);` in every file, and `final class` by default.
-- OOP hooks with `#[Hook('…')]` in `src/Hook/*Hooks.php`, with an "Implements hook_…" docblock. No new procedural hooks in `.module` files.
-- Plugins declared with PHP attributes (`#[Block(…)]`, `#[FieldWidget(…)]`).
-- Services named by class, with `autowire: true` and a dedicated logger channel (`logger.channel.pimlico_map`).
-- Dependency injection everywhere. No `\Drupal::service()` in classes. The code samples in the map guide use static calls and must be rewritten to inject.
-- Return types on every method. Class docblocks explain why, and link to the relevant ADR.
-- Coding standard `Drupal,DrupalPractice` (phpcs through VS Code). Prettier and ESLint for JS.
-- Tests in `tests/src/{Unit,Kernel,Functional}` with `#[Group('pimlico_map')]` attributes. Kernel tests are the default.
+### Domains
 
-## 9. The map integration
-
-The map is the one piece of real engineering on this site, and most of it is already done. `docs/PIMLICO-MAP-GUIDE.md` Part B in the map project is the detailed spec. This section records how it fits the project's conventions.
-
-```
- pimlico-map project (source of truth)            Drupal (pimlico_map module)
- ───────────────────────────────────────          ─────────────────────────────────────────────
- map/pimlico-map.js       ── copied ──►  js/pimlico-map.js            (library pimlico_map/pimlico-map)
- output/map/pimlico-map.json ── copied ►  data/pimlico-map.json        (static, long cache)
-                                          Brand ─► Unit ─► Map Buildings
-                                          BrandFeedController ─► /api/map/brands (CacheableJsonResponse,
-                                                                   tags node_list:brand, pimlico_unit_list)
- Browser: <pimlico-map src=".../pimlico-map.json" brands="/api/map/brands" …>  rendered by the street_map SDC
-```
-
-- **The component is a vendored, unmodified dependency.** Its two built files are copied into `pimlico_map` with a version number in the library definition. Fixes are made in the map project and copied in. ADR 0001 records this.
-- **The `street_map` SDC wraps the element**, so the theme owns sizing, the heading and the category filter bar (built from `filter_link`). The module owns data and attributes.
-- **Overview (T13):** the `street_map` paragraph renders the filter bar from `brand_category` terms in weight order, and the map with `locate` and search.
-- **Brand page (T03):** a pseudo-field (`hook_entity_extra_field_info` and `hook_node_view` as OOP hooks) renders the map in `mode="brand"` with the Brand's map ID, placed by the view display beside the showroom details.
-- **Picker:** a field widget on `field_map_buildings` shows the map in `pick` mode.
-- **Feed contract:** exactly the shape in the guide's B3. A Kernel test asserts the shape, the active-only filter, and the cache tags.
-- **Security:** same-origin fetches only. No CSP changes needed. OpenStreetMap attribution is always visible.
-
-## 10. Cross-cutting concerns
-
-| Concern | Approach |
+| Environment | Domain |
 |---|---|
-| **Accessibility** | WCAG 2.2 AA. Native elements first: `<dialog>` for the mobile menu, `<details>` for transcripts, `<button aria-pressed>` for filters. Visible focus states (every Figma component has a Focus variant). Pause control on hero films. Storybook a11y addon on every component. Screen reader pass before launch. |
-| **Performance** | Vite-built, per-component libraries. Responsive images with WebP. Hero video with poster and `preload="none"` on mobile. Page cache and dynamic page cache, with CloudFront in front (`cloudfront_cache_path_invalidate`, `cloudfront_cache_home_page`). The Base Map JSON is about 48 KB gzipped and cached long-term. |
-| **SEO** | Metatag and Schema Metatag (`LocalBusiness` on Brand, `NewsArticle` on Article, `PodcastEpisode` on episodes), Pathauto patterns (`brands/[node:title]`, `news/[node:title]`), Simple XML sitemap (to add), robots.txt. |
-| **Search** | Search API with the database backend, indexing Brands, Stories and Pages. Solr is unnecessary at this content volume. |
-| **Forms** | Webform for Contact (with error and success states from the design), reCAPTCHA v3, SMTP delivery. |
-| **Newsletter** | A block form posting to the client's email platform. The provider is an open task: build the `newsletter` component and block with a form that doesn't submit anywhere yet, and wire it up once the provider is chosen. |
-| **Cookie consent** | **CookieScript** (decided 11 November 2026; set-up later). It's a hosted script, so no Drupal module is needed: the script tag is loaded first in `<head>` through a theme library, with its ID from environment config so staging and production can differ. The banner is styled in the CookieScript dashboard with the site's colours and fonts. The footer's Cookie preferences link opens it again (`CookieScript.instance.show()`). Google Tag uses CookieScript's Google Consent Mode v2 integration, so no tags fire before consent. |
-| **Monitoring** | Sentry (Raven) for PHP and the Vite plugin for JS, as in the skeleton. Health check module. |
-| **Security** | No secrets in config export. Contrib modules never patched in place (patches go in `patches/`). Feed is read-only public data. |
+| Staging | To be confirmed (`*.preflight.site`) |
+| Production | To be confirmed |
 
-## 11. Open questions
+## Tracking
 
-1. **Newsletter provider:** Mailchimp, Dotdigital or something else? Left as an open task (§10).
-2. **CookieScript set-up:** the account, banner configuration and script ID will be sorted later. The build leaves a slot for the script (§10).
-3. **Map data:** the map project's open questions still apply and will be tackled later: base map source (OSM or Grosvenor survey), the unit register, tenancy status by hand or by dates, structured opening hours, short map labels, the six flagged brand placements, and a Newson's Yard site plan. Until then the migration uses the current placements.
-4. **Brand map IDs:** will brands ever be renamed? If so, add a separate `field_map_id` rather than relying on the path alias.
-5. **Hero films:** final footage, length and file size budget.
-6. **Content migration:** beyond the 47 brands, is any news or page content migrated from belgraviavillage.com, or written fresh?
-7. **Analytics:** GA4 through Google Tag, and who owns the container?
+### Cookies
+
+Cookie consent is handled by **CookieScript**, loaded first in the page `<head>` with a script ID per environment. The banner is styled in the CookieScript dashboard with the site's colours and fonts, and the footer's Cookie preferences link reopens it. Google Tag uses CookieScript's Google Consent Mode v2 integration, so no tags fire before consent. This waits on the CookieScript account.
+
+The site sets no cookies of its own for visitors. YouTube sets none until someone presses play.
+
+### Tracking details
+
+GA4 through Google Tag, with consent mode. The events to track, and who owns the Google account and container, are to be confirmed with the client.
+
+## Testing
+
+The site should be tested on all the browsers listed in [Target specification](#target-specification). Results so far are recorded in [launch-checklist.md](launch-checklist.md):
+
+- **Accessibility:** axe finds no WCAG 2.2 AA issues on 17 templates at 390px and 1440px. Keyboard focus is visible throughout, nothing scrolls sideways at 200% zoom, and films respect reduced motion.
+- **Map:** the map project's 96 browser checks (`scripts/map-qa.sh`) all pass against the Drupal pages.
+- **Code:** automated tests (Kernel), Drupal coding standards, ESLint and Prettier all pass; `composer audit` is clean.
+- **Still to do by a person:** VoiceOver on macOS and iOS, Safari and iOS devices (especially the map's pinch and full screen), Android Chrome and Firefox.
+
+All standard Drupal pre-launch checks should also be done (status report, cron, error logs, file permissions).
+
+## Deploying to live
+
+### Launch process
+
+The site is a new build. Brands come from belgraviavillage.com through the import; other pages and stories are written fresh.
+
+1. Content is entered on staging. Before launch, agree a content freeze with the client.
+2. Copy staging's database and media files to production.
+3. Set the production environment properties and DNS, and generate the sitemap.
+
+[launch-checklist.md](launch-checklist.md) has the first-deploy and go-live steps.
+
+### Redirects
+
+The Pimlico Road pages of belgraviavillage.com should redirect to the new site:
+
+| URL | Points to | Redirect type | Notes |
+|---|---|---|---|
+| `belgraviavillage.com/pimlico-road` | `/` | 301 | |
+| `belgraviavillage.com/brand/*` (Pimlico Road brands) | `/brands/*` | 301 | One per brand; the slugs differ, so a list is needed |
+
+The full list waits on the client and on who controls belgraviavillage.com.
+
+## Post-launch actions
+
+- **Destroy unused environments:** none. Staging remains after launch for ongoing development.
+- Uninstall `pimlico_migrate` once the import is final.
+- Submit the sitemap in Google Search Console, and set up uptime monitoring on `/` and `/api/map/brands`.
+
+## Open questions
+
+1. **Newsletter provider:** Mailchimp, Dotdigital or something else?
+2. **CookieScript:** the account, banner and script ID.
+3. **Domains:** staging and production.
+4. **Contact form:** recipients, routing by enquiry type, and how long submissions are kept.
+5. **Spam protection:** Honeypot on the forms, and reCAPTCHA keys for the login forms.
+6. **Analytics:** events to track, and the account owner.
+7. **Map data:** the flagged placements and the Newson's Yard layout (to check with the client in the map picker); the base map source (OpenStreetMap or a Grosvenor survey).
+8. **Brand data:** six missing postcodes; Food & Drink sub-categories; whether more brands belong in Antiques & art; The Orange, no longer listed on belgraviavillage.com.
+9. **Hero films:** final footage within the 3–5 MB budget.
+10. **Redirects:** the list of belgraviavillage.com URLs.
 
 ### Resolved
 
 | Date | Question | Decision |
 |---|---|---|
-| 11 Nov 2026 | Repository | `jamesbriggs112/pimlico`, with `dev`, `staging` and `production` branches (§3) |
-| 11 Nov 2026 | Display serif | Fraunces, self-hosted (§7.3) |
-| 11 Nov 2026 | Events | Not required (§2.2) |
-| 11 Nov 2026 | Cookie consent | CookieScript, set up later (§10) |
+| 11 Nov 2026 | Repository | GitHub `jamesbriggs112/pimlico`, branches `dev`, `staging`, `production` |
+| 13 Nov 2026 | Repository | Moved to GitHub `Four-Agency/pimlico-website`; branches `dev`, `staging` and `main` (`main` replaces `production` and deploys to production) |
+| 11 Nov 2026 | Display font | Fraunces, self-hosted |
+| 11 Nov 2026 | Events | Not required |
+| 11 Nov 2026 | Cookie consent | CookieScript, set up later |
+| 11 Nov 2026 | Navigation | Top-level links only, no dropdowns; filters live on the listing pages |
+| 11 Nov 2026 | Brands filter | As Figma: All, Interiors, Antiques & art. Food & Drink is on Dine. |
+| 11 Nov 2026 | Newsletter consent | No tick-box needed for a sign-up-only form |
 
-## 12. Architecture decisions to record
+---
 
-Created in `docs/adr/` during phase 0, in the reference project's format (imperative title, prose decision and rejected alternatives, optional Consequences):
+## Appendix A: Build conventions
+
+These follow the lead developer's reference project (Sheffield Chamber of Commerce). New names use the same patterns.
+
+| Thing | Convention | Examples |
+|---|---|---|
+| Theme | short client machine name | `pimlico` |
+| Client modules | `pimlico_*`, `package: Pimlico` | `pimlico_map`, `pimlico_brands`, `pimlico_search`, `pimlico_migrate`, `pimlico_admin` |
+| Node bundles | snake_case singular nouns | `brand`, `article`, `podcast_episode`, `press_article`, `page` |
+| Paragraph types | snake_case. New types are named for the SDC they render; types inherited from the skeleton keep their IDs (`cta` renders `next_step`, `content_grid` renders `card_grid`, `text_wysiwyg_` renders `rich_text`) | `hero_film`, `street_map`, `info_band`, `policy_content` |
+| Vocabularies | `{context}_{type}` | `brand_category`, `news_category`, `area` |
+| Fields | `field_` + snake_case, no bundle prefix, storage reused across bundles | `field_heading`, `field_text`, `field_image`, `field_sections` |
+| Views | plural nouns | `brands`, `news`, `search` |
+| Menus | kebab-case | `main`, `footer`, `footer-information`, `legal`, `social-media` |
+| SDC folders | snake_case nouns | `story_card`, `info_row`, `youtube_player` |
+| CSS classes | BEM, block = the component in kebab-case | `.story-card__title`, `.info-band--inset` |
+| CSS custom properties | brand, then semantic, then component | `--color-brand-yellow`, `--color-text-eyebrow`, `--button-hover-background-color-yellow` |
+| JS behaviours | camelCase, in an IIFE with `once` and `Drupal` | `Drupal.behaviors.formValidation` |
+| ADRs | `docs/adr/NNNN-imperative-kebab-title.md` | `0001-keep-the-map-component-as-an-unmodified-dependency.md` |
+
+PHP:
+
+- `declare(strict_types=1);` everywhere, `final class` by default, and return types on every method.
+- OOP hooks with `#[Hook]` in `src/Hook/*Hooks.php`; plugins with PHP attributes; services autowired and named by class.
+- Dependency injection in classes; theme preprocess (`includes/*.inc`) may use `\Drupal::service()`.
+- Coding standard `Drupal,DrupalPractice`; Kernel tests by default.
+
+Configuration is exported to `config/sync`. Taxonomy terms, menu links and custom blocks are exported with Structure Sync (`drush et`, `drush em`, `drush eb`). Config Ignore keeps editor-managed config (webforms other than Contact and Newsletter) as edited on the server.
+
+## Appendix B: Theme architecture
+
+The theme, `pimlico`, was generated from `four_starterkit` and keeps the reference project's layout:
+
+- `components/`: the SDCs.
+- `templates/`: Drupal templates.
+- `includes/*.inc`: preprocess, one file per area.
+- `src/sass`: tokens, typography and layout.
+- `assets/`: fonts, icons and brand files.
+
+Rules:
+
+- Drupal templates are thin adapters that map fields onto components with `include`/`embed` and `only`.
+- Preprocess is written only where display configuration and Twig Tweak can't do the job, with cache metadata applied.
+- Every component has `.component.yml`, `.twig`, `.scss`, `README.md` and `thumbnail.png`, with `.js` where it needs behaviour and `.stories.twig` where it can be shown on its own (29 of 51). See [front-end-conventions.md](front-end-conventions.md).
+
+Design tokens from the Figma variables are CSS custom properties in `src/sass/init/_root.scss`:
+
+- **Palette:** dark grey `#394959`, yellow `#f9e577`, pumpkin `#e87400`, with eyebrows in pumpkin `#e87400` at the client's request. That is 3:1 on white, below the WCAG AA 4.5:1 for small text; `#a64f00` (5:1) is kept as a token if this is revisited.
+- **Linens:** `#f4f2eb` and `#ece9df`.
+- **Layout:** a 1280px page width and fluid spacing between 390px and 1440px.
+
+**Typography:**
+
+- Body and labels are Lato 2.0 (300, 400, 500, 700); headings are Fraunces (variable). Both are self-hosted.
+- Label and body styles always set Lato, even on heading elements.
+
+**Breakpoints:** sass-mq with tablet (768px) and desktop (980px).
+
+Main components, by area:
+
+| Area | Components |
+|---|---|
+| Primitives | `logo`, `icon`, `button`, `button_icon`, `text_link`, `heading`, `form`, `visually_hidden`, `messages` |
+| Layout | `header`, `main_menu`, `menu`, `footer`, `newsletter`, `page_title`, `page_banner`, `pagination`, `filter_bar`, `grid` |
+| Heroes and banners | `hero_film`, `hero_split`, `feature_banner`, `visit_banner`, `info_band`, `promo_band` |
+| Sections | `introduction`, `section_heading`, `rich_text`, `quote`, `card_grid`, `story_card`, `image_gallery`, `info_rows`, `info_row`, `split_section`, `next_step`, `form_section`, `policy_content`, `figure` |
+| Stories | `article`, `featured_story`, `story_intro`, `story_credits`, `episode_band`, `audio_player` |
+| Media | `media_video`, `youtube_player` |
+| Map | `street_map` |
+| Drupal wrappers | `block`, `paragraph`, `view_clean` |
+
+The admin theme is Gin, branded by the `pimlico_admin` module (Fraunces page titles), Gin settings (navy accent, the Pimlico Road CMS icon) and Gin Login (wordmark and photography).
+
+## Appendix C: Custom modules
+
+| Module | Responsibility |
+|---|---|
+| `pimlico_map` | The Unit entity, the brand feed at `/api/map/brands`, the map on Brand pages, the Unit map picker, and CloudFront purging of the feed. |
+| `pimlico_brands` | The Brands and Dine category filters (a contextual filter, so pager links keep `?category=`), card labels and Brand breadcrumbs, and the Brand form's category list grouped as Brands and Dine. |
+| `pimlico_search` | Sorts indexed content into search groups (Brands, Dine, News, Press). |
+| `pimlico_migrate` | Imports Brands, Units and photos from the map project's data and belgraviavillage.com. Uninstalled after launch. |
+| `pimlico_admin` | CMS branding on top of Gin. |
+
+Each has Kernel tests where it has logic (`pimlico_map`, `pimlico_brands`, `pimlico_search`).
+
+## Appendix D: The street map
+
+The map project (`pimlico-map`) is the source of truth for the map component (`pimlico-map.js`) and the base map (`pimlico-map.json`, built from OpenStreetMap). Both are copied unchanged into `pimlico_map/assets`, with the version number in the library definition; the version is also the base map's cache-busting `?v=`.
+
+- **Data:** a Brand links to one or more Units, and each Unit to one or more Map Buildings. `/api/map/brands` lists published, active Brands shown on the map, with their buildings and top-level category, in the shape the component expects. It is cached by tag and purged from CloudFront on save.
+- **Visit page:** the Street map section shows the map with the category filter, search and "show my location".
+- **Brand pages:** the map is zoomed to the Brand, beside the showroom details.
+- **Editors:** the Unit form shows the map in pick mode; clicking a building fills its ID.
+- **QA:** `scripts/map-qa.sh` runs the map project's 96 browser checks against the Drupal pages.
+- **Security:** same-origin requests only; OpenStreetMap attribution is always shown.
+
+Updating the map: rebuild and test in the map project, copy the two files, bump the library version, run `scripts/map-qa.sh`.
+
+## Appendix E: Architecture decisions
+
+Recorded in `docs/adr/`:
 
 - `0001-keep-the-map-component-as-an-unmodified-dependency.md`
 - `0002-link-brands-to-the-map-through-units.md`

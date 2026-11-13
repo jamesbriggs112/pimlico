@@ -1,0 +1,19 @@
+uuid: ab76a977-0f84-4f72-8b6c-2dd7feb6d49a
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_heading
+    - paragraphs.paragraphs_type.hero_split
+id: paragraph.hero_split.field_heading
+field_name: field_heading
+entity_type: paragraph
+bundle: hero_split
+label: Heading
+description: ''
+required: true
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

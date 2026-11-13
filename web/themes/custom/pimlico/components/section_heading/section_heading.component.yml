@@ -1,0 +1,47 @@
+'$schema': 'https://git.drupalcode.org/project/drupal/-/raw/HEAD/core/assets/schemas/v1/metadata.schema.json'
+name: Section heading
+status: stable
+description: 'Figma "Section heading": eyebrow and Display L title, with an optional link on the right.'
+libraryOverrides:
+  css:
+    component:
+      section_heading.scss: {}
+  dependencies:
+    - core/components.pimlico--text_link
+props:
+  type: object
+  required:
+    - title
+  properties:
+    eyebrow:
+      type: string
+      title: Eyebrow
+    title:
+      type: string
+      title: Title
+    link_text:
+      type: string
+      title: Link text
+    link_url:
+      type: string
+      title: Link URL
+    tag:
+      type: string
+      title: Heading element
+      enum: [h1, h2, h3]
+      default: h2
+    size:
+      type: string
+      title: Size
+      description: 'l = Display L (64px), m = Display M (44px).'
+      enum: [l, m]
+      default: l
+    align:
+      type: string
+      title: Alignment
+      enum: [start, center]
+      default: start
+    id:
+      type: string
+      title: Heading ID
+      description: 'For aria-labelledby on the section.'

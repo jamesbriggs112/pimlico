@@ -1,0 +1,25 @@
+'$schema': 'https://git.drupalcode.org/project/drupal/-/raw/HEAD/core/assets/schemas/v1/metadata.schema.json'
+name: Form section
+status: stable
+description: 'Figma Contact "Section · Contact form": eyebrow and title on the left, the form on the right, on linen.'
+libraryOverrides:
+  css:
+    component:
+      form_section.scss: {}
+  dependencies:
+    - core/components.pimlico--form
+    - core/components.pimlico--button
+props:
+  type: object
+  properties:
+    eyebrow:
+      type: string
+      title: Eyebrow
+    heading:
+      type: string
+      title: Heading
+slots:
+  text:
+    title: Intro text
+  form:
+    title: Form

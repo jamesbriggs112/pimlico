@@ -1,0 +1,9 @@
+{% set attributes = attributes ?: create_attribute() %}
+<figure {{ attributes.addClass('quote') }}>
+  <blockquote class="quote__text">
+    {% block quote %}{{ quote }}{% endblock %}
+  </blockquote>
+  {% if cite %}
+    <figcaption class="quote__cite">{{ cite }}</figcaption>
+  {% endif %}
+</figure>

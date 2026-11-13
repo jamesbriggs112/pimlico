@@ -1,0 +1,17 @@
+{#
+/**
+ * @file
+ * Hero film paragraph → pimlico:hero_film. The film renders through the
+ * media "background" view mode (autoplay, muted, loop, no controls).
+ */
+#}
+{% set link = paragraph.field_link.0 %}
+{% include 'pimlico:hero_film' with {
+  attributes,
+  eyebrow: paragraph.field_eyebrow.value|default(''),
+  heading: paragraph.field_heading.value|default(''),
+  link_text: link.title|default(''),
+  link_url: link ? link.url.toString() : '',
+  media: content.field_video,
+  poster: content.field_image,
+} only %}

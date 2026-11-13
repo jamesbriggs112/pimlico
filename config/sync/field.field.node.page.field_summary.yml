@@ -1,0 +1,19 @@
+uuid: 443af6cc-f5c8-46f6-9090-27e81a839760
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_summary
+    - node.type.page
+id: node.page.field_summary
+field_name: field_summary
+entity_type: node
+bundle: page
+label: Intro
+description: 'One or two sentences under the page title. Not shown when the page starts with a hero.'
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string_long

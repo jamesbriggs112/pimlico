@@ -1,0 +1,23 @@
+uuid: 6eb3736b-5343-4507-b091-db6a971752af
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_accessibility_link
+    - node.type.brand
+  module:
+    - link
+id: node.brand.field_accessibility_link
+field_name: field_accessibility_link
+entity_type: node
+bundle: brand
+label: 'Accessibility information'
+description: 'Link to the brand’s access information.'
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings:
+  title: 0
+  link_type: 16
+field_type: link

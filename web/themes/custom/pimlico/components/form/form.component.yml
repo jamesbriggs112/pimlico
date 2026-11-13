@@ -1,0 +1,15 @@
+'$schema': 'https://git.drupalcode.org/project/drupal/-/raw/HEAD/core/assets/schemas/v1/metadata.schema.json'
+name: Form
+status: stable
+libraryOverrides:
+  css:
+    component:
+      form.scss: {}
+  js:
+    form.js: {}
+  dependencies:
+    - core/drupal
+    - core/once
+slots:
+  form:
+    title: Form

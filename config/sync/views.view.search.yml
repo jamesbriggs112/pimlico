@@ -1,0 +1,227 @@
+uuid: 8c3a1479-3781-4b45-8695-e709202c31b4
+langcode: en
+status: true
+dependencies:
+  config:
+    - search_api.index.content
+  module:
+    - search_api
+id: search
+label: Search
+module: views
+description: 'Site search (Figma T17/T18). Groups are rendered by the page template from block_group.'
+tag: ''
+base_table: search_api_index_content
+base_field: search_api_id
+display:
+  default:
+    id: default
+    display_title: Default
+    display_plugin: default
+    position: 0
+    display_options:
+      title: Search
+      pager:
+        type: full
+        options:
+          offset: 0
+          items_per_page: 12
+          id: 0
+          tags:
+            next: Next
+            previous: Previous
+            first: First
+            last: Last
+      exposed_form:
+        type: basic
+        options:
+          submit_button: Search
+          reset_button: false
+          expose_sort_order: false
+      access:
+        type: none
+        options: {  }
+      cache:
+        type: search_api_tag
+        options: {  }
+      empty:
+        area_text_custom:
+          id: area_text_custom
+          table: views
+          field: area_text_custom
+          plugin_id: text_custom
+          empty: true
+          content: 'Nothing on the street matches that search. Try a brand name, a category or one of the popular searches.'
+      sorts:
+        search_api_relevance:
+          id: search_api_relevance
+          table: search_api_index_content
+          field: search_api_relevance
+          plugin_id: search_api
+          order: DESC
+        created:
+          id: created
+          table: search_api_index_content
+          field: created
+          plugin_id: search_api
+          order: DESC
+      filters:
+        search_api_fulltext:
+          id: search_api_fulltext
+          table: search_api_index_content
+          field: search_api_fulltext
+          plugin_id: search_api_fulltext
+          operator: and
+          group: 1
+          exposed: true
+          expose:
+            operator_id: keys_op
+            label: 'Search Pimlico Road'
+            identifier: keys
+            required: false
+            remember: false
+            placeholder: 'Try ‘antiques’, ‘lunch’ or a brand name'
+          parse_mode: terms
+          min_length: 2
+          fields: {  }
+        search_group:
+          id: search_group
+          table: search_api_index_content
+          field: search_group
+          plugin_id: search_api_string
+          operator: '='
+          value:
+            value: ''
+          group: 1
+          exposed: true
+          expose:
+            operator_id: search_group_op
+            label: Type
+            identifier: type
+            required: false
+            remember: false
+      style:
+        type: default
+        options:
+          row_class: ''
+          default_row_class: false
+      row:
+        type: search_api
+        options:
+          view_modes:
+            'entity:node':
+              article: teaser
+              brand: teaser
+              podcast_episode: teaser
+              press_article: teaser
+      query:
+        type: search_api_query
+        options:
+          bypass_access: false
+          skip_access: false
+      header:
+        area_text_custom:
+          id: area_text_custom
+          table: views
+          field: area_text_custom
+          plugin_id: text_custom
+          empty: true
+          content: 'Find brands, places to eat and drink, and stories from Pimlico Road.'
+      display_extenders: {  }
+    cache_metadata:
+      max-age: -1
+      contexts:
+        - 'languages:language_interface'
+        - url
+        - url.query_args
+        - 'user.node_grants:view'
+      tags:
+        - 'config:search_api.index.content'
+        - 'search_api_list:content'
+  block_group:
+    id: block_group
+    display_title: 'Result group'
+    display_plugin: block
+    position: 2
+    display_options:
+      pager:
+        type: some
+        options:
+          offset: 0
+          items_per_page: 3
+      empty: {  }
+      arguments:
+        search_group:
+          id: search_group
+          table: search_api_index_content
+          field: search_group
+          plugin_id: search_api
+          default_action: empty
+          specify_validation: false
+      filters:
+        search_api_fulltext:
+          id: search_api_fulltext
+          table: search_api_index_content
+          field: search_api_fulltext
+          plugin_id: search_api_fulltext
+          operator: and
+          group: 1
+          exposed: true
+          expose:
+            operator_id: keys_op
+            label: 'Search Pimlico Road'
+            identifier: keys
+            required: false
+            remember: false
+            placeholder: 'Try ‘antiques’, ‘lunch’ or a brand name'
+          parse_mode: terms
+          min_length: 2
+          fields: {  }
+      filter_groups:
+        operator: AND
+        groups:
+          1: AND
+      defaults:
+        empty: false
+        pager: false
+        arguments: false
+        filters: false
+        filter_groups: false
+        header: false
+      header: {  }
+      display_extenders: {  }
+      block_description: 'Search: result group'
+    cache_metadata:
+      max-age: -1
+      contexts:
+        - 'languages:language_interface'
+        - url
+        - 'user.node_grants:view'
+      tags:
+        - 'config:search_api.index.content'
+        - 'search_api_list:content'
+  page_search:
+    id: page_search
+    display_title: 'Search page'
+    display_plugin: page
+    position: 1
+    display_options:
+      display_extenders:
+        metatag_display_extender:
+          metatags:
+            title: 'Search Pimlico Road'
+            description: 'Search the brands, places to eat and stories of Pimlico Road.'
+            og_title: 'Search Pimlico Road'
+            og_description: 'Search the brands, places to eat and stories of Pimlico Road.'
+            canonical_url: '[current-page:url:absolute]'
+      path: search
+    cache_metadata:
+      max-age: -1
+      contexts:
+        - 'languages:language_interface'
+        - url
+        - url.query_args
+        - 'user.node_grants:view'
+      tags:
+        - 'config:search_api.index.content'
+        - 'search_api_list:content'

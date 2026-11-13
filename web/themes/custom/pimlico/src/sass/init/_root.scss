@@ -1,0 +1,319 @@
+@use 'sass-rem' as to;
+@use 'sass-mq/mq' as *;
+@use './layout-vars' as *;
+@use './mixins' as *;
+
+:root {
+  // Layout
+  // 1280px content column with 80px gutters at 1440px; 24px gutters on mobile
+  --page-width: #{to.rem(1280px)};
+  --page-gutter: #{fluid(24px, 80px)};
+  --page-gutter-left: calc(var(--page-gutter) + env(safe-area-inset-left));
+  --page-gutter-right: calc(var(--page-gutter) + env(safe-area-inset-right));
+  --page-gutter-total: calc(
+    var(--page-gutter) + env(safe-area-inset-left) + env(safe-area-inset-right)
+  );
+  --vertical-spacing: var(--section-space);
+  --component-spacing: var(--section-space);
+  --row-gap: #{fluid(32px, 40px)};
+  --column-gap: #{fluid(16px, 40px)};
+  --grid-column-count: 3;
+  --grid-item--min-width: #{to.rem(280px)};
+
+  // Brand palette (Figma variables)
+  --color-brand-dark-grey: #394959;
+  --color-brand-grey: #c5d3d2;
+  --color-brand-yellow: #f9e577;
+  // Not a Figma variable: the button description asks for a "mustard" hover
+  // with a 4.8:1 contrast against dark grey, but no colour is defined.
+  // #dab845 gives 4.8:1. Confirm with design.
+  --color-brand-mustard: #dab845;
+  --color-brand-pumpkin: #e87400;
+  // Darker pumpkin (5:1 on white): kept for reference. Eyebrows use the
+  // design's #e87400 at the client's request, although it is 3:1 on white,
+  // short of the 4.5:1 WCAG AA asks for small text.
+  --color-brand-pumpkin-text: #a64f00;
+  --color-brand-white: #ffffff;
+  --color-tint-linen-30: #f4f2eb;
+  --color-tint-linen-60: #ece9df;
+  --color-map-ground: #e0dcce;
+  --color-border-default: #e0dccd;
+  --color-border-inverse: var(--color-brand-grey);
+  // Dark-grey scrim over photographs behind white text (Figma: 72%)
+  --color-scrim: rgb(57 73 89 / 72%);
+
+  // Semantic colours (Figma variables)
+  --color-text-primary: var(--color-brand-dark-grey);
+  --color-text-inverse: var(--color-brand-white);
+  --color-text-eyebrow: var(--color-brand-pumpkin);
+  --color-action-primary: var(--color-brand-yellow);
+  --color-action-primary-hover: var(--color-brand-mustard);
+  --color-action-on-primary: var(--color-brand-dark-grey);
+  --color-border-strong: var(--color-brand-dark-grey);
+  --color-surface-raised: var(--color-brand-white);
+  --color-surface-inverse: var(--color-brand-dark-grey);
+  --color-surface-highlight: var(--color-brand-yellow);
+  --color-surface-tint: var(--color-tint-linen-30);
+  --color-surface-tint-strong: var(--color-tint-linen-60);
+
+  // Starterkit aliases, so components not yet restyled stay on brand
+  --color-black: var(--color-brand-dark-grey);
+  --color-white: var(--color-brand-white);
+  --color-dark-grey: var(--color-brand-dark-grey);
+  --color-mid-grey: var(--color-brand-grey);
+  --color-light-grey-20: var(--color-tint-linen-30);
+  --color-light-grey-40: var(--color-tint-linen-60);
+  --color-light-grey-50: var(--color-brand-grey);
+  --color-light-grey-70: var(--color-brand-dark-grey);
+
+  --color-primary: var(--color-brand-dark-grey);
+  --color-primary-hover: var(--color-brand-yellow);
+  --color-primary-active: var(--color-brand-yellow);
+  --color-primary-focus: var(--color-brand-dark-grey);
+  --color-primary-text: var(--color-text-inverse);
+  --color-primary-border: var(--color-brand-dark-grey);
+  --color-primary-outline: var(--color-border-strong);
+
+  --color-secondary: var(--color-brand-yellow);
+  --color-secondary-hover: var(--color-brand-mustard);
+  --color-secondary-active: var(--color-brand-mustard);
+  --color-secondary-focus: var(--color-brand-yellow);
+  --color-secondary-text: var(--color-brand-dark-grey);
+  --color-secondary-border: var(--color-brand-yellow);
+  --color-secondary-outline: var(--color-border-strong);
+
+  --color-disabled: var(--color-tint-linen-60);
+  --color-disabled-text: var(--color-brand-dark-grey);
+  --color-disabled-border: var(--color-tint-linen-60);
+
+  // Messages keep conventional status colours for clarity
+  --color-success: #2e6b47;
+  --color-success-text: var(--color-brand-white);
+  --color-success-border: #2e6b47;
+  --color-warning: var(--color-brand-yellow);
+  --color-warning-text: var(--color-brand-dark-grey);
+  --color-warning-border: var(--color-brand-mustard);
+  --color-error: #a3291d;
+  --color-error-text: var(--color-brand-white);
+  --color-error-border: #a3291d;
+  --color-info: var(--color-tint-linen-60);
+  --color-info-text: var(--color-brand-dark-grey);
+  --color-info-border: var(--color-brand-dark-grey);
+
+  --text-color: var(--color-text-primary);
+  --background-color: var(--color-brand-white);
+
+  // Typography: families
+  --font-family-display: 'Fraunces', Georgia, 'Times New Roman', serif;
+  --font-family-body: 'Lato', 'Helvetica Neue', Arial, sans-serif;
+  --font-family: var(--font-family-body);
+  --body-text: var(--font-family-body);
+  --header-text: var(--font-family-display);
+  // Fraunces axes, as set on every Figma heading
+  --font-display-variation: 'SOFT' 0, 'WONK' 0;
+
+  // Typography: weights
+  --font-weight-light: 300;
+  --font-weight-regular: 400;
+  --font-weight-medium: 500;
+  --font-weight-semi-bold: 500;
+  --font-weight-bold: 700;
+
+  // Typography: display scale (Fraunces Light), 390px to 1440px
+  --font-size-display-xl: #{fluid(44px, 96px)};
+  --line-height-display-xl: 1.02;
+  --letter-spacing-display-xl: #{to.rem(-2px)};
+  --font-size-display-l: #{fluid(32px, 64px)};
+  --line-height-display-l: 1.08;
+  --letter-spacing-display-l: #{to.rem(-1.5px)};
+  --font-size-display-m: #{fluid(32px, 44px)};
+  --line-height-display-m: 1.1;
+  --letter-spacing-display-m: #{to.rem(-1px)};
+  --font-size-display-s: #{fluid(22px, 26px)};
+  --line-height-display-s: 1.2;
+  --letter-spacing-display-s: #{to.rem(-0.5px)};
+
+  // Typography: titles (Fraunces Regular) for cards, rows and menus
+  --font-size-title-m: #{fluid(20px, 26px)};
+  --font-size-title-s: #{to.rem(20px)};
+  --line-height-title: 1.25;
+  --letter-spacing-title: #{to.rem(-0.5px)};
+
+  // Typography: body and labels (Lato)
+  --font-size-body-l: #{fluid(18px, 20px)};
+  --line-height-body-l: 1.55;
+  --font-size-body-m: #{to.rem(16px)};
+  --line-height-body-m: 1.6;
+  --font-size-body-s: #{to.rem(14px)};
+  --line-height-body-s: 1.55;
+  --font-size-label-nav: #{to.rem(14px)};
+  --letter-spacing-label-nav: 0.14em;
+  --font-size-label-eyebrow: #{to.rem(12px)};
+  --letter-spacing-label-eyebrow: 0.16em;
+  --font-size-link-caps: #{to.rem(12px)};
+  --letter-spacing-link-caps: 0.14em;
+  --line-height-label: 1.4;
+  --font-size-base: var(--font-size-body-m);
+  --line-height-base: var(--line-height-body-m);
+  --max-text-width: #{to.rem(760px)};
+
+  // Spacing
+  --space-12: #{to.rem(12px)};
+  --space-16: #{to.rem(16px)};
+  --space-24: #{to.rem(24px)};
+  --space-32: #{to.rem(32px)};
+  --section-space: #{fluid(40px, 60px)};
+  --radius-pill: 999px;
+
+  // Accessibility
+  // Figma "Focus ring / On light": 2px surface gap, then 2px dark ring.
+  // "On dark": 2px dark gap, then 2px yellow ring.
+  --focus-ring-on-light:
+    0 0 0 #{to.rem(2px)} var(--color-surface-raised),
+    0 0 0 #{to.rem(4px)} var(--color-border-strong);
+  --focus-ring-on-dark:
+    0 0 0 #{to.rem(2px)} var(--color-surface-inverse),
+    0 0 0 #{to.rem(4px)} var(--color-surface-highlight);
+  --focus-ring: var(--focus-ring-on-light);
+  --focus-outline-color-primary: var(--color-border-strong);
+  --focus-outline-offset: #{to.rem(2px)};
+  --focus-outline-width: #{to.rem(2px)};
+  --focus-border-radius: 0;
+
+  // Links
+  --link-color: var(--text-color);
+  --link-font-weight: inherit;
+  --link-hover-color: var(--link-color);
+  --link-underline-thickness: #{to.rem(1px)};
+  --link-underline-offset: #{to.rem(3px)};
+  --link-hover-underline-offset: #{to.rem(6px)};
+  --link-underline-style: solid;
+
+  // Components
+  --header-bg-color: var(--color-white);
+  --header-height: #{fluid(57px, 69px)};
+  --header-padding: #{to.rem(20px)} var(--page-gutter-right) #{to.rem(20px)}
+    var(--page-gutter-left);
+  --footer-bg-color: var(--color-tint-linen-60);
+  --footer-text-color: var(--color-text-primary);
+  --footer-link-color: var(--color-text-primary);
+  --footer-link-hover-color: var(--color-text-primary);
+
+  // Cards
+  --card-background-color: transparent;
+  --card-border-color: var(--color-light-grey-50);
+  --card-border-radius: #{to.rem(0px)};
+  --card-border-width: #{to.rem(0px)};
+  --card-content-padding: #{to.rem(0px)};
+  --card-text-color: inherit;
+
+  // Quotes
+  --quote-border-radius: #{to.rem(4px)};
+  --quote-border-width: #{to.rem(4px)};
+  --quote-padding: #{to.rem(25px 30px 20px)};
+  --quote-border-color-primary: var(--color-primary-border);
+  --quote-border-color-secondary: var(--color-secondary-border);
+
+  // Buttons (Figma "A / Button": Dark and Yellow)
+  --button-padding: #{to.rem(18px)} #{to.rem(34px)};
+  --button-border-radius: 0;
+  --button-border-width: 0;
+  --button-font-weight: var(--font-weight-medium);
+  --button-font-size: var(--font-size-label-nav);
+  --button-letter-spacing: var(--letter-spacing-label-nav);
+  --button-transition: background-color 0.3s ease-out, color 0.3s ease-out;
+
+  --button-background-color-dark: var(--color-brand-dark-grey);
+  --button-text-color-dark: var(--color-text-inverse);
+  --button-hover-background-color-dark: var(--color-action-primary-hover);
+  --button-hover-text-color-dark: var(--color-action-on-primary);
+
+  --button-background-color-yellow: var(--color-action-primary);
+  --button-text-color-yellow: var(--color-action-on-primary);
+  --button-hover-background-color-yellow: var(--color-action-primary-hover);
+  --button-hover-text-color-yellow: var(--color-action-on-primary);
+
+  --button-focus-outline-offset: #{to.rem(2px)};
+  --button-focus-outline-width: #{to.rem(2px)};
+  --button-disabled-background-color: var(--color-disabled);
+  --button-disabled-text-color: var(--color-disabled-text);
+  --button-disabled-background-color-secondary: var(--color-disabled);
+  --button-disabled-text-color-secondary: var(--color-disabled-text);
+  --button-disabled-border-color-secondary: transparent;
+
+  // Button Icon (Figma "Media control": 48px white-outline circle)
+  --button-icon-size: #{to.rem(48px)};
+  --button-icon-icon-size: #{to.rem(20px)};
+  --button-icon-spacing: #{to.rem(10px)};
+  --button-icon-border-radius: var(--radius-pill);
+  --button-icon-border-color: var(--color-brand-white);
+  --button-icon-color: var(--color-brand-white);
+  --button-icon-hover-background-color: var(--color-brand-white);
+  --button-icon-hover-color: var(--color-brand-dark-grey);
+
+  // Forms (Figma "Field": underlined controls)
+  --form-element-label-color: var(--color-text-primary);
+  --form-element-padding: 0 0 var(--space-12);
+  --form-element-border-radius: 0;
+  --form-element-border-width: #{to.rem(1px)};
+  --form-element-border-width-active: #{to.rem(2px)};
+  --form-element-border-color: var(--color-border-strong);
+  --form-element-text-color: var(--color-text-primary);
+  --form-element-placeholder-color: rgb(57 73 89 / 80%);
+  --form-element-background-color: transparent;
+  --form-element-active-border-color: var(--color-border-strong);
+  --form-element-active-background-color: transparent;
+  --form-element-focus-background-color: transparent;
+  --form-element-focus-border-color: var(--color-border-strong);
+  --form-element-focus-outline-color: var(--color-border-strong);
+  --form-element-focus-outline-width: #{to.rem(2px)};
+  --form-element-focus-outline-offset: #{to.rem(2px)};
+  --form-element-disabled-background-color: var(--color-tint-linen-30);
+  --form-element-disabled-text-color: var(--color-text-primary);
+  --form-element-disabled-border-color: var(--color-tint-linen-60);
+  --form-element-gap: var(--space-12);
+  --form-textarea-height: #{to.rem(140px)};
+  --form-checkbox-size: #{to.rem(20px)};
+
+  // Menu
+  --menu-spacing: #{to.rem(10px)};
+  --menu-link-font-size: #{to.rem(20px)};
+  --menu-link-font-weight: var(--font-weight-medium);
+  --main-menu-spacing: #{to.rem(10px)};
+  --main-menu-link-font-size: #{to.rem(20px)};
+  --main-menu-link-font-weight: var(--font-weight-medium);
+  --main-menu-link-color: var(--color-black);
+  --main-menu-link-hover-color: var(--color-primary);
+  --main-menu-mobile-link-font-size: #{to.rem(20px)};
+  --main-menu-mobile-link-font-weight: var(--font-weight-medium);
+  --main-menu-mobile-link-color: var(--color-black);
+  --main-menu-mobile-link-hover-color: var(--color-primary);
+
+  // Messages
+  --messages-border-width: #{to.rem(3px)};
+  --messages-border-radius: #{to.rem(6px)};
+  --messages-text-color: var(--text-color);
+  --messages-status-border-color: var(--color-success-border);
+  --messages-status-background-color: var(--color-success);
+  --messages-status-text-color: var(--color-success-text);
+  --messages-error-border-color: var(--color-error-border);
+  --messages-error-background-color: var(--color-error);
+  --messages-error-text-color: var(--color-error-text);
+  --messages-warning-border-color: var(--color-warning-border);
+  --messages-warning-background-color: var(--color-warning);
+  --messages-warning-text-color: var(--color-warning-text);
+  --messages-info-border-color: var(--color-info-border);
+  --messages-info-background-color: var(--color-info);
+  --messages-info-text-color: var(--color-info-text);
+
+  // Plyr
+  --plyr-color-main: var(--color-primary);
+  --plyr-color-main-hover: var(--color-primary-hover);
+  --plyr-color-text: var(--color-black);
+  --plyr-color-background: var(--color-white);
+  --plyr-video-control-color: var(--color-white);
+
+  @supports (interpolate-size: allow-keywords) {
+    interpolate-size: allow-keywords;
+  }
+}

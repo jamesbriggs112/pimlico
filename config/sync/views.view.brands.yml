@@ -1,0 +1,431 @@
+uuid: 026ea72e-e1e8-4701-a282-312b012e1235
+langcode: en
+status: true
+dependencies:
+  config:
+    - core.entity_view_mode.node.teaser
+    - node.type.brand
+    - taxonomy.vocabulary.brand_category
+  content:
+    - 'block_content:promo:5f1eb665-003e-4c93-ab95-7691e97561b3'
+  module:
+    - node
+    - taxonomy
+    - user
+id: brands
+label: Brands
+module: views
+description: 'Brands listing, Dine and Similar brands.'
+tag: ''
+base_table: node_field_data
+base_field: nid
+display:
+  default:
+    id: default
+    display_title: Default
+    display_plugin: default
+    position: 0
+    display_options:
+      title: Brands
+      fields: {  }
+      pager:
+        type: full
+        options:
+          offset: 0
+          items_per_page: 15
+          id: 0
+          tags:
+            next: Next
+            previous: Previous
+            first: First
+            last: Last
+          quantity: 9
+      exposed_form:
+        type: basic
+        options:
+          submit_button: Apply
+          reset_button: false
+      access:
+        type: perm
+        options:
+          perm: 'access content'
+      cache:
+        type: tag
+        options: {  }
+      empty:
+        area_text_custom:
+          id: area_text_custom
+          table: views
+          field: area_text_custom
+          plugin_id: text_custom
+          empty: true
+          content: '<p>No brands match that filter yet. Try another category.</p>'
+          tokenize: false
+      sorts:
+        title:
+          id: title
+          table: node_field_data
+          field: title
+          entity_type: node
+          entity_field: title
+          plugin_id: standard
+          order: ASC
+      arguments: {  }
+      filters:
+        status:
+          id: status
+          table: node_field_data
+          field: status
+          entity_type: node
+          entity_field: status
+          plugin_id: boolean
+          value: '1'
+          group: 1
+        type:
+          id: type
+          table: node_field_data
+          field: type
+          entity_type: node
+          entity_field: type
+          plugin_id: bundle
+          operator: in
+          value:
+            brand: brand
+          group: 1
+        field_brand_category_target_id:
+          id: field_brand_category_target_id
+          table: node__field_brand_category
+          field: field_brand_category_target_id
+          plugin_id: taxonomy_index_tid
+          operator: or
+          value: {  }
+          group: 1
+          exposed: true
+          expose:
+            operator_id: field_brand_category_target_id_op
+            label: Category
+            use_operator: false
+            operator: field_brand_category_target_id_op
+            identifier: category
+            required: false
+            remember: false
+            multiple: false
+            reduce: false
+          vid: brand_category
+          type: select
+          hierarchy: false
+          limit: true
+          error_message: true
+      filter_groups:
+        operator: AND
+        groups:
+          1: AND
+      style:
+        type: default
+        options:
+          grouping: {  }
+          row_class: ''
+          default_row_class: false
+      row:
+        type: 'entity:node'
+        options:
+          relationship: none
+          view_mode: teaser
+      query:
+        type: views_query
+        options: {  }
+      relationships: {  }
+      header:
+        area_text_custom:
+          id: area_text_custom
+          table: views
+          field: area_text_custom
+          plugin_id: text_custom
+          empty: false
+          content: 'Makers, dealers and interior houses, door by door.'
+          tokenize: false
+      footer: {  }
+      display_extenders: {  }
+    cache_metadata:
+      max-age: -1
+      contexts:
+        - 'languages:language_interface'
+        - url
+        - url.query_args
+        - 'user.node_grants:view'
+        - user.permissions
+      tags: {  }
+  block_similar:
+    id: block_similar
+    display_title: 'Similar brands'
+    display_plugin: block
+    position: 3
+    display_options:
+      title: 'Similar brands'
+      pager:
+        type: some
+        options:
+          offset: 0
+          items_per_page: 3
+      empty: {  }
+      sorts:
+        random:
+          id: random
+          table: views
+          field: random
+          plugin_id: random
+          order: ASC
+      arguments:
+        field_brand_category_target_id:
+          id: field_brand_category_target_id
+          table: node__field_brand_category
+          field: field_brand_category_target_id
+          plugin_id: entity_target_id
+          default_action: ignore
+          exception:
+            value: all
+          specify_validation: false
+          validate:
+            type: none
+            fail: 'not found'
+          break_phrase: false
+          not: false
+          target_entity_type_id: taxonomy_term
+        nid:
+          id: nid
+          table: node_field_data
+          field: nid
+          entity_type: node
+          entity_field: nid
+          plugin_id: node_nid
+          default_action: ignore
+          exception:
+            value: all
+          specify_validation: false
+          validate:
+            type: none
+            fail: 'not found'
+          break_phrase: false
+          not: true
+      filters:
+        status:
+          id: status
+          table: node_field_data
+          field: status
+          entity_type: node
+          entity_field: status
+          plugin_id: boolean
+          value: '1'
+          group: 1
+        type:
+          id: type
+          table: node_field_data
+          field: type
+          entity_type: node
+          entity_field: type
+          plugin_id: bundle
+          operator: in
+          value:
+            brand: brand
+          group: 1
+      filter_groups:
+        operator: AND
+        groups:
+          1: AND
+      defaults:
+        empty: false
+        title: false
+        pager: false
+        sorts: false
+        arguments: false
+        filters: false
+        filter_groups: false
+        header: false
+      header: {  }
+      display_extenders: {  }
+      block_hide_empty: true
+    cache_metadata:
+      max-age: 0
+      contexts:
+        - 'languages:language_interface'
+        - url
+        - 'user.node_grants:view'
+        - user.permissions
+      tags: {  }
+  page_brands:
+    id: page_brands
+    display_title: Brands
+    display_plugin: page
+    position: 1
+    display_options:
+      arguments:
+        field_brand_category_target_id:
+          id: field_brand_category_target_id
+          table: node__field_brand_category
+          field: field_brand_category_target_id
+          admin_label: 'Category group (set by pimlico_brands)'
+          plugin_id: entity_target_id
+          default_action: ignore
+          specify_validation: false
+          break_phrase: true
+          not: false
+          target_entity_type_id: taxonomy_term
+      filters:
+        status:
+          id: status
+          table: node_field_data
+          field: status
+          entity_type: node
+          entity_field: status
+          plugin_id: boolean
+          value: '1'
+          group: 1
+        type:
+          id: type
+          table: node_field_data
+          field: type
+          entity_type: node
+          entity_field: type
+          plugin_id: bundle
+          operator: in
+          value:
+            brand: brand
+          group: 1
+      filter_groups:
+        operator: AND
+        groups:
+          1: AND
+      defaults:
+        arguments: false
+        filters: false
+        filter_groups: false
+        footer: false
+      footer:
+        entity_block_content:
+          id: entity_block_content
+          table: views
+          field: entity_block_content
+          plugin_id: entity
+          empty: false
+          target: 5f1eb665-003e-4c93-ab95-7691e97561b3
+          view_mode: full
+          tokenize: false
+          bypass_access: false
+      display_extenders:
+        metatag_display_extender:
+          metatags:
+            title: 'Brands on Pimlico Road'
+            description: 'Antique dealers, furniture makers, fabric houses, lighting and interior designers on Pimlico Road, Belgravia, with opening hours, addresses and a map.'
+            og_title: 'Brands on Pimlico Road'
+            og_description: 'Antique dealers, furniture makers, fabric houses, lighting and interior designers on Pimlico Road, Belgravia, with opening hours, addresses and a map.'
+            canonical_url: '[current-page:url:absolute]'
+      path: brands
+    cache_metadata:
+      max-age: -1
+      contexts:
+        - 'languages:language_interface'
+        - url
+        - url.query_args
+        - 'user.node_grants:view'
+        - user.permissions
+      tags: {  }
+  page_dine:
+    id: page_dine
+    display_title: Dine
+    display_plugin: page
+    position: 2
+    display_options:
+      title: Dine
+      pager:
+        type: full
+        options:
+          offset: 0
+          items_per_page: 15
+          id: 0
+          tags:
+            next: Next
+            previous: Previous
+            first: First
+            last: Last
+          quantity: 9
+      sorts:
+        title:
+          id: title
+          table: node_field_data
+          field: title
+          entity_type: node
+          entity_field: title
+          plugin_id: standard
+          order: ASC
+      arguments:
+        field_brand_category_target_id:
+          id: field_brand_category_target_id
+          table: node__field_brand_category
+          field: field_brand_category_target_id
+          admin_label: 'Category group (set by pimlico_brands)'
+          plugin_id: entity_target_id
+          default_action: ignore
+          specify_validation: false
+          break_phrase: true
+          not: false
+          target_entity_type_id: taxonomy_term
+      filters:
+        status:
+          id: status
+          table: node_field_data
+          field: status
+          entity_type: node
+          entity_field: status
+          plugin_id: boolean
+          value: '1'
+          group: 1
+        type:
+          id: type
+          table: node_field_data
+          field: type
+          entity_type: node
+          entity_field: type
+          plugin_id: bundle
+          operator: in
+          value:
+            brand: brand
+          group: 1
+      filter_groups:
+        operator: AND
+        groups:
+          1: AND
+      defaults:
+        title: false
+        pager: false
+        sorts: false
+        arguments: false
+        filters: false
+        filter_groups: false
+        header: false
+      header:
+        area_text_custom:
+          id: area_text_custom
+          table: views
+          field: area_text_custom
+          plugin_id: text_custom
+          empty: false
+          content: 'Restaurants, cafés and a few good places for lunch.'
+          tokenize: false
+      display_extenders:
+        metatag_display_extender:
+          metatags:
+            title: 'Places to eat and drink on Pimlico Road'
+            description: 'Restaurants, pubs and cafés on Pimlico Road and in Newson’s Yard, Belgravia.'
+            og_title: 'Places to eat and drink on Pimlico Road'
+            og_description: 'Restaurants, pubs and cafés on Pimlico Road and in Newson’s Yard, Belgravia.'
+            canonical_url: '[current-page:url:absolute]'
+      path: dine
+    cache_metadata:
+      max-age: -1
+      contexts:
+        - 'languages:language_interface'
+        - url
+        - url.query_args
+        - 'user.node_grants:view'
+        - user.permissions
+      tags: {  }

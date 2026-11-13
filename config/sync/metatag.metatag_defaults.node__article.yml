@@ -1,0 +1,18 @@
+uuid: acc495d6-7f24-4b69-b833-bc648126c94b
+langcode: en
+status: true
+dependencies: {  }
+id: node__article
+label: 'Content: article'
+tags:
+  schema_article_type: Article
+  schema_web_page_type: ''
+  article_published_time: '[node:created:custom:c]'
+  schema_article_date_modified: '[node:changed:html_datetime]'
+  schema_article_date_published: '[node:created:html_datetime]'
+  schema_article_description: '[node:field_seo_description|node:field_summary]'
+  schema_article_headline: '[node:field_seo_title|node:title]'
+  schema_article_id: '[current-page:url:absolute]'
+  schema_article_image: 'a:4:{s:5:"@type";s:11:"ImageObject";s:3:"url";s:135:"[node:field_seo_image:entity:field_media_image:social_media|node:field_image:entity:field_media_image:social_media]";s:5:"width";s:147:"[node:field_seo_image:entity:field_media_image:social_media:width|node:field_image:entity:field_media_image:social_media:width]";s:6:"height";s:149:"[node:field_seo_image:entity:field_media_image:social_media:height|node:field_image:entity:field_media_image:social_media:height]";}'
+  schema_article_name: '[node:field_seo_title|node:title]'
+  og_type: article

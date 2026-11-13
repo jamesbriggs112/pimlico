@@ -1,0 +1,11 @@
+{% stories info_band with { title: 'Components/Info band' } %}
+{% story default with { name: 'Source (press)' } %}
+  {% set img = url('<front>')|render|trim('/', 'right') ~ '/themes/custom/pimlico/src/stories/images/' %}
+  {% include 'pimlico:info_band' with {
+    eyebrow: 'Source',
+    heading: 'Read the original coverage',
+    links: [{ text: 'Read in The Times', url: '#', external: true }],
+    media: { '#markup': '<img src="' ~ img ~ 'newsons-yard-band.jpg" alt="">' },
+  } only %}
+{% endstory %}
+{% endstories %}

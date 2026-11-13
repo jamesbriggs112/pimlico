@@ -1,0 +1,10 @@
+uuid: 70a19e95-1367-4547-9269-341cb0bdfc69
+langcode: en
+status: true
+dependencies: {  }
+id: hero_split
+label: 'Hero split'
+icon_uuid: null
+icon_default: null
+description: 'Heading, text and button beside a tall photograph.'
+behavior_plugins: {  }

@@ -1,0 +1,24 @@
+name: 'Pimlico Road'
+type: theme
+'base theme': false
+description: 'Theme for the Pimlico Road website.'
+dependencies:
+  - pimlico_brands:pimlico_brands
+  - pimlico_map:pimlico_map
+vite:
+  enableInAllComponents: true
+  enableInAllLibraries: true
+regions:
+  branding: Branding
+  primary_menu: 'Primary menu'
+  banner: 'Banner area'
+  breadcrumb: Breadcrumb
+  content: 'Main content area'
+  newsletter: Newsletter
+  footer_branding: 'Footer Branding'
+  footer_menu: 'Footer Menu'
+  footer_bottom: 'Footer Bottom'
+libraries:
+  - pimlico/base
+core_version_requirement: ^11
+generator: 'four_starterkit:2.0.0'

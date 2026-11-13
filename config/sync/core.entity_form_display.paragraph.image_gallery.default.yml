@@ -1,0 +1,42 @@
+uuid: 0cf8b795-8b30-402a-8a4a-b473d4626cb5
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.paragraph.image_gallery.field_anchor
+    - field.field.paragraph.image_gallery.field_caption
+    - field.field.paragraph.image_gallery.field_heading
+    - field.field.paragraph.image_gallery.field_images
+    - paragraphs.paragraphs_type.image_gallery
+id: paragraph.image_gallery.default
+targetEntityType: paragraph
+bundle: image_gallery
+mode: default
+content:
+  field_anchor:
+    type: string_textfield
+    weight: 3
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+  field_caption:
+    type: string_textfield
+    weight: 1
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+  field_heading:
+    type: string_textfield
+    weight: 0
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+  field_images:
+    type: media_library_widget
+    weight: 2
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+hidden:
+  created: true
+  status: true

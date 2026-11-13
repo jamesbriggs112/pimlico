@@ -1,0 +1,15 @@
+{#
+/**
+ * @file
+ * Brand teaser → story card: category eyebrow (its Figma group, from
+ * includes/node.inc), brand name, "Step inside".
+ */
+#}
+{% include 'pimlico:story_card' with {
+  attributes,
+  url,
+  title: node.label,
+  meta: brand_category.label|default(''),
+  image: content.field_image,
+  link_text: 'Step inside'|t,
+} only %}

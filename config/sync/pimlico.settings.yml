@@ -1,0 +1,4 @@
+favicon:
+  use_default: false
+  path: themes/custom/pimlico/assets/brand/cms-icon.svg
+  mimetype: image/svg+xml

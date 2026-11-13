@@ -1,0 +1,80 @@
+// Figma "Filter link" (13:123) in the Brands filter bar (9:679): a ruled
+// band, items 32px apart in Label/Nav. Active = underline at 3px; hover =
+// 6px; the size stays 14px in every state (Figma's 12px active state looks
+// unintended). Mobile: scrolls sideways.
+.filter-bar {
+  border-bottom: 1px solid var(--color-border-strong);
+
+  &__list {
+    display: flex;
+    gap: #{to.rem(32px)};
+    margin: 0;
+    padding: #{to.rem(24px)} var(--page-gutter);
+    list-style: none;
+    overflow-x: auto;
+    scrollbar-width: none;
+
+    &::-webkit-scrollbar {
+      display: none;
+    }
+  }
+
+  &--center &__list {
+    @include mq($from: desktop) {
+      justify-content: center;
+    }
+  }
+
+  &__link {
+    display: inline-block;
+    color: var(--color-text-primary);
+    font-size: var(--font-size-label-nav);
+    font-weight: var(--font-weight-medium);
+    line-height: var(--line-height-label);
+    letter-spacing: var(--letter-spacing-label-nav);
+    text-transform: uppercase;
+    white-space: nowrap;
+    text-decoration-line: underline;
+    text-decoration-thickness: 1px;
+    text-decoration-color: transparent;
+    text-underline-offset: var(--link-hover-underline-offset);
+    transition:
+      text-decoration-color 0.3s ease-out,
+      text-underline-offset 0.3s ease-out;
+
+    &[aria-current='true'] {
+      text-decoration-color: currentColor;
+      text-underline-offset: #{to.rem(3px)};
+    }
+
+    &:hover,
+    &:focus-visible {
+      text-decoration-color: currentColor;
+      text-underline-offset: var(--link-hover-underline-offset);
+    }
+
+    &:focus {
+      outline: none;
+    }
+
+    &:focus-visible {
+      outline: var(--focus-outline-width) solid transparent;
+      box-shadow: var(--focus-ring);
+    }
+  }
+}
+
+// Buttons (the street map's category filter) look like the links; the
+// pressed one is the active filter.
+button.filter-bar__link {
+  padding: 0;
+  border: 0;
+  background: none;
+  font-family: inherit;
+  cursor: pointer;
+
+  &[aria-pressed='true'] {
+    text-decoration-color: currentColor;
+    text-underline-offset: #{to.rem(3px)};
+  }
+}

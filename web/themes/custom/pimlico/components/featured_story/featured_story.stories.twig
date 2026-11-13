@@ -1,0 +1,22 @@
+{% stories featured_story with { title: 'Components/Featured story' } %}
+{% story default with { name: 'News featured story' } %}
+  {% set img = url('<front>')|render|trim('/', 'right') ~ '/themes/custom/pimlico/src/stories/images/' %}
+  {% include 'pimlico:featured_story' with {
+    url: '#',
+    meta: 'Featured · 2 Oct 2026',
+    title: 'The makers of Newson’s Yard',
+    summary: 'A short line that sets up the story and tells the reader why it is worth their time.',
+    reading_time: '4 minute read',
+    link_text: 'Read the story',
+    image: { '#markup': '<img src="' ~ img ~ 'story-1.jpg" alt="">' },
+  } only %}
+{% endstory %}
+{% story press with { name: 'Press publication block' } %}
+  {% set img = url('<front>')|render|trim('/', 'right') ~ '/themes/custom/pimlico/src/stories/images/' %}
+  {% include 'pimlico:featured_story' with {
+    meta: 'The Times · Placeholder journalist · 21 October 2026',
+    summary: 'Placeholder summary of the coverage.',
+    image: { '#markup': '<img src="' ~ img ~ 'newsons-yard-band.jpg" alt="">' },
+  } only %}
+{% endstory %}
+{% endstories %}

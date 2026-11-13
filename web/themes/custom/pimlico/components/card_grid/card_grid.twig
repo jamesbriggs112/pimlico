@@ -1,0 +1,27 @@
+{% set attributes = attributes ?: create_attribute() %}
+{% set heading_id = heading ? 'cards-' ~ heading|clean_id %}
+{% if heading_id %}
+  {% set attributes = attributes.setAttribute('aria-labelledby', heading_id) %}
+{% endif %}
+<section {{ attributes.addClass('card-grid') }}>
+  {% if heading %}
+    <div class="card-grid__header">
+      {% include 'pimlico:section_heading' with {
+        eyebrow: eyebrow|default(''),
+        title: heading,
+        link_text: link_text|default(''),
+        link_url: link_url|default(''),
+        id: heading_id,
+      } only %}
+      {% if text %}<div class="card-grid__text body-l">{% block text %}{{ text }}{% endblock %}</div>{% endif %}
+    </div>
+  {% endif %}
+  {% set track_id = heading_id ? heading_id ~ '-track' : 'cards-track-' ~ random() %}
+  <div class="card-grid__items" id="{{ track_id }}">{% block items %}{{ items }}{% endblock %}</div>
+  {# Mobile swipe track arrows. Hidden until card_grid.js finds more cards
+     than fit, so they never show without JavaScript or on desktop. #}
+  <div class="card-grid__controls" hidden>
+    {% include 'pimlico:button_icon' with { title: 'Previous'|t, icon_name: 'arrow-left', tone: 'dark', attributes: create_attribute({ 'data-cards-prev': true, 'aria-controls': track_id }) } only %}
+    {% include 'pimlico:button_icon' with { title: 'Next'|t, icon_name: 'arrow-right', tone: 'dark', attributes: create_attribute({ 'data-cards-next': true, 'aria-controls': track_id }) } only %}
+  </div>
+</section>

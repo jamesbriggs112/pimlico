@@ -1,0 +1,10 @@
+uuid: a958af4f-3a9a-4a9a-a42b-1f816f6b8a99
+langcode: en
+status: true
+dependencies: {  }
+id: info_row
+label: 'Info row'
+icon_uuid: null
+icon_default: null
+description: 'One row in an Info rows section.'
+behavior_plugins: {  }

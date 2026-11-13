@@ -1,0 +1,26 @@
+{% stories policy_content with { title: 'Components/Policy content' } %}
+{% story default with {
+  name: 'Privacy',
+  parameters: { design: { type: 'figma', url: 'https://www.figma.com/design/REw9zZENN4OEozQHrt17pD/Pimlico-Visuals---V01?node-id=30-3973' } }
+} %}
+  {% set body %}
+    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+    <h2 id="who-we-are">Who we are</h2>
+    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+    <h2 id="information-we-collect">Information we collect</h2>
+    <p>Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium.</p>
+    <ul><li>Placeholder first supporting item.</li><li>Placeholder second supporting item.</li></ul>
+    <h2 id="your-choices">Your choices and contact</h2>
+    <ol><li>Placeholder first step.</li><li>Placeholder second step.</li></ol>
+  {% endset %}
+  {% include 'pimlico:policy_content' with {
+    updated: '11 November 2026',
+    contents: [
+      { id: 'who-we-are', title: 'Who we are' },
+      { id: 'information-we-collect', title: 'Information we collect' },
+      { id: 'your-choices', title: 'Your choices and contact' },
+    ],
+    body,
+  } only %}
+{% endstory %}
+{% endstories %}

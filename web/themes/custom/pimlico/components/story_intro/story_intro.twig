@@ -1,0 +1,9 @@
+{% set attributes = attributes ?: create_attribute() %}
+<div {{ attributes.addClass('story-intro') }}>
+  {% if meta %}<p class="story-intro__meta eyebrow">{{ meta }}</p>{% endif %}
+  {% if image %}
+    {% embed 'pimlico:figure' with { caption: caption|default(''), wide: true, image } only %}
+      {% block image %}{{ image }}{% endblock %}
+    {% endembed %}
+  {% endif %}
+</div>

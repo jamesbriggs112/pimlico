@@ -1,0 +1,17 @@
+{% set attributes = attributes ?: create_attribute() %}
+{% set heading_id = heading ? 'form-' ~ heading|clean_id %}
+{% if heading_id %}
+  {% set attributes = attributes.setAttribute('aria-labelledby', heading_id) %}
+{% endif %}
+<section {{ attributes.addClass('form-section') }}>
+  <div class="form-section__inner">
+    {% if eyebrow or heading or text %}
+      <div class="form-section__intro">
+        {% if eyebrow %}<p class="eyebrow">{{ eyebrow }}</p>{% endif %}
+        {% if heading %}<h2 class="form-section__heading display-l" id="{{ heading_id }}">{{ heading }}</h2>{% endif %}
+        {% if text %}<div class="form-section__text body-l">{% block text %}{{ text }}{% endblock %}</div>{% endif %}
+      </div>
+    {% endif %}
+    <div class="form-section__form">{% block form %}{{ form }}{% endblock %}</div>
+  </div>
+</section>

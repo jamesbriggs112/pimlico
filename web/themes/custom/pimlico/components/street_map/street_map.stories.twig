@@ -1,0 +1,19 @@
+{% stories street_map with { title: 'Components/Street map' } %}
+{% story default with {
+  name: 'Overview',
+  parameters: { design: { type: 'figma', url: 'https://www.figma.com/design/REw9zZENN4OEozQHrt17pD/Pimlico-Visuals---V01?node-id=199-612' } }
+} %}
+  {% set base = url('<front>')|render|trim('/', 'right') %}
+  {% set map %}
+    <script src="{{ base }}/modules/custom/pimlico_map/assets/pimlico-map.js" defer></script>
+    <pimlico-map id="story-street-map" src="{{ base }}/modules/custom/pimlico_map/assets/pimlico-map.json" brands="{{ base }}/api/map/brands" locate></pimlico-map>
+  {% endset %}
+  {% include 'pimlico:street_map' with {
+    eyebrow: 'Visit',
+    heading: 'The street',
+    map_id: 'story-street-map',
+    categories: ['Home & Interiors', 'Antiques and art', 'Soft furnishings and fabrics', 'Lighting', 'Food & Drink'],
+    map,
+  } only %}
+{% endstory %}
+{% endstories %}

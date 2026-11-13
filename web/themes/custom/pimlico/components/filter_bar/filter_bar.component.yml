@@ -1,0 +1,30 @@
+'$schema': 'https://git.drupalcode.org/project/drupal/-/raw/HEAD/core/assets/schemas/v1/metadata.schema.json'
+name: Filter bar
+status: stable
+description: 'Figma "Filter link" bar: inline category filters in Label/Nav. Active is underlined at 3px; hover at 6px. Scrolls sideways on mobile.'
+libraryOverrides:
+  css:
+    component:
+      filter_bar.scss: {}
+props:
+  type: object
+  properties:
+    label:
+      type: string
+      title: Accessible label
+      default: Filter
+    align:
+      type: string
+      title: Alignment
+      enum: [center, start]
+      default: center
+    items:
+      type: array
+      title: Filters
+      description: '{ text, url, active }'
+      items:
+        type: object
+        properties:
+          text: { type: string }
+          url: { type: string }
+          active: { type: boolean }

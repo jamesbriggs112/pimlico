@@ -1,0 +1,16 @@
+{% set attributes = attributes ?: create_attribute() %}
+<section {{ attributes.addClass('episode-band').setAttribute('aria-label', 'Episode'|t) }}>
+  <div class="episode-band__inner">
+    {% if image %}<div class="episode-band__image">{% block image %}{{ image }}{% endblock %}</div>{% endif %}
+    <div class="episode-band__body">
+      {% if meta %}<p class="episode-band__meta eyebrow">{{ meta }}</p>{% endif %}
+      {% if guest %}<p class="episode-band__guest body-l">{{ guest }}</p>{% endif %}
+      <div class="episode-band__player">{% block player %}{{ player }}{% endblock %}</div>
+      {% if transcript_url %}
+        <div class="episode-band__actions">
+          {% include 'pimlico:button' with { text: 'Read the transcript'|t, url: transcript_url, variant: 'yellow' } only %}
+        </div>
+      {% endif %}
+    </div>
+  </div>
+</section>

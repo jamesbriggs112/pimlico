@@ -1,0 +1,29 @@
+{% stories button with { title: 'Primitives/Button' } %}
+
+{% story dark with {
+  name: 'Dark',
+  args: { text: 'Discover every brand', variant: 'dark' },
+  parameters: { design: { type: 'figma', url: 'https://www.figma.com/design/REw9zZENN4OEozQHrt17pD/Pimlico-Visuals---V01?node-id=3-1967' } }
+} %}
+  {% include 'pimlico:button' with { text, variant, url: '#' } only %}
+{% endstory %}
+
+{% story yellow with {
+  name: 'Yellow',
+  args: { text: 'Step into Newson’s Yard', variant: 'yellow' }
+} %}
+  <div style="padding: 40px; background: #394959">
+    {% include 'pimlico:button' with { text, variant, url: '#' } only %}
+  </div>
+{% endstory %}
+
+{% story full_width with {
+  name: 'Full width (mobile)',
+  args: { text: 'Find the showroom', variant: 'yellow' }
+} %}
+  <div style="max-width: 342px">
+    {% include 'pimlico:button' with { text, variant, full_width: true } only %}
+  </div>
+{% endstory %}
+
+{% endstories %}

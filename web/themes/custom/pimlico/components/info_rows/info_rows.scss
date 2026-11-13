@@ -1,0 +1,51 @@
+// Figma "Section · Getting here" (23:1009): 420px intro (eyebrow, Display L,
+// Body L) and a 760px column of info rows, 100px apart, 60px padding.
+// Mobile: stacked, 24px gap, Body M intro.
+.info-rows {
+  padding-block: var(--section-space);
+
+  &--tint {
+    background-color: var(--color-tint-linen-30);
+  }
+
+  &__inner {
+    @include pageContainer;
+    display: grid;
+    gap: var(--space-24);
+
+    @include mq($from: desktop) {
+      grid-template-columns: minmax(0, #{to.rem(420px)}) minmax(
+          0,
+          #{to.rem(760px)}
+        );
+      justify-content: space-between;
+      gap: #{to.rem(100px)};
+      align-items: start;
+    }
+  }
+
+  &__intro {
+    display: grid;
+    gap: #{fluid(14px, 20px)};
+  }
+
+  &__heading {
+    margin: 0;
+  }
+
+  &__text {
+    > * {
+      margin: 0;
+    }
+
+    @include mq($until: desktop) {
+      font-size: var(--font-size-body-m);
+      font-weight: var(--font-weight-regular);
+      line-height: var(--line-height-body-m);
+    }
+  }
+
+  &__list {
+    margin: 0;
+  }
+}

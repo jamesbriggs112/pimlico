@@ -1,0 +1,30 @@
+'$schema': 'https://git.drupalcode.org/project/drupal/-/raw/HEAD/core/assets/schemas/v1/metadata.schema.json'
+name: Policy content
+status: stable
+description: 'Figma T16 "Section · Policy content" (30:3973): an "On this page" contents list (420px, numbered, ruled) beside the 760px policy body, which opens with "Last updated" and a Body L lead, and ends with "Back to contents". Contents are built from the body’s h2 headings.'
+libraryOverrides:
+  css:
+    component:
+      policy_content.scss: {}
+  dependencies:
+    - core/components.pimlico--button
+    - core/components.pimlico--rich_text
+props:
+  type: object
+  properties:
+    updated:
+      type: string
+      title: Last updated
+      description: 'Shown as "Last updated · 11 November 2026".'
+    contents:
+      type: array
+      title: Contents
+      items:
+        type: object
+        properties:
+          id: { type: string }
+          title: { type: string }
+slots:
+  body:
+    title: Body
+    description: 'Rich text whose h2 headings carry the contents ids.'

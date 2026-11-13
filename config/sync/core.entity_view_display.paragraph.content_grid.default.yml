@@ -3,51 +3,55 @@ langcode: en
 status: true
 dependencies:
   config:
+    - field.field.paragraph.content_grid.field_anchor
+    - field.field.paragraph.content_grid.field_background
+    - field.field.paragraph.content_grid.field_content
+    - field.field.paragraph.content_grid.field_eyebrow
     - field.field.paragraph.content_grid.field_heading
-    - field.field.paragraph.content_grid.field_view
+    - field.field.paragraph.content_grid.field_link
+    - field.field.paragraph.content_grid.field_text
     - paragraphs.paragraphs_type.content_grid
   module:
     - fences
-    - field_group
-    - viewfield
-third_party_settings:
-  field_group:
-    group_grid:
-      children:
-        - field_view
-      label: Grid
-      parent_name: ''
-      region: content
-      weight: 1
-      format_type: sdc_display
-      format_settings:
-        sdc_field_group:
-          component:
-            machine_name: 'four_starterkit:grid'
-            show_deprecated: 0
-          mappings:
-            static:
-              props:
-                columns: columns-3
-              slots:
-                content:
-                  value: ''
-                  format: basic_html
-            dynamic:
-              slots:
-                content:
-                  field_view: field_view
-              props:
-                columns: null
-        id: ''
-        classes: ''
-        show_empty_fields: 0
-        label_as_html: 0
+    - link
+    - text
 id: paragraph.content_grid.default
 targetEntityType: paragraph
 bundle: content_grid
 mode: default
 content:
+  field_anchor:
+    type: string
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+    weight: 4
+    region: content
+  field_content:
+    type: entity_reference_entity_view
+    label: hidden
+    settings:
+      view_mode: teaser
+      link: false
+    third_party_settings:
+      fences:
+        fences_field_tag: none
+        fences_field_classes: ''
+        fences_field_items_wrapper_tag: none
+        fences_field_items_wrapper_classes: ''
+        fences_field_item_tag: none
+        fences_field_item_classes: ''
+        fences_label_tag: ''
+        fences_label_classes: ''
+    weight: 5
+    region: content
+  field_eyebrow:
+    type: string
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+    weight: 0
+    region: content
   field_heading:
     type: string
     label: hidden
@@ -65,13 +69,17 @@ content:
         fences_label_classes: ''
     weight: 0
     region: content
-  field_view:
-    type: viewfield_default
+  field_link:
+    type: link
     label: hidden
-    settings:
-      view_title: hidden
-      always_build_output: true
-      empty_view_title: hidden
+    settings: {  }
+    third_party_settings: {  }
+    weight: 3
+    region: content
+  field_text:
+    type: text_default
+    label: hidden
+    settings: {  }
     third_party_settings:
       fences:
         fences_field_tag: none
@@ -80,9 +88,10 @@ content:
         fences_field_items_wrapper_classes: ''
         fences_field_item_tag: none
         fences_field_item_classes: ''
-        fences_label_tag: none
+        fences_label_tag: ''
         fences_label_classes: ''
     weight: 2
     region: content
 hidden:
+  field_background: true
   search_api_excerpt: true

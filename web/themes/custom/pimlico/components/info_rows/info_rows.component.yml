@@ -1,0 +1,28 @@
+'$schema': 'https://git.drupalcode.org/project/drupal/-/raw/HEAD/core/assets/schemas/v1/metadata.schema.json'
+name: Info rows
+status: stable
+description: 'Figma "Section · Getting here", "Specialisms" and "Enquiry routes": heading on the left, ruled info rows on the right.'
+libraryOverrides:
+  css:
+    component:
+      info_rows.scss: {}
+props:
+  type: object
+  required:
+    - heading
+  properties:
+    eyebrow:
+      type: string
+      title: Eyebrow
+    heading:
+      type: string
+      title: Heading
+    tint:
+      type: boolean
+      title: Linen background
+      default: true
+slots:
+  text:
+    title: Intro text
+  rows:
+    title: Rows

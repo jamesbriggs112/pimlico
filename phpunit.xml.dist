@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Runs the tests for Pimlico Road's custom modules and theme. -->
+<phpunit xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:noNamespaceSchemaLocation="vendor/phpunit/phpunit/phpunit.xsd"
+         bootstrap="web/core/tests/bootstrap.php"
+         colors="true"
+         cacheDirectory=".phpunit.cache"
+         failOnRisky="true"
+         failOnWarning="true">
+  <php>
+    <ini name="error_reporting" value="32767"/>
+    <ini name="memory_limit" value="-1"/>
+    <!-- Override in phpunit.xml or the environment for local runs. -->
+    <env name="SIMPLETEST_BASE_URL" value="https://pimlico.test"/>
+    <env name="SIMPLETEST_DB" value="sqlite://localhost//tmp/pimlico-test.sqlite"/>
+    <env name="BROWSERTEST_OUTPUT_DIRECTORY" value="/tmp"/>
+  </php>
+  <testsuites>
+    <testsuite name="custom">
+      <directory>web/modules/custom/*/tests/src</directory>
+      <directory>web/themes/custom/*/tests/src</directory>
+    </testsuite>
+  </testsuites>
+</phpunit>

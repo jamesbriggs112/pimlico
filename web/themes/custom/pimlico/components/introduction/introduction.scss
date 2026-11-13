@@ -1,0 +1,158 @@
+// Figma "Section · Introduction".
+// Collage (Home 9:444): linen, text column beside a 620x630 collage of a
+// 440x550 photo and an overlapping 250x313 photo with a 12px linen border.
+// Mobile: centred text above a 342x363 collage (8px border).
+// Centred (Newson's Yard 23:763): centred heading, body in two 380px columns,
+// optional 16:9 film; left-aligned on mobile.
+.introduction {
+  padding-block: var(--section-space);
+
+  &__inner {
+    @include pageContainer;
+  }
+
+  &__text {
+    display: grid;
+    justify-items: start;
+    gap: #{fluid(28px, 32px)};
+  }
+
+  &__heading {
+    margin: 0;
+  }
+
+  &__body {
+    > * {
+      margin-block: 0;
+    }
+
+    > * + * {
+      margin-top: var(--space-24);
+    }
+  }
+
+  &__image {
+    overflow: hidden;
+    aspect-ratio: 4 / 5;
+    background-color: var(--color-border-default);
+
+    img {
+      display: block;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+  }
+
+  // Collage layout
+  &--collage {
+    background-color: var(--color-tint-linen-30);
+  }
+
+  &--collage &__inner {
+    display: grid;
+    gap: var(--space-32);
+    align-items: center;
+
+    @include mq($from: desktop) {
+      grid-template-columns: minmax(0, 1fr) minmax(0, #{to.rem(620px)});
+      gap: #{to.rem(100px)};
+    }
+  }
+
+  &--collage &__heading {
+    max-width: #{to.rem(560px)};
+  }
+
+  &--collage &__body {
+    max-width: #{to.rem(460px)};
+    font-size: var(--font-size-body-l);
+    font-weight: var(--font-weight-light);
+    line-height: var(--line-height-body-l);
+  }
+
+  &__collage {
+    --_border: #{fluid(8px, 12px)};
+
+    position: relative;
+    display: grid;
+    grid-template-columns: 26.9% 14% 59.1%; // 92 | 48 | 202 of 342
+    width: 100%;
+    max-width: #{to.rem(620px)};
+    margin-inline: auto;
+
+    @include mq($from: desktop) {
+      grid-template-columns: 29% 11.3% 59.7%; // 180 | 70 | 370 of 620
+    }
+  }
+
+  // The large photo spans columns 2-3, the small one columns 1-2, overlapping
+  // its lower-left corner and hanging ~13% of the collage width below it.
+  &__image--large {
+    grid-column: 2 / 4;
+    grid-row: 1;
+  }
+
+  &__image--small {
+    grid-column: 1 / 3;
+    grid-row: 1;
+    align-self: end;
+    margin-bottom: -13%;
+    border: var(--_border) solid var(--color-tint-linen-30);
+    z-index: 1;
+  }
+
+  &--collage &__collage {
+    margin-bottom: 13%;
+  }
+
+  @include mq($until: desktop) {
+    &--collage &__text {
+      justify-items: center;
+      text-align: center;
+    }
+
+    &--collage &__body {
+      max-width: #{to.rem(300px)};
+      font-size: var(--font-size-body-m);
+      font-weight: var(--font-weight-regular);
+      line-height: var(--line-height-body-m);
+    }
+  }
+
+  // Centred layout
+  &--centred &__inner {
+    display: grid;
+    gap: #{to.rem(28px)};
+
+    @include mq($from: desktop) {
+      gap: #{to.rem(60px)};
+    }
+  }
+
+  &--centred &__text {
+    @include mq($from: desktop) {
+      justify-items: center;
+      gap: #{to.rem(36px)};
+      text-align: center;
+    }
+  }
+
+  &--centred &__body {
+    @include mq($from: desktop) {
+      columns: 2 #{to.rem(380px)};
+      column-gap: #{to.rem(60px)};
+      max-width: #{to.rem(820px)};
+      text-align: start;
+
+      > * + * {
+        margin-top: 0;
+        padding-top: var(--space-24);
+      }
+    }
+  }
+
+  &__media {
+    width: 100%;
+  }
+}

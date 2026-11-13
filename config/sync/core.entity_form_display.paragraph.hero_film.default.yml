@@ -1,0 +1,49 @@
+uuid: b70756ac-fad5-4ab8-9b0d-e210f0d150cb
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.paragraph.hero_film.field_eyebrow
+    - field.field.paragraph.hero_film.field_heading
+    - field.field.paragraph.hero_film.field_image
+    - field.field.paragraph.hero_film.field_link
+    - field.field.paragraph.hero_film.field_video
+    - paragraphs.paragraphs_type.hero_film
+id: paragraph.hero_film.default
+targetEntityType: paragraph
+bundle: hero_film
+mode: default
+content:
+  field_eyebrow:
+    type: string_textfield
+    weight: 0
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+  field_heading:
+    type: string_textfield
+    weight: 1
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+  field_image:
+    type: media_library_widget
+    weight: 3
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+  field_link:
+    type: link_default
+    weight: 4
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+  field_video:
+    type: media_library_widget
+    weight: 2
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+hidden:
+  created: true
+  status: true

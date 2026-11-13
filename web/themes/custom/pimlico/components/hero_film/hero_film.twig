@@ -1,0 +1,24 @@
+{% set attributes = attributes ?: create_attribute() %}
+<section {{ attributes.addClass('hero-film').setAttribute('aria-label', heading) }}>
+  <div class="hero-film__media" aria-hidden="true">
+    {% if poster %}<div class="hero-film__poster">{% block poster %}{{ poster }}{% endblock %}</div>{% endif %}
+    {% if media %}<div class="hero-film__film">{% block media %}{{ media }}{% endblock %}</div>{% endif %}
+  </div>
+  <div class="hero-film__content">
+    {% if eyebrow %}<p class="hero-film__eyebrow eyebrow">{{ eyebrow }}</p>{% endif %}
+    <h1 class="hero-film__heading">{{ heading }}</h1>
+    {% if link_text and link_url %}
+      {% include 'pimlico:button' with { text: link_text, url: link_url, variant: 'yellow' } only %}
+    {% endif %}
+    {% if media %}
+      <div class="hero-film__control">
+        <button class="hero-film__toggle btn-icon btn-icon--light" type="button" aria-pressed="false" data-hero-film-toggle>
+          <span class="hero-film__icon hero-film__icon--pause">{% include 'pimlico:icon' with { name: 'pause', size: 20 } only %}</span>
+          <span class="hero-film__icon hero-film__icon--play">{% include 'pimlico:icon' with { name: 'play', size: 20 } only %}</span>
+          <span class="visually-hidden" data-hero-film-label>{{ 'Pause film'|t }}</span>
+        </button>
+        <span class="hero-film__label" aria-hidden="true" data-hero-film-text>{{ 'Pause film'|t }}</span>
+      </div>
+    {% endif %}
+  </div>
+</section>

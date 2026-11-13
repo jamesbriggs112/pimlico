@@ -1,0 +1,24 @@
+uuid: c8f5055d-750f-4a19-86f0-a41ef19de83e
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_text
+    - filter.format.basic_html
+    - paragraphs.paragraphs_type.policy_content
+  module:
+    - text
+id: paragraph.policy_content.field_text
+field_name: field_text
+entity_type: paragraph
+bundle: policy_content
+label: Text
+description: ''
+required: true
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings:
+  allowed_formats:
+    - basic_html
+field_type: text_long

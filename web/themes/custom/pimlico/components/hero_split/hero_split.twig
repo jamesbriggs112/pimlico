@@ -1,0 +1,17 @@
+{% set attributes = attributes ?: create_attribute() %}
+<section {{ attributes.addClass('hero-split').setAttribute('aria-label', title) }}>
+  <div class="hero-split__image">{% block image %}{{ image }}{% endblock %}</div>
+  <div class="hero-split__text">
+    {% if breadcrumb %}<div class="hero-split__breadcrumb">{% block breadcrumb %}{{ breadcrumb }}{% endblock %}</div>{% endif %}
+    <h1 class="hero-split__title display-xl">{{ title }}</h1>
+    {% if intro %}<p class="hero-split__intro body-l">{{ intro }}</p>{% endif %}
+    {% if links %}
+      <div class="hero-split__actions">
+        {% for link in links %}
+          {% include 'pimlico:button' with { text: link.text, url: link.url, variant: 'yellow', class: link.class|default('') } only %}
+        {% endfor %}
+      </div>
+    {% endif %}
+    {% block extra %}{{ extra }}{% endblock %}
+  </div>
+</section>

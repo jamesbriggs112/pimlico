@@ -1,0 +1,22 @@
+uuid: b5cf0e64-d1d9-4715-86a5-96d4b4bd403c
+langcode: en
+status: true
+dependencies:
+  module:
+    - system
+  theme:
+    - pimlico
+_core:
+  default_config_hash: KC12e0aosUnBBs5bd374JVcQjJaFNOSIHzu0dUGf22o
+id: pimlico_messages
+theme: pimlico
+region: content
+weight: -5
+provider: null
+plugin: system_messages_block
+settings:
+  id: system_messages_block
+  label: 'Status messages'
+  label_display: '0'
+  provider: system
+visibility: {  }

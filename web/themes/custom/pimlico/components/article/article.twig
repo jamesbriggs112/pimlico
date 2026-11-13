@@ -1,0 +1,23 @@
+{%
+  set classes = [
+    'article',
+  ]
+%}
+
+<article {{ attributes.addClass(classes)}}>
+	{% if header %}
+		{% embed "pimlico:page_banner" with { media: header } %}
+			{% block content %}
+				<h1>
+					{{ title }}
+				</h1>
+			{% endblock %}
+		{% endembed %}
+	{% endif %}
+
+	{% if sections %}
+		<div class="article__content">
+			{{ sections }}
+		</div>
+	{% endif %}
+</article>

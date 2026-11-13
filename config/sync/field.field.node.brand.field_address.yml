@@ -1,0 +1,45 @@
+uuid: 5ef0eaf6-579e-4d55-a873-88a470a89e51
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_address
+    - node.type.brand
+  module:
+    - address
+id: node.brand.field_address
+field_name: field_address
+entity_type: node
+bundle: brand
+label: Address
+description: ''
+required: false
+translatable: true
+default_value:
+  -
+    country_code: GB
+    locality: London
+default_value_callback: ''
+settings:
+  available_countries:
+    GB: GB
+  langcode_override: ''
+  field_overrides:
+    givenName:
+      override: hidden
+    additionalName:
+      override: hidden
+    familyName:
+      override: hidden
+    organization:
+      override: hidden
+    addressLine3:
+      override: hidden
+    dependentLocality:
+      override: hidden
+    locality:
+      override: hidden
+    administrativeArea:
+      override: hidden
+  fields: {  }
+field_type: address

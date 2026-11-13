@@ -1,0 +1,16 @@
+# The map component and base map are copied unchanged from the map project
+# (ADR 0001). Bump the version with every copy: it's also the base map's ?v=.
+pimlico-map:
+  version: 1.0.0
+  js:
+    assets/pimlico-map.js: { attributes: { defer: true }, preprocess: false }
+
+picker:
+  version: VERSION
+  js:
+    js/pimlico-map-picker.js: {}
+  dependencies:
+    - core/drupal
+    - core/once
+    - core/drupal.announce
+    - pimlico_map/pimlico-map

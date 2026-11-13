@@ -1,0 +1,9 @@
+uuid: 600f9317-9f0c-4faa-b7fe-a14f46045bf8
+langcode: en
+status: true
+dependencies: {  }
+name: Area
+vid: area
+description: 'A named part of the neighbourhood that Units are grouped by.'
+weight: 0
+new_revision: false

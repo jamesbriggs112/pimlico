@@ -1,0 +1,29 @@
+uuid: 7cdf8166-51b8-49af-b71e-094b77bdd70f
+langcode: en
+status: false
+dependencies:
+  module:
+    - node
+  theme:
+    - pimlico
+_core:
+  default_config_hash: ItFhhiUOoeR7oIq73ZaCV7PAYrOwXZ-9fazMzF5DJXM
+id: pimlico_page_title
+theme: pimlico
+region: content
+weight: 0
+provider: null
+plugin: page_title_block
+settings:
+  id: page_title_block
+  label: 'Page title'
+  label_display: '0'
+  provider: core
+visibility:
+  'entity_bundle:node':
+    id: 'entity_bundle:node'
+    negate: false
+    context_mapping:
+      node: '@node.node_route_context:node'
+    bundles:
+      page: page

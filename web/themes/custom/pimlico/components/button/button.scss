@@ -1,0 +1,65 @@
+// Figma "A / Button": Label/Nav text, 18px 34px padding, square corners.
+// Hover = mustard fill with a dark label; focus = the two-tone ring.
+.btn {
+  --_bg: var(--button-background-color-dark);
+  --_color: var(--button-text-color-dark);
+  --_hover-bg: var(--button-hover-background-color-dark);
+  --_hover-color: var(--button-hover-text-color-dark);
+
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--button-icon-spacing);
+  padding: var(--button-padding);
+  border: 0;
+  border-radius: var(--button-border-radius);
+  background-color: var(--_bg);
+  color: var(--_color);
+  font-family: var(--body-text);
+  font-size: var(--button-font-size);
+  font-weight: var(--button-font-weight);
+  line-height: var(--line-height-label);
+  letter-spacing: var(--button-letter-spacing);
+  text-transform: uppercase;
+  text-align: center;
+  text-decoration: none;
+  cursor: pointer;
+  transition: var(--button-transition);
+
+  &:hover {
+    background-color: var(--_hover-bg);
+    color: var(--_hover-color);
+  }
+
+  &:focus {
+    outline: none;
+  }
+
+  &:focus-visible {
+    outline: var(--focus-outline-width) solid transparent;
+    box-shadow: var(--focus-ring);
+  }
+
+  &:disabled,
+  &[aria-disabled='true'] {
+    background-color: var(--button-disabled-background-color);
+    color: var(--button-disabled-text-color);
+    cursor: not-allowed;
+  }
+
+  &--yellow {
+    --_bg: var(--button-background-color-yellow);
+    --_color: var(--button-text-color-yellow);
+    --_hover-bg: var(--button-hover-background-color-yellow);
+    --_hover-color: var(--button-hover-text-color-yellow);
+  }
+
+  &--full-width {
+    display: flex;
+    width: 100%;
+  }
+
+  svg {
+    display: block;
+  }
+}

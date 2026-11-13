@@ -1,0 +1,29 @@
+{#
+/**
+ * @file
+ * Icon: decorative SVG, hidden from assistive technology.
+ *
+ * Geometry is copied from the Figma "Icon / *" components (Components page);
+ * colours are replaced with currentColor. Give the parent control an
+ * accessible name, for example with the visually_hidden component.
+ */
+#}
+{% set attributes = attributes ?: create_attribute() %}
+{% set icons = {
+  'search': { box: 20, body: '<path d="M8.5 14C11.5376 14 14 11.5376 14 8.5C14 5.46243 11.5376 3 8.5 3C5.46243 3 3 5.46243 3 8.5C3 11.5376 5.46243 14 8.5 14Z" stroke="currentColor" stroke-width="1.2"/><path d="M12.5 12.5L17 17" stroke="currentColor" stroke-width="1.2"/>' },
+  'pause': { box: 20, body: '<path d="M7.5 4H5V16H7.5V4Z" fill="currentColor"/><path d="M15 4H12.5V16H15V4Z" fill="currentColor"/>' },
+  'play': { box: 20, body: '<path d="M6 4L16 10L6 16V4Z" fill="currentColor"/>' },
+  'menu': { box: 24, body: '<path d="M3 8H21M3 16H21" stroke="currentColor" stroke-width="1.2"/>' },
+  'arrow-left': { box: 24, body: '<path d="M20 12H5M11 18L5 12L11 6" stroke="currentColor" stroke-width="1.2"/>' },
+  'arrow-right': { box: 24, body: '<path d="M4 12H19M13 18L19 12L13 6" stroke="currentColor" stroke-width="1.2"/>' },
+  'arrow-link': { box: 18, body: '<path d="M3 9H14.25M9.75 13.5L14.25 9L9.75 4.5" stroke="currentColor" stroke-width="1.2"/>' },
+  'chevron-down': { box: 20, body: '<path d="M5 7.5L10 12.5L15 7.5" stroke="currentColor" stroke-width="1.25"/>' },
+  'close': { box: 44, body: '<path d="M16.5 16.5L27.5 27.5M27.5 16.5L16.5 27.5" stroke="currentColor" stroke-width="1.25"/>' },
+  'check': { box: 20, body: '<path d="M4 10.5L8 14.5L16 5.5" stroke="currentColor" stroke-width="1.5"/>' },
+  'alert': { box: 16, body: '<path d="M8 15.25C12.0041 15.25 15.25 12.0041 15.25 8C15.25 3.99594 12.0041 0.75 8 0.75C3.99594 0.75 0.75 3.99594 0.75 8C0.75 12.0041 3.99594 15.25 8 15.25Z" stroke="currentColor" stroke-width="1.5"/><path d="M8 4.5V9" stroke="currentColor" stroke-width="1.5"/><path d="M7.99998 12.3996C8.49703 12.3996 8.89998 11.9967 8.89998 11.4996C8.89998 11.0026 8.49703 10.5996 7.99998 10.5996C7.50292 10.5996 7.09998 11.0026 7.09998 11.4996C7.09998 11.9967 7.50292 12.3996 7.99998 12.3996Z" fill="currentColor"/>' },
+} %}
+{% set icon = icons[name] %}
+{% if icon %}
+  {% set px = size|default(icon.box) %}
+  <svg {{ attributes.addClass(['icon', 'icon--' ~ name]) }} width="{{ px }}" height="{{ px }}" viewBox="0 0 {{ icon.box }} {{ icon.box }}" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false">{{ icon.body|raw }}</svg>
+{% endif %}

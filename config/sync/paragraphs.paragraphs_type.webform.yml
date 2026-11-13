@@ -1,0 +1,10 @@
+uuid: d892e8fa-4a4d-43b9-88df-0a4732e9db6b
+langcode: en
+status: true
+dependencies: {  }
+id: webform
+label: Form
+icon_uuid: null
+icon_default: null
+description: 'A form, such as the contact form, with an optional heading and introduction.'
+behavior_plugins: {  }

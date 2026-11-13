@@ -1,0 +1,31 @@
+/**
+ * @file
+ * Pimlico Road touches on Gin: the site's Fraunces for page titles and the
+ * login heading. Gin's accent colour, logos and the login photo are set in
+ * gin.settings and gin_login.settings.
+ */
+
+@font-face {
+  font-family: 'Fraunces';
+  src: url('/themes/custom/pimlico/assets/fonts/fraunces-variable.woff2') format('woff2');
+  font-weight: 100 900;
+  font-style: normal;
+  font-display: swap;
+}
+
+.gin--edit-form .page-title,
+.region-sticky .page-title,
+h1.page-title,
+.user-form-page__wrapper h1,
+.gin-login h1 {
+  font-family: 'Fraunces', Georgia, serif;
+  font-weight: 400;
+  letter-spacing: -0.01em;
+}
+
+/* Login: the wordmark at a comfortable size above the form. */
+.user-form-page__logo img,
+.gin-login .site-logo img {
+  width: min(300px, 70vw);
+  height: auto;
+}

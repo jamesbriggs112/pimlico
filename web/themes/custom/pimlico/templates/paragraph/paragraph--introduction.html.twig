@@ -1,0 +1,24 @@
+{#
+/**
+ * @file
+ * Introduction paragraph → pimlico:introduction.
+ *
+ * Two images make the collage; none gives the centred layout, with the
+ * optional film below.
+ */
+#}
+{% set link = paragraph.field_link.0 %}
+{% if paragraph.field_anchor.value %}
+  {% set attributes = attributes.setAttribute('id', paragraph.field_anchor.value) %}
+{% endif %}
+{% include 'pimlico:introduction' with {
+  attributes,
+  eyebrow: paragraph.field_eyebrow.value|default(''),
+  heading: paragraph.field_heading.value|default(''),
+  link_text: link.title|default(''),
+  link_url: link ? link.url.toString() : '',
+  text: content.field_text,
+  image_large: content.field_images[0],
+  image_small: content.field_images[1],
+  media: content.field_video,
+} only %}

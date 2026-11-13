@@ -1,0 +1,41 @@
+{% stories form with { title: 'Primitives/Form' } %}
+
+{% story fields with {
+  name: 'Fields',
+  parameters: { design: { type: 'figma', url: 'https://www.figma.com/design/REw9zZENN4OEozQHrt17pD/Pimlico-Visuals---V01?node-id=13-99' } }
+} %}
+  {% embed 'pimlico:form' with { attributes: create_attribute({ style: 'max-width: 420px' }) } only %}
+    {% block form %}
+      <div class="form-item">
+        <label for="story-email">Email address</label>
+        <input type="email" id="story-email" placeholder="name@example.com">
+      </div>
+      <div class="form-item">
+        <label for="story-email-error">Email address</label>
+        <input type="email" id="story-email-error" class="error" aria-invalid="true" aria-describedby="story-email-error-message" value="name@">
+        <div class="form-item--error-message" id="story-email-error-message">Please enter a valid email address</div>
+      </div>
+      <div class="form-item">
+        <label for="story-topic">Enquiry type</label>
+        <select id="story-topic"><option>General enquiry</option><option>Press</option><option>Leasing</option></select>
+      </div>
+      <div class="form-item">
+        <label for="story-message">Message</label>
+        <textarea id="story-message" placeholder="How can we help?"></textarea>
+      </div>
+      <div class="form-item form-item-checkbox">
+        <input type="checkbox" id="story-talks">
+        <label for="story-talks">Talks</label>
+      </div>
+      <div class="form-item form-item-checkbox">
+        <input type="checkbox" id="story-tours" checked>
+        <label for="story-tours">Tours</label>
+      </div>
+      <div class="form-actions">
+        {% include 'pimlico:button' with { text: 'Send enquiry' } only %}
+      </div>
+    {% endblock %}
+  {% endembed %}
+{% endstory %}
+
+{% endstories %}

@@ -1,0 +1,20 @@
+{#
+/**
+ * @file
+ * Image gallery paragraph → pimlico:image_gallery. Each rendered image is
+ * passed as a list item so the component can place it in its row.
+ */
+#}
+{% set images = [] %}
+{% for key, item in content.field_images|filter((v, k) => k|first != '#') %}
+  {% set images = images|merge([item]) %}
+{% endfor %}
+{% if paragraph.field_anchor.value %}
+  {% set attributes = attributes.setAttribute('id', paragraph.field_anchor.value) %}
+{% endif %}
+{% include 'pimlico:image_gallery' with {
+  attributes,
+  heading: paragraph.field_heading.value|default(''),
+  caption: paragraph.field_caption.value|default(''),
+  images,
+} only %}

@@ -1,0 +1,10 @@
+uuid: f3ba6a92-a117-48be-858b-a1955a571447
+langcode: en
+status: true
+dependencies: {  }
+id: feature_banner
+label: 'Feature banner'
+icon_uuid: null
+icon_default: null
+description: 'Full-bleed photograph with centred text and a button, such as the Newson’s Yard band.'
+behavior_plugins: {  }

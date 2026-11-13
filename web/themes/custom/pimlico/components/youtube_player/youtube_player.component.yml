@@ -1,0 +1,38 @@
+'$schema': 'https://git.drupalcode.org/project/drupal/-/raw/HEAD/core/assets/schemas/v1/metadata.schema.json'
+name: YouTube player
+status: stable
+description: 'A YouTube video in the Figma "Media / Video" style (13:115): 16:9 poster with the 88px outlined play control. Nothing loads from YouTube until someone presses play; then the video plays in Plyr (the same controls as uploaded films) from youtube-nocookie.com. Without JavaScript it is a link to the video on YouTube.'
+libraryOverrides:
+  css:
+    component:
+      youtube_player.scss: {}
+  js:
+    youtube_player.js: {}
+  dependencies:
+    - core/drupal
+    - core/once
+    - plyr/plyr
+props:
+  type: object
+  required:
+    - video_id
+  properties:
+    video_id:
+      type: string
+      title: YouTube video ID
+      description: 'The 11-character ID, e.g. "aqz-KE-bpKQ".'
+    title:
+      type: string
+      title: Title
+      description: 'Used for the play button label and the player frame title.'
+    start:
+      type: integer
+      title: Start time (seconds)
+      default: 0
+    caption:
+      type: string
+      title: Caption
+slots:
+  poster:
+    title: Poster image
+    description: 'A 16:9 still. Defaults to the plain linen-grey frame.'

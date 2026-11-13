@@ -1,0 +1,75 @@
+{#
+/**
+ * @file
+ * Podcast episode (Figma T10): title band, episode band with the player,
+ * episode notes with chapters, transcript, related stories.
+ */
+#}
+{% set title = node.label %}
+{% set file = node.field_audio.entity.field_media_audio_file.entity %}
+{% set src = file ? file_url(file.uri.value) : '' %}
+{% set meta = ['Podcast'|t, node.created.value|format_date('custom', 'j F'), node.field_duration.value]|filter(v => v)|join(' · ') %}
+{% set player_meta = [node.field_episode_number.value, node.field_duration.value]|filter(v => v)|join(' · ') %}
+{% set brand = node.field_featured_brand.entity %}
+
+<article{{ attributes.addClass('node', 'node--story', 'node--podcast') }}>
+  {{ title_prefix }}
+  {{ title_suffix }}
+  {% include 'pimlico:page_title' with {
+    title,
+    intro: node.field_summary.value|default(''),
+    breadcrumb: drupal_block('system_breadcrumb_block'),
+  } only %}
+
+  {% set player %}
+    {% if src %}
+      {% include 'pimlico:audio_player' with { src, title, meta: player_meta } only %}
+    {% else %}
+      <p>{{ 'This episode isn’t available to play right now.'|t }}</p>
+    {% endif %}
+  {% endset %}
+  {% include 'pimlico:episode_band' with {
+    attributes: create_attribute({ id: 'episode' }),
+    meta,
+    guest: node.field_guest.value|default(''),
+    transcript_url: node.field_transcript.value ? '#transcript' : '',
+    image: content.field_image,
+    player,
+  } only %}
+
+  {% if not node.field_sections.isEmpty() or not node.field_chapters.isEmpty() %}
+    {% set notes %}
+      <div class="story-notes">{{ content.field_sections }}</div>
+      {% if not node.field_chapters.isEmpty() %}<dl class="info-rows__list">{{ content.field_chapters }}</dl>{% endif %}
+    {% endset %}
+    {% include 'pimlico:split_section' with {
+      eyebrow: 'Episode notes'|t,
+      heading: 'Inside the conversation'|t,
+      intro: node.field_summary.value|default(''),
+      content: notes,
+      links: brand ? [{ text: 'Visit the showroom mentioned'|t, url: path('entity.node.canonical', { node: brand.id }) }] : [],
+    } only %}
+  {% endif %}
+
+  {% if node.field_transcript.value %}
+    {% set transcript %}<div class="rich-text rich-text--start">{{ content.field_transcript }}</div>{% endset %}
+    {% include 'pimlico:split_section' with {
+      attributes: create_attribute({ id: 'transcript' }),
+      eyebrow: 'Transcript'|t,
+      heading: 'Episode transcript'|t,
+      intro: 'A text alternative to the audio.'|t,
+      tint: true,
+      content: transcript,
+      links: [{ text: 'Back to the player'|t, url: '#episode' }],
+    } only %}
+  {% endif %}
+
+  {% include 'pimlico:card_grid' with {
+    attributes: create_attribute({ class: ['card-grid--tint'] }),
+    heading: 'Continue the conversation'|t,
+    text: 'Brands and stories connected to this place.'|t,
+    link_text: 'All news'|t,
+    link_url: path('view.news.page_news'),
+    items: node.field_related.isEmpty() ? drupal_view('news', 'block_related', node.field_news_category.target_id|default('all'), node.id) : content.field_related,
+  } only %}
+</article>

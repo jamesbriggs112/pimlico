@@ -1,0 +1,13 @@
+{% set attributes = attributes ?: create_attribute() %}
+{% set classes = ['menu', inline ? 'menu--inline'] %}
+{% if items %}
+  <ul {{ attributes.addClass(classes) }}>
+    {% for item in items %}
+      <li class="menu__item">
+        <a class="text-link text-link--dark text-link--{{ size|default('body') }}{{ item.in_active_trail ? ' text-link--underlined' }}" href="{{ item.url }}"{{ item.in_active_trail ? ' aria-current="page"' }}>
+          <span class="text-link__text">{{ item.title }}</span>
+        </a>
+      </li>
+    {% endfor %}
+  </ul>
+{% endif %}

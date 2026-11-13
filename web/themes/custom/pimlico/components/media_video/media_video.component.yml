@@ -1,0 +1,17 @@
+'$schema': 'https://git.drupalcode.org/project/drupal/-/raw/HEAD/core/assets/schemas/v1/metadata.schema.json'
+name: Video
+status: stable
+description: 'Figma "Media / Video": a 16:9 film in the content column with an 88px white-outline play control over its poster.'
+libraryOverrides:
+  css:
+    component:
+      media_video.scss: {}
+props:
+  type: object
+  properties:
+    caption:
+      type: string
+      title: Caption
+slots:
+  media:
+    title: Video

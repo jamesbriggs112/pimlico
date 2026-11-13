@@ -1,0 +1,26 @@
+uuid: f2151453-9c37-45ab-aff1-7361a143d9b9
+langcode: en
+status: true
+dependencies:
+  config:
+    - webform.webform.newsletter
+  module:
+    - webform
+  theme:
+    - pimlico
+id: pimlico_newsletter
+theme: pimlico
+region: newsletter
+weight: 0
+provider: null
+plugin: webform_block
+settings:
+  id: webform_block
+  label: Newsletter
+  label_display: '0'
+  provider: webform
+  webform_id: newsletter
+  default_data: ''
+  redirect: false
+  lazy: false
+visibility: {  }

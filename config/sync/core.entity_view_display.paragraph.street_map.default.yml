@@ -1,0 +1,33 @@
+uuid: e6d96a40-3425-4752-afc3-235432a5dfec
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.paragraph.street_map.field_eyebrow
+    - field.field.paragraph.street_map.field_heading
+    - paragraphs.paragraphs_type.street_map
+id: paragraph.street_map.default
+targetEntityType: paragraph
+bundle: street_map
+mode: default
+content:
+  field_eyebrow:
+    type: string
+    label: hidden
+    settings:
+      link_to_entity: false
+      link_rel: canonical
+    third_party_settings: {  }
+    weight: 0
+    region: content
+  field_heading:
+    type: string
+    label: hidden
+    settings:
+      link_to_entity: false
+      link_rel: canonical
+    third_party_settings: {  }
+    weight: 1
+    region: content
+hidden:
+  search_api_excerpt: true

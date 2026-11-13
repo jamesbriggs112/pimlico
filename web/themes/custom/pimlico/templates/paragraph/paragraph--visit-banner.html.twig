@@ -1,0 +1,18 @@
+{#
+/**
+ * @file
+ * Visit banner paragraph → pimlico:visit_banner. Rows are info_row
+ * paragraphs, which render compact here (see paragraph--info-row).
+ */
+#}
+{% set link = paragraph.field_link.0 %}
+{% include 'pimlico:visit_banner' with {
+  attributes,
+  eyebrow: paragraph.field_eyebrow.value|default(''),
+  heading: paragraph.field_heading.value|default(''),
+  link_text: link.title|default(''),
+  link_url: link ? link.url.toString() : '',
+  text: content.field_text,
+  rows: paragraph.field_items.isEmpty() ? null : content.field_items,
+  image: content.field_image,
+} only %}

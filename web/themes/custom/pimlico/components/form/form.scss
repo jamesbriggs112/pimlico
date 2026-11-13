@@ -1,0 +1,263 @@
+// Figma "Field" (underlined controls), "Checkbox" and form layout.
+// Error = 2px rule + alert icon + message in text/primary.
+// Focus = 2px rule + the two-tone focus ring.
+
+// Figma icons, inlined so pseudo-elements can draw them.
+$icon-chevron: "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='20' height='20' viewBox='0 0 20 20' fill='none'%3E%3Cpath d='M5 7.5L10 12.5L15 7.5' stroke='%23394959' stroke-width='1.25'/%3E%3C/svg%3E";
+$icon-alert: "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 16 16' fill='none'%3E%3Cpath d='M8 15.25C12.0041 15.25 15.25 12.0041 15.25 8C15.25 3.99594 12.0041 0.75 8 0.75C3.99594 0.75 0.75 3.99594 0.75 8C0.75 12.0041 3.99594 15.25 8 15.25Z' stroke='black' stroke-width='1.5'/%3E%3Cpath d='M8 4.5V9' stroke='black' stroke-width='1.5'/%3E%3Ccircle cx='8' cy='11.5' r='0.9' fill='black'/%3E%3C/svg%3E";
+$icon-check: "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='20' height='20' viewBox='0 0 20 20' fill='none'%3E%3Cpath d='M4 10.5L8 14.5L16 5.5' stroke='black' stroke-width='1.5'/%3E%3C/svg%3E";
+
+.form {
+  display: flex;
+  flex-direction: column;
+  row-gap: var(--row-gap);
+
+  fieldset {
+    border: none;
+    margin: 0;
+    padding: 0;
+    min-width: 0;
+  }
+
+  &-item {
+    display: flex;
+    flex-direction: column;
+    gap: var(--form-element-gap);
+    color: var(--form-element-text-color);
+
+    // Label: Label/Eyebrow in text/primary
+    > label,
+    legend,
+    .fieldset__label {
+      display: block;
+      padding: 0;
+      font-size: var(--font-size-label-eyebrow);
+      font-weight: var(--font-weight-bold);
+      line-height: var(--line-height-label);
+      letter-spacing: var(--letter-spacing-label-eyebrow);
+      text-transform: uppercase;
+      color: var(--form-element-label-color);
+    }
+
+    .form-required::after {
+      content: ' *';
+    }
+
+    input[type='text'],
+    input[type='email'],
+    input[type='password'],
+    input[type='tel'],
+    input[type='url'],
+    input[type='number'],
+    input[type='search'],
+    input[type='date'],
+    textarea,
+    select {
+      width: 100%;
+      margin: 0;
+      padding: var(--form-element-padding);
+      border: 0;
+      border-bottom: var(--form-element-border-width) solid
+        var(--form-element-border-color);
+      border-radius: var(--form-element-border-radius);
+      background-color: var(--form-element-background-color);
+      color: var(--form-element-text-color);
+      font: inherit;
+      font-size: var(--font-size-body-m);
+      line-height: var(--line-height-body-m);
+      appearance: none;
+
+      &::placeholder {
+        color: var(--form-element-placeholder-color);
+        opacity: 1;
+      }
+
+      // Focus thickens the rule to 2px with a shadow, not a wider border,
+      // so focusing a field never moves the layout.
+      &:focus {
+        outline: none;
+        box-shadow: 0 1px 0 0 var(--form-element-border-color);
+      }
+
+      &:focus-visible {
+        outline: var(--focus-outline-width) solid transparent;
+        box-shadow:
+          0 1px 0 0 var(--form-element-border-color),
+          var(--focus-ring);
+      }
+
+      &:disabled {
+        background-color: var(--form-element-disabled-background-color);
+        border-color: var(--form-element-disabled-border-color);
+        cursor: not-allowed;
+      }
+
+      // Drupal marks invalid fields with .error and aria-invalid.
+      // The 2px error rule is the 1px border plus a 1px shadow under it, so
+      // the field keeps its height and nothing moves.
+      &.error,
+      &[aria-invalid='true'] {
+        box-shadow: 0 1px 0 0 var(--form-element-border-color);
+      }
+    }
+
+    textarea {
+      min-height: var(--form-textarea-height);
+      resize: vertical;
+    }
+
+    select {
+      padding-right: #{to.rem(28px)};
+      background-image: url($icon-chevron);
+      background-repeat: no-repeat;
+      background-position: right top #{to.rem(2px)};
+      background-size: #{to.rem(20px)};
+      cursor: pointer;
+    }
+
+    .description {
+      font-size: var(--font-size-body-s);
+      line-height: var(--line-height-body-s);
+    }
+  }
+
+  // Error message row: alert icon + Body/S message
+  // A block, not flex: the message is one run of text, so emphasised words
+  // (Drupal wraps the bad value in <em>) flow inline instead of becoming
+  // columns. The icon sits in a 24px gutter.
+  &-item--error-message,
+  .form-item--error-message {
+    position: relative;
+    padding-left: #{to.rem(24px)};
+    font-size: var(--font-size-body-s);
+    line-height: var(--line-height-body-s);
+    color: var(--color-text-primary);
+
+    &::before {
+      content: '';
+      position: absolute;
+      top: calc((1lh - #{to.rem(16px)}) / 2);
+      left: 0;
+      width: #{to.rem(16px)};
+      height: #{to.rem(16px)};
+      background-color: currentColor;
+      mask: url($icon-alert) center / contain no-repeat;
+    }
+
+    em {
+      font-style: normal;
+      font-weight: var(--font-weight-bold);
+    }
+
+    strong {
+      font-weight: inherit;
+    }
+  }
+
+  // Figma "Checkbox": 20px box, 1px rule; checked = yellow fill + check.
+  &-item-checkbox,
+  &-item-radio {
+    flex-direction: row;
+    align-items: center;
+    gap: var(--space-12);
+
+    input[type='checkbox'],
+    input[type='radio'] {
+      appearance: none;
+      display: grid;
+      place-content: center;
+      flex-shrink: 0;
+      width: var(--form-checkbox-size);
+      height: var(--form-checkbox-size);
+      margin: 0;
+      border: 1px solid var(--color-border-strong);
+      border-radius: 0;
+      background-color: transparent;
+      color: var(--color-action-on-primary);
+      cursor: pointer;
+
+      &::before {
+        content: '';
+        width: #{to.rem(16px)};
+        height: #{to.rem(16px)};
+        background-color: currentColor;
+        mask: url($icon-check) center / contain no-repeat;
+        transform: scale(0);
+        transition: transform 120ms ease-out;
+      }
+
+      &:checked {
+        background-color: var(--color-action-primary);
+
+        &::before {
+          transform: scale(1);
+        }
+      }
+
+      &:focus {
+        outline: none;
+      }
+
+      &:focus-visible {
+        outline: var(--focus-outline-width) solid transparent;
+        box-shadow: var(--focus-ring);
+      }
+    }
+
+    input[type='radio'] {
+      border-radius: 50%;
+
+      &::before {
+        width: #{to.rem(8px)};
+        height: #{to.rem(8px)};
+        border-radius: 50%;
+        mask: none;
+      }
+    }
+
+    label {
+      display: inline;
+      font-size: var(--font-size-body-m);
+      line-height: var(--line-height-body-m);
+      font-weight: var(--font-weight-regular);
+      letter-spacing: 0;
+      text-transform: none;
+      cursor: pointer;
+    }
+  }
+
+  .form-actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-12);
+  }
+
+  button,
+  .button {
+    width: fit-content;
+  }
+}
+
+// The error summary Inline Form Errors adds ("1 error has been found") spans
+// the whole form, above the fields, whatever the form's layout.
+.form > [data-drupal-messages],
+.form > .messages__wrapper {
+  grid-column: 1 / -1;
+}
+
+// Messages added on the page (form.js) sit in the space under their field,
+// out of the flow, so showing or clearing one never moves the layout. The
+// gap between fields (--row-gap, 32–40px) holds one line. Messages from a
+// server round trip (no JavaScript) stay in the flow.
+.form-item:has(> [data-inline-error]),
+.js-form-item:has(> [data-inline-error]) {
+  position: relative;
+}
+
+.form .form-item--error-message[data-inline-error],
+.form-item--error-message[data-inline-error] {
+  position: absolute;
+  top: calc(100% + #{to.rem(6px)});
+  right: 0;
+  left: 0;
+}

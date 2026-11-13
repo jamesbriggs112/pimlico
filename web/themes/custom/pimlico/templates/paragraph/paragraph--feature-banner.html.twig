@@ -1,0 +1,21 @@
+{#
+/**
+ * @file
+ * Feature banner paragraph → pimlico:feature_banner. The eyebrow field is the
+ * lock-up name and the caption its small line.
+ */
+#}
+{% set link = paragraph.field_link.0 %}
+{% if paragraph.field_anchor.value %}
+  {% set attributes = attributes.setAttribute('id', paragraph.field_anchor.value) %}
+{% endif %}
+{% include 'pimlico:feature_banner' with {
+  attributes,
+  lockup: paragraph.field_eyebrow.value|default(''),
+  caption: paragraph.field_caption.value|default(''),
+  heading: paragraph.field_heading.value|default(''),
+  link_text: link.title|default(''),
+  link_url: link ? link.url.toString() : '',
+  text: content.field_text,
+  image: content.field_image,
+} only %}

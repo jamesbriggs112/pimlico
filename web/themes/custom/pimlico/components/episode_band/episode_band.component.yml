@@ -1,0 +1,28 @@
+'$schema': 'https://git.drupalcode.org/project/drupal/-/raw/HEAD/core/assets/schemas/v1/metadata.schema.json'
+name: Episode band
+status: stable
+description: 'Figma podcast "Section · Episode": dark band with a 420x520 guest portrait beside a yellow meta line, guest line, the audio player and a "Read the transcript" button. White on mobile.'
+libraryOverrides:
+  css:
+    component:
+      episode_band.scss: {}
+  dependencies:
+    - core/components.pimlico--audio_player
+    - core/components.pimlico--button
+props:
+  type: object
+  properties:
+    meta:
+      type: string
+      title: Meta
+    guest:
+      type: string
+      title: Guest line
+    transcript_url:
+      type: string
+      title: Transcript link
+slots:
+  image:
+    title: Guest portrait
+  player:
+    title: Audio player

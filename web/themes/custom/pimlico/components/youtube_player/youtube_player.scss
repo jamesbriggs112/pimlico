@@ -1,0 +1,105 @@
+// Figma "Media / Video" (13:115): 16:9, linen-grey frame, a still if there
+// is one, and the 88px circle with a 1px white outline and white play icon.
+// Hover and focus fill the circle. After play: Plyr, styled as the uploaded
+// films in media_video.
+.youtube-player {
+  margin: 0;
+
+  &__frame {
+    position: relative;
+    aspect-ratio: 16 / 9;
+    overflow: hidden;
+    background-color: var(--color-border-default);
+
+    iframe,
+    .plyr {
+      width: 100%;
+      height: 100%;
+      border: 0;
+    }
+  }
+
+  &__facade {
+    position: absolute;
+    inset: 0;
+    display: grid;
+    place-items: center;
+    color: var(--color-text-inverse);
+
+    &::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background-color: rgb(57 73 89 / 15%);
+      transition: background-color 0.3s ease-out;
+    }
+
+    &:hover::after {
+      background-color: rgb(57 73 89 / 30%);
+    }
+
+    &:focus {
+      outline: none;
+    }
+  }
+
+  &__poster {
+    position: absolute;
+    inset: 0;
+
+    // Positioned against the poster box, so field wrappers in between don't
+    // matter; cover also crops YouTube's letterbox bars.
+    img {
+      position: absolute;
+      inset: 0;
+      display: block;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+  }
+
+  &__control {
+    position: relative;
+    z-index: 1;
+    display: grid;
+    place-items: center;
+    width: #{fluid(64px, 88px)};
+    height: #{fluid(64px, 88px)};
+    border: 1px solid currentColor;
+    border-radius: 50%;
+    // A light navy wash keeps the outline legible on pale stills.
+    background-color: rgb(57 73 89 / 35%);
+    transition:
+      background-color 0.3s ease-out,
+      color 0.3s ease-out;
+
+    svg {
+      width: #{to.rem(20px)};
+      height: #{to.rem(20px)};
+    }
+  }
+
+  &__facade:hover &__control,
+  &__facade:focus-visible &__control {
+    background-color: var(--color-text-inverse);
+    color: var(--color-brand-dark-grey);
+  }
+
+  &__facade:focus-visible &__control {
+    box-shadow: var(--focus-ring-on-dark);
+  }
+
+  &__caption {
+    margin-top: var(--space-12);
+    font-size: var(--font-size-body-s);
+    line-height: var(--line-height-body-s);
+  }
+
+  .plyr {
+    --plyr-color-main: var(--color-brand-yellow);
+    --plyr-video-control-color: var(--color-text-inverse);
+    --plyr-video-control-color-hover: var(--color-brand-dark-grey);
+    --plyr-font-family: var(--body-text);
+  }
+}

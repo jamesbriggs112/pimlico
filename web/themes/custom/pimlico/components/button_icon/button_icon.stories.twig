@@ -1,0 +1,20 @@
+{% stories button_icon with { title: 'Primitives/Media control' } %}
+
+{% story on_dark with {
+  name: 'On dark (play, pause)',
+  parameters: { design: { type: 'figma', url: 'https://www.figma.com/design/REw9zZENN4OEozQHrt17pD/Pimlico-Visuals---V01?node-id=63-169' } }
+} %}
+  <div style="display: flex; gap: 24px; padding: 40px; background: #394959">
+    {% include 'pimlico:button_icon' with { title: 'Play film', icon_name: 'play', pressed: false } only %}
+    {% include 'pimlico:button_icon' with { title: 'Pause film', icon_name: 'pause', pressed: true } only %}
+  </div>
+{% endstory %}
+
+{% story on_light with { name: 'On light (gallery arrows)' } %}
+  <div style="display: flex; gap: 12px">
+    {% include 'pimlico:button_icon' with { title: 'Previous image', icon_name: 'arrow-left', tone: 'dark' } only %}
+    {% include 'pimlico:button_icon' with { title: 'Next image', icon_name: 'arrow-right', tone: 'dark' } only %}
+  </div>
+{% endstory %}
+
+{% endstories %}

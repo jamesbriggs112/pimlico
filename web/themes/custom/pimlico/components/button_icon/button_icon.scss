@@ -1,0 +1,57 @@
+// Figma "Media control": 48px circle, 1px outline. Hover fills the circle
+// and inverts the icon. Focus is the on-dark ring for the light tone.
+.btn-icon {
+  --_line: var(--button-icon-border-color);
+  --_color: var(--button-icon-color);
+  --_hover-bg: var(--button-icon-hover-background-color);
+  --_hover-color: var(--button-icon-hover-color);
+  --focus-ring: var(--focus-ring-on-dark);
+
+  display: inline-grid;
+  place-items: center;
+  flex-shrink: 0;
+  width: var(--button-icon-size);
+  height: var(--button-icon-size);
+  padding: 0;
+  border: 1px solid var(--_line);
+  border-radius: var(--button-icon-border-radius);
+  background-color: transparent;
+  color: var(--_color);
+  cursor: pointer;
+  transition:
+    background-color 0.3s ease-out,
+    color 0.3s ease-out;
+
+  &:hover {
+    background-color: var(--_hover-bg);
+    color: var(--_hover-color);
+  }
+
+  &:focus {
+    outline: none;
+  }
+
+  &:focus-visible {
+    outline: var(--focus-outline-width) solid transparent;
+    box-shadow: var(--focus-ring);
+  }
+
+  &:disabled {
+    opacity: 0.4;
+    cursor: not-allowed;
+  }
+
+  &--dark {
+    --_line: var(--color-border-strong);
+    --_color: var(--color-text-primary);
+    --_hover-bg: var(--color-brand-dark-grey);
+    --_hover-color: var(--color-text-inverse);
+    --focus-ring: var(--focus-ring-on-light);
+  }
+
+  svg {
+    display: block;
+    width: var(--button-icon-icon-size);
+    height: var(--button-icon-icon-size);
+  }
+}

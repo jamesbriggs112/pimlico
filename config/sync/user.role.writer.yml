@@ -4,13 +4,18 @@ status: true
 dependencies:
   config:
     - node.type.article
+    - node.type.brand
     - node.type.page
+    - node.type.podcast_episode
+    - node.type.press_article
+    - taxonomy.vocabulary.news_category
     - workflows.workflow.content_moderation
   module:
     - content_moderation
     - media
     - node
     - system
+    - taxonomy
     - toolbar
 id: writer
 label: Writer
@@ -20,10 +25,22 @@ permissions:
   - 'access content overview'
   - 'access toolbar'
   - 'create article content'
+  - 'create brand content'
   - 'create media'
   - 'create page content'
+  - 'create podcast_episode content'
+  - 'create press_article content'
+  - 'create terms in news_category'
   - 'edit own article content'
+  - 'edit own brand content'
   - 'edit own page content'
+  - 'edit own podcast_episode content'
+  - 'edit own press_article content'
   - 'use content_moderation transition create_new_draft'
+  - 'view article revisions'
+  - 'view brand revisions'
   - 'view own unpublished content'
+  - 'view page revisions'
+  - 'view podcast_episode revisions'
+  - 'view press_article revisions'
   - 'view the administration theme'

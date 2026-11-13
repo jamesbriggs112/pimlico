@@ -1,0 +1,15 @@
+{#
+/**
+ * @file
+ * The <pimlico-map> element (the map project's component).
+ *
+ * Available variables: src, feed, mode, brand, category, locate, pick,
+ * map_id, attributes. The theme sizes and frames it (pimlico:street_map).
+ */
+#}
+<pimlico-map{{ attributes.setAttribute('id', map_id).setAttribute('src', src) }}
+  {%- if feed %} brands="{{ feed }}"{% endif %}
+  {%- if mode == 'brand' %} mode="brand" brand="{{ brand }}"{% endif %}
+  {%- if category %} category="{{ category }}"{% endif %}
+  {%- if locate %} locate{% endif %}
+  {%- if pick %} pick{% endif %}></pimlico-map>

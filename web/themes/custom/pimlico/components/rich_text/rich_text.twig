@@ -1,0 +1,5 @@
+{% set attributes = attributes ?: create_attribute() %}
+<div {{ attributes.addClass(['rich-text', 'rich-text--' ~ align|default('center')]) }}>
+  {% if heading %}<h2>{{ heading }}</h2>{% endif %}
+  {% block content %}{{ content }}{% endblock %}
+</div>

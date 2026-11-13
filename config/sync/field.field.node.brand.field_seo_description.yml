@@ -1,0 +1,19 @@
+uuid: 3fb70c7c-fbf3-4154-a891-08076901489d
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_seo_description
+    - node.type.brand
+id: node.brand.field_seo_description
+field_name: field_seo_description
+entity_type: node
+bundle: brand
+label: 'SEO description'
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string_long

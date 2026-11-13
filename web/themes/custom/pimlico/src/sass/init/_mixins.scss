@@ -1,0 +1,86 @@
+@use 'sass-rem' as to;
+@use 'sass:math';
+@use './layout-vars' as *;
+
+@function roundNumber($number, $decimals: 0) {
+  $n: 1;
+  @if $decimals > 0 {
+    @for $i from 1 through $decimals {
+      $n: $n * 10;
+    }
+  }
+  @return math.div(math.round($number * $n), $n);
+}
+
+@function fluid(
+  $min-size,
+  $max-size,
+  $min-breakpoint: $default-min-bp,
+  $max-breakpoint: $default-max-bp,
+  $unit: vw
+) {
+  $slope: math.div($max-size - $min-size, $max-breakpoint - $min-breakpoint);
+  $slope-to-unit: roundNumber($slope * 100, 2);
+  $intercept-rem: roundNumber(to.rem($min-size - $slope * $min-breakpoint), 2);
+  $min-size-rem: roundNumber(to.rem($min-size), 2);
+  $max-size-rem: roundNumber(to.rem($max-size), 2);
+  @return clamp(
+    #{$min-size-rem},
+    #{$slope-to-unit}#{$unit} + #{$intercept-rem},
+    #{$max-size-rem}
+  );
+}
+
+@mixin contentWithGutters() {
+  --full-start: minmax(var(--page-gutter-left), 1fr);
+  --full-end: minmax(var(--page-gutter-right), 1fr);
+  --content: min(
+    var(--max-text-width),
+    100% - var(--page-gutter-left) - var(--page-gutter-right)
+  );
+  --max-width: calc((var(--page-width) - var(--content)) / 2);
+  --popout: minmax(0, var(--max-width));
+
+  display: grid;
+  grid-template-columns:
+    [full-start] var(--full-start)
+    [popout-start] var(--popout)
+    [content-start] var(--content) [content-end]
+    var(--popout) [popout-end]
+    var(--full-end) [full-end];
+}
+
+@mixin contentGrid() {
+  --gap-count: calc(var(--grid-column-count) - 1);
+  --total-gap-width: calc(var(--gap-count) * var(--column-gap));
+  --grid-item--max-width: calc(
+    (100% - var(--total-gap-width)) / var(--grid-column-count)
+  );
+
+  display: grid;
+  grid-template-columns: repeat(
+    auto-fill,
+    minmax(max(var(--grid-item--min-width), var(--grid-item--max-width)), 1fr)
+  );
+  grid-gap: var(--row-gap) var(--column-gap);
+}
+
+// Centre content in the 1280px column with the page gutters, as every
+// Figma section does (80px at 1440, 24px at 390).
+@mixin pageContainer() {
+  box-sizing: border-box;
+  width: 100%;
+  max-width: calc(var(--page-width) + 2 * var(--page-gutter));
+  margin-inline: auto;
+  padding-inline: var(--page-gutter);
+}
+
+// Fraunces Regular titles used by cards, info rows and menu links.
+@mixin title($size: var(--font-size-title-m)) {
+  font-family: var(--font-family-display);
+  font-size: $size;
+  font-weight: var(--font-weight-regular);
+  line-height: var(--line-height-title);
+  letter-spacing: var(--letter-spacing-title);
+  font-variation-settings: var(--font-display-variation);
+}

@@ -1,0 +1,30 @@
+uuid: 8109d770-a765-4257-9126-8d04ffbd7d00
+langcode: en
+status: true
+dependencies:
+  module:
+    - focal_point
+    - image_style_quality
+name: l23_056000_896x672_webp
+label: 'NIS WebP Landscape 4:3 - size 56 (896x672)'
+effects:
+  26d2700f-e967-46d0-8787-9afde9c2ff3b:
+    uuid: 26d2700f-e967-46d0-8787-9afde9c2ff3b
+    id: focal_point_scale_and_crop
+    weight: 0
+    data:
+      width: 896
+      height: 672
+      crop_type: focal_point
+  291c5279-abc0-431c-bc0a-9feab0d52bc4:
+    uuid: 291c5279-abc0-431c-bc0a-9feab0d52bc4
+    id: image_style_quality
+    weight: 1
+    data:
+      quality: 85
+  997670cf-124b-425a-ba55-a986137c1fed:
+    uuid: 997670cf-124b-425a-ba55-a986137c1fed
+    id: image_convert
+    weight: 2
+    data:
+      extension: webp

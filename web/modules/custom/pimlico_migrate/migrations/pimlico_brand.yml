@@ -1,0 +1,82 @@
+# Brands, published and active, linked to their Unit. Images, the about
+# text, gallery and specialisms come from the client; this imports what the
+# current belgraviavillage.com site holds.
+id: pimlico_brand
+label: 'Brands from the map project'
+migration_tags:
+  - pimlico
+source:
+  plugin: url
+  data_fetcher_plugin: file
+  data_parser_plugin: json
+  # Relative to the web root.
+  urls:
+    - modules/custom/pimlico_migrate/data/brands.json
+  item_selector: brands
+  ids:
+    id:
+      type: string
+  fields:
+    - { name: id, selector: id }
+    - { name: name, selector: name }
+    - { name: category, selector: category }
+    - { name: summary, selector: summary }
+    - { name: website, selector: website }
+    - { name: opening_hours, selector: opening_hours }
+    - { name: address_line1, selector: address_line1 }
+    - { name: address_line2, selector: address_line2 }
+    - { name: postal_code, selector: postal_code }
+  constants:
+    country: GB
+    city: London
+    status: 1
+    active: active
+    published: published
+    on_map: 1
+process:
+  type:
+    plugin: default_value
+    default_value: brand
+  title: name
+  uid:
+    plugin: default_value
+    default_value: 1
+  status: constants/status
+  moderation_state: constants/published
+  field_brand_category:
+    - plugin: static_map
+      source: category
+      bypass: true
+      map:
+        'Home & Interiors': Interiors
+        'Soft furnishings and fabrics': Interiors
+        Lighting: Interiors
+        'Antiques and art': 'Antiques & art'
+    - plugin: entity_lookup
+      entity_type: taxonomy_term
+      bundle_key: vid
+      bundle: brand_category
+      value_key: name
+  field_summary: summary
+  field_opening_hours: opening_hours
+  field_website/uri:
+    plugin: skip_on_empty
+    method: process
+    source: website
+  field_address/country_code: constants/country
+  field_address/address_line1: address_line1
+  field_address/address_line2: address_line2
+  field_address/locality: constants/city
+  field_address/postal_code: postal_code
+  field_tenancy_status: constants/active
+  field_display_on_map: constants/on_map
+  field_units:
+    plugin: migration_lookup
+    migration: pimlico_unit
+    source: id
+destination:
+  plugin: 'entity:node'
+  default_bundle: brand
+migration_dependencies:
+  required:
+    - pimlico_unit

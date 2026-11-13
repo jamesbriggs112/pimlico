@@ -1,0 +1,15 @@
+{% set attributes = attributes ?: create_attribute() %}
+{% set title = title|default('Video'|t) %}
+{% set watch_url = 'https://www.youtube.com/watch?v=' ~ video_id ~ (start ? '&t=' ~ start ~ 's' : '') %}
+<figure {{ attributes.addClass('youtube-player').setAttribute('data-youtube-player', video_id).setAttribute('data-start', start|default(0)).setAttribute('data-title', title) }}>
+  <div class="youtube-player__frame">
+    <a class="youtube-player__facade" href="{{ watch_url }}" data-youtube-play>
+      {% if poster %}<span class="youtube-player__poster">{% block poster %}{{ poster }}{% endblock %}</span>{% endif %}
+      <span class="youtube-player__control" aria-hidden="true">
+        {% include 'pimlico:icon' with { name: 'play', size: 20 } only %}
+      </span>
+      <span class="visually-hidden">{{ 'Play video: @title'|t({ '@title': title }) }}</span>
+    </a>
+  </div>
+  {% if caption %}<figcaption class="youtube-player__caption">{{ caption }}</figcaption>{% endif %}
+</figure>

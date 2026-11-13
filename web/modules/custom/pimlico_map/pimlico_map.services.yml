@@ -1,0 +1,9 @@
+services:
+  _defaults:
+    autowire: true
+  logger.channel.pimlico_map:
+    parent: logger.channel_base
+    arguments: ['pimlico_map']
+  Drupal\pimlico_map\MapAssets: ~
+  Drupal\pimlico_map\BrandFeed: ~
+  Drupal\pimlico_map\MapBuilder: ~

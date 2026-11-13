@@ -1,0 +1,19 @@
+uuid: 3c3c7301-1fed-4ce6-9abe-b27c63f4af4d
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_anchor
+    - paragraphs.paragraphs_type.content_grid
+id: paragraph.content_grid.field_anchor
+field_name: field_anchor
+entity_type: paragraph
+bundle: content_grid
+label: 'Anchor ID'
+description: 'Optional. Lets links jump to this section, e.g. "getting-here" for /visit#getting-here. Lower case letters and hyphens.'
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

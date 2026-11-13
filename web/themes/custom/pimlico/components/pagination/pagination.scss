@@ -1,0 +1,58 @@
+// Figma "Pagination" (7:252): a row 28px apart; numbers Body M; the next
+// link Label/Nav caps. The pages you can go to are underlined; the current
+// page isn't (client request, 11 November 2026).
+.pagination {
+  @include pageContainer;
+  padding-block: #{to.rem(8px)} var(--section-space);
+
+  &__items {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: var(--space-12) #{to.rem(28px)};
+    margin: 0;
+    padding: 0;
+    list-style: none;
+  }
+
+  &__page,
+  &__step {
+    color: var(--color-text-primary);
+    text-decoration-line: underline;
+    text-decoration-thickness: 1px;
+    text-decoration-color: currentColor;
+    text-underline-offset: var(--link-underline-offset);
+    transition: text-underline-offset 0.3s ease-out;
+
+    &:hover,
+    &:focus-visible {
+      text-underline-offset: var(--link-hover-underline-offset);
+    }
+
+    &[aria-current='page'] {
+      text-decoration-line: none;
+    }
+
+    &:focus {
+      outline: none;
+    }
+
+    &:focus-visible {
+      outline: var(--focus-outline-width) solid transparent;
+      box-shadow: var(--focus-ring);
+    }
+  }
+
+  &__page {
+    font-size: var(--font-size-body-m);
+    line-height: var(--line-height-body-m);
+  }
+
+  &__step {
+    font-size: var(--font-size-label-nav);
+    font-weight: var(--font-weight-medium);
+    line-height: var(--line-height-label);
+    letter-spacing: var(--letter-spacing-label-nav);
+    text-transform: uppercase;
+  }
+}

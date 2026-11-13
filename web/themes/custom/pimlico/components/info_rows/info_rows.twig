@@ -1,0 +1,12 @@
+{% set attributes = attributes ?: create_attribute() %}
+{% set heading_id = 'info-rows-' ~ heading|clean_id %}
+<section {{ attributes.addClass(['info-rows', tint is same as(false) ? '' : 'info-rows--tint']).setAttribute('aria-labelledby', heading_id) }}>
+  <div class="info-rows__inner">
+    <div class="info-rows__intro">
+      {% if eyebrow %}<p class="eyebrow">{{ eyebrow }}</p>{% endif %}
+      <h2 class="info-rows__heading display-l" id="{{ heading_id }}">{{ heading }}</h2>
+      {% if text %}<div class="info-rows__text body-l">{% block text %}{{ text }}{% endblock %}</div>{% endif %}
+    </div>
+    <dl class="info-rows__list">{% block rows %}{{ rows }}{% endblock %}</dl>
+  </div>
+</section>

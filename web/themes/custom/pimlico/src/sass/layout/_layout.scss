@@ -1,0 +1,33 @@
+@use '../init/mixins' as *;
+
+body,
+html {
+  margin: 0px;
+  padding: 0px;
+  height: 100%;
+}
+
+.dialog-off-canvas-main-canvas {
+  height: 100%;
+}
+
+@view-transition {
+  navigation: auto;
+}
+
+// The page is the positioning context for the overlay header, so it sits on
+// top of the hero below the admin toolbar too.
+.page {
+  position: relative;
+}
+
+// Pages that aren't nodes (access denied, not found, login, search) keep
+// their content in the page column with section spacing.
+.main--contained .main__content {
+  @include pageContainer;
+  padding-block: var(--section-space);
+
+  > * + * {
+    margin-top: var(--space-24);
+  }
+}

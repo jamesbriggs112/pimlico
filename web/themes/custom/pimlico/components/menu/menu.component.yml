@@ -1,0 +1,28 @@
+'$schema': 'https://git.drupalcode.org/project/drupal/-/raw/HEAD/core/assets/schemas/v1/metadata.schema.json'
+name: Menu
+status: stable
+description: 'A simple list of text links: footer columns, the legal row and the mobile menu secondary links.'
+libraryOverrides:
+  css:
+    component:
+      menu.scss: {}
+  dependencies:
+    - core/components.pimlico--text_link
+props:
+  type: object
+  properties:
+    items:
+      title: Menu items
+      description: 'Drupal menu items (menu.html.twig "items"), one level.'
+      type: array
+    size:
+      title: Link size
+      type: string
+      enum:
+        - body
+        - small
+      default: body
+    inline:
+      title: Inline
+      description: 'Lay the links out in a row, as in the footer legal row.'
+      type: boolean

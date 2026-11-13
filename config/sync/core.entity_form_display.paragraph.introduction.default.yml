@@ -1,0 +1,68 @@
+uuid: 2d0589f4-a88b-402b-96e7-d5986560961a
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.paragraph.introduction.field_anchor
+    - field.field.paragraph.introduction.field_eyebrow
+    - field.field.paragraph.introduction.field_heading
+    - field.field.paragraph.introduction.field_images
+    - field.field.paragraph.introduction.field_link
+    - field.field.paragraph.introduction.field_text
+    - field.field.paragraph.introduction.field_video
+    - paragraphs.paragraphs_type.introduction
+  module:
+    - link
+    - media_library
+    - text
+id: paragraph.introduction.default
+targetEntityType: paragraph
+bundle: introduction
+mode: default
+content:
+  field_anchor:
+    type: string_textfield
+    weight: 5
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+  field_eyebrow:
+    type: string_textfield
+    weight: 0
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+  field_heading:
+    type: string_textfield
+    weight: 1
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+  field_images:
+    type: media_library_widget
+    weight: 4
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+  field_link:
+    type: link_default
+    weight: 3
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+  field_text:
+    type: text_textarea
+    weight: 2
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+  field_video:
+    type: media_library_widget
+    weight: 6
+    region: content
+    settings:
+      media_types: {  }
+    third_party_settings: {  }
+hidden:
+  created: true
+  status: true

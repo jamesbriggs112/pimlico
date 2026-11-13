@@ -1,0 +1,10 @@
+uuid: 87b0e87c-2a20-40b9-b5e2-6ca9ad02628a
+langcode: en
+status: true
+dependencies: {  }
+id: hero_film
+label: 'Hero film'
+icon_uuid: null
+icon_default: null
+description: 'Full-bleed silent film with a heading and a pause control. Use once, at the top of a page.'
+behavior_plugins: {  }

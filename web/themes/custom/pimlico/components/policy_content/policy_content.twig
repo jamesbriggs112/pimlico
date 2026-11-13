@@ -1,0 +1,27 @@
+{% set attributes = attributes ?: create_attribute() %}
+<section {{ attributes.addClass(['policy-content', contents ? 'policy-content--contents' : '']) }}>
+  {% if contents %}
+    <nav class="policy-content__contents" id="contents" aria-labelledby="policy-contents-label">
+      <p class="eyebrow policy-content__label" id="policy-contents-label">{{ 'On this page'|t }}</p>
+      <ol class="policy-content__list">
+        {% for item in contents %}
+          <li class="policy-content__item">
+            <a class="policy-content__link" href="#{{ item.id }}">
+              <span class="policy-content__title">{{ item.title }}</span>
+              <span class="policy-content__number body-s" aria-hidden="true">{{ '%02d'|format(loop.index) }}</span>
+            </a>
+          </li>
+        {% endfor %}
+      </ol>
+    </nav>
+  {% endif %}
+  <div class="policy-content__body">
+    {% if updated %}<p class="eyebrow policy-content__updated">{{ 'Last updated · @date'|t({ '@date': updated }) }}</p>{% endif %}
+    <div class="rich-text rich-text--start policy-content__text">{% block body %}{{ body }}{% endblock %}</div>
+    {% if contents %}
+      <div class="policy-content__actions">
+        {% include 'pimlico:button' with { text: 'Back to contents'|t, url: '#contents', variant: 'yellow' } only %}
+      </div>
+    {% endif %}
+  </div>
+</section>

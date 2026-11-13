@@ -1,0 +1,17 @@
+{% set attributes = attributes ?: create_attribute() %}
+<footer {{ attributes.addClass('footer') }}>
+  <div class="footer__inner">
+    <div class="footer__top">
+      <div class="footer__menus">
+        {% block menu %}{{ menu }}{% endblock %}
+      </div>
+      <div class="footer__logos">
+        {% include 'pimlico:logo' with { url: home_url|default('/'), label: 'The Pimlico Road home'|t, attributes: create_attribute({ class: ['footer__logo', 'footer__logo--pimlico'] }) } only %}
+        {% include 'pimlico:logo' with { brand: 'grosvenor', attributes: create_attribute({ class: ['footer__logo', 'footer__logo--grosvenor'] }) } only %}
+      </div>
+    </div>
+    <div class="footer__bottom">
+      {% block bottom %}{{ bottom }}{% endblock %}
+    </div>
+  </div>
+</footer>

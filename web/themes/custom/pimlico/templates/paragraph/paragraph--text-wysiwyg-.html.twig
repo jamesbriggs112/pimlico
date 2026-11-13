@@ -1,0 +1,12 @@
+{#
+/**
+ * @file
+ * Rich text paragraph → pimlico:rich_text.
+ */
+#}
+<div{{ attributes.addClass('paragraph-rich-text') }}>
+  {% include 'pimlico:rich_text' with {
+    heading: paragraph.field_heading.value|default(''),
+    content: content.field_text,
+  } only %}
+</div>

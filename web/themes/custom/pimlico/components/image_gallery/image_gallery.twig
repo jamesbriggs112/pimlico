@@ -1,0 +1,49 @@
+{#
+/**
+ * @file
+ * Image gallery. Desktop rows repeat Figma's pattern: landscape + portrait,
+ * two landscapes, three portraits, portrait + landscape. Each photo is
+ * cropped to its slot's shape (L = 3:2, P = 4:5).
+ */
+#}
+{% set attributes = attributes ?: create_attribute() %}
+{% set pattern = [['l', 'p'], ['l', 'l'], ['p', 'p', 'p'], ['p', 'l']] %}
+{% set heading_id = heading ? 'gallery-' ~ heading|clean_id %}
+{% set track_id = 'gallery-track-' ~ random() %}
+{% if heading_id %}
+  {% set attributes = attributes.setAttribute('aria-labelledby', heading_id) %}
+{% else %}
+  {% set attributes = attributes.setAttribute('aria-label', 'Gallery'|t) %}
+{% endif %}
+<section {{ attributes.addClass('image-gallery') }}>
+  {% if heading or caption %}
+    <div class="image-gallery__header">
+      {% if heading %}<h2 class="image-gallery__heading display-l" id="{{ heading_id }}">{{ heading }}</h2>{% endif %}
+      {% if caption %}<p class="image-gallery__caption">{{ caption }}</p>{% endif %}
+    </div>
+  {% endif %}
+  <div class="image-gallery__track" id="{{ track_id }}" tabindex="0" role="group" aria-label="{{ 'Photographs'|t }}">
+    {% set index = 0 %}
+    {% set row = 0 %}
+    {% for i in 1..max(images|length, 1) %}
+      {% if index < images|length %}
+        {% set shapes = pattern[row % pattern|length] %}
+        {% set remaining = images|length - index %}
+        {% if remaining < shapes|length %}
+          {% set shapes = remaining == 1 ? ['l'] : shapes|slice(0, remaining) %}
+        {% endif %}
+        <div class="image-gallery__row">
+          {% for shape in shapes %}
+            <figure class="image-gallery__item image-gallery__item--{{ shape }}">{{ images[index] }}</figure>
+            {% set index = index + 1 %}
+          {% endfor %}
+        </div>
+        {% set row = row + 1 %}
+      {% endif %}
+    {% endfor %}
+  </div>
+  <div class="image-gallery__controls">
+    {% include 'pimlico:button_icon' with { title: 'Previous photographs'|t, icon_name: 'arrow-left', tone: 'dark', attributes: create_attribute({ 'data-gallery-prev': true, 'aria-controls': track_id }) } only %}
+    {% include 'pimlico:button_icon' with { title: 'Next photographs'|t, icon_name: 'arrow-right', tone: 'dark', attributes: create_attribute({ 'data-gallery-next': true, 'aria-controls': track_id }) } only %}
+  </div>
+</section>

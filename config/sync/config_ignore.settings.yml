@@ -4,3 +4,5 @@ mode: simple
 ignored_config_entities:
   - vitals.settings
   - 'webform.webform.*'
+  - ~webform.webform.contact
+  - ~webform.webform.newsletter

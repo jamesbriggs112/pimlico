@@ -1,0 +1,37 @@
+'$schema': 'https://git.drupalcode.org/project/drupal/-/raw/HEAD/core/assets/schemas/v1/metadata.schema.json'
+name: Introduction
+status: stable
+description: 'Figma "Section · Introduction". With images: text beside a two-photo collage on linen (Home). Without: a centred heading over two text columns, with an optional film below (Newson’s Yard).'
+libraryOverrides:
+  css:
+    component:
+      introduction.scss: {}
+  dependencies:
+    - core/components.pimlico--text_link
+props:
+  type: object
+  required:
+    - heading
+  properties:
+    eyebrow:
+      type: string
+      title: Eyebrow
+    heading:
+      type: string
+      title: Heading
+    link_text:
+      type: string
+      title: Link text
+    link_url:
+      type: string
+      title: Link URL
+slots:
+  text:
+    title: Text
+  image_large:
+    title: Large image (4:5)
+  image_small:
+    title: Small image (4:5)
+  media:
+    title: Film
+    description: 'Centred layout only: a 16:9 film or video below the text.'

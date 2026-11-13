@@ -1,0 +1,31 @@
+uuid: 7c2890be-912c-4182-82ab-353ea9b41585
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.paragraph.split_text.field_background
+    - field.field.paragraph.split_text.field_eyebrow
+    - field.field.paragraph.split_text.field_heading
+    - field.field.paragraph.split_text.field_intro
+    - field.field.paragraph.split_text.field_text
+    - paragraphs.paragraphs_type.split_text
+  module:
+    - text
+id: paragraph.split_text.default
+targetEntityType: paragraph
+bundle: split_text
+mode: default
+content:
+  field_text:
+    type: text_default
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+    weight: 0
+    region: content
+hidden:
+  field_background: true
+  field_eyebrow: true
+  field_heading: true
+  field_intro: true
+  search_api_excerpt: true

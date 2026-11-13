@@ -1,0 +1,19 @@
+uuid: af47bd73-941b-4e4d-840e-c2f1ad36aef4
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_summary
+    - node.type.brand
+id: node.brand.field_summary
+field_name: field_summary
+entity_type: node
+bundle: brand
+label: Intro
+description: 'One or two sentences under the brand name, also used on cards.'
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string_long

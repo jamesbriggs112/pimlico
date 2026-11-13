@@ -1,0 +1,62 @@
+uuid: 38a22963-9290-4a33-8ff1-647e11b459dd
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.paragraph.info_rows.field_anchor
+    - field.field.paragraph.info_rows.field_background
+    - field.field.paragraph.info_rows.field_eyebrow
+    - field.field.paragraph.info_rows.field_heading
+    - field.field.paragraph.info_rows.field_items
+    - field.field.paragraph.info_rows.field_text
+    - paragraphs.paragraphs_type.info_rows
+  module:
+    - paragraphs
+    - text
+id: paragraph.info_rows.default
+targetEntityType: paragraph
+bundle: info_rows
+mode: default
+content:
+  field_anchor:
+    type: string_textfield
+    weight: 4
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+  field_background:
+    type: options_buttons
+    weight: 20
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+  field_eyebrow:
+    type: string_textfield
+    weight: 0
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+  field_heading:
+    type: string_textfield
+    weight: 1
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+  field_items:
+    type: paragraphs
+    weight: 3
+    region: content
+    settings:
+      edit_mode: closed
+      add_mode: button
+      default_paragraph_type: ''
+    third_party_settings: {  }
+  field_text:
+    type: text_textarea
+    weight: 2
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+hidden:
+  created: true
+  status: true

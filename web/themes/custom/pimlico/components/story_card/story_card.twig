@@ -1,0 +1,13 @@
+{% set attributes = attributes ?: create_attribute() %}
+{% set h = 'h' ~ heading_level|default(3) %}
+<a {{ attributes.addClass('story-card').setAttribute('href', url) }}>
+  <div class="story-card__media">{% block image %}{{ image }}{% endblock %}</div>
+  <div class="story-card__body">
+    {% if meta %}<p class="story-card__meta">{{ meta }}</p>{% endif %}
+    <{{ h }} class="story-card__title">{{ title }}</{{ h }}>
+    {% if summary %}<p class="story-card__summary">{{ summary }}</p>{% endif %}
+    {% if link_text|default('Step inside'|t) %}
+      <span class="story-card__link" aria-hidden="true">{{ link_text|default('Step inside'|t) }}</span>
+    {% endif %}
+  </div>
+</a>

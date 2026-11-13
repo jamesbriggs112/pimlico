@@ -1,0 +1,17 @@
+{% stories figure with { title: 'Components/Figure' } %}
+{% story default with { name: 'Supporting image' } %}
+  {% set img = url('<front>')|render|trim('/', 'right') ~ '/themes/custom/pimlico/src/stories/images/' %}
+  {% include 'pimlico:figure' with {
+    caption: 'Pimlico Road from the corner of Ebury Street.',
+    image: { '#markup': '<img src="' ~ img ~ 'intro-ebury-street-corner.jpg" alt="">' },
+  } only %}
+{% endstory %}
+{% story wide with { name: 'Lead image (wide)' } %}
+  {% set img = url('<front>')|render|trim('/', 'right') ~ '/themes/custom/pimlico/src/stories/images/' %}
+  {% include 'pimlico:figure' with {
+    wide: true,
+    caption: 'Photography: placeholder',
+    image: { '#markup': '<img src="' ~ img ~ 'hero-street.jpg" alt="">' },
+  } only %}
+{% endstory %}
+{% endstories %}

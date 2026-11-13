@@ -1,0 +1,9 @@
+pimlico_map.brand_feed:
+  path: '/api/map/brands'
+  defaults:
+    _controller: '\Drupal\pimlico_map\Controller\BrandFeedController'
+  methods: [GET]
+  requirements:
+    _permission: 'access content'
+  options:
+    _format: json

@@ -1,0 +1,19 @@
+{#
+/**
+ * @file
+ * Next step paragraph (cta) → pimlico:next_step. With only a heading and
+ * buttons it's the compact "Related information" bar (T16).
+ */
+#}
+{% set links = [] %}
+{% for item in paragraph.field_links %}
+  {% set links = links|merge([{ text: item.title, url: item.url.toString() }]) %}
+{% endfor %}
+{% include 'pimlico:next_step' with {
+  attributes,
+  eyebrow: paragraph.field_eyebrow.value|default(''),
+  heading: paragraph.field_heading.value|default(''),
+  text: paragraph.field_text.isEmpty() ? null : content.field_text,
+  links,
+  inline: not paragraph.field_eyebrow.value and paragraph.field_text.isEmpty(),
+} only %}

@@ -1,0 +1,10 @@
+uuid: c4d9a6d9-04d1-45b3-a078-43a747944dcb
+langcode: en
+status: true
+dependencies: {  }
+id: introduction
+label: Introduction
+icon_uuid: null
+icon_default: null
+description: 'Eyebrow, heading, text and link beside a collage of up to three photographs.'
+behavior_plugins: {  }

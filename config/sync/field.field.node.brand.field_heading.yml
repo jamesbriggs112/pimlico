@@ -1,0 +1,19 @@
+uuid: 59933789-ebb1-4a93-9b67-7dcbdce0545a
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_heading
+    - node.type.brand
+id: node.brand.field_heading
+field_name: field_heading
+entity_type: node
+bundle: brand
+label: 'About heading'
+description: 'e.g. "Rooms that look as though they have always been there".'
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

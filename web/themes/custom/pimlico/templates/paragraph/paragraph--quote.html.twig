@@ -1,0 +1,12 @@
+{#
+/**
+ * @file
+ * Quote paragraph → pimlico:quote. The attribution joins name and role.
+ */
+#}
+{% set cite = [paragraph.field_name.value, paragraph.field_position_company.value]|filter(v => v)|join(', ') %}
+{% include 'pimlico:quote' with {
+  attributes,
+  cite,
+  quote: content.field_text,
+} only %}

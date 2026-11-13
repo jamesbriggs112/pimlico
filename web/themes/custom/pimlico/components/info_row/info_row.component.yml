@@ -1,0 +1,33 @@
+'$schema': 'https://git.drupalcode.org/project/drupal/-/raw/HEAD/core/assets/schemas/v1/metadata.schema.json'
+name: Info row
+status: stable
+description: 'Figma "Info row": a ruled label/value row (specialisms, opening hours, practical information), with an optional action link below.'
+libraryOverrides:
+  css:
+    component:
+      info_row.scss: {}
+  dependencies:
+    - core/components.pimlico--text_link
+props:
+  type: object
+  required:
+    - label
+  properties:
+    label:
+      type: string
+      title: Label
+    link_text:
+      type: string
+      title: Link text
+    link_url:
+      type: string
+      title: Link URL
+    variant:
+      type: string
+      title: Variant
+      description: 'title = Fraunces label (default); compact = eyebrow label and inverse colours, for the Visit banner.'
+      enum: [title, compact]
+      default: title
+slots:
+  value:
+    title: Value

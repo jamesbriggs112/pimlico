@@ -1,0 +1,23 @@
+{#
+/**
+ * @file
+ * Newsletter webform in the Newsletter band. The heading is the webform's
+ * title and the intro its description.
+ */
+#}
+{% embed 'pimlico:newsletter' with {
+  heading: drupal_config('webform.webform.newsletter', 'title')|default('Newsletter'|t),
+  intro: drupal_config('webform.webform.newsletter', 'description')|striptags|trim,
+  form_attributes: attributes,
+  children,
+  title_prefix,
+  title_suffix,
+} only %}
+  {% block form %}
+    <form{{ form_attributes.addClass('form') }}>
+      {{ title_prefix }}
+      {{ children }}
+      {{ title_suffix }}
+    </form>
+  {% endblock %}
+{% endembed %}

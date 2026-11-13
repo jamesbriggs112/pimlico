@@ -1,0 +1,51 @@
+uuid: 55e60a84-395a-488b-8bcc-bfa64222d359
+langcode: en
+status: true
+dependencies:
+  config:
+    - image.style.sc_008000_128x128
+    - image.style.sc_016000_256x256
+    - image.style.sc_024000_384x384
+    - image.style.sc_032000_512x512
+    - image.style.sc_040000_640x640
+    - image.style.sc_048000_768x768
+    - image.style.sc_056000_896x896
+    - image.style.sc_064000_1024x1024
+    - image.style.sc_072000_1152x1152
+    - image.style.sc_088000_1408x1408
+    - image.style.sc_104000_1664x1664
+    - image.style.sc_120000_1920x1920
+    - image.style.sc_136000_2176x2176
+    - image.style.sc_160000_2560x2560
+    - image.style.sc_184000_2944x2944
+    - image.style.sc_208000_3328x3328
+    - image.style.sc_240000_3840x3840
+id: card
+label: 'Card (story and brand cards)'
+image_style_mappings:
+  -
+    image_mapping_type: sizes
+    image_mapping:
+      sizes: '(min-width: 1440px) 400px, (min-width: 980px) 30vw, (min-width: 768px) 45vw, 75vw'
+      sizes_image_styles:
+        - sc_008000_128x128
+        - sc_016000_256x256
+        - sc_024000_384x384
+        - sc_032000_512x512
+        - sc_040000_640x640
+        - sc_048000_768x768
+        - sc_056000_896x896
+        - sc_064000_1024x1024
+        - sc_072000_1152x1152
+        - sc_088000_1408x1408
+        - sc_104000_1664x1664
+        - sc_120000_1920x1920
+        - sc_136000_2176x2176
+        - sc_160000_2560x2560
+        - sc_184000_2944x2944
+        - sc_208000_3328x3328
+        - sc_240000_3840x3840
+    breakpoint_id: responsive_image.viewport_sizing
+    multiplier: 1x
+breakpoint_group: responsive_image
+fallback_image_style: sc_048000_768x768

@@ -1,0 +1,8 @@
+uuid: 9412608c-82c4-4598-afde-d55af10f6850
+langcode: en
+status: true
+dependencies: {  }
+id: promo
+label: Promo
+revision: true
+description: 'An image beside an eyebrow, heading, text and link, placed inside a listing.'

@@ -1,0 +1,22 @@
+{#
+/**
+ * @file
+ * Menu block. Shows the block label as a heading when it is set to display,
+ * as the footer column titles do ("Explore", "Information", "Follow").
+ */
+#}
+{% set heading_id = attributes.id ~ '-menu' %}
+<div{{ attributes.addClass('menu-block') }}>
+  {{ title_prefix }}
+  {% if label %}
+    <h2{{ title_attributes.addClass('menu-block__title').setAttribute('id', heading_id) }}>{{ label }}</h2>
+  {% endif %}
+  {{ title_suffix }}
+  {% block content %}
+    {% if label %}
+      <nav aria-labelledby="{{ heading_id }}">{{ content }}</nav>
+    {% else %}
+      <nav aria-label="{{ configuration.label }}">{{ content }}</nav>
+    {% endif %}
+  {% endblock %}
+</div>

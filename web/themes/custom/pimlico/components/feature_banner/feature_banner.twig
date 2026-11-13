@@ -1,0 +1,18 @@
+{% set attributes = attributes ?: create_attribute() %}
+{% set heading_id = 'feature-' ~ heading|clean_id %}
+<section {{ attributes.addClass('feature-banner').setAttribute('aria-labelledby', heading_id) }}>
+  <div class="feature-banner__image" aria-hidden="true">{% block image %}{{ image }}{% endblock %}</div>
+  <div class="feature-banner__content">
+    {% if lockup %}
+      <p class="feature-banner__lockup">
+        <span class="feature-banner__lockup-name">{{ lockup }}</span>
+        {% if caption %}<span class="feature-banner__lockup-caption">{{ caption }}</span>{% endif %}
+      </p>
+    {% endif %}
+    <h2 class="feature-banner__heading display-l" id="{{ heading_id }}">{{ heading }}</h2>
+    {% if text %}<div class="feature-banner__text body-l">{% block text %}{{ text }}{% endblock %}</div>{% endif %}
+    {% if link_text and link_url %}
+      {% include 'pimlico:button' with { text: link_text, url: link_url, variant: 'yellow' } only %}
+    {% endif %}
+  </div>
+</section>

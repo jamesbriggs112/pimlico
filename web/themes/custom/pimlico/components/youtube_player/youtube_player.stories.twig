@@ -1,0 +1,16 @@
+{% stories youtube_player with { title: 'Components/YouTube player' } %}
+{% story default with {
+  name: 'With poster',
+  parameters: { design: { type: 'figma', url: 'https://www.figma.com/design/REw9zZENN4OEozQHrt17pD/Pimlico-Visuals---V01?node-id=13-115' } }
+} %}
+  {% set img = url('<front>')|render|trim('/', 'right') ~ '/themes/custom/pimlico/src/stories/images/' %}
+  <div style="max-width: 1280px">
+    {% include 'pimlico:youtube_player' with {
+      video_id: 'aqz-KE-bpKQ',
+      title: 'Big Buck Bunny',
+      caption: 'Big Buck Bunny, Blender Foundation (CC BY 3.0).',
+      poster: { '#markup': '<img src="' ~ img ~ 'hero-street.jpg" alt="">' },
+    } only %}
+  </div>
+{% endstory %}
+{% endstories %}

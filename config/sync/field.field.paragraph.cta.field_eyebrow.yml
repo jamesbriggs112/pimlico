@@ -1,0 +1,19 @@
+uuid: d87c32f9-f2b7-4d1a-86bd-b643a0d8356e
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_eyebrow
+    - paragraphs.paragraphs_type.cta
+id: paragraph.cta.field_eyebrow
+field_name: field_eyebrow
+entity_type: paragraph
+bundle: cta
+label: Eyebrow
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

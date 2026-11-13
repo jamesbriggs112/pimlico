@@ -1,0 +1,80 @@
+// Figma podcast "Section · Episode" (25:3317): dark grey, 60px padding, a
+// 420x520 portrait and a 760px column 100px apart; yellow meta, white Body L
+// guest line, player, Yellow button. Mobile (25:831): white, 342x300
+// portrait, pumpkin meta, Body M guest, the player stays a dark box.
+.episode-band {
+  padding-block: var(--section-space);
+
+  @include mq($from: desktop) {
+    // Eyebrows on the dark band are yellow (7:1), whatever loads first.
+    --color-text-eyebrow: var(--color-brand-yellow);
+    background-color: var(--color-surface-inverse);
+    color: var(--color-text-inverse);
+    --focus-ring: var(--focus-ring-on-dark);
+  }
+
+  &__inner {
+    @include pageContainer;
+    display: grid;
+    gap: #{to.rem(16px)};
+
+    @include mq($from: desktop) {
+      grid-template-columns: minmax(0, #{to.rem(420px)}) minmax(
+          0,
+          #{to.rem(760px)}
+        );
+      justify-content: space-between;
+      align-items: center;
+      gap: #{to.rem(100px)};
+    }
+  }
+
+  &__image {
+    overflow: hidden;
+    aspect-ratio: 342 / 300;
+    background-color: var(--color-border-default);
+
+    @include mq($from: desktop) {
+      aspect-ratio: 420 / 520;
+    }
+
+    img {
+      display: block;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+  }
+
+  &__body {
+    display: grid;
+    gap: #{fluid(16px, 24px)};
+  }
+
+  &__meta,
+  &__guest {
+    margin: 0;
+  }
+
+  &__meta {
+    @include mq($from: desktop) {
+      color: var(--color-brand-yellow);
+    }
+  }
+
+  &__guest {
+    max-width: #{to.rem(620px)};
+
+    @include mq($until: desktop) {
+      font-size: var(--font-size-body-m);
+      font-weight: var(--font-weight-regular);
+      line-height: var(--line-height-body-m);
+    }
+  }
+
+  .btn {
+    @include mq($until: tablet) {
+      width: 100%;
+    }
+  }
+}

@@ -1,0 +1,27 @@
+{% stories split_section with { title: 'Components/Split section' } %}
+{% story default with { name: 'Episode notes' } %}
+  {% set content %}
+    <p class="body-l">Placeholder notes: what the episode covers, who is in it and where to find the showroom.</p>
+  {% endset %}
+  {% include 'pimlico:split_section' with {
+    eyebrow: 'Episode notes',
+    heading: 'Inside the conversation',
+    intro: 'Placeholder short summary of the episode.',
+    content,
+    links: [{ text: 'Visit the showroom mentioned', url: '#' }],
+  } only %}
+{% endstory %}
+{% story tint with { name: 'Transcript (tinted)' } %}
+  {% set content %}
+    <div class="rich-text rich-text--start"><p><strong>Host:</strong> How long have you been on the road?</p><p><strong>Guest:</strong> Longer than most of the buildings have had their current paint.</p></div>
+  {% endset %}
+  {% include 'pimlico:split_section' with {
+    eyebrow: 'Transcript',
+    heading: 'Episode transcript',
+    intro: 'A text alternative to the audio.',
+    tint: true,
+    content,
+    links: [{ text: 'Back to the player', url: '#' }],
+  } only %}
+{% endstory %}
+{% endstories %}

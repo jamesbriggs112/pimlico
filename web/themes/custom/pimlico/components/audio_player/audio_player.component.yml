@@ -1,0 +1,33 @@
+'$schema': 'https://git.drupalcode.org/project/drupal/-/raw/HEAD/core/assets/schemas/v1/metadata.schema.json'
+name: Audio player
+status: stable
+description: 'Figma "Audio player": dark panel with a 64px play control, yellow meta, Fraunces title and a thin progress bar. Falls back to the browser player without JavaScript.'
+libraryOverrides:
+  css:
+    component:
+      audio_player.scss: {}
+  js:
+    audio_player.js: {}
+  dependencies:
+    - core/drupal
+    - core/once
+    - core/components.pimlico--button_icon
+props:
+  type: object
+  required:
+    - src
+    - title
+  properties:
+    src:
+      type: string
+      title: Audio URL
+    title:
+      type: string
+      title: Title
+    meta:
+      type: string
+      title: Meta
+      description: 'e.g. "Ep. 04 · 38 min".'
+    transcript_url:
+      type: string
+      title: Transcript URL

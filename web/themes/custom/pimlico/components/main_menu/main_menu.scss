@@ -1,0 +1,60 @@
+// Desktop: two lists placed into the header grid either side of the logo.
+// Mobile (inside the mobile menu): stacked links in Fraunces.
+.main-menu {
+  &__list {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+  }
+
+  &__item {
+    display: flex;
+    flex-direction: column;
+  }
+
+  // Mobile (Figma "Mobile nav item")
+  @include mq($until: desktop) {
+    display: block;
+
+    &__item {
+      border-bottom: 1px solid var(--color-map-ground);
+    }
+
+    &__link {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      width: 100%;
+      min-height: #{to.rem(44px)};
+      padding-block: var(--space-12);
+      font-family: var(--font-family-display);
+      font-size: #{to.rem(32px)};
+      font-weight: var(--font-weight-light);
+      line-height: 1.12;
+      letter-spacing: #{to.rem(-0.5px)};
+      text-transform: none;
+      font-variation-settings: var(--font-display-variation);
+    }
+  }
+
+  // Desktop: the nav takes no box of its own, so each list is a header
+  // grid item (see header.scss).
+  @include mq($from: desktop) {
+    display: contents;
+
+    &__list {
+      display: flex;
+      align-items: center;
+      gap: #{to.rem(36px)};
+
+      &--start {
+        grid-area: start;
+      }
+
+      &--end {
+        grid-area: end;
+        justify-content: flex-end;
+      }
+    }
+  }
+}

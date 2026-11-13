@@ -1,0 +1,25 @@
+uuid: 7a94fa1c-3c6e-419a-bb2f-b1f99ea33822
+langcode: en
+status: true
+dependencies:
+  config:
+    - system.menu.legal
+  module:
+    - system
+  theme:
+    - pimlico
+id: pimlico_legal
+theme: pimlico
+region: footer_bottom
+weight: 0
+provider: null
+plugin: 'system_menu_block:legal'
+settings:
+  id: 'system_menu_block:legal'
+  label: Legal
+  label_display: '0'
+  provider: system
+  level: 1
+  depth: 1
+  expand_all_items: false
+visibility: {  }

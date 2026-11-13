@@ -4,12 +4,12 @@ status: true
 dependencies:
   config:
     - field.field.node.page.body
-    - field.field.node.page.field_banner
     - field.field.node.page.field_sections
     - field.field.node.page.field_seo_description
     - field.field.node.page.field_seo_image
     - field.field.node.page.field_seo_social_media_title
     - field.field.node.page.field_seo_title
+    - field.field.node.page.field_summary
     - node.type.page
   module:
     - entity_reference_revisions
@@ -26,24 +26,6 @@ content:
     settings: {  }
     third_party_settings: {  }
     weight: -20
-    region: content
-  field_banner:
-    type: entity_reference_revisions_entity_view
-    label: hidden
-    settings:
-      view_mode: default
-      link: ''
-    third_party_settings:
-      fences:
-        fences_field_tag: none
-        fences_field_classes: ''
-        fences_field_items_wrapper_tag: none
-        fences_field_items_wrapper_classes: ''
-        fences_field_item_tag: none
-        fences_field_item_classes: ''
-        fences_label_tag: div
-        fences_label_classes: ''
-    weight: 0
     region: content
   field_sections:
     type: entity_reference_revisions_entity_view
@@ -96,5 +78,6 @@ content:
 hidden:
   body: true
   field_seo_description: true
+  field_summary: true
   langcode: true
   search_api_excerpt: true

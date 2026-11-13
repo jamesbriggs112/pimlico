@@ -1,0 +1,20 @@
+{#
+/**
+ * @file
+ * Teaser → story card. Stories show "Category · date"; other types fall
+ * back to their share image. Brands have node--brand--teaser.
+ */
+#}
+{% set story = node.hasField('field_news_category') %}
+{% set meta = story
+  ? [node.field_news_category.entity.label, node.created.value|format_date('custom', 'j M')]|filter(v => v)|join(' · ')
+  : '' %}
+{% set link_text = node.bundle == 'podcast_episode' ? 'Listen'|t : (node.bundle == 'press_article' ? 'Read the coverage'|t : 'Read'|t) %}
+{% include 'pimlico:story_card' with {
+  attributes,
+  url,
+  title: node.label,
+  meta,
+  image: story ? content.field_image : content.field_seo_image,
+  link_text: story ? link_text : 'Read more'|t,
+} only %}

@@ -1,0 +1,305 @@
+// Figma "Header". Desktop (1440): 24px 40px padding, 1px dark rule, nav lists
+// either side of a 229px logo, search at the far right. Mobile (390): 16px
+// 24px padding, menu button, 239px logo, search. The mobile menu (Figma
+// "Mobile menu") is the same nav shown as a full-screen overlay.
+.header {
+  position: sticky;
+  top: 0;
+  z-index: 50;
+  background-color: var(--header-bg-color);
+  border-bottom: 1px solid var(--color-border-strong);
+  color: var(--color-text-primary);
+
+  &__inner {
+    position: static;
+    display: grid;
+    grid-template-columns: auto 1fr auto;
+    grid-template-areas: 'toggle logo search';
+    align-items: center;
+    padding: #{to.rem(16px)} var(--space-24);
+
+    @include mq($from: desktop) {
+      grid-template-columns: 1fr auto 1fr auto;
+      grid-template-areas: 'start logo end search';
+      column-gap: #{to.rem(36px)};
+      padding: var(--space-24) #{to.rem(40px)};
+    }
+  }
+
+  &__icon-button {
+    display: inline-grid;
+    place-items: center;
+    width: #{to.rem(44px)};
+    height: #{to.rem(44px)};
+    margin: #{to.rem(-10px)};
+    padding: 0;
+    border: 0;
+    background: none;
+    color: inherit;
+    cursor: pointer;
+  }
+
+  &__menu-toggle {
+    grid-area: toggle;
+    justify-self: start;
+
+    @include mq($from: desktop) {
+      display: none;
+    }
+  }
+
+  &__logo {
+    grid-area: logo;
+    justify-self: center;
+    width: #{to.rem(239px)};
+    max-width: 100%;
+
+    @include mq($from: desktop) {
+      width: #{to.rem(229px)};
+    }
+  }
+
+  // 44px targets around 20px icons take no extra height (WCAG 2.5.8).
+  &__search {
+    margin: #{to.rem(-12px)};
+  }
+
+  &__search {
+    grid-area: search;
+    justify-self: end;
+  }
+
+  // Burger (Figma "menu" icon: two 18px lines 8px apart) that turns into a
+  // cross while the mobile menu is open.
+  &__burger {
+    position: relative;
+    width: #{to.rem(24px)};
+    height: #{to.rem(24px)};
+
+    > span {
+      position: absolute;
+      left: #{to.rem(3px)};
+      width: #{to.rem(18px)};
+      height: #{to.rem(1.2px)};
+      background-color: currentColor;
+      transition: transform 0.35s cubic-bezier(0.65, 0, 0.35, 1);
+
+      &:first-child {
+        top: #{to.rem(7.4px)};
+      }
+
+      &:last-child {
+        top: #{to.rem(15.4px)};
+      }
+    }
+
+    [aria-expanded='true'] > & > span:first-child {
+      transform: translateY(#{to.rem(4px)}) rotate(45deg);
+    }
+
+    [aria-expanded='true'] > & > span:last-child {
+      transform: translateY(#{to.rem(-4px)}) rotate(-45deg);
+    }
+  }
+
+  // Mobile menu: a linen panel that unrolls from under the header bar, which
+  // stays in place (burger, logo, search). Links rise in after it.
+  &__nav {
+    @include mq($until: desktop) {
+      --nav-ease: cubic-bezier(0.65, 0, 0.35, 1);
+      position: fixed;
+      inset: var(--header-nav-top, #{to.rem(72px)}) 0 0;
+      z-index: 60;
+      display: flex;
+      flex-direction: column;
+      overflow-y: auto;
+      overscroll-behavior: contain;
+      background-color: var(--color-tint-linen-30);
+      color: var(--color-text-primary);
+      --focus-ring: var(--focus-ring-on-light);
+      visibility: hidden;
+      clip-path: inset(0 0 100% 0);
+      transition:
+        clip-path 0.45s var(--nav-ease),
+        visibility 0s linear 0.45s;
+
+      > * {
+        opacity: 0;
+        transform: translateY(#{to.rem(12px)});
+        transition:
+          opacity 0.2s ease-out,
+          transform 0.2s ease-out;
+      }
+
+      .text-link {
+        color: var(--color-text-primary);
+      }
+
+      .header--nav-open & {
+        visibility: visible;
+        clip-path: inset(0);
+        transition:
+          clip-path 0.5s var(--nav-ease),
+          visibility 0s;
+
+        > * {
+          opacity: 1;
+          transform: none;
+          transition:
+            opacity 0.4s ease-out,
+            transform 0.5s var(--nav-ease);
+        }
+
+        > :nth-child(1) {
+          transition-delay: 0.15s;
+        }
+
+        > :nth-child(2) {
+          transition-delay: 0.22s;
+        }
+
+        > :nth-child(3) {
+          transition-delay: 0.29s;
+        }
+      }
+
+      @media (prefers-reduced-motion: reduce) {
+        &,
+        .header--nav-open & {
+          transition: visibility 0s;
+        }
+
+        &,
+        > * {
+          clip-path: none;
+          transform: none;
+        }
+      }
+    }
+
+    @include mq($from: desktop) {
+      display: contents;
+    }
+  }
+
+  &__nav-primary {
+    @include mq($until: desktop) {
+      padding: #{to.rem(48px)} var(--space-24) 0;
+    }
+
+    @include mq($from: desktop) {
+      display: contents;
+    }
+  }
+
+  &__nav-secondary {
+    display: grid;
+    gap: var(--space-12);
+    padding: #{to.rem(40px)} var(--space-24) 0;
+
+    ul {
+      display: grid;
+      gap: var(--space-12);
+      margin: 0;
+      padding: 0;
+      list-style: none;
+    }
+
+    a {
+      color: var(--color-text-primary);
+      font-size: var(--font-size-body-m);
+      line-height: var(--line-height-body-m);
+    }
+
+    @include mq($from: desktop) {
+      display: none;
+    }
+  }
+
+  &__nav-actions {
+    display: grid;
+    gap: var(--space-12);
+    padding: var(--space-24) var(--space-24) #{to.rem(40px)};
+
+    @include mq($from: desktop) {
+      display: none;
+    }
+  }
+
+  // Transparent over a full-bleed hero (Home, Newson's Yard)
+  &--overlay {
+    position: absolute;
+    inset-inline: 0;
+    background-color: transparent;
+    border-bottom-color: transparent;
+    color: var(--color-text-inverse);
+    --focus-ring: var(--focus-ring-on-dark);
+
+    .text-link {
+      color: var(--color-text-inverse);
+    }
+  }
+}
+
+// Scroll behaviour (header.js): the header slides away as you scroll down
+// and back as soon as you scroll up. On hero pages the overlay header comes
+// back as the solid header ("pinned"), and turns transparent again at the
+// top of the page.
+.header {
+  transition:
+    transform 0.3s ease-out,
+    background-color 0.3s ease-out;
+
+  @media (prefers-reduced-motion: reduce) {
+    transition: none;
+  }
+
+  &--hidden:not(.header--nav-open) {
+    transform: translateY(-100%);
+  }
+
+  // Once scrolled, the header is off-white (linen) with a slate logo on
+  // every page.
+  &--pinned {
+    background-color: var(--color-surface-tint);
+  }
+
+  &--overlay.header--pinned {
+    position: fixed;
+    top: 0;
+    background-color: var(--color-surface-tint);
+    border-bottom-color: var(--color-border-strong);
+    color: var(--color-text-primary);
+    --focus-ring: var(--focus-ring-on-light);
+
+    .text-link,
+    .logo--light {
+      color: var(--color-text-primary);
+      --focus-ring: var(--focus-ring-on-light);
+    }
+  }
+}
+
+// While the mobile menu is open the bar is solid linen, so the burger, logo
+// and search are visible over a hero too.
+.header--nav-open {
+  @include mq($until: desktop) {
+    background-color: var(--color-tint-linen-30);
+    border-bottom-color: var(--color-border-strong);
+    color: var(--color-text-primary);
+    --focus-ring: var(--focus-ring-on-light);
+
+    .logo--light,
+    .header__nav .text-link {
+      color: var(--color-text-primary);
+      --focus-ring: var(--focus-ring-on-light);
+    }
+  }
+}
+
+// Lock page scrolling while the mobile menu is open.
+html:has(.header--nav-open) {
+  @include mq($until: desktop) {
+    overflow: hidden;
+  }
+}

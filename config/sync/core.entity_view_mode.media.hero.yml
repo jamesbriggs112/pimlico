@@ -1,0 +1,11 @@
+uuid: d9df2c02-ba42-4aff-a487-50f405b0284c
+langcode: en
+status: true
+dependencies:
+  module:
+    - media
+id: media.hero
+label: 'Hero (loads first)'
+description: 'Above-the-fold images: like Full, but loaded eagerly so the largest image paints sooner.'
+targetEntityType: media
+cache: true

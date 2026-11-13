@@ -1,0 +1,22 @@
+// Shared motion settings. Components read these custom properties so motion
+// can be switched off in one place for people who prefer reduced motion.
+
+:root {
+  --motion-duration: 0.2s;
+  --motion-easing: cubic-bezier(0.66, 0, 0.34, 1);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  :root {
+    --motion-duration: 0s;
+  }
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    scroll-behavior: auto !important;
+    transition-duration: 0.01ms !important;
+  }
+}

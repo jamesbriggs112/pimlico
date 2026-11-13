@@ -1,0 +1,78 @@
+// Figma "Text link". Caps underlined uses Link/Caps (12px); every other caps
+// state uses Label/Nav (14px). Hover moves the underline to a 6px offset;
+// colour never changes.
+.text-link {
+  --_offset-rest: #{to.rem(3px)};
+  --_offset-hover: var(--link-hover-underline-offset);
+
+  display: inline-flex;
+  align-items: center;
+  gap: #{to.rem(10px)};
+  color: var(--color-text-primary);
+  text-decoration: none;
+
+  &__text {
+    text-decoration-line: underline;
+    text-decoration-thickness: var(--link-underline-thickness);
+    text-decoration-color: transparent;
+    text-underline-offset: var(--_offset-hover);
+    transition:
+      text-decoration-color 0.3s ease-out,
+      text-underline-offset 0.3s ease-out;
+  }
+
+  &:hover &__text,
+  &:focus-visible &__text {
+    text-decoration-color: currentColor;
+    text-underline-offset: var(--_offset-hover);
+  }
+
+  &:focus {
+    outline: none;
+  }
+
+  &:focus-visible {
+    outline: var(--focus-outline-width) solid transparent;
+    box-shadow: var(--focus-ring);
+  }
+
+  &--underlined &__text {
+    text-decoration-color: currentColor;
+    text-underline-offset: var(--_offset-rest);
+  }
+
+  // Sizes
+  &--caps {
+    font-size: var(--font-size-label-nav);
+    font-weight: var(--font-weight-medium);
+    line-height: var(--line-height-label);
+    letter-spacing: var(--letter-spacing-label-nav);
+    text-transform: uppercase;
+  }
+
+  &--caps.text-link--underlined {
+    font-size: var(--font-size-link-caps);
+    letter-spacing: var(--letter-spacing-link-caps);
+  }
+
+  &--body {
+    font-size: var(--font-size-body-m);
+    line-height: var(--line-height-body-m);
+  }
+
+  &--small {
+    font-size: var(--font-size-body-s);
+    line-height: var(--line-height-body-s);
+  }
+
+  // Tones
+  &--light {
+    color: var(--color-text-inverse);
+    --focus-ring: var(--focus-ring-on-dark);
+  }
+
+  &__arrow {
+    width: #{to.rem(18px)};
+    height: #{to.rem(18px)};
+  }
+}

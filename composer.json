@@ -26,8 +26,8 @@
     "aws/aws-sdk-php": "^3.319",
     "composer/installers": "^2.3",
     "cweagans/composer-patches": "^1.7",
+    "drupal/address": "^2.0",
     "drupal/admin_toolbar": "^3.4",
-    "drupal/block_field": "^1.0@RC",
     "drupal/cloudfront_cache_path_invalidate": "^4.0",
     "drupal/config_ignore": "^3.3",
     "drupal/core-composer-scaffold": "^11",
@@ -37,8 +37,6 @@
     "drupal/crop": "^2.3",
     "drupal/easy_breadcrumb": "^2.0",
     "drupal/entity_reference_purger": "^1.0@beta",
-    "drupal/entity_type_clone": "^4.0",
-    "drupal/entityqueue": "^1.6",
     "drupal/fences": "^3.0",
     "drupal/field_group": "^4.0",
     "drupal/focal_point": "^2.0",
@@ -49,11 +47,11 @@
     "drupal/health_check": "^3.1",
     "drupal/image_effects": "^4.0",
     "drupal/imagemagick": "^5.0",
-    "drupal/linked_field": "^1.5",
-    "drupal/media_duplicates": "^2.0",
     "drupal/media_entity_download": "^2.2",
     "drupal/media_library_edit": "^3.0",
     "drupal/metatag": "^2.0",
+    "drupal/migrate_plus": "^6.0",
+    "drupal/migrate_tools": "^6.1",
     "drupal/normalized_image_styles": "^2.1",
     "drupal/paragraphs": "^1.15",
     "drupal/paragraphs_ee": "^10.0",
@@ -62,22 +60,17 @@
     "drupal/quick_node_clone": "^1.16",
     "drupal/raven": "^7.3",
     "drupal/recaptcha": "^3.4",
-    "drupal/recaptcha_v3": "^2.0",
-    "drupal/require_login": "^3.0",
     "drupal/robotstxt": "^1.6",
     "drupal/schema_metatag": "^3.0",
     "drupal/search_api": "^1.35",
-    "drupal/simple_gmap": "^4.0",
+    "drupal/simple_sitemap": "^4.2",
     "drupal/smtp": "^1.2",
     "drupal/storybook": "^1.0",
     "drupal/structure_sync": "^2.0",
     "drupal/svg_image": "^3.0",
-    "drupal/tagify": "^2.0",
     "drupal/token_filter": "^2.0",
     "drupal/token_or": "^2.3",
     "drupal/twig_tweak": "^3.3",
-    "drupal/viewfield": "^3.0@beta",
-    "drupal/views_show_more": "^2.0",
     "drupal/vitals": "^2.5",
     "drupal/vite": "^1.5",
     "drupal/webform": "^6.3@beta",
@@ -119,13 +112,10 @@
     "composer-exit-on-patch-failure": true,
     "patches": {
       "drupal/focal_point": {
-        "limit image styles in preview": "https://www.drupal.org/files/issues/2024-11-14/2830678-44-focal-preview-limit.patch"
+        "limit image styles in preview": "https://www.drupal.org/files/issues/2026-10-07/2830678-46-focal-preview-limit.patch"
       },
       "drupal/crop": {
         "fix provider fallback loop clobbering crop (drops ?h= hash)": "patches/crop-fallback-loop-first-hit.patch"
-      },
-      "drupal/viewfield": {
-        "fix viewfield php error": "https://www.drupal.org/files/issues/2023-08-21/3381787.patch"
       },
       "drupal/storybook": {
         "#3442952": "https://www.drupal.org/files/issues/2025-05-29/storybook-fix-issues-with-symlinks-3442952-13.patch"

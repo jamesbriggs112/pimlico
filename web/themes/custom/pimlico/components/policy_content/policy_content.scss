@@ -1,0 +1,94 @@
+// Figma T16 "Section · Policy content" (30:3973): 60px padding; contents
+// (420px) and body (760px) 100px apart. Contents: eyebrow, then 75px rows
+// with a strong top rule, Fraunces title and a Body S number. Body: pumpkin
+// eyebrow, Body L lead, sections 64px apart, "Back to contents" button.
+// Mobile: contents above the body.
+.policy-content {
+  @include pageContainer;
+  display: grid;
+  gap: #{to.rem(40px)};
+  padding-block: var(--section-space);
+
+  @include mq($from: desktop) {
+    &--contents {
+      grid-template-columns: #{to.rem(420px)} minmax(0, #{to.rem(760px)});
+      justify-content: space-between;
+      align-items: start;
+    }
+  }
+
+  &__contents {
+    @include mq($from: desktop) {
+      position: sticky;
+      top: #{to.rem(100px)};
+    }
+  }
+
+  &__label,
+  &__updated {
+    margin: 0 0 #{to.rem(20px)};
+    color: var(--color-text-eyebrow);
+  }
+
+  &__list {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    border-bottom: 1px solid var(--color-border-strong);
+  }
+
+  &__item {
+    border-top: 1px solid var(--color-border-strong);
+  }
+
+  &__link {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: var(--space-24);
+    min-height: #{to.rem(75px)};
+    padding-block: var(--space-12);
+    color: var(--color-text-primary);
+    text-decoration: none;
+
+    &:hover .policy-content__title,
+    &:focus-visible .policy-content__title {
+      text-decoration: underline;
+      text-underline-offset: var(--link-underline-offset);
+    }
+  }
+
+  &__title {
+    font-family: var(--header-text);
+    font-size: #{fluid(18px, 20px)};
+    line-height: 1.3;
+  }
+
+  &__number {
+    flex: none;
+  }
+
+  &__body {
+    min-width: 0;
+  }
+
+  &__text {
+    > p:first-child {
+      font-size: var(--font-size-body-l);
+      font-weight: var(--font-weight-light);
+      line-height: var(--line-height-body-l);
+    }
+
+    h2 {
+      scroll-margin-top: #{to.rem(100px)};
+    }
+
+    h2:not(:first-child) {
+      margin-top: #{fluid(40px, 64px)};
+    }
+  }
+
+  &__actions {
+    padding-top: #{fluid(40px, 64px)};
+  }
+}

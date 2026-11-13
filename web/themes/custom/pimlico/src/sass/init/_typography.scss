@@ -1,0 +1,153 @@
+@use 'sass-rem' as to;
+@use 'sass-mq/mq' as *;
+@use './mixins' as *;
+
+html {
+  font-family: var(--body-text);
+  font-size: 100%;
+  line-height: var(--line-height-base);
+  color: var(--text-color);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+body {
+  font-size: var(--font-size-base);
+  background-color: var(--background-color);
+}
+
+// Headings use Fraunces Light, as every display style in Figma.
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+.display-xl,
+.display-l,
+.display-m,
+.display-s {
+  font-family: var(--header-text);
+  font-weight: var(--font-weight-light);
+  font-optical-sizing: auto;
+  font-variation-settings: var(--font-display-variation);
+  margin-top: 0;
+  margin-bottom: 0;
+  text-wrap: balance;
+}
+
+h1,
+.display-xl {
+  font-size: var(--font-size-display-xl);
+  line-height: var(--line-height-display-xl);
+  letter-spacing: var(--letter-spacing-display-xl);
+}
+
+h2,
+.display-l {
+  font-size: var(--font-size-display-l);
+  line-height: var(--line-height-display-l);
+  letter-spacing: var(--letter-spacing-display-l);
+}
+
+h3,
+.display-m {
+  font-size: var(--font-size-display-m);
+  line-height: var(--line-height-display-m);
+  letter-spacing: var(--letter-spacing-display-m);
+}
+
+h4,
+h5,
+h6,
+.display-s {
+  font-size: var(--font-size-display-s);
+  line-height: var(--line-height-display-s);
+  letter-spacing: var(--letter-spacing-display-s);
+}
+
+// Body and label styles are always Lato, even on a heading element: an <h2>
+// styled as an eyebrow ("Latest" on News) would otherwise inherit Fraunces
+// and the heading weight from the rule above.
+.body-l,
+.body-m,
+.body-s,
+.eyebrow,
+.label-nav {
+  font-family: var(--body-text);
+  font-variation-settings: normal;
+}
+
+// Body text styles
+.body-l {
+  font-size: var(--font-size-body-l);
+  line-height: var(--line-height-body-l);
+  font-weight: var(--font-weight-light);
+}
+
+.body-m {
+  font-size: var(--font-size-body-m);
+  line-height: var(--line-height-body-m);
+  font-weight: var(--font-weight-regular);
+}
+
+.body-s {
+  font-size: var(--font-size-body-s);
+  line-height: var(--line-height-body-s);
+  font-weight: var(--font-weight-regular);
+}
+
+// Label styles
+.eyebrow {
+  font-size: var(--font-size-label-eyebrow);
+  line-height: var(--line-height-label);
+  letter-spacing: var(--letter-spacing-label-eyebrow);
+  font-weight: var(--font-weight-bold);
+  text-transform: uppercase;
+  color: var(--color-text-eyebrow);
+}
+
+.label-nav {
+  font-size: var(--font-size-label-nav);
+  line-height: var(--line-height-label);
+  letter-spacing: var(--letter-spacing-label-nav);
+  font-weight: var(--font-weight-medium);
+  text-transform: uppercase;
+}
+
+p {
+  max-width: var(--max-text-width);
+  margin-top: 0;
+}
+
+// Focus: the Figma two-tone ring. Components on dark surfaces set
+// --focus-ring: var(--focus-ring-on-dark).
+:focus-visible {
+  outline: var(--focus-outline-width) solid transparent;
+  box-shadow: var(--focus-ring);
+}
+
+// Inline links in body copy. Standalone links use the text_link component.
+main {
+  a:not([class]) {
+    color: var(--link-color);
+    text-decoration: underline;
+    text-decoration-thickness: var(--link-underline-thickness);
+    text-underline-offset: var(--link-underline-offset);
+    transition: text-underline-offset 0.3s ease-out;
+
+    &:hover,
+    &:focus-visible {
+      text-underline-offset: var(--link-hover-underline-offset);
+    }
+  }
+}
+
+// Fraunces Regular titles: cards, info rows, the audio player.
+.title-m {
+  @include title;
+}
+
+.title-s {
+  @include title(var(--font-size-title-s));
+}

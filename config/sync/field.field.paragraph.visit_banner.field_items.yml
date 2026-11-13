@@ -1,0 +1,31 @@
+uuid: 7907bd0d-a0ad-4bbc-a803-d03606fe8ed2
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_items
+    - paragraphs.paragraphs_type.info_row
+    - paragraphs.paragraphs_type.visit_banner
+  module:
+    - entity_reference_revisions
+id: paragraph.visit_banner.field_items
+field_name: field_items
+entity_type: paragraph
+bundle: visit_banner
+label: 'Practical information'
+description: 'Optional rows such as Getting here and Opening hours.'
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:paragraph'
+  handler_settings:
+    target_bundles:
+      info_row: info_row
+    negate: 0
+    target_bundles_drag_drop:
+      info_row:
+        weight: 0
+        enabled: true
+field_type: entity_reference_revisions

@@ -1,0 +1,13 @@
+.menu {
+  display: grid;
+  gap: #{to.rem(14px)};
+  margin: 0;
+  padding: 0;
+  list-style: none;
+
+  &--inline {
+    display: flex;
+    flex-wrap: wrap;
+    gap: #{to.rem(4px)} #{to.rem(28px)};
+  }
+}

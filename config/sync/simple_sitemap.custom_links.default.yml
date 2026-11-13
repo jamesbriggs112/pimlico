@@ -1,0 +1,17 @@
+links:
+  -
+    path: /
+    priority: '1'
+    changefreq: daily
+  -
+    path: /brands
+    priority: '0.9'
+    changefreq: daily
+  -
+    path: /dine
+    priority: '0.8'
+    changefreq: daily
+  -
+    path: /news
+    priority: '0.8'
+    changefreq: daily

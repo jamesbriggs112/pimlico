@@ -1,0 +1,88 @@
+// Figma "Section · Newson’s Yard" (9:468) and "Yard banner" (11:153):
+// 1440x880 (390x680 mobile) photo under a 72% dark-grey scrim; a centred
+// 900px column: lock-up (Fraunces SemiBold 20, 0.28em, with an eyebrow
+// caption), Display L title, Body L text and a Yellow button.
+.feature-banner {
+  position: relative;
+  display: grid;
+  place-items: center;
+  min-height: #{fluid(680px, 880px)};
+  overflow: hidden;
+  background-color: var(--color-brand-dark-grey);
+  color: var(--color-text-inverse);
+  --focus-ring: var(--focus-ring-on-dark);
+
+  &__image {
+    position: absolute;
+    inset: 0;
+
+    img {
+      display: block;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    &::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background-color: var(--color-scrim);
+    }
+  }
+
+  &__content {
+    position: relative;
+    display: grid;
+    justify-items: center;
+    gap: #{fluid(22px, 28px)};
+    max-width: calc(#{to.rem(900px)} + 2 * var(--page-gutter));
+    padding: var(--section-space) var(--page-gutter);
+    text-align: center;
+  }
+
+  &__lockup {
+    display: grid;
+    gap: #{fluid(4px, 6px)};
+    margin: 0;
+  }
+
+  &__lockup-name {
+    font-family: var(--font-family-display);
+    font-size: #{fluid(16px, 20px)};
+    font-weight: 600;
+    letter-spacing: 0.28em;
+    text-transform: uppercase;
+    font-variation-settings: var(--font-display-variation);
+  }
+
+  &__lockup-caption {
+    font-size: var(--font-size-label-eyebrow);
+    font-weight: var(--font-weight-bold);
+    letter-spacing: var(--letter-spacing-label-eyebrow);
+    text-transform: uppercase;
+  }
+
+  &__heading {
+    margin: 0;
+
+    @include mq($until: desktop) {
+      font-size: var(--font-size-display-m);
+      line-height: 1.05;
+    }
+  }
+
+  &__text {
+    max-width: #{to.rem(600px)};
+
+    > * {
+      margin: 0;
+    }
+
+    @include mq($until: desktop) {
+      font-size: var(--font-size-body-m);
+      font-weight: var(--font-weight-regular);
+      line-height: var(--line-height-body-m);
+    }
+  }
+}

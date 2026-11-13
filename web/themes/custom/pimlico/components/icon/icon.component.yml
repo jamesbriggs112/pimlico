@@ -1,0 +1,32 @@
+'$schema': 'https://git.drupalcode.org/project/drupal/-/raw/HEAD/core/assets/schemas/v1/metadata.schema.json'
+name: Icon
+status: stable
+description: 'Decorative SVG icon from the Figma icon set, drawn in the current text colour.'
+libraryOverrides:
+  css:
+    component:
+      icon.scss: {}
+props:
+  type: object
+  required:
+    - name
+  properties:
+    name:
+      type: string
+      title: Name
+      enum:
+        - search
+        - pause
+        - play
+        - menu
+        - arrow-left
+        - arrow-right
+        - arrow-link
+        - chevron-down
+        - close
+        - check
+        - alert
+    size:
+      type: integer
+      title: Size
+      description: 'Rendered size in pixels. Defaults to the size drawn in Figma.'

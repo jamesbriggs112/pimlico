@@ -1,0 +1,27 @@
+uuid: e9a556fa-a03c-4d84-9f5a-6527bb27a079
+langcode: en
+status: true
+dependencies:
+  config:
+    - node.type.article
+    - node.type.podcast_episode
+    - node.type.press_article
+  module:
+    - node
+id: news
+label: News
+type: 'canonical_entities:node'
+pattern: '/news/[node:title]'
+selection_criteria:
+  2f1f9c26-fca4-4be4-a7b7-c3d30755f1e7:
+    id: 'entity_bundle:node'
+    negate: false
+    context_mapping:
+      node: node
+    bundles:
+      article: article
+      podcast_episode: podcast_episode
+      press_article: press_article
+selection_logic: and
+weight: -10
+relationships: {  }

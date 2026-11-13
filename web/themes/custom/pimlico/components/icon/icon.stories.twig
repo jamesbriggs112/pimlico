@@ -1,0 +1,17 @@
+{% stories icon with { title: 'Primitives/Icon' } %}
+
+{% story all with {
+  name: 'All icons',
+  parameters: { design: { type: 'figma', url: 'https://www.figma.com/design/REw9zZENN4OEozQHrt17pD/Pimlico-Visuals---V01?node-id=3-1708' } }
+} %}
+  <ul style="display: flex; flex-wrap: wrap; gap: 24px; list-style: none; padding: 0; color: #394959">
+    {% for name in ['search', 'pause', 'play', 'menu', 'arrow-left', 'arrow-right', 'arrow-link', 'chevron-down', 'close', 'check', 'alert'] %}
+      <li style="display: grid; justify-items: center; gap: 8px; font: 12px Lato, sans-serif">
+        {% include 'pimlico:icon' with { name } only %}
+        {{ name }}
+      </li>
+    {% endfor %}
+  </ul>
+{% endstory %}
+
+{% endstories %}

@@ -1,0 +1,447 @@
+uuid: 9fc1563b-e694-4aca-b09e-03fac67cd5ea
+langcode: en
+status: true
+dependencies:
+  config:
+    - core.entity_view_mode.node.featured
+    - core.entity_view_mode.node.teaser
+    - node.type.article
+    - node.type.podcast_episode
+    - node.type.press_article
+  module:
+    - node
+    - user
+id: news
+label: News
+module: views
+description: 'News listing, featured story, latest and related stories.'
+tag: ''
+base_table: node_field_data
+base_field: nid
+display:
+  default:
+    id: default
+    display_title: Default
+    display_plugin: default
+    position: 0
+    display_options:
+      title: News
+      fields: {  }
+      pager:
+        type: full
+        options:
+          offset: 0
+          items_per_page: 12
+          id: 0
+          tags:
+            next: 'Older stories'
+            previous: Previous
+            first: First
+            last: Last
+          quantity: 9
+      exposed_form:
+        type: basic
+        options:
+          submit_button: Apply
+          reset_button: false
+      access:
+        type: perm
+        options:
+          perm: 'access content'
+      cache:
+        type: tag
+        options: {  }
+      empty:
+        area_text_custom:
+          id: area_text_custom
+          table: views
+          field: area_text_custom
+          plugin_id: text_custom
+          empty: true
+          content: '<p>No stories here yet.</p>'
+          tokenize: false
+      sorts:
+        created:
+          id: created
+          table: node_field_data
+          field: created
+          entity_type: node
+          entity_field: created
+          plugin_id: date
+          order: DESC
+      arguments: {  }
+      filters:
+        status:
+          id: status
+          table: node_field_data
+          field: status
+          entity_type: node
+          entity_field: status
+          plugin_id: boolean
+          value: '1'
+          group: 1
+        type:
+          id: type
+          table: node_field_data
+          field: type
+          entity_type: node
+          entity_field: type
+          plugin_id: bundle
+          operator: in
+          value:
+            article: article
+            podcast_episode: podcast_episode
+            press_article: press_article
+          group: 1
+        type_1:
+          id: type_1
+          table: node_field_data
+          field: type
+          entity_type: node
+          entity_field: type
+          plugin_id: bundle
+          operator: in
+          value:
+            article: article
+            press_article: press_article
+          group: 1
+          exposed: true
+          expose:
+            operator_id: type_1_op
+            label: Type
+            use_operator: false
+            operator: type_1_op
+            identifier: type
+            required: false
+            remember: false
+            multiple: false
+            reduce: true
+        field_featured_value:
+          id: field_featured_value
+          table: node__field_featured
+          field: field_featured_value
+          plugin_id: boolean
+          operator: '!='
+          value: '1'
+          group: 1
+      filter_groups:
+        operator: AND
+        groups:
+          1: AND
+      style:
+        type: default
+        options:
+          grouping: {  }
+          row_class: ''
+          default_row_class: false
+      row:
+        type: 'entity:node'
+        options:
+          relationship: none
+          view_mode: teaser
+      query:
+        type: views_query
+        options: {  }
+      relationships: {  }
+      header:
+        area_text_custom:
+          id: area_text_custom
+          table: views
+          field: area_text_custom
+          plugin_id: text_custom
+          empty: false
+          content: 'Stories, conversations and coverage from the street.'
+          tokenize: false
+      footer: {  }
+      display_extenders: {  }
+    cache_metadata:
+      max-age: -1
+      contexts:
+        - 'languages:language_interface'
+        - url
+        - url.query_args
+        - 'user.node_grants:view'
+        - user.permissions
+      tags: {  }
+  attachment_featured:
+    id: attachment_featured
+    display_title: 'Featured story'
+    display_plugin: attachment
+    position: 2
+    display_options:
+      title: Featured
+      pager:
+        type: some
+        options:
+          offset: 0
+          items_per_page: 1
+      empty: {  }
+      sorts:
+        created:
+          id: created
+          table: node_field_data
+          field: created
+          entity_type: node
+          entity_field: created
+          plugin_id: date
+          order: DESC
+      arguments: {  }
+      filters:
+        status:
+          id: status
+          table: node_field_data
+          field: status
+          entity_type: node
+          entity_field: status
+          plugin_id: boolean
+          value: '1'
+          group: 1
+        type:
+          id: type
+          table: node_field_data
+          field: type
+          entity_type: node
+          entity_field: type
+          plugin_id: bundle
+          operator: in
+          value:
+            article: article
+            podcast_episode: podcast_episode
+            press_article: press_article
+          group: 1
+        field_featured_value:
+          id: field_featured_value
+          table: node__field_featured
+          field: field_featured_value
+          plugin_id: boolean
+          operator: '='
+          value: '1'
+          group: 1
+      filter_groups:
+        operator: AND
+        groups:
+          1: AND
+      row:
+        type: 'entity:node'
+        options:
+          relationship: none
+          view_mode: featured
+      defaults:
+        empty: false
+        title: false
+        pager: false
+        row: false
+        sorts: false
+        arguments: false
+        filters: false
+        filter_groups: false
+        header: false
+      header: {  }
+      display_extenders: {  }
+      displays:
+        page_news: page_news
+      attachment_position: before
+      inherit_arguments: false
+      inherit_exposed_filters: true
+      inherit_pager: false
+      render_pager: false
+    cache_metadata:
+      max-age: -1
+      contexts:
+        - 'languages:language_interface'
+        - 'user.node_grants:view'
+        - user.permissions
+      tags: {  }
+  block_latest:
+    id: block_latest
+    display_title: Latest
+    display_plugin: block
+    position: 3
+    display_options:
+      title: Latest
+      pager:
+        type: some
+        options:
+          offset: 0
+          items_per_page: 3
+      empty: {  }
+      sorts:
+        created:
+          id: created
+          table: node_field_data
+          field: created
+          entity_type: node
+          entity_field: created
+          plugin_id: date
+          order: DESC
+      arguments: {  }
+      filters:
+        status:
+          id: status
+          table: node_field_data
+          field: status
+          entity_type: node
+          entity_field: status
+          plugin_id: boolean
+          value: '1'
+          group: 1
+        type:
+          id: type
+          table: node_field_data
+          field: type
+          entity_type: node
+          entity_field: type
+          plugin_id: bundle
+          operator: in
+          value:
+            article: article
+            podcast_episode: podcast_episode
+            press_article: press_article
+          group: 1
+      filter_groups:
+        operator: AND
+        groups:
+          1: AND
+      defaults:
+        empty: false
+        title: false
+        pager: false
+        sorts: false
+        arguments: false
+        filters: false
+        filter_groups: false
+        header: false
+      header: {  }
+      display_extenders: {  }
+    cache_metadata:
+      max-age: -1
+      contexts:
+        - 'languages:language_interface'
+        - 'user.node_grants:view'
+        - user.permissions
+      tags: {  }
+  block_related:
+    id: block_related
+    display_title: Related
+    display_plugin: block
+    position: 4
+    display_options:
+      title: Related
+      pager:
+        type: some
+        options:
+          offset: 0
+          items_per_page: 3
+      empty: {  }
+      sorts:
+        created:
+          id: created
+          table: node_field_data
+          field: created
+          entity_type: node
+          entity_field: created
+          plugin_id: date
+          order: DESC
+      arguments:
+        field_news_category_target_id:
+          id: field_news_category_target_id
+          table: node__field_news_category
+          field: field_news_category_target_id
+          plugin_id: entity_target_id
+          default_action: ignore
+          exception:
+            value: all
+          specify_validation: false
+          validate:
+            type: none
+            fail: 'not found'
+          break_phrase: false
+          not: false
+          target_entity_type_id: taxonomy_term
+        nid:
+          id: nid
+          table: node_field_data
+          field: nid
+          entity_type: node
+          entity_field: nid
+          plugin_id: node_nid
+          default_action: ignore
+          exception:
+            value: all
+          specify_validation: false
+          validate:
+            type: none
+            fail: 'not found'
+          break_phrase: false
+          not: true
+      filters:
+        status:
+          id: status
+          table: node_field_data
+          field: status
+          entity_type: node
+          entity_field: status
+          plugin_id: boolean
+          value: '1'
+          group: 1
+        type:
+          id: type
+          table: node_field_data
+          field: type
+          entity_type: node
+          entity_field: type
+          plugin_id: bundle
+          operator: in
+          value:
+            article: article
+            podcast_episode: podcast_episode
+            press_article: press_article
+          group: 1
+      filter_groups:
+        operator: AND
+        groups:
+          1: AND
+      defaults:
+        empty: false
+        title: false
+        pager: false
+        sorts: false
+        arguments: false
+        filters: false
+        filter_groups: false
+        header: false
+      header: {  }
+      display_extenders: {  }
+      block_hide_empty: true
+    cache_metadata:
+      max-age: -1
+      contexts:
+        - 'languages:language_interface'
+        - url
+        - 'user.node_grants:view'
+        - user.permissions
+      tags: {  }
+  page_news:
+    id: page_news
+    display_title: News
+    display_plugin: page
+    position: 1
+    display_options:
+      display_extenders:
+        metatag_display_extender:
+          metatags:
+            title: 'News from Pimlico Road'
+            description: 'Stories, podcasts and press coverage from Pimlico Road and Newson’s Yard: the makers, dealers and places on the street.'
+            og_title: 'News from Pimlico Road'
+            og_description: 'Stories, podcasts and press coverage from Pimlico Road and Newson’s Yard: the makers, dealers and places on the street.'
+            canonical_url: '[current-page:url:absolute]'
+      path: news
+    cache_metadata:
+      max-age: -1
+      contexts:
+        - 'languages:language_interface'
+        - url
+        - url.query_args
+        - 'user.node_grants:view'
+        - user.permissions
+      tags: {  }

@@ -9,7 +9,7 @@ third_party_settings:
     paragraphs_categories:
       content: content
 id: content_grid
-label: 'Content Grid'
+label: Cards
 icon_uuid: null
 icon_default: null
 description: ''

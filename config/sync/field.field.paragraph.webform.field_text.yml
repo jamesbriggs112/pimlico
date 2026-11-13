@@ -1,0 +1,22 @@
+uuid: 3b63b335-150b-4195-8a06-c93c0e294efe
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_text
+    - paragraphs.paragraphs_type.webform
+  module:
+    - text
+id: paragraph.webform.field_text
+field_name: field_text
+entity_type: paragraph
+bundle: webform
+label: Text
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings:
+  allowed_formats: {  }
+field_type: text_long

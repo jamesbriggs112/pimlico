@@ -3,13 +3,15 @@ langcode: en
 status: true
 dependencies:
   config:
-    - field.field.paragraph.cta.field_colour
-    - field.field.paragraph.cta.field_link
+    - field.field.paragraph.cta.field_eyebrow
+    - field.field.paragraph.cta.field_heading
+    - field.field.paragraph.cta.field_links
+    - field.field.paragraph.cta.field_text
     - paragraphs.paragraphs_type.cta
   module:
     - fences
     - link
-    - options
+    - text
 _core:
   default_config_hash: 0P5TD7-tP-vEoNJcPMcQM75VS3RHJ9kxKV3Ic0042sU
 id: paragraph.cta.default
@@ -17,22 +19,12 @@ targetEntityType: paragraph
 bundle: cta
 mode: default
 content:
-  field_colour:
-    type: list_default
-    label: hidden
-    settings: {  }
-    third_party_settings: {  }
-    weight: 3
-    region: content
-  field_link:
-    type: link
+  field_eyebrow:
+    type: string
     label: hidden
     settings:
-      trim_length: 80
-      url_only: false
-      url_plain: false
-      rel: '0'
-      target: '0'
+      link_to_entity: false
+      link_rel: canonical
     third_party_settings:
       fences:
         fences_field_tag: none
@@ -41,9 +33,64 @@ content:
         fences_field_items_wrapper_classes: ''
         fences_field_item_tag: none
         fences_field_item_classes: ''
-        fences_label_tag: div
+        fences_label_tag: ''
         fences_label_classes: ''
     weight: 0
+    region: content
+  field_heading:
+    type: string
+    label: hidden
+    settings:
+      link_to_entity: false
+      link_rel: canonical
+    third_party_settings:
+      fences:
+        fences_field_tag: none
+        fences_field_classes: ''
+        fences_field_items_wrapper_tag: none
+        fences_field_items_wrapper_classes: ''
+        fences_field_item_tag: none
+        fences_field_item_classes: ''
+        fences_label_tag: ''
+        fences_label_classes: ''
+    weight: 1
+    region: content
+  field_links:
+    type: link
+    label: hidden
+    settings:
+      trim_length: 80
+      url_only: false
+      url_plain: false
+      rel: ''
+      target: ''
+    third_party_settings:
+      fences:
+        fences_field_tag: none
+        fences_field_classes: ''
+        fences_field_items_wrapper_tag: none
+        fences_field_items_wrapper_classes: ''
+        fences_field_item_tag: none
+        fences_field_item_classes: ''
+        fences_label_tag: ''
+        fences_label_classes: ''
+    weight: 3
+    region: content
+  field_text:
+    type: text_default
+    label: hidden
+    settings: {  }
+    third_party_settings:
+      fences:
+        fences_field_tag: none
+        fences_field_classes: ''
+        fences_field_items_wrapper_tag: none
+        fences_field_items_wrapper_classes: ''
+        fences_field_item_tag: none
+        fences_field_item_classes: ''
+        fences_label_tag: ''
+        fences_label_classes: ''
+    weight: 2
     region: content
 hidden:
   search_api_excerpt: true

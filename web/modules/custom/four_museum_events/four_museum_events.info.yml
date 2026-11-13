@@ -1,8 +1,0 @@
-name: 'Four Museum Events'
-type: module
-description: 'Provides custom event sorting with interleaving pattern for museum, temporary, and permanent events.'
-package: Four
-core_version_requirement: ^10 || ^11
-dependencies:
-  - drupal:node
-  - drupal:views

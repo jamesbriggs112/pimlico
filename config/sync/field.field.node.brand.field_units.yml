@@ -1,0 +1,26 @@
+uuid: 0a77507c-69c1-484d-a05f-186a139623f5
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_units
+    - node.type.brand
+id: node.brand.field_units
+field_name: field_units
+entity_type: node
+bundle: brand
+label: Units
+description: 'The shopfront(s) the Brand trades from. This is what puts it on the street map.'
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:pimlico_unit'
+  handler_settings:
+    target_bundles: null
+    sort:
+      field: label
+      direction: ASC
+    auto_create: false
+field_type: entity_reference

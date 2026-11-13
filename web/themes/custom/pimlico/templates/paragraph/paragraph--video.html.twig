@@ -1,0 +1,10 @@
+{#
+/**
+ * @file
+ * Video paragraph → pimlico:media_video.
+ */
+#}
+{% include 'pimlico:media_video' with {
+  attributes,
+  media: content.field_video,
+} only %}

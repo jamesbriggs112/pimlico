@@ -1,0 +1,46 @@
+{#
+/**
+ * @file
+ * Press article (Figma T12): title band, publication block, body sections,
+ * credits, related stories, then the Source band linking to the original.
+ */
+#}
+{% set title = node.label %}
+{% set date = node.field_publication_date.value ? node.field_publication_date.date.getTimestamp()|format_date('custom', 'j F Y') : '' %}
+{% set publication = node.field_publication.value %}
+{% set intro = [node.field_summary.value, [publication, date]|filter(v => v)|join(', ')]|filter(v => v)|join(' · ') %}
+{% set source = node.field_source_link.0 ? node.field_source_link.0.url.toString() : '' %}
+
+<article{{ attributes.addClass('node', 'node--story', 'node--press') }}>
+  {{ title_prefix }}
+  {{ title_suffix }}
+  {% include 'pimlico:page_title' with {
+    title,
+    intro,
+    breadcrumb: drupal_block('system_breadcrumb_block'),
+  } only %}
+  {% include 'pimlico:featured_story' with {
+    meta: [publication, node.field_author.value, date]|filter(v => v)|join(' · '),
+    summary: node.field_summary.value|default(''),
+    image: content.field_image,
+    logo: node.field_publication_logo.isEmpty() ? null : content.field_publication_logo,
+  } only %}
+  <div class="story-body story-body--ruled">{{ content.field_sections }}</div>
+  {% include 'pimlico:story_credits' with { credits: node.field_credits.value|default('') } only %}
+  {% include 'pimlico:card_grid' with {
+    attributes: create_attribute({ class: ['card-grid--tint'] }),
+    heading: 'Discover the places in the story'|t,
+    text: 'Brands and stories connected to this place.'|t,
+    link_text: 'All news'|t,
+    link_url: path('view.news.page_news'),
+    items: node.field_related.isEmpty() ? drupal_view('news', 'block_related', node.field_news_category.target_id|default('all'), node.id) : content.field_related,
+  } only %}
+  {% if source %}
+    {% include 'pimlico:info_band' with {
+      eyebrow: 'Source'|t,
+      heading: 'Read the original coverage'|t,
+      links: [{ text: publication ? 'Read in @publication'|t({ '@publication': publication }) : 'Original publication'|t, url: source, external: true }],
+      media: content.field_image,
+    } only %}
+  {% endif %}
+</article>

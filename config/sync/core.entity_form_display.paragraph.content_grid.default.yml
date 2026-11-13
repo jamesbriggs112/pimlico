@@ -3,16 +3,50 @@ langcode: en
 status: true
 dependencies:
   config:
+    - field.field.paragraph.content_grid.field_anchor
+    - field.field.paragraph.content_grid.field_background
+    - field.field.paragraph.content_grid.field_content
+    - field.field.paragraph.content_grid.field_eyebrow
     - field.field.paragraph.content_grid.field_heading
-    - field.field.paragraph.content_grid.field_view
+    - field.field.paragraph.content_grid.field_link
+    - field.field.paragraph.content_grid.field_text
     - paragraphs.paragraphs_type.content_grid
   module:
-    - viewfield
+    - link
+    - text
 id: paragraph.content_grid.default
 targetEntityType: paragraph
 bundle: content_grid
 mode: default
 content:
+  field_anchor:
+    type: string_textfield
+    weight: 4
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+  field_background:
+    type: options_buttons
+    weight: 20
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+  field_content:
+    type: entity_reference_autocomplete
+    weight: 5
+    region: content
+    settings:
+      match_operator: CONTAINS
+      match_limit: 10
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+  field_eyebrow:
+    type: string_textfield
+    weight: 0
+    region: content
+    settings: {  }
+    third_party_settings: {  }
   field_heading:
     type: string_textfield
     weight: 0
@@ -21,11 +55,19 @@ content:
       size: 60
       placeholder: ''
     third_party_settings: {  }
-  field_view:
-    type: viewfield_select
-    weight: 0
+  field_link:
+    type: link_default
+    weight: 3
     region: content
     settings: {  }
+    third_party_settings: {  }
+  field_text:
+    type: text_textarea
+    weight: 2
+    region: content
+    settings:
+      rows: 5
+      placeholder: ''
     third_party_settings: {  }
 hidden:
   created: true

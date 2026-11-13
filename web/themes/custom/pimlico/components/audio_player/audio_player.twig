@@ -1,0 +1,21 @@
+{% set attributes = attributes ?: create_attribute() %}
+<div {{ attributes.addClass('audio-player') }}>
+  <audio class="audio-player__audio" src="{{ src }}" preload="metadata" controls data-audio>
+    <a href="{{ src }}">{{ 'Download the episode'|t }}</a>
+  </audio>
+  <button class="btn-icon btn-icon--light audio-player__toggle" type="button" aria-pressed="false" data-audio-toggle hidden>
+    <span class="audio-player__icon audio-player__icon--play">{% include 'pimlico:icon' with { name: 'play', size: 20 } only %}</span>
+    <span class="audio-player__icon audio-player__icon--pause">{% include 'pimlico:icon' with { name: 'pause', size: 20 } only %}</span>
+    <span class="visually-hidden" data-audio-label>{{ 'Play episode'|t }}: {{ title }}</span>
+  </button>
+  <div class="audio-player__body">
+    <p class="audio-player__meta" data-audio-meta>{{ meta }}</p>
+    <p class="audio-player__title">{{ title }}</p>
+    <div class="audio-player__progress" data-audio-progress hidden>
+      <input class="audio-player__range" type="range" min="0" max="100" step="0.1" value="0" aria-label="{{ 'Seek'|t }}" data-audio-seek>
+    </div>
+    {% if transcript_url %}
+      <a class="audio-player__transcript" href="{{ transcript_url }}">{{ 'Read the transcript'|t }}</a>
+    {% endif %}
+  </div>
+</div>

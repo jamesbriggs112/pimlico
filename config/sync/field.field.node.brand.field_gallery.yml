@@ -1,0 +1,24 @@
+uuid: 5d3e6c03-82ee-47c3-929f-d01e8bfecc55
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_gallery
+    - media.type.image
+    - node.type.brand
+id: node.brand.field_gallery
+field_name: field_gallery
+entity_type: node
+bundle: brand
+label: Gallery
+description: 'Photographs inside the showroom. Layout follows the order.'
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:media'
+  handler_settings:
+    target_bundles:
+      image: image
+field_type: entity_reference
