@@ -1,14 +1,3 @@
-#
-Grid
+# Grid
 
-This is some default content for the README. Change this to the appropriate
-content.
-
-## Usage
-
-Here you should describe how/when to use this component. This information may be
-for developers or for editors, depending on the component type.
-
-## Additional information
-
-Some extra info about the component.
+A CSS grid of equal columns for any content in its `content` slot. `columns` sets the column count (`grid--columns-<n>`). Used by `view_clean` for Views rows.

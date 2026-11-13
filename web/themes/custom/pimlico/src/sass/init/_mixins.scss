@@ -31,25 +31,6 @@
   );
 }
 
-@mixin contentWithGutters() {
-  --full-start: minmax(var(--page-gutter-left), 1fr);
-  --full-end: minmax(var(--page-gutter-right), 1fr);
-  --content: min(
-    var(--max-text-width),
-    100% - var(--page-gutter-left) - var(--page-gutter-right)
-  );
-  --max-width: calc((var(--page-width) - var(--content)) / 2);
-  --popout: minmax(0, var(--max-width));
-
-  display: grid;
-  grid-template-columns:
-    [full-start] var(--full-start)
-    [popout-start] var(--popout)
-    [content-start] var(--content) [content-end]
-    var(--popout) [popout-end]
-    var(--full-end) [full-end];
-}
-
 @mixin contentGrid() {
   --gap-count: calc(var(--grid-column-count) - 1);
   --total-gap-width: calc(var(--gap-count) * var(--column-gap));
@@ -83,4 +64,42 @@
   line-height: var(--line-height-title);
   letter-spacing: var(--letter-spacing-title);
   font-variation-settings: var(--font-display-variation);
+}
+
+// Label/Eyebrow: Lato Bold caps. The colour is the component's.
+@mixin eyebrow() {
+  font-size: var(--font-size-label-eyebrow);
+  font-weight: var(--font-weight-bold);
+  line-height: var(--line-height-label);
+  letter-spacing: var(--letter-spacing-label-eyebrow);
+  text-transform: uppercase;
+}
+
+// An underline at 3px that drops to 6px on hover (linkUnderlineHover). A
+// $hidden one waits, transparent, at 6px and appears on hover.
+@mixin linkUnderline($hidden: false) {
+  text-decoration-line: underline;
+  text-decoration-thickness: var(--link-underline-thickness);
+  @if $hidden {
+    text-decoration-color: transparent;
+    text-underline-offset: var(--link-hover-underline-offset);
+  } @else {
+    text-underline-offset: var(--link-underline-offset);
+  }
+  transition:
+    text-decoration-color var(--motion-duration) var(--motion-easing),
+    text-underline-offset var(--motion-duration) var(--motion-easing);
+}
+
+@mixin linkUnderlineHover() {
+  text-decoration-color: currentColor;
+  text-underline-offset: var(--link-hover-underline-offset);
+}
+
+// Mobile swipe track: scrolls sideways and snaps each item to the gutter.
+@mixin swipeTrack() {
+  overflow-x: auto;
+  overscroll-behavior-inline: contain;
+  scroll-snap-type: inline mandatory;
+  scroll-padding-inline: var(--page-gutter);
 }

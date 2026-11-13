@@ -4,7 +4,6 @@ declare(strict_types=1);
 
 namespace Drupal\pimlico_brands\Hook;
 
-use Drupal\Core\Entity\EntityTypeManagerInterface;
 use Drupal\Core\Hook\Attribute\Hook;
 use Drupal\pimlico_brands\BrandGroups;
 use Drupal\views\ViewExecutable;
@@ -24,7 +23,6 @@ final class BrandsViewHooks {
   public function __construct(
     private readonly BrandGroups $groups,
     private readonly RequestStack $requestStack,
-    private readonly EntityTypeManagerInterface $entityTypeManager,
   ) {}
 
   /**
@@ -59,17 +57,12 @@ final class BrandsViewHooks {
    *   Term IDs.
    */
   private function dineTermIds(string $category): array {
-    $storage = $this->entityTypeManager->getStorage('taxonomy_term');
-    $food = $storage->loadByProperties(['vid' => 'brand_category', 'name' => 'Food & Drink']);
-    $food = reset($food);
-    if (!$food) {
-      return [];
-    }
-    $children = array_map(static fn($term) => (int) $term->tid, $storage->loadTree('brand_category', (int) $food->id()));
+    $dine = $this->groups->dineTermIds();
+    $children = array_slice($dine, 1);
     if (ctype_digit($category) && in_array((int) $category, $children, TRUE)) {
       return [(int) $category];
     }
-    return [(int) $food->id(), ...$children];
+    return $dine;
   }
 
 }

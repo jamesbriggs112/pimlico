@@ -5,10 +5,7 @@
  * buttons it's the compact "Related information" bar (T16).
  */
 #}
-{% set links = [] %}
-{% for item in paragraph.field_links %}
-  {% set links = links|merge([{ text: item.title, url: item.url.toString() }]) %}
-{% endfor %}
+{% set links = paragraph.field_links|map(item => { text: item.title, url: item.url.toString() }) %}
 {% include 'pimlico:next_step' with {
   attributes,
   eyebrow: paragraph.field_eyebrow.value|default(''),

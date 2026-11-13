@@ -13,10 +13,18 @@ props:
   required:
     - heading
   properties:
-    eyebrow: { type: string, title: Eyebrow }
-    heading: { type: string, title: Heading }
-    link_text: { type: string, title: Link text }
-    link_url: { type: string, title: Link URL }
+    eyebrow:
+      type: string
+      title: Eyebrow
+    heading:
+      type: string
+      title: Heading
+    link_text:
+      type: string
+      title: Link text
+    link_url:
+      type: string
+      title: Link URL
 slots:
   text:
     title: Text

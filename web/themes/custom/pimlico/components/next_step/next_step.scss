@@ -46,9 +46,9 @@
       display: flex;
       flex-wrap: wrap;
       justify-content: center;
-      gap: #{to.rem(16px)};
+      gap: var(--space-16);
       width: auto;
-      padding-top: #{to.rem(4px)};
+      padding-top: var(--space-4);
     }
 
     .btn {

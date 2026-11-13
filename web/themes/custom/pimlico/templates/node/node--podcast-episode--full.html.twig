@@ -6,10 +6,8 @@
  */
 #}
 {% set title = node.label %}
-{% set file = node.field_audio.entity.field_media_audio_file.entity %}
-{% set src = file ? file_url(file.uri.value) : '' %}
-{% set meta = ['Podcast'|t, node.created.value|format_date('custom', 'j F'), node.field_duration.value]|filter(v => v)|join(' · ') %}
-{% set player_meta = [node.field_episode_number.value, node.field_duration.value]|filter(v => v)|join(' · ') %}
+{% set meta = ['Podcast'|t, node.created.value|format_date('custom', 'j F'), node.field_duration.value]|filter(value => value)|join(' · ') %}
+{% set player_meta = [node.field_episode_number.value, node.field_duration.value]|filter(value => value)|join(' · ') %}
 {% set brand = node.field_featured_brand.entity %}
 
 <article{{ attributes.addClass('node', 'node--story', 'node--podcast') }}>
@@ -22,8 +20,8 @@
   } only %}
 
   {% set player %}
-    {% if src %}
-      {% include 'pimlico:audio_player' with { src, title, meta: player_meta } only %}
+    {% if audio_url %}
+      {% include 'pimlico:audio_player' with { src: audio_url, title, meta: player_meta } only %}
     {% else %}
       <p>{{ 'This episode isn’t available to play right now.'|t }}</p>
     {% endif %}

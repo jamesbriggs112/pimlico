@@ -16,7 +16,7 @@
 .messages {
   display: grid;
   grid-template-columns: 1fr auto;
-  gap: #{to.rem(8px)} var(--space-24);
+  gap: var(--space-8) var(--space-24);
   margin-bottom: var(--space-12);
   padding: var(--space-24);
   border: 1px solid var(--color-border-strong);
@@ -40,13 +40,9 @@
   }
 
   &__title {
+    @include eyebrow;
     margin: 0;
     font-family: var(--font-family-body);
-    font-size: var(--font-size-label-eyebrow);
-    font-weight: var(--font-weight-bold);
-    line-height: var(--line-height-label);
-    letter-spacing: var(--letter-spacing-label-eyebrow);
-    text-transform: uppercase;
   }
 
   &__list {

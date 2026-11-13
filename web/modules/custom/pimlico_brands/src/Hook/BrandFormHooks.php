@@ -8,6 +8,7 @@ use Drupal\Core\Entity\EntityTypeManagerInterface;
 use Drupal\Core\Form\FormStateInterface;
 use Drupal\Core\Hook\Attribute\Hook;
 use Drupal\Core\StringTranslation\StringTranslationTrait;
+use Drupal\pimlico_brands\BrandGroups;
 
 /**
  * The Brand form's category list follows the site's sections.
@@ -23,6 +24,7 @@ final class BrandFormHooks {
 
   public function __construct(
     private readonly EntityTypeManagerInterface $entityTypeManager,
+    private readonly BrandGroups $groups,
   ) {}
 
   /**
@@ -50,6 +52,7 @@ final class BrandFormHooks {
       }
     }
 
+    $dine = (int) $this->groups->dineCategory()?->id();
     $options = [];
     if (isset($element['#options']['_none'])) {
       $options['_none'] = $element['#options']['_none'];
@@ -59,7 +62,7 @@ final class BrandFormHooks {
     }
     foreach ($tree as $term) {
       if (isset($groups[(int) $term->tid])) {
-        $label = $term->name === 'Food & Drink' ? $this->t('Dine') : $term->name;
+        $label = (int) $term->tid === $dine ? $this->t('Dine') : $term->name;
         $options[(string) $label] = $groups[(int) $term->tid];
       }
     }

@@ -34,12 +34,9 @@
     display: grid;
     grid-auto-flow: column;
     grid-auto-columns: #{to.rem(290px)};
-    gap: #{to.rem(16px)};
-    overflow-x: auto;
-    overscroll-behavior-inline: contain;
-    scroll-snap-type: inline mandatory;
-    scroll-padding-inline: var(--page-gutter);
-    padding-bottom: #{to.rem(4px)}; // room for the focus ring
+    gap: var(--space-16);
+    @include swipeTrack;
+    padding-bottom: var(--space-4); // room for the focus ring
 
     > * {
       scroll-snap-align: start;
@@ -62,7 +59,7 @@
     @include pageContainer;
     display: flex;
     gap: var(--space-12);
-    padding-top: #{to.rem(16px)};
+    padding-top: var(--space-16);
 
     &[hidden] {
       display: none;

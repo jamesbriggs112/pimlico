@@ -141,14 +141,10 @@
     Drupal.Ajax.prototype.pimlicoValidates = true;
   };
 
-  Drupal.behaviors.formValidation = {
+  Drupal.behaviors.form = {
     attach(context) {
       patchAjax();
-      once(
-        'pimlico-form-validation',
-        'form.webform-submission-form',
-        context
-      ).forEach((form) => {
+      once('form', 'form.webform-submission-form', context).forEach((form) => {
         form.noValidate = true;
         form.dataset.pimlicoValidate = 'true';
 

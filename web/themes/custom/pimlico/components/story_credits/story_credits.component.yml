@@ -20,5 +20,7 @@ props:
       items:
         type: object
         properties:
-          text: { type: string }
-          url: { type: string }
+          text:
+            type: string
+          url:
+            type: string

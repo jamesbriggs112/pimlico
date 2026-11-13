@@ -24,7 +24,7 @@
     display: grid;
     justify-items: start;
     gap: #{to.rem(20px)};
-    padding: #{to.rem(40px)} #{fluid(40px, 80px, 980px, 1440px)};
+    padding: var(--space-40) #{fluid(40px, 80px, 980px, 1440px)};
   }
 
   &__heading {

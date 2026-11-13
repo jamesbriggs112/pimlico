@@ -1,14 +1,3 @@
-#
-Visually hidden
+# Visually hidden
 
-This is some default content for the README. Change this to the appropriate
-content.
-
-## Usage
-
-Here you should describe how/when to use this component. This information may be
-for developers or for editors, depending on the component type.
-
-## Additional information
-
-Some extra info about the component.
+Text for screen readers only, in its `content` slot. It shows when focused, so it also works for skip links. Icon-only buttons use it for their name (see `button_icon`).

@@ -8,13 +8,9 @@
   // 1280px content column with 80px gutters at 1440px; 24px gutters on mobile
   --page-width: #{to.rem(1280px)};
   --page-gutter: #{fluid(24px, 80px)};
-  --page-gutter-left: calc(var(--page-gutter) + env(safe-area-inset-left));
-  --page-gutter-right: calc(var(--page-gutter) + env(safe-area-inset-right));
   --page-gutter-total: calc(
     var(--page-gutter) + env(safe-area-inset-left) + env(safe-area-inset-right)
   );
-  --vertical-spacing: var(--section-space);
-  --component-spacing: var(--section-space);
   --row-gap: #{fluid(32px, 40px)};
   --column-gap: #{fluid(16px, 40px)};
   --grid-column-count: 3;
@@ -29,10 +25,6 @@
   // #dab845 gives 4.8:1. Confirm with design.
   --color-brand-mustard: #dab845;
   --color-brand-pumpkin: #e87400;
-  // Darker pumpkin (5:1 on white): kept for reference. Eyebrows use the
-  // design's #e87400 at the client's request, although it is 3:1 on white,
-  // short of the 4.5:1 WCAG AA asks for small text.
-  --color-brand-pumpkin-text: #a64f00;
   --color-brand-white: #ffffff;
   --color-tint-linen-30: #f4f2eb;
   --color-tint-linen-60: #ece9df;
@@ -40,7 +32,13 @@
   --color-border-default: #e0dccd;
   --color-border-inverse: var(--color-brand-grey);
   // Dark-grey scrim over photographs behind white text (Figma: 72%)
-  --color-scrim: rgb(57 73 89 / 72%);
+  --color-scrim: color-mix(
+    in srgb,
+    var(--color-brand-dark-grey) 72%,
+    transparent
+  );
+  // Not a Figma variable: the near-black of the hero film's gradient scrim
+  --color-scrim-ink: #1a1f29;
 
   // Semantic colours (Figma variables)
   --color-text-primary: var(--color-brand-dark-grey);
@@ -54,51 +52,15 @@
   --color-surface-inverse: var(--color-brand-dark-grey);
   --color-surface-highlight: var(--color-brand-yellow);
   --color-surface-tint: var(--color-tint-linen-30);
-  --color-surface-tint-strong: var(--color-tint-linen-60);
 
   // Starterkit aliases, so components not yet restyled stay on brand
   --color-black: var(--color-brand-dark-grey);
   --color-white: var(--color-brand-white);
-  --color-dark-grey: var(--color-brand-dark-grey);
-  --color-mid-grey: var(--color-brand-grey);
-  --color-light-grey-20: var(--color-tint-linen-30);
-  --color-light-grey-40: var(--color-tint-linen-60);
-  --color-light-grey-50: var(--color-brand-grey);
-  --color-light-grey-70: var(--color-brand-dark-grey);
 
   --color-primary: var(--color-brand-dark-grey);
   --color-primary-hover: var(--color-brand-yellow);
-  --color-primary-active: var(--color-brand-yellow);
-  --color-primary-focus: var(--color-brand-dark-grey);
-  --color-primary-text: var(--color-text-inverse);
-  --color-primary-border: var(--color-brand-dark-grey);
-  --color-primary-outline: var(--color-border-strong);
-
-  --color-secondary: var(--color-brand-yellow);
-  --color-secondary-hover: var(--color-brand-mustard);
-  --color-secondary-active: var(--color-brand-mustard);
-  --color-secondary-focus: var(--color-brand-yellow);
-  --color-secondary-text: var(--color-brand-dark-grey);
-  --color-secondary-border: var(--color-brand-yellow);
-  --color-secondary-outline: var(--color-border-strong);
-
   --color-disabled: var(--color-tint-linen-60);
   --color-disabled-text: var(--color-brand-dark-grey);
-  --color-disabled-border: var(--color-tint-linen-60);
-
-  // Messages keep conventional status colours for clarity
-  --color-success: #2e6b47;
-  --color-success-text: var(--color-brand-white);
-  --color-success-border: #2e6b47;
-  --color-warning: var(--color-brand-yellow);
-  --color-warning-text: var(--color-brand-dark-grey);
-  --color-warning-border: var(--color-brand-mustard);
-  --color-error: #a3291d;
-  --color-error-text: var(--color-brand-white);
-  --color-error-border: #a3291d;
-  --color-info: var(--color-tint-linen-60);
-  --color-info-text: var(--color-brand-dark-grey);
-  --color-info-border: var(--color-brand-dark-grey);
 
   --text-color: var(--color-text-primary);
   --background-color: var(--color-brand-white);
@@ -106,9 +68,6 @@
   // Typography: families
   --font-family-display: 'Fraunces', Georgia, 'Times New Roman', serif;
   --font-family-body: 'Lato', 'Helvetica Neue', Arial, sans-serif;
-  --font-family: var(--font-family-body);
-  --body-text: var(--font-family-body);
-  --header-text: var(--font-family-display);
   // Fraunces axes, as set on every Figma heading
   --font-display-variation: 'SOFT' 0, 'WONK' 0;
 
@@ -116,7 +75,6 @@
   --font-weight-light: 300;
   --font-weight-regular: 400;
   --font-weight-medium: 500;
-  --font-weight-semi-bold: 500;
   --font-weight-bold: 700;
 
   // Typography: display scale (Fraunces Light), 390px to 1440px
@@ -157,11 +115,19 @@
   --line-height-base: var(--line-height-body-m);
   --max-text-width: #{to.rem(760px)};
 
-  // Spacing
+  // Spacing: the HCRW scale, plus 40px, the design's most used gap
+  --space-4: #{to.rem(4px)};
+  --space-8: #{to.rem(8px)};
   --space-12: #{to.rem(12px)};
   --space-16: #{to.rem(16px)};
   --space-24: #{to.rem(24px)};
   --space-32: #{to.rem(32px)};
+  --space-40: #{to.rem(40px)};
+  --space-48: #{to.rem(48px)};
+  --space-64: #{to.rem(64px)};
+  --space-80: #{to.rem(80px)};
+  --space-96: #{to.rem(96px)};
+  --space-128: #{to.rem(128px)};
   --section-space: #{fluid(40px, 60px)};
   --radius-pill: 999px;
 
@@ -175,53 +141,28 @@
     0 0 0 #{to.rem(2px)} var(--color-surface-inverse),
     0 0 0 #{to.rem(4px)} var(--color-surface-highlight);
   --focus-ring: var(--focus-ring-on-light);
-  --focus-outline-color-primary: var(--color-border-strong);
-  --focus-outline-offset: #{to.rem(2px)};
   --focus-outline-width: #{to.rem(2px)};
-  --focus-border-radius: 0;
 
   // Links
   --link-color: var(--text-color);
-  --link-font-weight: inherit;
-  --link-hover-color: var(--link-color);
   --link-underline-thickness: #{to.rem(1px)};
   --link-underline-offset: #{to.rem(3px)};
   --link-hover-underline-offset: #{to.rem(6px)};
-  --link-underline-style: solid;
 
   // Components
   --header-bg-color: var(--color-white);
-  --header-height: #{fluid(57px, 69px)};
-  --header-padding: #{to.rem(20px)} var(--page-gutter-right) #{to.rem(20px)}
-    var(--page-gutter-left);
   --footer-bg-color: var(--color-tint-linen-60);
   --footer-text-color: var(--color-text-primary);
-  --footer-link-color: var(--color-text-primary);
-  --footer-link-hover-color: var(--color-text-primary);
-
-  // Cards
-  --card-background-color: transparent;
-  --card-border-color: var(--color-light-grey-50);
-  --card-border-radius: #{to.rem(0px)};
-  --card-border-width: #{to.rem(0px)};
-  --card-content-padding: #{to.rem(0px)};
-  --card-text-color: inherit;
-
-  // Quotes
-  --quote-border-radius: #{to.rem(4px)};
-  --quote-border-width: #{to.rem(4px)};
-  --quote-padding: #{to.rem(25px 30px 20px)};
-  --quote-border-color-primary: var(--color-primary-border);
-  --quote-border-color-secondary: var(--color-secondary-border);
 
   // Buttons (Figma "A / Button": Dark and Yellow)
   --button-padding: #{to.rem(18px)} #{to.rem(34px)};
   --button-border-radius: 0;
-  --button-border-width: 0;
   --button-font-weight: var(--font-weight-medium);
   --button-font-size: var(--font-size-label-nav);
   --button-letter-spacing: var(--letter-spacing-label-nav);
-  --button-transition: background-color 0.3s ease-out, color 0.3s ease-out;
+  --button-transition:
+    background-color var(--motion-duration) var(--motion-easing),
+    color var(--motion-duration) var(--motion-easing);
 
   --button-background-color-dark: var(--color-brand-dark-grey);
   --button-text-color-dark: var(--color-text-inverse);
@@ -233,13 +174,8 @@
   --button-hover-background-color-yellow: var(--color-action-primary-hover);
   --button-hover-text-color-yellow: var(--color-action-on-primary);
 
-  --button-focus-outline-offset: #{to.rem(2px)};
-  --button-focus-outline-width: #{to.rem(2px)};
   --button-disabled-background-color: var(--color-disabled);
   --button-disabled-text-color: var(--color-disabled-text);
-  --button-disabled-background-color-secondary: var(--color-disabled);
-  --button-disabled-text-color-secondary: var(--color-disabled-text);
-  --button-disabled-border-color-secondary: transparent;
 
   // Button Icon (Figma "Media control": 48px white-outline circle)
   --button-icon-size: #{to.rem(48px)};
@@ -256,55 +192,19 @@
   --form-element-padding: 0 0 var(--space-12);
   --form-element-border-radius: 0;
   --form-element-border-width: #{to.rem(1px)};
-  --form-element-border-width-active: #{to.rem(2px)};
   --form-element-border-color: var(--color-border-strong);
   --form-element-text-color: var(--color-text-primary);
-  --form-element-placeholder-color: rgb(57 73 89 / 80%);
+  --form-element-placeholder-color: color-mix(
+    in srgb,
+    var(--color-brand-dark-grey) 80%,
+    transparent
+  );
   --form-element-background-color: transparent;
-  --form-element-active-border-color: var(--color-border-strong);
-  --form-element-active-background-color: transparent;
-  --form-element-focus-background-color: transparent;
-  --form-element-focus-border-color: var(--color-border-strong);
-  --form-element-focus-outline-color: var(--color-border-strong);
-  --form-element-focus-outline-width: #{to.rem(2px)};
-  --form-element-focus-outline-offset: #{to.rem(2px)};
   --form-element-disabled-background-color: var(--color-tint-linen-30);
-  --form-element-disabled-text-color: var(--color-text-primary);
   --form-element-disabled-border-color: var(--color-tint-linen-60);
   --form-element-gap: var(--space-12);
   --form-textarea-height: #{to.rem(140px)};
   --form-checkbox-size: #{to.rem(20px)};
-
-  // Menu
-  --menu-spacing: #{to.rem(10px)};
-  --menu-link-font-size: #{to.rem(20px)};
-  --menu-link-font-weight: var(--font-weight-medium);
-  --main-menu-spacing: #{to.rem(10px)};
-  --main-menu-link-font-size: #{to.rem(20px)};
-  --main-menu-link-font-weight: var(--font-weight-medium);
-  --main-menu-link-color: var(--color-black);
-  --main-menu-link-hover-color: var(--color-primary);
-  --main-menu-mobile-link-font-size: #{to.rem(20px)};
-  --main-menu-mobile-link-font-weight: var(--font-weight-medium);
-  --main-menu-mobile-link-color: var(--color-black);
-  --main-menu-mobile-link-hover-color: var(--color-primary);
-
-  // Messages
-  --messages-border-width: #{to.rem(3px)};
-  --messages-border-radius: #{to.rem(6px)};
-  --messages-text-color: var(--text-color);
-  --messages-status-border-color: var(--color-success-border);
-  --messages-status-background-color: var(--color-success);
-  --messages-status-text-color: var(--color-success-text);
-  --messages-error-border-color: var(--color-error-border);
-  --messages-error-background-color: var(--color-error);
-  --messages-error-text-color: var(--color-error-text);
-  --messages-warning-border-color: var(--color-warning-border);
-  --messages-warning-background-color: var(--color-warning);
-  --messages-warning-text-color: var(--color-warning-text);
-  --messages-info-border-color: var(--color-info-border);
-  --messages-info-background-color: var(--color-info);
-  --messages-info-text-color: var(--color-info-text);
 
   // Plyr
   --plyr-color-main: var(--color-primary);

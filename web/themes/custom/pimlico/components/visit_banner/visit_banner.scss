@@ -74,12 +74,12 @@
   &__rows {
     width: 100%;
     margin: 0;
-    padding-top: #{to.rem(12px)};
+    padding-top: var(--space-12);
   }
 
   &__action {
     width: 100%;
-    padding-top: #{to.rem(12px)};
+    padding-top: var(--space-12);
 
     @include mq($from: desktop) {
       width: auto;

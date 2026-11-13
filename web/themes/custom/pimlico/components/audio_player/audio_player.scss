@@ -5,13 +5,13 @@
 .audio-player {
   // Plyr sets its own font from --plyr-font-family, which is empty unless
   // given; use the site's Lato.
-  --plyr-font-family: var(--body-text);
-  font-family: var(--body-text);
+  --plyr-font-family: var(--font-family-body);
+  font-family: var(--font-family-body);
 
   display: flex;
   align-items: center;
   gap: var(--space-24);
-  max-width: #{to.rem(760px)};
+  max-width: var(--max-text-width);
   padding: #{fluid(24px, 32px)};
   border: 1px solid var(--color-border-inverse);
   background-color: var(--color-surface-inverse);
@@ -46,7 +46,7 @@
   &__body {
     display: grid;
     flex: 1;
-    gap: #{to.rem(8px)};
+    gap: var(--space-8);
     min-width: 0;
   }
 
@@ -56,12 +56,8 @@
 
   &__meta {
     margin: 0;
+    @include eyebrow;
     color: var(--color-brand-yellow);
-    font-size: var(--font-size-label-eyebrow);
-    font-weight: var(--font-weight-bold);
-    line-height: var(--line-height-label);
-    letter-spacing: var(--letter-spacing-label-eyebrow);
-    text-transform: uppercase;
   }
 
   &__title {
@@ -82,13 +78,14 @@
       background: linear-gradient(
         to right,
         var(--color-brand-yellow) var(--_played, 0%),
-        rgb(197 211 210 / 40%) var(--_played, 0%)
+        color-mix(in srgb, var(--color-brand-grey) 40%, transparent)
+          var(--_played, 0%)
       );
     }
 
     &::-moz-range-track {
       height: 2px;
-      background: rgb(197 211 210 / 40%);
+      background: color-mix(in srgb, var(--color-brand-grey) 40%, transparent);
     }
 
     &::-moz-range-progress {

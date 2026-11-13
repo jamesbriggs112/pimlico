@@ -26,9 +26,12 @@ props:
       items:
         type: object
         properties:
-          text: { type: string }
-          url: { type: string }
-          class: { type: string }
+          text:
+            type: string
+          url:
+            type: string
+          class:
+            type: string
 slots:
   breadcrumb:
     title: Breadcrumb

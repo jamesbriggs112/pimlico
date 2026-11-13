@@ -1,4 +1,4 @@
-# gitignore template for Drupal 8 projects
+# gitignore template for Drupal projects
 #
 # earlier versions of Drupal are tracked in `community/PHP/`
 #
@@ -79,3 +79,9 @@ recipes
 # PHPUnit
 .phpunit.cache
 /phpunit.xml
+.phpunit.result.cache
+
+# Local environment and database dumps
+.env
+*.sql
+*.sql.gz

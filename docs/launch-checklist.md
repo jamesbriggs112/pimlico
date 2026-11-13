@@ -13,7 +13,7 @@ Phase 7 of the build plan. Automated checks were run locally on 11 November 2026
 | Reduced motion | The hero film never starts; Play is available. |
 | Performance (mobile, slow 4G, 4× CPU, aggregation on, local Valet) | LCP: Home 2.6 s, Brand 0.9 s, Visit 0.7 s, News 0.8 s. CLS 0 everywhere. Fixed: above-the-fold images were lazy-loaded (new "Hero" media view mode loads them eagerly); the hero film downloaded before anything else (now `preload="none"`, starts after page load, skipped on data saver or slow connections). |
 | Map | `scripts/map-qa.sh`: 96/96. |
-| Tests and standards | PHPUnit (3 kernel tests), phpcs, ESLint, Prettier clean. |
+| Tests and standards | PHPUnit (5 kernel tests), phpcs, ESLint, Prettier clean. |
 
 ## Needs a decision or content before launch
 
@@ -41,25 +41,19 @@ Record results here.
 
 ## Environment set-up (7.5)
 
-Set these as Elastic Beanstalk environment properties for staging and production:
-
-| Property | Value |
-|---|---|
-| `ENVIRONMENT` | `staging` or `production` (loads `config/<env>/<env>.config.php`) |
-| `SITE_HOST` | The public host name, e.g. `www.example.com`. It's added to `trusted_host_patterns` (the skeleton only trusts `*.preflight.site` and `10.0.x.x`) and used as the sitemap base URL. |
-| `HASH_SALT` | A long random string, different per environment. |
-| `SENTRY_DSN`, `SENTRY_ENVIRONMENT`, `SENTRY_RELEASE` | From Sentry (placeholders in `.ebextensions/sentry.config`). |
-| `SMTP_USERNAME`, `SMTP_PASSWORD` | Mail credentials. |
+Set the Elastic Beanstalk environment properties and the GitHub Actions variables and secrets for staging and production, as listed under [Environments](TAD.md#environments) in the TAD. The Sentry values are GitHub variables: each deploy writes them into `.ebextensions/sentry.config`.
 
 ## First deploy to staging
 
 The post-deploy hook now runs `drush deploy` (updates, config import, cache rebuild). The skeleton's hook never imported config. Then, once:
 
-1. `drush migrate:import --tag=pimlico` (47 Brands and their Units).
-2. `drush php:script scripts/dev/seed-pages.php` (the site pages; it also sets the front page). Upload real photography afterwards.
-3. `drush --uri=https://$SITE_HOST simple-sitemap:generate`.
-4. Check the map at `/visit` and on a Brand page, and `/api/map/brands`.
-5. Staging stays `noindex` (`config/staging/staging.config.php`).
+1. Import the Structure Sync content, which `drush deploy` doesn't: `drush it --choice=safe`, `drush im --choice=safe` and `drush ib --choice=safe` (taxonomy terms, menu links, custom blocks). The import in the next step looks up Brand categories and Areas by name.
+2. `drush migrate:import --tag=pimlico` (47 Brands and their Units).
+3. Create the site pages. `scripts/dev/seed-pages.php` builds them and sets the front page, but the deploy zip (`.github/workflows/deploy.yml`) doesn't include `scripts/`, so it isn't on the server. Either add `scripts` to the zip for the first deploy and run `drush php:script scripts/dev/seed-pages.php`, or create the pages by hand and set the front page under Configuration » Basic site settings. Upload real photography afterwards.
+   Note that `config/sync/system.site.yml` sets the front page to `/node/113`, and `drush deploy` imports it on every deploy, which undoes either way of setting it unless Home is node 113. Until that config is changed (for example to `/home`, Home's alias), check the front page after each deploy.
+4. `drush --uri=https://$SITE_HOST simple-sitemap:generate`.
+5. Check the map at `/visit` and on a Brand page, and `/api/map/brands`.
+6. Staging stays `noindex` (`config/staging/staging.config.php`).
 
 ## Go-live
 

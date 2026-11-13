@@ -3,48 +3,48 @@
 {{ title_suffix }}
 
 {% block header %}
-	{% if header %}
-		{{ header }}
-	{% endif %}
+  {% if header %}
+    {{ header }}
+  {% endif %}
 {% endblock %}
 
 {% block exposed %}
-	{{ exposed }}
+  {{ exposed }}
 {% endblock %}
 
 {% block attachment_before %}
-	{{ attachment_before }}
+  {{ attachment_before }}
 {% endblock %}
 
 {% block rows %}
-	{% if rows -%}
-		{% embed "pimlico:grid" with { columns: 3} %}
-			{% block content %}
-				{{ rows }}
-			{% endblock %}
-		{% endembed %}
-	{% elseif empty -%}
-		{{ empty }}
-	{% endif %}
+  {% if rows -%}
+    {% embed "pimlico:grid" with { columns: 3} %}
+      {% block content %}
+        {{ rows }}
+      {% endblock %}
+    {% endembed %}
+  {% elseif empty -%}
+    {{ empty }}
+  {% endif %}
 {% endblock %}
 
 {% block pager %}
-	{{ pager }}
+  {{ pager }}
 {% endblock %}
 
 
 {% block attachment_after %}
-	{{ attachment_after }}
+  {{ attachment_after }}
 {% endblock %}
 
 {% block more %}
-	{{ more }}
+  {{ more }}
 {% endblock %}
 
 {% block footer %}
-	{% if footer %}
-		{{ footer }}
-	{% endif %}
+  {% if footer %}
+    {{ footer }}
+  {% endif %}
 {% endblock %}
 
 {{ feed_icons }}
