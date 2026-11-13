@@ -1,6 +1,6 @@
 # Pimlico Road: build plan
 
-This is the delivery plan for the architecture in [TAD.md](TAD.md). Phases run in order. Within a phase, the numbered steps are the unit of work: each one ends in a PR from a `feature/…` branch into `dev`, with config exported. `dev` is promoted to `staging` and then `production` by PR.
+This is the delivery plan for the architecture in [TAD.md](TAD.md). Phases run in order. Within a phase, the numbered steps are the unit of work: each one ends in a PR from a `feature/…` branch into `dev`, with config exported. `dev` is promoted to `staging` and then `main` (production) by PR.
 
 **Working rules for every step** (from `AGENTS.md` and the reference project):
 
@@ -17,7 +17,7 @@ This is the delivery plan for the architecture in [TAD.md](TAD.md). Phases run i
 
 | # | Step | Done when |
 |---|---|---|
-| 0.1 | Repository `jamesbriggs112/pimlico` created from the skeleton, with the skeleton as `upstream` and `dev`, `staging` and `production` branches (TAD §3). Done 11 November 2026. Still to do on GitHub: make `dev` the default branch if it isn't, protect `staging` and `production` (PRs only), and create the `staging` and `production` environments with their variables. | Branch protection and environments set |
+| 0.1 | Repository `jamesbriggs112/pimlico` created from the skeleton, with the skeleton as `upstream` and `dev`, `staging` and `production` branches (TAD §3). Done 11 November 2026. Moved to `Four-Agency/pimlico-website` on 13 November 2026, where `main` replaces `production`. Still to do on GitHub: make `dev` the default branch, protect `staging` and `main` (PRs only), and create the `staging` and `production` environments with their variables. | Branch protection and environments set |
 | 0.2 | ✅ Local install: `composer install`, `settings.local.php`, `drush si --existing-config && drush ib`, Served by Valet at `https://pimlico.test` (see `docs/local-development.md`; `scripts/serve.sh` is a fallback without admin rights). The admin account has a random password; sign in with `drush uli`. | The site installs from config |
 | 0.3 | ✅ Update `AGENTS.md` (dev URL, project name), add `CONTEXT.md` from TAD §5, `docs/agents/{code-review,domain}.md` copied from the reference project, and ADRs 0001–0006 (TAD §12). | Docs reviewed by the lead developer |
 | 0.4 | ✅ Generate the theme: `php web/core/scripts/drupal generate-theme --starterkit four_starterkit pimlico --path themes/custom`. Set as default, `pnpm i`, `pnpm dev`. Bring across the reference project's theme additions the starterkit lacks: `init/_utilities`, `init/_animations`, `vitest` set-up and `tests/` folders. | The theme renders the skeleton content and Storybook runs |

@@ -232,15 +232,15 @@ A shopfront that Brands trade from: name, address, area and its building(s) on t
 
 ### Source code
 
-The source code is in GitHub: `git@github.com:jamesbriggs112/pimlico.git`. The agency skeleton is the `upstream` remote, for skeleton updates.
+The source code is in GitHub: `git@github.com:Four-Agency/pimlico-website.git`, with branches `dev`, `staging` and `main` (production). The agency skeleton is the `upstream` remote, for skeleton updates.
 
-Branches follow the format `feature/…`, `bugfix/…` and `hotfix/…`. These are merged into `dev` by pull request, then `dev` into `staging`, then `staging` into `production`.
+Branches follow the format `feature/…`, `bugfix/…` and `hotfix/…`. These are merged into `dev` by pull request, then `dev` into `staging`, then `staging` into `main` (production).
 
 ### Environments
 
 **Development** is done locally with Laravel Valet at `https://pimlico.test` ([local-development.md](local-development.md)).
 
-Deployment is by GitHub Actions: merging a pull request into `staging` or `production` deploys that branch to its Elastic Beanstalk environment. After deploying, the server runs `drush deploy`, which runs database updates, imports configuration and clears caches. Developers export configuration with `drush cex` and commit it with the code that needs it.
+Deployment is by GitHub Actions: merging a pull request into `staging` or `main` deploys that branch to its Elastic Beanstalk environment. After deploying, the server runs `drush deploy`, which runs database updates, imports configuration and clears caches. Developers export configuration with `drush cex` and commit it with the code that needs it.
 
 There are two server environments:
 
@@ -336,6 +336,7 @@ The full list waits on the client and on who controls belgraviavillage.com.
 | Date | Question | Decision |
 |---|---|---|
 | 11 Nov 2026 | Repository | GitHub `jamesbriggs112/pimlico`, branches `dev`, `staging`, `production` |
+| 13 Nov 2026 | Repository | Moved to GitHub `Four-Agency/pimlico-website`; branches `dev`, `staging` and `main` (`main` replaces `production` and deploys to production) |
 | 11 Nov 2026 | Display font | Fraunces, self-hosted |
 | 11 Nov 2026 | Events | Not required |
 | 11 Nov 2026 | Cookie consent | CookieScript, set up later |

@@ -67,7 +67,7 @@ Twig templates are thin adapters onto the components in `components/`. Preproces
 
 ## Working on the site
 
-- **Branches:** `feature/…`, `bugfix/…` or `hotfix/…`, then a pull request into `dev`, then `dev` into `staging`, then `staging` into `production`.
+- **Branches:** `feature/…`, `bugfix/…` or `hotfix/…`, then a pull request into `dev`, then `dev` into `staging`, then `staging` into `main` (production).
 - **Config:** export with `drush cex` and commit it with the code that needs it. Menus, taxonomy terms and custom blocks go through Structure Sync (`drush em`, `drush et`, `drush eb`); import taxonomies in safe mode.
 - **Checks:** `vendor/bin/phpcs`, `vendor/bin/phpunit --testsuite custom`, and `pnpm lint` and `pnpm test` in the theme. Pull requests run phpcs and the tests.
 - **Secrets:** never commit keys or passwords. Environment values are Elastic Beanstalk properties.
@@ -75,7 +75,7 @@ Twig templates are thin adapters onto the components in `components/`. Preproces
 
 ## Deployment
 
-Merging into `staging` or `production` deploys that branch to its Elastic Beanstalk environment. The server then runs `drush deploy` (database updates, config import, cache clear). See [Hosting and domains](docs/TAD.md#hosting-and-domains) in the TAD.
+Merging into `staging` or `main` deploys that branch to its Elastic Beanstalk environment. The server then runs `drush deploy` (database updates, config import, cache clear). See [Hosting and domains](docs/TAD.md#hosting-and-domains) in the TAD.
 
 ## Updating Drupal
 

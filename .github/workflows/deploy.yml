@@ -5,7 +5,7 @@ on:
     types: [closed]
     branches:
       - staging
-      - production
+      - main
 
 jobs:
   build-and-deploy:
@@ -17,7 +17,7 @@ jobs:
         node-version: [22]
     # On pull_request events github.ref is the PR merge ref, so pick the
     # environment from the branch the PR was merged into.
-    environment: ${{ github.base_ref == 'production' && 'production' || 'staging' }}
+    environment: ${{ github.base_ref == 'main' && 'production' || 'staging' }}
     steps:
       - name: Checkout code
         uses: actions/checkout@v5
