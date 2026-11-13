@@ -85,10 +85,7 @@
     }
 
     &--news &__grid .story-card__title {
-      font-size: #{to.rem(20px)};
-      font-weight: var(--font-weight-regular);
-      line-height: 1.25;
-      letter-spacing: -0.5px;
+      font-size: var(--font-size-title-s);
     }
 
     &--news &__grid .story-card__link {
@@ -128,7 +125,7 @@
     content: '';
     box-sizing: border-box;
     width: calc(100% - 2 * var(--page-gutter));
-    max-width: #{to.rem(760px)};
+    max-width: var(--max-text-width);
     height: 1px;
     margin-inline: auto;
     background-color: var(--color-border-strong);

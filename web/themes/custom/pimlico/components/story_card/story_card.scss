@@ -18,7 +18,7 @@
       width: 100%;
       height: 100%;
       object-fit: cover;
-      transition: transform 0.3s ease-out;
+      transition: transform var(--motion-duration) var(--motion-easing);
     }
   }
 
@@ -29,12 +29,8 @@
   }
 
   &__meta {
+    @include eyebrow;
     margin: 0;
-    font-size: var(--font-size-label-eyebrow);
-    font-weight: var(--font-weight-bold);
-    line-height: var(--line-height-label);
-    letter-spacing: var(--letter-spacing-label-eyebrow);
-    text-transform: uppercase;
   }
 
   &__title {
@@ -55,11 +51,7 @@
     line-height: var(--line-height-label);
     letter-spacing: var(--letter-spacing-label-nav);
     text-transform: uppercase;
-    text-decoration-line: underline;
-    text-decoration-thickness: 1px;
-    text-decoration-color: transparent;
-    text-underline-offset: var(--link-hover-underline-offset);
-    transition: text-decoration-color 0.3s ease-out;
+    @include linkUnderline($hidden: true);
   }
 
   &:hover &__media img {
@@ -68,7 +60,7 @@
 
   &:hover &__link,
   &:focus-visible &__link {
-    text-decoration-color: currentColor;
+    @include linkUnderlineHover;
   }
 
   &:focus {

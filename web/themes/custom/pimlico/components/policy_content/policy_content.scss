@@ -6,12 +6,12 @@
 .policy-content {
   @include pageContainer;
   display: grid;
-  gap: #{to.rem(40px)};
+  gap: var(--space-40);
   padding-block: var(--section-space);
 
   @include mq($from: desktop) {
     &--contents {
-      grid-template-columns: #{to.rem(420px)} minmax(0, #{to.rem(760px)});
+      grid-template-columns: #{to.rem(420px)} minmax(0, var(--max-text-width));
       justify-content: space-between;
       align-items: start;
     }
@@ -59,7 +59,7 @@
   }
 
   &__title {
-    font-family: var(--header-text);
+    font-family: var(--font-family-display);
     font-size: #{fluid(18px, 20px)};
     line-height: 1.3;
   }

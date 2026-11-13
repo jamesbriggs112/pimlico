@@ -1,14 +1,3 @@
-#
-Messages
+# Messages
 
-This is some default content for the README. Change this to the appropriate
-content.
-
-## Usage
-
-Here you should describe how/when to use this component. This information may be
-for developers or for editors, depending on the component type.
-
-## Additional information
-
-Some extra info about the component.
+Drupal's status, warning and error messages, grouped by type, with a hidden heading for screen readers and a close button (`messages.js`). Rendered by `templates/misc/status-messages.html.twig`.

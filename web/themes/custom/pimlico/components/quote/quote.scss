@@ -35,11 +35,7 @@
   }
 
   &__cite {
-    font-size: var(--font-size-label-eyebrow);
-    font-weight: var(--font-weight-bold);
-    line-height: var(--line-height-label);
-    letter-spacing: var(--letter-spacing-label-eyebrow);
-    text-transform: uppercase;
+    @include eyebrow;
   }
 
   @include mq($until: tablet) {

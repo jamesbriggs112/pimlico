@@ -24,20 +24,20 @@
  */
 #}
 <!DOCTYPE html>
-<html{{html_attributes}}>
-	<head>
-		<head-placeholder token="{{ placeholder_token }}">
-			<title>
-				{{ head_title|safe_join(' | ') }}
-			</title>
-			<css-placeholder token="{{ placeholder_token }}">
-				<js-placeholder token="{{ placeholder_token }}"></head>
-				<body{{attributes}}>
-					<nav class="skip-link-navigation" aria-label="Skip to main content">
-						{% include "pimlico:button" with {url: '#main-content', class: 'skip-link', text: 'Skip to main content'|t } %}
-					</nav>
-					{{ page_top }}
-					{{ page }}
-					{{ page_bottom }}
-					<js-bottom-placeholder token="{{ placeholder_token }}"></body>
-				</html>
+<html{{ html_attributes }}>
+  <head>
+    <head-placeholder token="{{ placeholder_token }}">
+    <title>{{ head_title|safe_join(' | ') }}</title>
+    <css-placeholder token="{{ placeholder_token }}">
+    <js-placeholder token="{{ placeholder_token }}">
+  </head>
+  <body{{ attributes }}>
+    <nav class="skip-link-navigation" aria-label="{{ 'Skip to main content'|t }}">
+      {% include 'pimlico:button' with { url: '#main-content', class: 'skip-link', text: 'Skip to main content'|t } only %}
+    </nav>
+    {{ page_top }}
+    {{ page }}
+    {{ page_bottom }}
+    <js-bottom-placeholder token="{{ placeholder_token }}">
+  </body>
+</html>

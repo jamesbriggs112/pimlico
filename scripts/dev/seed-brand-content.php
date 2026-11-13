@@ -4,7 +4,7 @@
  * @file
  * Fills out Brand pages with sample content for layout review and QA.
  *
- *   drush php:script scripts/dev/seed-brand-content.php
+ *   Drush php:script scripts/dev/seed-brand-content.php.
  *
  * Follows the Figma Brand page (03 Brand with Map): an "About the house"
  * heading and two paragraphs, a pull quote, a gallery with a photography

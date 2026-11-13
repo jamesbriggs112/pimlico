@@ -3,7 +3,7 @@
 @use './mixins' as *;
 
 html {
-  font-family: var(--body-text);
+  font-family: var(--font-family-body);
   font-size: 100%;
   line-height: var(--line-height-base);
   color: var(--text-color);
@@ -27,7 +27,7 @@ h6,
 .display-l,
 .display-m,
 .display-s {
-  font-family: var(--header-text);
+  font-family: var(--font-family-display);
   font-weight: var(--font-weight-light);
   font-optical-sizing: auto;
   font-variation-settings: var(--font-display-variation);
@@ -74,7 +74,7 @@ h6,
 .body-s,
 .eyebrow,
 .label-nav {
-  font-family: var(--body-text);
+  font-family: var(--font-family-body);
   font-variation-settings: normal;
 }
 
@@ -99,11 +99,7 @@ h6,
 
 // Label styles
 .eyebrow {
-  font-size: var(--font-size-label-eyebrow);
-  line-height: var(--line-height-label);
-  letter-spacing: var(--letter-spacing-label-eyebrow);
-  font-weight: var(--font-weight-bold);
-  text-transform: uppercase;
+  @include eyebrow;
   color: var(--color-text-eyebrow);
 }
 
@@ -130,24 +126,12 @@ p {
 // Inline links in body copy. Standalone links use the text_link component.
 main {
   a:not([class]) {
+    @include linkUnderline;
     color: var(--link-color);
-    text-decoration: underline;
-    text-decoration-thickness: var(--link-underline-thickness);
-    text-underline-offset: var(--link-underline-offset);
-    transition: text-underline-offset 0.3s ease-out;
 
     &:hover,
     &:focus-visible {
-      text-underline-offset: var(--link-hover-underline-offset);
+      @include linkUnderlineHover;
     }
   }
-}
-
-// Fraunces Regular titles: cards, info rows, the audio player.
-.title-m {
-  @include title;
-}
-
-.title-s {
-  @include title(var(--font-size-title-s));
 }

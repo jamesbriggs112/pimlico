@@ -2,9 +2,6 @@
 // state uses Label/Nav (14px). Hover moves the underline to a 6px offset;
 // colour never changes.
 .text-link {
-  --_offset-rest: #{to.rem(3px)};
-  --_offset-hover: var(--link-hover-underline-offset);
-
   display: inline-flex;
   align-items: center;
   gap: #{to.rem(10px)};
@@ -12,19 +9,12 @@
   text-decoration: none;
 
   &__text {
-    text-decoration-line: underline;
-    text-decoration-thickness: var(--link-underline-thickness);
-    text-decoration-color: transparent;
-    text-underline-offset: var(--_offset-hover);
-    transition:
-      text-decoration-color 0.3s ease-out,
-      text-underline-offset 0.3s ease-out;
+    @include linkUnderline($hidden: true);
   }
 
   &:hover &__text,
   &:focus-visible &__text {
-    text-decoration-color: currentColor;
-    text-underline-offset: var(--_offset-hover);
+    @include linkUnderlineHover;
   }
 
   &:focus {
@@ -38,7 +28,7 @@
 
   &--underlined &__text {
     text-decoration-color: currentColor;
-    text-underline-offset: var(--_offset-rest);
+    text-underline-offset: var(--link-underline-offset);
   }
 
   // Sizes

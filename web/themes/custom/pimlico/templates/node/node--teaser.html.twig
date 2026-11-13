@@ -7,7 +7,7 @@
 #}
 {% set story = node.hasField('field_news_category') %}
 {% set meta = story
-  ? [node.field_news_category.entity.label, node.created.value|format_date('custom', 'j M')]|filter(v => v)|join(' · ')
+  ? [node.field_news_category.entity.label, node.created.value|format_date('custom', 'j M')]|filter(value => value)|join(' · ')
   : '' %}
 {% set link_text = node.bundle == 'podcast_episode' ? 'Listen'|t : (node.bundle == 'press_article' ? 'Read the coverage'|t : 'Read'|t) %}
 {% include 'pimlico:story_card' with {

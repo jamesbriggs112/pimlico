@@ -1,7 +1,11 @@
-(function (Drupal) {
+/**
+ * @file
+ * Messages: the dismiss button hides its message.
+ */
+(function (Drupal, once) {
   Drupal.behaviors.messages = {
     attach(context = document) {
-      once('four-messages-dismiss', '.js-message-button-hide', context).forEach(
+      once('messages', '.js-message-button-hide', context).forEach(
         (dismissButton) => {
           dismissButton.addEventListener('click', (e) => {
             e.preventDefault();
