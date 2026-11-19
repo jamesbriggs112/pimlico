@@ -25,6 +25,9 @@ props:
       items:
         type: object
         properties:
-          text: { type: string }
-          url: { type: string }
-          active: { type: boolean }
+          text:
+            type: string
+          url:
+            type: string
+          active:
+            type: boolean

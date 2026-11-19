@@ -16,12 +16,12 @@
   &__inner {
     @include pageContainer;
     display: grid;
-    gap: #{to.rem(16px)};
+    gap: var(--space-16);
 
     @include mq($from: desktop) {
       grid-template-columns: minmax(0, #{to.rem(420px)}) minmax(
           0,
-          #{to.rem(760px)}
+          var(--max-text-width)
         );
       justify-content: space-between;
       align-items: center;

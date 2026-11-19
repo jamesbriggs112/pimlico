@@ -7,7 +7,7 @@ How to look after the Pimlico Road website. Log in at `/user/login`.
 **Content » Add content » Brand.** A Brand is a business with its own page.
 
 - **Title, Summary and Hero image** appear on the Brand page and on cards across the site.
-- **Brand category**: the list matches the site. Under **Brands**, Interiors or Antiques & art put it on the Brands page; under **Dine**, Pubs and restaurants or Cafés put it on Dine.
+- **Brand category**: the list matches the site. Under **Brands**, Interiors or Antiques & art put it on the Brands page; under **Dine**, Pubs and restaurants or Cafés put it on Dine. You can rename categories (Structure » Taxonomy), but don't delete and re-create Interiors, Antiques & art or Food & Drink: the Brands and Dine filters would stop working.
 - **Address** (street and postcode: London and the United Kingdom are added automatically), **Opening hours** (one line per row, e.g. "Monday to Friday: 10am to 6pm"), **Trade, Email, Phone, Accessibility link and Website** fill the "Find the showroom" section.
 - **Gallery, Specialisms, Quote** are optional; empty sections don't show.
 - **Similar brands**: choose up to three, or leave empty to show three from the same category.

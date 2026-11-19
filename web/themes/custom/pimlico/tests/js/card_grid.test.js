@@ -30,6 +30,7 @@ const render = () => {
 describe('card grid arrows', () => {
   beforeAll(async () => {
     window.matchMedia = () => ({ matches: false });
+    await import('../../src/js/scroll-track.js');
     behaviour = await loadBehaviour(
       '../../components/card_grid/card_grid.js',
       'cardGrid'

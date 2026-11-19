@@ -16,7 +16,7 @@
     @include mq($from: desktop) {
       grid-template-columns: minmax(0, #{to.rem(420px)}) minmax(
           0,
-          #{to.rem(760px)}
+          var(--max-text-width)
         );
       justify-content: space-between;
       gap: #{to.rem(100px)};

@@ -5,16 +5,15 @@
   background-color: var(--color-surface-raised);
 
   &__inner {
+    @include pageContainer;
     display: grid;
     gap: var(--space-32);
-    max-width: calc(var(--page-width) + 2 * var(--page-gutter));
-    margin-inline: auto;
-    padding: var(--section-space) var(--page-gutter);
+    padding-block: var(--section-space);
 
     @include mq($from: desktop) {
       grid-template-columns: 1fr auto;
       align-items: end;
-      gap: #{to.rem(40px)};
+      gap: var(--space-40);
     }
   }
 

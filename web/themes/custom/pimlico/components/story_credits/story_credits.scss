@@ -7,7 +7,7 @@
     box-sizing: border-box;
     display: grid;
     gap: #{fluid(24px, 32px)};
-    max-width: calc(#{to.rem(760px)} + 2 * var(--page-gutter));
+    max-width: calc(var(--max-text-width) + 2 * var(--page-gutter));
     margin-inline: auto;
     padding-inline: var(--page-gutter);
 
@@ -30,7 +30,7 @@
     @include mq($from: tablet) {
       display: flex;
       flex-wrap: wrap;
-      gap: #{to.rem(16px)};
+      gap: var(--space-16);
     }
   }
 }

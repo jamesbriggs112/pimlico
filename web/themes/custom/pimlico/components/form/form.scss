@@ -31,11 +31,7 @@ $icon-check: "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width
     .fieldset__label {
       display: block;
       padding: 0;
-      font-size: var(--font-size-label-eyebrow);
-      font-weight: var(--font-weight-bold);
-      line-height: var(--line-height-label);
-      letter-spacing: var(--letter-spacing-label-eyebrow);
-      text-transform: uppercase;
+      @include eyebrow;
       color: var(--form-element-label-color);
     }
 
@@ -128,7 +124,7 @@ $icon-check: "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width
   &-item--error-message,
   .form-item--error-message {
     position: relative;
-    padding-left: #{to.rem(24px)};
+    padding-left: var(--space-24);
     font-size: var(--font-size-body-s);
     line-height: var(--line-height-body-s);
     color: var(--color-text-primary);

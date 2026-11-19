@@ -6,7 +6,7 @@ It gives every Brand on the street its own page, opening hours and place on an i
 
 ## At a glance
 
-| | |
+| Area | Details |
 |---|---|
 | **CMS** | Drupal 11, PHP 8.4, Gin admin theme |
 | **Theme** | `web/themes/custom/pimlico`: Single Directory Components (SDC), Sass (BEM, custom properties, sass-mq), Vite |
@@ -20,7 +20,7 @@ It gives every Brand on the street its own page, opening hours and place on an i
 | Document | What it covers |
 |---|---|
 | [docs/TAD.md](docs/TAD.md) | Technical architecture: content model, users, integrations, hosting, launch, open questions |
-| [docs/build-plan.md](docs/build-plan.md) | The build, phase by phase |
+| [docs/build-plan.md](docs/build-plan.md) | The delivery log, phase by phase |
 | [docs/local-development.md](docs/local-development.md) | Setting up the site locally |
 | [docs/front-end-conventions.md](docs/front-end-conventions.md) | How the theme is written: components, BEM, tokens, breakpoints, mixins, JS, tests |
 | [docs/editor-guide.md](docs/editor-guide.md) | Short guide for content editors |
@@ -29,18 +29,7 @@ It gives every Brand on the street its own page, opening hours and place on an i
 
 ## Getting started
 
-You need PHP 8.4, Composer 2, MySQL, Node 22, pnpm and Laravel Valet. The full steps are in [docs/local-development.md](docs/local-development.md). In short:
-
-```bash
-composer install
-cp web/sites/example.settings.local.php web/sites/default/settings.local.php   # then set the database
-(cd web && valet link pimlico && valet secure pimlico)
-vendor/bin/drush si --existing-config
-vendor/bin/drush php:script scripts/dev/seed-pages.php
-vendor/bin/drush php:script scripts/dev/seed-brand-content.php
-```
-
-The site is then at https://pimlico.test. Log in with `vendor/bin/drush uli`.
+You need PHP 8.4, Composer 2, MySQL, Node 22, pnpm and Laravel Valet. Follow [docs/local-development.md](docs/local-development.md) to install the site; it then runs at https://pimlico.test.
 
 ### Theme
 
@@ -50,6 +39,7 @@ pnpm i
 pnpm dev     # Vite dev server on :5173; Drupal uses it automatically while it runs
 pnpm build   # production build into dist/
 pnpm lint
+pnpm test    # Vitest
 ```
 
 Twig templates are thin adapters onto the components in `components/`. Preprocess functions live in `includes/*.inc`.
@@ -59,8 +49,8 @@ Twig templates are thin adapters onto the components in `components/`. Preproces
 | Module | What it does |
 |---|---|
 | `pimlico_map` | Units (shopfronts), the Unit map picker, the map on Brand pages and the `/api/map/brands` feed |
-| `pimlico_brands` | Groups Brand categories into the Brands page filters (Interiors, Antiques & art) |
-| `pimlico_search` | Search result groups, `/llms.txt`, and the sitemap line in `robots.txt` |
+| `pimlico_brands` | Groups Brand categories into the Brands and Dine filters, and builds Brand page breadcrumbs |
+| `pimlico_search` | Search result groups, `/llms.txt`, and the sitemap and `llms.txt` lines in `robots.txt`. Depends on `pimlico_brands` |
 | `pimlico_migrate` | Imports the Brands, Units and Brand photos. Uninstall after launch |
 | `pimlico_admin` | Pimlico Road branding for the CMS on top of Gin |
 | `cloudfront_cache_home_page`, `custom_image_styles`, `four_sdc` | From the Four Drupal skeleton |
@@ -68,9 +58,9 @@ Twig templates are thin adapters onto the components in `components/`. Preproces
 ## Working on the site
 
 - **Branches:** `feature/…`, `bugfix/…` or `hotfix/…`, then a pull request into `dev`, then `dev` into `staging`, then `staging` into `main` (production).
-- **Config:** export with `drush cex` and commit it with the code that needs it. Menus, taxonomy terms and custom blocks go through Structure Sync (`drush em`, `drush et`, `drush eb`); import taxonomies in safe mode.
-- **Checks:** `vendor/bin/phpcs`, `vendor/bin/phpunit --testsuite custom`, and `pnpm lint` and `pnpm test` in the theme. Pull requests run phpcs and the tests.
-- **Secrets:** never commit keys or passwords. Environment values are Elastic Beanstalk properties.
+- **Config:** export with `drush cex` and commit it with the code that needs it; import with `drush cim`. Menus, taxonomy terms and custom blocks go through Structure Sync: export with `drush em`, `drush et` and `drush eb`, and import with `drush im --choice=safe`, `drush it --choice=safe` and `drush ib --choice=safe`.
+- **Checks:** `vendor/bin/phpcs`, `vendor/bin/phpunit --testsuite custom`, and `pnpm lint` and `pnpm test` in the theme. Pull requests run phpcs and PHPUnit only (`.github/workflows/checks.yml`), not the Vitest tests; deploys run `pnpm lint`.
+- **Secrets:** never commit keys or passwords. Environment values are Elastic Beanstalk properties and GitHub Actions variables, listed under [Environments](docs/TAD.md#environments) in the TAD.
 - **Accessibility:** WCAG 2.2 AA. Use native elements, visible focus states, and respect `prefers-reduced-motion`.
 
 ## Deployment

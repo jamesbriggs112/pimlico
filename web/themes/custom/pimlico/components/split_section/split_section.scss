@@ -16,7 +16,7 @@
     @include mq($from: desktop) {
       grid-template-columns: minmax(0, #{to.rem(420px)}) minmax(
           0,
-          #{to.rem(760px)}
+          var(--max-text-width)
         );
       justify-content: space-between;
       gap: #{to.rem(100px)};
@@ -54,8 +54,8 @@
   &__actions {
     display: flex;
     flex-wrap: wrap;
-    gap: #{to.rem(16px)};
-    padding-top: #{to.rem(8px)};
+    gap: var(--space-16);
+    padding-top: var(--space-8);
 
     .btn {
       @include mq($until: tablet) {

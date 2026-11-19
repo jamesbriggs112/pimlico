@@ -1,8 +1,7 @@
 {
   "name": "pimlico",
-  "version": "10.0.0",
+  "version": "1.0.0",
   "description": "Pimlico Road theme",
-  "main": " ",
   "scripts": {
     "test": "vitest run",
     "dev": "vite",
@@ -11,13 +10,10 @@
     "build-storybook": "storybook build",
     "lint": "eslint ."
   },
-  "repository": {
-    "type": "git",
-    "url": "]"
-  },
   "author": "Marcus Williams",
   "license": "ISC",
   "devDependencies": {
+    "@eslint/js": "^9.39.2",
     "@sentry/vite-plugin": "^4.6.1",
     "@storybook/addon-a11y": "^9.1.17",
     "@storybook/addon-designs": "^10.0.2",

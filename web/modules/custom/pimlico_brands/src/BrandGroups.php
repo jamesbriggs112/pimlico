@@ -5,26 +5,30 @@ declare(strict_types=1);
 namespace Drupal\pimlico_brands;
 
 use Drupal\Core\Entity\EntityTypeManagerInterface;
-use Drupal\Core\StringTranslation\StringTranslationTrait;
 use Drupal\taxonomy\TermInterface;
 
 /**
- * The Brands page's category filters, as in Figma (T02).
+ * The top-level Brand Categories, and the Brands page filters built on them.
  *
- * Each filter is a top-level Brand Category (Interiors, Antiques & art) and
- * its sub-categories, if it ever has any. Food & Drink is on Dine and
- * belongs to none. Keys are the ?category= values in the URL.
+ * Interiors and Antiques & art are the Brands page filters (Figma T02), with
+ * their sub-categories, if they ever have any. Food & Drink and its
+ * sub-categories are on Dine instead.
+ *
+ * Categories are found by UUID: Structure Sync keeps term UUIDs the same on
+ * every environment, while term IDs differ and editors can rename terms.
  */
 final class BrandGroups {
 
-  use StringTranslationTrait;
+  public const INTERIORS = 'c233084f-986d-4f08-99a7-d364b2d2905d';
+  public const ANTIQUES_AND_ART = '6fcf4b16-a3ad-4a60-95cd-26f38938693b';
+  public const FOOD_AND_DRINK = '0d9117e8-f4ea-4d7d-81b2-86a2821cf0ab';
 
   /**
-   * Group key => top-level Brand Category names, in filter order.
+   * The Brands page filters: ?category= value => category UUID, in order.
    */
   private const GROUPS = [
-    'interiors' => ['Interiors'],
-    'antiques-and-art' => ['Antiques & art'],
+    'interiors' => self::INTERIORS,
+    'antiques-and-art' => self::ANTIQUES_AND_ART,
   ];
 
   public function __construct(
@@ -32,16 +36,19 @@ final class BrandGroups {
   ) {}
 
   /**
-   * Returns the groups: key => label.
+   * Returns the groups: key => label, the category's name.
    *
    * @return array<string, string>
    *   Labels, in filter order.
    */
   public function labels(): array {
-    return [
-      'interiors' => (string) $this->t('Interiors'),
-      'antiques-and-art' => (string) $this->t('Antiques & art'),
-    ];
+    $labels = [];
+    foreach (self::GROUPS as $key => $uuid) {
+      if ($term = $this->load($uuid)) {
+        $labels[$key] = $term->label();
+      }
+    }
+    return $labels;
   }
 
   /**
@@ -51,17 +58,33 @@ final class BrandGroups {
    *   Term IDs, or an empty array for an unknown group.
    */
   public function termIds(string $group): array {
-    $ids = [];
-    $storage = $this->entityTypeManager->getStorage('taxonomy_term');
-    foreach (self::GROUPS[$group] ?? [] as $name) {
-      foreach ($storage->loadByProperties(['vid' => 'brand_category', 'name' => $name]) as $term) {
-        $ids[] = (int) $term->id();
-        foreach ($storage->loadTree('brand_category', (int) $term->id()) as $child) {
-          $ids[] = (int) $child->tid;
-        }
-      }
-    }
-    return array_values(array_unique($ids));
+    $term = isset(self::GROUPS[$group]) ? $this->load(self::GROUPS[$group]) : NULL;
+    return $term ? $this->withChildren($term) : [];
+  }
+
+  /**
+   * Returns the Food & Drink category, whose Brands are on Dine.
+   */
+  public function dineCategory(): ?TermInterface {
+    return $this->load(self::FOOD_AND_DRINK);
+  }
+
+  /**
+   * Returns the term IDs on Dine: Food & Drink first, then its sub-categories.
+   *
+   * @return int[]
+   *   Term IDs.
+   */
+  public function dineTermIds(): array {
+    $food = $this->dineCategory();
+    return $food ? $this->withChildren($food) : [];
+  }
+
+  /**
+   * Whether a Brand Category is Food & Drink or one of its sub-categories.
+   */
+  public function isDine(?TermInterface $term): bool {
+    return $term !== NULL && $this->topCategory($term)->uuid() === self::FOOD_AND_DRINK;
   }
 
   /**
@@ -71,14 +94,8 @@ final class BrandGroups {
     if (!$term) {
       return NULL;
     }
-    $parents = $this->entityTypeManager->getStorage('taxonomy_term')->loadAllParents($term->id());
-    $top = end($parents) ?: $term;
-    foreach (self::GROUPS as $key => $names) {
-      if (in_array($top->label(), $names, TRUE)) {
-        return $key;
-      }
-    }
-    return NULL;
+    $key = array_search($this->topCategory($term)->uuid(), self::GROUPS, TRUE);
+    return $key === FALSE ? NULL : $key;
   }
 
   /**
@@ -88,8 +105,38 @@ final class BrandGroups {
    * Drink and its sub-categories).
    */
   public function labelFor(?TermInterface $term): string {
-    $group = $this->groupFor($term);
-    return $group ? $this->labels()[$group] : ($term?->label() ?? '');
+    if (!$term) {
+      return '';
+    }
+    return $this->groupFor($term) ? $this->topCategory($term)->label() : $term->label();
+  }
+
+  /**
+   * Returns a Brand Category's top-level category, or the term itself.
+   */
+  public function topCategory(TermInterface $term): TermInterface {
+    $parents = $this->entityTypeManager->getStorage('taxonomy_term')->loadAllParents($term->id());
+    return end($parents) ?: $term;
+  }
+
+  /**
+   * Loads a Brand Category by UUID.
+   */
+  private function load(string $uuid): ?TermInterface {
+    $terms = $this->entityTypeManager->getStorage('taxonomy_term')
+      ->loadByProperties(['vid' => 'brand_category', 'uuid' => $uuid]);
+    return reset($terms) ?: NULL;
+  }
+
+  /**
+   * Returns a term's ID followed by those of every term below it.
+   *
+   * @return int[]
+   *   Term IDs.
+   */
+  private function withChildren(TermInterface $term): array {
+    $children = $this->entityTypeManager->getStorage('taxonomy_term')->loadTree('brand_category', (int) $term->id());
+    return [(int) $term->id(), ...array_map(static fn($child) => (int) $child->tid, $children)];
   }
 
 }

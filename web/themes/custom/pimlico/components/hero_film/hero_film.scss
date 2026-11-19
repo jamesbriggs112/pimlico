@@ -39,11 +39,11 @@
     inset: 0;
     background: linear-gradient(
       180deg,
-      rgb(26 31 41 / 70%) 0%,
-      rgb(26 31 41 / 15%) 22%,
-      rgb(26 31 41 / 12%) 42%,
-      rgb(26 31 41 / 60%) 72%,
-      rgb(26 31 41 / 82%) 100%
+      color-mix(in srgb, var(--color-scrim-ink) 70%, transparent) 0%,
+      color-mix(in srgb, var(--color-scrim-ink) 15%, transparent) 22%,
+      color-mix(in srgb, var(--color-scrim-ink) 12%, transparent) 42%,
+      color-mix(in srgb, var(--color-scrim-ink) 60%, transparent) 72%,
+      color-mix(in srgb, var(--color-scrim-ink) 82%, transparent) 100%
     );
   }
 
@@ -53,10 +53,10 @@
     justify-items: start;
     gap: #{fluid(16px, 32px)};
     width: 100%;
-    padding: 0 var(--space-24) #{to.rem(40px)};
+    padding: 0 var(--space-24) var(--space-40);
 
     @include mq($from: desktop) {
-      padding: 0 #{to.rem(40px)} #{to.rem(40px)};
+      padding: 0 var(--space-40) var(--space-40);
     }
   }
 
@@ -79,10 +79,7 @@
   }
 
   &__label {
-    font-size: var(--font-size-label-eyebrow);
-    font-weight: var(--font-weight-bold);
-    letter-spacing: var(--letter-spacing-label-eyebrow);
-    text-transform: uppercase;
+    @include eyebrow;
   }
 
   &__icon {

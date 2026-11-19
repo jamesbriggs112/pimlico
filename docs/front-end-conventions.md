@@ -38,7 +38,7 @@ Custom properties live in `src/sass/init/_root.scss`, in three layers:
 2. **Semantic:** what a colour is for, such as `--color-text-primary`, `--color-surface-tint`, `--color-text-eyebrow`. Components use these.
 3. **Component:** for example `--button-background-color-dark` or `--header-bg-color`.
 
-Spacing uses `--space-12`, `--space-16`, `--space-24` and `--space-32`; section padding uses `--section-space`.
+Spacing uses the `--space-<px>` scale (`--space-4` to `--space-128`, in `_root.scss`); section padding uses `--section-space`. Use a token when the Figma value matches one, and `#{to.rem(…)}` only when none does. Text columns use `--max-text-width`, and motion uses `--motion-duration` and `--motion-easing`.
 
 ## Breakpoints
 
@@ -60,9 +60,11 @@ In `src/sass/init/_mixins.scss`:
 
 - **`fluid($min, $max)`** scales a value between the mobile and desktop page widths: `gap: #{fluid(24px, 40px)};`.
 - **`pageContainer`** is the page width with its gutters.
-- **`contentWithGutters`** gives a grid with `content` (reading width), `popout` (page width) and `full` columns. Use `grid-column: content`, or the `.narrow` and `.fullwidth` classes.
 - **`contentGrid`** is a grid with no breakpoints: set `--grid-column-count` and `--grid-item--min-width`.
 - **`title($size)`** is the Fraunces heading style.
+- **`eyebrow`** is the Label/Eyebrow caps style; the colour is the component's.
+- **`linkUnderline($hidden)`** and **`linkUnderlineHover`** are the 3px underline that moves to 6px on hover. `$hidden: true` keeps it transparent until hover.
+- **`swipeTrack`** is the mobile sideways-scrolling track that snaps items to the gutter.
 
 ## JavaScript
 
