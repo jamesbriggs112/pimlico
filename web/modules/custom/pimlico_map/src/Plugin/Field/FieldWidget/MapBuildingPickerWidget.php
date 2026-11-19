@@ -31,7 +31,7 @@ final class MapBuildingPickerWidget extends StringTextfieldWidget {
   /**
    * The map render array builder.
    */
-  private MapBuilder $mapBuilder;
+  protected MapBuilder $mapBuilder;
 
   /**
    * {@inheritdoc}
