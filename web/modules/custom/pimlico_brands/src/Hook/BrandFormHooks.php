@@ -13,10 +13,11 @@ use Drupal\pimlico_brands\BrandGroups;
 /**
  * The Brand form's category list follows the site's sections.
  *
- * "Brands" lists the top-level categories with no sub-categories
- * (Interiors, Antiques & art); "Dine" lists the sub-categories of Food &
- * Drink (Pubs and restaurants, Cafés). A parent with sub-categories is a
- * heading, not a choice, so every Brand lands on a filter the site shows.
+ * "Brands" lists the top-level categories with no sub-categories (each is
+ * a Brands page filter, see BrandGroups); "Dine" lists the sub-categories
+ * of Food & Drink (Pubs and restaurants, Cafés). A parent with
+ * sub-categories is a heading, not a choice, so every Brand lands on a
+ * filter the site shows.
  */
 final class BrandFormHooks {
 

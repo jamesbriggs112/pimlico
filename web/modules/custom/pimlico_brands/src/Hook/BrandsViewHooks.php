@@ -12,7 +12,8 @@ use Symfony\Component\HttpFoundation\RequestStack;
 /**
  * Filters Brands and Dine by category through a contextual filter.
  *
- * Brands: /brands?category=interiors, the group's term IDs ("1+3+4").
+ * Brands: /brands?category=1, a top-level category's term ID, which gives it
+ * and its sub-categories ("1+3+4"); without one, every Brands filter.
  * Dine: /dine?category=17, one Food & Drink sub-category, or all of Food &
  * Drink. A contextual filter rather than exposed ones: pager links keep the
  * URL's ?category= value, and two filters on the same field would join in a
@@ -34,19 +35,14 @@ final class BrandsViewHooks {
       return;
     }
     $request = $this->requestStack->getCurrentRequest();
-    $group = (string) $request?->query->get('category', '');
+    $category = (string) $request?->query->get('category', '');
     if ($display_id === 'page_dine') {
-      $args = [implode('+', $this->dineTermIds($group)) ?: '0'];
+      $args = [implode('+', $this->dineTermIds($category)) ?: '0'];
       return;
     }
-    // "All" is every grouped category, which leaves out Food & Drink (Dine).
-    $keys = isset($this->groups->labels()[$group]) ? [$group] : array_keys($this->groups->labels());
-    $tids = [];
-    foreach ($keys as $key) {
-      array_push($tids, ...$this->groups->termIds($key));
-    }
-    // A contextual filter, not the exposed one: pager links keep the URL's
-    // ?category=interiors instead of an array of term IDs.
+    // "All" (or an unknown category) is every Brands filter, which leaves
+    // out Food & Drink (Dine).
+    $tids = $this->groups->termIds($category) ?: $this->groups->allTermIds();
     $args = [$tids ? implode('+', $tids) : '0'];
   }
 

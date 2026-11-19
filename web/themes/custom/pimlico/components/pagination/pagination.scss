@@ -1,6 +1,9 @@
 // Figma "Pagination" (7:252): a row 28px apart; numbers Body M; the next
-// link Label/Nav caps. The pages you can go to are underlined; the current
-// page isn't (client request, 11 November 2026).
+// link Label/Nav caps, underlined. The current page number is underlined;
+// the other numbers underline on hover. (This follows Figma, which replaced
+// the 11 November 2026 request to underline every page but the current one.)
+// Left-aligned; a listing sets --pagination-justify: center to centre it
+// (Dine, 85:5766).
 .pagination {
   @include pageContainer;
   padding-block: var(--space-8) var(--section-space);
@@ -9,6 +12,7 @@
     display: flex;
     flex-wrap: wrap;
     align-items: center;
+    justify-content: var(--pagination-justify, flex-start);
     gap: var(--space-12) #{to.rem(28px)};
     margin: 0;
     padding: 0;
@@ -17,16 +21,11 @@
 
   &__page,
   &__step {
-    @include linkUnderline;
     color: var(--color-text-primary);
 
     &:hover,
     &:focus-visible {
       @include linkUnderlineHover;
-    }
-
-    &[aria-current='page'] {
-      text-decoration-line: none;
     }
 
     &:focus {
@@ -40,11 +39,18 @@
   }
 
   &__page {
+    @include linkUnderline($hidden: true);
     font-size: var(--font-size-body-m);
     line-height: var(--line-height-body-m);
+
+    &[aria-current='page'] {
+      text-decoration-color: currentColor;
+      text-underline-offset: var(--link-underline-offset);
+    }
   }
 
   &__step {
+    @include linkUnderline;
     font-size: var(--font-size-label-nav);
     font-weight: var(--font-weight-medium);
     line-height: var(--line-height-label);

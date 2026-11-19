@@ -36,8 +36,10 @@
     justify-items: start;
     align-content: center;
     gap: #{fluid(18px, 24px)};
-    padding: var(--space-40) var(--space-24);
+    padding: var(--section-space) var(--space-24);
 
+    // Figma centres the text in a taller band here (110px, not a section
+    // variable) beside the image.
     @include mq($from: desktop) {
       padding: #{to.rem(110px)} var(--space-80);
     }

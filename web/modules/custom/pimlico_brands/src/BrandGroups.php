@@ -10,63 +10,86 @@ use Drupal\taxonomy\TermInterface;
 /**
  * The top-level Brand Categories, and the Brands page filters built on them.
  *
- * Interiors and Antiques & art are the Brands page filters (Figma T02), with
- * their sub-categories, if they ever have any. Food & Drink and its
- * sub-categories are on Dine instead.
+ * Every top-level category except Food & Drink is a Brands page filter
+ * (Figma T02), in term weight order, with its sub-categories if it has any.
+ * Editors add, rename and reorder them in the vocabulary. Food & Drink and
+ * its sub-categories are on Dine instead.
  *
- * Categories are found by UUID: Structure Sync keeps term UUIDs the same on
+ * Food & Drink is found by UUID: Structure Sync keeps term UUIDs the same on
  * every environment, while term IDs differ and editors can rename terms.
+ * Filters are keyed by term ID, which survives a rename; Dine does the same.
  */
 final class BrandGroups {
 
-  public const INTERIORS = 'c233084f-986d-4f08-99a7-d364b2d2905d';
-  public const ANTIQUES_AND_ART = '6fcf4b16-a3ad-4a60-95cd-26f38938693b';
   public const FOOD_AND_DRINK = '0d9117e8-f4ea-4d7d-81b2-86a2821cf0ab';
-
-  /**
-   * The Brands page filters: ?category= value => category UUID, in order.
-   */
-  private const GROUPS = [
-    'interiors' => self::INTERIORS,
-    'antiques-and-art' => self::ANTIQUES_AND_ART,
-  ];
 
   public function __construct(
     private readonly EntityTypeManagerInterface $entityTypeManager,
   ) {}
 
   /**
-   * Returns the groups: key => label, the category's name.
+   * Returns the Brands page filters: the top-level categories but Dine's.
    *
-   * @return array<string, string>
-   *   Labels, in filter order.
+   * @return \Drupal\taxonomy\TermInterface[]
+   *   Terms keyed by term ID, in weight order.
    */
-  public function labels(): array {
-    $labels = [];
-    foreach (self::GROUPS as $key => $uuid) {
-      if ($term = $this->load($uuid)) {
-        $labels[$key] = $term->label();
+  public function filters(): array {
+    $filters = [];
+    $tree = $this->entityTypeManager->getStorage('taxonomy_term')->loadTree('brand_category', 0, 1, TRUE);
+    foreach ($tree as $term) {
+      if ($term->uuid() !== self::FOOD_AND_DRINK) {
+        $filters[(int) $term->id()] = $term;
       }
     }
-    return $labels;
+    return $filters;
   }
 
   /**
-   * Returns the term IDs in a group, including their sub-categories.
+   * Returns the filters' labels.
+   *
+   * @return array<int, string>
+   *   Category names keyed by term ID, in filter order.
+   */
+  public function labels(): array {
+    return array_map(static fn(TermInterface $term) => (string) $term->label(), $this->filters());
+  }
+
+  /**
+   * Returns the term IDs a filter shows, including its sub-categories.
+   *
+   * @param int|string $filter
+   *   The filter's term ID, as given in ?category=.
    *
    * @return int[]
-   *   Term IDs, or an empty array for an unknown group.
+   *   Term IDs, or an empty array when it isn't a Brands filter.
    */
-  public function termIds(string $group): array {
-    $term = isset(self::GROUPS[$group]) ? $this->load(self::GROUPS[$group]) : NULL;
-    return $term ? $this->withChildren($term) : [];
+  public function termIds(int|string $filter): array {
+    $filters = $this->filters();
+    $tid = is_int($filter) || ctype_digit($filter) ? (int) $filter : 0;
+    return isset($filters[$tid]) ? $this->withChildren($filters[$tid]) : [];
+  }
+
+  /**
+   * Returns the term IDs "All" shows: every filter and its sub-categories.
+   *
+   * @return int[]
+   *   Term IDs.
+   */
+  public function allTermIds(): array {
+    $tids = [];
+    foreach ($this->filters() as $term) {
+      array_push($tids, ...$this->withChildren($term));
+    }
+    return $tids;
   }
 
   /**
    * Returns the Food & Drink category, whose Brands are on Dine.
    */
   public function dineCategory(): ?TermInterface {
-    return $this->load(self::FOOD_AND_DRINK);
+    $terms = $this->entityTypeManager->getStorage('taxonomy_term')
+      ->loadByProperties(['vid' => 'brand_category', 'uuid' => self::FOOD_AND_DRINK]);
+    return reset($terms) ?: NULL;
   }
 
   /**
@@ -88,27 +111,23 @@ final class BrandGroups {
   }
 
   /**
-   * Returns the group key a Brand Category belongs to, or NULL.
+   * Returns the Brands filter a Brand Category belongs to, or NULL on Dine.
    */
-  public function groupFor(?TermInterface $term): ?string {
-    if (!$term) {
-      return NULL;
-    }
-    $key = array_search($this->topCategory($term)->uuid(), self::GROUPS, TRUE);
-    return $key === FALSE ? NULL : $key;
+  public function filterFor(?TermInterface $term): ?TermInterface {
+    return $term && !$this->isDine($term) ? $this->topCategory($term) : NULL;
   }
 
   /**
-   * Returns the label a Brand's category is shown with.
+   * Returns the label a Brand's category is shown with on its card.
    *
-   * Its group's name, or the category's own name outside the groups (Food &
-   * Drink and its sub-categories).
+   * The Brand's own category, its most specific tag: "Cafés" or "Pubs and
+   * restaurants" for a Dine Brand rather than Food & Drink, and the
+   * top-level name ("Interiors") only for a Brand filed there directly.
+   * Editors add tags as terms in the vocabulary, so a new one shows here
+   * as soon as a Brand uses it.
    */
   public function labelFor(?TermInterface $term): string {
-    if (!$term) {
-      return '';
-    }
-    return $this->groupFor($term) ? $this->topCategory($term)->label() : $term->label();
+    return $term ? (string) $term->label() : '';
   }
 
   /**
@@ -117,15 +136,6 @@ final class BrandGroups {
   public function topCategory(TermInterface $term): TermInterface {
     $parents = $this->entityTypeManager->getStorage('taxonomy_term')->loadAllParents($term->id());
     return end($parents) ?: $term;
-  }
-
-  /**
-   * Loads a Brand Category by UUID.
-   */
-  private function load(string $uuid): ?TermInterface {
-    $terms = $this->entityTypeManager->getStorage('taxonomy_term')
-      ->loadByProperties(['vid' => 'brand_category', 'uuid' => $uuid]);
-    return reset($terms) ?: NULL;
   }
 
   /**

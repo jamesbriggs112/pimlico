@@ -59,8 +59,8 @@
   }
 
   &__title {
-    font-family: var(--font-family-display);
-    font-size: #{fluid(18px, 20px)};
+    @include displayFont;
+    font-size: var(--font-size-20);
     line-height: 1.3;
   }
 

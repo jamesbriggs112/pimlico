@@ -43,7 +43,6 @@ module:
   google_tag: 0
   health_check: 0
   help: 0
-  history: 0
   image: 0
   image_effects: 0
   image_style_quality: 0

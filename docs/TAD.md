@@ -34,7 +34,7 @@ Four has been briefed by Grosvenor to build a website for Pimlico Road, one stre
 
 The site is built in Drupal. Its distinctive feature is an interactive bird's-eye map of the street, which lights up each brand's building and is shown on the Visit page and on every brand page. The map was built and tested as a separate project and is brought into Drupal unchanged.
 
-The content includes photography, background films, YouTube videos, a podcast player and a contact form. There is no commerce, membership or CRM integration.
+The content includes photography, background films, YouTube videos and a contact form. There is no commerce, membership or CRM integration.
 
 ## Site map and structure
 
@@ -43,15 +43,14 @@ Link to designs: Figma "Pimlico Visuals – V01" (`REw9zZENN4OEozQHrt17pD`), pag
 | Ref | Page | Built as |
 |---|---|---|
 | T01 | Home | Page with sections |
-| T02 | Brands: listing with category filter (All, Interiors, Antiques & art), pagination and a promo band | `brands` view |
+| T02 | Brands: listing with category filter (All, then every top-level Brand category except Food & Drink), 12 per page, pagination and a promo band | `brands` view |
 | T02b | Dine: places to eat and drink, filtered by Pubs and restaurants or Cafés | `brands` view |
 | T03 | Brand, with "Find the showroom" and the map | Brand content type |
 | T06 | Newson's Yard | Page with sections |
-| T07 | News: featured story, grid, News/Press filter, pagination | `news` view |
+| T07 | News: featured story, grid of story cards (meta "News · 4 Nov" or "Press · 12 Nov": the story's type, then its date), News/Press filter, pagination | `news` view |
 | T08 | News article | Article content type |
-| T10 | Podcast episode: player, notes, chapters, transcript | Podcast episode content type |
-| T12 | Press article: publication, source link | Press article content type |
-| T13 | Visit: the street map with category filter, location, getting here | Page with sections |
+| T12 | Press article: publication and logo (no Source band since 19 November 2026) | Press article content type |
+| T13 | Visit: the street map with category filter, then "Getting here" (dark) | Page with sections |
 | T14 | About Pimlico Road | Page with sections |
 | T15 | Contact: enquiry routes, form (inline validation), success message | Page with sections and a Webform |
 | T16 | Privacy, Cookies, Accessibility | Pages with a Policy text section |
@@ -129,7 +128,7 @@ The site has three levels of caching:
 
 #### Media library
 
-The standard Drupal media library, with Image, Video (uploaded films), Remote video (YouTube and Vimeo links), Audio (podcasts) and Document types.
+The standard Drupal media library, with Image, Video (uploaded films), Remote video (YouTube and Vimeo links), Audio and Document types. Audio is from the skeleton and is unused since podcasts were dropped (19 Nov 2026).
 
 #### Video hosting
 
@@ -178,12 +177,9 @@ Search API with the database backend (Solr isn't needed at this content volume);
 
 ### Brand
 
-Fixed fields:
-
 - **Brand:** title, category, summary, hero image.
-- **About:** heading, text, pull quote, gallery and photography credit.
-- **What you'll find:** specialisms.
-- **Find the showroom:** address, opening hours, trade note, email, phone, website, accessibility link.
+- **Sections:** optional and in any order: Introduction, Quote, Gallery, Info rows, Text, Image and Video. The design's set is About ("About the house" Introduction), Quote, Gallery ("Inside the showroom", with the photography credit as caption) and Specialisms ("What you'll find" Info rows on linen). These were fixed fields until November 2026; `pimlico_brands_post_update_brand_sections` moved every Brand's content into sections.
+- **Find the showroom** (fixed, after the sections): address, opening hours, trade note, email (shown as Contact) and website, with "Get directions" and "Visit the website". Phone isn't shown; it feeds the LocalBusiness schema.
 - **Map:** Units, tenancy status, display on map, short map label.
 - **Similar brands:** up to three, otherwise three from the same category.
 - **SEO:** title, social media title, description, image.
@@ -195,24 +191,20 @@ Fixed fields:
 - **Related stories:** chosen, otherwise from the same category.
 - **SEO:** the shared set.
 
-### Podcast episode
-
-As Article, plus:
-
-- **Episode:** audio file, episode number, duration, guest.
-- **Chapters:** time and topic.
-- **Transcript.**
-
 ### Press article
 
 As Article, plus:
 
-- **Coverage:** publication and its logo, publication date, journalist, link to the original.
+- **Coverage:** publication and its logo (optional; shown 240 × 40 on desktop and 180 × 30 on mobile, scaled to fit), publication date, journalist, link to the original.
+- **Related brands** instead of related stories: `field_related` on Press article targets Brands only (Figma shows Brand cards, no stories or events). Empty, it shows three random Brands from the street (`brands:block_similar` with no category), since the coverage is about the street as a whole.
 
 ### Page
 
 - **Page:** title and summary.
 - **Sections:** Hero film, Split hero, Introduction, Cards, Feature banner, Visit banner, Info rows, Info band, Split text, Rich text, Image, Gallery, Quote, Video, Street map, Policy text, Next step, Contact form.
+- **Background** (`field_background`, shared by Cards, Info rows and Split text): White, Linen or Dark. Dark adds the theme's `is-inverse` class (the `inverseSection` mixin) in `pimlico_preprocess_paragraph()`, so every section with the field turns dark the same way; white and linen map to each component's tint. The design's dark sections are Visit "Getting here", Contact "Enquiry routes" and About "Area story", on desktop and mobile.
+- **Hero film:** the Image is required and the Film optional. Without a film the hero is the image alone and has no Pause film control.
+- **Cards** can show Brand intros (`field_show_summaries`): Brands then render in the `teaser_summary` view mode, the card with the Brand's summary (Newson's Yard "Resident brands").
 - **SEO:** the shared set.
 
 ### Unit (not public)
@@ -223,8 +215,8 @@ A shopfront that Brands trade from: name, address, area and its building(s) on t
 
 | Vocabulary | Terms | Used for |
 |---|---|---|
-| Brand category | Interiors, Antiques & art, Food & Drink (with Pubs and restaurants, Cafés) | The filters on Brands (Interiors, Antiques & art), Dine (Pubs and restaurants, Cafés) and the street map (the three top-level terms), and card labels. Editors choose from the categories the site shows; Food & Drink is a heading, not a choice. |
-| News category | Interiors, Antiques & art, Food & drink, Makers, The street | Story labels and related stories |
+| Brand category | Interiors, Antiques & art, Food & Drink (with Pubs and restaurants, Cafés); editors add more | The filters on Brands (every top-level term except Food & Drink, in weight order, as `?category=<term ID>`), Dine (Pubs and restaurants, Cafés) and the street map (every top-level term). A Brand card's label is the Brand's own category (Cafés, not Food & Drink). Editors choose from the categories the site shows; a category with sub-categories, such as Food & Drink, is a heading, not a choice. |
+| News category | Interiors, Antiques & art, Food & drink, Makers, The street | The article page's meta line and related stories. Story cards show the story's type (News or Press), not its category. |
 | Area | Pimlico Road, Newson's Yard, Ebury Street, Bourne Street, Holbein Place | Grouping Units |
 
 ## Hosting and domains
@@ -239,7 +231,7 @@ Branches follow the format `feature/…`, `bugfix/…` and `hotfix/…`. These a
 
 **Development** is done locally with Laravel Valet at `https://pimlico.test` ([local-development.md](local-development.md)).
 
-Deployment is by GitHub Actions: merging a pull request into `staging` or `main` deploys that branch to its Elastic Beanstalk environment. After deploying, the server runs `drush deploy`, which runs database updates, imports configuration and clears caches. Developers export configuration with `drush cex` and commit it with the code that needs it.
+Deployment is by GitHub Actions: merging a pull request into `staging` or `main` deploys that branch to its Elastic Beanstalk environment. After deploying, the server runs `drush deploy`, which runs database updates (post-updates), imports configuration, clears caches and then runs deploy hooks. Developers export configuration with `drush cex` and commit it with the code that needs it. A content change that needs the new config (a new field or allowed value) goes in a deploy hook, which runs after the import; one that the config import depends on goes in a post-update.
 
 There are two server environments:
 
@@ -372,7 +364,7 @@ These follow the lead developer's reference project (Sheffield Chamber of Commer
 |---|---|---|
 | Theme | short client machine name | `pimlico` |
 | Client modules | `pimlico_*`, `package: Pimlico` | `pimlico_map`, `pimlico_brands`, `pimlico_search`, `pimlico_migrate`, `pimlico_admin` |
-| Node bundles | snake_case singular nouns | `brand`, `article`, `podcast_episode`, `press_article`, `page` |
+| Node bundles | snake_case singular nouns | `brand`, `article`, `press_article`, `page` |
 | Paragraph types | snake_case. New types are named for the SDC they render. Some existing types keep other IDs: from the skeleton, `cta` renders `next_step`, `content_grid` renders `card_grid` and `text_wysiwyg_` renders `rich_text`; also `image` renders `figure`, `split_text` renders `split_section`, `video` renders `media_video` and `webform` renders `form_section` | `hero_film`, `street_map`, `info_band`, `policy_content` |
 | Vocabularies | `{context}_{type}` | `brand_category`, `news_category`, `area` |
 | Fields | `field_` + snake_case, no bundle prefix, storage reused across bundles | `field_heading`, `field_text`, `field_image`, `field_sections` |
@@ -407,17 +399,19 @@ Rules:
 
 - Drupal templates are thin adapters that map fields onto components with `include`/`embed` and `only`.
 - Preprocess is written only where display configuration and Twig Tweak can't do the job, with cache metadata applied.
-- Every component has `.component.yml`, `.twig`, `README.md` and `thumbnail.png`, with `.scss` where it has its own styles (all but `block`, `heading`, `paragraph` and `view_clean`), `.js` where it needs behaviour and `.stories.twig` where it can be shown on its own (28 of 49). See [front-end-conventions.md](front-end-conventions.md).
+- Every component has `.component.yml`, `.twig`, `README.md` and `thumbnail.png`, with `.scss` where it has its own styles (all but `block`, `heading`, `paragraph` and `view_clean`), `.js` where it needs behaviour and `.stories.twig` where it can be shown on its own (26 of 47). See [front-end-conventions.md](front-end-conventions.md).
 
 Design tokens from the Figma variables are CSS custom properties in `src/sass/init/_root.scss`:
 
 - **Palette:** dark grey `#394959`, yellow `#f9e577`, pumpkin `#e87400`, with eyebrows in pumpkin `#e87400` at the client's request. That is 3:1 on white, below the WCAG AA 4.5:1 for small text; `#a64f00` (5:1) is kept as a token if this is revisited.
 - **Linens:** `#f4f2eb` and `#ece9df`.
-- **Layout:** a 1280px page width and fluid spacing between 390px and 1440px.
+- **Layout:** a 1280px page width and fluid gutters and gaps between 390px and 1440px. Section padding is `--section-space-mobile` (40px) below the desktop breakpoint and `--section-space-desktop` (60px) above it.
 
 **Typography:**
 
 - Body and labels are Lato 2.0 (300, 400, 500, 700); headings are Fraunces (variable). Both are self-hosted.
+- Every text size is one of the nine Figma font-size tokens (`--font-size-12` to `--font-size-96`). Text styles step from the Figma mobile style to the desktop style at the desktop breakpoint, rather than scaling fluidly.
+- All Fraunces text sets `font-variation-settings` from `--type-wonk` (WONK 0, SOFT 0). Fraunces headings are trimmed from cap height to baseline (`text-box: trim-both cap alphabetic`) where the browser supports it.
 - Label and body styles always set Lato, even on heading elements.
 
 **Breakpoints:** sass-mq with tablet (768px) and desktop (980px).
@@ -430,7 +424,7 @@ Main components, by area:
 | Layout | `header`, `main_menu`, `menu`, `footer`, `newsletter`, `page_title`, `pagination`, `filter_bar`, `grid` |
 | Heroes and banners | `hero_film`, `hero_split`, `feature_banner`, `visit_banner`, `info_band`, `promo_band` |
 | Sections | `introduction`, `section_heading`, `rich_text`, `quote`, `card_grid`, `story_card`, `image_gallery`, `info_rows`, `info_row`, `split_section`, `next_step`, `form_section`, `policy_content`, `figure` |
-| Stories | `featured_story`, `story_intro`, `story_credits`, `episode_band`, `audio_player` |
+| Stories | `featured_story`, `story_intro`, `story_credits` |
 | Media | `media_video`, `youtube_player` |
 | Map | `street_map` |
 | Drupal wrappers | `block`, `paragraph`, `view_clean` |
@@ -442,10 +436,10 @@ The admin theme is Gin, branded by the `pimlico_admin` module (Fraunces page tit
 | Module | Responsibility |
 |---|---|
 | `pimlico_map` | The Unit entity, the brand feed at `/api/map/brands`, the map on Brand pages, the Unit map picker, and CloudFront purging of the feed. |
-| `pimlico_brands` | The Brands and Dine category filters (a contextual filter, so pager links keep `?category=`), card labels, the Brand form's category list grouped as Brands and Dine, and Brand page breadcrumbs (`BrandBreadcrumbBuilder`: Home / Brands or Dine / category / Brand). `BrandGroups` finds Interiors, Antiques & art and Food & Drink by UUID, which Structure Sync keeps the same on every environment. Editors can rename those terms, but deleting and re-creating one breaks the filters and Dine. |
+| `pimlico_brands` | The Brands and Dine category filters (a contextual filter, so pager links keep `?category=`), card labels, the Brand form's category list grouped as Brands and Dine, Brand page breadcrumbs (`BrandBreadcrumbBuilder`: Home / Brands or Dine / category / Brand) and the post-update that moved Brand pages to sections. `BrandGroups` makes every top-level Brand category a Brands filter except Food & Drink, which it finds by UUID (Structure Sync keeps UUIDs the same on every environment). Filters are keyed by term ID, as Dine's are, so renaming a category keeps its links; term IDs differ between environments, so a link to a filter is made on the environment it's used on. Deleting and re-creating Food & Drink breaks Dine. |
 | `pimlico_search` | Sorts indexed content into search groups (Brands, Dine, News, Press), serves `/llms.txt`, adds the sitemap and `llms.txt` lines to `robots.txt`, and keeps the Home node and component test pages out of the sitemap. Depends on `pimlico_brands`. |
 | `pimlico_migrate` | Imports Brands, Units and photos from the map project's data and belgraviavillage.com. Uninstalled after launch. |
-| `pimlico_admin` | CMS branding on top of Gin. |
+| `pimlico_admin` | CMS branding on top of Gin, deploy hooks (`pimlico_admin.deploy.php`) for one-off changes to the site's pages, such as the design round 3 dark sections and the Visit page without "Find Pimlico Road", and post-updates (`pimlico_admin.post_update.php`) for content that must go before a config import, such as the Podcast episodes. |
 
 Each has Kernel tests where it has logic: `pimlico_map` (2), `pimlico_brands` (1) and `pimlico_search` (1). The theme has one more (`tests/src/Kernel/ComponentsThemeTest.php`).
 

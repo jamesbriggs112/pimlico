@@ -20,10 +20,6 @@
   --color-brand-dark-grey: #394959;
   --color-brand-grey: #c5d3d2;
   --color-brand-yellow: #f9e577;
-  // Not a Figma variable: the button description asks for a "mustard" hover
-  // with a 4.8:1 contrast against dark grey, but no colour is defined.
-  // #dab845 gives 4.8:1. Confirm with design.
-  --color-brand-mustard: #dab845;
   --color-brand-pumpkin: #e87400;
   --color-brand-white: #ffffff;
   --color-tint-linen-30: #f4f2eb;
@@ -45,7 +41,6 @@
   --color-text-inverse: var(--color-brand-white);
   --color-text-eyebrow: var(--color-brand-pumpkin);
   --color-action-primary: var(--color-brand-yellow);
-  --color-action-primary-hover: var(--color-brand-mustard);
   --color-action-on-primary: var(--color-brand-dark-grey);
   --color-border-strong: var(--color-brand-dark-grey);
   --color-surface-raised: var(--color-brand-white);
@@ -68,8 +63,10 @@
   // Typography: families
   --font-family-display: 'Fraunces', Georgia, 'Times New Roman', serif;
   --font-family-body: 'Lato', 'Helvetica Neue', Arial, sans-serif;
-  // Fraunces axes, as set on every Figma heading
-  --font-display-variation: 'SOFT' 0, 'WONK' 0;
+  // Fraunces axes, as set on every Figma text layer (Figma "type/wonk"). WONK
+  // 0 turns off the leaning n, m and h.
+  --type-wonk: 0;
+  --font-display-variation: 'SOFT' 0, 'WONK' var(--type-wonk);
 
   // Typography: weights
   --font-weight-light: 300;
@@ -77,38 +74,59 @@
   --font-weight-medium: 500;
   --font-weight-bold: 700;
 
-  // Typography: display scale (Fraunces Light), 390px to 1440px
-  --font-size-display-xl: #{fluid(44px, 96px)};
-  --line-height-display-xl: 1.02;
-  --letter-spacing-display-xl: #{to.rem(-2px)};
-  --font-size-display-l: #{fluid(32px, 64px)};
-  --line-height-display-l: 1.08;
-  --letter-spacing-display-l: #{to.rem(-1.5px)};
-  --font-size-display-m: #{fluid(32px, 44px)};
-  --line-height-display-m: 1.1;
-  --letter-spacing-display-m: #{to.rem(-1px)};
-  --font-size-display-s: #{fluid(22px, 26px)};
+  // Typography: the Figma font-size scale ("font-size/12" to "font-size/96").
+  // Every text size on the site is one of these nine. Role sizes below step
+  // from the mobile style to the desktop style at the desktop breakpoint,
+  // rather than scaling fluidly through sizes the design doesn't use.
+  --font-size-12: #{to.rem(12px)};
+  --font-size-14: #{to.rem(14px)};
+  --font-size-16: #{to.rem(16px)};
+  --font-size-20: #{to.rem(20px)};
+  --font-size-26: #{to.rem(26px)};
+  --font-size-32: #{to.rem(32px)};
+  --font-size-44: #{to.rem(44px)};
+  --font-size-64: #{to.rem(64px)};
+  --font-size-96: #{to.rem(96px)};
+
+  // Display styles (Fraunces Light). Mobile values are Figma's "Mobile/…"
+  // styles; desktop values are set in the media query at the end of :root.
+  // Display XL: Mobile/Display L 44 / 1.05 / -1px; Display/XL 96 / 1 / -2px
+  --font-size-display-xl: var(--font-size-44);
+  --line-height-display-xl: 1.05;
+  --letter-spacing-display-xl: #{to.rem(-1px)};
+  // Display L: Mobile/Display M 32 / 1.12 / -0.5px; Display/L 64 / 1.08 / -1.5px
+  --font-size-display-l: var(--font-size-32);
+  --line-height-display-l: 1.12;
+  --letter-spacing-display-l: #{to.rem(-0.5px)};
+  // Display M: Mobile/Display M 32 / 1.12 / -0.5px; Display/M 44 / 1.15 / -1px
+  --font-size-display-m: var(--font-size-32);
+  --line-height-display-m: 1.12;
+  --letter-spacing-display-m: #{to.rem(-0.5px)};
+  // Display S: 20 on mobile, Heading/S 26 on desktop
+  --font-size-display-s: var(--font-size-20);
   --line-height-display-s: 1.2;
   --letter-spacing-display-s: #{to.rem(-0.5px)};
 
-  // Typography: titles (Fraunces Regular) for cards, rows and menus
-  --font-size-title-m: #{fluid(20px, 26px)};
-  --font-size-title-s: #{to.rem(20px)};
+  // Titles (Fraunces Regular) for cards, rows and menus: Heading/S 26 on
+  // desktop, the 20px story row title on mobile
+  --font-size-title-m: var(--font-size-20);
+  --font-size-title-s: var(--font-size-20);
   --line-height-title: 1.25;
   --letter-spacing-title: #{to.rem(-0.5px)};
 
-  // Typography: body and labels (Lato)
-  --font-size-body-l: #{fluid(18px, 20px)};
+  // Body and labels (Lato)
+  --font-size-body-l: var(--font-size-20);
   --line-height-body-l: 1.55;
-  --font-size-body-m: #{to.rem(16px)};
+  --font-size-body-m: var(--font-size-16);
   --line-height-body-m: 1.6;
-  --font-size-body-s: #{to.rem(14px)};
+  --font-size-body-s: var(--font-size-14);
   --line-height-body-s: 1.55;
-  --font-size-label-nav: #{to.rem(14px)};
+  // One token for the nav size: the client wants the nav bigger still.
+  --font-size-label-nav: var(--font-size-14);
   --letter-spacing-label-nav: 0.14em;
-  --font-size-label-eyebrow: #{to.rem(12px)};
+  --font-size-label-eyebrow: var(--font-size-12);
   --letter-spacing-label-eyebrow: 0.16em;
-  --font-size-link-caps: #{to.rem(12px)};
+  --font-size-link-caps: var(--font-size-12);
   --letter-spacing-link-caps: 0.14em;
   --line-height-label: 1.4;
   --font-size-base: var(--font-size-body-m);
@@ -128,7 +146,11 @@
   --space-80: #{to.rem(80px)};
   --space-96: #{to.rem(96px)};
   --space-128: #{to.rem(128px)};
-  --section-space: #{fluid(40px, 60px)};
+  // Section padding (Figma "section-space-mobile" and "-desktop"): the
+  // top and bottom padding of every page section.
+  --section-space-mobile: var(--space-40);
+  --section-space-desktop: #{to.rem(60px)};
+  --section-space: var(--section-space-mobile);
   --radius-pill: 999px;
 
   // Accessibility
@@ -154,25 +176,37 @@
   --footer-bg-color: var(--color-tint-linen-60);
   --footer-text-color: var(--color-text-primary);
 
-  // Buttons (Figma "A / Button": Dark and Yellow)
-  --button-padding: #{to.rem(18px)} #{to.rem(34px)};
+  // Buttons (Figma "A / Button": Yellow, the default, and Dark, unused).
+  // The 2px border sits inside the 56px height: 16px 32px padding + 2px.
+  --button-padding: var(--space-16) var(--space-32);
+  --button-border-width: #{to.rem(2px)};
   --button-border-radius: 0;
   --button-font-weight: var(--font-weight-medium);
   --button-font-size: var(--font-size-label-nav);
   --button-letter-spacing: var(--letter-spacing-label-nav);
+  --button-transition-duration: 150ms;
   --button-transition:
-    background-color var(--motion-duration) var(--motion-easing),
-    color var(--motion-duration) var(--motion-easing);
+    background-color var(--button-transition-duration) var(--motion-easing),
+    border-color var(--button-transition-duration) var(--motion-easing),
+    color var(--button-transition-duration) var(--motion-easing);
 
-  --button-background-color-dark: var(--color-brand-dark-grey);
-  --button-text-color-dark: var(--color-text-inverse);
-  --button-hover-background-color-dark: var(--color-action-primary-hover);
-  --button-hover-text-color-dark: var(--color-action-on-primary);
-
+  // Yellow hover turns the button round: dark grey fill, yellow border and
+  // label (decided 19 November 2026). The yellow border is what shows the
+  // button on a dark (.is-inverse) section, where the fill matches.
   --button-background-color-yellow: var(--color-action-primary);
+  --button-border-color-yellow: var(--color-action-primary);
   --button-text-color-yellow: var(--color-action-on-primary);
-  --button-hover-background-color-yellow: var(--color-action-primary-hover);
-  --button-hover-text-color-yellow: var(--color-action-on-primary);
+  --button-hover-background-color-yellow: var(--color-surface-inverse);
+  --button-hover-border-color-yellow: var(--color-action-primary);
+  --button-hover-text-color-yellow: var(--color-action-primary);
+
+  // Dark hover: dark fill, yellow border and label.
+  --button-background-color-dark: var(--color-brand-dark-grey);
+  --button-border-color-dark: var(--color-brand-dark-grey);
+  --button-text-color-dark: var(--color-text-inverse);
+  --button-hover-background-color-dark: var(--color-brand-dark-grey);
+  --button-hover-border-color-dark: var(--color-action-primary);
+  --button-hover-text-color-dark: var(--color-action-primary);
 
   --button-disabled-background-color: var(--color-disabled);
   --button-disabled-text-color: var(--color-disabled-text);
@@ -189,7 +223,7 @@
 
   // Forms (Figma "Field": underlined controls)
   --form-element-label-color: var(--color-text-primary);
-  --form-element-padding: 0 0 var(--space-12);
+  --form-element-padding: var(--space-12) var(--space-16);
   --form-element-border-radius: 0;
   --form-element-border-width: #{to.rem(1px)};
   --form-element-border-color: var(--color-border-strong);
@@ -200,6 +234,11 @@
     transparent
   );
   --form-element-background-color: transparent;
+  // Focus and active: a white box, 200ms ease-out
+  --form-element-focus-background-color: var(--color-surface-raised);
+  --form-element-transition:
+    background-color 200ms var(--motion-easing),
+    box-shadow 200ms var(--motion-easing);
   --form-element-disabled-background-color: var(--color-tint-linen-30);
   --form-element-disabled-border-color: var(--color-tint-linen-60);
   --form-element-gap: var(--space-12);
@@ -215,5 +254,21 @@
 
   @supports (interpolate-size: allow-keywords) {
     interpolate-size: allow-keywords;
+  }
+
+  // Desktop styles: the type steps up and sections get the desktop padding.
+  @include mq($from: desktop) {
+    --font-size-display-xl: var(--font-size-96);
+    --line-height-display-xl: 1;
+    --letter-spacing-display-xl: #{to.rem(-2px)};
+    --font-size-display-l: var(--font-size-64);
+    --line-height-display-l: 1.08;
+    --letter-spacing-display-l: #{to.rem(-1.5px)};
+    --font-size-display-m: var(--font-size-44);
+    --line-height-display-m: 1.15;
+    --letter-spacing-display-m: #{to.rem(-1px)};
+    --font-size-display-s: var(--font-size-26);
+    --font-size-title-m: var(--font-size-26);
+    --section-space: var(--section-space-desktop);
   }
 }

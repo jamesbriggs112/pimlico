@@ -17,6 +17,9 @@ settings:
     -
       value: linen
       label: Linen
+    -
+      value: dark
+      label: Dark
   allowed_values_function: ''
 module: options
 locked: false

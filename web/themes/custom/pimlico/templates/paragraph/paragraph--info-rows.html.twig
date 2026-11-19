@@ -1,14 +1,17 @@
 {#
 /**
  * @file
- * Info rows paragraph → pimlico:info_rows, with each row an info_row.
+ * Info rows paragraph → pimlico:info_rows, with each row an info_row. An
+ * empty intro text passes null, or the component prints an empty wrapper.
+ * A Dark background arrives as the is-inverse class on attributes (see
+ * pimlico_preprocess_paragraph()).
  */
 #}
 {% include 'pimlico:info_rows' with {
   attributes,
   eyebrow: paragraph.field_eyebrow.value|default(''),
   heading: paragraph.field_heading.value|default(''),
-  text: content.field_text,
+  text: paragraph.field_text.isEmpty() ? null : content.field_text,
   rows: content.field_items,
-  tint: paragraph.field_background.value != 'white',
+  tint: paragraph.field_background.value == 'linen',
 } only %}

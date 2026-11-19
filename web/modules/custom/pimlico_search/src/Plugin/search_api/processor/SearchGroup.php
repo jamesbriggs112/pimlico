@@ -18,8 +18,8 @@ use Symfony\Component\DependencyInjection\ContainerInterface;
  * Adds the result group a node belongs to on the search page.
  *
  * Brands in Food & Drink (or one of its child categories) are "dine", other
- * Brands are "brands"; Articles and Podcast Episodes are "news" and Press
- * Articles are "press".
+ * Brands are "brands"; Articles are "news" and Press Articles are
+ * "press".
  */
 #[SearchApiProcessor(
   id: 'pimlico_search_group',
@@ -34,7 +34,7 @@ final class SearchGroup extends ProcessorPluginBase {
   /**
    * The Brand Categories, to tell Dine Brands from the rest.
    */
-  private BrandGroups $brandGroups;
+  protected BrandGroups $brandGroups;
 
   /**
    * {@inheritdoc}
@@ -86,7 +86,7 @@ final class SearchGroup extends ProcessorPluginBase {
   public function groupFor(NodeInterface $node): ?string {
     return match ($node->bundle()) {
       'brand' => $this->brandGroups->isDine($node->get('field_brand_category')->entity) ? 'dine' : 'brands',
-      'article', 'podcast_episode' => 'news',
+      'article' => 'news',
       'press_article' => 'press',
       default => NULL,
     };

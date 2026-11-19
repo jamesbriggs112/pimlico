@@ -150,7 +150,7 @@ Every difference either goes or gets a reason in the report.
 
 To prove a YAML reformat changed no data, compare the parsed file with `git show HEAD:<file>` using Symfony's YAML parser from `vendor/`.
 
-The snapshots need content: run the local set-up in full ([local-development.md](../local-development.md)), including the Structure Sync imports and the Brand migration, or Brands have no categories and whole templates go untested. Content types with no seed data (Articles, Press Articles, Podcast Episodes) need a few sample nodes made locally before the baseline.
+The snapshots need content: run the local set-up in full ([local-development.md](../local-development.md)), including the Structure Sync imports and the Brand migration, or Brands have no categories and whole templates go untested. Content types with no seed data (Articles, Press Articles) need a few sample nodes made locally before the baseline.
 
 ## Before you finish
 

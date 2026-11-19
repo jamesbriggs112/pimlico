@@ -33,12 +33,12 @@
     display: grid;
     justify-items: start;
     gap: #{fluid(20px, 28px)};
-    padding: var(--space-40) var(--space-24) #{to.rem(56px)};
+    padding: var(--section-space) var(--space-24) #{to.rem(56px)};
 
     @include mq($from: desktop) {
       grid-column: 1;
       grid-row: 1;
-      padding: #{to.rem(60px)} var(--space-80) #{to.rem(88px)};
+      padding: var(--section-space) var(--space-80) #{to.rem(88px)};
     }
   }
 

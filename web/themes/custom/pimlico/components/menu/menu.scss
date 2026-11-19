@@ -1,13 +1,30 @@
+// A list of text links. A container can set --menu-gap (the gap between
+// rows) and --menu-inline-justify (the inline row's alignment).
 .menu {
   display: grid;
-  gap: #{to.rem(14px)};
+  gap: var(--menu-gap, #{to.rem(14px)});
   margin: 0;
   padding: 0;
   list-style: none;
 
+  // The legal row: 28px apart on desktop; on mobile 4px 7px apart with a
+  // "·" between links (Figma "Footer", mobile).
   &--inline {
     display: flex;
     flex-wrap: wrap;
-    gap: var(--space-4) #{to.rem(28px)};
+    justify-content: var(--menu-inline-justify, flex-start);
+    gap: var(--space-4) #{to.rem(7px)};
+
+    @include mq($from: desktop) {
+      gap: var(--space-4) #{to.rem(28px)};
+    }
+  }
+
+  &--inline &__item + &__item::before {
+    @include mq($until: desktop) {
+      content: '·';
+      content: '·' / '';
+      margin-inline-end: #{to.rem(7px)};
+    }
   }
 }

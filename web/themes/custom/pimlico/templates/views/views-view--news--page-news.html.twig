@@ -2,7 +2,8 @@
 /**
  * @file
  * News listing (Figma T07): title band with the type filters inside it, the
- * featured story (attachment), then "Latest" cards and "Older stories".
+ * featured story (attachment), then the latest cards under a rule (their
+ * heading is for screen readers only) and "Older stories".
  */
 #}
 <div{{ attributes.addClass('listing', 'listing--news') }}>
@@ -19,7 +20,7 @@
   } only %}
   {{ attachment_before }}
   <section class="listing__results listing__results--ruled" aria-labelledby="news-latest">
-    <h2 class="listing__label eyebrow" id="news-latest">{{ 'Latest'|t }}</h2>
+    <h2 class="visually-hidden" id="news-latest">{{ 'Latest stories'|t }}</h2>
     {% if rows %}
       <div class="listing__grid">{{ rows }}</div>
     {% else %}

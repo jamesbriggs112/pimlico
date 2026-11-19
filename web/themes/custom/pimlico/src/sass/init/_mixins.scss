@@ -56,18 +56,53 @@
   padding-inline: var(--page-gutter);
 }
 
+// Fraunces with the Figma axes (WONK and SOFT off). Every rule that sets
+// Fraunces uses this, so no text falls back to the leaning default forms.
+@mixin displayFont() {
+  font-family: var(--font-family-display);
+  font-variation-settings: var(--font-display-variation);
+}
+
+// Figma trims Fraunces headings from the cap height to the baseline, so
+// gaps around a heading measure to its letters, not its line box. Browsers
+// without text-box keep the line box.
+@mixin headingTrim() {
+  @supports (text-box: trim-both cap alphabetic) {
+    text-box: trim-both cap alphabetic;
+  }
+}
+
 // Fraunces Regular titles used by cards, info rows and menu links.
 @mixin title($size: var(--font-size-title-m)) {
-  font-family: var(--font-family-display);
+  @include displayFont;
+  @include headingTrim;
   font-size: $size;
   font-weight: var(--font-weight-regular);
   line-height: var(--line-height-title);
   letter-spacing: var(--letter-spacing-title);
-  font-variation-settings: var(--font-display-variation);
 }
 
-// Label/Eyebrow: Lato Bold caps. The colour is the component's.
+// A dark ("inverse") section: dark grey surface, white text, highlight
+// (yellow) eyebrows, inverse rules, light links and the on-dark focus ring.
+// It resets the semantic tokens, so components inside follow without their
+// own dark modifiers. Editors choose it with a section's Dark background,
+// which adds .is-inverse (pimlico_preprocess_paragraph()).
+@mixin inverseSection() {
+  --text-color: var(--color-text-inverse);
+  --link-color: var(--color-text-inverse);
+  --color-text-primary: var(--color-text-inverse);
+  --color-text-eyebrow: var(--color-surface-highlight);
+  --color-border-strong: var(--color-border-inverse);
+  --color-border-default: var(--color-border-inverse);
+  --focus-ring: var(--focus-ring-on-dark);
+  background-color: var(--color-surface-inverse);
+  color: var(--color-text-inverse);
+}
+
+// Label/Eyebrow: Lato Bold caps. The colour is the component's. Never
+// trimmed, even on a heading element (headingTrim is for Fraunces only).
 @mixin eyebrow() {
+  text-box: normal;
   font-size: var(--font-size-label-eyebrow);
   font-weight: var(--font-weight-bold);
   line-height: var(--line-height-label);

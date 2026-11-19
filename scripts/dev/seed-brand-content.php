@@ -6,15 +6,17 @@
  *
  *   Drush php:script scripts/dev/seed-brand-content.php.
  *
- * Follows the Figma Brand page (03 Brand with Map): an "About the house"
- * heading and two paragraphs, a pull quote, a gallery with a photography
- * credit, three "What you'll find" rows and a trade note.
+ * Follows the Figma Brand page (03 Brand with Map), as sections: an
+ * "About the house" Introduction with a heading and two paragraphs, a Quote,
+ * an Image gallery with a photography credit, and three "What you'll find"
+ * Info rows; plus a trade note.
  *
- * Only empty fields are filled, so editors' content is never overwritten.
- * The about text is built from each Brand's own summary and address; the
- * heading, specialisms and trade note are category-level sample copy, and
- * the photos are the theme's sample images. No contact details are made up.
- * Replace all of it with the client's copy and photography before launch.
+ * Only a Brand with no sections gets them, and only empty fields are
+ * filled, so editors' content is never overwritten. The about text is built
+ * from each Brand's own summary and address; the heading, specialisms and
+ * trade note are category-level sample copy, and the photos are the theme's
+ * sample images. No contact details are made up. Replace all of it with the
+ * client's copy and photography before launch.
  */
 
 declare(strict_types=1);
@@ -91,36 +93,51 @@ foreach ($brands as $brand) {
     }
   };
 
-  $fill('field_heading', $c['heading']);
-  $body = '<p>' . htmlspecialchars($summary ?: $brand->label() . ' trades on Pimlico Road.') . '</p>';
-  $body .= '<p>' . htmlspecialchars(($street ? 'Find ' . $brand->label() . ' at ' . $street . '. ' : '') . $c['more']) . '</p>';
-  $fill('body', ['value' => $body, 'format' => 'basic_html']);
+  if ($brand->get('field_sections')->isEmpty()) {
+    $sections = [];
+    $body = '<p>' . htmlspecialchars($summary ?: $brand->label() . ' trades on Pimlico Road.') . '</p>';
+    $body .= '<p>' . htmlspecialchars(($street ? 'Find ' . $brand->label() . ' at ' . $street . '. ' : '') . $c['more']) . '</p>';
+    $sections[] = Paragraph::create([
+      'type' => 'introduction',
+      'field_eyebrow' => 'About the house',
+      'field_heading' => $c['heading'],
+      'field_text' => ['value' => $body, 'format' => 'basic_html'],
+    ]);
 
-  // The pull quote is the first sentence of the Brand's own summary.
-  if ($summary && $brand->get('field_quote')->isEmpty()) {
-    $first = preg_split('/(?<=[.!?])\s+/', $summary)[0];
-    $brand->set('field_quote', Paragraph::create([
-      'type' => 'quote',
-      'field_text' => ['value' => '<p>“' . htmlspecialchars(rtrim($first, '.')) . '.”</p>', 'format' => 'basic_html'],
-      'field_name' => $brand->label(),
-    ]));
-    $changed = TRUE;
-  }
+    // The pull quote is the first sentence of the Brand's own summary.
+    if ($summary) {
+      $first = preg_split('/(?<=[.!?])\s+/', $summary)[0];
+      $sections[] = Paragraph::create([
+        'type' => 'quote',
+        'field_text' => ['value' => '<p>“' . htmlspecialchars(rtrim($first, '.')) . '.”</p>', 'format' => 'basic_html'],
+        'field_name' => $brand->label(),
+      ]);
+    }
 
-  // Seven photos, a different run for each Brand, as the Figma gallery.
-  $gallery = [];
-  for ($n = 0; $n < 7; $n++) {
-    $gallery[] = $photos[($i + $n) % count($photos)];
-  }
-  $fill('field_gallery', $gallery);
-  $fill('field_caption', 'Photography: sample images');
+    // Seven photos, a different run for each Brand, as the Figma gallery.
+    $gallery = [];
+    for ($n = 0; $n < 7; $n++) {
+      $gallery[] = $photos[($i + $n) % count($photos)];
+    }
+    $sections[] = Paragraph::create([
+      'type' => 'image_gallery',
+      'field_heading' => 'Inside the showroom',
+      'field_caption' => 'Photography: sample images',
+      'field_images' => $gallery,
+    ]);
 
-  if ($brand->get('field_specialisms')->isEmpty()) {
-    $brand->set('field_specialisms', array_map(static fn($row) => Paragraph::create([
-      'type' => 'info_row',
-      'field_heading' => $row[0],
-      'field_text' => ['value' => '<p>' . htmlspecialchars($row[1]) . '</p>', 'format' => 'basic_html'],
-    ]), $c['specialisms']));
+    $sections[] = Paragraph::create([
+      'type' => 'info_rows',
+      'field_eyebrow' => 'Specialisms',
+      'field_heading' => 'What you’ll find',
+      'field_background' => 'linen',
+      'field_items' => array_map(static fn($row) => Paragraph::create([
+        'type' => 'info_row',
+        'field_heading' => $row[0],
+        'field_text' => ['value' => '<p>' . htmlspecialchars($row[1]) . '</p>', 'format' => 'basic_html'],
+      ]), $c['specialisms']),
+    ]);
+    $brand->set('field_sections', $sections);
     $changed = TRUE;
   }
   if (($category ? $category->label() : '') !== 'Food & Drink') {

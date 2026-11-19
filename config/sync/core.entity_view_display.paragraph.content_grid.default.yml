@@ -9,6 +9,7 @@ dependencies:
     - field.field.paragraph.content_grid.field_eyebrow
     - field.field.paragraph.content_grid.field_heading
     - field.field.paragraph.content_grid.field_link
+    - field.field.paragraph.content_grid.field_show_summaries
     - field.field.paragraph.content_grid.field_text
     - paragraphs.paragraphs_type.content_grid
   module:
@@ -94,4 +95,5 @@ content:
     region: content
 hidden:
   field_background: true
+  field_show_summaries: true
   search_api_excerpt: true

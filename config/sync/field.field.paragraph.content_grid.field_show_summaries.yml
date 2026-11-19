@@ -1,0 +1,23 @@
+uuid: e15ac7d1-646e-4c57-a85d-72644873e4c8
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_show_summaries
+    - paragraphs.paragraphs_type.content_grid
+id: paragraph.content_grid.field_show_summaries
+field_name: field_show_summaries
+entity_type: paragraph
+bundle: content_grid
+label: 'Show Brand intros'
+description: 'Shows each Brand card''s intro under its name, as on Newson''s Yard "Resident brands". Other cards are unchanged.'
+required: false
+translatable: true
+default_value:
+  -
+    value: 0
+default_value_callback: ''
+settings:
+  on_label: 'On'
+  off_label: 'Off'
+field_type: boolean

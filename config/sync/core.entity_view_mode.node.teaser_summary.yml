@@ -1,0 +1,11 @@
+uuid: 102f21a4-9547-48e0-80d1-65b19e930113
+langcode: en
+status: true
+dependencies:
+  module:
+    - node
+id: node.teaser_summary
+label: 'Teaser with summary'
+description: 'A Brand card with its intro under the name (Cards with "Show Brand intros", Newson''s Yard).'
+targetEntityType: node
+cache: true

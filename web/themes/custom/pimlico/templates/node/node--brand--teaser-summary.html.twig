@@ -1,0 +1,16 @@
+{#
+/**
+ * @file
+ * Brand teaser with summary → story card: as node--brand--teaser, with the
+ * Brand's intro as the card summary (Newson's Yard "Resident brands",
+ * Figma 23:782). Cards with "Show Brand intros" use this view mode.
+ */
+#}
+{% include 'pimlico:story_card' with {
+  attributes,
+  url,
+  title: node.label,
+  meta: brand_category_label|default(''),
+  summary: node.field_summary.value|default(''),
+  image: content.field_image,
+} only %}

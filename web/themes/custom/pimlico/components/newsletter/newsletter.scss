@@ -26,9 +26,16 @@
     margin: 0;
   }
 
+  // Body/L on desktop; Body/M on mobile (Figma 7:58)
   &__intro {
     margin: 0;
     max-width: #{to.rem(480px)};
+
+    @include mq($until: desktop) {
+      font-size: var(--font-size-body-m);
+      font-weight: var(--font-weight-regular);
+      line-height: var(--line-height-body-m);
+    }
   }
 
   // Webform markup
@@ -48,23 +55,20 @@
     gap: var(--space-12);
   }
 
+  // Figma 7:41: no side or top padding, 14px below the text, Body/L. The
+  // band is white, so the field's white focus box needs no room of its own.
   &__form input[type='email'] {
-    padding-bottom: #{to.rem(14px)};
+    padding: 0 0 #{to.rem(14px)};
     font-size: var(--font-size-body-l);
     font-weight: var(--font-weight-light);
     line-height: var(--line-height-body-l);
   }
 
-  // Webform renders the submit without a wrapper; Figma uses Yellow here.
+  // Webform renders the submit without a wrapper.
   &__form .btn {
     @include mq($until: tablet) {
       width: 100%;
     }
-
-    --_bg: var(--button-background-color-yellow);
-    --_color: var(--button-text-color-yellow);
-    --_hover-bg: var(--button-hover-background-color-yellow);
-    --_hover-color: var(--button-hover-text-color-yellow);
   }
 
   &__form .form-item-privacy-note {

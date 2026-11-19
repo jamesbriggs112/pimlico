@@ -66,6 +66,7 @@ $getting_here = $p('info_rows', [
   'field_heading' => 'Getting here',
   'field_text' => $text('<p>Travel options for everyone visiting Pimlico Road.</p>'),
   'field_anchor' => 'getting-here',
+  'field_background' => 'dark',
   'field_items' => [
     $p('info_row', ['field_heading' => 'Public transport', 'field_text' => $text('<p>Sloane Square (District and Circle lines), about 6 minutes on foot. Placeholder bus routes.</p>')]),
     $p('info_row', ['field_heading' => 'Walking & cycling', 'field_text' => $text('<p>Placeholder: cycle stands on Bourne Street and Holbein Place.</p>')]),
@@ -124,6 +125,7 @@ $page('Newson’s Yard', '/newsons-yard', 'A timber yard, reopened to makers.', 
     'field_link' => $link('/brands', 'All brands'),
     'field_anchor' => 'resident-brands',
     'field_background' => 'linen',
+    'field_show_summaries' => TRUE,
     'field_content' => array_filter([$brand('Modernity'), $brand('And Objects'), $brand('The Lacquer Company')]),
   ]),
   $p('introduction', [
@@ -136,16 +138,10 @@ $page('Newson’s Yard', '/newsons-yard', 'A timber yard, reopened to makers.', 
   $visit_banner('Visit Newson’s Yard', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit sed do eiusmod.', 'Plan your visit', '/visit'),
 ]);
 
-// Visit (T13, with "The street" from the 03 Brand with Map page).
+// Visit (T13, with "The street" from the 03 Brand with Map page). The
+// design dropped "Find Pimlico Road"; mobile follows the desktop order.
 $page('Visit', '/visit', 'Plan a visit to Pimlico Road: the street, its showrooms and places to eat.', [
   $p('street_map', []),
-  $p('info_band', [
-    'field_eyebrow' => 'Location & directions',
-    'field_heading' => 'Find Pimlico Road',
-    'field_text' => $text('<p>Pimlico Road, London SW1W · Placeholder location details and postcode.</p>'),
-    'field_links' => [$link('https://www.google.com/maps/search/?api=1&query=Pimlico+Road+London+SW1W', 'Get directions in Google Maps')],
-    'field_image' => $media['visit-banner-street-spire'],
-  ]),
   $getting_here,
 ]);
 
@@ -172,7 +168,7 @@ $page('About Pimlico Road', '/about', 'Lorem ipsum dolor sit amet, consectetur a
     'field_heading' => 'A street with a story',
     'field_intro' => 'Lorem ipsum dolor sit amet, consectetur adipiscing elit sed do eiusmod.',
     'field_text' => $text('<h2>Craft, heritage and the street today</h2>' . $lorem . $lorem . $lorem),
-    'field_background' => 'linen',
+    'field_background' => 'dark',
   ]),
   $p('content_grid', [
     'field_heading' => 'Meet the people behind the street',
@@ -195,7 +191,7 @@ $page('Contact', '/contact', 'Lorem ipsum dolor sit amet, consectetur adipiscing
   $p('info_rows', [
     'field_eyebrow' => 'Enquiry routes',
     'field_heading' => 'How can we help?',
-    'field_background' => 'white',
+    'field_background' => 'dark',
     'field_text' => $text('<p>Choose the right route for your enquiry.</p>'),
     'field_items' => [
       $p('info_row', ['field_heading' => 'General enquiries', 'field_text' => $text('<p>Placeholder team / email / expected response time.</p>')]),

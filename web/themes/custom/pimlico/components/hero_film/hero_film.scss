@@ -1,6 +1,9 @@
 // Figma "Hero · Street film" (9:426 / mobile 9:1504): full-bleed film, the
 // transparent header over it, heading bottom-left in Fraunces Light 64/1.0
 // (44/1.05 mobile) and a 48px media control with a "Pause film" label.
+// Desktop: heading and control share one bottom-aligned row, 32px apart, the
+// control bottom right. Mobile: the control sits under the heading, 16px
+// below, right-aligned. With no film (an image hero) there is no control.
 .hero-film {
   position: relative;
   display: flex;
@@ -50,22 +53,42 @@
   &__content {
     position: relative;
     display: grid;
-    justify-items: start;
-    gap: #{fluid(16px, 32px)};
+    gap: var(--space-16);
     width: 100%;
     padding: 0 var(--space-24) var(--space-40);
 
     @include mq($from: desktop) {
+      display: flex;
+      align-items: flex-end;
+      justify-content: space-between;
+      gap: var(--space-32);
       padding: 0 var(--space-40) var(--space-40);
+    }
+  }
+
+  // Eyebrow, heading and an optional button, kept left.
+  &__text {
+    display: grid;
+    justify-items: start;
+    gap: #{fluid(16px, 32px)};
+
+    @include mq($from: desktop) {
+      flex: 1;
     }
   }
 
   &__heading {
     max-width: #{to.rem(1000px)};
     margin: 0;
-    font-size: #{fluid(44px, 64px)};
-    line-height: #{fluid(46.2px, 64px)};
-    letter-spacing: #{fluid(-1px, -2px)};
+    font-size: var(--font-size-44);
+    line-height: 1.05;
+    letter-spacing: #{to.rem(-1px)};
+
+    @include mq($from: desktop) {
+      font-size: var(--font-size-64);
+      line-height: 1;
+      letter-spacing: #{to.rem(-2px)};
+    }
   }
 
   &__eyebrow {
@@ -75,6 +98,8 @@
   &__control {
     display: flex;
     align-items: center;
+    justify-self: end;
+    flex-shrink: 0;
     gap: #{to.rem(14px)};
   }
 

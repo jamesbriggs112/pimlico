@@ -12,7 +12,7 @@ field_name: field_website
 entity_type: node
 bundle: brand
 label: Website
-description: ''
+description: 'The "Visit the website" buttons in the hero and under "Find the showroom".'
 required: false
 translatable: true
 default_value: {  }

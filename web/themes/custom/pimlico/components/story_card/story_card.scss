@@ -1,6 +1,7 @@
 // Figma "A / Story card" (3:1714): 4:5 image, 22px then 10px gaps, dark
-// eyebrow meta, Fraunces Regular 26 title, caps link label. Hover: image
-// zooms 5% inside its frame and the label underlines at 6px (300ms).
+// eyebrow meta, Fraunces Regular 26 title, and a caps link label only with
+// show_link. Hover: image zooms 5% inside its frame and the label (if shown)
+// underlines at 6px (300ms).
 // Focus: the focus ring on the whole card.
 .story-card {
   display: flex;

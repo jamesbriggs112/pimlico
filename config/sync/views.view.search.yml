@@ -112,7 +112,6 @@ display:
             'entity:node':
               article: teaser
               brand: teaser
-              podcast_episode: teaser
               press_article: teaser
       query:
         type: search_api_query

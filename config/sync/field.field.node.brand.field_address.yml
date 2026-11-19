@@ -12,7 +12,7 @@ field_name: field_address
 entity_type: node
 bundle: brand
 label: Address
-description: ''
+description: 'Shown under "Find the showroom" and used for the "Get directions" link.'
 required: false
 translatable: true
 default_value:
