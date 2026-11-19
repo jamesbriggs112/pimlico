@@ -11,7 +11,7 @@ field_name: field_related
 entity_type: node
 bundle: press_article
 label: 'Related brands'
-description: 'Up to three Brands shown under "Discover the places in the story". Leave empty to show three Brands from the street, picked at random.'
+description: 'Up to three Brands, shown by the Related section under "Discover the places in the story". Leave empty to show three Brands from the street, picked at random.'
 required: false
 translatable: true
 default_value: {  }

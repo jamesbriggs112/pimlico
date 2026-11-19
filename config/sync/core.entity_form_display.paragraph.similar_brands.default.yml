@@ -1,0 +1,23 @@
+uuid: 27564af4-db32-4ac2-98a4-d9a4ffaba8b8
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.paragraph.similar_brands.field_heading
+    - paragraphs.paragraphs_type.similar_brands
+id: paragraph.similar_brands.default
+targetEntityType: paragraph
+bundle: similar_brands
+mode: default
+content:
+  field_heading:
+    type: string_textfield
+    weight: 0
+    region: content
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+hidden:
+  created: true
+  status: true

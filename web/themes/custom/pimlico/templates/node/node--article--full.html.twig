@@ -2,7 +2,9 @@
 /**
  * @file
  * News article (Figma T08): title band, intro (meta, lead image), body
- * sections, credits, related stories.
+ * sections, credits, then closing_sections: the Related section ("Also on
+ * this street") when it is the last section (see
+ * _pimlico_closing_sections()).
  */
 #}
 {% set title = node.label %}
@@ -25,12 +27,5 @@
   {% include 'pimlico:story_intro' with { meta, caption: node.field_caption.value|default(''), image: content.field_image } only %}
   <div class="story-body">{{ content.field_sections }}</div>
   {% include 'pimlico:story_credits' with { credits: node.field_credits.value|default(''), links } only %}
-  {% include 'pimlico:card_grid' with {
-    attributes: create_attribute({ class: ['card-grid--tint'] }),
-    heading: 'Also on this street'|t,
-    text: 'Continue through the brands and stories linked to this place.'|t,
-    link_text: 'All news'|t,
-    link_url: path('view.news.page_news'),
-    items: node.field_related.isEmpty() ? drupal_view('news', 'block_related', node.field_news_category.target_id|default('all'), node.id) : content.field_related,
-  } only %}
+  {{ closing_sections }}
 </article>

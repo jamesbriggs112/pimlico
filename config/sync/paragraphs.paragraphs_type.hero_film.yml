@@ -4,6 +4,12 @@ status: true
 dependencies:
   content:
     - 'file:file:fe7365c3-d1d5-4488-bfdf-e5b0191a99d0'
+  module:
+    - paragraphs_ee
+third_party_settings:
+  paragraphs_ee:
+    paragraphs_categories:
+      banners: banners
 id: hero_film
 label: 'Hero film'
 icon_uuid: fe7365c3-d1d5-4488-bfdf-e5b0191a99d0

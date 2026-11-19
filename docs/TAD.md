@@ -68,7 +68,7 @@ The site is built on **Drupal 11** (11.4) and PHP 8.4, starting from Four's `fou
 
 The site is hosted on AWS Elastic Beanstalk. The database is held in a managed relational database service and uploaded media in shared file storage, so the application servers hold no state and can scale.
 
-Within the CMS, pages are built from a palette of **sections** (Paragraphs) that editors arrange in any order: heroes, introductions, cards, banners, galleries, info rows, the street map, forms and so on. Brands and stories are **structured content types** with fixed fields, so every brand page and story follows the design.
+Within the CMS, pages are built from a palette of **sections** (Paragraphs) that editors arrange in any order: heroes, introductions, cards, banners, galleries, info rows, the street map, forms and so on. Brands and stories are **structured content types**: fixed fields for the hero, details and "Find the showroom", so every brand page and story follows the design, with a body of sections limited to the ones that suit each type. **Auto sections** (Similar brands, Related) fill themselves from the page they're on (ADR-0007).
 
 The front end is one custom theme, `pimlico`. Every visual pattern is a Single Directory Component (SDC), documented in Storybook, and built with Vite. Drupal creates the responsive image variants and serves them as WebP.
 
@@ -178,17 +178,17 @@ Search API with the database backend (Solr isn't needed at this content volume);
 ### Brand
 
 - **Brand:** title, category, summary, hero image.
-- **Sections:** optional and in any order: Introduction, Quote, Gallery, Info rows, Text, Image and Video. The design's set is About ("About the house" Introduction), Quote, Gallery ("Inside the showroom", with the photography credit as caption) and Specialisms ("What you'll find" Info rows on linen). These were fixed fields until November 2026; `pimlico_brands_post_update_brand_sections` moved every Brand's content into sections.
+- **Sections:** optional and in any order: Introduction, Text, Image, Image gallery, Video, Quote, Info rows and Similar brands (ADR-0007). The design's set is About ("About the house" Introduction), Quote, Gallery ("Inside the showroom", with the photography credit as caption), Specialisms ("What you'll find" Info rows on linen) and Similar brands. These were fixed fields until November 2026; `pimlico_brands_post_update_brand_sections` moved every Brand's content into sections.
 - **Find the showroom** (fixed, after the sections): address, opening hours, trade note, email (shown as Contact) and website, with "Get directions" and "Visit the website". Phone isn't shown; it feeds the LocalBusiness schema.
 - **Map:** Units, tenancy status, display on map, short map label.
-- **Similar brands:** up to three, otherwise three from the same category.
+- **Similar brands:** an auto section (`similar_brands`) showing the Brand's picked Similar brands (`field_similar_brands`, up to three), otherwise three from the same category. As the last section it prints after Find the showroom, as in Figma.
 - **SEO:** title, social media title, description, image.
 
 ### Article
 
 - **Story:** title, news category, summary, lead image and caption, author, reading time, credits, featured flag, featured Brand.
-- **Sections:** Text, Image, Quote, Gallery, Video and other sections.
-- **Related stories:** chosen, otherwise from the same category.
+- **Sections:** Text (headings and paragraphs), Image (with its caption), Image gallery, Video, Quote and Related, in any order (ADR-0007).
+- **Related stories:** an auto section (`related`, "Also on this street") showing the picked Related stories (`field_related`), otherwise the latest from the same category. As the last section it prints after the credits.
 - **SEO:** the shared set.
 
 ### Press article
@@ -196,12 +196,12 @@ Search API with the database backend (Solr isn't needed at this content volume);
 As Article, plus:
 
 - **Coverage:** publication and its logo (optional; shown 240 × 40 on desktop and 180 × 30 on mobile, scaled to fit), publication date, journalist, link to the original.
-- **Related brands** instead of related stories: `field_related` on Press article targets Brands only (Figma shows Brand cards, no stories or events). Empty, it shows three random Brands from the street (`brands:block_similar` with no category), since the coverage is about the street as a whole.
+- **Related brands** instead of related stories: `field_related` on Press article targets Brands only (Figma shows Brand cards, no stories or events). The Related section shows them under "Discover the places in the story"; empty, it shows three random Brands from the street (`brands:block_similar` with no category), since the coverage is about the street as a whole.
 
 ### Page
 
 - **Page:** title and summary.
-- **Sections:** Hero film, Split hero, Introduction, Cards, Feature banner, Visit banner, Info rows, Info band, Split text, Rich text, Image, Gallery, Quote, Video, Street map, Policy text, Next step, Contact form.
+- **Sections:** Hero film, Split hero, Introduction, Cards, Feature banner, Visit banner, Info rows, Info band, Split text, Text, Image, Gallery, Quote, Video, Street map, Policy text, Next step, Contact form. Not the auto sections, which need a Brand or Story to fill themselves from.
 - **Background** (`field_background`, shared by Cards, Info rows and Split text): White, Linen or Dark. Dark adds the theme's `is-inverse` class (the `inverseSection` mixin) in `pimlico_preprocess_paragraph()`, so every section with the field turns dark the same way; white and linen map to each component's tint. The design's dark sections are Visit "Getting here", Contact "Enquiry routes" and About "Area story", on desktop and mobile.
 - **Hero film:** the Image is required and the Film optional. Without a film the hero is the image alone and has no Pause film control.
 - **Cards** can show Brand intros (`field_show_summaries`): Brands then render in the `teaser_summary` view mode, the card with the Brand's summary (Newson's Yard "Resident brands").
@@ -215,7 +215,7 @@ A shopfront that Brands trade from: name, address, area and its building(s) on t
 
 | Vocabulary | Terms | Used for |
 |---|---|---|
-| Brand category | Interiors, Antiques & art, Food & Drink (with Pubs and restaurants, Cafés); editors add more | The filters on Brands (every top-level term except Food & Drink, in weight order, as `?category=<term ID>`), Dine (Pubs and restaurants, Cafés) and the street map (every top-level term). A Brand card's label is the Brand's own category (Cafés, not Food & Drink). Editors choose from the categories the site shows; a category with sub-categories, such as Food & Drink, is a heading, not a choice. |
+| Brand category | Interiors, Antiques & art, Food & Drink (with Pubs and restaurants, Cafés); editors add more | The filters on Brands (every top-level term except Food & Drink, in weight order, as `?category=<term ID>`), Dine (Pubs and restaurants, Cafés) and the street map (the Brands filters, then the Dine ones: never Food & Drink as one bucket; `BrandGroups::mapCategories()`). A Brand card's label is the Brand's own category (Cafés, not Food & Drink). Editors choose from the categories the site shows; a category with sub-categories, such as Food & Drink, is a heading, not a choice. |
 | News category | Interiors, Antiques & art, Food & drink, Makers, The street | The article page's meta line and related stories. Story cards show the story's type (News or Press), not its category. |
 | Area | Pimlico Road, Newson's Yard, Ebury Street, Bourne Street, Holbein Place | Grouping Units |
 
@@ -365,7 +365,7 @@ These follow the lead developer's reference project (Sheffield Chamber of Commer
 | Theme | short client machine name | `pimlico` |
 | Client modules | `pimlico_*`, `package: Pimlico` | `pimlico_map`, `pimlico_brands`, `pimlico_search`, `pimlico_migrate`, `pimlico_admin` |
 | Node bundles | snake_case singular nouns | `brand`, `article`, `press_article`, `page` |
-| Paragraph types | snake_case. New types are named for the SDC they render. Some existing types keep other IDs: from the skeleton, `cta` renders `next_step`, `content_grid` renders `card_grid` and `text_wysiwyg_` renders `rich_text`; also `image` renders `figure`, `split_text` renders `split_section`, `video` renders `media_video` and `webform` renders `form_section` | `hero_film`, `street_map`, `info_band`, `policy_content` |
+| Paragraph types | snake_case. New types are named for the SDC they render. Some existing types keep other IDs: from the skeleton, `cta` renders `next_step`, `content_grid` renders `card_grid` and `text_wysiwyg_` renders `rich_text`; also `image` renders `figure`, `split_text` renders `split_section`, `video` renders `media_video` and `webform` renders `form_section`; the auto sections `similar_brands` and `related` render `card_grid` | `hero_film`, `street_map`, `info_band`, `policy_content` |
 | Vocabularies | `{context}_{type}` | `brand_category`, `news_category`, `area` |
 | Fields | `field_` + snake_case, no bundle prefix, storage reused across bundles | `field_heading`, `field_text`, `field_image`, `field_sections` |
 | Views | plural nouns | `brands`, `news`, `search` |
@@ -435,20 +435,21 @@ The admin theme is Gin, branded by the `pimlico_admin` module (Fraunces page tit
 
 | Module | Responsibility |
 |---|---|
-| `pimlico_map` | The Unit entity, the brand feed at `/api/map/brands`, the map on Brand pages, the Unit map picker, and CloudFront purging of the feed. |
+| `pimlico_map` | The Unit entity, the brand feed at `/api/map/brands`, the map on Brand pages, the Unit map picker, and CloudFront purging of the feed. Depends on `pimlico_brands` for the street map categories. |
 | `pimlico_brands` | The Brands and Dine category filters (a contextual filter, so pager links keep `?category=`), card labels, the Brand form's category list grouped as Brands and Dine, Brand page breadcrumbs (`BrandBreadcrumbBuilder`: Home / Brands or Dine / category / Brand) and the post-update that moved Brand pages to sections. `BrandGroups` makes every top-level Brand category a Brands filter except Food & Drink, which it finds by UUID (Structure Sync keeps UUIDs the same on every environment). Filters are keyed by term ID, as Dine's are, so renaming a category keeps its links; term IDs differ between environments, so a link to a filter is made on the environment it's used on. Deleting and re-creating Food & Drink breaks Dine. |
 | `pimlico_search` | Sorts indexed content into search groups (Brands, Dine, News, Press), serves `/llms.txt`, adds the sitemap and `llms.txt` lines to `robots.txt`, and keeps the Home node and component test pages out of the sitemap. Depends on `pimlico_brands`. |
+| `pimlico_sections` | The auto sections (ADR-0007): `AutoSections` lists which section fills itself on which content type (Similar brands on Brands, Related on Articles and Press articles) and adds it to a new Brand or Story on its first save. The theme's `includes/auto_sections.inc` renders them from the host node and prints a closing one after the page's fixed parts. |
 | `pimlico_migrate` | Imports Brands, Units and photos from the map project's data and belgraviavillage.com. Uninstalled after launch. |
-| `pimlico_admin` | CMS branding on top of Gin, deploy hooks (`pimlico_admin.deploy.php`) for one-off changes to the site's pages, such as the design round 3 dark sections and the Visit page without "Find Pimlico Road", and post-updates (`pimlico_admin.post_update.php`) for content that must go before a config import, such as the Podcast episodes. |
+| `pimlico_admin` | CMS branding on top of Gin, deploy hooks (`pimlico_admin.deploy.php`) for one-off changes to the site's pages, such as the design round 3 dark sections, the Visit page without "Find Pimlico Road" and the auto sections added to every Brand and Story, and post-updates (`pimlico_admin.post_update.php`) for content that must go before a config import, such as the Podcast episodes. |
 
-Each has Kernel tests where it has logic: `pimlico_map` (2), `pimlico_brands` (1) and `pimlico_search` (1). The theme has one more (`tests/src/Kernel/ComponentsThemeTest.php`).
+Each has Kernel tests where it has logic: `pimlico_map` (2), `pimlico_brands` (1), `pimlico_search` (1) and `pimlico_sections` (1). The theme has one more (`tests/src/Kernel/ComponentsThemeTest.php`).
 
 ## Appendix D: The street map
 
 The map project (`pimlico-map`) is the source of truth for the map component (`pimlico-map.js`) and the base map (`pimlico-map.json`, built from OpenStreetMap). Both are copied unchanged into `pimlico_map/assets`, with the version number in the library definition; the version is also the base map's cache-busting `?v=`.
 
-- **Data:** a Brand links to one or more Units, and each Unit to one or more Map Buildings. `/api/map/brands` lists published, active Brands shown on the map, with their buildings and top-level category, in the shape the component expects. It is cached by tag and purged from CloudFront on save.
-- **Visit page:** the Street map section shows the map with the category filter, search and "show my location".
+- **Data:** a Brand links to one or more Units, and each Unit to one or more Map Buildings. `/api/map/brands` lists published, active Brands shown on the map, with their buildings and street map category, in the shape the component expects. A Brand's map category comes from `BrandGroups::mapCategoryFor()`: a Brands category, or anything below one, gives its top-level term (Interiors); a Food & Drink sub-category, or anything below one, gives that sub-category (Cafés). A Brand filed under the Food & Drink heading itself has none and shows only under All. It is cached by tag and purged from CloudFront when a Brand, Unit or Brand Category is saved.
+- **Visit page:** the Street map section shows the map with the category filter, search and "show my location". The filter is All, the Brands page filters, then the Dine filters (e.g. All · Interiors · Antiques & art · Pubs and restaurants · Cafés), from the same `BrandGroups` methods as the listings, so the two can't drift. It is cached with `taxonomy_term_list:brand_category`, so categories editors add, rename or reorder appear straight away. Every tenancy is brand yellow, as in Figma: the design has no per-category colours or legend, and the map component (ADR-0001) has no per-category fill, so colouring by category would be a map project change.
 - **Brand pages:** the map is zoomed to the Brand, beside the showroom details.
 - **Editors:** the Unit form shows the map in pick mode; clicking a building fills its ID.
 - **QA:** `scripts/map-qa.sh` runs the map project's 96 browser checks against the Drupal pages.
@@ -466,3 +467,4 @@ Recorded in `docs/adr/`:
 - `0004-model-each-kind-of-story-as-its-own-bundle.md`
 - `0005-serve-the-tenancy-feed-from-a-cacheable-controller.md`
 - `0006-build-every-visual-pattern-as-a-single-directory-component.md`
+- `0007-build-page-bodies-from-sections-with-auto-sections.md`

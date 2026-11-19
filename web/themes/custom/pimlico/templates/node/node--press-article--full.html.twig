@@ -2,12 +2,11 @@
 /**
  * @file
  * Press article (Figma T12): title band, publication block, body sections,
- * credits, then related Brands. The Source band was removed on 19 November
+ * credits, then closing_sections: the Related section ("Discover the
+ * places in the story") when it is the last section (see
+ * _pimlico_closing_sections()). The Source band was removed on 19 November
  * 2026 at the client's request. The source link field is kept for reference
  * but no longer shown.
- * Related Brands are the editor's picks, or else three Brands from the
- * street (the coverage is about the street, so any Brand there is a fair
- * next step; Figma shows Brand cards only).
  */
 #}
 {% set title = node.label %}
@@ -32,12 +31,5 @@
   } only %}
   <div class="story-body story-body--ruled">{{ content.field_sections }}</div>
   {% include 'pimlico:story_credits' with { credits: node.field_credits.value|default('') } only %}
-  {% include 'pimlico:card_grid' with {
-    attributes: create_attribute({ class: ['card-grid--tint'] }),
-    heading: 'Discover the places in the story'|t,
-    text: 'Brands connected to this story.'|t,
-    link_text: 'All news'|t,
-    link_url: path('view.news.page_news'),
-    items: node.field_related.isEmpty() ? drupal_view('brands', 'block_similar', 'all', 'all') : content.field_related,
-  } only %}
+  {{ closing_sections }}
 </article>

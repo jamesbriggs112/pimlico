@@ -4,6 +4,12 @@ status: true
 dependencies:
   content:
     - 'file:file:7eaf7c6f-1da6-4792-b0b0-fdb001fdeb9d'
+  module:
+    - paragraphs_ee
+third_party_settings:
+  paragraphs_ee:
+    paragraphs_categories:
+      banners: banners
 id: hero_split
 label: 'Hero split'
 icon_uuid: 7eaf7c6f-1da6-4792-b0b0-fdb001fdeb9d

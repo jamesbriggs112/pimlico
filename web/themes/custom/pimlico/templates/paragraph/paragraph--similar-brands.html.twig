@@ -1,0 +1,18 @@
+{#
+/**
+ * @file
+ * Similar brands auto section → pimlico:card_grid. The Brand's picked
+ * Similar brands, or three others in its category. host comes from
+ * pimlico_preprocess_paragraph__similar_brands(); without one (the section
+ * isn't on a Brand) nothing is printed.
+ */
+#}
+{% if host %}
+  {% include 'pimlico:card_grid' with {
+    attributes,
+    heading: paragraph.field_heading.value|default('Similar brands'|t),
+    link_text: 'All brands'|t,
+    link_url: path('view.brands.page_brands'),
+    items: host.picks ?: drupal_view('brands', 'block_similar', host.category, host.id),
+  } only %}
+{% endif %}

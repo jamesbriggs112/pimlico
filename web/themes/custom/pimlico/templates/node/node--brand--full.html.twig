@@ -4,10 +4,10 @@
  * Brand page (Figma T03): the split hero, then the editor's sections
  * (About, Quote, Gallery, What you'll find and others, in any order), then
  * the fixed "Find the showroom" (with the street map when the Brand has
- * Units) and Similar brands.
+ * Units), then closing_sections: the Similar brands section when it is the
+ * last section (see _pimlico_closing_sections()).
  */
 #}
-{% set category = node.field_brand_category.entity %}
 {% set website = node.field_website.0 ? node.field_website.0.url.toString() : '' %}
 {% set postal = node.field_address.0 %}
 {% set address = postal ? [postal.address_line1, postal.address_line2, postal.locality, postal.postal_code]|filter(line => line)|join(', ') : '' %}
@@ -62,14 +62,5 @@
   {# No map: still render the (empty) field so its Unit cache tags bubble. #}
   {% if content.showroom_map['#theme'] is not defined %}{{ content.showroom_map }}{% endif %}
 
-  {# Similar brands: picked, or others in the same category. #}
-  {% set similar = node.field_similar_brands.isEmpty()
-    ? drupal_view('brands', 'block_similar', category ? category.id : 'all', node.id)
-    : content.field_similar_brands %}
-  {% include 'pimlico:card_grid' with {
-    heading: 'Similar brands'|t,
-    link_text: 'All brands'|t,
-    link_url: path('view.brands.page_brands'),
-    items: similar,
-  } only %}
+  {{ closing_sections }}
 </article>

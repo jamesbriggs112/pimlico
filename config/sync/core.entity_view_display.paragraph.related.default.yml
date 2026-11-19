@@ -1,0 +1,15 @@
+uuid: 5f1ddbbe-086f-488d-b3bc-533f18102c2e
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.paragraph.related.field_heading
+    - paragraphs.paragraphs_type.related
+id: paragraph.related.default
+targetEntityType: paragraph
+bundle: related
+mode: default
+content: {  }
+hidden:
+  field_heading: true
+  search_api_excerpt: true

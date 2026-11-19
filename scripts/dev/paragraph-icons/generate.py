@@ -80,7 +80,28 @@ def play(cx, cy, r=14, colour=WHITE):
             f'{cx - r * 0.3},{cy + r * 0.42}" fill="{colour}"/>')
 
 
+def auto_mark(cx, cy, r=9, colour=PUMPKIN, ground_fill=LINEN):
+    """Fills itself: a circular arrow, drawn as a ring with a gap at the top
+    right and an arrowhead (filled shapes only, so every renderer draws it)."""
+    return (f'<circle cx="{cx}" cy="{cy}" r="{r}" fill="{colour}"/>'
+            f'<circle cx="{cx}" cy="{cy}" r="{r - 2.5}" fill="{ground_fill}"/>'
+            + rect(cx, cy - r - 1, r + 1, r + 1, ground_fill)
+            + f'<polygon points="{cx - 1},{cy - r - 4.5} {cx + 6},{cy - r + 1.25} {cx - 1},{cy - r + 7}" fill="{colour}"/>')
+
+
 ICONS = {
+
+    # Auto sections: "Similar brands" over three portrait Brand cards, with
+    # the fills-itself mark.
+    'similar_brands': ground() + heading(16, 16, 92) + auto_mark(214, 22) + ''.join(
+        photo(16 + i * 72, 34, 64, 70) + text(16 + i * 72, 110, [28], fill=PUMPKIN, opacity=1, h=3)
+        + heading(16 + i * 72, 118, 48, h=5) for i in range(3)),
+
+    # Related: heading and intro over three cards on linen, with the
+    # fills-itself mark.
+    'related': ground() + heading(16, 14, 92) + text(16, 28, [120]) + auto_mark(214, 22) + ''.join(
+        photo(16 + i * 72, 40, 64, 62) + heading(16 + i * 72, 108, 48, h=5)
+        + text(16 + i * 72, 118, [60, 40]) for i in range(3)),
     # Section heading over three story cards.
     'content_grid': ground() + heading(16, 16, 72) + ''.join(
         photo(16 + i * 72, 34, 64, 62) + heading(16 + i * 72, 102, 48, h=5)

@@ -1,0 +1,10 @@
+uuid: 16082bcf-b884-4702-8bdd-096469a96be0
+langcode: en
+status: true
+dependencies: {  }
+id: automatic
+label: Automatic
+description:
+  value: 'Sections that fill themselves from the page they are on.'
+  format: restricted_html
+weight: 0

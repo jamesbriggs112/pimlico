@@ -4,6 +4,12 @@ status: true
 dependencies:
   content:
     - 'file:file:884466e2-832d-4d6f-a77c-08d456780d8c'
+  module:
+    - paragraphs_ee
+third_party_settings:
+  paragraphs_ee:
+    paragraphs_categories:
+      banners: banners
 id: feature_banner
 label: 'Feature banner'
 icon_uuid: 884466e2-832d-4d6f-a77c-08d456780d8c

@@ -1,0 +1,15 @@
+uuid: 635e28f9-8ed7-4c2c-af0d-c778bbb36093
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.paragraph.similar_brands.field_heading
+    - paragraphs.paragraphs_type.similar_brands
+id: paragraph.similar_brands.default
+targetEntityType: paragraph
+bundle: similar_brands
+mode: default
+content: {  }
+hidden:
+  field_heading: true
+  search_api_excerpt: true

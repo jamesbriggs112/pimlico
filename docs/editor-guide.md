@@ -13,10 +13,12 @@ How to look after the Pimlico Road website. Log in at `/user/login`.
   - a new Dine tag (say "Bakeries"): parent **Food & Drink**. It appears as a Dine filter and under **Dine** in the Brand's category list.
   - a new Brands category (say "Lighting"): parent **&lt;root&gt;**. It appears as a Brands filter and under **Brands** in the Brand's category list.
 
+  The street map on Visit has the same filters: the Brands ones, then the Dine ones (a Brand under Lamps, below Lighting, shows under Lighting; one tagged Cafés under Cafés). A new tag appears there too, as soon as it is saved.
+
   Filters appear straight away, in the order of the list: drag terms to reorder them, and rename freely. Give a Brand the new tag to show it on its card. Don't delete and re-create Food & Drink: Dine would stop working. Deleting a category with Brands in it leaves those Brands with no category, so move them first.
-- **Sections** build the page between the hero and "Find the showroom". Each is optional, and you can drag them into any order. The usual set follows the design: **Introduction** ("About the house": eyebrow, heading, text), **Quote**, **Gallery** ("Inside the showroom", with the photography credit as its caption) and **Info rows** ("Specialisms" eyebrow, "What you'll find" heading, linen background, one row per specialism). **Text**, **Image** and **Video** sections can be added too.
+- **Sections** build the page between the hero and "Find the showroom" (see [Adding sections](#adding-sections)). Each is optional, and you can drag them into any order. The usual set follows the design: **Introduction** ("About the house": eyebrow, heading, text), **Quote**, **Image gallery** ("Inside the showroom", with the photography credit as its caption), **Info rows** ("Specialisms" eyebrow, "What you'll find" heading, linen background, one row per specialism) and **Similar brands**. Add **Text** (a heading, paragraphs or both), **Image** and **Video** sections anywhere.
 - **Address** (street and postcode: London and the United Kingdom are added automatically), **Opening hours** (one line per row, e.g. "Monday to Friday: 10am to 6pm"), **Trade, Email and Website** fill the fixed "Find the showroom" section (rows Address, Opening hours, Trade and Contact, and the "Get directions" and "Visit the website" buttons). **Phone** isn't shown on the page; search engines read it from the page's structured data.
-- **Similar brands**: choose up to three, or leave empty to show three from the same category.
+- **Similar brands**: choose up to three, or leave empty to show three from the same category. They appear in the page's **Similar brands** section (see [Sections that fill themselves](#sections-that-fill-themselves)).
 
 ### Putting a Brand on the map
 
@@ -38,14 +40,41 @@ If a building isn't on the map, choose the nearest one and ask the developers to
 **Content » Add content » Article or Press article.**
 
 - **News category, Summary and Image** are shared. The News category shows on the article page and picks related stories; story cards (on `/news`, the home page and related stories) show the type and date instead, such as "News · 4 Nov" or "Press · 12 Nov". **Featured** puts the story at the top of `/news` (only one at a time is shown, the newest featured one).
-- **Sections** are the body: add Text, Image, Quote and Gallery sections in any order.
-- **Related stories** (Articles): choose the stories to show at the foot of the page, or leave empty to show stories in the same category.
-- **Related brands** (Press articles): choose up to three Brands for "Discover the places in the story", or leave empty to show three Brands from the street, picked at random.
+- **Sections** are the body: add **Text** (headings and paragraphs), **Image** (one photo with its caption), **Image gallery**, **Video** and **Quote** sections in any order (see [Adding sections](#adding-sections)). Every Story ends with a **Related** section.
+- **Related stories** (Articles): choose the stories the Related section shows ("Also on this street"), or leave empty to show stories in the same category.
+- **Related brands** (Press articles): choose up to three Brands for the Related section ("Discover the places in the story"), or leave empty to show three Brands from the street, picked at random.
 - **Press articles**: add the publication, its logo, the date, the journalist and the link to the original coverage. The link is kept for reference only; it isn't shown on the page.
+
+## Adding sections
+
+Brands, Stories and Pages are built from **Sections**. Under **Sections** on the edit form:
+
+1. Choose **Add section** at the end, or the **+** between two sections to add one there.
+2. Pick a section in the dialog. Each has a picture of its layout and a line saying what it's for; only the sections that suit the page you're editing are offered.
+3. Fill it in, then drag the handle on the left to move it. **Remove** is in the section's menu.
+
+The everyday sections, on Brands, Stories and Pages alike:
+
+| Section | Use it for |
+|---|---|
+| Text | Headings and paragraphs. For a heading on its own, fill in only **Heading**. Inside the text, use **Heading 2** for a subheading and **Heading 3** below that. |
+| Image | One photograph with an optional caption. On Pages and Brands, **Layout: Full width** shows it the width of the page. |
+| Image gallery | Several photographs in rows (a swipe gallery on phones), with an optional heading and caption |
+| Video | A YouTube or Vimeo link, or an uploaded film (see [Images and film](#images-and-film)) |
+| Quote | A pull quote with the speaker's name and role |
+
+### Sections that fill themselves
+
+Two sections have nothing to fill in: they fill themselves from the page they're on. They're under **Automatic** in the dialog.
+
+- **Similar brands** (Brands): the Brands chosen under **Similar brands** on the Brand, or three others in its category.
+- **Related** (Articles and Press articles): the **Related stories** or **Related brands** chosen on the Story, or else stories in the same category (Articles) or three Brands from the street (Press articles).
+
+Every new Brand and Story gets one, at the end of its sections, when it's first saved. As the last section it appears where the design puts it: below "Find the showroom" on a Brand and below the credits on a Story. Drag it further up to show it earlier, give it a **Heading** to replace the usual one ("Similar brands", "Also on this street" or "Discover the places in the story"), or remove it to show no cards.
 
 ## Pages
 
-Pages are built from **Sections**. The ones made for this site:
+The sections made for Pages:
 
 | Section | Use it for |
 |---|---|
