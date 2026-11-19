@@ -3,3 +3,10 @@ base:
   css:
     theme:
       src/sass/styles.scss: {}
+
+scroll-track:
+  version: VERSION
+  js:
+    src/js/scroll-track.js: {}
+  dependencies:
+    - core/drupal

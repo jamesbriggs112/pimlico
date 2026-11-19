@@ -2,6 +2,8 @@
 
 Imports the 47 Brands and their Units from the map project's data.
 
+Run the `php scripts/...` commands from this module's directory and the `drush` commands from the project root. The Area and Brand category terms must exist first (`vendor/bin/drush it --choice=safe`).
+
 1. Rebuild the source if the map project's data changed:
    `php scripts/build-source.php ../../../../../pimlico-map`
    (writes `data/brands.json`; check the diff).
@@ -13,7 +15,7 @@ Imports the 47 Brands and their Units from the map project's data.
 5. Brand photos: `php scripts/fetch-photos.php` lists each Brand's photos
    from its belgraviavillage.com page (data/photos.json; the client's own
    site), then
-   `drush php:script modules/custom/pimlico_migrate/scripts/import-photos.php`
+   `drush php:script web/modules/custom/pimlico_migrate/scripts/import-photos.php`
    downloads them (1920px, saved as JPEG), adds them to the Media library
    and sets each Brand's main image and gallery. Alt text is the Brand's
    name: editors should describe each photo.

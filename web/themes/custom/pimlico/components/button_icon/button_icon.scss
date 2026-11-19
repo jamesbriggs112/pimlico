@@ -19,8 +19,8 @@
   color: var(--_color);
   cursor: pointer;
   transition:
-    background-color 0.3s ease-out,
-    color 0.3s ease-out;
+    background-color var(--motion-duration) var(--motion-easing),
+    color var(--motion-duration) var(--motion-easing);
 
   &:hover {
     background-color: var(--_hover-bg);

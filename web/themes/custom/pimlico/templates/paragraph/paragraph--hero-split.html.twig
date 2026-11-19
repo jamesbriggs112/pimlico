@@ -4,10 +4,7 @@
  * Hero split paragraph → pimlico:hero_split, with the page breadcrumb.
  */
 #}
-{% set links = [] %}
-{% for item in paragraph.field_links %}
-  {% set links = links|merge([{ text: item.title, url: item.url.toString() }]) %}
-{% endfor %}
+{% set links = paragraph.field_links|map(item => { text: item.title, url: item.url.toString() }) %}
 {% include 'pimlico:hero_split' with {
   attributes,
   title: paragraph.field_heading.value|default(''),

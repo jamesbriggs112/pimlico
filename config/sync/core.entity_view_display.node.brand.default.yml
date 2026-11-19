@@ -33,6 +33,7 @@ dependencies:
     - address
     - entity_reference_revisions
     - fences
+    - telephone
     - text
     - user
 id: node.brand.default
@@ -71,6 +72,22 @@ content:
         fences_label_tag: ''
         fences_label_classes: ''
     weight: 6
+    region: content
+  field_email:
+    type: email_mailto
+    label: hidden
+    settings: {  }
+    third_party_settings:
+      fences:
+        fences_field_tag: div
+        fences_field_classes: ''
+        fences_field_items_wrapper_tag: none
+        fences_field_items_wrapper_classes: ''
+        fences_field_item_tag: none
+        fences_field_item_classes: ''
+        fences_label_tag: ''
+        fences_label_classes: ''
+    weight: 7
     region: content
   field_gallery:
     type: entity_reference_entity_view
@@ -114,6 +131,23 @@ content:
     settings: {  }
     third_party_settings: {  }
     weight: 5
+    region: content
+  field_phone:
+    type: telephone_link
+    label: hidden
+    settings:
+      title: ''
+    third_party_settings:
+      fences:
+        fences_field_tag: div
+        fences_field_classes: ''
+        fences_field_items_wrapper_tag: none
+        fences_field_items_wrapper_classes: ''
+        fences_field_item_tag: none
+        fences_field_item_classes: ''
+        fences_label_tag: ''
+        fences_label_classes: ''
+    weight: 8
     region: content
   field_quote:
     type: entity_reference_revisions_entity_view
@@ -180,10 +214,8 @@ hidden:
   field_brand_category: true
   field_caption: true
   field_display_on_map: true
-  field_email: true
   field_heading: true
   field_map_label: true
-  field_phone: true
   field_seo_description: true
   field_seo_image: true
   field_seo_social_media_title: true

@@ -28,8 +28,13 @@ final class BrandGroupsTest extends KernelTestBase {
     $this->installEntitySchema('taxonomy_term');
     Vocabulary::create(['vid' => 'brand_category', 'name' => 'Brand category'])->save();
     $terms = [];
-    foreach (['Interiors', 'Antiques & art', 'Food & Drink'] as $name) {
-      $terms[$name] = Term::create(['vid' => 'brand_category', 'name' => $name]);
+    $uuids = [
+      'Interiors' => BrandGroups::INTERIORS,
+      'Antiques & art' => BrandGroups::ANTIQUES_AND_ART,
+      'Food & Drink' => BrandGroups::FOOD_AND_DRINK,
+    ];
+    foreach ($uuids as $name => $uuid) {
+      $terms[$name] = Term::create(['vid' => 'brand_category', 'name' => $name, 'uuid' => $uuid]);
       $terms[$name]->save();
     }
     $cafes = Term::create(['vid' => 'brand_category', 'name' => 'Cafés', 'parent' => $terms['Food & Drink']->id()]);
@@ -45,6 +50,28 @@ final class BrandGroupsTest extends KernelTestBase {
     $this->assertSame('Antiques & art', $groups->labelFor($terms['Antiques & art']));
     $this->assertNull($groups->groupFor($cafes));
     $this->assertSame('Cafés', $groups->labelFor($cafes));
+
+    $food = (int) $terms['Food & Drink']->id();
+    $this->assertSame([$food, (int) $cafes->id()], $groups->dineTermIds());
+    $this->assertTrue($groups->isDine($cafes));
+    $this->assertFalse($groups->isDine($terms['Interiors']));
+  }
+
+  /**
+   * Renaming a category keeps its filter and its place on Dine.
+   */
+  public function testRenamedCategories(): void {
+    $this->installEntitySchema('taxonomy_term');
+    Vocabulary::create(['vid' => 'brand_category', 'name' => 'Brand category'])->save();
+    $interiors = Term::create(['vid' => 'brand_category', 'name' => 'Home', 'uuid' => BrandGroups::INTERIORS]);
+    $interiors->save();
+    $food = Term::create(['vid' => 'brand_category', 'name' => 'Eat & drink', 'uuid' => BrandGroups::FOOD_AND_DRINK]);
+    $food->save();
+
+    $groups = $this->container->get(BrandGroups::class);
+    $this->assertSame(['interiors' => 'Home'], $groups->labels());
+    $this->assertSame('interiors', $groups->groupFor($interiors));
+    $this->assertTrue($groups->isDine($food));
   }
 
 }

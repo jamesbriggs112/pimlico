@@ -26,9 +26,12 @@ props:
       items:
         type: object
         properties:
-          text: { type: string }
-          url: { type: string }
-          external: { type: boolean }
+          text:
+            type: string
+          url:
+            type: string
+          external:
+            type: boolean
     media_inset:
       type: boolean
       title: Inset photo

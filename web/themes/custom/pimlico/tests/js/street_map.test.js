@@ -10,7 +10,7 @@ describe('street map filter', () => {
   beforeAll(async () => {
     behaviour = await loadBehaviour(
       '../../components/street_map/street_map.js',
-      'streetMapFilter'
+      'streetMap'
     );
   });
 

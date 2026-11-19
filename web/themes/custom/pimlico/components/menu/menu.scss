@@ -8,6 +8,6 @@
   &--inline {
     display: flex;
     flex-wrap: wrap;
-    gap: #{to.rem(4px)} #{to.rem(28px)};
+    gap: var(--space-4) #{to.rem(28px)};
   }
 }

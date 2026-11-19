@@ -1,14 +1,3 @@
-#
-View clean
+# View clean
 
-This is some default content for the README. Change this to the appropriate
-content.
-
-## Usage
-
-Here you should describe how/when to use this component. This information may be
-for developers or for editors, depending on the component type.
-
-## Additional information
-
-Some extra info about the component.
+The default Views layout, used by `templates/views/views-view.html.twig`: header, exposed filters, rows in a three-column `grid`, pager, more link and footer. Listings with a design of their own have their own `views-view--*` templates.

@@ -8,3 +8,5 @@ A single bundle with a type switch was rejected because each kind has fields the
 
 - Shared fields reuse one storage each, following the project's `field_` naming without bundle prefixes.
 - A fourth kind of Story is a new bundle, plus adding it to the News view's bundle filter.
+
+**Update (2026-11-13):** The shared banner and teaser fields were renamed in phase 4: Stories now share `field_image` and `field_summary`. The decision is unchanged.

@@ -9,15 +9,15 @@ use Drupal\field\Entity\FieldStorageConfig;
 use Drupal\KernelTests\KernelTestBase;
 use Drupal\node\Entity\Node;
 use Drupal\node\Entity\NodeType;
-use Drupal\pimlico_search\Plugin\search_api\processor\SearchGroup;
+use Drupal\pimlico_brands\BrandGroups;
 use Drupal\taxonomy\Entity\Term;
 use Drupal\taxonomy\Entity\Vocabulary;
+use PHPUnit\Framework\Attributes\Group;
 
 /**
  * Tests which search group each kind of content lands in.
- *
- * @group pimlico_search
  */
+#[Group('pimlico_search')]
 final class SearchGroupTest extends KernelTestBase {
 
   /**
@@ -25,7 +25,7 @@ final class SearchGroupTest extends KernelTestBase {
    */
   protected static $modules = [
     'system', 'path_alias', 'user', 'node', 'field', 'text', 'filter', 'taxonomy',
-    'search_api', 'pimlico_search',
+    'views', 'search_api', 'pimlico_brands', 'pimlico_search',
   ];
 
   /**
@@ -54,13 +54,14 @@ final class SearchGroupTest extends KernelTestBase {
    * Brands split into brands and dine; stories into news and press.
    */
   public function testGroups(): void {
-    $food = Term::create(['vid' => 'brand_category', 'name' => SearchGroup::DINE_CATEGORY]);
+    $food = Term::create(['vid' => 'brand_category', 'name' => 'Food & Drink', 'uuid' => BrandGroups::FOOD_AND_DRINK]);
     $food->save();
     $cafes = Term::create(['vid' => 'brand_category', 'name' => 'Cafés', 'parent' => $food->id()]);
     $cafes->save();
     $lighting = Term::create(['vid' => 'brand_category', 'name' => 'Lighting']);
     $lighting->save();
 
+    $processor = $this->container->get('plugin.manager.search_api.processor')->createInstance('pimlico_search_group');
     $cases = [
       'brands' => Node::create(['type' => 'brand', 'title' => 'A', 'field_brand_category' => $lighting]),
       'dine' => Node::create(['type' => 'brand', 'title' => 'B', 'field_brand_category' => $food]),
@@ -68,13 +69,13 @@ final class SearchGroupTest extends KernelTestBase {
       'press' => Node::create(['type' => 'press_article', 'title' => 'E']),
     ];
     foreach ($cases as $expected => $node) {
-      $this->assertSame($expected, SearchGroup::groupFor($node), $node->label());
+      $this->assertSame($expected, $processor->groupFor($node), $node->label());
     }
     $child = Node::create(['type' => 'brand', 'title' => 'C', 'field_brand_category' => $cafes]);
-    $this->assertSame('dine', SearchGroup::groupFor($child));
-    $this->assertSame('news', SearchGroup::groupFor(Node::create(['type' => 'article', 'title' => 'F'])));
-    $this->assertSame('brands', SearchGroup::groupFor(Node::create(['type' => 'brand', 'title' => 'G'])));
-    $this->assertNull(SearchGroup::groupFor(Node::create(['type' => 'page', 'title' => 'H'])));
+    $this->assertSame('dine', $processor->groupFor($child));
+    $this->assertSame('news', $processor->groupFor(Node::create(['type' => 'article', 'title' => 'F'])));
+    $this->assertSame('brands', $processor->groupFor(Node::create(['type' => 'brand', 'title' => 'G'])));
+    $this->assertNull($processor->groupFor(Node::create(['type' => 'page', 'title' => 'H'])));
   }
 
 }

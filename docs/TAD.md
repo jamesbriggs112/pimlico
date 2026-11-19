@@ -1,5 +1,4 @@
-# Pimlico Road
-## Technical Architecture Document
+# Pimlico Road: technical architecture document
 
 | Date | Author | Notes |
 |---|---|---|
@@ -90,7 +89,7 @@ It meets **WCAG 2.2 AA**. See [Testing](#testing).
 
 ### Authentication
 
-Only the client's editors log in, with Drupal accounts at `/user/login` (the Gin admin theme, branded with the Pimlico Road logo, colours and login photography). There is no public login. The login, password reset and registration forms have a CAPTCHA point set to reCAPTCHA; the reCAPTCHA module and its keys (per environment) are still to be enabled before launch.
+Only the client's editors log in, with Drupal accounts at `/user/login` (the Gin admin theme, branded with the Pimlico Road logo, colours and login photography). There is no public login. CAPTCHA points are switched on for the login, password reset and registration forms, and set up but switched off for the personal contact form and the Article and Page node forms. All use the default challenge, which `captcha.settings` sets to reCAPTCHA, but the reCAPTCHA module isn't enabled and has no keys yet (open question 5).
 
 ### Users and permissions
 
@@ -232,7 +231,7 @@ A shopfront that Brands trade from: name, address, area and its building(s) on t
 
 ### Source code
 
-The source code is in GitHub: `git@github.com:Four-Agency/pimlico-website.git`, with branches `dev`, `staging` and `main` (production). The agency skeleton is the `upstream` remote, for skeleton updates.
+The source code is in GitHub: `git@github.com:Four-Agency/pimlico-website.git`, with branches `dev`, `staging` and `main` (production). The project started from Four's `four-drupal-skeleton`. There is no `upstream` remote; to take skeleton changes, add one with `git remote add upstream <skeleton repository URL>` and merge or cherry-pick from it.
 
 Branches follow the format `feature/…`, `bugfix/…` and `hotfix/…`. These are merged into `dev` by pull request, then `dev` into `staging`, then `staging` into `main` (production).
 
@@ -247,15 +246,34 @@ There are two server environments:
 - **Staging** is the final checkpoint before going live, used for content entry and client review. It stays after launch for ongoing development. It is set to `noindex`.
 - **Production** is the live site.
 
-Each environment's values are Elastic Beanstalk environment properties, so no domain or secret is committed:
+Each environment's values come from Elastic Beanstalk environment properties and GitHub Actions variables, so no domain or secret is committed.
+
+**Elastic Beanstalk environment properties**, read by `web/sites/default/settings.php`:
 
 | Property | Value |
 |---|---|
-| `ENVIRONMENT` | `staging` or `production` |
-| `SITE_HOST` | The public host name (trusted host and sitemap base URL) |
-| `HASH_SALT` | A long random string per environment |
-| `SENTRY_DSN`, `SENTRY_ENVIRONMENT`, `SENTRY_RELEASE` | Error reporting |
+| `ENVIRONMENT` | `staging` or `production`; loads `config/<env>/<env>.config.php` |
+| `SITE_HOST` | The public host name, e.g. `www.example.com`. It's added to `trusted_host_patterns` (the skeleton only trusts `*.preflight.site` and `10.0.x.x`) and is the sitemap base URL. |
+| `HASH_SALT` | A long random string, different per environment |
+| `RDS_DB_NAME`, `RDS_HOSTNAME`, `RDS_PORT`, `RDS_USERNAME`, `RDS_PASSWORD` | The database. `settings.php` applies `CLOUDFRONT_DISTRIBUTIONID`, `AWS_REGION` and the S3 keys only when `RDS_DB_NAME` is set. |
+| `AWS_SECRETS_NAME`, `AWS_REGION` | Optional. The AWS Secrets Manager secret holding the database user name and password, which then replace `RDS_USERNAME` and `RDS_PASSWORD` (`aws-secrets.php`) |
+| `AWS_ACCESS_KEY`, `AWS_SECRET_KEY` | S3 File System credentials |
 | `SMTP_USERNAME`, `SMTP_PASSWORD` | Mail delivery |
+
+`SENTRY_DSN`, `SENTRY_ENVIRONMENT`, `SENTRY_RELEASE` and `CLOUDFRONT_DISTRIBUTIONID` are environment properties too, but don't set them by hand: each deploy writes them into `.ebextensions/sentry.config` from the GitHub variables below (the release is the commit SHA). The Raven module reads the Sentry ones; `settings.php` reads `CLOUDFRONT_DISTRIBUTIONID` for the CloudFront purge.
+
+**GitHub Actions**, set on the repository's `staging` and `production` environments and used by `.github/workflows/deploy.yml`:
+
+| Name | Kind | Used for |
+|---|---|---|
+| `THEME_NAME` | Variable | The theme to build (`pimlico`) |
+| `AWS_ACCESS_KEY_ID`, `AWS_DEFAULT_REGION` | Variables | The deploy's AWS credentials |
+| `AWS_SECRET_ACCESS_KEY` | Secret | The deploy's AWS credentials |
+| `S3_BUCKET`, `APPLICATION_NAME`, `ENVIRONMENT_NAME` | Variables | Where the build is uploaded and which Elastic Beanstalk environment it goes to |
+| `AWS_DISTRIBUTION_ID` | Variable | The CloudFront distribution: invalidated after each deploy, and passed to Drupal as `CLOUDFRONT_DISTRIBUTIONID` |
+| `SENTRY_DSN`, `SENTRY_ENVIRONMENT` | Variables | Passed to Drupal through `.ebextensions/sentry.config` |
+| `SENTRY_ORG`, `SENTRY_PROJECT` | Variables | Creating the Sentry release |
+| `SENTRY_AUTH_TOKEN` | Secret | Creating the Sentry release |
 
 Developers maintain their own local environments, not included above and not visible to anyone else.
 
@@ -324,7 +342,7 @@ The full list waits on the client and on who controls belgraviavillage.com.
 2. **CookieScript:** the account, banner and script ID.
 3. **Domains:** staging and production.
 4. **Contact form:** recipients, routing by enquiry type, and how long submissions are kept.
-5. **Spam protection:** Honeypot on the forms, and reCAPTCHA keys for the login forms.
+5. **Spam protection:** Honeypot on the forms. For the login forms, either enable the reCAPTCHA module with keys per environment, or change the CAPTCHA default challenge: it is set to reCAPTCHA, but the module isn't enabled.
 6. **Analytics:** events to track, and the account owner.
 7. **Map data:** the flagged placements and the Newson's Yard layout (to check with the client in the map picker); the base map source (OpenStreetMap or a Grosvenor survey).
 8. **Brand data:** six missing postcodes; Food & Drink sub-categories; whether more brands belong in Antiques & art; The Orange, no longer listed on belgraviavillage.com.
@@ -355,7 +373,7 @@ These follow the lead developer's reference project (Sheffield Chamber of Commer
 | Theme | short client machine name | `pimlico` |
 | Client modules | `pimlico_*`, `package: Pimlico` | `pimlico_map`, `pimlico_brands`, `pimlico_search`, `pimlico_migrate`, `pimlico_admin` |
 | Node bundles | snake_case singular nouns | `brand`, `article`, `podcast_episode`, `press_article`, `page` |
-| Paragraph types | snake_case. New types are named for the SDC they render; types inherited from the skeleton keep their IDs (`cta` renders `next_step`, `content_grid` renders `card_grid`, `text_wysiwyg_` renders `rich_text`) | `hero_film`, `street_map`, `info_band`, `policy_content` |
+| Paragraph types | snake_case. New types are named for the SDC they render. Some existing types keep other IDs: from the skeleton, `cta` renders `next_step`, `content_grid` renders `card_grid` and `text_wysiwyg_` renders `rich_text`; also `image` renders `figure`, `split_text` renders `split_section`, `video` renders `media_video` and `webform` renders `form_section` | `hero_film`, `street_map`, `info_band`, `policy_content` |
 | Vocabularies | `{context}_{type}` | `brand_category`, `news_category`, `area` |
 | Fields | `field_` + snake_case, no bundle prefix, storage reused across bundles | `field_heading`, `field_text`, `field_image`, `field_sections` |
 | Views | plural nouns | `brands`, `news`, `search` |
@@ -373,7 +391,7 @@ PHP:
 - Dependency injection in classes; theme preprocess (`includes/*.inc`) may use `\Drupal::service()`.
 - Coding standard `Drupal,DrupalPractice`; Kernel tests by default.
 
-Configuration is exported to `config/sync`. Taxonomy terms, menu links and custom blocks are exported with Structure Sync (`drush et`, `drush em`, `drush eb`). Config Ignore keeps editor-managed config (webforms other than Contact and Newsletter) as edited on the server.
+Configuration is exported to `config/sync`. Taxonomy terms, menu links and custom blocks are exported with Structure Sync (`drush et`, `drush em`, `drush eb`). Config Ignore keeps editor-managed config (`vitals.settings`, and webforms other than Contact and Newsletter) as edited on the server.
 
 ## Appendix B: Theme architecture
 
@@ -389,7 +407,7 @@ Rules:
 
 - Drupal templates are thin adapters that map fields onto components with `include`/`embed` and `only`.
 - Preprocess is written only where display configuration and Twig Tweak can't do the job, with cache metadata applied.
-- Every component has `.component.yml`, `.twig`, `.scss`, `README.md` and `thumbnail.png`, with `.js` where it needs behaviour and `.stories.twig` where it can be shown on its own (29 of 51). See [front-end-conventions.md](front-end-conventions.md).
+- Every component has `.component.yml`, `.twig`, `README.md` and `thumbnail.png`, with `.scss` where it has its own styles (all but `block`, `heading`, `paragraph` and `view_clean`), `.js` where it needs behaviour and `.stories.twig` where it can be shown on its own (28 of 49). See [front-end-conventions.md](front-end-conventions.md).
 
 Design tokens from the Figma variables are CSS custom properties in `src/sass/init/_root.scss`:
 
@@ -409,10 +427,10 @@ Main components, by area:
 | Area | Components |
 |---|---|
 | Primitives | `logo`, `icon`, `button`, `button_icon`, `text_link`, `heading`, `form`, `visually_hidden`, `messages` |
-| Layout | `header`, `main_menu`, `menu`, `footer`, `newsletter`, `page_title`, `page_banner`, `pagination`, `filter_bar`, `grid` |
+| Layout | `header`, `main_menu`, `menu`, `footer`, `newsletter`, `page_title`, `pagination`, `filter_bar`, `grid` |
 | Heroes and banners | `hero_film`, `hero_split`, `feature_banner`, `visit_banner`, `info_band`, `promo_band` |
 | Sections | `introduction`, `section_heading`, `rich_text`, `quote`, `card_grid`, `story_card`, `image_gallery`, `info_rows`, `info_row`, `split_section`, `next_step`, `form_section`, `policy_content`, `figure` |
-| Stories | `article`, `featured_story`, `story_intro`, `story_credits`, `episode_band`, `audio_player` |
+| Stories | `featured_story`, `story_intro`, `story_credits`, `episode_band`, `audio_player` |
 | Media | `media_video`, `youtube_player` |
 | Map | `street_map` |
 | Drupal wrappers | `block`, `paragraph`, `view_clean` |
@@ -424,12 +442,12 @@ The admin theme is Gin, branded by the `pimlico_admin` module (Fraunces page tit
 | Module | Responsibility |
 |---|---|
 | `pimlico_map` | The Unit entity, the brand feed at `/api/map/brands`, the map on Brand pages, the Unit map picker, and CloudFront purging of the feed. |
-| `pimlico_brands` | The Brands and Dine category filters (a contextual filter, so pager links keep `?category=`), card labels and Brand breadcrumbs, and the Brand form's category list grouped as Brands and Dine. |
-| `pimlico_search` | Sorts indexed content into search groups (Brands, Dine, News, Press). |
+| `pimlico_brands` | The Brands and Dine category filters (a contextual filter, so pager links keep `?category=`), card labels, the Brand form's category list grouped as Brands and Dine, and Brand page breadcrumbs (`BrandBreadcrumbBuilder`: Home / Brands or Dine / category / Brand). `BrandGroups` finds Interiors, Antiques & art and Food & Drink by UUID, which Structure Sync keeps the same on every environment. Editors can rename those terms, but deleting and re-creating one breaks the filters and Dine. |
+| `pimlico_search` | Sorts indexed content into search groups (Brands, Dine, News, Press), serves `/llms.txt`, adds the sitemap and `llms.txt` lines to `robots.txt`, and keeps the Home node and component test pages out of the sitemap. Depends on `pimlico_brands`. |
 | `pimlico_migrate` | Imports Brands, Units and photos from the map project's data and belgraviavillage.com. Uninstalled after launch. |
 | `pimlico_admin` | CMS branding on top of Gin. |
 
-Each has Kernel tests where it has logic (`pimlico_map`, `pimlico_brands`, `pimlico_search`).
+Each has Kernel tests where it has logic: `pimlico_map` (2), `pimlico_brands` (1) and `pimlico_search` (1). The theme has one more (`tests/src/Kernel/ComponentsThemeTest.php`).
 
 ## Appendix D: The street map
 

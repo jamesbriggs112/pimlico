@@ -30,8 +30,7 @@ function _pimlico_listings(): array {
       'label' => t('Filter brands by category'),
     ],
     'brands:page_dine' => [
-      'vocabulary' => 'brand_category',
-      'parent' => 'Food & Drink',
+      'dine' => TRUE,
       'param' => 'category',
       'align' => 'center',
       'label' => t('Filter places to eat and drink'),
@@ -92,21 +91,19 @@ function pimlico_preprocess_views_view(array &$variables): void {
       ];
     }
   }
-  else {
+  elseif (!empty($config['dine'])) {
+    $food = \Drupal::service(BrandGroups::class)->dineCategory();
     $storage = \Drupal::entityTypeManager()->getStorage('taxonomy_term');
-    $parent = $config['parent'];
-    if (is_string($parent)) {
-      $match = $storage->loadByProperties(['vid' => $config['vocabulary'], 'name' => $parent]);
-      $parent = $match ? (int) reset($match)->id() : 0;
-    }
-    foreach ($storage->loadTree($config['vocabulary'], $parent, 1, TRUE) as $term) {
+    foreach ($food ? $storage->loadTree('brand_category', (int) $food->id(), 1, TRUE) : [] as $term) {
       $items[] = [
         'text' => $term->label(),
         'url' => $link([$param => $term->id()]),
         'active' => $current === (string) $term->id(),
       ];
     }
-    $cache->addCacheTags(['taxonomy_term_list:' . $config['vocabulary']]);
+  }
+  if (!empty($config['groups']) || !empty($config['dine'])) {
+    $cache->addCacheTags(['taxonomy_term_list:brand_category']);
   }
 
   $variables['listing'] = [
@@ -148,10 +145,18 @@ function _pimlico_promo_band(?object $area): array {
   }
   $storage = \Drupal::entityTypeManager()->getStorage('block_content');
   $block = current($storage->loadByProperties(['uuid' => $target])) ?: $storage->load($target);
-  if (!$block || !$block->access('view')) {
+  if (!$block) {
     return [];
   }
+  $access = $block->access('view', NULL, TRUE);
+  $cache = CacheableMetadata::createFromObject($block)->addCacheableDependency($access);
+  if (!$access->isAllowed()) {
+    $build = [];
+    $cache->applyTo($build);
+    return $build;
+  }
   $link = $block->get('field_link')->first();
+  $url = $link?->getUrl()->toString(TRUE);
   $build = [
     '#type' => 'component',
     '#component' => 'pimlico:promo_band',
@@ -159,7 +164,7 @@ function _pimlico_promo_band(?object $area): array {
       'eyebrow' => (string) $block->get('field_eyebrow')->value,
       'heading' => (string) $block->get('field_heading')->value,
       'link_text' => $link ? (string) $link->title : '',
-      'link_url' => $link ? $link->getUrl()->toString() : '',
+      'link_url' => $url ? $url->getGeneratedUrl() : '',
     ],
     '#slots' => [
       'text' => $block->get('field_text')->view(['label' => 'hidden']),
@@ -170,6 +175,9 @@ function _pimlico_promo_band(?object $area): array {
       ]),
     ],
   ];
-  CacheableMetadata::createFromObject($block)->applyTo($build);
+  if ($url) {
+    $cache->addCacheableDependency($url);
+  }
+  $cache->applyTo($build);
   return $build;
 }

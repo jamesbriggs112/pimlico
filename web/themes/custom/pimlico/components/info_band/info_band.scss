@@ -36,10 +36,10 @@
     justify-items: start;
     align-content: center;
     gap: #{fluid(18px, 24px)};
-    padding: #{to.rem(40px)} var(--space-24);
+    padding: var(--space-40) var(--space-24);
 
     @include mq($from: desktop) {
-      padding: #{to.rem(110px)} #{to.rem(80px)};
+      padding: #{to.rem(110px)} var(--space-80);
     }
   }
 
@@ -76,12 +76,12 @@
     display: grid;
     gap: var(--space-12);
     width: 100%;
-    padding-top: #{to.rem(12px)};
+    padding-top: var(--space-12);
 
     @include mq($from: tablet) {
       display: flex;
       flex-wrap: wrap;
-      gap: #{to.rem(16px)};
+      gap: var(--space-16);
       width: auto;
     }
 
@@ -152,7 +152,7 @@
 .info-band.info-band--inset {
   @include mq($from: desktop) {
     grid-template-columns: minmax(0, 1fr) #{to.rem(560px)};
-    padding-right: #{to.rem(80px)};
+    padding-right: var(--space-80);
   }
 
   .info-band__media {
@@ -161,7 +161,7 @@
     @include mq($until: desktop) {
       display: block;
       order: -1;
-      margin: #{to.rem(40px)} var(--space-24) 0;
+      margin: var(--space-40) var(--space-24) 0;
     }
   }
 

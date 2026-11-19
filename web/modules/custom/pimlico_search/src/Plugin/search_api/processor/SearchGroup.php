@@ -6,11 +6,13 @@ namespace Drupal\pimlico_search\Plugin\search_api\processor;
 
 use Drupal\Core\StringTranslation\TranslatableMarkup;
 use Drupal\node\NodeInterface;
+use Drupal\pimlico_brands\BrandGroups;
 use Drupal\search_api\Attribute\SearchApiProcessor;
 use Drupal\search_api\Datasource\DatasourceInterface;
 use Drupal\search_api\Item\ItemInterface;
 use Drupal\search_api\Processor\ProcessorPluginBase;
 use Drupal\search_api\Processor\ProcessorProperty;
+use Symfony\Component\DependencyInjection\ContainerInterface;
 
 /**
  * Adds the result group a node belongs to on the search page.
@@ -30,9 +32,18 @@ use Drupal\search_api\Processor\ProcessorProperty;
 final class SearchGroup extends ProcessorPluginBase {
 
   /**
-   * The Brand Category whose Brands are places to eat and drink.
+   * The Brand Categories, to tell Dine Brands from the rest.
    */
-  public const DINE_CATEGORY = 'Food & Drink';
+  private BrandGroups $brandGroups;
+
+  /**
+   * {@inheritdoc}
+   */
+  public static function create(ContainerInterface $container, array $configuration, $plugin_id, $plugin_definition): static {
+    $processor = parent::create($container, $configuration, $plugin_id, $plugin_definition);
+    $processor->brandGroups = $container->get(BrandGroups::class);
+    return $processor;
+  }
 
   /**
    * {@inheritdoc}
@@ -59,7 +70,7 @@ final class SearchGroup extends ProcessorPluginBase {
     if (!$node instanceof NodeInterface) {
       return;
     }
-    $group = self::groupFor($node);
+    $group = $this->groupFor($node);
     if ($group === NULL) {
       return;
     }
@@ -72,34 +83,13 @@ final class SearchGroup extends ProcessorPluginBase {
   /**
    * Returns the search group for a node, or NULL when it has none.
    */
-  public static function groupFor(NodeInterface $node): ?string {
+  public function groupFor(NodeInterface $node): ?string {
     return match ($node->bundle()) {
-      'brand' => self::isDine($node) ? 'dine' : 'brands',
+      'brand' => $this->brandGroups->isDine($node->get('field_brand_category')->entity) ? 'dine' : 'brands',
       'article', 'podcast_episode' => 'news',
       'press_article' => 'press',
       default => NULL,
     };
-  }
-
-  /**
-   * Whether a Brand's category is Food & Drink or one of its children.
-   */
-  private static function isDine(NodeInterface $node): bool {
-    if (!$node->hasField('field_brand_category') || $node->get('field_brand_category')->isEmpty()) {
-      return FALSE;
-    }
-    $term = $node->get('field_brand_category')->entity;
-    if (!$term) {
-      return FALSE;
-    }
-    // Walk up the term's own parents; categories are a shallow tree.
-    for ($depth = 0; $term && $depth < 10; $depth++) {
-      if ($term->label() === self::DINE_CATEGORY) {
-        return TRUE;
-      }
-      $term = $term->hasField('parent') ? $term->get('parent')->entity : NULL;
-    }
-    return FALSE;
   }
 
 }

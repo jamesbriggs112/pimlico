@@ -8,27 +8,14 @@
 #}
 {% set category = node.field_brand_category.entity %}
 {% set website = node.field_website.0 ? node.field_website.0.url.toString() : '' %}
-{% set a = node.field_address.0 %}
-{% set address = a ? [a.address_line1, a.address_line2, a.locality, a.postal_code]|filter(v => v)|join(', ') : '' %}
+{% set postal = node.field_address.0 %}
+{% set address = postal ? [postal.address_line1, postal.address_line2, postal.locality, postal.postal_code]|filter(line => line)|join(', ') : '' %}
 {% set directions = address ? 'https://www.google.com/maps/dir/?api=1&destination=' ~ (node.label ~ ', ' ~ address)|url_encode : '' %}
 
-{# Hero: breadcrumb is "Brands / Category", as drawn. #}
 {% set hero_links = [{ text: 'Find the showroom'|t, url: '#find-the-showroom', class: 'hero-split__mobile-only' }] %}
 {% if website %}
   {% set hero_links = hero_links|merge([{ text: 'Visit the website'|t, url: website }]) %}
 {% endif %}
-{% set breadcrumb %}
-  <nav class="breadcrumb" aria-label="{{ 'Breadcrumb'|t }}">
-    <ol class="breadcrumb__list">
-      {% if brand_category %}
-        <li class="breadcrumb__item"><a class="breadcrumb__link" href="{{ brand_category.section_url }}">{{ brand_category.section }}</a></li>
-        <li class="breadcrumb__item"><a class="breadcrumb__link" href="{{ brand_category.url }}">{{ brand_category.label }}</a></li>
-      {% else %}
-        <li class="breadcrumb__item"><a class="breadcrumb__link" href="{{ path('view.brands.page_brands') }}">{{ 'Brands'|t }}</a></li>
-      {% endif %}
-    </ol>
-  </nav>
-{% endset %}
 
 <article{{ attributes.addClass('node', 'node--brand') }}>
   {{ title_prefix }}
@@ -39,7 +26,7 @@
     intro: node.field_summary.value|default(''),
     links: hero_links,
     image: content.field_image,
-    breadcrumb,
+    breadcrumb: drupal_block('system_breadcrumb_block'),
   } only %}
 
   {% if node.field_heading.value or node.body.value %}
@@ -53,10 +40,7 @@
   {{ content.field_quote }}
 
   {% if not node.field_gallery.isEmpty() %}
-    {% set images = [] %}
-    {% for key, item in content.field_gallery|filter((v, k) => k|first != '#') %}
-      {% set images = images|merge([item]) %}
-    {% endfor %}
+    {% set images = content.field_gallery|children %}
     {% include 'pimlico:image_gallery' with {
       heading: 'Inside the showroom'|t,
       caption: node.field_caption.value|default(''),
@@ -84,16 +68,12 @@
       {% include 'pimlico:info_row' with { label: 'Trade'|t, value: node.field_trade_info.value, variant: 'compact' } only %}
     {% endif %}
     {% if node.field_email.value or node.field_phone.value %}
-      {% set contact %}
-        {% if node.field_email.value %}<a href="mailto:{{ node.field_email.value }}">{{ node.field_email.value }}</a>{% endif %}
-        {% if node.field_email.value and node.field_phone.value %}<br>{% endif %}
-        {% if node.field_phone.value %}<a href="tel:{{ node.field_phone.value|replace({' ': ''}) }}">{{ node.field_phone.value }}</a>{% endif %}
-      {% endset %}
+      {% set contact = [content.field_email, content.field_phone] %}
       {% include 'pimlico:info_row' with { label: 'Contact'|t, value: contact, variant: 'compact' } only %}
     {% endif %}
     {% if node.field_accessibility_link.0 %}
-      {% set access %}<a href="{{ node.field_accessibility_link.0.url.toString() }}" target="_blank" rel="noopener">{{ 'Accessibility information'|t }}<span class="visually-hidden"> {{ '(opens in a new tab)'|t }}</span></a>{% endset %}
-      {% include 'pimlico:info_row' with { label: 'Accessibility'|t, value: access, variant: 'compact' } only %}
+      {% set accessibility %}<a href="{{ node.field_accessibility_link.0.url.toString() }}" target="_blank" rel="noopener">{{ 'Accessibility information'|t }}<span class="visually-hidden"> {{ '(opens in a new tab)'|t }}</span></a>{% endset %}
+      {% include 'pimlico:info_row' with { label: 'Accessibility'|t, value: accessibility, variant: 'compact' } only %}
     {% endif %}
   {% endset %}
   {% set showroom_links = directions ? [{ text: 'Get directions'|t, url: directions, external: true }] : [] %}

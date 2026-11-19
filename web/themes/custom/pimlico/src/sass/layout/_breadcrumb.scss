@@ -1,4 +1,5 @@
 @use 'sass-rem' as to;
+@use '../init/mixins' as *;
 
 // Breadcrumb trail (Figma "Page title"): Body S with spaced "/" separators.
 .breadcrumb {
@@ -16,19 +17,16 @@
 
   &__item + &__item::before {
     content: '/';
-    padding-inline: #{to.rem(8px)};
+    padding-inline: var(--space-8);
   }
 
   &__link {
+    @include linkUnderline($hidden: true);
     color: inherit;
-    text-decoration-line: underline;
-    text-decoration-color: transparent;
-    text-underline-offset: var(--link-hover-underline-offset);
-    transition: text-decoration-color 0.3s ease-out;
 
     &:hover,
     &:focus-visible {
-      text-decoration-color: currentColor;
+      @include linkUnderlineHover;
     }
   }
 }
