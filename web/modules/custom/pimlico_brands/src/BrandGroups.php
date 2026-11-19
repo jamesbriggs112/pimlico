@@ -18,6 +18,9 @@ use Drupal\taxonomy\TermInterface;
  * Food & Drink is found by UUID: Structure Sync keeps term UUIDs the same on
  * every environment, while term IDs differ and editors can rename terms.
  * Filters are keyed by term ID, which survives a rename; Dine does the same.
+ *
+ * The street map filters by the same categories (mapCategories()), so the
+ * map and the listings can't drift apart.
  */
 final class BrandGroups {
 
@@ -101,6 +104,57 @@ final class BrandGroups {
   public function dineTermIds(): array {
     $food = $this->dineCategory();
     return $food ? $this->withChildren($food) : [];
+  }
+
+  /**
+   * Returns the Dine page filters: Food & Drink's sub-categories.
+   *
+   * @return \Drupal\taxonomy\TermInterface[]
+   *   Terms keyed by term ID, in weight order.
+   */
+  public function dineFilters(): array {
+    $food = $this->dineCategory();
+    $filters = [];
+    $tree = $food ? $this->entityTypeManager->getStorage('taxonomy_term')->loadTree('brand_category', (int) $food->id(), 1, TRUE) : [];
+    foreach ($tree as $term) {
+      $filters[(int) $term->id()] = $term;
+    }
+    return $filters;
+  }
+
+  /**
+   * Returns the street map's categories: the Brands filters, then Dine's.
+   *
+   * Food & Drink itself is never one: its Brands are split by sub-category,
+   * as on Dine. Cache the result with the taxonomy_term_list:brand_category
+   * tag, so terms editors add, rename or reorder show straight away.
+   *
+   * @return \Drupal\taxonomy\TermInterface[]
+   *   Terms keyed by term ID, in filter order.
+   */
+  public function mapCategories(): array {
+    return $this->filters() + $this->dineFilters();
+  }
+
+  /**
+   * Returns the street map category a Brand Category belongs to.
+   *
+   * A Brands category or anything below it belongs to the top-level term
+   * (Lamps to Lighting); a Dine tag, or anything below it, to its Food &
+   * Drink sub-category (Cafés). Food & Drink itself, a heading editors
+   * can't choose, belongs to none, so its Brands show only under "All".
+   */
+  public function mapCategoryFor(?TermInterface $term): ?TermInterface {
+    if ($term === NULL) {
+      return NULL;
+    }
+    // The term first, its top-level category last.
+    $lineage = array_values($this->entityTypeManager->getStorage('taxonomy_term')->loadAllParents($term->id())) ?: [$term];
+    $top = end($lineage);
+    if ($top->uuid() !== self::FOOD_AND_DRINK) {
+      return $top;
+    }
+    return $lineage[count($lineage) - 2] ?? NULL;
   }
 
   /**

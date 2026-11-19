@@ -1,0 +1,22 @@
+{#
+/**
+ * @file
+ * Related auto section → pimlico:card_grid on linen. On News: the picked
+ * Related stories, or the latest in the same news category ("Also on this
+ * street"). On Press: the picked Related brands, or three Brands from the
+ * street, since the coverage is about the street ("Discover the places in
+ * the story"). host comes from pimlico_preprocess_paragraph__related();
+ * without one (the section isn't on a Story) nothing is printed.
+ */
+#}
+{% if host %}
+  {% set press = host.bundle == 'press_article' %}
+  {% include 'pimlico:card_grid' with {
+    attributes: attributes.addClass('card-grid--tint'),
+    heading: paragraph.field_heading.value|default(press ? 'Discover the places in the story'|t : 'Also on this street'|t),
+    text: press ? 'Brands connected to this story.'|t : 'Continue through the brands and stories linked to this place.'|t,
+    link_text: 'All news'|t,
+    link_url: path('view.news.page_news'),
+    items: host.picks ?: (press ? drupal_view('brands', 'block_similar', 'all', 'all') : drupal_view('news', 'block_related', host.category, host.id)),
+  } only %}
+{% endif %}

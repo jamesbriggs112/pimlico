@@ -1,0 +1,9 @@
+name: 'Pimlico sections'
+type: module
+description: 'Page bodies built from sections: the auto sections (Similar brands, Related) that every Brand and Story starts with.'
+package: Pimlico
+core_version_requirement: ^11
+dependencies:
+  - drupal:node
+  - entity_reference_revisions:entity_reference_revisions
+  - paragraphs:paragraphs

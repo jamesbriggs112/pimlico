@@ -22,7 +22,7 @@ final class UnitTest extends KernelTestBase {
    */
   protected static $modules = [
     'system', 'user', 'node', 'field', 'text', 'filter', 'options',
-    'taxonomy', 'address', 'path_alias', 'pimlico_map',
+    'taxonomy', 'address', 'path_alias', 'pimlico_brands', 'pimlico_map',
   ];
 
   /**

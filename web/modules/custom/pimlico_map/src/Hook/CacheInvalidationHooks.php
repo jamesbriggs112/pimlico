@@ -12,7 +12,7 @@ use Psr\Log\LoggerInterface;
 use Symfony\Component\DependencyInjection\Attribute\Autowire;
 
 /**
- * Purges the Tenancy Feed from CloudFront when a Brand or Unit changes.
+ * Purges the Tenancy Feed from CloudFront when a Brand, Unit or term changes.
  *
  * Drupal's own caches clear by tag; CloudFront can't, so the feed path is
  * invalidated by URL, the same way the skeleton's cloudfront_cache_home_page
@@ -55,8 +55,10 @@ final class CacheInvalidationHooks {
    * Invalidates the feed URL when the entity is on the map.
    */
   private function purge(EntityInterface $entity): void {
+    // Brand Categories too: the feed names each Brand's map category.
     $on_map = $entity->getEntityTypeId() === 'pimlico_unit'
-      || ($entity->getEntityTypeId() === 'node' && $entity->bundle() === 'brand');
+      || ($entity->getEntityTypeId() === 'node' && $entity->bundle() === 'brand')
+      || ($entity->getEntityTypeId() === 'taxonomy_term' && $entity->bundle() === 'brand_category');
     if (!$on_map || !$this->moduleHandler->moduleExists('cloudfront_cache_path_invalidate')) {
       return;
     }

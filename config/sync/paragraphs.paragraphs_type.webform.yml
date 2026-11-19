@@ -4,6 +4,12 @@ status: true
 dependencies:
   content:
     - 'file:file:e594a5c3-9a2b-4313-9ac9-da4c18d79e42'
+  module:
+    - paragraphs_ee
+third_party_settings:
+  paragraphs_ee:
+    paragraphs_categories:
+      content: content
 id: webform
 label: Form
 icon_uuid: e594a5c3-9a2b-4313-9ac9-da4c18d79e42

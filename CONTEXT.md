@@ -9,7 +9,7 @@ A business trading on Pimlico Road, a neighbouring street, or in Newson's Yard, 
 _Avoid_: Shop, Tenant, Retailer
 
 **Brand Category**:
-The single primary grouping a Brand is filtered by, on listings and on the map: Interiors, Antiques & art, or Food & Drink, which has the sub-categories Cafés and Pubs and restaurants. Editors can add, rename and reorder categories; categories are ordered by weight. Every top-level category except Food & Drink is a Brands page filter; Food & Drink and its sub-categories are on Dine.
+The single primary grouping a Brand is filtered by, on listings and on the map: Interiors, Antiques & art, or Food & Drink, which has the sub-categories Cafés and Pubs and restaurants. Editors can add, rename and reorder categories; categories are ordered by weight. Every top-level category except Food & Drink is a Brands page filter; Food & Drink and its sub-categories are on Dine. The Street Map filters by both sets: the Brands filters, then Food & Drink's sub-categories, never Food & Drink as a whole.
 _Avoid_: Tag, Sector
 
 **Specialism**:
@@ -17,8 +17,16 @@ A short line describing something a Brand offers, shown under "What you'll find"
 _Avoid_: Service, Brand Category
 
 **Similar Brands**:
-Up to three Brands an editor chooses to show at the foot of a Brand page. When none are chosen, three other Brands in the same Brand Category are shown.
+Up to three Brands an editor chooses to show at the foot of a Brand page, in its Similar brands Auto Section. When none are chosen, three other Brands in the same Brand Category are shown.
 _Avoid_: Related brands
+
+**Section**:
+One block of a page's body, such as Text, Image, Image gallery or Quote, which editors add, order and remove. Each content type offers only the Sections that suit it. Technically a Paragraph.
+_Avoid_: Paragraph (to editors), Block, Component
+
+**Auto Section**:
+A Section with nothing to fill in that fills itself from the Brand or Story it's on: Similar brands on a Brand, Related on an Article or Press Article. Every new Brand and Story ends with one; at the end of the page it follows the fixed "Find the showroom" or credits.
+_Avoid_: Automatic block, Dynamic section
 
 **Unit**:
 A physical shopfront that Brands trade from, such as "95–97 Pimlico Road". A Unit points at one or more Map Buildings and outlives the Brands that occupy it, so a Brand leaving never loses the Unit's place on the map. Units are editor-only records with no public page.

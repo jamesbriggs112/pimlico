@@ -170,6 +170,8 @@ $story('press_article', 'Molly Alexander is putting the chic in antiques', '/new
       'Peers and clients rate her highly. Designer Jasper Conran calls her one of the people whose taste he trusts most.',
       'Alongside the shop, she advises private clients on building collections, decorating with objects that carry strong provenance and history.',
     ])),
+    // Related brands close the page, as on every Story.
+    $p('related', []),
   ],
 ]);
 
@@ -225,5 +227,7 @@ $story('article', 'Placeholder story title', '/news/placeholder-story-title', [
     $rich('Placeholder context & detail', $paras([$excepteur, $lorem, $sed])
       . '<ul><li>Placeholder first supporting point</li><li>Placeholder second supporting point</li><li>Placeholder third supporting point</li></ul>'),
     $rich('Placeholder closing section', $paras([$lorem, $excepteur, $sed])),
+    // Related stories close the page, as on every Story.
+    $p('related', []),
   ],
 ]);

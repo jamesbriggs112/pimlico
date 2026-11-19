@@ -19,6 +19,7 @@ describe('street map filter', () => {
       <div data-map-filter="map">
         <button data-category="" aria-pressed="true">All</button>
         <button data-category="Interiors" aria-pressed="false">Interiors</button>
+        <button data-category="Cafés" aria-pressed="false">Cafés</button>
       </div>
       <pimlico-map id="map"></pimlico-map>`;
     behaviour.attach(document);
@@ -31,7 +32,15 @@ describe('street map filter', () => {
     expect(buttons().map((b) => b.getAttribute('aria-pressed'))).toEqual([
       'false',
       'true',
+      'false',
     ]);
+  });
+
+  it('filters by a Dine category, not Food & Drink', () => {
+    buttons()[2].click();
+
+    expect(map().getAttribute('category')).toBe('Cafés');
+    expect(buttons()[2].getAttribute('aria-pressed')).toBe('true');
   });
 
   it('clears the category for All', () => {

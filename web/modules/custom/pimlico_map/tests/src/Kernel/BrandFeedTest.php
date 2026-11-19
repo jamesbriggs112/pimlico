@@ -12,6 +12,7 @@ use Drupal\node\Entity\Node;
 use Drupal\node\Entity\NodeType;
 use Drupal\node\NodeInterface;
 use Drupal\path_alias\Entity\PathAlias;
+use Drupal\pimlico_brands\BrandGroups;
 use Drupal\pimlico_map\BrandFeed;
 use Drupal\pimlico_map\Controller\BrandFeedController;
 use Drupal\pimlico_map\Entity\Unit;
@@ -34,8 +35,13 @@ final class BrandFeedTest extends KernelTestBase {
    */
   protected static $modules = [
     'system', 'user', 'node', 'field', 'text', 'filter', 'options',
-    'taxonomy', 'address', 'path_alias', 'pimlico_map',
+    'taxonomy', 'address', 'path_alias', 'pimlico_brands', 'pimlico_map',
   ];
+
+  /**
+   * The Interiors category, a Brands filter.
+   */
+  private Term $interiors;
 
   /**
    * The Food & Drink category, with Cafés below it.
@@ -87,7 +93,13 @@ final class BrandFeedTest extends KernelTestBase {
       FieldConfig::create(['field_name' => $name, 'entity_type' => 'node', 'bundle' => 'brand'])->save();
     }
 
-    $this->food = Term::create(['vid' => 'brand_category', 'name' => 'Food & Drink']);
+    $this->interiors = Term::create(['vid' => 'brand_category', 'name' => 'Interiors']);
+    $this->interiors->save();
+    $this->food = Term::create([
+      'vid' => 'brand_category',
+      'name' => 'Food & Drink',
+      'uuid' => BrandGroups::FOOD_AND_DRINK,
+    ]);
     $this->food->save();
     $this->cafes = Term::create(['vid' => 'brand_category', 'name' => 'Cafés', 'parent' => $this->food->id()]);
     $this->cafes->save();
@@ -113,6 +125,7 @@ final class BrandFeedTest extends KernelTestBase {
 
     $jamb = $this->createBrand('Jamb', 'jamb', [$unit], ['field_map_label' => 'Jamb Ltd']);
     $this->createBrand('Café', 'cafe', [$unit], ['field_brand_category' => $this->cafes]);
+    $this->createBrand('Dining', 'dining', [$unit], ['field_brand_category' => $this->food]);
     $this->createBrand('Closed', 'closed', [$unit], ['field_tenancy_status' => 'closed']);
     $this->createBrand('Hidden', 'hidden', [$unit], ['field_display_on_map' => 0]);
     $this->createBrand('Draft', 'draft', [$unit], ['status' => NodeInterface::NOT_PUBLISHED]);
@@ -122,20 +135,22 @@ final class BrandFeedTest extends KernelTestBase {
     $this->assertInstanceOf(CacheableJsonResponse::class, $response);
     $data = json_decode($response->getContent(), TRUE);
 
-    $this->assertSame(['Café', 'Jamb'], array_column($data['brands'], 'name'));
-    [$cafe, $item] = $data['brands'];
+    $this->assertSame(['Café', 'Dining', 'Jamb'], array_column($data['brands'], 'name'));
+    [$cafe, $dining, $item] = $data['brands'];
     $this->assertSame([
       'id' => 'jamb',
       'name' => 'Jamb',
       'label' => 'Jamb Ltd',
-      'category' => 'Food & Drink',
+      'category' => 'Interiors',
       'url' => '/brands/jamb',
       'address' => '95–97 Pimlico Road, London, SW1W 8PH',
       'buildings' => ['w535769837', 'w535769838'],
       'status' => 'active',
     ], $item);
-    // Sub-categories roll up to the top-level term the map filters by.
-    $this->assertSame('Food & Drink', $cafe['category']);
+    // A Dine Brand keeps its own Food & Drink sub-category, as on Dine; one
+    // filed under the Food & Drink heading itself has no map category.
+    $this->assertSame('Cafés', $cafe['category']);
+    $this->assertArrayNotHasKey('category', $dining);
     $this->assertArrayNotHasKey('label', $cafe);
 
     $tags = $response->getCacheableMetadata()->getCacheTags();
@@ -145,6 +160,7 @@ final class BrandFeedTest extends KernelTestBase {
       'taxonomy_term_list:brand_category',
       'node:' . $jamb->id(),
       'pimlico_unit:' . $unit->id(),
+      'taxonomy_term:' . $this->cafes->id(),
     ];
     foreach ($expected as $tag) {
       $this->assertContains($tag, $tags);
@@ -180,7 +196,7 @@ final class BrandFeedTest extends KernelTestBase {
       'type' => 'brand',
       'title' => $title,
       'status' => NodeInterface::PUBLISHED,
-      'field_brand_category' => $this->food,
+      'field_brand_category' => $this->interiors,
       'field_units' => $units,
       'field_tenancy_status' => 'active',
       'field_display_on_map' => 1,

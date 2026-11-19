@@ -1,0 +1,19 @@
+uuid: 86a8e7fe-c181-4dd1-93de-9e154d12ec61
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_heading
+    - paragraphs.paragraphs_type.similar_brands
+id: paragraph.similar_brands.field_heading
+field_name: field_heading
+entity_type: paragraph
+bundle: similar_brands
+label: Heading
+description: 'Optional. Replaces the heading "Similar brands".'
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

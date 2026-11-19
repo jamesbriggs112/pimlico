@@ -9,20 +9,23 @@
  * Follows the Figma Brand page (03 Brand with Map), as sections: an
  * "About the house" Introduction with a heading and two paragraphs, a Quote,
  * an Image gallery with a photography credit, and three "What you'll find"
- * Info rows; plus a trade note.
+ * Info rows, then the Similar brands auto section; plus a trade note.
  *
- * Only a Brand with no sections gets them, and only empty fields are
- * filled, so editors' content is never overwritten. The about text is built
- * from each Brand's own summary and address; the heading, specialisms and
- * trade note are category-level sample copy, and the photos are the theme's
- * sample images. No contact details are made up. Replace all of it with the
- * client's copy and photography before launch.
+ * Only a Brand with no sections but its auto section (which a new Brand,
+ * such as one from the import, gets on its first save) gets them, and only
+ * empty fields are filled, so editors' content is never overwritten. The
+ * about text is built from each Brand's own summary and address; the
+ * heading, specialisms and trade note are category-level sample copy, and
+ * the photos are the theme's sample images. No contact details are made
+ * up. Replace all of it with the client's copy and photography before
+ * launch.
  */
 
 declare(strict_types=1);
 
 use Drupal\node\NodeInterface;
 use Drupal\paragraphs\Entity\Paragraph;
+use Drupal\pimlico_sections\AutoSections;
 
 $etm = \Drupal::entityTypeManager();
 $photos = array_values(array_filter(
@@ -68,6 +71,7 @@ $copy = [
 ];
 
 $terms = $etm->getStorage('taxonomy_term');
+$auto = \Drupal::service(AutoSections::class);
 $updated = 0;
 $brands = $etm->getStorage('node')->loadByProperties(['type' => 'brand']);
 ksort($brands);
@@ -93,7 +97,9 @@ foreach ($brands as $brand) {
     }
   };
 
-  if ($brand->get('field_sections')->isEmpty()) {
+  $existing = $brand->get('field_sections')->referencedEntities();
+  $auto_sections = array_filter($existing, static fn($section) => $auto->isAutoSection($section));
+  if (count($auto_sections) === count($existing)) {
     $sections = [];
     $body = '<p>' . htmlspecialchars($summary ?: $brand->label() . ' trades on Pimlico Road.') . '</p>';
     $body .= '<p>' . htmlspecialchars(($street ? 'Find ' . $brand->label() . ' at ' . $street . '. ' : '') . $c['more']) . '</p>';
@@ -137,7 +143,8 @@ foreach ($brands as $brand) {
         'field_text' => ['value' => '<p>' . htmlspecialchars($row[1]) . '</p>', 'format' => 'basic_html'],
       ]), $c['specialisms']),
     ]);
-    $brand->set('field_sections', $sections);
+    // Similar brands closes the page, as on every Brand.
+    $brand->set('field_sections', array_merge($sections, $auto_sections ?: [$auto->create('brand')]));
     $changed = TRUE;
   }
   if (($category ? $category->label() : '') !== 'Food & Drink') {

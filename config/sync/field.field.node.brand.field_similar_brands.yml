@@ -10,7 +10,7 @@ field_name: field_similar_brands
 entity_type: node
 bundle: brand
 label: 'Similar brands'
-description: 'Up to three. Leave empty to show other brands in the same category.'
+description: 'Up to three, shown by the Similar brands section. Leave empty to show other brands in the same category.'
 required: false
 translatable: true
 default_value: {  }
