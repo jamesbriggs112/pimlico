@@ -9,7 +9,7 @@ A business trading on Pimlico Road, a neighbouring street, or in Newson's Yard, 
 _Avoid_: Shop, Tenant, Retailer
 
 **Brand Category**:
-The single primary grouping a Brand is filtered by, on listings and on the map: Home & Interiors, Antiques and art, Soft furnishings and fabrics, Lighting, or Food & Drink. Categories are ordered by weight.
+The single primary grouping a Brand is filtered by, on listings and on the map: Interiors, Antiques & art, or Food & Drink, which has the sub-categories Cafés and Pubs and restaurants. Categories are ordered by weight.
 _Avoid_: Tag, Sector
 
 **Specialism**:

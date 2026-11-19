@@ -8,7 +8,7 @@
 {% set title = node.label %}
 {% set date = node.field_publication_date.value ? node.field_publication_date.date.getTimestamp()|format_date('custom', 'j F Y') : '' %}
 {% set publication = node.field_publication.value %}
-{% set intro = [node.field_summary.value, [publication, date]|filter(v => v)|join(', ')]|filter(v => v)|join(' · ') %}
+{% set intro = [node.field_summary.value, [publication, date]|filter(value => value)|join(', ')]|filter(value => value)|join(' · ') %}
 {% set source = node.field_source_link.0 ? node.field_source_link.0.url.toString() : '' %}
 
 <article{{ attributes.addClass('node', 'node--story', 'node--press') }}>
@@ -20,7 +20,7 @@
     breadcrumb: drupal_block('system_breadcrumb_block'),
   } only %}
   {% include 'pimlico:featured_story' with {
-    meta: [publication, node.field_author.value, date]|filter(v => v)|join(' · '),
+    meta: [publication, node.field_author.value, date]|filter(value => value)|join(' · '),
     summary: node.field_summary.value|default(''),
     image: content.field_image,
     logo: node.field_publication_logo.isEmpty() ? null : content.field_publication_logo,

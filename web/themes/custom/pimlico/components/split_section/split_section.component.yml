@@ -32,9 +32,12 @@ props:
       items:
         type: object
         properties:
-          text: { type: string }
-          url: { type: string }
-          external: { type: boolean }
+          text:
+            type: string
+          url:
+            type: string
+          external:
+            type: boolean
 slots:
   content:
     title: Content

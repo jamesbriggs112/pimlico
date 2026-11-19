@@ -3,7 +3,7 @@
 // page isn't (client request, 11 November 2026).
 .pagination {
   @include pageContainer;
-  padding-block: #{to.rem(8px)} var(--section-space);
+  padding-block: var(--space-8) var(--section-space);
 
   &__items {
     display: flex;
@@ -17,16 +17,12 @@
 
   &__page,
   &__step {
+    @include linkUnderline;
     color: var(--color-text-primary);
-    text-decoration-line: underline;
-    text-decoration-thickness: 1px;
-    text-decoration-color: currentColor;
-    text-underline-offset: var(--link-underline-offset);
-    transition: text-underline-offset 0.3s ease-out;
 
     &:hover,
     &:focus-visible {
-      text-underline-offset: var(--link-hover-underline-offset);
+      @include linkUnderlineHover;
     }
 
     &[aria-current='page'] {

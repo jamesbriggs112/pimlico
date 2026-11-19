@@ -13,7 +13,7 @@
     align-items: flex-end;
     justify-content: space-between;
     gap: var(--space-12) var(--space-24);
-    margin-bottom: #{to.rem(40px)};
+    margin-bottom: var(--space-40);
   }
 
   &__heading {
@@ -54,10 +54,7 @@
     &__track {
       display: flex;
       gap: var(--space-12);
-      overflow-x: auto;
-      overscroll-behavior-inline: contain;
-      scroll-snap-type: inline mandatory;
-      scroll-padding-inline: var(--page-gutter);
+      @include swipeTrack;
       padding-inline: var(--page-gutter);
       scrollbar-width: none;
 
@@ -79,7 +76,7 @@
     &__controls {
       display: flex;
       gap: var(--space-12);
-      padding: #{to.rem(16px)} var(--page-gutter) #{to.rem(8px)};
+      padding: var(--space-16) var(--page-gutter) var(--space-8);
     }
 
     .btn-icon {

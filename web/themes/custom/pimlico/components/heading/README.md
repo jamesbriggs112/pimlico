@@ -1,14 +1,3 @@
-#
-Heading
+# Heading
 
-This is some default content for the README. Change this to the appropriate
-content.
-
-## Usage
-
-Here you should describe how/when to use this component. This information may be
-for developers or for editors, depending on the component type.
-
-## Additional information
-
-Some extra info about the component.
+An `h1` to `h6` around its `content` slot. `tag` picks the element (default `h2`) and `class` replaces the default class, which is the tag name. Used by the `paragraph` component.

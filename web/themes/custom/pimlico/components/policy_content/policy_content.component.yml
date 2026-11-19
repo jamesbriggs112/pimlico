@@ -22,8 +22,10 @@ props:
       items:
         type: object
         properties:
-          id: { type: string }
-          title: { type: string }
+          id:
+            type: string
+          title:
+            type: string
 slots:
   body:
     title: Body

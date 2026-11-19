@@ -8,7 +8,7 @@
 {% set title = node.label %}
 {% set date = node.created.value|format_date('custom', 'j F Y') %}
 {% set minutes = node.field_reading_time.value %}
-{% set meta = [node.field_news_category.entity.label, date, node.field_author.value, minutes ? '@count min read'|t({ '@count': minutes })]|filter(v => v)|join(' · ') %}
+{% set meta = [node.field_news_category.entity.label, date, node.field_author.value, minutes ? '@count min read'|t({ '@count': minutes })]|filter(value => value)|join(' · ') %}
 {% set brand = node.field_featured_brand.entity %}
 {% set links = brand ? [{ text: 'Explore the featured brand'|t, url: path('entity.node.canonical', { node: brand.id }) }] : [] %}
 {% set links = links|merge([{ text: 'Explore more news'|t, url: path('view.news.page_news') }]) %}

@@ -1,4 +1,4 @@
-# Main Menu
+# Main menu
 
 The header navigation, rendered from the `main` menu through `templates/menu/menu--main.html.twig`.
 

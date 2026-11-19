@@ -4,7 +4,7 @@
  * @file
  * Builds the site's pages with the Figma copy, for local and staging set-up.
  *
- *   drush php:script scripts/dev/seed-pages.php
+ *   Drush php:script scripts/dev/seed-pages.php.
  *
  * Idempotent: pages are found by title and their sections replaced. Sample
  * photos come from the theme's Storybook images. Copy marked "Placeholder"
@@ -214,11 +214,13 @@ $page('Contact', '/contact', 'Lorem ipsum dolor sit amet, consectetur adipiscing
 ]);
 
 // Policies (T16).
-$policy = static fn(array $sections) => $p('policy_content', ['field_text' => $text(
+$policy = static fn(array $sections) => $p('policy_content', [
+  'field_text' => $text(
   '<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua ut enim.</p>'
   . implode('', array_map(static fn($h) => "<h2>$h</h2>$lorem<p>Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium.</p>", $sections))
   . '<ul><li>Placeholder first supporting item with further detail.</li><li>Placeholder second supporting item with further detail.</li></ul>'
-)]);
+  ),
+]);
 $related = static fn(array $links) => $p('cta', ['field_heading' => 'Related information', 'field_links' => $links]);
 $page('Privacy', '/privacy', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit sed do eiusmod.', [
   $policy(['Who we are', 'Information we collect', 'How we use information', 'Retention and sharing', 'Your choices and contact']),

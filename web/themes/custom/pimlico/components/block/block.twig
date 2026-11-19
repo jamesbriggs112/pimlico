@@ -13,25 +13,25 @@
 %}
 
 {% if block_html_tag %}
-	<{{block_html_tag}} {{ attributes|without('id').addClass(block_classes) }}>
-	{% endif %}
-	{{ title_prefix }}
-	{{ title_suffix }}
+  <{{block_html_tag}} {{ attributes|without('id').addClass(block_classes) }}>
+  {% endif %}
+  {{ title_prefix }}
+  {{ title_suffix }}
 
-	{% if label %}
-		{% block label %}
-			<h2{{label_attributes.addClass('block-label')}}>
-				{{ label }}
-			</h2>
-		{% endblock %}
-	{% endif %}
+  {% if label %}
+    {% block label %}
+      <h2{{label_attributes.addClass('block-label')}}>
+        {{ label }}
+      </h2>
+    {% endblock %}
+  {% endif %}
 
-	{% if content %}
-		{% block content %}
-			{{ content }}
-		{% endblock %}
-	{% endif %}
+  {% if content %}
+    {% block content %}
+      {{ content }}
+    {% endblock %}
+  {% endif %}
 
-	{% if block_html_tag %}
-	</{{block_html_tag}}>
+  {% if block_html_tag %}
+  </{{block_html_tag}}>
 {% endif %}

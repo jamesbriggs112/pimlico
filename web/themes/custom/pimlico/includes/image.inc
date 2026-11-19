@@ -11,21 +11,6 @@ use Drupal\Core\Cache\CacheableMetadata;
 use Drupal\crop\Entity\Crop;
 
 /**
- * Implements hook_preprocess_image_widget().
- */
-function pimlico_preprocess_image_widget(array &$variables) {
-  $data = &$variables['data'];
-
-  // This prevents image widget templates from rendering preview container HTML
-  // to users that do not have permission to access these previews.
-  // @todo revisit in https://drupal.org/node/953034
-  // @todo revisit in https://drupal.org/node/3114318
-  if (isset($data['preview']['#access']) && $data['preview']['#access'] === FALSE) {
-    unset($data['preview']);
-  }
-}
-
-/**
  * Implements hook_preprocess_responsive_image().
  *
  * Most images are served whole and cropped by the browser (object-fit:

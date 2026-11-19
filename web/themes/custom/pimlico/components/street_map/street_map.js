@@ -4,9 +4,9 @@
  * so only that category's tenancies stay yellow (and the search follows).
  */
 ((Drupal, once) => {
-  Drupal.behaviors.streetMapFilter = {
+  Drupal.behaviors.streetMap = {
     attach(context) {
-      once('street-map-filter', '[data-map-filter]', context).forEach((bar) => {
+      once('street-map', '[data-map-filter]', context).forEach((bar) => {
         const map = document.getElementById(bar.dataset.mapFilter);
         if (!map) {
           return;

@@ -13,6 +13,18 @@ use Drupal\Core\Entity\EntityChangedInterface;
 use Drupal\pimlico_map\MapBuilder;
 
 /**
+ * Implements hook_preprocess_HOOK() for paragraph.
+ *
+ * Sections with an Anchor field use it as their id, for in-page links.
+ */
+function pimlico_preprocess_paragraph(array &$variables): void {
+  $paragraph = $variables['paragraph'];
+  if ($paragraph->hasField('field_anchor') && !$paragraph->get('field_anchor')->isEmpty()) {
+    $variables['attributes']['id'] = $paragraph->get('field_anchor')->value;
+  }
+}
+
+/**
  * Implements hook_preprocess_HOOK() for paragraph--street-map.
  *
  * Adds the overview map (from pimlico_map) and the top-level Brand

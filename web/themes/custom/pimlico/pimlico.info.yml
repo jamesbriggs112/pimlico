@@ -9,13 +9,9 @@ vite:
   enableInAllComponents: true
   enableInAllLibraries: true
 regions:
-  branding: Branding
   primary_menu: 'Primary menu'
-  banner: 'Banner area'
-  breadcrumb: Breadcrumb
   content: 'Main content area'
   newsletter: Newsletter
-  footer_branding: 'Footer Branding'
   footer_menu: 'Footer Menu'
   footer_bottom: 'Footer Bottom'
 libraries:

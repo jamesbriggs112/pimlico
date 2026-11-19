@@ -25,6 +25,9 @@
         const seek = player.querySelector('[data-audio-seek]');
         const meta = player.querySelector('[data-audio-meta]');
         const label = player.querySelector('[data-audio-label]');
+        if (!audio || !toggle || !seek || !meta || !label) {
+          return;
+        }
         const original = meta.textContent;
         const title = label.textContent.split(': ').slice(1).join(': ');
 

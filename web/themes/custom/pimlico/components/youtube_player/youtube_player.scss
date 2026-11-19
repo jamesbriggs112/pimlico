@@ -30,12 +30,20 @@
       content: '';
       position: absolute;
       inset: 0;
-      background-color: rgb(57 73 89 / 15%);
-      transition: background-color 0.3s ease-out;
+      background-color: color-mix(
+        in srgb,
+        var(--color-brand-dark-grey) 15%,
+        transparent
+      );
+      transition: background-color var(--motion-duration) var(--motion-easing);
     }
 
     &:hover::after {
-      background-color: rgb(57 73 89 / 30%);
+      background-color: color-mix(
+        in srgb,
+        var(--color-brand-dark-grey) 30%,
+        transparent
+      );
     }
 
     &:focus {
@@ -69,10 +77,14 @@
     border: 1px solid currentColor;
     border-radius: 50%;
     // A light navy wash keeps the outline legible on pale stills.
-    background-color: rgb(57 73 89 / 35%);
+    background-color: color-mix(
+      in srgb,
+      var(--color-brand-dark-grey) 35%,
+      transparent
+    );
     transition:
-      background-color 0.3s ease-out,
-      color 0.3s ease-out;
+      background-color var(--motion-duration) var(--motion-easing),
+      color var(--motion-duration) var(--motion-easing);
 
     svg {
       width: #{to.rem(20px)};
@@ -100,6 +112,6 @@
     --plyr-color-main: var(--color-brand-yellow);
     --plyr-video-control-color: var(--color-text-inverse);
     --plyr-video-control-color-hover: var(--color-brand-dark-grey);
-    --plyr-font-family: var(--body-text);
+    --plyr-font-family: var(--font-family-body);
   }
 }

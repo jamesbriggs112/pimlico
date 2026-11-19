@@ -1,16 +1,11 @@
-// Shared motion settings. Components read these custom properties so motion
-// can be switched off in one place for people who prefer reduced motion.
+// Shared motion settings: most hovers and reveals ease out over 300ms.
 
 :root {
-  --motion-duration: 0.2s;
-  --motion-easing: cubic-bezier(0.66, 0, 0.34, 1);
+  --motion-duration: 0.3s;
+  --motion-easing: ease-out;
 }
 
 @media (prefers-reduced-motion: reduce) {
-  :root {
-    --motion-duration: 0s;
-  }
-
   *,
   *::before,
   *::after {

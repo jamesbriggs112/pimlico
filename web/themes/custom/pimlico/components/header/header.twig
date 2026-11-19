@@ -27,7 +27,7 @@
 
       <div class="header__nav-actions">
         {% include 'pimlico:button' with { text: 'Plan your visit'|t, url: visit_url|default('/visit'), variant: 'yellow', full_width: true } only %}
-        {% include 'pimlico:button' with { text: 'Sign up to the newsletter'|t, url: newsletter_url|default('#newsletter'), variant: 'yellow', full_width: true, attributes: create_attribute({ class: ['header__newsletter-link'] }) } only %}
+        {% include 'pimlico:button' with { text: 'Sign up to the newsletter'|t, url: newsletter_url|default('#newsletter'), variant: 'yellow', full_width: true, class: 'header__newsletter-link' } only %}
       </div>
     </div>
 

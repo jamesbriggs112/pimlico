@@ -1,4 +1,4 @@
-# Button Icon (media control)
+# Button icon (media control)
 
 Figma "Media control" (Components page): a 48px outlined circle with an icon. Hover fills the circle and inverts the icon.
 

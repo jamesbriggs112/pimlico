@@ -5,10 +5,7 @@
  * "Location & directions"). Links to other sites open in a new tab.
  */
 #}
-{% set links = [] %}
-{% for item in paragraph.field_links %}
-  {% set links = links|merge([{ text: item.title, url: item.url.toString(), external: item.url.isExternal() }]) %}
-{% endfor %}
+{% set links = paragraph.field_links|map(item => { text: item.title, url: item.url.toString(), external: item.url.isExternal() }) %}
 {% include 'pimlico:info_band' with {
   attributes,
   eyebrow: paragraph.field_eyebrow.value|default(''),

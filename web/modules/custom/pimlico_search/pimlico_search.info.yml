@@ -8,3 +8,4 @@ dependencies:
   - drupal:node
   - drupal:taxonomy
   - drupal:path_alias
+  - pimlico_brands:pimlico_brands

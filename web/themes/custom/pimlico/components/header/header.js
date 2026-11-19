@@ -6,6 +6,10 @@
  * once(); Escape closes the mobile menu and returns focus.
  */
 (function (Drupal, once) {
+  // sass-mq's desktop breakpoint (980px, _mq-settings.scss). Not read from a
+  // custom property: in development Vite injects the stylesheet from
+  // JavaScript, so it may not have applied yet, and an empty query matches
+  // every width.
   const desktop = window.matchMedia('(min-width: 61.25em)');
 
   // Content outside the header that is hidden from everyone while the
@@ -31,11 +35,11 @@
 
   Drupal.behaviors.header = {
     attach(context) {
-      // Hide on scroll down, show on scroll up. Past the header's own
-      // height the overlay header (hero pages) is pinned as the solid
-      // header; at the top it goes back over the hero. Focus inside the
-      // header always shows it, for keyboard users.
-      once('header-scroll', '.header', context).forEach((header) => {
+      once('header', '.header', context).forEach((header) => {
+        // Hide on scroll down, show on scroll up. Past the header's own
+        // height the overlay header (hero pages) is pinned as the solid
+        // header; at the top it goes back over the hero. Focus inside the
+        // header always shows it, for keyboard users.
         let lastY = window.scrollY;
         let ticking = false;
         const update = () => {
@@ -66,9 +70,7 @@
         header.addEventListener('focusin', () =>
           header.classList.remove('header--hidden')
         );
-      });
 
-      once('header', '.header', context).forEach((header) => {
         const menuToggle = header.querySelector('.header__menu-toggle');
         menuToggle?.addEventListener('click', () =>
           setMobileMenu(header, !header.classList.contains('header--nav-open'))
