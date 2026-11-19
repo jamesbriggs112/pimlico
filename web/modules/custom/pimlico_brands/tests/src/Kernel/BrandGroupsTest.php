@@ -75,6 +75,50 @@ final class BrandGroupsTest extends KernelTestBase {
   }
 
   /**
+   * The street map has the Brands filters, then Dine's, never Food & Drink.
+   */
+  public function testMapCategories(): void {
+    $interiors = $this->term('Interiors', 0);
+    $antiques = $this->term('Antiques & art', 1);
+    $food = $this->term('Food & Drink', 2, uuid: BrandGroups::FOOD_AND_DRINK);
+    $pubs = $this->term('Pubs and restaurants', 0, parent: $food);
+    $cafes = $this->term('Cafés', 1, parent: $food);
+    // Tags added by editors: a Dine tag weighted first, a Brands category
+    // weighted last with a sub-category, and a tag below a Dine tag.
+    $bakeries = $this->term('Bakeries', -1, parent: $food);
+    $lighting = $this->term('Lighting', 5);
+    $lamps = $this->term('Lamps', 0, parent: $lighting);
+    $espresso = $this->term('Espresso bars', 0, parent: $cafes);
+
+    $groups = $this->container->get(BrandGroups::class);
+    $labels = array_map(static fn(TermInterface $term) => (string) $term->label(), $groups->mapCategories());
+    $this->assertSame([
+      (int) $interiors->id() => 'Interiors',
+      (int) $antiques->id() => 'Antiques & art',
+      (int) $lighting->id() => 'Lighting',
+      (int) $bakeries->id() => 'Bakeries',
+      (int) $pubs->id() => 'Pubs and restaurants',
+      (int) $cafes->id() => 'Cafés',
+    ], $labels);
+    $this->assertSame(array_keys($groups->labels()), array_slice(array_keys($labels), 0, 3), 'The Brands filters come first, as on Brands.');
+    $this->assertSame([(int) $bakeries->id(), (int) $pubs->id(), (int) $cafes->id()], array_keys($groups->dineFilters()));
+
+    $category = static fn(?TermInterface $term) => $groups->mapCategoryFor($term)?->label();
+    $this->assertSame('Interiors', $category($interiors));
+    $this->assertSame('Lighting', $category($lamps), 'A Brands sub-category belongs to its top-level category.');
+    $this->assertSame('Cafés', $category($cafes), 'A Dine tag is its own map category.');
+    $this->assertSame('Cafés', $category($espresso), 'A tag below a Dine tag belongs to that Dine tag.');
+    $this->assertSame('Bakeries', $category($bakeries));
+    $this->assertNull($category($food), 'Food & Drink is never a map category.');
+    $this->assertNull($category(NULL));
+
+    // Renaming Food & Drink changes nothing: it is found by UUID.
+    $food->setName('Eat & drink')->save();
+    $this->assertSame('Pubs and restaurants', $category($pubs));
+    $this->assertCount(6, $groups->mapCategories());
+  }
+
+  /**
    * Renaming categories keeps their filters and Food & Drink's place on Dine.
    */
   public function testRenamedCategories(): void {

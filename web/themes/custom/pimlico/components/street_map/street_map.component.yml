@@ -29,7 +29,7 @@ props:
     categories:
       type: array
       title: Categories
-      description: 'Brand Category names in filter order. "All" is added first.'
+      description: 'Street map category names in filter order (the Brands filters, then the Dine filters), matching the feed''s category. "All" is added first.'
       items:
         type: string
 slots:

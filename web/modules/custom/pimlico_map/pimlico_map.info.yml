@@ -7,3 +7,4 @@ dependencies:
   - address:address
   - drupal:node
   - drupal:taxonomy
+  - pimlico_brands:pimlico_brands

@@ -8,6 +8,7 @@ use Drupal\Core\Cache\CacheableMetadata;
 use Drupal\Core\Entity\EntityTypeManagerInterface;
 use Drupal\node\NodeInterface;
 use Drupal\path_alias\AliasRepositoryInterface;
+use Drupal\pimlico_brands\BrandGroups;
 use Drupal\pimlico_map\Entity\UnitInterface;
 use Drupal\taxonomy\TermInterface;
 
@@ -17,13 +18,15 @@ use Drupal\taxonomy\TermInterface;
  * The shape is fixed by the map component (map guide, B3):
  * {"brands": [{id, name, label?, category, url, address?, buildings, status}]}.
  * Only published, active Brands shown on the map with at least one placed
- * Unit are included.
+ * Unit are included. A Brand's category is its street map category
+ * (BrandGroups::mapCategoryFor()), the same one the listings filter it by.
  */
 final class BrandFeed {
 
   public function __construct(
     private readonly EntityTypeManagerInterface $entityTypeManager,
     private readonly AliasRepositoryInterface $aliasRepository,
+    private readonly BrandGroups $brandGroups,
   ) {}
 
   /**
@@ -74,7 +77,7 @@ final class BrandFeed {
       return NULL;
     }
 
-    $category = $this->topCategory($brand, $cache);
+    $category = $this->mapCategory($brand, $cache);
     $url = $brand->toUrl()->toString(TRUE);
     $cache->addCacheableDependency($url);
 
@@ -120,20 +123,18 @@ final class BrandFeed {
   }
 
   /**
-   * Returns the Brand's top-level category, which the map filters by.
+   * Returns the Brand's street map category, which the map filters by.
    *
-   * Sub-categories (Cafés under Food & Drink) roll up to their parent, so
-   * the map's filter bar only needs the top-level terms.
+   * Brands sub-categories roll up to their top-level term, and Dine Brands
+   * keep their Food & Drink sub-category (Cafés), matching the filter bar.
    */
-  private function topCategory(NodeInterface $brand, CacheableMetadata $cache): ?TermInterface {
+  private function mapCategory(NodeInterface $brand, CacheableMetadata $cache): ?TermInterface {
     $term = $brand->get('field_brand_category')->entity;
-    if (!$term instanceof TermInterface) {
-      return NULL;
+    $category = $this->brandGroups->mapCategoryFor($term instanceof TermInterface ? $term : NULL);
+    if ($category) {
+      $cache->addCacheableDependency($category);
     }
-    $parents = $this->entityTypeManager->getStorage('taxonomy_term')->loadAllParents($term->id());
-    $top = end($parents) ?: $term;
-    $cache->addCacheableDependency($top);
-    return $top;
+    return $category;
   }
 
   /**

@@ -10,7 +10,9 @@ declare(strict_types=1);
 use Drupal\Component\Utility\Html;
 use Drupal\Core\Cache\CacheableMetadata;
 use Drupal\Core\Entity\EntityChangedInterface;
+use Drupal\pimlico_brands\BrandGroups;
 use Drupal\pimlico_map\MapBuilder;
+use Drupal\taxonomy\TermInterface;
 
 /**
  * Implements hook_preprocess_HOOK() for paragraph.
@@ -35,20 +37,19 @@ function pimlico_preprocess_paragraph(array &$variables): void {
 /**
  * Implements hook_preprocess_HOOK() for paragraph--street-map.
  *
- * Adds the overview map (from pimlico_map) and the top-level Brand
- * Categories in weight order for the filter bar. The feed rolls
- * sub-categories up to these, so the names match the map's categories.
+ * Adds the overview map (from pimlico_map) and the filter bar's categories:
+ * the Brands filters, then the Dine ones (BrandGroups::mapCategories()),
+ * named as the feed names each Brand's category.
  */
 function pimlico_preprocess_paragraph__street_map(array &$variables): void {
   $id = 'street-map-' . $variables['paragraph']->id();
-  $categories = [];
-  $terms = \Drupal::entityTypeManager()->getStorage('taxonomy_term')->loadTree('brand_category', 0, 1);
-  foreach ($terms as $term) {
-    $categories[] = $term->name;
-  }
+  $categories = array_map(
+    static fn(TermInterface $term) => (string) $term->label(),
+    \Drupal::service(BrandGroups::class)->mapCategories(),
+  );
   $variables['street_map'] = [
     'id' => $id,
-    'categories' => $categories,
+    'categories' => array_values($categories),
     'map' => \Drupal::service(MapBuilder::class)->overview($id),
   ];
   $cache = CacheableMetadata::createFromRenderArray($variables);
