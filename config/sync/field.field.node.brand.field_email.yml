@@ -10,7 +10,7 @@ field_name: field_email
 entity_type: node
 bundle: brand
 label: Email
-description: ''
+description: 'Shown as Contact under "Find the showroom".'
 required: false
 translatable: true
 default_value: {  }

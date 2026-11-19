@@ -6,7 +6,7 @@
  * follows the sixth card (see views-view-unformatted--brands).
  */
 #}
-<div{{ attributes.addClass('listing', 'listing--' ~ id|clean_class) }}>
+<div{{ attributes.addClass('listing', 'listing--' ~ id|clean_class, 'listing--' ~ display_id|clean_class) }}>
   {{ title_prefix }}
   {{ title_suffix }}
   {% include 'pimlico:page_title' with {

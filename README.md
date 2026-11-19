@@ -2,7 +2,7 @@
 
 The website for Pimlico Road, the Belgravia street of antique dealers, makers, fabric houses, lighting and interior designers, built by Four for Grosvenor on Drupal 11.
 
-It gives every Brand on the street its own page, opening hours and place on an interactive street map, and publishes news, podcast episodes and press coverage.
+It gives every Brand on the street its own page, opening hours and place on an interactive street map, and publishes news and press coverage.
 
 ## At a glance
 

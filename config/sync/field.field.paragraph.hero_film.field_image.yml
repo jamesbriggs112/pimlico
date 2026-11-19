@@ -10,9 +10,9 @@ id: paragraph.hero_film.field_image
 field_name: field_image
 entity_type: paragraph
 bundle: hero_film
-label: 'Poster image'
-description: 'Shown before the film plays, and instead of it for people who prefer reduced motion.'
-required: false
+label: Image
+description: 'The hero image. With a film it shows before the film plays and instead of it for people who prefer reduced motion; without one it is the hero.'
+required: true
 translatable: true
 default_value: {  }
 default_value_callback: ''

@@ -1,9 +1,10 @@
 {#
 /**
  * @file
- * Brand page (Figma T03): split hero, about, quote, gallery, specialisms,
- * find the showroom, similar brands. The street map joins "Find the
- * showroom" in phase 5.
+ * Brand page (Figma T03): the split hero, then the editor's sections
+ * (About, Quote, Gallery, What you'll find and others, in any order), then
+ * the fixed "Find the showroom" (with the street map when the Brand has
+ * Units) and Similar brands.
  */
 #}
 {% set category = node.field_brand_category.entity %}
@@ -29,32 +30,7 @@
     breadcrumb: drupal_block('system_breadcrumb_block'),
   } only %}
 
-  {% if node.field_heading.value or node.body.value %}
-    {% include 'pimlico:introduction' with {
-      eyebrow: 'About the house'|t,
-      heading: node.field_heading.value|default(node.label),
-      text: content.body,
-    } only %}
-  {% endif %}
-
-  {{ content.field_quote }}
-
-  {% if not node.field_gallery.isEmpty() %}
-    {% set images = content.field_gallery|children %}
-    {% include 'pimlico:image_gallery' with {
-      heading: 'Inside the showroom'|t,
-      caption: node.field_caption.value|default(''),
-      images,
-    } only %}
-  {% endif %}
-
-  {% if not node.field_specialisms.isEmpty() %}
-    {% include 'pimlico:info_rows' with {
-      eyebrow: 'Specialisms'|t,
-      heading: 'What you’ll find'|t,
-      rows: content.field_specialisms,
-    } only %}
-  {% endif %}
+  {{ content.field_sections }}
 
   {# Find the showroom #}
   {% set rows %}
@@ -67,13 +43,8 @@
     {% if node.field_trade_info.value %}
       {% include 'pimlico:info_row' with { label: 'Trade'|t, value: node.field_trade_info.value, variant: 'compact' } only %}
     {% endif %}
-    {% if node.field_email.value or node.field_phone.value %}
-      {% set contact = [content.field_email, content.field_phone] %}
-      {% include 'pimlico:info_row' with { label: 'Contact'|t, value: contact, variant: 'compact' } only %}
-    {% endif %}
-    {% if node.field_accessibility_link.0 %}
-      {% set accessibility %}<a href="{{ node.field_accessibility_link.0.url.toString() }}" target="_blank" rel="noopener">{{ 'Accessibility information'|t }}<span class="visually-hidden"> {{ '(opens in a new tab)'|t }}</span></a>{% endset %}
-      {% include 'pimlico:info_row' with { label: 'Accessibility'|t, value: accessibility, variant: 'compact' } only %}
+    {% if node.field_email.value %}
+      {% include 'pimlico:info_row' with { label: 'Contact'|t, value: content.field_email, variant: 'compact' } only %}
     {% endif %}
   {% endset %}
   {% set showroom_links = directions ? [{ text: 'Get directions'|t, url: directions, external: true }] : [] %}

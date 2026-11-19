@@ -54,8 +54,8 @@ final class BrandBreadcrumbBuilder implements BreadcrumbBuilderInterface {
     }
     else {
       $links[] = Link::createFromRoute($this->t('Brands'), 'view.brands.page_brands');
-      if ($group = $this->groups->groupFor($term)) {
-        $links[] = Link::createFromRoute($this->groups->labelFor($term), 'view.brands.page_brands', [], ['query' => ['category' => $group]]);
+      if ($filter = $this->groups->filterFor($term)) {
+        $links[] = Link::createFromRoute($filter->label(), 'view.brands.page_brands', [], ['query' => ['category' => $filter->id()]]);
       }
     }
     if ($term) {

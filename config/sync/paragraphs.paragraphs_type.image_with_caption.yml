@@ -2,6 +2,8 @@ uuid: 85f412de-0dda-4b44-b08f-b52c552a3435
 langcode: en
 status: true
 dependencies:
+  content:
+    - 'file:file:eecd74f2-dad6-4282-b35c-fe9d8e5b1616'
   module:
     - paragraphs_ee
 third_party_settings:
@@ -10,7 +12,7 @@ third_party_settings:
       content: content
 id: image_with_caption
 label: 'Image with caption'
-icon_uuid: null
-icon_default: null
+icon_uuid: eecd74f2-dad6-4282-b35c-fe9d8e5b1616
+icon_default: 'data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyNDAgMTQ0IiB3aWR0aD0iMjQwIiBoZWlnaHQ9IjE0NCI+PHJlY3QgeD0iMCIgeT0iMCIgd2lkdGg9IjI0MCIgaGVpZ2h0PSIxNDQiIHJ4PSIwIiBmaWxsPSIjZjRmMmViIi8+PHJlY3QgeD0iNjYiIHk9IjE0IiB3aWR0aD0iMTA4IiBoZWlnaHQ9IjcyIiByeD0iMCIgZmlsbD0iI2M1ZDNkMiIvPjxjaXJjbGUgY3g9IjEyOS42IiBjeT0iMzguMCIgcj0iNC44IiBmaWxsPSIjZmZmZmZmIi8+PHBvbHlnb24gcG9pbnRzPSI5OC40LDY0LjQgMTEyLjgsNDcuNiAxMjIuNCw1Ny4yIDEyOS42LDUwLjAgMTQxLjYsNjQuNCIgZmlsbD0iI2ZmZmZmZiIvPjxyZWN0IHg9IjY2IiB5PSI5NiIgd2lkdGg9IjEwMCIgaGVpZ2h0PSI0IiByeD0iMiIgZmlsbD0iIzM5NDk1OSIgb3BhY2l0eT0iMC4zNSIvPjxyZWN0IHg9IjY2IiB5PSIxMDQiIHdpZHRoPSI3MCIgaGVpZ2h0PSI0IiByeD0iMiIgZmlsbD0iIzM5NDk1OSIgb3BhY2l0eT0iMC4zNSIvPjwvc3ZnPgo='
 description: ''
 behavior_plugins: {  }

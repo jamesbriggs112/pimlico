@@ -6,6 +6,11 @@
 // 400px story cards, 40px apart with 72px between rows (64 on News); one
 // column on mobile, 44px apart. The promo band spans the row.
 .listing {
+  // Dine centres its pagination (Figma 85:5766); Brands keeps it left (9:709).
+  &--page-dine {
+    --pagination-justify: center;
+  }
+
   &__results {
     @include pageContainer;
     padding-top: var(--section-space);
@@ -21,11 +26,6 @@
       margin-bottom: #{fluid(24px, 40px)};
       background-color: var(--color-border-strong);
     }
-  }
-
-  &__label {
-    margin: 0 0 #{fluid(24px, 64px)};
-    color: var(--color-text-primary);
   }
 
   &__grid {
@@ -47,19 +47,10 @@
 
   // News on mobile (Figma T07 · Mobile 390): after the large featured story,
   // compact ruled rows: an 88x110 photo beside the eyebrow and a 20px title.
-  // The rows' own rules replace the section rule and "Latest" label.
+  // The rows' own rules replace the section rule.
   @include mq($until: tablet) {
     &--news &__results--ruled::before {
       display: none;
-    }
-
-    &--news &__label {
-      position: absolute;
-      width: 1px;
-      height: 1px;
-      overflow: hidden;
-      clip-path: inset(50%);
-      white-space: nowrap;
     }
 
     &--news &__grid {
@@ -87,10 +78,6 @@
     &--news &__grid .story-card__title {
       font-size: var(--font-size-title-s);
     }
-
-    &--news &__grid .story-card__link {
-      display: none;
-    }
   }
 
   &__promo {
@@ -111,7 +98,9 @@
 }
 
 // Story pages: the body sections sit in the 760px reading column (rich text
-// centres itself), 56px apart; press bodies start with a rule.
+// centres itself), 56px apart; on desktop, press bodies start with a rule
+// (Figma 27:1216, 160:4149). The mobile designs (26:2098, 175:4743) have
+// none, and start the body 16px below the publication block.
 .story-body {
   display: grid;
   gap: #{fluid(32px, 56px)};
@@ -121,14 +110,23 @@
     margin-block: 0;
   }
 
+  &--ruled {
+    @include mq($until: desktop) {
+      padding-top: var(--space-16);
+    }
+  }
+
   &--ruled::before {
-    content: '';
     box-sizing: border-box;
     width: calc(100% - 2 * var(--page-gutter));
     max-width: var(--max-text-width);
     height: 1px;
     margin-inline: auto;
     background-color: var(--color-border-strong);
+
+    @include mq($from: desktop) {
+      content: '';
+    }
   }
 }
 

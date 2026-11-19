@@ -3,7 +3,8 @@
   'text-link',
   'text-link--' ~ tone|default('dark'),
   'text-link--' ~ size|default('caps'),
-  underlined or current ? 'text-link--underlined',
+  underlined ? 'text-link--underlined',
+  current ? 'text-link--current',
 ] %}
 {% if current %}
   {% set attributes = attributes.setAttribute('aria-current', 'page') %}

@@ -6,7 +6,6 @@ dependencies:
     - core.entity_view_mode.node.featured
     - core.entity_view_mode.node.teaser
     - node.type.article
-    - node.type.podcast_episode
     - node.type.press_article
   module:
     - node
@@ -90,7 +89,6 @@ display:
           operator: in
           value:
             article: article
-            podcast_episode: podcast_episode
             press_article: press_article
           group: 1
         type_1:
@@ -206,7 +204,6 @@ display:
           operator: in
           value:
             article: article
-            podcast_episode: podcast_episode
             press_article: press_article
           group: 1
         field_featured_value:
@@ -295,7 +292,6 @@ display:
           operator: in
           value:
             article: article
-            podcast_episode: podcast_episode
             press_article: press_article
           group: 1
       filter_groups:
@@ -394,7 +390,6 @@ display:
           operator: in
           value:
             article: article
-            podcast_episode: podcast_episode
             press_article: press_article
           group: 1
       filter_groups:
@@ -431,9 +426,9 @@ display:
         metatag_display_extender:
           metatags:
             title: 'News from Pimlico Road'
-            description: 'Stories, podcasts and press coverage from Pimlico Road and Newson’s Yard: the makers, dealers and places on the street.'
+            description: 'Stories and press coverage from Pimlico Road and Newson’s Yard: the makers, dealers and places on the street.'
             og_title: 'News from Pimlico Road'
-            og_description: 'Stories, podcasts and press coverage from Pimlico Road and Newson’s Yard: the makers, dealers and places on the street.'
+            og_description: 'Stories and press coverage from Pimlico Road and Newson’s Yard: the makers, dealers and places on the street.'
             canonical_url: '[current-page:url:absolute]'
       path: news
     cache_metadata:

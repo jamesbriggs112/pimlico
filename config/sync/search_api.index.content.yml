@@ -32,7 +32,6 @@ field_settings:
         'entity:node':
           article: full
           brand: full
-          podcast_episode: full
           press_article: full
   search_group:
     label: 'Search group'
@@ -87,7 +86,6 @@ datasource_settings:
       selected:
         - article
         - brand
-        - podcast_episode
         - press_article
     languages:
       default: true

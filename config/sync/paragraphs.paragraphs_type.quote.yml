@@ -2,6 +2,8 @@ uuid: 09b30dee-c124-4b41-9730-7e264081865f
 langcode: en
 status: true
 dependencies:
+  content:
+    - 'file:file:a182fb42-7b46-4556-8785-586a76d15fa6'
   module:
     - paragraphs_ee
 third_party_settings:
@@ -10,7 +12,7 @@ third_party_settings:
       content: content
 id: quote
 label: Quote
-icon_uuid: null
-icon_default: null
+icon_uuid: a182fb42-7b46-4556-8785-586a76d15fa6
+icon_default: 'data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyNDAgMTQ0IiB3aWR0aD0iMjQwIiBoZWlnaHQ9IjE0NCI+PHJlY3QgeD0iMCIgeT0iMCIgd2lkdGg9IjI0MCIgaGVpZ2h0PSIxNDQiIHJ4PSIwIiBmaWxsPSIjZjRmMmViIi8+PHJlY3QgeD0iMTA1IiB5PSIyNCIgd2lkdGg9IjMwIiBoZWlnaHQ9IjMiIHJ4PSIxLjUiIGZpbGw9IiNlODc0MDAiLz48cG9seWdvbiBwb2ludHM9IjM3LjAsNDAgMjA3LjAsNDAgMjAzLjAsNDcgMzMuMCw0NyIgZmlsbD0iIzM5NDk1OSIvPjxwb2x5Z29uIHBvaW50cz0iMzIuMCw1NSAyMTIuMCw1NSAyMDguMCw2MiAyOC4wLDYyIiBmaWxsPSIjMzk0OTU5Ii8+PHBvbHlnb24gcG9pbnRzPSI2Mi4wLDcwIDE4Mi4wLDcwIDE3OC4wLDc3IDU4LjAsNzciIGZpbGw9IiMzOTQ5NTkiLz48cmVjdCB4PSI5MC4wIiB5PSI5OCIgd2lkdGg9IjYwIiBoZWlnaHQ9IjQiIHJ4PSIyIiBmaWxsPSIjMzk0OTU5IiBvcGFjaXR5PSIwLjUiLz48L3N2Zz4K'
 description: ''
 behavior_plugins: {  }

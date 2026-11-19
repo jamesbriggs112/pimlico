@@ -2,7 +2,10 @@
 /**
  * @file
  * Hero film paragraph → pimlico:hero_film. The film renders through the
- * media "background" view mode (autoplay, muted, loop, no controls).
+ * media "background" view mode (autoplay, muted, loop, no controls). The
+ * film is optional: an image-only hero (Newson's Yard can be either) passes
+ * no media, so no film or Pause control renders. The rendered field array
+ * is never empty, hence the isEmpty() check.
  */
 #}
 {% set link = paragraph.field_link.0 %}
@@ -12,6 +15,6 @@
   heading: paragraph.field_heading.value|default(''),
   link_text: link.title|default(''),
   link_url: link ? link.url.toString() : '',
-  media: content.field_video,
+  media: paragraph.field_video.isEmpty() ? null : content.field_video,
   poster: content.field_image,
 } only %}

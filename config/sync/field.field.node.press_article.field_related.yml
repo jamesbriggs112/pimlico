@@ -4,15 +4,14 @@ status: true
 dependencies:
   config:
     - field.storage.node.field_related
-    - node.type.article
-    - node.type.podcast_episode
+    - node.type.brand
     - node.type.press_article
 id: node.press_article.field_related
 field_name: field_related
 entity_type: node
 bundle: press_article
-label: 'Related stories'
-description: 'Up to three. Leave empty to show the latest in the same category.'
+label: 'Related brands'
+description: 'Up to three Brands shown under "Discover the places in the story". Leave empty to show three Brands from the street, picked at random.'
 required: false
 translatable: true
 default_value: {  }
@@ -21,8 +20,9 @@ settings:
   handler: 'default:node'
   handler_settings:
     target_bundles:
-      article: article
-      podcast_episode: podcast_episode
-      press_article: press_article
+      brand: brand
+    sort:
+      field: title
+      direction: ASC
     auto_create: false
 field_type: entity_reference

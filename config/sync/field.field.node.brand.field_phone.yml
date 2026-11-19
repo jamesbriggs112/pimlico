@@ -12,7 +12,7 @@ field_name: field_phone
 entity_type: node
 bundle: brand
 label: Phone
-description: ''
+description: 'Not shown on the page; search engines read it from the page’s structured data.'
 required: false
 translatable: true
 default_value: {  }

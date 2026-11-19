@@ -27,10 +27,10 @@ h6,
 .display-l,
 .display-m,
 .display-s {
-  font-family: var(--font-family-display);
+  @include displayFont;
+  @include headingTrim;
   font-weight: var(--font-weight-light);
   font-optical-sizing: auto;
-  font-variation-settings: var(--font-display-variation);
   margin-top: 0;
   margin-bottom: 0;
   text-wrap: balance;
@@ -76,6 +76,7 @@ h6,
 .label-nav {
   font-family: var(--font-family-body);
   font-variation-settings: normal;
+  text-box: normal;
 }
 
 // Body text styles
@@ -114,6 +115,12 @@ h6,
 p {
   max-width: var(--max-text-width);
   margin-top: 0;
+}
+
+// A dark section (see the inverseSection mixin), for a component or
+// paragraph to opt into with a class.
+.is-inverse {
+  @include inverseSection;
 }
 
 // Focus: the Figma two-tone ring. Components on dark surfaces set

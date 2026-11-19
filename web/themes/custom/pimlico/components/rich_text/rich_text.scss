@@ -99,10 +99,10 @@
 
   blockquote {
     margin-inline: 0;
-    font-family: var(--font-family-display);
+    @include displayFont;
     font-style: italic;
     font-weight: var(--font-weight-light);
-    font-size: #{to.rem(26px)};
+    font-size: var(--font-size-26);
     line-height: 1.3;
   }
 }

@@ -9,10 +9,11 @@
  * Downloads each photo (a 1920px WebP from belgraviavillage.com), saves it as
  * an 82% JPEG under public://brands, and creates an Image media item named
  * "Brand photo: <Brand> <n>". The first photo becomes the Brand's main image;
- * with two or more, they replace the gallery. A Brand with one photo has its
- * gallery cleared rather than showing sample photos of other places. Re-run
- * safely: existing media are reused. Alt text is the Brand's name; editors
- * should describe each photo.
+ * with two or more, they replace the photos in its Image gallery section (or
+ * make one, before "What you'll find"). A Brand with one photo has its
+ * gallery section removed rather than showing sample photos of other places.
+ * Re-run safely: existing media are reused. Alt text is the Brand's name;
+ * editors should describe each photo.
  */
 
 declare(strict_types=1);
@@ -21,6 +22,7 @@ use Drupal\Core\File\FileExists;
 use Drupal\Core\File\FileSystemInterface;
 use Drupal\media\Entity\Media;
 use Drupal\node\NodeInterface;
+use Drupal\paragraphs\Entity\Paragraph;
 
 $data = json_decode((string) file_get_contents(dirname(__DIR__) . '/data/photos.json'), TRUE, flags: JSON_THROW_ON_ERROR)['brands'];
 $brands = json_decode((string) file_get_contents(dirname(__DIR__) . '/data/brands.json'), TRUE, flags: JSON_THROW_ON_ERROR)['brands'];
@@ -84,10 +86,24 @@ foreach ($data as $id => $entry) {
   }
 
   $brand->set('field_image', $media[0]);
-  $brand->set('field_gallery', count($media) > 1 ? $media : []);
-  if (count($media) > 1 && $brand->get('field_caption')->value === 'Photography: sample images') {
-    $brand->set('field_caption', NULL);
+  $sections = $brand->get('field_sections')->referencedEntities();
+  $gallery = current(array_filter($sections, static fn($section) => $section->bundle() === 'image_gallery')) ?: NULL;
+  if (count($media) > 1) {
+    if (!$gallery) {
+      $gallery = Paragraph::create(['type' => 'image_gallery', 'field_heading' => 'Inside the showroom']);
+      $before = array_search('info_rows', array_map(static fn($section) => $section->bundle(), $sections), TRUE);
+      array_splice($sections, $before === FALSE ? count($sections) : $before, 0, [$gallery]);
+    }
+    $gallery->set('field_images', $media);
+    if ($gallery->get('field_caption')->value === 'Photography: sample images') {
+      $gallery->set('field_caption', NULL);
+    }
+    $gallery->setNeedsSave(TRUE);
   }
+  elseif ($gallery) {
+    $sections = array_filter($sections, static fn($section) => $section !== $gallery);
+  }
+  $brand->set('field_sections', array_values($sections));
   $brand->setNewRevision(TRUE);
   $brand->setRevisionLogMessage('Photos from belgraviavillage.com (pimlico_migrate/scripts/import-photos.php).');
   $brand->setSyncing(TRUE);

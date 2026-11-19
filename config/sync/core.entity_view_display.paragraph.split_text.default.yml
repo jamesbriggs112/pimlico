@@ -10,6 +10,7 @@ dependencies:
     - field.field.paragraph.split_text.field_text
     - paragraphs.paragraphs_type.split_text
   module:
+    - fences
     - text
 id: paragraph.split_text.default
 targetEntityType: paragraph
@@ -20,7 +21,16 @@ content:
     type: text_default
     label: hidden
     settings: {  }
-    third_party_settings: {  }
+    third_party_settings:
+      fences:
+        fences_field_tag: none
+        fences_field_classes: ''
+        fences_field_items_wrapper_tag: none
+        fences_field_items_wrapper_classes: ''
+        fences_field_item_tag: none
+        fences_field_item_classes: ''
+        fences_label_tag: ''
+        fences_label_classes: ''
     weight: 0
     region: content
 hidden:

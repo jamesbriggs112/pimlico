@@ -37,7 +37,7 @@ final class SearchGroupTest extends KernelTestBase {
     $this->installEntitySchema('node');
     $this->installEntitySchema('taxonomy_term');
     $this->installSchema('node', ['node_access']);
-    foreach (['brand', 'article', 'podcast_episode', 'press_article', 'page'] as $type) {
+    foreach (['brand', 'article', 'press_article', 'page'] as $type) {
       NodeType::create(['type' => $type, 'name' => $type])->save();
     }
     Vocabulary::create(['vid' => 'brand_category', 'name' => 'Brand category'])->save();
@@ -65,7 +65,7 @@ final class SearchGroupTest extends KernelTestBase {
     $cases = [
       'brands' => Node::create(['type' => 'brand', 'title' => 'A', 'field_brand_category' => $lighting]),
       'dine' => Node::create(['type' => 'brand', 'title' => 'B', 'field_brand_category' => $food]),
-      'news' => Node::create(['type' => 'podcast_episode', 'title' => 'D']),
+      'news' => Node::create(['type' => 'article', 'title' => 'D']),
       'press' => Node::create(['type' => 'press_article', 'title' => 'E']),
     ];
     foreach ($cases as $expected => $node) {
