@@ -11,8 +11,8 @@ field_name: field_video
 entity_type: paragraph
 bundle: hero_film
 label: Film
-description: 'A short, silent MP4 loop.'
-required: true
+description: 'Optional. A short, silent MP4 loop that plays over the image, with a Pause film control. Leave empty for an image-only hero.'
+required: false
 translatable: true
 default_value: {  }
 default_value_callback: ''

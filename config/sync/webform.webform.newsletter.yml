@@ -10,7 +10,7 @@ template: false
 archive: false
 id: newsletter
 title: 'The Pimlico Road edit'
-description: 'News from the street, new arrivals and events, once a month.'
+description: 'News from the street and new arrivals, once a month.'
 categories: {  }
 elements: |-
   email:

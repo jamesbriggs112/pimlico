@@ -1,17 +1,21 @@
-// Figma "A / Button": Label/Nav text, 18px 34px padding, square corners.
-// Hover = mustard fill with a dark label; focus = the two-tone ring.
+// Figma "A / Button": Label/Nav text, 56px tall with a 2px border inside,
+// square corners. Yellow (the default) turns dark grey on hover with a
+// yellow border and label; Dark keeps its fill and gains a yellow border and
+// label. Focus = the two-tone ring. Hover eases over 150ms.
 .btn {
-  --_bg: var(--button-background-color-dark);
-  --_color: var(--button-text-color-dark);
-  --_hover-bg: var(--button-hover-background-color-dark);
-  --_hover-color: var(--button-hover-text-color-dark);
+  --_bg: var(--button-background-color-yellow);
+  --_border: var(--button-border-color-yellow);
+  --_color: var(--button-text-color-yellow);
+  --_hover-bg: var(--button-hover-background-color-yellow);
+  --_hover-border: var(--button-hover-border-color-yellow);
+  --_hover-color: var(--button-hover-text-color-yellow);
 
   display: inline-flex;
   align-items: center;
   justify-content: center;
   gap: var(--button-icon-spacing);
   padding: var(--button-padding);
-  border: 0;
+  border: var(--button-border-width) solid var(--_border);
   border-radius: var(--button-border-radius);
   background-color: var(--_bg);
   color: var(--_color);
@@ -27,6 +31,7 @@
   transition: var(--button-transition);
 
   &:hover {
+    border-color: var(--_hover-border);
     background-color: var(--_hover-bg);
     color: var(--_hover-color);
   }
@@ -42,16 +47,20 @@
 
   &:disabled,
   &[aria-disabled='true'] {
+    border-color: var(--button-disabled-background-color);
     background-color: var(--button-disabled-background-color);
     color: var(--button-disabled-text-color);
     cursor: not-allowed;
   }
 
-  &--yellow {
-    --_bg: var(--button-background-color-yellow);
-    --_color: var(--button-text-color-yellow);
-    --_hover-bg: var(--button-hover-background-color-yellow);
-    --_hover-color: var(--button-hover-text-color-yellow);
+  // Dark: in the design system but not used on the site.
+  &--dark {
+    --_bg: var(--button-background-color-dark);
+    --_border: var(--button-border-color-dark);
+    --_color: var(--button-text-color-dark);
+    --_hover-bg: var(--button-hover-background-color-dark);
+    --_hover-border: var(--button-hover-border-color-dark);
+    --_hover-color: var(--button-hover-text-color-dark);
   }
 
   &--full-width {

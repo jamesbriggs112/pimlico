@@ -51,11 +51,6 @@
     }
 
     .btn {
-      --_bg: var(--button-background-color-yellow);
-      --_color: var(--button-text-color-yellow);
-      --_hover-bg: var(--button-hover-background-color-yellow);
-      --_hover-color: var(--button-hover-text-color-yellow);
-
       @include mq($until: tablet) {
         width: 100%;
       }

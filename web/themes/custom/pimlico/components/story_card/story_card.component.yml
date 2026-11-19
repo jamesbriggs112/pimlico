@@ -1,7 +1,7 @@
 '$schema': 'https://git.drupalcode.org/project/drupal/-/raw/HEAD/core/assets/schemas/v1/metadata.schema.json'
 name: Story card
 status: stable
-description: 'Figma "A / Story card": the whole card is a link. 4:5 image, eyebrow meta, Fraunces title, caps link label. Used for stories and brands.'
+description: 'Figma "A / Story card" (3:1714): the whole card is a link. 4:5 image, eyebrow meta, Fraunces title and, when show_link is on, a caps link label. Used for stories and brands.'
 libraryOverrides:
   css:
     component:
@@ -25,9 +25,15 @@ props:
     summary:
       type: string
       title: Summary
+    show_link:
+      type: boolean
+      title: Show link
+      description: 'Show the caps link label under the title (Figma "Show link", off by default). The whole card is the link either way.'
+      default: false
     link_text:
       type: string
       title: Link label
+      description: 'Shown only with show_link.'
       default: 'Step inside'
     heading_level:
       type: integer

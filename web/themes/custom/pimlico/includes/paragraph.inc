@@ -16,11 +16,19 @@ use Drupal\pimlico_map\MapBuilder;
  * Implements hook_preprocess_HOOK() for paragraph.
  *
  * Sections with an Anchor field use it as their id, for in-page links.
+ * Sections whose Background is Dark get the is-inverse class (the
+ * inverseSection mixin), so every section type with the shared Background
+ * field (Info rows, Split text, Cards) turns dark the same way. White and
+ * linen stay with each adapter template, which maps them to its
+ * component's tint.
  */
 function pimlico_preprocess_paragraph(array &$variables): void {
   $paragraph = $variables['paragraph'];
   if ($paragraph->hasField('field_anchor') && !$paragraph->get('field_anchor')->isEmpty()) {
     $variables['attributes']['id'] = $paragraph->get('field_anchor')->value;
+  }
+  if ($paragraph->hasField('field_background') && $paragraph->get('field_background')->value === 'dark') {
+    $variables['attributes']['class'][] = 'is-inverse';
   }
 }
 

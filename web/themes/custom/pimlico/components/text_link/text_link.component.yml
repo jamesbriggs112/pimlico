@@ -40,11 +40,11 @@ props:
     underlined:
       type: boolean
       title: Underlined at rest
-      description: 'For the current navigation or footer item, and links that are underlined at rest.'
+      description: 'For links that are underlined at rest. Caps links drop to Link/Caps (12px). For the current page use current.'
     arrow:
       type: boolean
       title: Show arrow
     current:
       type: boolean
       title: Current page
-      description: 'Adds aria-current="page" and the underline.'
+      description: 'Adds aria-current="page" and the underline, at the link''s own size (Figma "Label/Nav · Active").'

@@ -6,7 +6,7 @@
     display: grid;
     justify-items: center;
     gap: var(--space-12);
-    padding: #{fluid(40px, 60px)} var(--page-gutter) #{fluid(16px, 24px)};
+    padding: var(--section-space) var(--page-gutter) #{fluid(16px, 24px)};
     text-align: center;
   }
 

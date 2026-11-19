@@ -4,7 +4,8 @@
  * Introduction paragraph → pimlico:introduction.
  *
  * Two images make the collage; none gives the centred layout, with the
- * optional film below.
+ * optional film below. Empty fields pass null: an empty field still renders
+ * (its cache metadata), which would print the component's empty wrapper.
  */
 #}
 {% set link = paragraph.field_link.0 %}
@@ -17,5 +18,5 @@
   text: content.field_text,
   image_large: content.field_images[0],
   image_small: content.field_images[1],
-  media: content.field_video,
+  media: paragraph.field_video.isEmpty() ? null : content.field_video,
 } only %}

@@ -1,6 +1,6 @@
 // Figma "Text link". Caps underlined uses Link/Caps (12px); every other caps
-// state uses Label/Nav (14px). Hover moves the underline to a 6px offset;
-// colour never changes.
+// state, the current nav item included (Label/Nav · Active), uses Label/Nav
+// (14px). Hover moves the underline to a 6px offset; colour never changes.
 .text-link {
   display: inline-flex;
   align-items: center;
@@ -28,6 +28,17 @@
 
   &--underlined &__text {
     text-decoration-color: currentColor;
+    text-underline-offset: var(--link-underline-offset);
+  }
+
+  // The current page's link: underlined at rest at its own size. A component
+  // that doesn't mark the current page (the footer) sets
+  // --text-link-current-underline-color: transparent.
+  &--current &__text {
+    text-decoration-color: var(
+      --text-link-current-underline-color,
+      currentColor
+    );
     text-underline-offset: var(--link-underline-offset);
   }
 

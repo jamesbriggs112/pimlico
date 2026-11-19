@@ -22,7 +22,8 @@ use Drupal\pimlico_brands\BrandGroups;
  */
 function _pimlico_listings(): array {
   return [
-    // Figma's category groups (pimlico_brands); Food & Drink is on Dine.
+    // Every top-level Brand Category but Food & Drink (pimlico_brands), by
+    // term ID; Food & Drink is on Dine.
     'brands:page_brands' => [
       'groups' => TRUE,
       'param' => 'category',
@@ -36,7 +37,7 @@ function _pimlico_listings(): array {
       'label' => t('Filter places to eat and drink'),
     ],
     'news:page_news' => [
-      'types' => ['article' => t('News'), 'press_article' => t('Press')],
+      'types' => _pimlico_story_types(),
       'param' => 'type',
       'align' => 'center',
       'label' => t('Filter stories by type'),
@@ -74,11 +75,11 @@ function pimlico_preprocess_views_view(array &$variables): void {
   ];
 
   if (!empty($config['groups'])) {
-    foreach (\Drupal::service(BrandGroups::class)->labels() as $key => $label) {
+    foreach (\Drupal::service(BrandGroups::class)->labels() as $tid => $label) {
       $items[] = [
         'text' => $label,
-        'url' => $link([$param => $key]),
-        'active' => $current === $key,
+        'url' => $link([$param => $tid]),
+        'active' => $current === (string) $tid,
       ];
     }
   }

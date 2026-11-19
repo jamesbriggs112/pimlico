@@ -5,7 +5,6 @@ dependencies:
   config:
     - field.storage.node.field_related
     - node.type.article
-    - node.type.podcast_episode
     - node.type.press_article
 id: node.article.field_related
 field_name: field_related
@@ -22,7 +21,6 @@ settings:
   handler_settings:
     target_bundles:
       article: article
-      podcast_episode: podcast_episode
       press_article: press_article
     auto_create: false
 field_type: entity_reference

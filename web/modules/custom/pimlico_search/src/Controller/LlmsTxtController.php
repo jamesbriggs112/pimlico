@@ -43,13 +43,13 @@ final class LlmsTxtController implements ContainerInjectionInterface {
     $lines = [
       '# ' . $site->get('name'),
       '',
-      '> Pimlico Road is a street in Belgravia, London, known for antique dealers, furniture makers, fabric houses, lighting and interior designers, with Newson’s Yard (a former timber yard reopened to makers) and places to eat and drink. This site lists every brand on the street with its address, opening hours and location on a map, and publishes news, podcasts and press coverage.',
+      '> Pimlico Road is a street in Belgravia, London, known for antique dealers, furniture makers, fabric houses, lighting and interior designers, with Newson’s Yard (a former timber yard reopened to makers) and places to eat and drink. This site lists every brand on the street with its address, opening hours and location on a map, and publishes news and press coverage.',
       '',
       '## Main pages',
       '',
       '- [Brands](' . $url('view.brands.page_brands') . '): every shop, showroom and dealer on the street, by category',
       '- [Dine](' . $url('view.brands.page_dine') . '): restaurants, pubs and cafés',
-      '- [News](' . $url('view.news.page_news') . '): stories, podcast episodes and press coverage',
+      '- [News](' . $url('view.news.page_news') . '): stories and press coverage',
       '- [Search](' . $url('view.search.page_search') . '): search brands and stories',
     ];
     foreach (['Visit', 'Newson’s Yard', 'About Pimlico Road', 'Contact'] as $title) {
@@ -71,7 +71,7 @@ final class LlmsTxtController implements ContainerInjectionInterface {
     $lines[] = '';
     $lines[] = '## Latest stories';
     $lines[] = '';
-    foreach ($this->published(['article', 'podcast_episode', 'press_article'], 'created', 'DESC', 20, $cache) as $story) {
+    foreach ($this->published(['article', 'press_article'], 'created', 'DESC', 20, $cache) as $story) {
       $lines[] = '- [' . $story->label() . '](' . $story->toUrl('canonical', ['absolute' => TRUE])->toString() . ')' . $this->summary($story);
     }
 

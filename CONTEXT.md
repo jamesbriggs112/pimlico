@@ -9,11 +9,11 @@ A business trading on Pimlico Road, a neighbouring street, or in Newson's Yard, 
 _Avoid_: Shop, Tenant, Retailer
 
 **Brand Category**:
-The single primary grouping a Brand is filtered by, on listings and on the map: Interiors, Antiques & art, or Food & Drink, which has the sub-categories Cafés and Pubs and restaurants. Categories are ordered by weight.
+The single primary grouping a Brand is filtered by, on listings and on the map: Interiors, Antiques & art, or Food & Drink, which has the sub-categories Cafés and Pubs and restaurants. Editors can add, rename and reorder categories; categories are ordered by weight. Every top-level category except Food & Drink is a Brands page filter; Food & Drink and its sub-categories are on Dine.
 _Avoid_: Tag, Sector
 
 **Specialism**:
-A short line describing something a Brand offers, shown under "What you'll find" on its page. Specialisms are free text per Brand, not a shared vocabulary.
+A short line describing something a Brand offers, shown under "What you'll find" on its page (an Info rows section). Specialisms are free text per Brand, not a shared vocabulary.
 _Avoid_: Service, Brand Category
 
 **Similar Brands**:
@@ -53,7 +53,7 @@ The former timber yard off Pimlico Road, reopened as a home for makers. It is an
 _Avoid_: The Yard (in content), Newsons Yard
 
 **Story**:
-Any item in News: an Article, a Podcast Episode or a Press Article. Stories share a News Category and appear together in the News listing.
+Any item in News: an Article or a Press Article. Stories share a News Category and appear together in the News listing, where each card shows its type (News or Press) and date.
 _Avoid_: Post, Blog
 
 **Press Article**:

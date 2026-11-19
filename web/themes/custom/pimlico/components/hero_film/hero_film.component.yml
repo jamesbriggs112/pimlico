@@ -33,7 +33,7 @@ props:
 slots:
   media:
     title: Film
-    description: 'A <video> (autoplay, muted, looping).'
+    description: 'A <video> (autoplay, muted, looping). Optional: without one the hero is the image alone, with no Pause film control.'
   poster:
     title: Poster image
-    description: 'Shown under the film, and instead of it with reduced motion.'
+    description: 'The hero image: shown under the film, instead of it with reduced motion, and on its own when there is no film.'

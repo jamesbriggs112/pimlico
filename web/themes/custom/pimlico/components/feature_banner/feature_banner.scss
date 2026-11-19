@@ -48,12 +48,15 @@
   }
 
   &__lockup-name {
-    font-family: var(--font-family-display);
-    font-size: #{fluid(16px, 20px)};
+    @include displayFont;
+    font-size: var(--font-size-16);
     font-weight: 600;
     letter-spacing: 0.28em;
     text-transform: uppercase;
-    font-variation-settings: var(--font-display-variation);
+
+    @include mq($from: desktop) {
+      font-size: var(--font-size-20);
+    }
   }
 
   &__lockup-caption {

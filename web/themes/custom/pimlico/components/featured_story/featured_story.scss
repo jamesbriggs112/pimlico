@@ -4,7 +4,7 @@
 // time, caps underlined link. Mobile: image on top, Display S title; the
 // standfirst and reading time are dropped (News).
 .featured-story {
-  padding-block: #{fluid(32px, 60px)} var(--section-space);
+  padding-block: var(--section-space);
 
   &__inner {
     @include pageContainer;
@@ -73,6 +73,26 @@
     a &__summary,
     &__time {
       display: none;
+    }
+  }
+
+  // Press "Section · Publication" on mobile (175:4746): logo and meta above
+  // the image, the standfirst below it, 40px down. Desktop keeps the image
+  // beside the text.
+  &--publication {
+    @include mq($until: desktop) {
+      .featured-story__text {
+        display: contents;
+      }
+
+      .featured-story__image {
+        order: 1;
+      }
+
+      .featured-story__summary {
+        order: 2;
+        margin-top: var(--space-24);
+      }
     }
   }
 

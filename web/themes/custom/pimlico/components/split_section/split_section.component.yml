@@ -1,7 +1,7 @@
 '$schema': 'https://git.drupalcode.org/project/drupal/-/raw/HEAD/core/assets/schemas/v1/metadata.schema.json'
 name: Split section
 status: stable
-description: 'Figma podcast "Episode notes" and "Transcript": a 420px intro (eyebrow, Display L heading, Body L text) beside a 760px content column.'
+description: 'Figma split layout (About "Area story"): a 420px intro (eyebrow, Display L heading, Body L text) beside a 760px content column.'
 libraryOverrides:
   css:
     component:

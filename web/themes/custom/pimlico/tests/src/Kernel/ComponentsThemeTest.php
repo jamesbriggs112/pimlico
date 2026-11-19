@@ -70,7 +70,7 @@ final class ComponentsThemeTest extends ComponentKernelTestBase {
   }
 
   /**
-   * Buttons are Dark unless a variant is chosen.
+   * Buttons are Yellow unless a variant is chosen.
    *
    * Rendered through a Twig include, as templates use it: a #type component
    * render array would pass its own (empty) #variant as the variant prop.
@@ -79,11 +79,12 @@ final class ComponentsThemeTest extends ComponentKernelTestBase {
     $crawler = $this->renderComponentRenderArray([
       '#type' => 'inline_template',
       '#template' => "{{ include('pimlico:button', { text: 'Plan your visit', url: '/visit' }, with_context = false) }}"
-      . "{{ include('pimlico:button', { text: 'Subscribe', variant: 'yellow' }, with_context = false) }}",
+      . "{{ include('pimlico:button', { text: 'Subscribe', variant: 'dark' }, with_context = false) }}",
     ]);
 
-    $this->assertCount(1, $crawler->filter('a.btn.btn--dark[href="/visit"]'));
-    $this->assertCount(1, $crawler->filter('button.btn.btn--yellow'));
+    $this->assertCount(1, $crawler->filter('a.btn.btn--yellow[href="/visit"]'));
+    $this->assertCount(0, $crawler->filter('a.btn.btn--dark'));
+    $this->assertCount(1, $crawler->filter('button.btn.btn--dark'));
   }
 
 }

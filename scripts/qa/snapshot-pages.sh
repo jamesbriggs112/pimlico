@@ -17,7 +17,9 @@ mkdir -p "$out"
 
 {
   vendor/bin/drush sql:query "SELECT alias FROM path_alias WHERE path LIKE '/node/%' ORDER BY id"
-  printf '%s\n' / /brands '/brands?category=interiors' '/brands?category=antiques-and-art' \
+  # One Brands filter per top-level Brand Category (keyed by term ID).
+  vendor/bin/drush sql:query "SELECT CONCAT('/brands?category=', entity_id) FROM taxonomy_term__parent WHERE bundle = 'brand_category' AND parent_target_id = 0 ORDER BY entity_id"
+  printf '%s\n' / /brands \
     /dine /news /search '/search?keys=house' /form/contact /llms.txt /api/map/brands /user/login
 } > "$out/_urls.txt"
 

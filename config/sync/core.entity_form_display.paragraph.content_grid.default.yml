@@ -9,6 +9,7 @@ dependencies:
     - field.field.paragraph.content_grid.field_eyebrow
     - field.field.paragraph.content_grid.field_heading
     - field.field.paragraph.content_grid.field_link
+    - field.field.paragraph.content_grid.field_show_summaries
     - field.field.paragraph.content_grid.field_text
     - paragraphs.paragraphs_type.content_grid
   module:
@@ -60,6 +61,13 @@ content:
     weight: 3
     region: content
     settings: {  }
+    third_party_settings: {  }
+  field_show_summaries:
+    type: boolean_checkbox
+    weight: 6
+    region: content
+    settings:
+      display_label: true
     third_party_settings: {  }
   field_text:
     type: text_textarea

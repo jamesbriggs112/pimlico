@@ -1,9 +1,10 @@
 name: 'Pimlico brands'
 type: module
-description: 'Brand-specific behaviour: the Brands page category groups (Interiors, Antiques & art).'
+description: 'Brand-specific behaviour: the Brands and Dine category filters, breadcrumbs and the Brand page sections migration.'
 package: Pimlico
 core_version_requirement: ^11
 dependencies:
   - drupal:node
+  - paragraphs:paragraphs
   - drupal:taxonomy
   - drupal:views

@@ -1,16 +1,15 @@
-uuid: 8660fbf0-010b-4d4d-8d25-d1e6c6569d75
+uuid: aafbc76e-ec91-4f66-9103-44eb3481fd69
 langcode: en
 status: true
 dependencies:
   module:
-    - node
-    - text
-id: node.field_transcript
-field_name: field_transcript
-entity_type: node
-type: text_long
+    - paragraphs
+id: paragraph.field_show_summaries
+field_name: field_show_summaries
+entity_type: paragraph
+type: boolean
 settings: {  }
-module: text
+module: core
 locked: false
 cardinality: 1
 translatable: true

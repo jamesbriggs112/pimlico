@@ -32,7 +32,7 @@ display:
         type: full
         options:
           offset: 0
-          items_per_page: 15
+          items_per_page: 12
           id: 0
           tags:
             next: Next

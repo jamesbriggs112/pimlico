@@ -4,7 +4,6 @@ status: true
 dependencies:
   config:
     - node.type.article
-    - node.type.podcast_episode
     - node.type.press_article
   module:
     - node
@@ -20,7 +19,6 @@ selection_criteria:
       node: node
     bundles:
       article: article
-      podcast_episode: podcast_episode
       press_article: press_article
 selection_logic: and
 weight: -10

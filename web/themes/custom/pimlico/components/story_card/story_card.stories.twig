@@ -13,4 +13,16 @@
   </div>
 {% endstory %}
 
+{% story with_link with {
+  name: 'With link',
+  args: { url: '#', title: 'New in the windows', meta: 'Interiors', link_text: 'Step inside', show_link: true }
+} %}
+  {% set img = url('<front>')|render|trim('/', 'right') ~ '/themes/custom/pimlico/src/stories/images/' %}
+  <div style="max-width: 400px">
+    {% embed 'pimlico:story_card' with { url, title, meta, link_text, show_link } only %}
+      {% block image %}<img src="{{ img }}story-1.jpg" alt="">{% endblock %}
+    {% endembed %}
+  </div>
+{% endstory %}
+
 {% endstories %}

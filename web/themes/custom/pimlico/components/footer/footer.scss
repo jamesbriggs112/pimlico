@@ -1,24 +1,31 @@
-// Figma "Footer". Desktop: linen-60, 60px top / 40px bottom, 80px column
-// gaps, logos right, 72px gap to a 1px-ruled legal row. Mobile: stacked
-// columns, 40px gaps, logos below, legal links inline.
+// Figma "Footer" (7:108).
+// Desktop: linen-60, 60px top / 40px bottom, 72px between the link columns
+// (80px apart, 14px rows, Lato Bold 20 headings, Body/M links) and a 1px-ruled
+// bottom row: legal links (Body/S, 28px apart) over the copyright on the left,
+// the Pimlico Road (240px) and Grosvenor (171px) logos bottom right, 28px apart.
+// Mobile: 40px padding and gaps, 12px rows, the legal links centred with "·"
+// between them over the copyright, then the logos last, centred (200px and
+// 130px, 20px apart).
+// The current page isn't underlined in the footer.
 .footer {
+  --text-link-current-underline-color: transparent;
+  --menu-gap: var(--space-12);
+
   background-color: var(--footer-bg-color);
   color: var(--footer-text-color);
+
+  @include mq($from: desktop) {
+    --menu-gap: #{to.rem(14px)};
+  }
 
   &__inner {
     @include pageContainer;
     display: grid;
-    gap: #{fluid(40px, 72px)};
-    padding-block: var(--section-space) var(--space-40);
-  }
-
-  &__top {
-    display: grid;
     gap: var(--space-40);
+    padding-block: var(--section-space) var(--space-40);
 
-    @include mq($from: tablet) {
-      grid-template-columns: 1fr auto;
-      align-items: start;
+    @include mq($from: desktop) {
+      gap: #{to.rem(72px)};
     }
   }
 
@@ -33,50 +40,79 @@
   }
 
   .menu-block__title {
-    margin-bottom: #{to.rem(14px)};
+    margin-bottom: var(--menu-gap);
     font-family: var(--font-family-body);
-    font-size: #{to.rem(20px)};
+    text-box: normal;
+    font-size: var(--font-size-20);
     font-weight: var(--font-weight-bold);
-    line-height: 1.4;
+    line-height: var(--line-height-label);
     letter-spacing: 0;
-  }
-
-  &__logos {
-    display: grid;
-    gap: #{to.rem(20px)};
-    justify-items: start;
-
-    @include mq($from: tablet) {
-      gap: #{to.rem(28px)};
-      justify-items: end;
-    }
-  }
-
-  &__logo {
-    width: #{to.rem(200px)};
-
-    @include mq($from: tablet) {
-      width: #{to.rem(240px)};
-    }
   }
 
   &__bottom {
     display: grid;
-    gap: #{to.rem(10px)};
+    gap: var(--space-40);
     padding-top: #{to.rem(20px)};
     border-top: 1px solid var(--color-border-strong);
     font-size: var(--font-size-body-s);
     line-height: var(--line-height-body-s);
 
-    @include mq($from: tablet) {
+    @include mq($from: desktop) {
       display: flex;
       justify-content: space-between;
-      align-items: start;
+      align-items: flex-end;
+      gap: var(--space-40);
       padding-top: var(--space-24);
     }
 
     p {
       margin: 0;
+    }
+  }
+
+  &__legal {
+    --menu-inline-justify: center;
+
+    display: grid;
+    gap: #{to.rem(10px)};
+    justify-items: center;
+    text-align: center;
+
+    @include mq($from: desktop) {
+      --menu-inline-justify: flex-start;
+
+      gap: var(--space-8);
+      justify-items: start;
+      text-align: start;
+    }
+  }
+
+  &__logos {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: #{to.rem(20px)};
+
+    @include mq($from: desktop) {
+      flex-direction: row;
+      flex: none;
+      gap: #{to.rem(28px)};
+    }
+  }
+
+  &__logo--pimlico {
+    width: #{to.rem(200px)};
+
+    @include mq($from: desktop) {
+      width: #{to.rem(240px)};
+    }
+  }
+
+  &__logo--grosvenor {
+    width: #{to.rem(130px)};
+
+    @include mq($from: desktop) {
+      width: #{to.rem(171px)};
     }
   }
 }

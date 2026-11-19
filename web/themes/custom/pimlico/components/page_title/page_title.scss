@@ -8,10 +8,14 @@
   &__inner {
     display: grid;
     justify-items: center;
-    gap: #{fluid(16px, 24px)};
+    gap: var(--space-16);
     max-width: calc(#{to.rem(1040px)} + 2 * var(--page-gutter));
     margin-inline: auto;
     padding: var(--section-space) var(--page-gutter);
+
+    @include mq($from: desktop) {
+      gap: var(--space-24);
+    }
   }
 
   &__breadcrumb {
@@ -20,8 +24,13 @@
     }
   }
 
+  // Press publication logo: 180px on mobile, 240px on desktop
   &__logo {
-    width: #{fluid(180px, 240px)};
+    width: #{to.rem(180px)};
+
+    @include mq($from: desktop) {
+      width: #{to.rem(240px)};
+    }
 
     img,
     svg {

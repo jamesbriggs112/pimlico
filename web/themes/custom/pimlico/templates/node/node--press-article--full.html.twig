@@ -2,14 +2,18 @@
 /**
  * @file
  * Press article (Figma T12): title band, publication block, body sections,
- * credits, related stories, then the Source band linking to the original.
+ * credits, then related Brands. The Source band was removed on 19 November
+ * 2026 at the client's request. The source link field is kept for reference
+ * but no longer shown.
+ * Related Brands are the editor's picks, or else three Brands from the
+ * street (the coverage is about the street, so any Brand there is a fair
+ * next step; Figma shows Brand cards only).
  */
 #}
 {% set title = node.label %}
 {% set date = node.field_publication_date.value ? node.field_publication_date.date.getTimestamp()|format_date('custom', 'j F Y') : '' %}
 {% set publication = node.field_publication.value %}
 {% set intro = [node.field_summary.value, [publication, date]|filter(value => value)|join(', ')]|filter(value => value)|join(' · ') %}
-{% set source = node.field_source_link.0 ? node.field_source_link.0.url.toString() : '' %}
 
 <article{{ attributes.addClass('node', 'node--story', 'node--press') }}>
   {{ title_prefix }}
@@ -20,6 +24,7 @@
     breadcrumb: drupal_block('system_breadcrumb_block'),
   } only %}
   {% include 'pimlico:featured_story' with {
+    attributes: create_attribute({ class: ['featured-story--publication'] }),
     meta: [publication, node.field_author.value, date]|filter(value => value)|join(' · '),
     summary: node.field_summary.value|default(''),
     image: content.field_image,
@@ -30,17 +35,9 @@
   {% include 'pimlico:card_grid' with {
     attributes: create_attribute({ class: ['card-grid--tint'] }),
     heading: 'Discover the places in the story'|t,
-    text: 'Brands and stories connected to this place.'|t,
+    text: 'Brands connected to this story.'|t,
     link_text: 'All news'|t,
     link_url: path('view.news.page_news'),
-    items: node.field_related.isEmpty() ? drupal_view('news', 'block_related', node.field_news_category.target_id|default('all'), node.id) : content.field_related,
+    items: node.field_related.isEmpty() ? drupal_view('brands', 'block_similar', 'all', 'all') : content.field_related,
   } only %}
-  {% if source %}
-    {% include 'pimlico:info_band' with {
-      eyebrow: 'Source'|t,
-      heading: 'Read the original coverage'|t,
-      links: [{ text: publication ? 'Read in @publication'|t({ '@publication': publication }) : 'Original publication'|t, url: source, external: true }],
-      media: content.field_image,
-    } only %}
-  {% endif %}
 </article>

@@ -12,7 +12,7 @@ field_name: field_background
 entity_type: paragraph
 bundle: split_text
 label: Background
-description: ''
+description: 'White, linen or dark grey behind the section. Dark gives white text and yellow eyebrows (About "Area story").'
 required: true
 translatable: true
 default_value:

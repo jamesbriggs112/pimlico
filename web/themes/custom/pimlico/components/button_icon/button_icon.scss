@@ -49,6 +49,16 @@
     --focus-ring: var(--focus-ring-on-light);
   }
 
+  // A dark-tone control inside a dark section (Cards with a Dark
+  // background) takes the light tone, so it stays visible there.
+  .is-inverse &--dark {
+    --_line: var(--button-icon-border-color);
+    --_color: var(--button-icon-color);
+    --_hover-bg: var(--button-icon-hover-background-color);
+    --_hover-color: var(--button-icon-hover-color);
+    --focus-ring: var(--focus-ring-on-dark);
+  }
+
   svg {
     display: block;
     width: var(--button-icon-icon-size);

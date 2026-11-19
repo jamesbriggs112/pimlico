@@ -17,7 +17,7 @@ Run the `php scripts/...` commands from this module's directory and the `drush` 
    site), then
    `drush php:script web/modules/custom/pimlico_migrate/scripts/import-photos.php`
    downloads them (1920px, saved as JPEG), adds them to the Media library
-   and sets each Brand's main image and gallery. Alt text is the Brand's
+   and sets each Brand's main image and Gallery section. Alt text is the Brand's
    name: editors should describe each photo.
 6. Uninstall the module after launch.
 

@@ -27,13 +27,12 @@
       width: 100%;
       min-height: #{to.rem(44px)};
       padding-block: var(--space-12);
-      font-family: var(--font-family-display);
-      font-size: #{to.rem(32px)};
+      @include displayFont;
+      font-size: var(--font-size-32);
       font-weight: var(--font-weight-light);
       line-height: 1.12;
       letter-spacing: #{to.rem(-0.5px)};
       text-transform: none;
-      font-variation-settings: var(--font-display-variation);
     }
   }
 
