@@ -2,6 +2,8 @@ uuid: 146fee9e-c5e1-4a7f-bdd1-075489ebb933
 langcode: en
 status: true
 dependencies:
+  content:
+    - 'file:file:5ef0a459-f918-4c4c-b8cd-afa1ce9a3d3b'
   module:
     - paragraphs_ee
 third_party_settings:
@@ -12,7 +14,7 @@ _core:
   default_config_hash: 8WGf0ivp19IJyTLQ9LWzDCP8GREGIGQaAkRpEjc11rQ
 id: cta
 label: 'Next step'
-icon_uuid: null
-icon_default: null
+icon_uuid: 5ef0a459-f918-4c4c-b8cd-afa1ce9a3d3b
+icon_default: 'data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyNDAgMTQ0IiB3aWR0aD0iMjQwIiBoZWlnaHQ9IjE0NCI+PHJlY3QgeD0iMCIgeT0iMCIgd2lkdGg9IjI0MCIgaGVpZ2h0PSIxNDQiIHJ4PSIwIiBmaWxsPSIjZjRmMmViIi8+PHJlY3QgeD0iMTExIiB5PSIyMiIgd2lkdGg9IjE4IiBoZWlnaHQ9IjMiIHJ4PSIxLjUiIGZpbGw9IiNlODc0MDAiLz48cmVjdCB4PSI2MCIgeT0iMzQiIHdpZHRoPSIxMjAiIGhlaWdodD0iMTAiIHJ4PSIxIiBmaWxsPSIjMzk0OTU5Ii8+PHJlY3QgeD0iODAiIHk9IjQ5IiB3aWR0aD0iODAiIGhlaWdodD0iMTAiIHJ4PSIxIiBmaWxsPSIjMzk0OTU5Ii8+PHJlY3QgeD0iNDUuMCIgeT0iNzAiIHdpZHRoPSIxNTAiIGhlaWdodD0iNCIgcng9IjIiIGZpbGw9IiMzOTQ5NTkiIG9wYWNpdHk9IjAuMzUiLz48cmVjdCB4PSI2MC4wIiB5PSI3OCIgd2lkdGg9IjEyMCIgaGVpZ2h0PSI0IiByeD0iMiIgZmlsbD0iIzM5NDk1OSIgb3BhY2l0eT0iMC4zNSIvPjxyZWN0IHg9Ijc2IiB5PSI5OCIgd2lkdGg9IjQwIiBoZWlnaHQ9IjEwIiByeD0iMSIgZmlsbD0iI2Y5ZTU3NyIvPjxyZWN0IHg9IjEyNCIgeT0iOTgiIHdpZHRoPSI0MCIgaGVpZ2h0PSIxMCIgcng9IjEiIGZpbGw9IiNmOWU1NzciLz48L3N2Zz4K'
 description: ''
 behavior_plugins: {  }
